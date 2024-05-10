@@ -5,11 +5,13 @@ export default css`
         display: block;
         padding: 16px;
         background: white;
+        width: calc(var(--width) + 32px);
+        height: var(--height);
     }
 
     #map {
-        width: 100%;
-        height: 100%;
+        width: var(--width);
+        height: var(--height);
         border: solid 1px gray;
     }
 
