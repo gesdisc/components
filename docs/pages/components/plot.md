@@ -2418,6 +2418,18 @@ layout: component
             line: { color: '#7F7F7F' },
         },
     ]
+    document.getElementById('example').layout = {
+        title: 'Company Stock Price',
+            xaxis: {
+                title: 'Time',
+                showgrid: false,
+                zeroline: false
+            },
+            yaxis: {
+                title: 'Stock Price',
+                showline: false
+            }
+        };
 </script>
 ```
 
