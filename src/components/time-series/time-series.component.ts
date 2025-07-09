@@ -31,7 +31,7 @@ import { formatDate } from '../../utilities/date.js'
  *
  * @dependency terra-plot
  *
- * @event terra-time-series-data-change - Emitted whenever time series data has been fetched from Giovanni
+ * @event terra-date-range-change - Emitted whenever time series data has been fetched from Giovanni
  */
 export default class TerraTimeSeries extends TerraElement {
     static styles: CSSResultGroup = [componentStyles, styles]
@@ -779,7 +779,7 @@ export default class TerraTimeSeries extends TerraElement {
 
         if (changed) {
             this.dispatchEvent(
-                new CustomEvent('terra-time-series-date-range-change', {
+                new CustomEvent('terra-date-range-change', {
                     detail: {
                         startDate: this.startDate,
                         endDate: this.endDate,
