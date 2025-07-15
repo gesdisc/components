@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en" data-layout="default" data-terra-ui-components-version="0.0.57">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Everything you need to know about theming Shoelace." />
+    <title>Themes</title>
+
+    <meta name="turbo-cache-control" />
+
+    <link rel="stylesheet" href="/assets/styles/docs.css" />
+    <link rel="stylesheet" href="/assets/styles/code-previews.css" />
+    <link rel="stylesheet" href="/assets/styles/search.css" />
+
+    <link rel="icon" href="/assets/images/logo.white.png" type="image/x-icon" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="nasa_terra-ui" />
+    <meta name="twitter:image" content="https://disc.gsfc.nasa.gov/assets/images/og-image.png" />
+
+    <meta property="og:url" content="https://disc.gsfc.nasa.gov/getting-started/themes/" />
+    <meta property="og:title" content="Themes" />
+    <meta property="og:description" content="Everything you need to know about theming Shoelace." />
+    <meta property="og:image" content="https://disc.gsfc.nasa.gov/assets/images/og-image.png" />
+
+    <link rel="stylesheet" href="/dist/themes/horizon.css" />
+    <script type="module" src="/dist/terra-ui-components-autoloader.js"></script>
+
+    <script>
+      (() => {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = localStorage.getItem('theme') || 'auto';
+        document.documentElement.classList.toggle(
+          'terra-theme-dark',
+          theme === 'dark' || (theme === 'auto' && prefersDark)
+        );
+      })();
+    </script>
+
+    <script src="/assets/scripts/turbo.js" type="module"></script>
+    <script src="/assets/scripts/docs.js" defer=""></script>
+    <script src="/assets/scripts/code-previews.js" defer=""></script>
+    <script src="/assets/scripts/lunr.js" defer=""></script>
+    <script src="/assets/scripts/search.js" defer=""></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono&amp;family=Inter&amp;family=Public+Sans&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"
+    ></script>
+  </head>
+  <body>
+    <a id="skip-to-main" class="visually-hidden" href="#main-content" data-smooth-link="false">
+      Skip to main content
+    </a>
+
+    <button id="menu-toggle" type="button" aria-label="Menu">
+      <svg width="148" height="148" viewBox="0 0 148 148" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="currentColor" stroke-width="18" fill="none" fill-rule="evenodd" stroke-linecap="round">
+          <path d="M9.5 125.5h129M9.5 74.5h129M9.5 23.5h129"></path>
+        </g>
+      </svg>
+    </button>
+
+    <div id="icon-toolbar">
+      <a
+        href="https://github.com/terra-ui/components"
+        title="View Terra UI Components on GitHub"
+        class="external-link"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <sl-icon name="github"></sl-icon>
+      </a>
+      <sl-dropdown id="theme-selector" placement="bottom-end" distance="3">
+        <terra-button
+          slot="trigger"
+          size="large"
+          variant="text"
+          caret=""
+          title="Press \ to toggle"
+          data-optional=""
+          data-valid=""
+          data-user-valid=""
+        >
+          <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
+          <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
+        </terra-button>
+        <sl-menu role="menu">
+          <sl-menu-item
+            type="checkbox"
+            value="light"
+            tabindex="-1"
+            role="menuitemcheckbox"
+            aria-checked="false"
+            aria-disabled="false"
+            >Light</sl-menu-item
+          >
+          <sl-menu-item
+            type="checkbox"
+            value="dark"
+            tabindex="-1"
+            role="menuitemcheckbox"
+            aria-checked="false"
+            aria-disabled="false"
+            >Dark</sl-menu-item
+          >
+          <sl-divider role="separator" aria-orientation="horizontal"></sl-divider>
+          <sl-menu-item
+            type="checkbox"
+            value="auto"
+            tabindex="0"
+            role="menuitemcheckbox"
+            aria-checked="true"
+            aria-disabled="false"
+            checked=""
+            >System</sl-menu-item
+          >
+        </sl-menu>
+      </sl-dropdown>
+    </div>
+
+    <aside id="sidebar" data-preserve-scroll="">
+      <header>
+        <a href="/" class="sidebar-logo">
+          <img src="/assets/images/logo.svg" alt="Terra UI Components" />
+          Terra UI Components
+        </a>
+        <div class="sidebar-version">0.0.57</div>
+      </header>
+
+      <div class="sidebar-buttons">
+        <terra-button
+          size="small"
+          class="repo-button repo-button--github"
+          href="https://github.com/terra-ui/components"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="github"></sl-icon> Code
+        </terra-button>
+        <terra-button
+          size="small"
+          class="repo-button repo-button--star"
+          href="https://github.com/terra-ui/components/stargazers"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="star-fill"></sl-icon> Star
+        </terra-button>
+      </div>
+
+      <button class="search-box" type="button" title="Press / to search" aria-label="Search" data-plugin="search">
+        <sl-icon name="search"></sl-icon>
+        <span>Search</span>
+      </button>
+
+      <nav>
+        <ul>
+          <li>
+            <h2>Getting Started</h2>
+            <ul>
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/getting-started/installation">Installation</a>
+              </li>
+              <li>
+                <a href="/getting-started/usage">Usage</a>
+              </li>
+              <li>
+                <a href="/getting-started/themes" class="active-link">Themes</a>
+              </li>
+              <li>
+                <a href="/getting-started/customizing">Customizing</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h2>Frameworks</h2>
+            <ul>
+              <li>
+                <a href="/frameworks/react">React</a>
+              </li>
+              <li>
+                <a href="/frameworks/vue">Vue</a>
+              </li>
+              <li>
+                <a href="/frameworks/angular">Angular</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h2>Components</h2>
+            <ul>
+              <li>
+                <a href="/components/accordion"> Accordion </a>
+              </li>
+
+              <li>
+                <a href="/components/alert"> Alert </a>
+              </li>
+
+              <li>
+                <a href="/components/browse-variables"> Browse Variables </a>
+              </li>
+
+              <li>
+                <a href="/components/button"> Button </a>
+              </li>
+
+              <li>
+                <a href="/components/chip"> Chip </a>
+              </li>
+
+              <li>
+                <a href="/components/combobox"> Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/data-rods"> Data Rods </a>
+              </li>
+
+              <li>
+                <a href="/components/data-subsetter"> Data Subsetter </a>
+              </li>
+
+              <li>
+                <a href="/components/date-picker"> Date Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/date-range-slider"> Date Range Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/dialog"> Dialog </a>
+              </li>
+
+              <li>
+                <a href="/components/icon"> Icon </a>
+              </li>
+
+              <li>
+                <a href="/components/loader"> Loader </a>
+              </li>
+
+              <li>
+                <a href="/components/login"> Login </a>
+              </li>
+
+              <li>
+                <a href="/components/map"> Map </a>
+              </li>
+
+              <li>
+                <a href="/components/plot"> Plot </a>
+              </li>
+
+              <li>
+                <a href="/components/skeleton"> Skeleton </a>
+              </li>
+
+              <li>
+                <a href="/components/spatial-picker"> Spatial Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/time-series"> Time Series </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-combobox"> Variable Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-keyword-search"> Variable Keyword Search </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+      <a id="main-content"></a>
+      <article id="content" class="content content--with-toc">
+        <div class="content__toc">
+          <ul>
+            <li class="top">
+              <a href="#">Themes</a>
+            </li>
+            <li data-level="2"><a href="#theme-basics">Theme Basics</a></li>
+            <li data-level="3"><a href="#activating-themes">Activating Themes</a></li>
+            <li data-level="3"><a href="#using-multiple-themes">Using Multiple Themes</a></li>
+            <li data-level="2"><a href="#creating-themes">Creating Themes</a></li>
+            <li data-level="3"><a href="#customizing-a-built-in-theme">Customizing a Built-in Theme</a></li>
+            <li data-level="3"><a href="#creating-a-new-theme">Creating a New Theme</a></li>
+            <li data-level="2"><a href="#dark-theme">Dark Theme</a></li>
+            <li data-level="3">
+              <a href="#detecting-the-users-color-scheme-preference">Detecting the User’s Color Scheme Preference</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="content__body">
+          <h1>Themes</h1>
+          <p>
+            Shoelace is designed to be highly customizable through pure CSS. Out of the box, you can choose from a light
+            or dark theme. Alternatively, you can design your own theme.
+          </p>
+          <p>
+            A theme is nothing more than a stylesheet that uses the Shoelace API to define design tokens and apply
+            custom styles to components. To create a theme, you will need a decent understanding of CSS, including
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/--*"
+              class="external-link"
+              rel="noopener noreferrer"
+              target="_blank"
+              >CSS Custom Properties</a
+            >
+            and the
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part"
+              class="external-link"
+              rel="noopener noreferrer"
+              target="_blank"
+              ><code>::part</code> selector</a
+            >.
+          </p>
+          <div role="alert" class="callout callout--tip">
+            <p>
+              For component developers, built-in themes are also available as JavaScript modules that export
+              <a
+                href="https://lit.dev/docs/api/styles/#CSSResult"
+                class="external-link"
+                rel="noopener noreferrer"
+                target="_blank"
+                >Lit CSSResult</a
+              >
+              objects. You can find them in <code>dist/themes/*.styles.js</code>.
+            </p>
+          </div>
+          <h2 id="theme-basics" class="anchor-heading">
+            Theme Basics<a href="#theme-basics" aria-label='Direct link to "Theme Basics"'></a>
+          </h2>
+          <p>
+            All themes are scoped to classes using the <code>terra-theme-{name}</code> convention, where
+            <code>{name}</code> is a lowercase, hyphen-delimited value representing the name of the theme. The included
+            light and dark themes use <code>terra-theme-horizon</code> and <code>terra-theme-dark</code>, respectively.
+            A custom theme called “Purple Power”, for example, would use a class called
+            <code>terra-theme-purple-power</code>
+          </p>
+          <p>
+            All selectors must be scoped to the theme’s class to ensure interoperability with other themes. You should
+            also scope them to <code>:host</code> so they can be imported and applied to custom element shadow roots.
+          </p>
+          <pre><code class="language-css" id="code-block-73"><span class="token selector">:host,
+.terra-theme-purple-power</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-73"></sl-copy-button></pre>
+          <h3 id="activating-themes" class="anchor-heading">
+            Activating Themes<a href="#activating-themes" aria-label='Direct link to "Activating Themes"'></a>
+          </h3>
+          <p>
+            To activate a theme, import it and apply the theme’s class to the <code>&lt;html&gt;</code> element. This
+            example imports and activates the built-in dark theme.
+          </p>
+          <pre><code class="language-html" id="code-block-74"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>terra-theme-dark<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>path/to/shoelace/dist/themes/dark.css<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+        ...
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-74"></sl-copy-button></pre>
+          <div role="alert" class="callout callout--tip">
+            <p>
+              There is one exception to this rule — the light theme <em>does not</em> need to be activated. For
+              convenience, the light theme is scoped to <code>:root</code> and will be activated by default when
+              imported.
+            </p>
+          </div>
+          <h3 id="using-multiple-themes" class="anchor-heading">
+            Using Multiple Themes<a
+              href="#using-multiple-themes"
+              aria-label='Direct link to "Using Multiple Themes"'
+            ></a>
+          </h3>
+          <p>
+            You can activate themes on various containers throughout the page. This example uses the light theme with a
+            dark-themed sidebar.
+          </p>
+          <pre><code class="language-html" id="code-block-75"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>path/to/shoelace/dist/themes/light.css<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>path/to/shoelace/dist/themes/dark.css<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nav</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>terra-theme-dark<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token comment">&lt;!-- dark-themed sidebar --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nav</span><span class="token punctuation">&gt;</span></span>
+
+        <span class="token comment">&lt;!-- light-themed content --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-75"></sl-copy-button></pre>
+          <p>It’s for this reason that themes must be scoped to specific classes.</p>
+          <h2 id="creating-themes" class="anchor-heading">
+            Creating Themes<a href="#creating-themes" aria-label='Direct link to "Creating Themes"'></a>
+          </h2>
+          <p>
+            There are two ways to create themes. The easiest way is to customize a built-in theme. The advanced way is
+            to create a new theme from scratch. Which method you choose depends on your project’s requirements and the
+            amount of effort you’re willing to commit to.
+          </p>
+          <h3 id="customizing-a-built-in-theme" class="anchor-heading">
+            Customizing a Built-in Theme<a
+              href="#customizing-a-built-in-theme"
+              aria-label='Direct link to "Customizing a Built-in Theme"'
+            ></a>
+          </h3>
+          <p>
+            The easiest way to customize Shoelace is to override one of the built-in themes. You can do this by
+            importing the light or dark theme as-is, then creating a separate stylesheet that overrides
+            <a href="/getting-started/customizing#design-tokens">design tokens</a> and adds
+            <a href="/getting-started/customizing#component-parts">component styles</a> to your liking. You must import
+            your theme <em>after</em> the built-in theme.
+          </p>
+          <p>If you’re customizing the light theme, you should scope your styles to the following selectors.</p>
+          <pre><code class="language-css" id="code-block-76"><span class="token selector">:root,
+:host,
+.terra-theme-horizon</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* your custom styles here */</span>
+<span class="token punctuation">}</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-76"></sl-copy-button></pre>
+          <p>If you’re customizing the dark theme, you should scope your styles to the following selectors.</p>
+          <pre><code class="language-css" id="code-block-77"><span class="token selector">:host,
+.terra-theme-dark</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* your custom styles here */</span>
+<span class="token punctuation">}</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-77"></sl-copy-button></pre>
+          <p>
+            By customizing a built-in theme, you’ll maintain a smaller stylesheet containing only the changes you’ve
+            made. Contrast this to <a href="#creating-a-new-theme">creating a new theme</a>, where you need to
+            explicitly define every design token required by the library. This approach is more “future-proof,” as new
+            design tokens that emerge in subsequent versions of Shoelace will be accounted for by the built-in theme.
+          </p>
+          <p>
+            While this approach is easier to maintain, the drawback is that your theme can’t be activated independently
+            — it’s tied to the built-in theme you’re extending.
+          </p>
+          <h3 id="creating-a-new-theme" class="anchor-heading">
+            Creating a New Theme<a href="#creating-a-new-theme" aria-label='Direct link to "Creating a New Theme"'></a>
+          </h3>
+          <p>
+            Creating a new theme is more of an undertaking than
+            <a href="#customizing-a-built-in-theme">customizing an existing one</a>. At a minimum, you must implement
+            all of the required design tokens. The easiest way to do this is by “forking” one of the built-in themes and
+            modifying it from there.
+          </p>
+          <p>
+            Start by changing the selector to match your theme’s name. Assuming your new theme is called “Purple Power”,
+            your theme should be scoped like this.
+          </p>
+          <pre><code class="language-css" id="code-block-78"><span class="token selector">:host,
+.terra-theme-purple-power</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* your custom styles here */</span>
+<span class="token punctuation">}</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-78"></sl-copy-button></pre>
+          <p>
+            By creating a new theme, you won’t be relying on a built-in theme as a foundation. Because the theme is
+            decoupled from the built-ins, you can activate it independently as an alternative to the built-ins. This is
+            the recommended approach if you’re looking to open source your theme for others to use.
+          </p>
+          <p>
+            You will, however, need to maintain your theme more carefully, as new versions of Shoelace may introduce new
+            design tokens that your theme won’t have accounted for. Because of this, it’s recommended that you clearly
+            specify which version(s) of Shoelace your theme is designed to work with and keep it up to date as new
+            versions of Shoelace are released.
+          </p>
+          <h2 id="dark-theme" class="anchor-heading">
+            Dark Theme<a href="#dark-theme" aria-label='Direct link to "Dark Theme"'></a>
+          </h2>
+          <p>
+            The built-in dark theme uses an inverted color scale so, if you’re using design tokens as intended, you’ll
+            get dark mode for free. While this isn’t the same as a professionally curated dark theme, it provides an
+            excellent baseline for one and you’re encouraged to customize it depending on your needs.
+          </p>
+          <p>
+            The dark theme works by taking the light theme’s <a href="/tokens/color">color tokens</a> and “flipping” the
+            scale so 100 becomes 900, 200 becomes 800, 300 becomes 700, etc. Next, the luminance of each primitive was
+            fine-tuned to avoid true black, which is often undesirable in dark themes, and provide a richer experience.
+            The result is a custom dark palette that complements the light theme and makes it easy to offer light and
+            dark modes with minimal effort.
+          </p>
+          <p>To install the dark theme, add the following to the <code>&lt;head&gt;</code> section of your page.</p>
+          <pre><code class="language-html" id="code-block-79"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span>
+    <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span>
+    <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.57/cdn/themes/dark.css<span class="token punctuation">"</span></span>
+<span class="token punctuation">/&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-79"></sl-copy-button></pre>
+          <p>
+            To activate the theme, apply the <code>terra-theme-dark</code> class to the
+            <code>&lt;html&gt;</code> element.
+          </p>
+          <pre><code class="language-html" id="code-block-80"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>terra-theme-dark<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    ...
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-80"></sl-copy-button></pre>
+          <h3 id="detecting-the-users-color-scheme-preference" class="anchor-heading">
+            Detecting the User’s Color Scheme Preference<a
+              href="#detecting-the-users-color-scheme-preference"
+              aria-label='Direct link to "Detecting the User&apos;s Color Scheme Preference"'
+            ></a>
+          </h3>
+          <p>
+            Shoelace doesn’t try to auto-detect the user’s light/dark mode preference. This should be done at the
+            application level. As a best practice, to provide a dark theme in your app, you should:
+          </p>
+          <ul>
+            <li>
+              Check for
+              <a
+                href="https://stackoverflow.com/a/57795495/567486"
+                class="external-link"
+                rel="noopener noreferrer"
+                target="_blank"
+                ><code>prefers-color-scheme</code></a
+              >
+              and use its value by default
+            </li>
+            <li>Allow the user to override the setting in your app</li>
+            <li>Remember the user’s preference and restore it on subsequent logins</li>
+          </ul>
+          <p>
+            Shoelace avoids using the <code>prefers-color-scheme</code> media query because not all apps support dark
+            mode, and it would break things for the ones that don’t.
+          </p>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

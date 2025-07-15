@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en" data-layout="default" data-terra-ui-components-version="0.0.57">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="This page explains how to integrate Shoelace with a NextJS app." />
+    <title>Integrating with NextJS</title>
+
+    <meta name="turbo-cache-control" />
+
+    <link rel="stylesheet" href="/assets/styles/docs.css" />
+    <link rel="stylesheet" href="/assets/styles/code-previews.css" />
+    <link rel="stylesheet" href="/assets/styles/search.css" />
+
+    <link rel="icon" href="/assets/images/logo.white.png" type="image/x-icon" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="nasa_terra-ui" />
+    <meta name="twitter:image" content="https://disc.gsfc.nasa.gov/assets/images/og-image.png" />
+
+    <meta property="og:url" content="https://disc.gsfc.nasa.gov/tutorials/integrating-with-nextjs/" />
+    <meta property="og:title" content="Integrating with NextJS" />
+    <meta property="og:description" content="This page explains how to integrate Shoelace with a NextJS app." />
+    <meta property="og:image" content="https://disc.gsfc.nasa.gov/assets/images/og-image.png" />
+
+    <link rel="stylesheet" href="/dist/themes/horizon.css" />
+    <script type="module" src="/dist/terra-ui-components-autoloader.js"></script>
+
+    <script>
+      (() => {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = localStorage.getItem('theme') || 'auto';
+        document.documentElement.classList.toggle(
+          'terra-theme-dark',
+          theme === 'dark' || (theme === 'auto' && prefersDark)
+        );
+      })();
+    </script>
+
+    <script src="/assets/scripts/turbo.js" type="module"></script>
+    <script src="/assets/scripts/docs.js" defer=""></script>
+    <script src="/assets/scripts/code-previews.js" defer=""></script>
+    <script src="/assets/scripts/lunr.js" defer=""></script>
+    <script src="/assets/scripts/search.js" defer=""></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono&amp;family=Inter&amp;family=Public+Sans&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"
+    ></script>
+  </head>
+  <body>
+    <a id="skip-to-main" class="visually-hidden" href="#main-content" data-smooth-link="false">
+      Skip to main content
+    </a>
+
+    <button id="menu-toggle" type="button" aria-label="Menu">
+      <svg width="148" height="148" viewBox="0 0 148 148" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="currentColor" stroke-width="18" fill="none" fill-rule="evenodd" stroke-linecap="round">
+          <path d="M9.5 125.5h129M9.5 74.5h129M9.5 23.5h129"></path>
+        </g>
+      </svg>
+    </button>
+
+    <div id="icon-toolbar">
+      <a
+        href="https://github.com/terra-ui/components"
+        title="View Terra UI Components on GitHub"
+        class="external-link"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <sl-icon name="github"></sl-icon>
+      </a>
+      <sl-dropdown id="theme-selector" placement="bottom-end" distance="3">
+        <terra-button
+          slot="trigger"
+          size="large"
+          variant="text"
+          caret=""
+          title="Press \ to toggle"
+          data-optional=""
+          data-valid=""
+          data-user-valid=""
+        >
+          <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
+          <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
+        </terra-button>
+        <sl-menu role="menu">
+          <sl-menu-item
+            type="checkbox"
+            value="light"
+            tabindex="-1"
+            role="menuitemcheckbox"
+            aria-checked="false"
+            aria-disabled="false"
+            >Light</sl-menu-item
+          >
+          <sl-menu-item
+            type="checkbox"
+            value="dark"
+            tabindex="-1"
+            role="menuitemcheckbox"
+            aria-checked="false"
+            aria-disabled="false"
+            >Dark</sl-menu-item
+          >
+          <sl-divider role="separator" aria-orientation="horizontal"></sl-divider>
+          <sl-menu-item
+            type="checkbox"
+            value="auto"
+            tabindex="0"
+            role="menuitemcheckbox"
+            aria-checked="true"
+            aria-disabled="false"
+            checked=""
+            >System</sl-menu-item
+          >
+        </sl-menu>
+      </sl-dropdown>
+    </div>
+
+    <aside id="sidebar" data-preserve-scroll="">
+      <header>
+        <a href="/" class="sidebar-logo">
+          <img src="/assets/images/logo.svg" alt="Terra UI Components" />
+          Terra UI Components
+        </a>
+        <div class="sidebar-version">0.0.57</div>
+      </header>
+
+      <div class="sidebar-buttons">
+        <terra-button
+          size="small"
+          class="repo-button repo-button--github"
+          href="https://github.com/terra-ui/components"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="github"></sl-icon> Code
+        </terra-button>
+        <terra-button
+          size="small"
+          class="repo-button repo-button--star"
+          href="https://github.com/terra-ui/components/stargazers"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="star-fill"></sl-icon> Star
+        </terra-button>
+      </div>
+
+      <button class="search-box" type="button" title="Press / to search" aria-label="Search" data-plugin="search">
+        <sl-icon name="search"></sl-icon>
+        <span>Search</span>
+      </button>
+
+      <nav>
+        <ul>
+          <li>
+            <h2>Getting Started</h2>
+            <ul>
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/getting-started/installation">Installation</a>
+              </li>
+              <li>
+                <a href="/getting-started/usage">Usage</a>
+              </li>
+              <li>
+                <a href="/getting-started/themes">Themes</a>
+              </li>
+              <li>
+                <a href="/getting-started/customizing">Customizing</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h2>Frameworks</h2>
+            <ul>
+              <li>
+                <a href="/frameworks/react">React</a>
+              </li>
+              <li>
+                <a href="/frameworks/vue">Vue</a>
+              </li>
+              <li>
+                <a href="/frameworks/angular">Angular</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h2>Components</h2>
+            <ul>
+              <li>
+                <a href="/components/accordion"> Accordion </a>
+              </li>
+
+              <li>
+                <a href="/components/alert"> Alert </a>
+              </li>
+
+              <li>
+                <a href="/components/browse-variables"> Browse Variables </a>
+              </li>
+
+              <li>
+                <a href="/components/button"> Button </a>
+              </li>
+
+              <li>
+                <a href="/components/chip"> Chip </a>
+              </li>
+
+              <li>
+                <a href="/components/combobox"> Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/data-rods"> Data Rods </a>
+              </li>
+
+              <li>
+                <a href="/components/data-subsetter"> Data Subsetter </a>
+              </li>
+
+              <li>
+                <a href="/components/date-picker"> Date Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/date-range-slider"> Date Range Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/dialog"> Dialog </a>
+              </li>
+
+              <li>
+                <a href="/components/icon"> Icon </a>
+              </li>
+
+              <li>
+                <a href="/components/loader"> Loader </a>
+              </li>
+
+              <li>
+                <a href="/components/login"> Login </a>
+              </li>
+
+              <li>
+                <a href="/components/map"> Map </a>
+              </li>
+
+              <li>
+                <a href="/components/plot"> Plot </a>
+              </li>
+
+              <li>
+                <a href="/components/skeleton"> Skeleton </a>
+              </li>
+
+              <li>
+                <a href="/components/spatial-picker"> Spatial Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/time-series"> Time Series </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-combobox"> Variable Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-keyword-search"> Variable Keyword Search </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+      <a id="main-content"></a>
+      <article id="content" class="content content--with-toc">
+        <div class="content__toc">
+          <ul>
+            <li class="top">
+              <a href="#">Integrating with NextJS</a>
+            </li>
+            <li data-level="2"><a href="#requirements">Requirements</a></li>
+            <li data-level="2"><a href="#instructions">Instructions</a></li>
+            <li data-level="3"><a href="#enabling-esm">Enabling ESM</a></li>
+            <li data-level="3"><a href="#importing-the-default-theme">Importing the Default Theme</a></li>
+            <li data-level="3"><a href="#defining-custom-elements">Defining Custom Elements</a></li>
+            <li data-level="3"><a href="#using-our-new-component-in-code">Using Our New Component In Code</a></li>
+            <li data-level="3"><a href="#environmental-variable">Environmental Variable</a></li>
+            <li data-level="3"><a href="#webpack-config">webpack Config</a></li>
+            <li data-level="2"><a href="#additional-resources">Additional Resources</a></li>
+          </ul>
+        </div>
+
+        <div class="content__body">
+          <h1>Integrating with NextJS</h1>
+          <p>This page explains how to integrate Shoelace with a NextJS app.</p>
+          <div role="alert" class="callout callout--tip">
+            <p>
+              This is a community-maintained document. Please <a href="/resources/community">ask the community</a> if
+              you have questions about this integration. You can also
+              <a
+                href="https://github.com/gesdisc/components/blob/next/docs/tutorials/integrating-with-nextjs.md"
+                class="external-link"
+                rel="noopener noreferrer"
+                target="_blank"
+                >suggest improvements</a
+              >
+              to make it better.
+            </p>
+          </div>
+          <h2 id="requirements" class="anchor-heading">
+            Requirements<a href="#requirements" aria-label='Direct link to "Requirements"'></a>
+          </h2>
+          <p>This integration has been tested with the following:</p>
+          <ul>
+            <li>Node: 16.13.1</li>
+            <li>NextJS: 12.1.6</li>
+            <li>Shoelace: 2.0.0-beta.74</li>
+          </ul>
+          <h2 id="instructions" class="anchor-heading">
+            Instructions<a href="#instructions" aria-label='Direct link to "Instructions"'></a>
+          </h2>
+          <p>To get started using Shoelace with NextJS, the following packages must be installed.</p>
+          <pre><code class="language-bash" id="code-block-105"><span class="token function">yarn</span> <span class="token function">add</span> @nasa-terra/components copy-webpack-plugin next-compose-plugins next-transpile-modules
+</code><sl-copy-button class="copy-code-button" from="code-block-105"></sl-copy-button></pre>
+          <h3 id="enabling-esm" class="anchor-heading">
+            Enabling ESM<a href="#enabling-esm" aria-label='Direct link to "Enabling ESM"'></a>
+          </h3>
+          <p>
+            Because Shoelace utilizes ESM, we need to modify our <code>package.json</code> to support ESM packages.
+            Simply add the following to your root of <code>package.json</code>:
+          </p>
+          <pre><code id="code-block-106">"type": "module"
+</code><sl-copy-button class="copy-code-button" from="code-block-106"></sl-copy-button></pre>
+          <p>
+            There’s one more step to enable ESM in NextJS, but we’ll tackle that in our Next configuration modification.
+          </p>
+          <h3 id="importing-the-default-theme" class="anchor-heading">
+            Importing the Default Theme<a
+              href="#importing-the-default-theme"
+              aria-label='Direct link to "Importing the Default Theme"'
+            ></a>
+          </h3>
+          <p>The next step is to import Shoelace’s default theme (stylesheet) in your <code>_app.js</code> file:</p>
+          <pre><code class="language-css" id="code-block-107">import <span class="token string">'@nasa-terra/components/dist/themes/light.css'</span><span class="token punctuation">;</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-107"></sl-copy-button></pre>
+          <h3 id="defining-custom-elements" class="anchor-heading">
+            Defining Custom Elements<a
+              href="#defining-custom-elements"
+              aria-label='Direct link to "Defining Custom Elements"'
+            ></a>
+          </h3>
+          <p>
+            After importing the theme, you’ll need to import the JavaScript files for Shoelace. However, this is a bit
+            tricky to do in NextJS thanks to the SSR environment not having any of the required browser APIs to define
+            endpoints.
+          </p>
+          <p>
+            We’ll want to create a component that uses
+            <a
+              href="https://reactjs.org/docs/hooks-reference.html#uselayouteffect"
+              class="external-link"
+              rel="noopener noreferrer"
+              target="_blank"
+              >React’s <code>useLayoutEffect</code></a
+            >
+            to add in the custom components before the first render:
+          </p>
+          <pre><code class="language-javascript" id="code-block-108"><span class="token keyword">function</span> <span class="token function">CustomEls</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> <span class="token constant">URL</span> <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// useRef to avoid re-renders</span>
+    <span class="token keyword">const</span> customEls <span class="token operator">=</span> <span class="token function">useRef</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+
+    <span class="token function">useLayoutEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>customEls<span class="token punctuation">.</span>current<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'@nasa-terra/components/dist/utilities/base-path'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>
+            <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> setBasePath <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token function">setBasePath</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token constant">URL</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/static/static</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+
+                <span class="token comment">// This imports all components</span>
+                <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'@nasa-terra/components/dist/react'</span><span class="token punctuation">)</span>
+                <span class="token comment">// If you're wanting to selectively import components, replace this line with your own definitions</span>
+
+                <span class="token comment">// import("@nasa-terra/components/dist/components/button/button");</span>
+                customEls<span class="token punctuation">.</span>current <span class="token operator">=</span> <span class="token boolean">true</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token constant">URL</span><span class="token punctuation">,</span> customEls<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token keyword">null</span>
+<span class="token punctuation">}</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-108"></sl-copy-button></pre>
+          <div role="alert" class="callout callout--tip">
+            <p>
+              If we use <code>useEffect</code> instead of <code>useLayoutEffect</code>, the initial render will occur
+              with the expected <code>terra-</code> props applied, but the subsequent render (caused by the
+              <code>useEffect</code>) will remove those props as the custom components initialize. We <em>must</em> use
+              <code>useLayoutEffect</code> to have expected behavior
+            </p>
+          </div>
+          <div role="alert" class="callout callout--tip">
+            <p>
+              This will import all Shoelace components for convenience. To selectively import components, refer to the
+              <a href="/getting-started/installation#using-webpack">Using webpack</a> section of the docs.
+            </p>
+          </div>
+          <p>
+            You may be wondering where the <code>URL</code> property is coming from. We’ll address that in the next few
+            sections.
+          </p>
+          <h3 id="using-our-new-component-in-code" class="anchor-heading">
+            Using Our New Component In Code<a
+              href="#using-our-new-component-in-code"
+              aria-label='Direct link to "Using Our New Component In Code"'
+            ></a>
+          </h3>
+          <p>
+            While we need to use <code>useLayoutEffect</code> for the initial render, NextJS will throw a warning at us
+            for trying to use <code>useLayoutEffect</code> in SSR, which is disallowed. To fix this problem, we’ll
+            conditionally render the <code>CustomEls</code> component to only render in the browser
+          </p>
+          <pre><code class="language-javascript" id="code-block-109"><span class="token keyword">function</span> <span class="token function">MyApp</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> Component<span class="token punctuation">,</span> pageProps<span class="token punctuation">,</span> <span class="token constant">URL</span> <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> isBrowser <span class="token operator">=</span> <span class="token keyword">typeof</span> window <span class="token operator">!==</span> <span class="token string">'undefined'</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+        <span class="token operator">&lt;</span><span class="token operator">&gt;</span>
+            <span class="token punctuation">{</span>isBrowser <span class="token operator">&amp;&amp;</span> <span class="token operator">&lt;</span>CustomEls <span class="token constant">URL</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token constant">URL</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">}</span>
+            <span class="token operator">&lt;</span>Component <span class="token punctuation">{</span><span class="token operator">...</span>pageProps<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-109"></sl-copy-button></pre>
+          <h3 id="environmental-variable" class="anchor-heading">
+            Environmental Variable<a
+              href="#environmental-variable"
+              aria-label='Direct link to "Environmental Variable"'
+            ></a>
+          </h3>
+          <p>
+            However, to make <code>setBasePath()</code> work as-expected, we need to know where the file is hosted. To
+            do this, we need to set
+            <a
+              href="https://nextjs.org/docs/basic-features/environment-variables"
+              class="external-link"
+              rel="noopener noreferrer"
+              target="_blank"
+              >environmental variables</a
+            >. Create a <code>.local.env</code> file and put the following inside:
+          </p>
+          <pre><code id="code-block-110">BASE_URL="localhost:3000"
+</code><sl-copy-button class="copy-code-button" from="code-block-110"></sl-copy-button></pre>
+          <p>
+            Then, modify your <code>MyApp</code> class in <code>_app.js</code> to pass this process environment into
+            your render:
+          </p>
+          <pre><code class="language-javascript" id="code-block-111">MyApp<span class="token punctuation">.</span><span class="token function-variable function">getInitialProps</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token parameter">context</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token constant">URL</span> <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">BASE_URL</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        <span class="token constant">URL</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-111"></sl-copy-button></pre>
+          <div role="alert" class="callout callout--tip">
+            <p>
+              You’ll need to set this <code>BASE_URL</code> variable inside the build process of whatever local build or
+              CI/CD you have. This will need to be an absolute URL, as a relative URL will cause shoelace to throw a
+              warning
+            </p>
+          </div>
+          <h3 id="webpack-config" class="anchor-heading">
+            webpack Config<a href="#webpack-config" aria-label='Direct link to "webpack Config"'></a>
+          </h3>
+          <p>
+            Next we need to add Shoelace’s assets to the final build output. To do this, modify
+            <code>next.config.js</code> to look like this.
+          </p>
+          <pre><code class="language-javascript" id="code-block-112"><span class="token keyword">import</span> <span class="token punctuation">{</span> dirname<span class="token punctuation">,</span> resolve <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'path'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> fileURLToPath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'url'</span>
+<span class="token keyword">import</span> CopyPlugin <span class="token keyword">from</span> <span class="token string">'copy-webpack-plugin'</span>
+<span class="token keyword">import</span> withPlugins <span class="token keyword">from</span> <span class="token string">'next-compose-plugins'</span>
+<span class="token keyword">import</span> withTM <span class="token keyword">from</span> <span class="token string">'next-transpile-modules'</span>
+
+<span class="token keyword">const</span> withTMCompiled <span class="token operator">=</span> <span class="token function">withTM</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'@nasa-terra/components'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> __dirname <span class="token operator">=</span> <span class="token function">dirname</span><span class="token punctuation">(</span><span class="token function">fileURLToPath</span><span class="token punctuation">(</span><span class="token keyword">import</span><span class="token punctuation">.</span>meta<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">withPlugins</span><span class="token punctuation">(</span><span class="token punctuation">[</span>withTMCompiled<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token comment">// This is required for ESM to work properly with Shoelace</span>
+    <span class="token literal-property property">experimental</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">esmExternals</span><span class="token operator">:</span> <span class="token string">'loose'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">webpack</span><span class="token operator">:</span> <span class="token parameter">config</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        config<span class="token punctuation">.</span>plugins<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>
+            <span class="token keyword">new</span> <span class="token class-name">CopyPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                <span class="token literal-property property">patterns</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token literal-property property">from</span><span class="token operator">:</span> <span class="token function">resolve</span><span class="token punctuation">(</span>
+                            __dirname<span class="token punctuation">,</span>
+                            <span class="token string">'node_modules/@nasa-terra/components/dist/assets/icons'</span>
+                        <span class="token punctuation">)</span><span class="token punctuation">,</span>
+                        <span class="token literal-property property">to</span><span class="token operator">:</span> <span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'static/icons'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+        <span class="token keyword">return</span> config
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-112"></sl-copy-button></pre>
+          <div role="alert" class="callout callout--tip">
+            <p>
+              This will copy the files from <code>node_modules</code> into your <code>static</code> folder on every
+              development serve or build. You may want to avoid committing these into your repo. To do so, simply add
+              <code>static/assets</code> into your <code>.gitignore</code> folder
+            </p>
+          </div>
+          <h2 id="additional-resources" class="anchor-heading">
+            Additional Resources<a href="#additional-resources" aria-label='Direct link to "Additional Resources"'></a>
+          </h2>
+          <ul>
+            <li>
+              There is a third-party
+              <a
+                href="https://github.com/crutchcorn/nextjs-shoelace-example"
+                class="external-link"
+                rel="noopener noreferrer"
+                target="_blank"
+                >example repo</a
+              >, courtesy of
+              <a href="https://github.com/crutchcorn" class="external-link" rel="noopener noreferrer" target="_blank"
+                >crutchcorn</a
+              >, available to help you get started.
+            </li>
+          </ul>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

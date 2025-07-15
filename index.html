@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en" data-layout="default" data-terra-ui-components-version="0.0.57">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Hand-crafted Earthdata custom elements." />
+    <title>Terra UI Components: A collection of web components for working with Earthdata services.</title>
+
+    <meta name="turbo-cache-control" />
+
+    <link rel="stylesheet" href="/assets/styles/docs.css" />
+    <link rel="stylesheet" href="/assets/styles/code-previews.css" />
+    <link rel="stylesheet" href="/assets/styles/search.css" />
+
+    <link rel="icon" href="/assets/images/logo.white.png" type="image/x-icon" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="nasa_terra-ui" />
+    <meta name="twitter:image" content="https://disc.gsfc.nasa.gov/assets/images/og-image.png" />
+
+    <meta property="og:url" content="https://disc.gsfc.nasa.gov/" />
+    <meta
+      property="og:title"
+      content="Terra UI Components: A collection of web components for working with Earthdata services."
+    />
+    <meta property="og:description" content="Hand-crafted Earthdata custom elements." />
+    <meta property="og:image" content="https://disc.gsfc.nasa.gov/assets/images/og-image.png" />
+
+    <link rel="stylesheet" href="/dist/themes/horizon.css" />
+    <script type="module" src="/dist/terra-ui-components-autoloader.js"></script>
+
+    <script>
+      (() => {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = localStorage.getItem('theme') || 'auto';
+        document.documentElement.classList.toggle(
+          'terra-theme-dark',
+          theme === 'dark' || (theme === 'auto' && prefersDark)
+        );
+      })();
+    </script>
+
+    <script src="/assets/scripts/turbo.js" type="module"></script>
+    <script src="/assets/scripts/docs.js" defer=""></script>
+    <script src="/assets/scripts/code-previews.js" defer=""></script>
+    <script src="/assets/scripts/lunr.js" defer=""></script>
+    <script src="/assets/scripts/search.js" defer=""></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono&amp;family=Inter&amp;family=Public+Sans&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"
+    ></script>
+  </head>
+  <body>
+    <a id="skip-to-main" class="visually-hidden active-link" href="#main-content" data-smooth-link="false">
+      Skip to main content
+    </a>
+
+    <button id="menu-toggle" type="button" aria-label="Menu">
+      <svg width="148" height="148" viewBox="0 0 148 148" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="currentColor" stroke-width="18" fill="none" fill-rule="evenodd" stroke-linecap="round">
+          <path d="M9.5 125.5h129M9.5 74.5h129M9.5 23.5h129"></path>
+        </g>
+      </svg>
+    </button>
+
+    <div id="icon-toolbar">
+      <a
+        href="https://github.com/terra-ui/components"
+        title="View Terra UI Components on GitHub"
+        class="external-link"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <sl-icon name="github"></sl-icon>
+      </a>
+      <sl-dropdown id="theme-selector" placement="bottom-end" distance="3">
+        <terra-button
+          slot="trigger"
+          size="large"
+          variant="text"
+          caret=""
+          title="Press \ to toggle"
+          data-optional=""
+          data-valid=""
+          data-user-valid=""
+        >
+          <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
+          <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
+        </terra-button>
+        <sl-menu role="menu">
+          <sl-menu-item
+            type="checkbox"
+            value="light"
+            tabindex="-1"
+            role="menuitemcheckbox"
+            aria-checked="false"
+            aria-disabled="false"
+            >Light</sl-menu-item
+          >
+          <sl-menu-item
+            type="checkbox"
+            value="dark"
+            tabindex="-1"
+            role="menuitemcheckbox"
+            aria-checked="false"
+            aria-disabled="false"
+            >Dark</sl-menu-item
+          >
+          <sl-divider role="separator" aria-orientation="horizontal"></sl-divider>
+          <sl-menu-item
+            type="checkbox"
+            value="auto"
+            tabindex="0"
+            role="menuitemcheckbox"
+            aria-checked="true"
+            aria-disabled="false"
+            checked=""
+            >System</sl-menu-item
+          >
+        </sl-menu>
+      </sl-dropdown>
+    </div>
+
+    <aside id="sidebar" data-preserve-scroll="">
+      <header>
+        <a href="/" class="sidebar-logo active-link">
+          <img src="/assets/images/logo.svg" alt="Terra UI Components" />
+          Terra UI Components
+        </a>
+        <div class="sidebar-version">0.0.57</div>
+      </header>
+
+      <div class="sidebar-buttons">
+        <terra-button
+          size="small"
+          class="repo-button repo-button--github"
+          href="https://github.com/terra-ui/components"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="github"></sl-icon> Code
+        </terra-button>
+        <terra-button
+          size="small"
+          class="repo-button repo-button--star"
+          href="https://github.com/terra-ui/components/stargazers"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="star-fill"></sl-icon> Star
+        </terra-button>
+      </div>
+
+      <button class="search-box" type="button" title="Press / to search" aria-label="Search" data-plugin="search">
+        <sl-icon name="search"></sl-icon>
+        <span>Search</span>
+      </button>
+
+      <nav>
+        <ul>
+          <li>
+            <h2>Getting Started</h2>
+            <ul>
+              <li>
+                <a href="/" class="active-link">Home</a>
+              </li>
+              <li>
+                <a href="/getting-started/installation">Installation</a>
+              </li>
+              <li>
+                <a href="/getting-started/usage">Usage</a>
+              </li>
+              <li>
+                <a href="/getting-started/themes">Themes</a>
+              </li>
+              <li>
+                <a href="/getting-started/customizing">Customizing</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h2>Frameworks</h2>
+            <ul>
+              <li>
+                <a href="/frameworks/react">React</a>
+              </li>
+              <li>
+                <a href="/frameworks/vue">Vue</a>
+              </li>
+              <li>
+                <a href="/frameworks/angular">Angular</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h2>Components</h2>
+            <ul>
+              <li>
+                <a href="/components/accordion"> Accordion </a>
+              </li>
+
+              <li>
+                <a href="/components/alert"> Alert </a>
+              </li>
+
+              <li>
+                <a href="/components/browse-variables"> Browse Variables </a>
+              </li>
+
+              <li>
+                <a href="/components/button"> Button </a>
+              </li>
+
+              <li>
+                <a href="/components/chip"> Chip </a>
+              </li>
+
+              <li>
+                <a href="/components/combobox"> Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/data-rods"> Data Rods </a>
+              </li>
+
+              <li>
+                <a href="/components/data-subsetter"> Data Subsetter </a>
+              </li>
+
+              <li>
+                <a href="/components/date-picker"> Date Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/date-range-slider"> Date Range Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/dialog"> Dialog </a>
+              </li>
+
+              <li>
+                <a href="/components/icon"> Icon </a>
+              </li>
+
+              <li>
+                <a href="/components/loader"> Loader </a>
+              </li>
+
+              <li>
+                <a href="/components/login"> Login </a>
+              </li>
+
+              <li>
+                <a href="/components/map"> Map </a>
+              </li>
+
+              <li>
+                <a href="/components/plot"> Plot </a>
+              </li>
+
+              <li>
+                <a href="/components/skeleton"> Skeleton </a>
+              </li>
+
+              <li>
+                <a href="/components/spatial-picker"> Spatial Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/time-series"> Time Series </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-combobox"> Variable Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-keyword-search"> Variable Keyword Search </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+      <a id="main-content" class="active-link"></a>
+      <article id="content" class="content">
+        <div class="content__body">
+          <div class="splash">
+            <div class="splash-start">
+              <div class="text-logo">Terra UI Components</div>
+              <ul>
+                <li>Works with all frameworks 🧩</li>
+                <li>Works with CDNs 🚛</li>
+                <li>Fully customizable with CSS 🎨</li>
+                <li>Includes a dark theme 🌛</li>
+                <li>Built with accessibility in mind ♿️</li>
+                <li>First-class <a href="/frameworks/react">React support</a> ⚛️</li>
+                <li>Built-in localization 💬</li>
+                <li>Open source 😸</li>
+              </ul>
+            </div>
+            <div class="splash-end">
+              <img
+                class="splash-image"
+                src="/assets/images/undraw-content-team.svg"
+                alt="Cartoon of people assembling components while standing on a giant laptop."
+              />
+            </div>
+          </div>
+          <h2 id="quick-start" class="anchor-heading">
+            Quick Start<a href="#quick-start" aria-label='Direct link to "Quick Start"'></a>
+          </h2>
+          <p>Add the following code to your page.</p>
+          <!-- prettier-ignore -->
+          <pre><code class="language-html" id="code-block-1"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.57/cdn/themes/horizon.css<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.57/cdn/terra-ui-components-autoloader.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-1"></sl-copy-button></pre>
+          <p>Now you have access to all of the Terra UI Components! Try adding a button:</p>
+
+          <div class="code-preview code-preview--expanded">
+            <div class="code-preview__preview">
+              <terra-button>Click me</terra-button>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-1">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-2"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span><span class="token punctuation">&gt;</span></span>Click me<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-2"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="true"
+                aria-controls="code-preview-source-group-1"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div role="alert" class="callout callout--tip">
+            <p>
+              This will activate Terra UI Components experimental autoloader, which registers components on the fly as
+              you use them. To learn more about it, or for other ways to install Terra UI Components, refer to the
+              <a href="getting-started/installation">installation instructions</a>.
+            </p>
+          </div>
+          <h2 id="new-to-web-components" class="anchor-heading">
+            New to Web Components?<a
+              href="#new-to-web-components"
+              aria-label='Direct link to "New to Web Components?"'
+            ></a>
+          </h2>
+          <p>
+            Thanks to the popularity of frameworks such as Angular, Vue, and React, component-driven development has
+            become a part of our every day lives. Components help us encapsulate styles and behaviors into reusable
+            building blocks. They make a lot of sense in terms of design, development, and testing.
+          </p>
+          <p>Unfortunately, <em>framework-specific</em> components fail us in a number of ways:</p>
+          <ul>
+            <li>You can only use them in the framework they’re designed for 🔒</li>
+            <li>Their lifespan is limited to that of the framework’s ⏳</li>
+            <li>
+              New frameworks/versions can lead to breaking changes, requiring substantial effort to update components 😭
+            </li>
+          </ul>
+          <p>
+            Web components solve these problems. They’re
+            <a
+              href="https://caniuse.com/#feat=custom-elementsv1"
+              class="active-link external-link"
+              rel="noopener noreferrer"
+              target="_blank"
+              >supported by all modern browsers</a
+            >, they’re framework-agnostic, and they’re
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/Web_Components"
+              class="external-link"
+              rel="noopener noreferrer"
+              target="_blank"
+              >part of the standard</a
+            >, so we know they’ll be supported for many years to come.
+          </p>
+          <p>This is the technology that Terra UI Components is built on.</p>
+          <h2 id="what-problem-does-this-solve" class="anchor-heading">
+            What Problem Does This Solve?<a
+              href="#what-problem-does-this-solve"
+              aria-label='Direct link to "What Problem Does This Solve?"'
+            ></a>
+          </h2>
+          <p>
+            Terra UI Components provides a collection of professionally designed, highly customizable UI components
+            built on a framework agnostic technology.
+          </p>
+          <p>With Terra UI Components, you can:</p>
+          <ul>
+            <li>Start building things faster (no need to roll your own code)</li>
+            <li>Build multiple apps with different frameworks that all share the same UI components</li>
+            <li>Fully customize components to match your existing designs</li>
+            <li>Incrementally adopt components as needed (no need to ditch your framework)</li>
+            <li>Upgrade or switch frameworks without rebuilding foundational components</li>
+          </ul>
+          <h2 id="browser-support" class="anchor-heading">
+            Browser Support<a href="#browser-support" aria-label='Direct link to "Browser Support"'></a>
+          </h2>
+          <p>Terra UI Components is tested in the latest two versions of the following browsers.</p>
+          <img src="/assets/images/chrome.png" alt="Chrome" width="64" height="64" />
+          <img src="/assets/images/edge.png" alt="Edge" width="64" height="64" />
+          <img src="/assets/images/firefox.png" alt="Firefox" width="64" height="64" />
+          <img src="/assets/images/opera.png" alt="Opera" width="64" height="64" />
+          <img src="/assets/images/safari.png" alt="Safari" width="64" height="64" />
+          <p>Critical bug fixes in earlier versions will be addressed based on their severity and impact.</p>
+          <p>
+            If you need to support IE11 or pre-Chromium Edge, this library isn’t for you. Although web components can
+            (to some degree) be polyfilled for legacy browsers, supporting them is outside the scope of this project. If
+            you’re using Terra UI Components in such a browser, you’re gonna have a bad time. ⛷
+          </p>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

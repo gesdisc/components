@@ -1,0 +1,848 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vscode-html-languageservice/main/docs/customData.schema.json",
+  "version": 1.1,
+  "tags": [
+    {
+      "name": "terra-accordion",
+      "description": "A collapsible content panel for showing and hiding content.\n---\n\n\n### **Slots:**\n - _default_ - The default slot for accordion content.\n- **summary** - The summary/header for the accordion (optional, overrides summary property)",
+      "attributes": [
+        {
+          "name": "summary",
+          "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
+          "values": []
+        },
+        {
+          "name": "open",
+          "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
+          "values": []
+        },
+        { "name": "showArrow", "values": [] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/accordion"
+        }
+      ]
+    },
+    {
+      "name": "terra-alert",
+      "description": "Alerts are used to display important messages inline or as toast notifications.\n---\n\n\n### **Events:**\n - **terra-show** - Emitted when the alert opens.\n- **terra-after-show** - Emitted after the alert opens and all animations are complete.\n- **terra-hide** - Emitted when the alert closes.\n- **terra-after-hide** - Emitted after the alert closes and all animations are complete.\n\n### **Methods:**\n - **show()** - Shows the alert.\n- **hide()** - Hides the alert\n- **toast()** - Displays the alert as a toast notification. This will move the alert out of its position in the DOM and, when\ndismissed, it will be removed from the DOM completely. By storing a reference to the alert, you can reuse it by\ncalling this method again. The returned promise will resolve after the alert is hidden.\n\n### **Slots:**\n - _default_ - The alert's main content.\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.\n- **icon** - The container that wraps the optional icon.\n- **message** - The container that wraps the alert's main content.",
+      "attributes": [
+        {
+          "name": "open",
+          "description": "Indicates whether or not the alert is open. You can toggle this attribute to show and hide the alert, or you can\nuse the `show()` and `hide()` methods and this attribute will reflect the alert's open state.",
+          "values": []
+        },
+        {
+          "name": "closable",
+          "description": "Enables a close button that allows the user to dismiss the alert.",
+          "values": []
+        },
+        {
+          "name": "variant",
+          "description": "The alert's theme variant.",
+          "values": [
+            { "name": "" },
+            { "name": "primary" },
+            { "name": "success" },
+            { "name": "neutral" },
+            { "name": "warning" },
+            { "name": "danger" }
+          ]
+        },
+        {
+          "name": "duration",
+          "description": "The length of time, in milliseconds, the alert will show before closing itself. If the user interacts with\nthe alert before it closes (e.g. moves the mouse over it), the timer will restart. Defaults to `Infinity`, meaning\nthe alert will not close on its own.",
+          "values": []
+        },
+        {
+          "name": "countdown",
+          "description": "Enables a countdown that indicates the remaining time the alert will be displayed.\nTypically used to indicate the remaining time before a whole app refresh.",
+          "values": [{ "name": "rtl" }, { "name": "ltr" }]
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/alert"
+        }
+      ]
+    },
+    {
+      "name": "terra-browse-variables",
+      "description": "Browse through the NASA CMR or Giovanni catalogs.\n---\n",
+      "attributes": [
+        {
+          "name": "catalog",
+          "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
+          "values": [{ "name": "giovanni" }]
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/browse-variables"
+        }
+      ]
+    },
+    {
+      "name": "terra-button",
+      "description": "Buttons represent actions that are available to the user.\n---\n\n\n### **Methods:**\n - **click()** - Simulates a click on the button.\n- **focus(options: _FocusOptions_)** - Sets focus on the button.\n- **blur()** - Removes focus from the button.\n- **checkValidity()** - Checks for validity but does not show a validation message. Returns `true` when valid and `false` when invalid.\n- **getForm(): _HTMLFormElement | null_** - Gets the associated form, if one exists.\n- **reportValidity()** - Checks for validity and shows the browser's validation message if the control is invalid.\n- **setCustomValidity(message: _string_)** - Sets a custom validation message. Pass an empty string to restore validity.\n\n### **Slots:**\n - _default_ - The button's label.\n- **prefix** - A presentational prefix icon or similar element.\n- **suffix** - A presentational suffix icon or similar element.\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.\n- **prefix** - The container that wraps the prefix.\n- **label** - The button's label.\n- **suffix** - The container that wraps the suffix.\n- **caret** - The button's caret icon, an `<sl-icon>` element.\n- **spinner** - The spinner that shows when the button is in the loading state.",
+      "attributes": [
+        { "name": "title", "values": [] },
+        {
+          "name": "variant",
+          "description": "The button's theme variant.",
+          "values": [
+            { "name": "" },
+            { "name": "default" },
+            { "name": "primary" },
+            { "name": "success" },
+            { "name": "warning" },
+            { "name": "danger" },
+            { "name": "text" },
+            { "name": "pagelink" }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "The button's size.",
+          "values": [
+            { "name": "small" },
+            { "name": "medium" },
+            { "name": "large" }
+          ]
+        },
+        {
+          "name": "caret",
+          "description": "Draws the button with a caret. Used to indicate that the button triggers a dropdown menu or similar behavior.",
+          "values": []
+        },
+        {
+          "name": "shape",
+          "description": "The button's shape. Used to control the radius edge shape when button is not in a terra-button-group.",
+          "values": [
+            { "name": "square" },
+            { "name": "square-left" },
+            { "name": "square-right" }
+          ]
+        },
+        {
+          "name": "disabled",
+          "description": "Disables the button.",
+          "values": []
+        },
+        {
+          "name": "loading",
+          "description": "Draws the button in a loading state.",
+          "values": []
+        },
+        {
+          "name": "outline",
+          "description": "Draws an outlined button.",
+          "values": []
+        },
+        {
+          "name": "circle",
+          "description": "Draws a circular icon button. When this attribute is present, the button expects a single `<terra-icon>` in the\ndefault slot.",
+          "values": []
+        },
+        {
+          "name": "type",
+          "description": "The type of button. Note that the default value is `button` instead of `submit`, which is opposite of how native\n`<button>` elements behave. When the type is `submit`, the button will submit the surrounding form.",
+          "values": [
+            { "name": "button" },
+            { "name": "submit" },
+            { "name": "reset" }
+          ]
+        },
+        {
+          "name": "name",
+          "description": "The name of the button, submitted as a name/value pair with form data, but only when this button is the submitter.\nThis attribute is ignored when `href` is present.",
+          "values": []
+        },
+        {
+          "name": "value",
+          "description": "The value of the button, submitted as a pair with the button's name as part of the form data, but only when this\nbutton is the submitter. This attribute is ignored when `href` is present.",
+          "values": []
+        },
+        {
+          "name": "href",
+          "description": "When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.",
+          "values": []
+        },
+        {
+          "name": "target",
+          "description": "Tells the browser where to open the link. Only used when `href` is present.",
+          "values": [
+            { "name": "_blank" },
+            { "name": "_parent" },
+            { "name": "_self" },
+            { "name": "_top" }
+          ]
+        },
+        {
+          "name": "rel",
+          "description": "When using `href`, this attribute will map to the underlying link's `rel` attribute. Unlike regular links, the\ndefault is `noreferrer noopener` to prevent security exploits. However, if you're using `target` to point to a\nspecific tab/window, this will prevent that from working correctly. You can remove or change the default value by\nsetting the attribute to an empty string or a value of your choice, respectively.",
+          "values": []
+        },
+        {
+          "name": "download",
+          "description": "Tells the browser to download the linked file as this filename. Only used when `href` is present.",
+          "values": []
+        },
+        {
+          "name": "form",
+          "description": "The \"form owner\" to associate the button with. If omitted, the closest containing form will be used instead. The\nvalue of this attribute must be an id of a form in the same document or shadow root as the button.",
+          "values": []
+        },
+        {
+          "name": "formaction",
+          "description": "Used to override the form owner's `action` attribute.",
+          "values": []
+        },
+        {
+          "name": "formenctype",
+          "description": "Used to override the form owner's `enctype` attribute.",
+          "values": [
+            { "name": "" },
+            { "name": "application/x-www-form-urlencoded" },
+            { "name": "multipart/form-data" },
+            { "name": "text/plain" }
+          ]
+        },
+        {
+          "name": "formmethod",
+          "description": "Used to override the form owner's `method` attribute.",
+          "values": [{ "name": "post" }, { "name": "get" }]
+        },
+        {
+          "name": "formnovalidate",
+          "description": "Used to override the form owner's `novalidate` attribute.",
+          "values": []
+        },
+        {
+          "name": "formtarget",
+          "description": "Used to override the form owner's `target` attribute.",
+          "values": [
+            { "name": "" },
+            { "name": "_self" },
+            { "name": "_blank" },
+            { "name": "_parent" },
+            { "name": "_top" }
+          ]
+        },
+        {
+          "name": "for-dialog",
+          "description": "Used to connect this button to a dqialog on the page. Clicking the button will toggle the dialog's visiblity",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/button"
+        }
+      ]
+    },
+    {
+      "name": "terra-chip",
+      "description": "Used for contacts and tags\n---\n\n\n### **Slots:**\n - _default_ - The chip's label.",
+      "attributes": [
+        {
+          "name": "size",
+          "values": [
+            { "name": "small" },
+            { "name": "medium" },
+            { "name": "large" }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/chip"
+        }
+      ]
+    },
+    {
+      "name": "terra-combobox",
+      "description": "Fuzzy-search for combobox with list autocomplete.\n---\n\n\n### **CSS Properties:**\n - **--host-height** - The height of the host element. _(default: undefined)_\n- **--help-height** - The height of the search help element. _(default: undefined)_\n- **--label-height** - The height of the input's label element. _(default: undefined)_\n\n### **CSS Parts:**\n - **base** - A `search` element, the component's base.\n- **combobox** - An `input` element used for searching.\n- **button** - A `button` used for toggling the listbox's visibility.\n- **listbox** - A `ul` that holds the clickable options.",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Label the combobox with this.",
+          "values": []
+        },
+        {
+          "name": "name",
+          "description": "name the combobox with this.",
+          "values": []
+        },
+        {
+          "name": "placeholder",
+          "description": "Set a placeholder for the combobox with this.\nDefaults to the label's value.",
+          "values": []
+        },
+        {
+          "name": "hide-help",
+          "description": "Hide the combobox's help text.\nWhen hidden, not rendered at all.",
+          "values": []
+        },
+        {
+          "name": "hide-label",
+          "description": "Hide the combobox's label text.\nWhen hidden, still presents to screen readers.",
+          "values": []
+        },
+        {
+          "name": "status",
+          "description": "status of the content",
+          "values": [
+            { "name": "INITIAL" },
+            { "name": "PENDING" },
+            { "name": "COMPLETE" },
+            { "name": "ERROR" }
+          ]
+        },
+        {
+          "name": "content",
+          "description": "content or data of the combobox. This could be of type string | GroupedListItem[] | ListItem[] | undefined",
+          "values": [{ "name": "Content" }]
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/combobox"
+        }
+      ]
+    },
+    {
+      "name": "terra-data-rods",
+      "description": "A component for visualizing Hydrology Data Rods time series using the GES DISC Giovanni API\n---\n\n\n### **Events:**\n - **terra-date-range-change** - Emitted whenever the date range of the date slider is updated",
+      "attributes": [
+        {
+          "name": "variable-entry-id",
+          "description": "a variable entry ID (ex: GPM_3IMERGHH_06_precipitationCal)",
+          "values": []
+        },
+        {
+          "name": "collection",
+          "description": "a collection entry id (ex: GPM_3IMERGHH_06)\nonly required if you don't include a variableEntryId",
+          "values": []
+        },
+        {
+          "name": "variable",
+          "description": "a variable short name to plot (ex: precipitationCal)\nonly required if you don't include a variableEntryId",
+          "values": []
+        },
+        {
+          "name": "start-date",
+          "description": "The start date for the time series plot. (ex: 2021-01-01)",
+          "values": []
+        },
+        {
+          "name": "end-date",
+          "description": "The end date for the time series plot. (ex: 2021-01-01)",
+          "values": []
+        },
+        {
+          "name": "location",
+          "description": "The point location in \"lat,lon\" format.",
+          "values": []
+        },
+        {
+          "name": "bearer-token",
+          "description": "The token to be used for authentication with remote servers.\nThe component provides the header \"Authorization: Bearer\" (the request header and authentication scheme).\nThe property's value will be inserted after \"Bearer\" (the authentication scheme).",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/data-rods"
+        }
+      ]
+    },
+    {
+      "name": "terra-data-subsetter",
+      "description": "Short summary of the component's intended use.\n---\n\n\n### **Events:**\n - **terra-subset-job-complete** - called when a subset job enters a final state (e.g. successful, failed, completed_with_errors)\n\n### **Slots:**\n - _default_ - The default slot.\n- **example** - An example slot.\n\n### **CSS Properties:**\n - **--example** - An example CSS custom property. _(default: undefined)_\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.",
+      "attributes": [
+        { "name": "collection-entry-id", "values": [] },
+        { "name": "show-collection-search", "values": [] },
+        { "name": "job-id", "values": [] },
+        { "name": "bearer-token", "values": [] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/data-subsetter"
+        }
+      ]
+    },
+    {
+      "name": "terra-date-picker",
+      "description": "A date picker component that supports single date selection or date range selection.\n---\n\n\n### **Slots:**\n - _default_ - The default slot.\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.\n- **input** - The date input element.",
+      "attributes": [
+        { "name": "id", "values": [] },
+        { "name": "range", "values": [] },
+        { "name": "min-date", "values": [] },
+        { "name": "max-date", "values": [] },
+        { "name": "start-date", "values": [] },
+        { "name": "end-date", "values": [] },
+        { "name": "default-date", "values": [] },
+        { "name": "allow-input", "values": [] },
+        { "name": "alt-format", "values": [] },
+        { "name": "alt-input", "values": [] },
+        { "name": "alt-input-class", "values": [] },
+        { "name": "date-format", "values": [] },
+        { "name": "enable-time", "values": [] },
+        { "name": "time-24hr", "values": [] },
+        { "name": "week-numbers", "values": [] },
+        { "name": "static", "values": [] },
+        {
+          "name": "position",
+          "values": [
+            { "name": "auto" },
+            { "name": "above" },
+            { "name": "below" }
+          ]
+        },
+        { "name": "show-months", "values": [] },
+        { "name": "hide-label", "values": [] },
+        { "name": "label", "values": [] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/date-picker"
+        }
+      ]
+    },
+    {
+      "name": "terra-date-range-slider",
+      "description": "Short summary of the component's intended use.\n---\n\n\n### **Slots:**\n - _default_ - The default slot.\n- **example** - An example slot.\n\n### **CSS Properties:**\n - **--example** - An example CSS custom property. _(default: undefined)_\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.",
+      "attributes": [
+        { "name": "time-scale", "values": [{ "name": "TimeScale" }] },
+        { "name": "min-date", "values": [] },
+        { "name": "max-date", "values": [] },
+        {
+          "name": "start-date",
+          "description": "The start date for the time series plot.",
+          "values": []
+        },
+        { "name": "end-date", "values": [] },
+        { "name": "disabled", "values": [] },
+        { "name": "has-pips", "values": [] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/date-range-slider"
+        }
+      ]
+    },
+    {
+      "name": "terra-dialog",
+      "description": "Used to create both modal and non-modal dialog boxes.\n---\n\n\n### **Events:**\n - **terra-dialog-show** - Emitted when the dialog opens.\n- **terra-dialog-hide** - Emitted when the dialog closes.\n\n### **Slots:**\n - _default_ - The dialog's main content",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "the ID to be used for accessibility associations",
+          "values": []
+        },
+        {
+          "name": "width",
+          "description": "the width of the dialog",
+          "values": []
+        },
+        {
+          "name": "click-outside-to-close",
+          "description": "allow closing the dialog when clicking outside of it",
+          "values": []
+        },
+        {
+          "name": "show-backdrop",
+          "description": "Show a backdrop behind the dialog",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/dialog"
+        }
+      ]
+    },
+    {
+      "name": "terra-icon",
+      "description": "Icons are symbols that can be used to represent various options within an application.\n---\n\n\n### **Events:**\n - **terra-load** - Emitted when the icon has loaded.\n- **terra-error** - Emitted when the icon fails to load due to an error.\n\n### **CSS Parts:**\n - **svg** - The internal SVG element.",
+      "attributes": [
+        {
+          "name": "name",
+          "description": "The name of the icon to draw. Available names depend on the icon library being used.",
+          "values": []
+        },
+        {
+          "name": "src",
+          "description": "An external URL of an SVG file. Be sure you trust the content you are including, as it will be executed as code and\ncan result in XSS attacks.",
+          "values": []
+        },
+        {
+          "name": "label",
+          "description": "An alternate description to use for assistive devices. If omitted, the icon will be considered presentational and\nignored by assistive devices.",
+          "values": []
+        },
+        {
+          "name": "library",
+          "description": "The name of a registered custom icon library.",
+          "values": [{ "name": "default" }, { "name": "heroicons" }]
+        },
+        {
+          "name": "color",
+          "description": "The CSS color to assign to the SVG.",
+          "values": []
+        },
+        {
+          "name": "font-size",
+          "description": "The CSS font-size to assign to the SVG.",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/icon"
+        }
+      ]
+    },
+    {
+      "name": "terra-loader",
+      "description": "Loaders are used to indicate there is content that is loading.\n---\n\n\n### **CSS Properties:**\n - **--example** - An example CSS custom property. _(default: undefined)_\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "The loader's variant",
+          "values": [
+            { "name": "small" },
+            { "name": "large" },
+            { "name": "orbit" }
+          ]
+        },
+        {
+          "name": "percent",
+          "description": "The percent complete for the loader to display",
+          "values": []
+        },
+        {
+          "name": "indeterminate",
+          "description": "an indeterminate loader has an unknown progress and will show a spinner",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/loader"
+        }
+      ]
+    },
+    {
+      "name": "terra-login",
+      "description": "A form that logs in to Earthdata Login (EDL) and returns a bearer token.\n---\n\n\n### **Events:**\n - **terra-login** - Emitted when a bearer token has been received from EDL.",
+      "attributes": [],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/login"
+        }
+      ]
+    },
+    {
+      "name": "terra-map",
+      "description": "A map component for visualizing and selecting coordinates.\n---\n",
+      "attributes": [
+        {
+          "name": "min-zoom",
+          "description": "Minimum zoom level of the map.",
+          "values": []
+        },
+        {
+          "name": "max-zoom",
+          "description": "Maximum zoom level of the map.",
+          "values": []
+        },
+        {
+          "name": "zoom",
+          "description": "Initial map zoom level",
+          "values": []
+        },
+        {
+          "name": "has-navigation",
+          "description": "has map navigation toolbar",
+          "values": []
+        },
+        {
+          "name": "has-coord-tracker",
+          "description": "has coordinate tracker",
+          "values": []
+        },
+        {
+          "name": "has-shape-selector",
+          "description": "has shape selector",
+          "values": []
+        },
+        { "name": "hide-bounding-box-selection", "values": [] },
+        { "name": "hide-point-selection", "values": [] },
+        { "name": "value", "values": [] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/map"
+        }
+      ]
+    },
+    {
+      "name": "terra-plot",
+      "description": "A web component for interactive graphs using Plotly.js.\n---\n\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.",
+      "attributes": [
+        { "name": "plotTitle", "values": [] },
+        { "name": "layout", "values": [{ "name": "Partial<Layout>" }] },
+        { "name": "config", "values": [{ "name": "Partial<Config>" }] },
+        { "name": "data", "values": [{ "name": "Array<Partial<Data>>" }] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/plot"
+        }
+      ]
+    },
+    {
+      "name": "terra-skeleton",
+      "description": "Skeletons are loading indicators to represent where content will eventually be drawn.\n---\n",
+      "attributes": [
+        { "name": "rows", "values": [] },
+        {
+          "name": "effect",
+          "values": [
+            { "name": "pulse" },
+            { "name": "sheen" },
+            { "name": "none" }
+          ]
+        },
+        { "name": "variableWidths", "values": [] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/skeleton"
+        }
+      ]
+    },
+    {
+      "name": "terra-spatial-picker",
+      "description": "A component that allows input of coordinates and rendering of map.\n---\n",
+      "attributes": [
+        {
+          "name": "min-zoom",
+          "description": "Minimum zoom level of the map.",
+          "values": []
+        },
+        {
+          "name": "max-zoom",
+          "description": "Maximum zoom level of the map.",
+          "values": []
+        },
+        {
+          "name": "zoom",
+          "description": "Initial map zoom level",
+          "values": []
+        },
+        {
+          "name": "has-navigation",
+          "description": "has map navigation toolbar",
+          "values": []
+        },
+        {
+          "name": "has-coord-tracker",
+          "description": "has coordinate tracker",
+          "values": []
+        },
+        {
+          "name": "has-shape-selector",
+          "description": "has shape selector",
+          "values": []
+        },
+        { "name": "hide-bounding-box-selection", "values": [] },
+        { "name": "hide-point-selection", "values": [] },
+        {
+          "name": "initial-value",
+          "description": "initialValue of spatial picker",
+          "values": []
+        },
+        {
+          "name": "hide-label",
+          "description": "Hide the combobox's label text.\nWhen hidden, still presents to screen readers.",
+          "values": []
+        },
+        {
+          "name": "label",
+          "description": "spatial picker label",
+          "values": []
+        },
+        {
+          "name": "spatial-constraints",
+          "description": "Spatial constraints for the map (default: '-180, -90, 180, 90')",
+          "values": []
+        },
+        { "name": "is-expanded", "values": [] },
+        {
+          "name": "inline",
+          "description": "Whether the map should be shown inline, or as part of the normal content flow\nthe default is false, the map is positioned absolute under the input",
+          "values": []
+        },
+        {
+          "name": "show-map-on-focus",
+          "description": "Whether the map should show automatically when the input is focused",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/spatial-picker"
+        }
+      ]
+    },
+    {
+      "name": "terra-time-series",
+      "description": "A component for visualizing time series data using the GES DISC Giovanni API.\n---\n\n\n### **Events:**\n - **terra-date-range-change** - Emitted whenever the date range is modified\n- **terra-time-series-data-change** - Emitted whenever time series data has been fetched from Giovanni",
+      "attributes": [
+        {
+          "name": "variable-entry-id",
+          "description": "a variable entry ID (ex: GPM_3IMERGHH_06_precipitationCal)",
+          "values": []
+        },
+        {
+          "name": "collection",
+          "description": "a collection entry id (ex: GPM_3IMERGHH_06)\nonly required if you don't include a variableEntryId",
+          "values": []
+        },
+        {
+          "name": "variable",
+          "description": "a variable short name to plot (ex: precipitationCal)\nonly required if you don't include a variableEntryId",
+          "values": []
+        },
+        {
+          "name": "start-date",
+          "description": "The start date for the time series plot. (ex: 2021-01-01)",
+          "values": []
+        },
+        {
+          "name": "end-date",
+          "description": "The end date for the time series plot. (ex: 2021-01-01)",
+          "values": []
+        },
+        {
+          "name": "location",
+          "description": "The point location in \"lat,lon\" format.",
+          "values": []
+        },
+        {
+          "name": "bearer-token",
+          "description": "The token to be used for authentication with remote servers.\nThe component provides the header \"Authorization: Bearer\" (the request header and authentication scheme).\nThe property's value will be inserted after \"Bearer\" (the authentication scheme).",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/time-series"
+        }
+      ]
+    },
+    {
+      "name": "terra-variable-combobox",
+      "description": "Fuzzy-search for dataset variables in combobox with list autocomplete.\n---\n\n\n### **Events:**\n - **terra-combobox-change** - Emitted when an option is selected.\n\n### **Methods:**\n - **valueChanged(oldValue: _string_, newValue: _string_)** - This component's value is read by other components.\nInternally, the variable metdata has slight differences that require adapting.\n\n### **CSS Properties:**\n - **--host-height** - The height of the host element. _(default: undefined)_\n- **--help-height** - The height of the search help element. _(default: undefined)_\n- **--label-height** - The height of the input's label element. _(default: undefined)_\n\n### **CSS Parts:**\n - **base** - A `search` element, the component's base.\n- **combobox** - An `input` element used for searching.\n- **button** - A `button` used for toggling the listbox's visibility.\n- **listbox** - A `ul` that holds the clickable options.",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Label the combobox with this.",
+          "values": []
+        },
+        {
+          "name": "placeholder",
+          "description": "Set a placeholder for the combobox with this.\nDefaults to the label's value.",
+          "values": []
+        },
+        {
+          "name": "hide-help",
+          "description": "Hide the combobox's help text.\nWhen hidden, not rendered at all.",
+          "values": []
+        },
+        {
+          "name": "hide-label",
+          "description": "Hide the combobox's label text.\nWhen hidden, still presents to screen readers.",
+          "values": []
+        },
+        {
+          "name": "use-tags",
+          "description": "Determines if the variable combobox uses tags or plain text to display the query.",
+          "values": []
+        },
+        {
+          "name": "value",
+          "description": "Represents the EntryID (<collection-name>_<variable-name>) of the selected variable.\nOther components (like the time-series graphing component) will use this.",
+          "values": []
+        },
+        {
+          "name": "bearer-token",
+          "description": "The token to be used for authentication with remote servers.\nThe component provides the header \"Authorization: Bearer\" (the request header and authentication scheme).\nThe property's value will be inserted after \"Bearer\" (the authentication scheme).",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/variable-combobox"
+        }
+      ]
+    },
+    {
+      "name": "terra-variable-keyword-search",
+      "description": "Fuzzy-search for dataset keywords in combobox with list autocomplete.\n---\n\n\n### **Events:**\n - **terra-variable-keyword-search-change** - Emitted when an option is selected.\n- **terra-search** - Emitted when the component is triggering a search (like a form triggering submit).\n\n### **CSS Properties:**\n - **--host-height** - The height of the host element. _(default: undefined)_\n- **--label-height** - The height of the input's label element. _(default: undefined)_\n\n### **CSS Parts:**\n - **base** - A `search` element, the component's base.\n- **combobox** - An `input` element used for searching.\n- **button** - A `button` used for toggling the listbox's visibility.\n- **listbox** - A `ul` that holds the clickable options.",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Label the combobox with this.",
+          "values": []
+        },
+        {
+          "name": "placeholder",
+          "description": "Set a placeholder for the combobox with this.\nDefaults to the label's value.",
+          "values": []
+        },
+        {
+          "name": "hide-label",
+          "description": "Hide the combobox's label text.\nWhen hidden, still presents to screen readers.",
+          "values": []
+        },
+        {
+          "name": "searchConfig",
+          "description": "type can be `Boolean`, `String`, `Number`, `Object`, or `Array`",
+          "values": [{ "name": "object" }]
+        },
+        { "name": "value", "values": [] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/variable-keyword-search"
+        }
+      ]
+    }
+  ]
+}

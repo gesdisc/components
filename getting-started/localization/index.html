@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en" data-layout="default" data-terra-ui-components-version="0.0.57">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Discover how to localize Shoelace with minimal effort." />
+    <title>Localization</title>
+
+    <meta name="turbo-cache-control" />
+
+    <link rel="stylesheet" href="/assets/styles/docs.css" />
+    <link rel="stylesheet" href="/assets/styles/code-previews.css" />
+    <link rel="stylesheet" href="/assets/styles/search.css" />
+
+    <link rel="icon" href="/assets/images/logo.white.png" type="image/x-icon" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="nasa_terra-ui" />
+    <meta name="twitter:image" content="https://disc.gsfc.nasa.gov/assets/images/og-image.png" />
+
+    <meta property="og:url" content="https://disc.gsfc.nasa.gov/getting-started/localization/" />
+    <meta property="og:title" content="Localization" />
+    <meta property="og:description" content="Discover how to localize Shoelace with minimal effort." />
+    <meta property="og:image" content="https://disc.gsfc.nasa.gov/assets/images/og-image.png" />
+
+    <link rel="stylesheet" href="/dist/themes/horizon.css" />
+    <script type="module" src="/dist/terra-ui-components-autoloader.js"></script>
+
+    <script>
+      (() => {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = localStorage.getItem('theme') || 'auto';
+        document.documentElement.classList.toggle(
+          'terra-theme-dark',
+          theme === 'dark' || (theme === 'auto' && prefersDark)
+        );
+      })();
+    </script>
+
+    <script src="/assets/scripts/turbo.js" type="module"></script>
+    <script src="/assets/scripts/docs.js" defer=""></script>
+    <script src="/assets/scripts/code-previews.js" defer=""></script>
+    <script src="/assets/scripts/lunr.js" defer=""></script>
+    <script src="/assets/scripts/search.js" defer=""></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono&amp;family=Inter&amp;family=Public+Sans&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"
+    ></script>
+  </head>
+  <body>
+    <a id="skip-to-main" class="visually-hidden" href="#main-content" data-smooth-link="false">
+      Skip to main content
+    </a>
+
+    <button id="menu-toggle" type="button" aria-label="Menu">
+      <svg width="148" height="148" viewBox="0 0 148 148" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="currentColor" stroke-width="18" fill="none" fill-rule="evenodd" stroke-linecap="round">
+          <path d="M9.5 125.5h129M9.5 74.5h129M9.5 23.5h129"></path>
+        </g>
+      </svg>
+    </button>
+
+    <div id="icon-toolbar">
+      <a
+        href="https://github.com/terra-ui/components"
+        title="View Terra UI Components on GitHub"
+        class="external-link"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <sl-icon name="github"></sl-icon>
+      </a>
+      <sl-dropdown id="theme-selector" placement="bottom-end" distance="3">
+        <terra-button
+          slot="trigger"
+          size="large"
+          variant="text"
+          caret=""
+          title="Press \ to toggle"
+          data-optional=""
+          data-valid=""
+          data-user-valid=""
+        >
+          <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
+          <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
+        </terra-button>
+        <sl-menu role="menu">
+          <sl-menu-item
+            type="checkbox"
+            value="light"
+            tabindex="-1"
+            role="menuitemcheckbox"
+            aria-checked="false"
+            aria-disabled="false"
+            >Light</sl-menu-item
+          >
+          <sl-menu-item
+            type="checkbox"
+            value="dark"
+            tabindex="-1"
+            role="menuitemcheckbox"
+            aria-checked="false"
+            aria-disabled="false"
+            >Dark</sl-menu-item
+          >
+          <sl-divider role="separator" aria-orientation="horizontal"></sl-divider>
+          <sl-menu-item
+            type="checkbox"
+            value="auto"
+            tabindex="0"
+            role="menuitemcheckbox"
+            aria-checked="true"
+            aria-disabled="false"
+            checked=""
+            >System</sl-menu-item
+          >
+        </sl-menu>
+      </sl-dropdown>
+    </div>
+
+    <aside id="sidebar" data-preserve-scroll="">
+      <header>
+        <a href="/" class="sidebar-logo">
+          <img src="/assets/images/logo.svg" alt="Terra UI Components" />
+          Terra UI Components
+        </a>
+        <div class="sidebar-version">0.0.57</div>
+      </header>
+
+      <div class="sidebar-buttons">
+        <terra-button
+          size="small"
+          class="repo-button repo-button--github"
+          href="https://github.com/terra-ui/components"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="github"></sl-icon> Code
+        </terra-button>
+        <terra-button
+          size="small"
+          class="repo-button repo-button--star"
+          href="https://github.com/terra-ui/components/stargazers"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="star-fill"></sl-icon> Star
+        </terra-button>
+      </div>
+
+      <button class="search-box" type="button" title="Press / to search" aria-label="Search" data-plugin="search">
+        <sl-icon name="search"></sl-icon>
+        <span>Search</span>
+      </button>
+
+      <nav>
+        <ul>
+          <li>
+            <h2>Getting Started</h2>
+            <ul>
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/getting-started/installation">Installation</a>
+              </li>
+              <li>
+                <a href="/getting-started/usage">Usage</a>
+              </li>
+              <li>
+                <a href="/getting-started/themes">Themes</a>
+              </li>
+              <li>
+                <a href="/getting-started/customizing">Customizing</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h2>Frameworks</h2>
+            <ul>
+              <li>
+                <a href="/frameworks/react">React</a>
+              </li>
+              <li>
+                <a href="/frameworks/vue">Vue</a>
+              </li>
+              <li>
+                <a href="/frameworks/angular">Angular</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h2>Components</h2>
+            <ul>
+              <li>
+                <a href="/components/accordion"> Accordion </a>
+              </li>
+
+              <li>
+                <a href="/components/alert"> Alert </a>
+              </li>
+
+              <li>
+                <a href="/components/browse-variables"> Browse Variables </a>
+              </li>
+
+              <li>
+                <a href="/components/button"> Button </a>
+              </li>
+
+              <li>
+                <a href="/components/chip"> Chip </a>
+              </li>
+
+              <li>
+                <a href="/components/combobox"> Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/data-rods"> Data Rods </a>
+              </li>
+
+              <li>
+                <a href="/components/data-subsetter"> Data Subsetter </a>
+              </li>
+
+              <li>
+                <a href="/components/date-picker"> Date Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/date-range-slider"> Date Range Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/dialog"> Dialog </a>
+              </li>
+
+              <li>
+                <a href="/components/icon"> Icon </a>
+              </li>
+
+              <li>
+                <a href="/components/loader"> Loader </a>
+              </li>
+
+              <li>
+                <a href="/components/login"> Login </a>
+              </li>
+
+              <li>
+                <a href="/components/map"> Map </a>
+              </li>
+
+              <li>
+                <a href="/components/plot"> Plot </a>
+              </li>
+
+              <li>
+                <a href="/components/skeleton"> Skeleton </a>
+              </li>
+
+              <li>
+                <a href="/components/spatial-picker"> Spatial Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/time-series"> Time Series </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-combobox"> Variable Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-keyword-search"> Variable Keyword Search </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+      <a id="main-content"></a>
+      <article id="content" class="content content--with-toc">
+        <div class="content__toc">
+          <ul>
+            <li class="top">
+              <a href="#">Localization</a>
+            </li>
+            <li data-level="2"><a href="#available-translations">Available Translations</a></li>
+            <li data-level="3"><a href="#translation-resolution">Translation Resolution</a></li>
+            <li data-level="3">
+              <a href="#submitting-new-translations-or-improvements">Submitting New Translations or Improvements</a>
+            </li>
+            <li data-level="2"><a href="#multiple-locales-per-page">Multiple Locales Per Page</a></li>
+            <li data-level="2"><a href="#creating-your-own-translations">Creating Your Own Translations</a></li>
+          </ul>
+        </div>
+
+        <div class="content__body">
+          <h1>Localization</h1>
+          <p>
+            Components can be localized by importing the appropriate translation file and setting the desired
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang"
+              class="external-link"
+              rel="noopener noreferrer"
+              target="_blank"
+              ><code>lang</code> attribute</a
+            >
+            and/or
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir"
+              class="external-link"
+              rel="noopener noreferrer"
+              target="_blank"
+              ><code>dir</code> attribute</a
+            >
+            on the <code>&lt;html&gt;</code> element. Here’s an example that renders Shoelace components in Spanish.
+          </p>
+          <pre><code class="language-html" id="code-block-67"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>es<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span>
+            <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span>
+            <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/path/to/shoelace/dist/translations/es.js<span class="token punctuation">"</span></span>
+        <span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+        ...
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-67"></sl-copy-button></pre>
+          <p>
+            Through the magic of a mutation observer, changing the <code>lang</code> attribute will automatically update
+            all localized components to use the new locale.
+          </p>
+          <h2 id="available-translations" class="anchor-heading">
+            Available Translations<a
+              href="#available-translations"
+              aria-label='Direct link to "Available Translations"'
+            ></a>
+          </h2>
+          <p>
+            Shoelace ships with a number of translations. The default is English (US), which also serves as the fallback
+            locale. As such, you do not need to import the English translation. To see a list of all available
+            translations in the latest version,
+            <a
+              href="https://github.com/gesdisc/components/tree/current/src/translations"
+              class="external-link"
+              rel="noopener noreferrer"
+              target="_blank"
+              >refer to this directory</a
+            >.
+          </p>
+          <p>The location of translations depends on how you’re consuming Shoelace.</p>
+          <ul>
+            <li>
+              If you’re using the CDN,
+              <a
+                href="https://www.jsdelivr.com/package/npm/@nasa-terra/components?path=cdn25%2Ftranslations"
+                class="external-link"
+                rel="noopener noreferrer"
+                target="_blank"
+                >import them from the CDN</a
+              >
+            </li>
+            <li>
+              If you’re using a bundler, import them from
+              <code>@nasa-terra/components/dist/translations/[lang].js</code>
+            </li>
+          </ul>
+          <p>
+            You do not need to load translations up front. You can import them dynamically even after updating the
+            <code>lang</code> attribute. Once a translation is registered, localized components will update
+            automatically.
+          </p>
+          <pre><code class="language-js" id="code-block-68"><span class="token comment">// Same as setting &lt;html lang="de"&gt;</span>
+document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span>lang <span class="token operator">=</span> <span class="token string">'de'</span>
+
+<span class="token comment">// Import the translation</span>
+<span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'/path/to/shoelace/dist/translations/de.js'</span><span class="token punctuation">)</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-68"></sl-copy-button></pre>
+          <h3 id="translation-resolution" class="anchor-heading">
+            Translation Resolution<a
+              href="#translation-resolution"
+              aria-label='Direct link to "Translation Resolution"'
+            ></a>
+          </h3>
+          <p>
+            The locale set by <code>&lt;html lang="..."&gt;</code> is the default locale for the document. If a country
+            code is provided, e.g. <code>es-PE</code> for Peruvian Spanish, the localization library will resolve it
+            like this:
+          </p>
+          <ol>
+            <li>Look for <code>es-PE</code></li>
+            <li>Look for <code>es</code></li>
+            <li>Fall back to <code>en</code></li>
+          </ol>
+          <p>
+            Shoelace uses English as a fallback to provide a better experience than rendering nothing or throwing an
+            error.
+          </p>
+          <h3 id="submitting-new-translations-or-improvements" class="anchor-heading">
+            Submitting New Translations or Improvements<a
+              href="#submitting-new-translations-or-improvements"
+              aria-label='Direct link to "Submitting New Translations or Improvements"'
+            ></a>
+          </h3>
+          <p>
+            To contribute new translations or improvements to existing translations, please submit a pull request on
+            GitHub. Translations are located in
+            <a
+              href="https://github.com/gesdisc/components/blob/next/src/translations"
+              class="external-link"
+              rel="noopener noreferrer"
+              target="_blank"
+              ><code>src/translations</code></a
+            >
+            and can be edited directly on GitHub if you don’t want to clone the repo locally.
+          </p>
+          <p>
+            Regional translations are welcome! For example, if a German translation (<code>de</code>) exists it’s
+            perfectly acceptable to submit a German (Switzerland) (<code>de-CH</code>) translation.
+          </p>
+          <p>
+            If you have any questions, please start a
+            <a
+              href="https://github.com/gesdisc/components/discussions"
+              class="external-link"
+              rel="noopener noreferrer"
+              target="_blank"
+              >discussion</a
+            >
+            or ask in the
+            <a href="https://discord.gg/mg8f26C" class="external-link" rel="noopener noreferrer" target="_blank"
+              >community chat</a
+            >.
+          </p>
+          <div role="alert" class="callout callout--tip">
+            <p>
+              Shoelace provides a localization mechanism for component internals. This is not designed to be used as
+              localization tool for your entire application. You should use a more appropriate tool such as
+              <a href="https://www.i18next.com/" class="external-link" rel="noopener noreferrer" target="_blank"
+                >i18next</a
+              >
+              if you need to localize content in your app.
+            </p>
+          </div>
+          <h2 id="multiple-locales-per-page" class="anchor-heading">
+            Multiple Locales Per Page<a
+              href="#multiple-locales-per-page"
+              aria-label='Direct link to "Multiple Locales Per Page"'
+            ></a>
+          </h2>
+          <p>
+            You can use a different locale for an individual component by setting its <code>lang</code> and/or
+            <code>dir</code> attributes. Here’s a contrived example to demonstrate.
+          </p>
+          <pre><code class="language-html" id="code-block-69"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>es<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    ...
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span><span class="token punctuation">&gt;</span></span><span class="token comment">&lt;!-- Spanish --&gt;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ru<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token comment">&lt;!-- Russian --&gt;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-69"></sl-copy-button></pre>
+          <p>
+            For performance reasons, the <code>lang</code> and <code>dir</code> attributes must be on the component
+            itself, not on an ancestor element.
+          </p>
+          <pre><code class="language-html" id="code-block-70"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>es<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    ...
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ru<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span><span class="token punctuation">&gt;</span></span><span class="token comment">&lt;!-- still in Spanish --&gt;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-70"></sl-copy-button></pre>
+          <p>
+            This limitation exists because there’s no efficient way to determine the current locale of a given element
+            in a DOM tree. I consider this a gap in the platform and
+            <a
+              href="https://github.com/whatwg/html/issues/7039"
+              class="external-link"
+              rel="noopener noreferrer"
+              target="_blank"
+              >I’ve proposed a couple properties</a
+            >
+            to make this possible.
+          </p>
+          <h2 id="creating-your-own-translations" class="anchor-heading">
+            Creating Your Own Translations<a
+              href="#creating-your-own-translations"
+              aria-label='Direct link to "Creating Your Own Translations"'
+            ></a>
+          </h2>
+          <p>
+            You can provide your own translations if you have specific needs or if you don’t want to wait for a
+            translation to land upstream. The easiest way to do this is to copy <code>src/translations/en.ts</code> into
+            your own project and translate the terms inside. When your translation is done, you can import it and use it
+            just like a built-in translation.
+          </p>
+          <p>
+            Let’s create a Spanish translation as an example. The following assumes you’re using TypeScript, but you can
+            also create translations with regular JavaScript.
+          </p>
+          <pre><code class="language-js" id="code-block-71"><span class="token keyword">import</span> <span class="token punctuation">{</span> registerTranslation <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/utilities/localize'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> type <span class="token punctuation">{</span> Translation <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/utilities/localize'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token literal-property property">translation</span><span class="token operator">:</span> Translation <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">$code</span><span class="token operator">:</span> <span class="token string">'es'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">$name</span><span class="token operator">:</span> <span class="token string">'Español'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">$dir</span><span class="token operator">:</span> <span class="token string">'ltr'</span><span class="token punctuation">,</span>
+
+  <span class="token literal-property property">term1</span><span class="token operator">:</span> <span class="token string">'...'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">term2</span><span class="token operator">:</span> <span class="token string">'...'</span><span class="token punctuation">,</span>
+  <span class="token operator">...</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token function">registerTranslation</span><span class="token punctuation">(</span>translation<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> translation<span class="token punctuation">;</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-71"></sl-copy-button></pre>
+          <p>Once your translation has been compiled to JavaScript, import it and activate it like this.</p>
+          <pre><code class="language-html" id="code-block-72"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>es<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/path/to/es.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+        ...
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-72"></sl-copy-button></pre>
+          <div role="alert" class="callout callout--tip">
+            <p>
+              If your translation isn’t working, make sure you’re using the same localize module when importing
+              <code>registerTranslation</code>. If you’re using a different module, your translation won’t be
+              recognized.
+            </p>
+          </div>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

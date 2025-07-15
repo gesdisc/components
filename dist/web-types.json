@@ -1,0 +1,1751 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json",
+  "name": "@nasa-terra/components",
+  "version": "0.0.57",
+  "description-markup": "markdown",
+  "contributions": {
+    "html": {
+      "elements": [
+        {
+          "name": "terra-accordion",
+          "description": "A collapsible content panel for showing and hiding content.\n---\n\n\n### **Slots:**\n - _default_ - The default slot for accordion content.\n- **summary** - The summary/header for the accordion (optional, overrides summary property)",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "summary",
+              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
+              "value": { "type": "string" }
+            },
+            {
+              "name": "open",
+              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "showArrow",
+              "value": { "type": "boolean", "default": "true" }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "The default slot for accordion content."
+            },
+            {
+              "name": "summary",
+              "description": "The summary/header for the accordion (optional, overrides summary property)"
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "summary",
+                "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
+                "type": "string"
+              },
+              {
+                "name": "open",
+                "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
+                "type": "boolean"
+              },
+              { "name": "showArrow", "type": "boolean" }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "terra-alert",
+          "description": "Alerts are used to display important messages inline or as toast notifications.\n---\n\n\n### **Events:**\n - **terra-show** - Emitted when the alert opens.\n- **terra-after-show** - Emitted after the alert opens and all animations are complete.\n- **terra-hide** - Emitted when the alert closes.\n- **terra-after-hide** - Emitted after the alert closes and all animations are complete.\n\n### **Methods:**\n - **show()** - Shows the alert.\n- **hide()** - Hides the alert\n- **toast()** - Displays the alert as a toast notification. This will move the alert out of its position in the DOM and, when\ndismissed, it will be removed from the DOM completely. By storing a reference to the alert, you can reuse it by\ncalling this method again. The returned promise will resolve after the alert is hidden.\n\n### **Slots:**\n - _default_ - The alert's main content.\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.\n- **icon** - The container that wraps the optional icon.\n- **message** - The container that wraps the alert's main content.",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "open",
+              "description": "Indicates whether or not the alert is open. You can toggle this attribute to show and hide the alert, or you can\nuse the `show()` and `hide()` methods and this attribute will reflect the alert's open state.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "closable",
+              "description": "Enables a close button that allows the user to dismiss the alert.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "variant",
+              "description": "The alert's theme variant.",
+              "value": {
+                "type": "| 'primary'\n        | 'success'\n        | 'neutral'\n        | 'warning'\n        | 'danger'",
+                "default": "'primary'"
+              }
+            },
+            {
+              "name": "duration",
+              "description": "The length of time, in milliseconds, the alert will show before closing itself. If the user interacts with\nthe alert before it closes (e.g. moves the mouse over it), the timer will restart. Defaults to `Infinity`, meaning\nthe alert will not close on its own.",
+              "value": { "type": "string", "default": "Infinity" }
+            },
+            {
+              "name": "countdown",
+              "description": "Enables a countdown that indicates the remaining time the alert will be displayed.\nTypically used to indicate the remaining time before a whole app refresh.",
+              "value": { "type": "'rtl' | 'ltr' | undefined" }
+            }
+          ],
+          "slots": [{ "name": "", "description": "The alert's main content." }],
+          "events": [
+            {
+              "name": "terra-show",
+              "description": "Emitted when the alert opens."
+            },
+            {
+              "name": "terra-after-show",
+              "description": "Emitted after the alert opens and all animations are complete."
+            },
+            {
+              "name": "terra-hide",
+              "description": "Emitted when the alert closes."
+            },
+            {
+              "name": "terra-after-hide",
+              "description": "Emitted after the alert closes and all animations are complete."
+            }
+          ],
+          "js": {
+            "properties": [
+              { "name": "base", "type": "HTMLElement" },
+              { "name": "countdownElement", "type": "HTMLElement" },
+              {
+                "name": "open",
+                "description": "Indicates whether or not the alert is open. You can toggle this attribute to show and hide the alert, or you can\nuse the `show()` and `hide()` methods and this attribute will reflect the alert's open state.",
+                "type": "boolean"
+              },
+              {
+                "name": "closable",
+                "description": "Enables a close button that allows the user to dismiss the alert.",
+                "type": "boolean"
+              },
+              {
+                "name": "variant",
+                "description": "The alert's theme variant.",
+                "type": "| 'primary'\n        | 'success'\n        | 'neutral'\n        | 'warning'\n        | 'danger'"
+              },
+              {
+                "name": "duration",
+                "description": "The length of time, in milliseconds, the alert will show before closing itself. If the user interacts with\nthe alert before it closes (e.g. moves the mouse over it), the timer will restart. Defaults to `Infinity`, meaning\nthe alert will not close on its own."
+              },
+              {
+                "name": "countdown",
+                "description": "Enables a countdown that indicates the remaining time the alert will be displayed.\nTypically used to indicate the remaining time before a whole app refresh.",
+                "type": "'rtl' | 'ltr' | undefined"
+              }
+            ],
+            "events": [
+              {
+                "name": "terra-show",
+                "description": "Emitted when the alert opens."
+              },
+              {
+                "name": "terra-after-show",
+                "description": "Emitted after the alert opens and all animations are complete."
+              },
+              {
+                "name": "terra-hide",
+                "description": "Emitted when the alert closes."
+              },
+              {
+                "name": "terra-after-hide",
+                "description": "Emitted after the alert closes and all animations are complete."
+              }
+            ]
+          }
+        },
+        {
+          "name": "terra-browse-variables",
+          "description": "Browse through the NASA CMR or Giovanni catalogs.\n---\n",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "catalog",
+              "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
+              "value": { "type": "'giovanni'", "default": "'giovanni'" }
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "catalog",
+                "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
+                "type": "'giovanni'"
+              },
+              { "name": "searchQuery", "type": "string" },
+              { "name": "selectedFacets", "type": "SelectedFacets" },
+              { "name": "selectedVariables", "type": "Variable[]" },
+              { "name": "showVariablesBrowse", "type": "boolean" }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "terra-button",
+          "description": "Buttons represent actions that are available to the user.\n---\n\n\n### **Methods:**\n - **click()** - Simulates a click on the button.\n- **focus(options: _FocusOptions_)** - Sets focus on the button.\n- **blur()** - Removes focus from the button.\n- **checkValidity()** - Checks for validity but does not show a validation message. Returns `true` when valid and `false` when invalid.\n- **getForm(): _HTMLFormElement | null_** - Gets the associated form, if one exists.\n- **reportValidity()** - Checks for validity and shows the browser's validation message if the control is invalid.\n- **setCustomValidity(message: _string_)** - Sets a custom validation message. Pass an empty string to restore validity.\n\n### **Slots:**\n - _default_ - The button's label.\n- **prefix** - A presentational prefix icon or similar element.\n- **suffix** - A presentational suffix icon or similar element.\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.\n- **prefix** - The container that wraps the prefix.\n- **label** - The button's label.\n- **suffix** - The container that wraps the suffix.\n- **caret** - The button's caret icon, an `<sl-icon>` element.\n- **spinner** - The spinner that shows when the button is in the loading state.",
+          "doc-url": "",
+          "attributes": [
+            { "name": "title", "value": { "type": "string", "default": "''" } },
+            {
+              "name": "variant",
+              "description": "The button's theme variant.",
+              "value": {
+                "type": "| 'default'\n        | 'primary'\n        | 'success'\n        | 'warning'\n        | 'danger'\n        | 'text'\n        | 'pagelink'",
+                "default": "'primary'"
+              }
+            },
+            {
+              "name": "size",
+              "description": "The button's size.",
+              "value": {
+                "type": "'small' | 'medium' | 'large'",
+                "default": "'medium'"
+              }
+            },
+            {
+              "name": "caret",
+              "description": "Draws the button with a caret. Used to indicate that the button triggers a dropdown menu or similar behavior.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "shape",
+              "description": "The button's shape. Used to control the radius edge shape when button is not in a terra-button-group.",
+              "value": { "type": "'square' | 'square-left' | 'square-right'" }
+            },
+            {
+              "name": "disabled",
+              "description": "Disables the button.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "loading",
+              "description": "Draws the button in a loading state.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "outline",
+              "description": "Draws an outlined button.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "circle",
+              "description": "Draws a circular icon button. When this attribute is present, the button expects a single `<terra-icon>` in the\ndefault slot.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "type",
+              "description": "The type of button. Note that the default value is `button` instead of `submit`, which is opposite of how native\n`<button>` elements behave. When the type is `submit`, the button will submit the surrounding form.",
+              "value": {
+                "type": "'button' | 'submit' | 'reset'",
+                "default": "'button'"
+              }
+            },
+            {
+              "name": "name",
+              "description": "The name of the button, submitted as a name/value pair with form data, but only when this button is the submitter.\nThis attribute is ignored when `href` is present.",
+              "value": { "type": "string", "default": "''" }
+            },
+            {
+              "name": "value",
+              "description": "The value of the button, submitted as a pair with the button's name as part of the form data, but only when this\nbutton is the submitter. This attribute is ignored when `href` is present.",
+              "value": { "type": "string", "default": "''" }
+            },
+            {
+              "name": "href",
+              "description": "When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.",
+              "value": { "type": "string", "default": "''" }
+            },
+            {
+              "name": "target",
+              "description": "Tells the browser where to open the link. Only used when `href` is present.",
+              "value": { "type": "'_blank' | '_parent' | '_self' | '_top'" }
+            },
+            {
+              "name": "rel",
+              "description": "When using `href`, this attribute will map to the underlying link's `rel` attribute. Unlike regular links, the\ndefault is `noreferrer noopener` to prevent security exploits. However, if you're using `target` to point to a\nspecific tab/window, this will prevent that from working correctly. You can remove or change the default value by\nsetting the attribute to an empty string or a value of your choice, respectively.",
+              "value": { "type": "string", "default": "'noreferrer noopener'" }
+            },
+            {
+              "name": "download",
+              "description": "Tells the browser to download the linked file as this filename. Only used when `href` is present.",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "form",
+              "description": "The \"form owner\" to associate the button with. If omitted, the closest containing form will be used instead. The\nvalue of this attribute must be an id of a form in the same document or shadow root as the button.",
+              "value": { "type": "string" }
+            },
+            {
+              "name": "formaction",
+              "description": "Used to override the form owner's `action` attribute.",
+              "value": { "type": "string" }
+            },
+            {
+              "name": "formenctype",
+              "description": "Used to override the form owner's `enctype` attribute.",
+              "value": {
+                "type": "| 'application/x-www-form-urlencoded'\n        | 'multipart/form-data'\n        | 'text/plain'"
+              }
+            },
+            {
+              "name": "formmethod",
+              "description": "Used to override the form owner's `method` attribute.",
+              "value": { "type": "'post' | 'get'" }
+            },
+            {
+              "name": "formnovalidate",
+              "description": "Used to override the form owner's `novalidate` attribute.",
+              "value": { "type": "boolean" }
+            },
+            {
+              "name": "formtarget",
+              "description": "Used to override the form owner's `target` attribute.",
+              "value": {
+                "type": "| '_self'\n        | '_blank'\n        | '_parent'\n        | '_top'\n        | string"
+              }
+            },
+            {
+              "name": "for-dialog",
+              "description": "Used to connect this button to a dqialog on the page. Clicking the button will toggle the dialog's visiblity",
+              "value": { "type": "string | undefined" }
+            }
+          ],
+          "slots": [
+            { "name": "", "description": "The button's label." },
+            {
+              "name": "prefix",
+              "description": "A presentational prefix icon or similar element."
+            },
+            {
+              "name": "suffix",
+              "description": "A presentational suffix icon or similar element."
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "button",
+                "type": "HTMLButtonElement | HTMLLinkElement"
+              },
+              { "name": "invalid", "type": "boolean" },
+              { "name": "title", "type": "string" },
+              {
+                "name": "variant",
+                "description": "The button's theme variant.",
+                "type": "| 'default'\n        | 'primary'\n        | 'success'\n        | 'warning'\n        | 'danger'\n        | 'text'\n        | 'pagelink'"
+              },
+              {
+                "name": "size",
+                "description": "The button's size.",
+                "type": "'small' | 'medium' | 'large'"
+              },
+              {
+                "name": "caret",
+                "description": "Draws the button with a caret. Used to indicate that the button triggers a dropdown menu or similar behavior.",
+                "type": "boolean"
+              },
+              {
+                "name": "shape",
+                "description": "The button's shape. Used to control the radius edge shape when button is not in a terra-button-group.",
+                "type": "'square' | 'square-left' | 'square-right'"
+              },
+              {
+                "name": "disabled",
+                "description": "Disables the button.",
+                "type": "boolean"
+              },
+              {
+                "name": "loading",
+                "description": "Draws the button in a loading state.",
+                "type": "boolean"
+              },
+              {
+                "name": "outline",
+                "description": "Draws an outlined button.",
+                "type": "boolean"
+              },
+              {
+                "name": "circle",
+                "description": "Draws a circular icon button. When this attribute is present, the button expects a single `<terra-icon>` in the\ndefault slot.",
+                "type": "boolean"
+              },
+              {
+                "name": "type",
+                "description": "The type of button. Note that the default value is `button` instead of `submit`, which is opposite of how native\n`<button>` elements behave. When the type is `submit`, the button will submit the surrounding form.",
+                "type": "'button' | 'submit' | 'reset'"
+              },
+              {
+                "name": "name",
+                "description": "The name of the button, submitted as a name/value pair with form data, but only when this button is the submitter.\nThis attribute is ignored when `href` is present.",
+                "type": "string"
+              },
+              {
+                "name": "value",
+                "description": "The value of the button, submitted as a pair with the button's name as part of the form data, but only when this\nbutton is the submitter. This attribute is ignored when `href` is present.",
+                "type": "string"
+              },
+              {
+                "name": "href",
+                "description": "When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.",
+                "type": "string"
+              },
+              {
+                "name": "target",
+                "description": "Tells the browser where to open the link. Only used when `href` is present.",
+                "type": "'_blank' | '_parent' | '_self' | '_top'"
+              },
+              {
+                "name": "rel",
+                "description": "When using `href`, this attribute will map to the underlying link's `rel` attribute. Unlike regular links, the\ndefault is `noreferrer noopener` to prevent security exploits. However, if you're using `target` to point to a\nspecific tab/window, this will prevent that from working correctly. You can remove or change the default value by\nsetting the attribute to an empty string or a value of your choice, respectively.",
+                "type": "string"
+              },
+              {
+                "name": "download",
+                "description": "Tells the browser to download the linked file as this filename. Only used when `href` is present.",
+                "type": "string | undefined"
+              },
+              {
+                "name": "form",
+                "description": "The \"form owner\" to associate the button with. If omitted, the closest containing form will be used instead. The\nvalue of this attribute must be an id of a form in the same document or shadow root as the button.",
+                "type": "string"
+              },
+              {
+                "name": "formAction",
+                "description": "Used to override the form owner's `action` attribute.",
+                "type": "string"
+              },
+              {
+                "name": "formEnctype",
+                "description": "Used to override the form owner's `enctype` attribute.",
+                "type": "| 'application/x-www-form-urlencoded'\n        | 'multipart/form-data'\n        | 'text/plain'"
+              },
+              {
+                "name": "formMethod",
+                "description": "Used to override the form owner's `method` attribute.",
+                "type": "'post' | 'get'"
+              },
+              {
+                "name": "formNoValidate",
+                "description": "Used to override the form owner's `novalidate` attribute.",
+                "type": "boolean"
+              },
+              {
+                "name": "formTarget",
+                "description": "Used to override the form owner's `target` attribute.",
+                "type": "| '_self'\n        | '_blank'\n        | '_parent'\n        | '_top'\n        | string"
+              },
+              {
+                "name": "forDialog",
+                "description": "Used to connect this button to a dqialog on the page. Clicking the button will toggle the dialog's visiblity",
+                "type": "string | undefined"
+              },
+              {
+                "name": "expanded",
+                "description": "if button is used to control another element on the page, such as an accordion or dialog, this state communicates whether the controlled element is expanded",
+                "type": "boolean"
+              },
+              {
+                "name": "validity",
+                "description": "Gets the validity state object"
+              },
+              {
+                "name": "validationMessage",
+                "description": "Gets the validation message"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "terra-chip",
+          "description": "Used for contacts and tags\n---\n\n\n### **Slots:**\n - _default_ - The chip's label.",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "size",
+              "value": {
+                "type": "'small' | 'medium' | 'large'",
+                "default": "'medium'"
+              }
+            }
+          ],
+          "slots": [{ "name": "", "description": "The chip's label." }],
+          "events": [],
+          "js": {
+            "properties": [
+              { "name": "size", "type": "'small' | 'medium' | 'large'" }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "terra-combobox",
+          "description": "Fuzzy-search for combobox with list autocomplete.\n---\n\n\n### **CSS Properties:**\n - **--host-height** - The height of the host element. _(default: undefined)_\n- **--help-height** - The height of the search help element. _(default: undefined)_\n- **--label-height** - The height of the input's label element. _(default: undefined)_\n\n### **CSS Parts:**\n - **base** - A `search` element, the component's base.\n- **combobox** - An `input` element used for searching.\n- **button** - A `button` used for toggling the listbox's visibility.\n- **listbox** - A `ul` that holds the clickable options.",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "label",
+              "description": "Label the combobox with this.",
+              "value": { "type": "string", "default": "'Search for Items'" }
+            },
+            {
+              "name": "name",
+              "description": "name the combobox with this.",
+              "value": { "type": "string", "default": "'Item'" }
+            },
+            {
+              "name": "placeholder",
+              "description": "Set a placeholder for the combobox with this.\nDefaults to the label's value.",
+              "value": { "type": "string" }
+            },
+            {
+              "name": "hide-help",
+              "description": "Hide the combobox's help text.\nWhen hidden, not rendered at all.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "hide-label",
+              "description": "Hide the combobox's label text.\nWhen hidden, still presents to screen readers.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "status",
+              "description": "status of the content",
+              "value": {
+                "type": "'INITIAL' | 'PENDING' | 'COMPLETE' | 'ERROR'",
+                "default": "'INITIAL'"
+              }
+            },
+            {
+              "name": "content",
+              "description": "content or data of the combobox. This could be of type string | GroupedListItem[] | ListItem[] | undefined",
+              "value": {
+                "type": "Content",
+                "default": "{\n        type: SearchableListType.GroupedListItem,\n        data: [],\n    }"
+              }
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "label",
+                "description": "Label the combobox with this.",
+                "type": "string"
+              },
+              {
+                "name": "name",
+                "description": "name the combobox with this.",
+                "type": "string"
+              },
+              {
+                "name": "placeholder",
+                "description": "Set a placeholder for the combobox with this.\nDefaults to the label's value.",
+                "type": "string"
+              },
+              {
+                "name": "hideHelp",
+                "description": "Hide the combobox's help text.\nWhen hidden, not rendered at all.",
+                "type": "boolean"
+              },
+              {
+                "name": "hideLabel",
+                "description": "Hide the combobox's label text.\nWhen hidden, still presents to screen readers.",
+                "type": "boolean"
+              },
+              {
+                "name": "status",
+                "description": "status of the content",
+                "type": "'INITIAL' | 'PENDING' | 'COMPLETE' | 'ERROR'"
+              },
+              {
+                "name": "content",
+                "description": "content or data of the combobox. This could be of type string | GroupedListItem[] | ListItem[] | undefined",
+                "type": "Content"
+              },
+              { "name": "isExpanded", "type": "boolean" },
+              { "name": "query" },
+              {
+                "name": "searchResults",
+                "type": "GroupedListItem[] | ListItem[]"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "terra-data-rods",
+          "description": "A component for visualizing Hydrology Data Rods time series using the GES DISC Giovanni API\n---\n\n\n### **Events:**\n - **terra-date-range-change** - Emitted whenever the date range of the date slider is updated",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "variable-entry-id",
+              "description": "a variable entry ID (ex: GPM_3IMERGHH_06_precipitationCal)",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "collection",
+              "description": "a collection entry id (ex: GPM_3IMERGHH_06)\nonly required if you don't include a variableEntryId",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "variable",
+              "description": "a variable short name to plot (ex: precipitationCal)\nonly required if you don't include a variableEntryId",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "start-date",
+              "description": "The start date for the time series plot. (ex: 2021-01-01)",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "end-date",
+              "description": "The end date for the time series plot. (ex: 2021-01-01)",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "location",
+              "description": "The point location in \"lat,lon\" format.",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "bearer-token",
+              "description": "The token to be used for authentication with remote servers.\nThe component provides the header \"Authorization: Bearer\" (the request header and authentication scheme).\nThe property's value will be inserted after \"Bearer\" (the authentication scheme).",
+              "value": { "type": "string" }
+            }
+          ],
+          "events": [
+            {
+              "name": "terra-date-range-change",
+              "description": "Emitted whenever the date range of the date slider is updated"
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "variableEntryId",
+                "description": "a variable entry ID (ex: GPM_3IMERGHH_06_precipitationCal)",
+                "type": "string | undefined"
+              },
+              {
+                "name": "collection",
+                "description": "a collection entry id (ex: GPM_3IMERGHH_06)\nonly required if you don't include a variableEntryId",
+                "type": "string | undefined"
+              },
+              {
+                "name": "variable",
+                "description": "a variable short name to plot (ex: precipitationCal)\nonly required if you don't include a variableEntryId",
+                "type": "string | undefined"
+              },
+              {
+                "name": "startDate",
+                "description": "The start date for the time series plot. (ex: 2021-01-01)",
+                "type": "string | undefined"
+              },
+              {
+                "name": "endDate",
+                "description": "The end date for the time series plot. (ex: 2021-01-01)",
+                "type": "string | undefined"
+              },
+              {
+                "name": "location",
+                "description": "The point location in \"lat,lon\" format.",
+                "type": "string | undefined"
+              },
+              {
+                "name": "bearerToken",
+                "description": "The token to be used for authentication with remote servers.\nThe component provides the header \"Authorization: Bearer\" (the request header and authentication scheme).\nThe property's value will be inserted after \"Bearer\" (the authentication scheme).",
+                "type": "string"
+              },
+              { "name": "catalogVariable", "type": "Variable" }
+            ],
+            "events": [
+              {
+                "name": "terra-date-range-change",
+                "description": "Emitted whenever the date range of the date slider is updated"
+              }
+            ]
+          }
+        },
+        {
+          "name": "terra-data-subsetter",
+          "description": "Short summary of the component's intended use.\n---\n\n\n### **Events:**\n - **terra-subset-job-complete** - called when a subset job enters a final state (e.g. successful, failed, completed_with_errors)\n\n### **Slots:**\n - _default_ - The default slot.\n- **example** - An example slot.\n\n### **CSS Properties:**\n - **--example** - An example CSS custom property. _(default: undefined)_\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "collection-entry-id",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "show-collection-search",
+              "value": { "type": "boolean | undefined", "default": "true" }
+            },
+            { "name": "job-id", "value": { "type": "string | undefined" } },
+            {
+              "name": "bearer-token",
+              "value": { "type": "string | undefined" }
+            }
+          ],
+          "slots": [
+            { "name": "", "description": "The default slot." },
+            { "name": "example", "description": "An example slot." }
+          ],
+          "events": [
+            {
+              "name": "terra-subset-job-complete",
+              "description": "called when a subset job enters a final state (e.g. successful, failed, completed_with_errors)"
+            }
+          ],
+          "js": {
+            "properties": [
+              { "name": "collectionEntryId", "type": "string | undefined" },
+              { "name": "showCollectionSearch", "type": "boolean | undefined" },
+              { "name": "jobId", "type": "string | undefined" },
+              { "name": "bearerToken", "type": "string | undefined" },
+              {
+                "name": "collectionWithServices",
+                "type": "CollectionWithAvailableServices | undefined"
+              },
+              { "name": "selectedVariables", "type": "Variable[]" },
+              { "name": "expandedVariableGroups", "type": "Set<string>" },
+              { "name": "touchedFields", "type": "Set<string>" },
+              {
+                "name": "spatialSelection",
+                "type": "BoundingBox | LatLng | null"
+              },
+              {
+                "name": "selectedDateRange",
+                "type": "{ startDate: string | null; endDate: string | null }"
+              },
+              { "name": "selectedFormat", "type": "string" },
+              { "name": "cancelingGetData", "type": "boolean" },
+              {
+                "name": "selectedTab",
+                "type": "'web-links' | 'selected-params'"
+              },
+              { "name": "refineParameters", "type": "boolean" },
+              { "name": "showDownloadMenu", "type": "boolean" },
+              { "name": "spatialPicker", "type": "TerraSpatialPicker" }
+            ],
+            "events": [
+              {
+                "name": "terra-subset-job-complete",
+                "description": "called when a subset job enters a final state (e.g. successful, failed, completed_with_errors)"
+              }
+            ]
+          }
+        },
+        {
+          "name": "terra-date-picker",
+          "description": "A date picker component that supports single date selection or date range selection.\n---\n\n\n### **Slots:**\n - _default_ - The default slot.\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.\n- **input** - The date input element.",
+          "doc-url": "",
+          "attributes": [
+            { "name": "id", "value": { "type": "string" } },
+            {
+              "name": "range",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            { "name": "min-date", "value": { "type": "string | undefined" } },
+            { "name": "max-date", "value": { "type": "string | undefined" } },
+            { "name": "start-date", "value": { "type": "string | undefined" } },
+            { "name": "end-date", "value": { "type": "string | undefined" } },
+            {
+              "name": "default-date",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "allow-input",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "alt-format",
+              "value": { "type": "string", "default": "'F j, Y'" }
+            },
+            {
+              "name": "alt-input",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "alt-input-class",
+              "value": { "type": "string", "default": "''" }
+            },
+            {
+              "name": "date-format",
+              "value": { "type": "string", "default": "'Y-m-d'" }
+            },
+            {
+              "name": "enable-time",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "time-24hr",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "week-numbers",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "static",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "position",
+              "value": {
+                "type": "'auto' | 'above' | 'below'",
+                "default": "'auto'"
+              }
+            },
+            {
+              "name": "show-months",
+              "value": { "type": "number", "default": "1" }
+            },
+            {
+              "name": "hide-label",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "label",
+              "value": { "type": "string", "default": "'Select Date'" }
+            }
+          ],
+          "slots": [{ "name": "", "description": "The default slot." }],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "selectedDates",
+                "type": "{\n        startDate: string | null\n        endDate: string | null\n    }"
+              },
+              { "name": "id", "type": "string" },
+              { "name": "range", "type": "boolean" },
+              { "name": "minDate", "type": "string | undefined" },
+              { "name": "maxDate", "type": "string | undefined" },
+              { "name": "startDate", "type": "string | undefined" },
+              { "name": "endDate", "type": "string | undefined" },
+              { "name": "defaultDate", "type": "string | undefined" },
+              { "name": "allowInput", "type": "boolean" },
+              { "name": "altFormat", "type": "string" },
+              { "name": "altInput", "type": "boolean" },
+              { "name": "altInputClass", "type": "string" },
+              { "name": "dateFormat", "type": "string" },
+              { "name": "enableTime", "type": "boolean" },
+              { "name": "time24hr", "type": "boolean" },
+              { "name": "weekNumbers", "type": "boolean" },
+              { "name": "static", "type": "boolean" },
+              { "name": "position", "type": "'auto' | 'above' | 'below'" },
+              { "name": "showMonths", "type": "number" },
+              { "name": "hideLabel", "type": "boolean" },
+              { "name": "label", "type": "string" }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "terra-date-range-slider",
+          "description": "Short summary of the component's intended use.\n---\n\n\n### **Slots:**\n - _default_ - The default slot.\n- **example** - An example slot.\n\n### **CSS Properties:**\n - **--example** - An example CSS custom property. _(default: undefined)_\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "time-scale",
+              "value": { "type": "TimeScale", "default": "'daily'" }
+            },
+            { "name": "min-date", "value": { "type": "string" } },
+            { "name": "max-date", "value": { "type": "string" } },
+            {
+              "name": "start-date",
+              "description": "The start date for the time series plot.",
+              "value": { "type": "string" }
+            },
+            { "name": "end-date", "value": { "type": "string" } },
+            {
+              "name": "disabled",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "has-pips",
+              "value": { "type": "boolean", "default": "true" }
+            }
+          ],
+          "slots": [
+            { "name": "", "description": "The default slot." },
+            { "name": "example", "description": "An example slot." }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              { "name": "slider", "type": "HTMLElement & { noUiSlider: API }" },
+              { "name": "timeScale", "type": "TimeScale" },
+              { "name": "minDate", "type": "string" },
+              { "name": "maxDate", "type": "string" },
+              {
+                "name": "startDate",
+                "description": "The start date for the time series plot.",
+                "type": "string"
+              },
+              { "name": "endDate", "type": "string" },
+              { "name": "disabled", "type": "boolean" },
+              { "name": "hasPips", "type": "boolean" }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "terra-dialog",
+          "description": "Used to create both modal and non-modal dialog boxes.\n---\n\n\n### **Events:**\n - **terra-dialog-show** - Emitted when the dialog opens.\n- **terra-dialog-hide** - Emitted when the dialog closes.\n\n### **Slots:**\n - _default_ - The dialog's main content",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "id",
+              "description": "the ID to be used for accessibility associations",
+              "value": { "type": "string" }
+            },
+            {
+              "name": "width",
+              "description": "the width of the dialog",
+              "value": { "type": "string", "default": "'fit-content'" }
+            },
+            {
+              "name": "click-outside-to-close",
+              "description": "allow closing the dialog when clicking outside of it",
+              "value": { "type": "boolean", "default": "true" }
+            },
+            {
+              "name": "show-backdrop",
+              "description": "Show a backdrop behind the dialog",
+              "value": { "type": "boolean", "default": "true" }
+            }
+          ],
+          "slots": [{ "name": "", "description": "The dialog's main content" }],
+          "events": [
+            {
+              "name": "terra-dialog-show",
+              "description": "Emitted when the dialog opens."
+            },
+            {
+              "name": "terra-dialog-hide",
+              "description": "Emitted when the dialog closes."
+            }
+          ],
+          "js": {
+            "properties": [
+              { "name": "dialogEl", "type": "HTMLDialogElement" },
+              {
+                "name": "id",
+                "description": "the ID to be used for accessibility associations",
+                "type": "string"
+              },
+              {
+                "name": "width",
+                "description": "the width of the dialog",
+                "type": "string"
+              },
+              {
+                "name": "clickOutsideToClose",
+                "description": "allow closing the dialog when clicking outside of it",
+                "type": "boolean"
+              },
+              {
+                "name": "showBackdrop",
+                "description": "Show a backdrop behind the dialog",
+                "type": "boolean"
+              }
+            ],
+            "events": [
+              {
+                "name": "terra-dialog-show",
+                "description": "Emitted when the dialog opens."
+              },
+              {
+                "name": "terra-dialog-hide",
+                "description": "Emitted when the dialog closes."
+              }
+            ]
+          }
+        },
+        {
+          "name": "terra-icon",
+          "description": "Icons are symbols that can be used to represent various options within an application.\n---\n\n\n### **Events:**\n - **terra-load** - Emitted when the icon has loaded.\n- **terra-error** - Emitted when the icon fails to load due to an error.\n\n### **CSS Parts:**\n - **svg** - The internal SVG element.",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "name",
+              "description": "The name of the icon to draw. Available names depend on the icon library being used.",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "src",
+              "description": "An external URL of an SVG file. Be sure you trust the content you are including, as it will be executed as code and\ncan result in XSS attacks.",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "label",
+              "description": "An alternate description to use for assistive devices. If omitted, the icon will be considered presentational and\nignored by assistive devices.",
+              "value": { "type": "string", "default": "''" }
+            },
+            {
+              "name": "library",
+              "description": "The name of a registered custom icon library.",
+              "value": {
+                "type": "'default' | 'heroicons' | string",
+                "default": "'default'"
+              }
+            },
+            {
+              "name": "color",
+              "description": "The CSS color to assign to the SVG.",
+              "value": { "type": "string | null", "default": "null" }
+            },
+            {
+              "name": "font-size",
+              "description": "The CSS font-size to assign to the SVG.",
+              "value": { "type": "string | null", "default": "null" }
+            }
+          ],
+          "events": [
+            {
+              "name": "terra-load",
+              "description": "Emitted when the icon has loaded."
+            },
+            {
+              "name": "terra-error",
+              "description": "Emitted when the icon fails to load due to an error."
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "svg",
+                "type": "SVGElement | HTMLTemplateResult | null"
+              },
+              {
+                "name": "name",
+                "description": "The name of the icon to draw. Available names depend on the icon library being used.",
+                "type": "string | undefined"
+              },
+              {
+                "name": "src",
+                "description": "An external URL of an SVG file. Be sure you trust the content you are including, as it will be executed as code and\ncan result in XSS attacks.",
+                "type": "string | undefined"
+              },
+              {
+                "name": "label",
+                "description": "An alternate description to use for assistive devices. If omitted, the icon will be considered presentational and\nignored by assistive devices.",
+                "type": "string"
+              },
+              {
+                "name": "library",
+                "description": "The name of a registered custom icon library.",
+                "type": "'default' | 'heroicons' | string"
+              },
+              {
+                "name": "color",
+                "description": "The CSS color to assign to the SVG.",
+                "type": "string | null"
+              },
+              {
+                "name": "fontSize",
+                "description": "The CSS font-size to assign to the SVG.",
+                "type": "string | null"
+              }
+            ],
+            "events": [
+              {
+                "name": "terra-load",
+                "description": "Emitted when the icon has loaded."
+              },
+              {
+                "name": "terra-error",
+                "description": "Emitted when the icon fails to load due to an error."
+              }
+            ]
+          }
+        },
+        {
+          "name": "terra-loader",
+          "description": "Loaders are used to indicate there is content that is loading.\n---\n\n\n### **CSS Properties:**\n - **--example** - An example CSS custom property. _(default: undefined)_\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "variant",
+              "description": "The loader's variant",
+              "value": {
+                "type": "'small' | 'large' | 'orbit'",
+                "default": "'large'"
+              }
+            },
+            {
+              "name": "percent",
+              "description": "The percent complete for the loader to display",
+              "value": { "type": "string", "default": "'0'" }
+            },
+            {
+              "name": "indeterminate",
+              "description": "an indeterminate loader has an unknown progress and will show a spinner",
+              "value": { "type": "boolean", "default": "false" }
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "variant",
+                "description": "The loader's variant",
+                "type": "'small' | 'large' | 'orbit'"
+              },
+              {
+                "name": "percent",
+                "description": "The percent complete for the loader to display",
+                "type": "string"
+              },
+              {
+                "name": "indeterminate",
+                "description": "an indeterminate loader has an unknown progress and will show a spinner",
+                "type": "boolean"
+              },
+              { "name": "_currentPercent", "type": "number" }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "terra-login",
+          "description": "A form that logs in to Earthdata Login (EDL) and returns a bearer token.\n---\n\n\n### **Events:**\n - **terra-login** - Emitted when a bearer token has been received from EDL.",
+          "doc-url": "",
+          "attributes": [],
+          "events": [
+            {
+              "name": "terra-login",
+              "description": "Emitted when a bearer token has been received from EDL."
+            }
+          ],
+          "js": {
+            "properties": [],
+            "events": [
+              {
+                "name": "terra-login",
+                "description": "Emitted when a bearer token has been received from EDL."
+              }
+            ]
+          }
+        },
+        {
+          "name": "terra-map",
+          "description": "A map component for visualizing and selecting coordinates.\n---\n",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "min-zoom",
+              "description": "Minimum zoom level of the map.",
+              "value": { "type": "number", "default": "0" }
+            },
+            {
+              "name": "max-zoom",
+              "description": "Maximum zoom level of the map.",
+              "value": { "type": "number", "default": "23" }
+            },
+            {
+              "name": "zoom",
+              "description": "Initial map zoom level",
+              "value": { "type": "number", "default": "1" }
+            },
+            {
+              "name": "has-navigation",
+              "description": "has map navigation toolbar",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "has-coord-tracker",
+              "description": "has coordinate tracker",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "has-shape-selector",
+              "description": "has shape selector",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "hide-bounding-box-selection",
+              "value": { "type": "boolean | undefined" }
+            },
+            {
+              "name": "hide-point-selection",
+              "value": { "type": "boolean | undefined" }
+            },
+            { "name": "value", "value": { "type": "any", "default": "[]" } }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "minZoom",
+                "description": "Minimum zoom level of the map.",
+                "type": "number"
+              },
+              {
+                "name": "maxZoom",
+                "description": "Maximum zoom level of the map.",
+                "type": "number"
+              },
+              {
+                "name": "zoom",
+                "description": "Initial map zoom level",
+                "type": "number"
+              },
+              {
+                "name": "hasNavigation",
+                "description": "has map navigation toolbar",
+                "type": "boolean"
+              },
+              {
+                "name": "hasCoordTracker",
+                "description": "has coordinate tracker",
+                "type": "boolean"
+              },
+              {
+                "name": "hasShapeSelector",
+                "description": "has shape selector",
+                "type": "boolean"
+              },
+              {
+                "name": "hideBoundingBoxSelection",
+                "type": "boolean | undefined"
+              },
+              { "name": "hidePointSelection", "type": "boolean | undefined" },
+              { "name": "value", "type": "any" },
+              { "name": "mapElement", "type": "HTMLDivElement" },
+              { "name": "map" },
+              {
+                "name": "shapes",
+                "description": "List of geojson shapes",
+                "type": "ShapeFilesResponse"
+              },
+              { "name": "_mapController", "type": "MapController" }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "terra-plot",
+          "description": "A web component for interactive graphs using Plotly.js.\n---\n\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.",
+          "doc-url": "",
+          "attributes": [
+            { "name": "plotTitle", "value": { "type": "string | undefined" } },
+            {
+              "name": "layout",
+              "value": {
+                "type": "Partial<Layout> | undefined",
+                "default": "{}"
+              }
+            },
+            {
+              "name": "config",
+              "value": {
+                "type": "Partial<Config> | undefined",
+                "default": "{}"
+              }
+            },
+            {
+              "name": "data",
+              "value": { "type": "Array<Partial<Data>>", "default": "[]" }
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              { "name": "base", "type": "PlotlyHTMLElement" },
+              { "name": "plotTitle", "type": "string | undefined" },
+              { "name": "layout", "type": "Partial<Layout> | undefined" },
+              { "name": "config", "type": "Partial<Config> | undefined" },
+              { "name": "data", "type": "Array<Partial<Data>>" }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "terra-skeleton",
+          "description": "Skeletons are loading indicators to represent where content will eventually be drawn.\n---\n",
+          "doc-url": "",
+          "attributes": [
+            { "name": "rows", "value": { "type": "number", "default": "1" } },
+            {
+              "name": "effect",
+              "value": {
+                "type": "'pulse' | 'sheen' | 'none'",
+                "default": "'pulse'"
+              }
+            },
+            {
+              "name": "variableWidths",
+              "value": { "type": "boolean", "default": "true" }
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              { "name": "rows", "type": "number" },
+              { "name": "effect", "type": "'pulse' | 'sheen' | 'none'" },
+              { "name": "variableWidths", "type": "boolean" }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "terra-spatial-picker",
+          "description": "A component that allows input of coordinates and rendering of map.\n---\n",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "min-zoom",
+              "description": "Minimum zoom level of the map.",
+              "value": { "type": "number", "default": "0" }
+            },
+            {
+              "name": "max-zoom",
+              "description": "Maximum zoom level of the map.",
+              "value": { "type": "number", "default": "23" }
+            },
+            {
+              "name": "zoom",
+              "description": "Initial map zoom level",
+              "value": { "type": "number", "default": "1" }
+            },
+            {
+              "name": "has-navigation",
+              "description": "has map navigation toolbar",
+              "value": { "type": "boolean", "default": "true" }
+            },
+            {
+              "name": "has-coord-tracker",
+              "description": "has coordinate tracker",
+              "value": { "type": "boolean", "default": "true" }
+            },
+            {
+              "name": "has-shape-selector",
+              "description": "has shape selector",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "hide-bounding-box-selection",
+              "value": { "type": "boolean | undefined" }
+            },
+            {
+              "name": "hide-point-selection",
+              "value": { "type": "boolean | undefined" }
+            },
+            {
+              "name": "initial-value",
+              "description": "initialValue of spatial picker",
+              "value": { "type": "string", "default": "''" }
+            },
+            {
+              "name": "hide-label",
+              "description": "Hide the combobox's label text.\nWhen hidden, still presents to screen readers.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "label",
+              "description": "spatial picker label",
+              "value": { "type": "string", "default": "'Select Region'" }
+            },
+            {
+              "name": "spatial-constraints",
+              "description": "Spatial constraints for the map (default: '-180, -90, 180, 90')",
+              "value": { "type": "string", "default": "'-180, -90, 180, 90'" }
+            },
+            {
+              "name": "is-expanded",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "inline",
+              "description": "Whether the map should be shown inline, or as part of the normal content flow\nthe default is false, the map is positioned absolute under the input",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "show-map-on-focus",
+              "description": "Whether the map should show automatically when the input is focused",
+              "value": { "type": "boolean", "default": "false" }
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "minZoom",
+                "description": "Minimum zoom level of the map.",
+                "type": "number"
+              },
+              {
+                "name": "maxZoom",
+                "description": "Maximum zoom level of the map.",
+                "type": "number"
+              },
+              {
+                "name": "zoom",
+                "description": "Initial map zoom level",
+                "type": "number"
+              },
+              {
+                "name": "hasNavigation",
+                "description": "has map navigation toolbar",
+                "type": "boolean"
+              },
+              {
+                "name": "hasCoordTracker",
+                "description": "has coordinate tracker",
+                "type": "boolean"
+              },
+              {
+                "name": "hasShapeSelector",
+                "description": "has shape selector",
+                "type": "boolean"
+              },
+              {
+                "name": "hideBoundingBoxSelection",
+                "type": "boolean | undefined"
+              },
+              { "name": "hidePointSelection", "type": "boolean | undefined" },
+              {
+                "name": "initialValue",
+                "description": "initialValue of spatial picker",
+                "type": "string"
+              },
+              {
+                "name": "hideLabel",
+                "description": "Hide the combobox's label text.\nWhen hidden, still presents to screen readers.",
+                "type": "boolean"
+              },
+              {
+                "name": "label",
+                "description": "spatial picker label",
+                "type": "string"
+              },
+              {
+                "name": "spatialConstraints",
+                "description": "Spatial constraints for the map (default: '-180, -90, 180, 90')",
+                "type": "string"
+              },
+              { "name": "isExpanded", "type": "boolean" },
+              {
+                "name": "inline",
+                "description": "Whether the map should be shown inline, or as part of the normal content flow\nthe default is false, the map is positioned absolute under the input",
+                "type": "boolean"
+              },
+              {
+                "name": "showMapOnFocus",
+                "description": "Whether the map should show automatically when the input is focused",
+                "type": "boolean"
+              },
+              { "name": "mapValue", "type": "any" },
+              { "name": "spatialInput", "type": "HTMLInputElement" },
+              { "name": "map", "type": "TerraMap" }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "terra-time-series",
+          "description": "A component for visualizing time series data using the GES DISC Giovanni API.\n---\n\n\n### **Events:**\n - **terra-date-range-change** - Emitted whenever the date range is modified\n- **terra-time-series-data-change** - Emitted whenever time series data has been fetched from Giovanni",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "variable-entry-id",
+              "description": "a variable entry ID (ex: GPM_3IMERGHH_06_precipitationCal)",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "collection",
+              "description": "a collection entry id (ex: GPM_3IMERGHH_06)\nonly required if you don't include a variableEntryId",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "variable",
+              "description": "a variable short name to plot (ex: precipitationCal)\nonly required if you don't include a variableEntryId",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "start-date",
+              "description": "The start date for the time series plot. (ex: 2021-01-01)",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "end-date",
+              "description": "The end date for the time series plot. (ex: 2021-01-01)",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "location",
+              "description": "The point location in \"lat,lon\" format.",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "bearer-token",
+              "description": "The token to be used for authentication with remote servers.\nThe component provides the header \"Authorization: Bearer\" (the request header and authentication scheme).\nThe property's value will be inserted after \"Bearer\" (the authentication scheme).",
+              "value": { "type": "string" }
+            }
+          ],
+          "events": [
+            {
+              "name": "terra-date-range-change",
+              "type": "CustomEvent",
+              "description": "Emitted whenever the date range is modified"
+            },
+            {
+              "name": "terra-time-series-data-change",
+              "description": "Emitted whenever time series data has been fetched from Giovanni"
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "variableEntryId",
+                "description": "a variable entry ID (ex: GPM_3IMERGHH_06_precipitationCal)",
+                "type": "string | undefined"
+              },
+              {
+                "name": "collection",
+                "description": "a collection entry id (ex: GPM_3IMERGHH_06)\nonly required if you don't include a variableEntryId",
+                "type": "string | undefined"
+              },
+              {
+                "name": "variable",
+                "description": "a variable short name to plot (ex: precipitationCal)\nonly required if you don't include a variableEntryId",
+                "type": "string | undefined"
+              },
+              {
+                "name": "startDate",
+                "description": "The start date for the time series plot. (ex: 2021-01-01)",
+                "type": "string | undefined"
+              },
+              {
+                "name": "endDate",
+                "description": "The end date for the time series plot. (ex: 2021-01-01)",
+                "type": "string | undefined"
+              },
+              {
+                "name": "location",
+                "description": "The point location in \"lat,lon\" format.",
+                "type": "string | undefined"
+              },
+              {
+                "name": "bearerToken",
+                "description": "The token to be used for authentication with remote servers.\nThe component provides the header \"Authorization: Bearer\" (the request header and authentication scheme).\nThe property's value will be inserted after \"Bearer\" (the authentication scheme).",
+                "type": "string"
+              },
+              { "name": "plot", "type": "TerraPlot" },
+              { "name": "menu", "type": "HTMLMenuElement" },
+              { "name": "catalogVariable", "type": "Variable" },
+              {
+                "name": "showDataPointWarning",
+                "description": "if true, we'll show a warning to the user about them requesting a large number of data points",
+                "type": "boolean"
+              },
+              {
+                "name": "estimatedDataPoints",
+                "description": "stores the estimated",
+                "type": "number"
+              },
+              { "name": "activeMenuItem", "type": "MenuNames" }
+            ],
+            "events": [
+              {
+                "name": "terra-date-range-change",
+                "type": "CustomEvent",
+                "description": "Emitted whenever the date range is modified"
+              },
+              {
+                "name": "terra-time-series-data-change",
+                "description": "Emitted whenever time series data has been fetched from Giovanni"
+              }
+            ]
+          }
+        },
+        {
+          "name": "terra-variable-combobox",
+          "description": "Fuzzy-search for dataset variables in combobox with list autocomplete.\n---\n\n\n### **Events:**\n - **terra-combobox-change** - Emitted when an option is selected.\n\n### **Methods:**\n - **valueChanged(oldValue: _string_, newValue: _string_)** - This component's value is read by other components.\nInternally, the variable metdata has slight differences that require adapting.\n\n### **CSS Properties:**\n - **--host-height** - The height of the host element. _(default: undefined)_\n- **--help-height** - The height of the search help element. _(default: undefined)_\n- **--label-height** - The height of the input's label element. _(default: undefined)_\n\n### **CSS Parts:**\n - **base** - A `search` element, the component's base.\n- **combobox** - An `input` element used for searching.\n- **button** - A `button` used for toggling the listbox's visibility.\n- **listbox** - A `ul` that holds the clickable options.",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "label",
+              "description": "Label the combobox with this.",
+              "value": { "type": "string", "default": "'Search for Variables'" }
+            },
+            {
+              "name": "placeholder",
+              "description": "Set a placeholder for the combobox with this.\nDefaults to the label's value.",
+              "value": { "type": "string" }
+            },
+            {
+              "name": "hide-help",
+              "description": "Hide the combobox's help text.\nWhen hidden, not rendered at all.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "hide-label",
+              "description": "Hide the combobox's label text.\nWhen hidden, still presents to screen readers.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "use-tags",
+              "description": "Determines if the variable combobox uses tags or plain text to display the query.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "value",
+              "description": "Represents the EntryID (<collection-name>_<variable-name>) of the selected variable.\nOther components (like the time-series graphing component) will use this.",
+              "value": { "type": "string" }
+            },
+            {
+              "name": "bearer-token",
+              "description": "The token to be used for authentication with remote servers.\nThe component provides the header \"Authorization: Bearer\" (the request header and authentication scheme).\nThe property's value will be inserted after \"Bearer\" (the authentication scheme).",
+              "value": { "type": "string" }
+            }
+          ],
+          "events": [
+            {
+              "name": "terra-combobox-change",
+              "description": "Emitted when an option is selected."
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "label",
+                "description": "Label the combobox with this.",
+                "type": "string"
+              },
+              {
+                "name": "placeholder",
+                "description": "Set a placeholder for the combobox with this.\nDefaults to the label's value.",
+                "type": "string"
+              },
+              {
+                "name": "hideHelp",
+                "description": "Hide the combobox's help text.\nWhen hidden, not rendered at all.",
+                "type": "boolean"
+              },
+              {
+                "name": "hideLabel",
+                "description": "Hide the combobox's label text.\nWhen hidden, still presents to screen readers.",
+                "type": "boolean"
+              },
+              {
+                "name": "useTags",
+                "description": "Determines if the variable combobox uses tags or plain text to display the query.",
+                "type": "boolean"
+              },
+              {
+                "name": "value",
+                "description": "Represents the EntryID (<collection-name>_<variable-name>) of the selected variable.\nOther components (like the time-series graphing component) will use this.",
+                "type": "string"
+              },
+              {
+                "name": "bearerToken",
+                "description": "The token to be used for authentication with remote servers.\nThe component provides the header \"Authorization: Bearer\" (the request header and authentication scheme).\nThe property's value will be inserted after \"Bearer\" (the authentication scheme).",
+                "type": "string"
+              },
+              { "name": "isExpanded", "type": "boolean" },
+              { "name": "query" },
+              { "name": "searchResults", "type": "ListItem[]" },
+              { "name": "tags", "type": "string[]" },
+              { "name": "tagContainerWidth", "type": "number" }
+            ],
+            "events": [
+              {
+                "name": "terra-combobox-change",
+                "description": "Emitted when an option is selected."
+              }
+            ]
+          }
+        },
+        {
+          "name": "terra-variable-keyword-search",
+          "description": "Fuzzy-search for dataset keywords in combobox with list autocomplete.\n---\n\n\n### **Events:**\n - **terra-variable-keyword-search-change** - Emitted when an option is selected.\n- **terra-search** - Emitted when the component is triggering a search (like a form triggering submit).\n\n### **CSS Properties:**\n - **--host-height** - The height of the host element. _(default: undefined)_\n- **--label-height** - The height of the input's label element. _(default: undefined)_\n\n### **CSS Parts:**\n - **base** - A `search` element, the component's base.\n- **combobox** - An `input` element used for searching.\n- **button** - A `button` used for toggling the listbox's visibility.\n- **listbox** - A `ul` that holds the clickable options.",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "label",
+              "description": "Label the combobox with this.",
+              "value": {
+                "type": "string",
+                "default": "'Enter search terms (e.g., precipitation, AOD)'"
+              }
+            },
+            {
+              "name": "placeholder",
+              "description": "Set a placeholder for the combobox with this.\nDefaults to the label's value.",
+              "value": { "type": "string" }
+            },
+            {
+              "name": "hide-label",
+              "description": "Hide the combobox's label text.\nWhen hidden, still presents to screen readers.",
+              "value": { "type": "boolean", "default": "true" }
+            },
+            {
+              "name": "searchConfig",
+              "description": "type can be `Boolean`, `String`, `Number`, `Object`, or `Array`",
+              "value": {
+                "type": "object",
+                "default": "{\n        //* @see {@link https://www.fusejs.io/api/options.html#options}\n        keys: ['id'],\n        useExtendedSearch: true,\n    }"
+              }
+            },
+            { "name": "value", "value": { "type": "string" } }
+          ],
+          "events": [
+            {
+              "name": "terra-variable-keyword-search-change",
+              "description": "Emitted when an option is selected."
+            },
+            {
+              "name": "terra-search",
+              "description": "Emitted when the component is triggering a search (like a form triggering submit)."
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "label",
+                "description": "Label the combobox with this.",
+                "type": "string"
+              },
+              {
+                "name": "placeholder",
+                "description": "Set a placeholder for the combobox with this.\nDefaults to the label's value.",
+                "type": "string"
+              },
+              {
+                "name": "hideLabel",
+                "description": "Hide the combobox's label text.\nWhen hidden, still presents to screen readers.",
+                "type": "boolean"
+              },
+              {
+                "name": "searchConfig",
+                "description": "type can be `Boolean`, `String`, `Number`, `Object`, or `Array`",
+                "type": "object"
+              },
+              { "name": "value", "type": "string" },
+              { "name": "isExpanded", "type": "boolean" },
+              { "name": "query" },
+              { "name": "searchResults", "type": "ListItem[]" }
+            ],
+            "events": [
+              {
+                "name": "terra-variable-keyword-search-change",
+                "description": "Emitted when an option is selected."
+              },
+              {
+                "name": "terra-search",
+                "description": "Emitted when the component is triggering a search (like a form triggering submit)."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="en" data-layout="default" data-terra-ui-components-version="0.0.57">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Additional design tokens can be found here." />
+    <title>More Design Tokens</title>
+
+    <meta name="turbo-cache-control" />
+
+    <link rel="stylesheet" href="/assets/styles/docs.css" />
+    <link rel="stylesheet" href="/assets/styles/code-previews.css" />
+    <link rel="stylesheet" href="/assets/styles/search.css" />
+
+    <link rel="icon" href="/assets/images/logo.white.png" type="image/x-icon" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="nasa_terra-ui" />
+    <meta name="twitter:image" content="https://disc.gsfc.nasa.gov/assets/images/og-image.png" />
+
+    <meta property="og:url" content="https://disc.gsfc.nasa.gov/tokens/more/" />
+    <meta property="og:title" content="More Design Tokens" />
+    <meta property="og:description" content="Additional design tokens can be found here." />
+    <meta property="og:image" content="https://disc.gsfc.nasa.gov/assets/images/og-image.png" />
+
+    <link rel="stylesheet" href="/dist/themes/horizon.css" />
+    <script type="module" src="/dist/terra-ui-components-autoloader.js"></script>
+
+    <script>
+      (() => {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = localStorage.getItem('theme') || 'auto';
+        document.documentElement.classList.toggle(
+          'terra-theme-dark',
+          theme === 'dark' || (theme === 'auto' && prefersDark)
+        );
+      })();
+    </script>
+
+    <script src="/assets/scripts/turbo.js" type="module"></script>
+    <script src="/assets/scripts/docs.js" defer=""></script>
+    <script src="/assets/scripts/code-previews.js" defer=""></script>
+    <script src="/assets/scripts/lunr.js" defer=""></script>
+    <script src="/assets/scripts/search.js" defer=""></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono&amp;family=Inter&amp;family=Public+Sans&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"
+    ></script>
+  </head>
+  <body>
+    <a id="skip-to-main" class="visually-hidden" href="#main-content" data-smooth-link="false">
+      Skip to main content
+    </a>
+
+    <button id="menu-toggle" type="button" aria-label="Menu">
+      <svg width="148" height="148" viewBox="0 0 148 148" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="currentColor" stroke-width="18" fill="none" fill-rule="evenodd" stroke-linecap="round">
+          <path d="M9.5 125.5h129M9.5 74.5h129M9.5 23.5h129"></path>
+        </g>
+      </svg>
+    </button>
+
+    <div id="icon-toolbar">
+      <a
+        href="https://github.com/terra-ui/components"
+        title="View Terra UI Components on GitHub"
+        class="external-link"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <sl-icon name="github"></sl-icon>
+      </a>
+      <sl-dropdown id="theme-selector" placement="bottom-end" distance="3">
+        <terra-button
+          slot="trigger"
+          size="large"
+          variant="text"
+          caret=""
+          title="Press \ to toggle"
+          data-optional=""
+          data-valid=""
+          data-user-valid=""
+        >
+          <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
+          <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
+        </terra-button>
+        <sl-menu role="menu">
+          <sl-menu-item
+            type="checkbox"
+            value="light"
+            tabindex="-1"
+            role="menuitemcheckbox"
+            aria-checked="false"
+            aria-disabled="false"
+            >Light</sl-menu-item
+          >
+          <sl-menu-item
+            type="checkbox"
+            value="dark"
+            tabindex="-1"
+            role="menuitemcheckbox"
+            aria-checked="false"
+            aria-disabled="false"
+            >Dark</sl-menu-item
+          >
+          <sl-divider role="separator" aria-orientation="horizontal"></sl-divider>
+          <sl-menu-item
+            type="checkbox"
+            value="auto"
+            tabindex="0"
+            role="menuitemcheckbox"
+            aria-checked="true"
+            aria-disabled="false"
+            checked=""
+            >System</sl-menu-item
+          >
+        </sl-menu>
+      </sl-dropdown>
+    </div>
+
+    <aside id="sidebar" data-preserve-scroll="">
+      <header>
+        <a href="/" class="sidebar-logo">
+          <img src="/assets/images/logo.svg" alt="Terra UI Components" />
+          Terra UI Components
+        </a>
+        <div class="sidebar-version">0.0.57</div>
+      </header>
+
+      <div class="sidebar-buttons">
+        <terra-button
+          size="small"
+          class="repo-button repo-button--github"
+          href="https://github.com/terra-ui/components"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="github"></sl-icon> Code
+        </terra-button>
+        <terra-button
+          size="small"
+          class="repo-button repo-button--star"
+          href="https://github.com/terra-ui/components/stargazers"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="star-fill"></sl-icon> Star
+        </terra-button>
+      </div>
+
+      <button class="search-box" type="button" title="Press / to search" aria-label="Search" data-plugin="search">
+        <sl-icon name="search"></sl-icon>
+        <span>Search</span>
+      </button>
+
+      <nav>
+        <ul>
+          <li>
+            <h2>Getting Started</h2>
+            <ul>
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/getting-started/installation">Installation</a>
+              </li>
+              <li>
+                <a href="/getting-started/usage">Usage</a>
+              </li>
+              <li>
+                <a href="/getting-started/themes">Themes</a>
+              </li>
+              <li>
+                <a href="/getting-started/customizing">Customizing</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h2>Frameworks</h2>
+            <ul>
+              <li>
+                <a href="/frameworks/react">React</a>
+              </li>
+              <li>
+                <a href="/frameworks/vue">Vue</a>
+              </li>
+              <li>
+                <a href="/frameworks/angular">Angular</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h2>Components</h2>
+            <ul>
+              <li>
+                <a href="/components/accordion"> Accordion </a>
+              </li>
+
+              <li>
+                <a href="/components/alert"> Alert </a>
+              </li>
+
+              <li>
+                <a href="/components/browse-variables"> Browse Variables </a>
+              </li>
+
+              <li>
+                <a href="/components/button"> Button </a>
+              </li>
+
+              <li>
+                <a href="/components/chip"> Chip </a>
+              </li>
+
+              <li>
+                <a href="/components/combobox"> Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/data-rods"> Data Rods </a>
+              </li>
+
+              <li>
+                <a href="/components/data-subsetter"> Data Subsetter </a>
+              </li>
+
+              <li>
+                <a href="/components/date-picker"> Date Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/date-range-slider"> Date Range Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/dialog"> Dialog </a>
+              </li>
+
+              <li>
+                <a href="/components/icon"> Icon </a>
+              </li>
+
+              <li>
+                <a href="/components/loader"> Loader </a>
+              </li>
+
+              <li>
+                <a href="/components/login"> Login </a>
+              </li>
+
+              <li>
+                <a href="/components/map"> Map </a>
+              </li>
+
+              <li>
+                <a href="/components/plot"> Plot </a>
+              </li>
+
+              <li>
+                <a href="/components/skeleton"> Skeleton </a>
+              </li>
+
+              <li>
+                <a href="/components/spatial-picker"> Spatial Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/time-series"> Time Series </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-combobox"> Variable Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-keyword-search"> Variable Keyword Search </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+      <a id="main-content"></a>
+      <article id="content" class="content content--with-toc">
+        <div class="content__toc">
+          <ul>
+            <li class="top">
+              <a href="#">More Design Tokens</a>
+            </li>
+            <li data-level="2"><a href="#focus-rings">Focus Rings</a></li>
+            <li data-level="2"><a href="#buttons">Buttons</a></li>
+            <li data-level="2"><a href="#form-inputs">Form Inputs</a></li>
+            <li data-level="2"><a href="#filled-form-inputs">Filled Form Inputs</a></li>
+            <li data-level="2"><a href="#form-labels">Form Labels</a></li>
+            <li data-level="2"><a href="#help-text">Help Text</a></li>
+            <li data-level="2"><a href="#toggles">Toggles</a></li>
+            <li data-level="2"><a href="#overlays">Overlays</a></li>
+            <li data-level="2"><a href="#panels">Panels</a></li>
+            <li data-level="2"><a href="#tooltips">Tooltips</a></li>
+          </ul>
+        </div>
+
+        <div class="content__body">
+          <h1>More Design Tokens</h1>
+          <p>
+            All of the design tokens described herein are considered relatively stable. However, some changes might
+            occur in future versions to address mission critical bugs or improvements. If such changes occur, they
+            <em>will not</em> be considered breaking changes and will be clearly documented in the
+            <a href="/resources/changelog">changelog</a>.
+          </p>
+          <p>
+            Most design tokens are consistent across the light and dark theme. Those that vary will show both values.
+          </p>
+          <div role="alert" class="callout callout--tip">
+            <p>
+              Currently, the source of design tokens is considered to be
+              <a
+                href="https://github.com/gesdisc/components/blob/next/src/themes/light.css"
+                class="external-link"
+                rel="noopener noreferrer"
+                target="_blank"
+                ><code>light.css</code></a
+              >. The dark theme,
+              <a
+                href="https://github.com/gesdisc/components/blob/next/src/themes/dark.css"
+                class="external-link"
+                rel="noopener noreferrer"
+                target="_blank"
+                >dark.css</a
+              >, mirrors all of the same tokens with dark mode-specific values where appropriate. Work is planned to
+              move all design tokens to a single file, perhaps JSON or YAML, in the near future.
+            </p>
+          </div>
+          <h2 id="focus-rings" class="anchor-heading">
+            Focus Rings<a href="#focus-rings" aria-label='Direct link to "Focus Rings"'></a>
+          </h2>
+          <p>
+            Focus ring tokens control the appearance of focus rings. Note that form inputs use
+            <code>--terra-input-focus-ring-*</code> tokens instead.
+          </p>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Token</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>--terra-focus-ring-color</code></td>
+                  <td>
+                    <code>var(--terra-color-primary-600)</code> (light theme)<br /><code
+                      >var(--terra-color-primary-700)</code
+                    >
+                    (dark theme)
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>--terra-focus-ring-style</code></td>
+                  <td><code>solid</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-focus-ring-width</code></td>
+                  <td><code>3px</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-focus-ring</code></td>
+                  <td>
+                    <code
+                      >var(--terra-focus-ring-style) var(--terra-focus-ring-width) var(--terra-focus-ring-color)</code
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>--terra-focus-ring-offset</code></td>
+                  <td><code>1px</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="buttons" class="anchor-heading">
+            Buttons<a href="#buttons" aria-label='Direct link to "Buttons"'></a>
+          </h2>
+          <p>
+            Button tokens control the appearance of buttons. In addition, buttons also currently use some form input
+            tokens such as <code>--terra-input-height-*</code> and <code>--terra-input-border-*</code>. More button
+            tokens may be added in the future to make it easier to style them more independently.
+          </p>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Token</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>--terra-button-font-size-small</code></td>
+                  <td><code>var(--terra-font-size-x-small)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-button-font-size-medium</code></td>
+                  <td><code>var(--terra-font-size-small)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-button-font-size-large</code></td>
+                  <td><code>var(--terra-font-size-medium)</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="form-inputs" class="anchor-heading">
+            Form Inputs<a href="#form-inputs" aria-label='Direct link to "Form Inputs"'></a>
+          </h2>
+          <p>
+            Form input tokens control the appearance of form controls such as <a href="/components/input">input</a>,
+            <a href="/components/select">select</a>, <a href="/components/textarea">textarea</a>, etc.
+          </p>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Token</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>--terra-input-height-small</code></td>
+                  <td><code>1.875rem</code> (30px @ 16px base)</td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-height-medium</code></td>
+                  <td><code>2.5rem</code> (40px @ 16px base)</td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-height-large</code></td>
+                  <td><code>3.125rem</code> (50px @ 16px base)</td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-background-color</code></td>
+                  <td><code>var(--terra-color-neutral-0)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-background-color-hover</code></td>
+                  <td><code>var(--terra-input-background-color)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-background-color-focus</code></td>
+                  <td><code>var(--terra-input-background-color)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-background-color-disabled</code></td>
+                  <td><code>var(--terra-color-neutral-100)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-border-color</code></td>
+                  <td><code>var(--terra-color-neutral-300)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-border-color-hover</code></td>
+                  <td><code>var(--terra-color-neutral-400)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-border-color-focus</code></td>
+                  <td><code>var(--terra-color-primary-500)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-border-color-disabled</code></td>
+                  <td><code>var(--terra-color-neutral-300)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-border-width</code></td>
+                  <td><code>1px</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-required-content</code></td>
+                  <td><code>*</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-required-content-offset</code></td>
+                  <td><code>-2px</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-required-content-color</code></td>
+                  <td><code>var(--terra-input-label-color)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-border-radius-small</code></td>
+                  <td><code>var(--terra-border-radius-medium)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-border-radius-medium</code></td>
+                  <td><code>var(--terra-border-radius-medium)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-border-radius-large</code></td>
+                  <td><code>var(--terra-border-radius-medium)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-font-family</code></td>
+                  <td><code>var(--terra-font-sans)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-font-weight</code></td>
+                  <td><code>var(--terra-font-weight-normal)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-font-size-small</code></td>
+                  <td><code>var(--terra-font-size-small)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-font-size-medium</code></td>
+                  <td><code>var(--terra-font-size-medium)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-font-size-large</code></td>
+                  <td><code>var(--terra-font-size-large)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-letter-spacing</code></td>
+                  <td><code>var(--terra-letter-spacing-normal)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-color</code></td>
+                  <td><code>var(--terra-color-neutral-700)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-color-hover</code></td>
+                  <td><code>var(--terra-color-neutral-700)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-color-focus</code></td>
+                  <td><code>var(--terra-color-neutral-700)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-color-disabled</code></td>
+                  <td><code>var(--terra-color-neutral-900)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-icon-color</code></td>
+                  <td><code>var(--terra-color-neutral-500)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-icon-color-hover</code></td>
+                  <td><code>var(--terra-color-neutral-600)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-icon-color-focus</code></td>
+                  <td><code>var(--terra-color-neutral-600)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-placeholder-color</code></td>
+                  <td><code>var(--terra-color-neutral-500)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-placeholder-color-disabled</code></td>
+                  <td><code>var(--terra-color-neutral-600)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-spacing-small</code></td>
+                  <td><code>var(--terra-spacing-small)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-spacing-medium</code></td>
+                  <td><code>var(--terra-spacing-medium)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-spacing-large</code></td>
+                  <td><code>var(--terra-spacing-large)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-focus-ring-color</code></td>
+                  <td><code>hsl(198.6 88.7% 48.4% / 40%)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-focus-ring-offset</code></td>
+                  <td><code>0</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="filled-form-inputs" class="anchor-heading">
+            Filled Form Inputs<a href="#filled-form-inputs" aria-label='Direct link to "Filled Form Inputs"'></a>
+          </h2>
+          <p>Filled form input tokens control the appearance of form controls using the <code>filled</code> variant.</p>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Token</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>--terra-input-filled-background-color</code></td>
+                  <td><code>var(--terra-color-neutral-100)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-filled-background-color-hover</code></td>
+                  <td><code>var(--terra-color-neutral-100)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-filled-background-color-focus</code></td>
+                  <td><code>var(--terra-color-neutral-100)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-filled-background-color-disabled</code></td>
+                  <td><code>var(--terra-color-neutral-100)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-filled-color</code></td>
+                  <td><code>var(--terra-color-neutral-800)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-filled-color-hover</code></td>
+                  <td><code>var(--terra-color-neutral-800)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-filled-color-focus</code></td>
+                  <td><code>var(--terra-color-neutral-700)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-filled-color-disabled</code></td>
+                  <td><code>var(--terra-color-neutral-800)</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="form-labels" class="anchor-heading">
+            Form Labels<a href="#form-labels" aria-label='Direct link to "Form Labels"'></a>
+          </h2>
+          <p>Form label tokens control the appearance of labels in form controls.</p>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Token</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>--terra-input-label-font-size-small</code></td>
+                  <td><code>var(--terra-font-size-small)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-label-font-size-medium</code></td>
+                  <td><code>var(--terra-font-size-medium</code>)</td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-label-font-size-large</code></td>
+                  <td><code>var(--terra-font-size-large)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-label-color</code></td>
+                  <td><code>inherit</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="help-text" class="anchor-heading">
+            Help Text<a href="#help-text" aria-label='Direct link to "Help Text"'></a>
+          </h2>
+          <p>Help text tokens control the appearance of help text in form controls.</p>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Token</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>--terra-input-help-text-font-size-small</code></td>
+                  <td><code>var(--terra-font-size-x-small)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-help-text-font-size-medium</code></td>
+                  <td><code>var(--terra-font-size-small)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-help-text-font-size-large</code></td>
+                  <td><code>var(--terra-font-size-medium)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-input-help-text-color</code></td>
+                  <td><code>var(--terra-color-neutral-500)</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="toggles" class="anchor-heading">
+            Toggles<a href="#toggles" aria-label='Direct link to "Toggles"'></a>
+          </h2>
+          <p>
+            Toggle tokens control the appearance of toggles such as <a href="/components/checkbox">checkbox</a>,
+            <a href="/components/radio">radio</a>, <a href="/components/switch">switch</a>, etc.
+          </p>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Token</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>--terra-toggle-size-small</code></td>
+                  <td><code>0.875rem</code> (14px @ 16px base)</td>
+                </tr>
+                <tr>
+                  <td><code>--terra-toggle-size-medium</code></td>
+                  <td><code>1.125rem</code> (18px @ 16px base)</td>
+                </tr>
+                <tr>
+                  <td><code>--terra-toggle-size-large</code></td>
+                  <td><code>1.375rem</code> (22px @ 16px base)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="overlays" class="anchor-heading">
+            Overlays<a href="#overlays" aria-label='Direct link to "Overlays"'></a>
+          </h2>
+          <p>
+            Overlay tokens control the appearance of overlays as used in <a href="/components/dialog">dialog</a>,
+            <a href="/components/drawer">drawer</a>, etc.
+          </p>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Token</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>--terra-overlay-background-color</code></td>
+                  <td><code>hsl(240 3.8% 46.1% / 33%)</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="panels" class="anchor-heading">Panels<a href="#panels" aria-label='Direct link to "Panels"'></a></h2>
+          <p>
+            Panel tokens control the appearance of panels such as those used in <a href="/components/dialog">dialog</a>,
+            <a href="/components/drawer">drawer</a>, <a href="/components/menu">menu</a>, etc.
+          </p>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Token</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>--terra-panel-background-color</code></td>
+                  <td><code>var(--terra-color-neutral-0)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-panel-border-color</code></td>
+                  <td><code>var(--terra-color-neutral-200)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-panel-border-width</code></td>
+                  <td><code>1px</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 id="tooltips" class="anchor-heading">
+            Tooltips<a href="#tooltips" aria-label='Direct link to "Tooltips"'></a>
+          </h2>
+          <p>
+            Tooltip tokens control the appearance of tooltips. This includes the
+            <a href="/components/tooltip">tooltip</a> component as well as other implementations, such
+            <a href="/components/range">range tooltips</a>.
+          </p>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Token</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>--terra-tooltip-border-radius</code></td>
+                  <td><code>var(--terra-border-radius-medium)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-tooltip-background-color</code></td>
+                  <td><code>var(--terra-color-neutral-800)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-tooltip-color</code></td>
+                  <td><code>var(--terra-color-neutral-0)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-tooltip-font-family</code></td>
+                  <td><code>var(--terra-font-sans)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-tooltip-font-weight</code></td>
+                  <td><code>var(--terra-font-weight-normal)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-tooltip-font-size</code></td>
+                  <td><code>var(--terra-font-size-small)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-tooltip-line-height</code></td>
+                  <td><code>var(--terra-line-height-dense)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-tooltip-padding</code></td>
+                  <td><code>var(--terra-spacing-2x-small) var(--terra-spacing-x-small)</code></td>
+                </tr>
+                <tr>
+                  <td><code>--terra-tooltip-arrow-size</code></td>
+                  <td><code>6px</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en" data-layout="default" data-terra-ui-components-version="0.0.57">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Tips for using Terra UI Components in your Angular app." />
+    <title>Angular</title>
+
+    <meta name="turbo-cache-control" />
+
+    <link rel="stylesheet" href="/assets/styles/docs.css" />
+    <link rel="stylesheet" href="/assets/styles/code-previews.css" />
+    <link rel="stylesheet" href="/assets/styles/search.css" />
+
+    <link rel="icon" href="/assets/images/logo.white.png" type="image/x-icon" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="nasa_terra-ui" />
+    <meta name="twitter:image" content="https://disc.gsfc.nasa.gov/assets/images/og-image.png" />
+
+    <meta property="og:url" content="https://disc.gsfc.nasa.gov/frameworks/angular/" />
+    <meta property="og:title" content="Angular" />
+    <meta property="og:description" content="Tips for using Terra UI Components in your Angular app." />
+    <meta property="og:image" content="https://disc.gsfc.nasa.gov/assets/images/og-image.png" />
+
+    <link rel="stylesheet" href="/dist/themes/horizon.css" />
+    <script type="module" src="/dist/terra-ui-components-autoloader.js"></script>
+
+    <script>
+      (() => {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = localStorage.getItem('theme') || 'auto';
+        document.documentElement.classList.toggle(
+          'terra-theme-dark',
+          theme === 'dark' || (theme === 'auto' && prefersDark)
+        );
+      })();
+    </script>
+
+    <script src="/assets/scripts/turbo.js" type="module"></script>
+    <script src="/assets/scripts/docs.js" defer=""></script>
+    <script src="/assets/scripts/code-previews.js" defer=""></script>
+    <script src="/assets/scripts/lunr.js" defer=""></script>
+    <script src="/assets/scripts/search.js" defer=""></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono&amp;family=Inter&amp;family=Public+Sans&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"
+    ></script>
+  </head>
+  <body>
+    <a id="skip-to-main" class="visually-hidden" href="#main-content" data-smooth-link="false">
+      Skip to main content
+    </a>
+
+    <button id="menu-toggle" type="button" aria-label="Menu">
+      <svg width="148" height="148" viewBox="0 0 148 148" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="currentColor" stroke-width="18" fill="none" fill-rule="evenodd" stroke-linecap="round">
+          <path d="M9.5 125.5h129M9.5 74.5h129M9.5 23.5h129"></path>
+        </g>
+      </svg>
+    </button>
+
+    <div id="icon-toolbar">
+      <a
+        href="https://github.com/terra-ui/components"
+        title="View Terra UI Components on GitHub"
+        class="external-link"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <sl-icon name="github"></sl-icon>
+      </a>
+      <sl-dropdown id="theme-selector" placement="bottom-end" distance="3">
+        <terra-button
+          slot="trigger"
+          size="large"
+          variant="text"
+          caret=""
+          title="Press \ to toggle"
+          data-optional=""
+          data-valid=""
+          data-user-valid=""
+        >
+          <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
+          <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
+        </terra-button>
+        <sl-menu role="menu">
+          <sl-menu-item
+            type="checkbox"
+            value="light"
+            tabindex="-1"
+            role="menuitemcheckbox"
+            aria-checked="false"
+            aria-disabled="false"
+            >Light</sl-menu-item
+          >
+          <sl-menu-item
+            type="checkbox"
+            value="dark"
+            tabindex="-1"
+            role="menuitemcheckbox"
+            aria-checked="false"
+            aria-disabled="false"
+            >Dark</sl-menu-item
+          >
+          <sl-divider role="separator" aria-orientation="horizontal"></sl-divider>
+          <sl-menu-item
+            type="checkbox"
+            value="auto"
+            tabindex="0"
+            role="menuitemcheckbox"
+            aria-checked="true"
+            aria-disabled="false"
+            checked=""
+            >System</sl-menu-item
+          >
+        </sl-menu>
+      </sl-dropdown>
+    </div>
+
+    <aside id="sidebar" data-preserve-scroll="">
+      <header>
+        <a href="/" class="sidebar-logo">
+          <img src="/assets/images/logo.svg" alt="Terra UI Components" />
+          Terra UI Components
+        </a>
+        <div class="sidebar-version">0.0.57</div>
+      </header>
+
+      <div class="sidebar-buttons">
+        <terra-button
+          size="small"
+          class="repo-button repo-button--github"
+          href="https://github.com/terra-ui/components"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="github"></sl-icon> Code
+        </terra-button>
+        <terra-button
+          size="small"
+          class="repo-button repo-button--star"
+          href="https://github.com/terra-ui/components/stargazers"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="star-fill"></sl-icon> Star
+        </terra-button>
+      </div>
+
+      <button class="search-box" type="button" title="Press / to search" aria-label="Search" data-plugin="search">
+        <sl-icon name="search"></sl-icon>
+        <span>Search</span>
+      </button>
+
+      <nav>
+        <ul>
+          <li>
+            <h2>Getting Started</h2>
+            <ul>
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/getting-started/installation">Installation</a>
+              </li>
+              <li>
+                <a href="/getting-started/usage">Usage</a>
+              </li>
+              <li>
+                <a href="/getting-started/themes">Themes</a>
+              </li>
+              <li>
+                <a href="/getting-started/customizing">Customizing</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h2>Frameworks</h2>
+            <ul>
+              <li>
+                <a href="/frameworks/react">React</a>
+              </li>
+              <li>
+                <a href="/frameworks/vue">Vue</a>
+              </li>
+              <li>
+                <a href="/frameworks/angular" class="active-link">Angular</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h2>Components</h2>
+            <ul>
+              <li>
+                <a href="/components/accordion"> Accordion </a>
+              </li>
+
+              <li>
+                <a href="/components/alert"> Alert </a>
+              </li>
+
+              <li>
+                <a href="/components/browse-variables"> Browse Variables </a>
+              </li>
+
+              <li>
+                <a href="/components/button"> Button </a>
+              </li>
+
+              <li>
+                <a href="/components/chip"> Chip </a>
+              </li>
+
+              <li>
+                <a href="/components/combobox"> Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/data-rods"> Data Rods </a>
+              </li>
+
+              <li>
+                <a href="/components/data-subsetter"> Data Subsetter </a>
+              </li>
+
+              <li>
+                <a href="/components/date-picker"> Date Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/date-range-slider"> Date Range Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/dialog"> Dialog </a>
+              </li>
+
+              <li>
+                <a href="/components/icon"> Icon </a>
+              </li>
+
+              <li>
+                <a href="/components/loader"> Loader </a>
+              </li>
+
+              <li>
+                <a href="/components/login"> Login </a>
+              </li>
+
+              <li>
+                <a href="/components/map"> Map </a>
+              </li>
+
+              <li>
+                <a href="/components/plot"> Plot </a>
+              </li>
+
+              <li>
+                <a href="/components/skeleton"> Skeleton </a>
+              </li>
+
+              <li>
+                <a href="/components/spatial-picker"> Spatial Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/time-series"> Time Series </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-combobox"> Variable Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-keyword-search"> Variable Keyword Search </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+      <a id="main-content"></a>
+      <article id="content" class="content content--with-toc">
+        <div class="content__toc">
+          <ul>
+            <li class="top">
+              <a href="#">Angular</a>
+            </li>
+            <li data-level="2"><a href="#installation">Installation</a></li>
+            <li data-level="3"><a href="#download-the-npm-package">Download the npm package</a></li>
+            <li data-level="3"><a href="#update-the-angular-configuration">Update the Angular Configuration</a></li>
+            <li data-level="3"><a href="#setting-up-the-base-path">Setting up the base path</a></li>
+            <li data-level="2"><a href="#configuration">Configuration</a></li>
+            <li data-level="2">
+              <a href="#reference-terra-ui-components-in-your-angular-component-code"
+                >Reference Terra UI Components in your Angular component code</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="content__body">
+          <h1>Angular</h1>
+          <p>
+            Angular
+            <a
+              href="https://custom-elements-everywhere.com/#angular"
+              class="external-link"
+              rel="noopener noreferrer"
+              target="_blank"
+              >plays nice</a
+            >
+            with custom elements, so you can use Terra UI Components in your Angular apps with ease.
+          </p>
+          <h2 id="installation" class="anchor-heading">
+            Installation<a href="#installation" aria-label='Direct link to "Installation"'></a>
+          </h2>
+          <h3 id="download-the-npm-package" class="anchor-heading">
+            Download the npm package<a
+              href="#download-the-npm-package"
+              aria-label='Direct link to "Download the npm package"'
+            ></a>
+          </h3>
+          <p>To add Terra UI Components to your Angular app, install the package from npm.</p>
+          <pre><code class="language-bash" id="code-block-3"><span class="token function">npm</span> <span class="token function">install</span> @nasa-terra/components
+</code><sl-copy-button class="copy-code-button" from="code-block-3"></sl-copy-button></pre>
+          <h3 id="update-the-angular-configuration" class="anchor-heading">
+            Update the Angular Configuration<a
+              href="#update-the-angular-configuration"
+              aria-label='Direct link to "Update the Angular Configuration"'
+            ></a>
+          </h3>
+          <p>
+            Next, <a href="/getting-started/themes">include a theme</a>. In this example, we’ll import the light theme.
+          </p>
+          <p>
+            Its also important to load the components by using a <code>&lt;script&gt;</code> tag into the index.html
+            file. However, the Angular way to do it is by adding a script configurations into your angular.json file as
+            follows:
+          </p>
+          <pre><code class="language-json" id="code-block-4"><span class="token property">"architect"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">"build"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    ...
+    <span class="token property">"options"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      ...
+      <span class="token property">"styles"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">"src/styles.scss"</span><span class="token punctuation">,</span>
+        <span class="token string">"@nasa-terra/components/dist/themes/horizon.css"</span>
+       <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">"@nasa-terra/components/dist/terra-ui-components.js"</span>
+      <span class="token punctuation">]</span>
+      ...
+</code><sl-copy-button class="copy-code-button" from="code-block-4"></sl-copy-button></pre>
+          <h3 id="setting-up-the-base-path" class="anchor-heading">
+            Setting up the base path<a
+              href="#setting-up-the-base-path"
+              aria-label='Direct link to "Setting up the base path"'
+            ></a>
+          </h3>
+          <p>
+            Next, set the <a href="/getting-started/installation#setting-the-base-path">base path</a> for icons and
+            other assets in the <code>main.ts</code>. In this example, we’ll use the CDN as a base path.
+          </p>
+          <pre><code class="language-jsx" id="code-block-5"><span class="token keyword">import</span> <span class="token punctuation">{</span> setBasePath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/utilities/base-path'</span>
+
+<span class="token function">setBasePath</span><span class="token punctuation">(</span><span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.57/cdn/'</span><span class="token punctuation">)</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-5"></sl-copy-button></pre>
+          <div role="alert" class="callout callout--tip">
+            <p>
+              If you’d rather not use the CDN for assets, you can create a build task that copies
+              <code>node_modules/@nasa-terra/components/dist/assets</code> into a public folder in your app. Then you
+              can point the base path to that folder instead.
+            </p>
+          </div>
+          <h2 id="configuration" class="anchor-heading">
+            Configuration<a href="#configuration" aria-label='Direct link to "Configuration"'></a>
+          </h2>
+          <p>Then make sure to apply the custom elements schema as shown below.</p>
+          <pre><code class="language-js" id="code-block-6"><span class="token keyword">import</span> <span class="token punctuation">{</span> BrowserModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/platform-browser'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NgModule<span class="token punctuation">,</span> <span class="token constant">CUSTOM_ELEMENTS_SCHEMA</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/core'</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> AppComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./app.component'</span>
+
+@<span class="token function">NgModule</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">declarations</span><span class="token operator">:</span> <span class="token punctuation">[</span>AppComponent<span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">imports</span><span class="token operator">:</span> <span class="token punctuation">[</span>BrowserModule<span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">providers</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">bootstrap</span><span class="token operator">:</span> <span class="token punctuation">[</span>AppComponent<span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">schemas</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token constant">CUSTOM_ELEMENTS_SCHEMA</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AppModule</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-6"></sl-copy-button></pre>
+          <h2 id="reference-terra-ui-components-in-your-angular-component-code" class="anchor-heading">
+            Reference Terra UI Components in your Angular component code<a
+              href="#reference-terra-ui-components-in-your-angular-component-code"
+              aria-label='Direct link to "Reference Terra UI Components in your Angular component code"'
+            ></a>
+          </h2>
+          <pre><code class="language-js" id="code-block-7"><span class="token keyword">import</span> <span class="token punctuation">{</span> SlDrawer <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components'</span><span class="token punctuation">;</span>
+
+@<span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">selector</span><span class="token operator">:</span> <span class="token string">'app-drawer-example'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">'&lt;div id="page"&gt;&lt;button (click)="showDrawer()"&gt;Show drawer&lt;/button&gt;&lt;sl-drawer #drawer label="Drawer" class="drawer-focus" style="--size: 50vw"&gt;&lt;p&gt;Drawer content&lt;/p&gt;&lt;/sl-drawer&gt;&lt;/div&gt;'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">DrawerExampleComponent</span> <span class="token keyword">implements</span> <span class="token class-name">OnInit</span> <span class="token punctuation">{</span>
+
+  <span class="token comment">// use @ViewChild to get a reference to the #drawer element within component template</span>
+  @<span class="token function">ViewChild</span><span class="token punctuation">(</span><span class="token string">'drawer'</span><span class="token punctuation">)</span>
+  drawer<span class="token operator">?</span><span class="token operator">:</span> ElementRef<span class="token operator">&lt;</span>SlDrawer<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+  <span class="token operator">...</span>
+
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">ngOnInit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token operator">...</span>
+
+  <span class="token function">showDrawer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// use nativeElement to access Terra UI Components</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>drawer<span class="token operator">?.</span>nativeElement<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-7"></sl-copy-button></pre>
+          <p>Now you can start using Terra UI Components in your app!</p>
+          <div role="alert" class="callout callout--tip">
+            <p>
+              Are you using Terra UI Components with Angular?
+              <a
+                href="https://github.com/terra-ui/components/blob/next/docs/frameworks/angular.md"
+                class="external-link"
+                rel="noopener noreferrer"
+                target="_blank"
+                >Help us improve this page!</a
+              >
+            </p>
+          </div>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,2962 @@
+[
+  {
+    "name": "outline-academic-cap",
+    "variant": "outline",
+    "title": "Academic Cap"
+  },
+  {
+    "name": "outline-adjustments-horizontal",
+    "variant": "outline",
+    "title": "Adjustments Horizontal"
+  },
+  {
+    "name": "outline-adjustments-vertical",
+    "variant": "outline",
+    "title": "Adjustments Vertical"
+  },
+  {
+    "name": "outline-archive-box-arrow-down",
+    "variant": "outline",
+    "title": "Archive Box Arrow Down"
+  },
+  {
+    "name": "outline-archive-box-x-mark",
+    "variant": "outline",
+    "title": "Archive Box X Mark"
+  },
+  {
+    "name": "outline-archive-box",
+    "variant": "outline",
+    "title": "Archive Box"
+  },
+  {
+    "name": "outline-arrow-down-circle",
+    "variant": "outline",
+    "title": "Arrow Down Circle"
+  },
+  {
+    "name": "outline-arrow-down-left",
+    "variant": "outline",
+    "title": "Arrow Down Left"
+  },
+  {
+    "name": "outline-arrow-down-on-square-stack",
+    "variant": "outline",
+    "title": "Arrow Down On Square Stack"
+  },
+  {
+    "name": "outline-arrow-down-on-square",
+    "variant": "outline",
+    "title": "Arrow Down On Square"
+  },
+  {
+    "name": "outline-arrow-down-right",
+    "variant": "outline",
+    "title": "Arrow Down Right"
+  },
+  {
+    "name": "outline-arrow-down-tray",
+    "variant": "outline",
+    "title": "Arrow Down Tray"
+  },
+  {
+    "name": "outline-arrow-down",
+    "variant": "outline",
+    "title": "Arrow Down"
+  },
+  {
+    "name": "outline-arrow-left-circle",
+    "variant": "outline",
+    "title": "Arrow Left Circle"
+  },
+  {
+    "name": "outline-arrow-left-end-on-rectangle",
+    "variant": "outline",
+    "title": "Arrow Left End On Rectangle"
+  },
+  {
+    "name": "outline-arrow-left-on-rectangle",
+    "variant": "outline",
+    "title": "Arrow Left On Rectangle"
+  },
+  {
+    "name": "outline-arrow-left-start-on-rectangle",
+    "variant": "outline",
+    "title": "Arrow Left Start On Rectangle"
+  },
+  {
+    "name": "outline-arrow-left",
+    "variant": "outline",
+    "title": "Arrow Left"
+  },
+  {
+    "name": "outline-arrow-long-down",
+    "variant": "outline",
+    "title": "Arrow Long Down"
+  },
+  {
+    "name": "outline-arrow-long-left",
+    "variant": "outline",
+    "title": "Arrow Long Left"
+  },
+  {
+    "name": "outline-arrow-long-right",
+    "variant": "outline",
+    "title": "Arrow Long Right"
+  },
+  {
+    "name": "outline-arrow-long-up",
+    "variant": "outline",
+    "title": "Arrow Long Up"
+  },
+  {
+    "name": "outline-arrow-path-rounded-square",
+    "variant": "outline",
+    "title": "Arrow Path Rounded Square"
+  },
+  {
+    "name": "outline-arrow-path",
+    "variant": "outline",
+    "title": "Arrow Path"
+  },
+  {
+    "name": "outline-arrow-right-circle",
+    "variant": "outline",
+    "title": "Arrow Right Circle"
+  },
+  {
+    "name": "outline-arrow-right-end-on-rectangle",
+    "variant": "outline",
+    "title": "Arrow Right End On Rectangle"
+  },
+  {
+    "name": "outline-arrow-right-on-rectangle",
+    "variant": "outline",
+    "title": "Arrow Right On Rectangle"
+  },
+  {
+    "name": "outline-arrow-right-start-on-rectangle",
+    "variant": "outline",
+    "title": "Arrow Right Start On Rectangle"
+  },
+  {
+    "name": "outline-arrow-right",
+    "variant": "outline",
+    "title": "Arrow Right"
+  },
+  {
+    "name": "outline-arrow-small-down",
+    "variant": "outline",
+    "title": "Arrow Small Down"
+  },
+  {
+    "name": "outline-arrow-small-left",
+    "variant": "outline",
+    "title": "Arrow Small Left"
+  },
+  {
+    "name": "outline-arrow-small-right",
+    "variant": "outline",
+    "title": "Arrow Small Right"
+  },
+  {
+    "name": "outline-arrow-small-up",
+    "variant": "outline",
+    "title": "Arrow Small Up"
+  },
+  {
+    "name": "outline-arrow-top-right-on-square",
+    "variant": "outline",
+    "title": "Arrow Top Right On Square"
+  },
+  {
+    "name": "outline-arrow-trending-down",
+    "variant": "outline",
+    "title": "Arrow Trending Down"
+  },
+  {
+    "name": "outline-arrow-trending-up",
+    "variant": "outline",
+    "title": "Arrow Trending Up"
+  },
+  {
+    "name": "outline-arrow-up-circle",
+    "variant": "outline",
+    "title": "Arrow Up Circle"
+  },
+  {
+    "name": "outline-arrow-up-left",
+    "variant": "outline",
+    "title": "Arrow Up Left"
+  },
+  {
+    "name": "outline-arrow-up-on-square-stack",
+    "variant": "outline",
+    "title": "Arrow Up On Square Stack"
+  },
+  {
+    "name": "outline-arrow-up-on-square",
+    "variant": "outline",
+    "title": "Arrow Up On Square"
+  },
+  {
+    "name": "outline-arrow-up-right",
+    "variant": "outline",
+    "title": "Arrow Up Right"
+  },
+  {
+    "name": "outline-arrow-up-tray",
+    "variant": "outline",
+    "title": "Arrow Up Tray"
+  },
+  {
+    "name": "outline-arrow-up",
+    "variant": "outline",
+    "title": "Arrow Up"
+  },
+  {
+    "name": "outline-arrow-uturn-down",
+    "variant": "outline",
+    "title": "Arrow Uturn Down"
+  },
+  {
+    "name": "outline-arrow-uturn-left",
+    "variant": "outline",
+    "title": "Arrow Uturn Left"
+  },
+  {
+    "name": "outline-arrow-uturn-right",
+    "variant": "outline",
+    "title": "Arrow Uturn Right"
+  },
+  {
+    "name": "outline-arrow-uturn-up",
+    "variant": "outline",
+    "title": "Arrow Uturn Up"
+  },
+  {
+    "name": "outline-arrows-pointing-in",
+    "variant": "outline",
+    "title": "Arrows Pointing In"
+  },
+  {
+    "name": "outline-arrows-pointing-out",
+    "variant": "outline",
+    "title": "Arrows Pointing Out"
+  },
+  {
+    "name": "outline-arrows-right-left",
+    "variant": "outline",
+    "title": "Arrows Right Left"
+  },
+  {
+    "name": "outline-arrows-up-down",
+    "variant": "outline",
+    "title": "Arrows Up Down"
+  },
+  {
+    "name": "outline-at-symbol",
+    "variant": "outline",
+    "title": "At Symbol"
+  },
+  {
+    "name": "outline-backspace",
+    "variant": "outline",
+    "title": "Backspace"
+  },
+  {
+    "name": "outline-backward",
+    "variant": "outline",
+    "title": "Backward"
+  },
+  {
+    "name": "outline-banknotes",
+    "variant": "outline",
+    "title": "Banknotes"
+  },
+  {
+    "name": "outline-bars-2",
+    "variant": "outline",
+    "title": "Bars 2"
+  },
+  {
+    "name": "outline-bars-3-bottom-left",
+    "variant": "outline",
+    "title": "Bars 3 Bottom Left"
+  },
+  {
+    "name": "outline-bars-3-bottom-right",
+    "variant": "outline",
+    "title": "Bars 3 Bottom Right"
+  },
+  {
+    "name": "outline-bars-3-center-left",
+    "variant": "outline",
+    "title": "Bars 3 Center Left"
+  },
+  {
+    "name": "outline-bars-3",
+    "variant": "outline",
+    "title": "Bars 3"
+  },
+  {
+    "name": "outline-bars-4",
+    "variant": "outline",
+    "title": "Bars 4"
+  },
+  {
+    "name": "outline-bars-arrow-down",
+    "variant": "outline",
+    "title": "Bars Arrow Down"
+  },
+  {
+    "name": "outline-bars-arrow-up",
+    "variant": "outline",
+    "title": "Bars Arrow Up"
+  },
+  {
+    "name": "outline-battery-0",
+    "variant": "outline",
+    "title": "Battery 0"
+  },
+  {
+    "name": "outline-battery-100",
+    "variant": "outline",
+    "title": "Battery 100"
+  },
+  {
+    "name": "outline-battery-50",
+    "variant": "outline",
+    "title": "Battery 50"
+  },
+  {
+    "name": "outline-beaker",
+    "variant": "outline",
+    "title": "Beaker"
+  },
+  {
+    "name": "outline-bell-alert",
+    "variant": "outline",
+    "title": "Bell Alert"
+  },
+  {
+    "name": "outline-bell-slash",
+    "variant": "outline",
+    "title": "Bell Slash"
+  },
+  {
+    "name": "outline-bell-snooze",
+    "variant": "outline",
+    "title": "Bell Snooze"
+  },
+  {
+    "name": "outline-bell",
+    "variant": "outline",
+    "title": "Bell"
+  },
+  {
+    "name": "outline-bolt-slash",
+    "variant": "outline",
+    "title": "Bolt Slash"
+  },
+  {
+    "name": "outline-bolt",
+    "variant": "outline",
+    "title": "Bolt"
+  },
+  {
+    "name": "outline-book-open",
+    "variant": "outline",
+    "title": "Book Open"
+  },
+  {
+    "name": "outline-bookmark-slash",
+    "variant": "outline",
+    "title": "Bookmark Slash"
+  },
+  {
+    "name": "outline-bookmark-square",
+    "variant": "outline",
+    "title": "Bookmark Square"
+  },
+  {
+    "name": "outline-bookmark",
+    "variant": "outline",
+    "title": "Bookmark"
+  },
+  {
+    "name": "outline-briefcase",
+    "variant": "outline",
+    "title": "Briefcase"
+  },
+  {
+    "name": "outline-bug-ant",
+    "variant": "outline",
+    "title": "Bug Ant"
+  },
+  {
+    "name": "outline-building-library",
+    "variant": "outline",
+    "title": "Building Library"
+  },
+  {
+    "name": "outline-building-office-2",
+    "variant": "outline",
+    "title": "Building Office 2"
+  },
+  {
+    "name": "outline-building-office",
+    "variant": "outline",
+    "title": "Building Office"
+  },
+  {
+    "name": "outline-building-storefront",
+    "variant": "outline",
+    "title": "Building Storefront"
+  },
+  {
+    "name": "outline-cake",
+    "variant": "outline",
+    "title": "Cake"
+  },
+  {
+    "name": "outline-calculator",
+    "variant": "outline",
+    "title": "Calculator"
+  },
+  {
+    "name": "outline-calendar-days",
+    "variant": "outline",
+    "title": "Calendar Days"
+  },
+  {
+    "name": "outline-calendar",
+    "variant": "outline",
+    "title": "Calendar"
+  },
+  {
+    "name": "outline-camera",
+    "variant": "outline",
+    "title": "Camera"
+  },
+  {
+    "name": "outline-chart-bar-square",
+    "variant": "outline",
+    "title": "Chart Bar Square"
+  },
+  {
+    "name": "outline-chart-bar",
+    "variant": "outline",
+    "title": "Chart Bar"
+  },
+  {
+    "name": "outline-chart-pie",
+    "variant": "outline",
+    "title": "Chart Pie"
+  },
+  {
+    "name": "outline-chat-bubble-bottom-center-text",
+    "variant": "outline",
+    "title": "Chat Bubble Bottom Center Text"
+  },
+  {
+    "name": "outline-chat-bubble-bottom-center",
+    "variant": "outline",
+    "title": "Chat Bubble Bottom Center"
+  },
+  {
+    "name": "outline-chat-bubble-left-ellipsis",
+    "variant": "outline",
+    "title": "Chat Bubble Left Ellipsis"
+  },
+  {
+    "name": "outline-chat-bubble-left-right",
+    "variant": "outline",
+    "title": "Chat Bubble Left Right"
+  },
+  {
+    "name": "outline-chat-bubble-left",
+    "variant": "outline",
+    "title": "Chat Bubble Left"
+  },
+  {
+    "name": "outline-chat-bubble-oval-left-ellipsis",
+    "variant": "outline",
+    "title": "Chat Bubble Oval Left Ellipsis"
+  },
+  {
+    "name": "outline-chat-bubble-oval-left",
+    "variant": "outline",
+    "title": "Chat Bubble Oval Left"
+  },
+  {
+    "name": "outline-check-badge",
+    "variant": "outline",
+    "title": "Check Badge"
+  },
+  {
+    "name": "outline-check-circle",
+    "variant": "outline",
+    "title": "Check Circle"
+  },
+  {
+    "name": "outline-check",
+    "variant": "outline",
+    "title": "Check"
+  },
+  {
+    "name": "outline-chevron-double-down",
+    "variant": "outline",
+    "title": "Chevron Double Down"
+  },
+  {
+    "name": "outline-chevron-double-left",
+    "variant": "outline",
+    "title": "Chevron Double Left"
+  },
+  {
+    "name": "outline-chevron-double-right",
+    "variant": "outline",
+    "title": "Chevron Double Right"
+  },
+  {
+    "name": "outline-chevron-double-up",
+    "variant": "outline",
+    "title": "Chevron Double Up"
+  },
+  {
+    "name": "outline-chevron-down",
+    "variant": "outline",
+    "title": "Chevron Down"
+  },
+  {
+    "name": "outline-chevron-left",
+    "variant": "outline",
+    "title": "Chevron Left"
+  },
+  {
+    "name": "outline-chevron-right",
+    "variant": "outline",
+    "title": "Chevron Right"
+  },
+  {
+    "name": "outline-chevron-up-down",
+    "variant": "outline",
+    "title": "Chevron Up Down"
+  },
+  {
+    "name": "outline-chevron-up",
+    "variant": "outline",
+    "title": "Chevron Up"
+  },
+  {
+    "name": "outline-circle-stack",
+    "variant": "outline",
+    "title": "Circle Stack"
+  },
+  {
+    "name": "outline-clipboard-document-check",
+    "variant": "outline",
+    "title": "Clipboard Document Check"
+  },
+  {
+    "name": "outline-clipboard-document-list",
+    "variant": "outline",
+    "title": "Clipboard Document List"
+  },
+  {
+    "name": "outline-clipboard-document",
+    "variant": "outline",
+    "title": "Clipboard Document"
+  },
+  {
+    "name": "outline-clipboard",
+    "variant": "outline",
+    "title": "Clipboard"
+  },
+  {
+    "name": "outline-clock",
+    "variant": "outline",
+    "title": "Clock"
+  },
+  {
+    "name": "outline-cloud-arrow-down",
+    "variant": "outline",
+    "title": "Cloud Arrow Down"
+  },
+  {
+    "name": "outline-cloud-arrow-up",
+    "variant": "outline",
+    "title": "Cloud Arrow Up"
+  },
+  {
+    "name": "outline-cloud",
+    "variant": "outline",
+    "title": "Cloud"
+  },
+  {
+    "name": "outline-code-bracket-square",
+    "variant": "outline",
+    "title": "Code Bracket Square"
+  },
+  {
+    "name": "outline-code-bracket",
+    "variant": "outline",
+    "title": "Code Bracket"
+  },
+  {
+    "name": "outline-cog-6-tooth",
+    "variant": "outline",
+    "title": "Cog 6 Tooth"
+  },
+  {
+    "name": "outline-cog-8-tooth",
+    "variant": "outline",
+    "title": "Cog 8 Tooth"
+  },
+  {
+    "name": "outline-cog",
+    "variant": "outline",
+    "title": "Cog"
+  },
+  {
+    "name": "outline-command-line",
+    "variant": "outline",
+    "title": "Command Line"
+  },
+  {
+    "name": "outline-computer-desktop",
+    "variant": "outline",
+    "title": "Computer Desktop"
+  },
+  {
+    "name": "outline-cpu-chip",
+    "variant": "outline",
+    "title": "Cpu Chip"
+  },
+  {
+    "name": "outline-credit-card",
+    "variant": "outline",
+    "title": "Credit Card"
+  },
+  {
+    "name": "outline-cube-transparent",
+    "variant": "outline",
+    "title": "Cube Transparent"
+  },
+  {
+    "name": "outline-cube",
+    "variant": "outline",
+    "title": "Cube"
+  },
+  {
+    "name": "outline-currency-bangladeshi",
+    "variant": "outline",
+    "title": "Currency Bangladeshi"
+  },
+  {
+    "name": "outline-currency-dollar",
+    "variant": "outline",
+    "title": "Currency Dollar"
+  },
+  {
+    "name": "outline-currency-euro",
+    "variant": "outline",
+    "title": "Currency Euro"
+  },
+  {
+    "name": "outline-currency-pound",
+    "variant": "outline",
+    "title": "Currency Pound"
+  },
+  {
+    "name": "outline-currency-rupee",
+    "variant": "outline",
+    "title": "Currency Rupee"
+  },
+  {
+    "name": "outline-currency-yen",
+    "variant": "outline",
+    "title": "Currency Yen"
+  },
+  {
+    "name": "outline-cursor-arrow-rays",
+    "variant": "outline",
+    "title": "Cursor Arrow Rays"
+  },
+  {
+    "name": "outline-cursor-arrow-ripple",
+    "variant": "outline",
+    "title": "Cursor Arrow Ripple"
+  },
+  {
+    "name": "outline-device-phone-mobile",
+    "variant": "outline",
+    "title": "Device Phone Mobile"
+  },
+  {
+    "name": "outline-device-tablet",
+    "variant": "outline",
+    "title": "Device Tablet"
+  },
+  {
+    "name": "outline-document-arrow-down",
+    "variant": "outline",
+    "title": "Document Arrow Down"
+  },
+  {
+    "name": "outline-document-arrow-up",
+    "variant": "outline",
+    "title": "Document Arrow Up"
+  },
+  {
+    "name": "outline-document-chart-bar",
+    "variant": "outline",
+    "title": "Document Chart Bar"
+  },
+  {
+    "name": "outline-document-check",
+    "variant": "outline",
+    "title": "Document Check"
+  },
+  {
+    "name": "outline-document-duplicate",
+    "variant": "outline",
+    "title": "Document Duplicate"
+  },
+  {
+    "name": "outline-document-magnifying-glass",
+    "variant": "outline",
+    "title": "Document Magnifying Glass"
+  },
+  {
+    "name": "outline-document-minus",
+    "variant": "outline",
+    "title": "Document Minus"
+  },
+  {
+    "name": "outline-document-plus",
+    "variant": "outline",
+    "title": "Document Plus"
+  },
+  {
+    "name": "outline-document-text",
+    "variant": "outline",
+    "title": "Document Text"
+  },
+  {
+    "name": "outline-document",
+    "variant": "outline",
+    "title": "Document"
+  },
+  {
+    "name": "outline-ellipsis-horizontal-circle",
+    "variant": "outline",
+    "title": "Ellipsis Horizontal Circle"
+  },
+  {
+    "name": "outline-ellipsis-horizontal",
+    "variant": "outline",
+    "title": "Ellipsis Horizontal"
+  },
+  {
+    "name": "outline-ellipsis-vertical",
+    "variant": "outline",
+    "title": "Ellipsis Vertical"
+  },
+  {
+    "name": "outline-envelope-open",
+    "variant": "outline",
+    "title": "Envelope Open"
+  },
+  {
+    "name": "outline-envelope",
+    "variant": "outline",
+    "title": "Envelope"
+  },
+  {
+    "name": "outline-exclamation-circle",
+    "variant": "outline",
+    "title": "Exclamation Circle"
+  },
+  {
+    "name": "outline-exclamation-triangle",
+    "variant": "outline",
+    "title": "Exclamation Triangle"
+  },
+  {
+    "name": "outline-eye-dropper",
+    "variant": "outline",
+    "title": "Eye Dropper"
+  },
+  {
+    "name": "outline-eye-slash",
+    "variant": "outline",
+    "title": "Eye Slash"
+  },
+  {
+    "name": "outline-eye",
+    "variant": "outline",
+    "title": "Eye"
+  },
+  {
+    "name": "outline-face-frown",
+    "variant": "outline",
+    "title": "Face Frown"
+  },
+  {
+    "name": "outline-face-smile",
+    "variant": "outline",
+    "title": "Face Smile"
+  },
+  {
+    "name": "outline-film",
+    "variant": "outline",
+    "title": "Film"
+  },
+  {
+    "name": "outline-finger-print",
+    "variant": "outline",
+    "title": "Finger Print"
+  },
+  {
+    "name": "outline-fire",
+    "variant": "outline",
+    "title": "Fire"
+  },
+  {
+    "name": "outline-flag",
+    "variant": "outline",
+    "title": "Flag"
+  },
+  {
+    "name": "outline-folder-arrow-down",
+    "variant": "outline",
+    "title": "Folder Arrow Down"
+  },
+  {
+    "name": "outline-folder-minus",
+    "variant": "outline",
+    "title": "Folder Minus"
+  },
+  {
+    "name": "outline-folder-open",
+    "variant": "outline",
+    "title": "Folder Open"
+  },
+  {
+    "name": "outline-folder-plus",
+    "variant": "outline",
+    "title": "Folder Plus"
+  },
+  {
+    "name": "outline-folder",
+    "variant": "outline",
+    "title": "Folder"
+  },
+  {
+    "name": "outline-forward",
+    "variant": "outline",
+    "title": "Forward"
+  },
+  {
+    "name": "outline-funnel",
+    "variant": "outline",
+    "title": "Funnel"
+  },
+  {
+    "name": "outline-gif",
+    "variant": "outline",
+    "title": "Gif"
+  },
+  {
+    "name": "outline-gift-top",
+    "variant": "outline",
+    "title": "Gift Top"
+  },
+  {
+    "name": "outline-gift",
+    "variant": "outline",
+    "title": "Gift"
+  },
+  {
+    "name": "outline-globe-alt",
+    "variant": "outline",
+    "title": "Globe Alt"
+  },
+  {
+    "name": "outline-globe-americas",
+    "variant": "outline",
+    "title": "Globe Americas"
+  },
+  {
+    "name": "outline-globe-asia-australia",
+    "variant": "outline",
+    "title": "Globe Asia Australia"
+  },
+  {
+    "name": "outline-globe-europe-africa",
+    "variant": "outline",
+    "title": "Globe Europe Africa"
+  },
+  {
+    "name": "outline-hand-raised",
+    "variant": "outline",
+    "title": "Hand Raised"
+  },
+  {
+    "name": "outline-hand-thumb-down",
+    "variant": "outline",
+    "title": "Hand Thumb Down"
+  },
+  {
+    "name": "outline-hand-thumb-up",
+    "variant": "outline",
+    "title": "Hand Thumb Up"
+  },
+  {
+    "name": "outline-hashtag",
+    "variant": "outline",
+    "title": "Hashtag"
+  },
+  {
+    "name": "outline-heart",
+    "variant": "outline",
+    "title": "Heart"
+  },
+  {
+    "name": "outline-home-modern",
+    "variant": "outline",
+    "title": "Home Modern"
+  },
+  {
+    "name": "outline-home",
+    "variant": "outline",
+    "title": "Home"
+  },
+  {
+    "name": "outline-identification",
+    "variant": "outline",
+    "title": "Identification"
+  },
+  {
+    "name": "outline-inbox-arrow-down",
+    "variant": "outline",
+    "title": "Inbox Arrow Down"
+  },
+  {
+    "name": "outline-inbox-stack",
+    "variant": "outline",
+    "title": "Inbox Stack"
+  },
+  {
+    "name": "outline-inbox",
+    "variant": "outline",
+    "title": "Inbox"
+  },
+  {
+    "name": "outline-information-circle",
+    "variant": "outline",
+    "title": "Information Circle"
+  },
+  {
+    "name": "outline-key",
+    "variant": "outline",
+    "title": "Key"
+  },
+  {
+    "name": "outline-language",
+    "variant": "outline",
+    "title": "Language"
+  },
+  {
+    "name": "outline-lifebuoy",
+    "variant": "outline",
+    "title": "Lifebuoy"
+  },
+  {
+    "name": "outline-light-bulb",
+    "variant": "outline",
+    "title": "Light Bulb"
+  },
+  {
+    "name": "outline-link",
+    "variant": "outline",
+    "title": "Link"
+  },
+  {
+    "name": "outline-list-bullet",
+    "variant": "outline",
+    "title": "List Bullet"
+  },
+  {
+    "name": "outline-lock-closed",
+    "variant": "outline",
+    "title": "Lock Closed"
+  },
+  {
+    "name": "outline-lock-open",
+    "variant": "outline",
+    "title": "Lock Open"
+  },
+  {
+    "name": "outline-magnifying-glass-circle",
+    "variant": "outline",
+    "title": "Magnifying Glass Circle"
+  },
+  {
+    "name": "outline-magnifying-glass-minus",
+    "variant": "outline",
+    "title": "Magnifying Glass Minus"
+  },
+  {
+    "name": "outline-magnifying-glass-plus",
+    "variant": "outline",
+    "title": "Magnifying Glass Plus"
+  },
+  {
+    "name": "outline-magnifying-glass",
+    "variant": "outline",
+    "title": "Magnifying Glass"
+  },
+  {
+    "name": "outline-map-pin",
+    "variant": "outline",
+    "title": "Map Pin"
+  },
+  {
+    "name": "outline-map",
+    "variant": "outline",
+    "title": "Map"
+  },
+  {
+    "name": "outline-megaphone",
+    "variant": "outline",
+    "title": "Megaphone"
+  },
+  {
+    "name": "outline-microphone",
+    "variant": "outline",
+    "title": "Microphone"
+  },
+  {
+    "name": "outline-minus-circle",
+    "variant": "outline",
+    "title": "Minus Circle"
+  },
+  {
+    "name": "outline-minus-small",
+    "variant": "outline",
+    "title": "Minus Small"
+  },
+  {
+    "name": "outline-minus",
+    "variant": "outline",
+    "title": "Minus"
+  },
+  {
+    "name": "outline-moon",
+    "variant": "outline",
+    "title": "Moon"
+  },
+  {
+    "name": "outline-musical-note",
+    "variant": "outline",
+    "title": "Musical Note"
+  },
+  {
+    "name": "outline-newspaper",
+    "variant": "outline",
+    "title": "Newspaper"
+  },
+  {
+    "name": "outline-no-symbol",
+    "variant": "outline",
+    "title": "No Symbol"
+  },
+  {
+    "name": "outline-paint-brush",
+    "variant": "outline",
+    "title": "Paint Brush"
+  },
+  {
+    "name": "outline-paper-airplane",
+    "variant": "outline",
+    "title": "Paper Airplane"
+  },
+  {
+    "name": "outline-paper-clip",
+    "variant": "outline",
+    "title": "Paper Clip"
+  },
+  {
+    "name": "outline-pause-circle",
+    "variant": "outline",
+    "title": "Pause Circle"
+  },
+  {
+    "name": "outline-pause",
+    "variant": "outline",
+    "title": "Pause"
+  },
+  {
+    "name": "outline-pencil-square",
+    "variant": "outline",
+    "title": "Pencil Square"
+  },
+  {
+    "name": "outline-pencil",
+    "variant": "outline",
+    "title": "Pencil"
+  },
+  {
+    "name": "outline-phone-arrow-down-left",
+    "variant": "outline",
+    "title": "Phone Arrow Down Left"
+  },
+  {
+    "name": "outline-phone-arrow-up-right",
+    "variant": "outline",
+    "title": "Phone Arrow Up Right"
+  },
+  {
+    "name": "outline-phone-x-mark",
+    "variant": "outline",
+    "title": "Phone X Mark"
+  },
+  {
+    "name": "outline-phone",
+    "variant": "outline",
+    "title": "Phone"
+  },
+  {
+    "name": "outline-photo",
+    "variant": "outline",
+    "title": "Photo"
+  },
+  {
+    "name": "outline-play-circle",
+    "variant": "outline",
+    "title": "Play Circle"
+  },
+  {
+    "name": "outline-play-pause",
+    "variant": "outline",
+    "title": "Play Pause"
+  },
+  {
+    "name": "outline-play",
+    "variant": "outline",
+    "title": "Play"
+  },
+  {
+    "name": "outline-plus-circle",
+    "variant": "outline",
+    "title": "Plus Circle"
+  },
+  {
+    "name": "outline-plus-small",
+    "variant": "outline",
+    "title": "Plus Small"
+  },
+  {
+    "name": "outline-plus",
+    "variant": "outline",
+    "title": "Plus"
+  },
+  {
+    "name": "outline-power",
+    "variant": "outline",
+    "title": "Power"
+  },
+  {
+    "name": "outline-presentation-chart-bar",
+    "variant": "outline",
+    "title": "Presentation Chart Bar"
+  },
+  {
+    "name": "outline-presentation-chart-line",
+    "variant": "outline",
+    "title": "Presentation Chart Line"
+  },
+  {
+    "name": "outline-printer",
+    "variant": "outline",
+    "title": "Printer"
+  },
+  {
+    "name": "outline-puzzle-piece",
+    "variant": "outline",
+    "title": "Puzzle Piece"
+  },
+  {
+    "name": "outline-qr-code",
+    "variant": "outline",
+    "title": "Qr Code"
+  },
+  {
+    "name": "outline-question-mark-circle",
+    "variant": "outline",
+    "title": "Question Mark Circle"
+  },
+  {
+    "name": "outline-queue-list",
+    "variant": "outline",
+    "title": "Queue List"
+  },
+  {
+    "name": "outline-radio",
+    "variant": "outline",
+    "title": "Radio"
+  },
+  {
+    "name": "outline-receipt-percent",
+    "variant": "outline",
+    "title": "Receipt Percent"
+  },
+  {
+    "name": "outline-receipt-refund",
+    "variant": "outline",
+    "title": "Receipt Refund"
+  },
+  {
+    "name": "outline-rectangle-group",
+    "variant": "outline",
+    "title": "Rectangle Group"
+  },
+  {
+    "name": "outline-rectangle-stack",
+    "variant": "outline",
+    "title": "Rectangle Stack"
+  },
+  {
+    "name": "outline-rocket-launch",
+    "variant": "outline",
+    "title": "Rocket Launch"
+  },
+  {
+    "name": "outline-rss",
+    "variant": "outline",
+    "title": "Rss"
+  },
+  {
+    "name": "outline-scale",
+    "variant": "outline",
+    "title": "Scale"
+  },
+  {
+    "name": "outline-scissors",
+    "variant": "outline",
+    "title": "Scissors"
+  },
+  {
+    "name": "outline-server-stack",
+    "variant": "outline",
+    "title": "Server Stack"
+  },
+  {
+    "name": "outline-server",
+    "variant": "outline",
+    "title": "Server"
+  },
+  {
+    "name": "outline-share",
+    "variant": "outline",
+    "title": "Share"
+  },
+  {
+    "name": "outline-shield-check",
+    "variant": "outline",
+    "title": "Shield Check"
+  },
+  {
+    "name": "outline-shield-exclamation",
+    "variant": "outline",
+    "title": "Shield Exclamation"
+  },
+  {
+    "name": "outline-shopping-bag",
+    "variant": "outline",
+    "title": "Shopping Bag"
+  },
+  {
+    "name": "outline-shopping-cart",
+    "variant": "outline",
+    "title": "Shopping Cart"
+  },
+  {
+    "name": "outline-signal-slash",
+    "variant": "outline",
+    "title": "Signal Slash"
+  },
+  {
+    "name": "outline-signal",
+    "variant": "outline",
+    "title": "Signal"
+  },
+  {
+    "name": "outline-sparkles",
+    "variant": "outline",
+    "title": "Sparkles"
+  },
+  {
+    "name": "outline-speaker-wave",
+    "variant": "outline",
+    "title": "Speaker Wave"
+  },
+  {
+    "name": "outline-speaker-x-mark",
+    "variant": "outline",
+    "title": "Speaker X Mark"
+  },
+  {
+    "name": "outline-square-2-stack",
+    "variant": "outline",
+    "title": "Square 2 Stack"
+  },
+  {
+    "name": "outline-square-3-stack-3d",
+    "variant": "outline",
+    "title": "Square 3 Stack 3d"
+  },
+  {
+    "name": "outline-squares-2x2",
+    "variant": "outline",
+    "title": "Squares 2x2"
+  },
+  {
+    "name": "outline-squares-plus",
+    "variant": "outline",
+    "title": "Squares Plus"
+  },
+  {
+    "name": "outline-star",
+    "variant": "outline",
+    "title": "Star"
+  },
+  {
+    "name": "outline-stop-circle",
+    "variant": "outline",
+    "title": "Stop Circle"
+  },
+  {
+    "name": "outline-stop",
+    "variant": "outline",
+    "title": "Stop"
+  },
+  {
+    "name": "outline-sun",
+    "variant": "outline",
+    "title": "Sun"
+  },
+  {
+    "name": "outline-swatch",
+    "variant": "outline",
+    "title": "Swatch"
+  },
+  {
+    "name": "outline-table-cells",
+    "variant": "outline",
+    "title": "Table Cells"
+  },
+  {
+    "name": "outline-tag",
+    "variant": "outline",
+    "title": "Tag"
+  },
+  {
+    "name": "outline-ticket",
+    "variant": "outline",
+    "title": "Ticket"
+  },
+  {
+    "name": "outline-trash",
+    "variant": "outline",
+    "title": "Trash"
+  },
+  {
+    "name": "outline-trophy",
+    "variant": "outline",
+    "title": "Trophy"
+  },
+  {
+    "name": "outline-truck",
+    "variant": "outline",
+    "title": "Truck"
+  },
+  {
+    "name": "outline-tv",
+    "variant": "outline",
+    "title": "Tv"
+  },
+  {
+    "name": "outline-user-circle",
+    "variant": "outline",
+    "title": "User Circle"
+  },
+  {
+    "name": "outline-user-group",
+    "variant": "outline",
+    "title": "User Group"
+  },
+  {
+    "name": "outline-user-minus",
+    "variant": "outline",
+    "title": "User Minus"
+  },
+  {
+    "name": "outline-user-plus",
+    "variant": "outline",
+    "title": "User Plus"
+  },
+  {
+    "name": "outline-user",
+    "variant": "outline",
+    "title": "User"
+  },
+  {
+    "name": "outline-users",
+    "variant": "outline",
+    "title": "Users"
+  },
+  {
+    "name": "outline-variable",
+    "variant": "outline",
+    "title": "Variable"
+  },
+  {
+    "name": "outline-video-camera-slash",
+    "variant": "outline",
+    "title": "Video Camera Slash"
+  },
+  {
+    "name": "outline-video-camera",
+    "variant": "outline",
+    "title": "Video Camera"
+  },
+  {
+    "name": "outline-view-columns",
+    "variant": "outline",
+    "title": "View Columns"
+  },
+  {
+    "name": "outline-viewfinder-circle",
+    "variant": "outline",
+    "title": "Viewfinder Circle"
+  },
+  {
+    "name": "outline-wallet",
+    "variant": "outline",
+    "title": "Wallet"
+  },
+  {
+    "name": "outline-wifi",
+    "variant": "outline",
+    "title": "Wifi"
+  },
+  {
+    "name": "outline-window",
+    "variant": "outline",
+    "title": "Window"
+  },
+  {
+    "name": "outline-wrench-screwdriver",
+    "variant": "outline",
+    "title": "Wrench Screwdriver"
+  },
+  {
+    "name": "outline-wrench",
+    "variant": "outline",
+    "title": "Wrench"
+  },
+  {
+    "name": "outline-x-circle",
+    "variant": "outline",
+    "title": "X Circle"
+  },
+  {
+    "name": "outline-x-mark",
+    "variant": "outline",
+    "title": "X Mark"
+  },
+  {
+    "name": "solid-academic-cap",
+    "variant": "solid",
+    "title": "Academic Cap"
+  },
+  {
+    "name": "solid-adjustments-horizontal",
+    "variant": "solid",
+    "title": "Adjustments Horizontal"
+  },
+  {
+    "name": "solid-adjustments-vertical",
+    "variant": "solid",
+    "title": "Adjustments Vertical"
+  },
+  {
+    "name": "solid-archive-box-arrow-down",
+    "variant": "solid",
+    "title": "Archive Box Arrow Down"
+  },
+  {
+    "name": "solid-archive-box-x-mark",
+    "variant": "solid",
+    "title": "Archive Box X Mark"
+  },
+  {
+    "name": "solid-archive-box",
+    "variant": "solid",
+    "title": "Archive Box"
+  },
+  {
+    "name": "solid-arrow-down-circle",
+    "variant": "solid",
+    "title": "Arrow Down Circle"
+  },
+  {
+    "name": "solid-arrow-down-left",
+    "variant": "solid",
+    "title": "Arrow Down Left"
+  },
+  {
+    "name": "solid-arrow-down-on-square-stack",
+    "variant": "solid",
+    "title": "Arrow Down On Square Stack"
+  },
+  {
+    "name": "solid-arrow-down-on-square",
+    "variant": "solid",
+    "title": "Arrow Down On Square"
+  },
+  {
+    "name": "solid-arrow-down-right",
+    "variant": "solid",
+    "title": "Arrow Down Right"
+  },
+  {
+    "name": "solid-arrow-down-tray",
+    "variant": "solid",
+    "title": "Arrow Down Tray"
+  },
+  {
+    "name": "solid-arrow-down",
+    "variant": "solid",
+    "title": "Arrow Down"
+  },
+  {
+    "name": "solid-arrow-left-circle",
+    "variant": "solid",
+    "title": "Arrow Left Circle"
+  },
+  {
+    "name": "solid-arrow-left-end-on-rectangle",
+    "variant": "solid",
+    "title": "Arrow Left End On Rectangle"
+  },
+  {
+    "name": "solid-arrow-left-on-rectangle",
+    "variant": "solid",
+    "title": "Arrow Left On Rectangle"
+  },
+  {
+    "name": "solid-arrow-left-start-on-rectangle",
+    "variant": "solid",
+    "title": "Arrow Left Start On Rectangle"
+  },
+  {
+    "name": "solid-arrow-left",
+    "variant": "solid",
+    "title": "Arrow Left"
+  },
+  {
+    "name": "solid-arrow-long-down",
+    "variant": "solid",
+    "title": "Arrow Long Down"
+  },
+  {
+    "name": "solid-arrow-long-left",
+    "variant": "solid",
+    "title": "Arrow Long Left"
+  },
+  {
+    "name": "solid-arrow-long-right",
+    "variant": "solid",
+    "title": "Arrow Long Right"
+  },
+  {
+    "name": "solid-arrow-long-up",
+    "variant": "solid",
+    "title": "Arrow Long Up"
+  },
+  {
+    "name": "solid-arrow-path-rounded-square",
+    "variant": "solid",
+    "title": "Arrow Path Rounded Square"
+  },
+  {
+    "name": "solid-arrow-path",
+    "variant": "solid",
+    "title": "Arrow Path"
+  },
+  {
+    "name": "solid-arrow-right-circle",
+    "variant": "solid",
+    "title": "Arrow Right Circle"
+  },
+  {
+    "name": "solid-arrow-right-end-on-rectangle",
+    "variant": "solid",
+    "title": "Arrow Right End On Rectangle"
+  },
+  {
+    "name": "solid-arrow-right-on-rectangle",
+    "variant": "solid",
+    "title": "Arrow Right On Rectangle"
+  },
+  {
+    "name": "solid-arrow-right-start-on-rectangle",
+    "variant": "solid",
+    "title": "Arrow Right Start On Rectangle"
+  },
+  {
+    "name": "solid-arrow-right",
+    "variant": "solid",
+    "title": "Arrow Right"
+  },
+  {
+    "name": "solid-arrow-small-down",
+    "variant": "solid",
+    "title": "Arrow Small Down"
+  },
+  {
+    "name": "solid-arrow-small-left",
+    "variant": "solid",
+    "title": "Arrow Small Left"
+  },
+  {
+    "name": "solid-arrow-small-right",
+    "variant": "solid",
+    "title": "Arrow Small Right"
+  },
+  {
+    "name": "solid-arrow-small-up",
+    "variant": "solid",
+    "title": "Arrow Small Up"
+  },
+  {
+    "name": "solid-arrow-top-right-on-square",
+    "variant": "solid",
+    "title": "Arrow Top Right On Square"
+  },
+  {
+    "name": "solid-arrow-trending-down",
+    "variant": "solid",
+    "title": "Arrow Trending Down"
+  },
+  {
+    "name": "solid-arrow-trending-up",
+    "variant": "solid",
+    "title": "Arrow Trending Up"
+  },
+  {
+    "name": "solid-arrow-up-circle",
+    "variant": "solid",
+    "title": "Arrow Up Circle"
+  },
+  {
+    "name": "solid-arrow-up-left",
+    "variant": "solid",
+    "title": "Arrow Up Left"
+  },
+  {
+    "name": "solid-arrow-up-on-square-stack",
+    "variant": "solid",
+    "title": "Arrow Up On Square Stack"
+  },
+  {
+    "name": "solid-arrow-up-on-square",
+    "variant": "solid",
+    "title": "Arrow Up On Square"
+  },
+  {
+    "name": "solid-arrow-up-right",
+    "variant": "solid",
+    "title": "Arrow Up Right"
+  },
+  {
+    "name": "solid-arrow-up-tray",
+    "variant": "solid",
+    "title": "Arrow Up Tray"
+  },
+  {
+    "name": "solid-arrow-up",
+    "variant": "solid",
+    "title": "Arrow Up"
+  },
+  {
+    "name": "solid-arrow-uturn-down",
+    "variant": "solid",
+    "title": "Arrow Uturn Down"
+  },
+  {
+    "name": "solid-arrow-uturn-left",
+    "variant": "solid",
+    "title": "Arrow Uturn Left"
+  },
+  {
+    "name": "solid-arrow-uturn-right",
+    "variant": "solid",
+    "title": "Arrow Uturn Right"
+  },
+  {
+    "name": "solid-arrow-uturn-up",
+    "variant": "solid",
+    "title": "Arrow Uturn Up"
+  },
+  {
+    "name": "solid-arrows-pointing-in",
+    "variant": "solid",
+    "title": "Arrows Pointing In"
+  },
+  {
+    "name": "solid-arrows-pointing-out",
+    "variant": "solid",
+    "title": "Arrows Pointing Out"
+  },
+  {
+    "name": "solid-arrows-right-left",
+    "variant": "solid",
+    "title": "Arrows Right Left"
+  },
+  {
+    "name": "solid-arrows-up-down",
+    "variant": "solid",
+    "title": "Arrows Up Down"
+  },
+  {
+    "name": "solid-at-symbol",
+    "variant": "solid",
+    "title": "At Symbol"
+  },
+  {
+    "name": "solid-backspace",
+    "variant": "solid",
+    "title": "Backspace"
+  },
+  {
+    "name": "solid-backward",
+    "variant": "solid",
+    "title": "Backward"
+  },
+  {
+    "name": "solid-banknotes",
+    "variant": "solid",
+    "title": "Banknotes"
+  },
+  {
+    "name": "solid-bars-2",
+    "variant": "solid",
+    "title": "Bars 2"
+  },
+  {
+    "name": "solid-bars-3-bottom-left",
+    "variant": "solid",
+    "title": "Bars 3 Bottom Left"
+  },
+  {
+    "name": "solid-bars-3-bottom-right",
+    "variant": "solid",
+    "title": "Bars 3 Bottom Right"
+  },
+  {
+    "name": "solid-bars-3-center-left",
+    "variant": "solid",
+    "title": "Bars 3 Center Left"
+  },
+  {
+    "name": "solid-bars-3",
+    "variant": "solid",
+    "title": "Bars 3"
+  },
+  {
+    "name": "solid-bars-4",
+    "variant": "solid",
+    "title": "Bars 4"
+  },
+  {
+    "name": "solid-bars-arrow-down",
+    "variant": "solid",
+    "title": "Bars Arrow Down"
+  },
+  {
+    "name": "solid-bars-arrow-up",
+    "variant": "solid",
+    "title": "Bars Arrow Up"
+  },
+  {
+    "name": "solid-battery-0",
+    "variant": "solid",
+    "title": "Battery 0"
+  },
+  {
+    "name": "solid-battery-100",
+    "variant": "solid",
+    "title": "Battery 100"
+  },
+  {
+    "name": "solid-battery-50",
+    "variant": "solid",
+    "title": "Battery 50"
+  },
+  {
+    "name": "solid-beaker",
+    "variant": "solid",
+    "title": "Beaker"
+  },
+  {
+    "name": "solid-bell-alert",
+    "variant": "solid",
+    "title": "Bell Alert"
+  },
+  {
+    "name": "solid-bell-slash",
+    "variant": "solid",
+    "title": "Bell Slash"
+  },
+  {
+    "name": "solid-bell-snooze",
+    "variant": "solid",
+    "title": "Bell Snooze"
+  },
+  {
+    "name": "solid-bell",
+    "variant": "solid",
+    "title": "Bell"
+  },
+  {
+    "name": "solid-bolt-slash",
+    "variant": "solid",
+    "title": "Bolt Slash"
+  },
+  {
+    "name": "solid-bolt",
+    "variant": "solid",
+    "title": "Bolt"
+  },
+  {
+    "name": "solid-book-open",
+    "variant": "solid",
+    "title": "Book Open"
+  },
+  {
+    "name": "solid-bookmark-slash",
+    "variant": "solid",
+    "title": "Bookmark Slash"
+  },
+  {
+    "name": "solid-bookmark-square",
+    "variant": "solid",
+    "title": "Bookmark Square"
+  },
+  {
+    "name": "solid-bookmark",
+    "variant": "solid",
+    "title": "Bookmark"
+  },
+  {
+    "name": "solid-briefcase",
+    "variant": "solid",
+    "title": "Briefcase"
+  },
+  {
+    "name": "solid-bug-ant",
+    "variant": "solid",
+    "title": "Bug Ant"
+  },
+  {
+    "name": "solid-building-library",
+    "variant": "solid",
+    "title": "Building Library"
+  },
+  {
+    "name": "solid-building-office-2",
+    "variant": "solid",
+    "title": "Building Office 2"
+  },
+  {
+    "name": "solid-building-office",
+    "variant": "solid",
+    "title": "Building Office"
+  },
+  {
+    "name": "solid-building-storefront",
+    "variant": "solid",
+    "title": "Building Storefront"
+  },
+  {
+    "name": "solid-cake",
+    "variant": "solid",
+    "title": "Cake"
+  },
+  {
+    "name": "solid-calculator",
+    "variant": "solid",
+    "title": "Calculator"
+  },
+  {
+    "name": "solid-calendar-days",
+    "variant": "solid",
+    "title": "Calendar Days"
+  },
+  {
+    "name": "solid-calendar",
+    "variant": "solid",
+    "title": "Calendar"
+  },
+  {
+    "name": "solid-camera",
+    "variant": "solid",
+    "title": "Camera"
+  },
+  {
+    "name": "solid-chart-bar-square",
+    "variant": "solid",
+    "title": "Chart Bar Square"
+  },
+  {
+    "name": "solid-chart-bar",
+    "variant": "solid",
+    "title": "Chart Bar"
+  },
+  {
+    "name": "solid-chart-pie",
+    "variant": "solid",
+    "title": "Chart Pie"
+  },
+  {
+    "name": "solid-chat-bubble-bottom-center-text",
+    "variant": "solid",
+    "title": "Chat Bubble Bottom Center Text"
+  },
+  {
+    "name": "solid-chat-bubble-bottom-center",
+    "variant": "solid",
+    "title": "Chat Bubble Bottom Center"
+  },
+  {
+    "name": "solid-chat-bubble-left-ellipsis",
+    "variant": "solid",
+    "title": "Chat Bubble Left Ellipsis"
+  },
+  {
+    "name": "solid-chat-bubble-left-right",
+    "variant": "solid",
+    "title": "Chat Bubble Left Right"
+  },
+  {
+    "name": "solid-chat-bubble-left",
+    "variant": "solid",
+    "title": "Chat Bubble Left"
+  },
+  {
+    "name": "solid-chat-bubble-oval-left-ellipsis",
+    "variant": "solid",
+    "title": "Chat Bubble Oval Left Ellipsis"
+  },
+  {
+    "name": "solid-chat-bubble-oval-left",
+    "variant": "solid",
+    "title": "Chat Bubble Oval Left"
+  },
+  {
+    "name": "solid-check-badge",
+    "variant": "solid",
+    "title": "Check Badge"
+  },
+  {
+    "name": "solid-check-circle",
+    "variant": "solid",
+    "title": "Check Circle"
+  },
+  {
+    "name": "solid-check",
+    "variant": "solid",
+    "title": "Check"
+  },
+  {
+    "name": "solid-chevron-double-down",
+    "variant": "solid",
+    "title": "Chevron Double Down"
+  },
+  {
+    "name": "solid-chevron-double-left",
+    "variant": "solid",
+    "title": "Chevron Double Left"
+  },
+  {
+    "name": "solid-chevron-double-right",
+    "variant": "solid",
+    "title": "Chevron Double Right"
+  },
+  {
+    "name": "solid-chevron-double-up",
+    "variant": "solid",
+    "title": "Chevron Double Up"
+  },
+  {
+    "name": "solid-chevron-down",
+    "variant": "solid",
+    "title": "Chevron Down"
+  },
+  {
+    "name": "solid-chevron-left",
+    "variant": "solid",
+    "title": "Chevron Left"
+  },
+  {
+    "name": "solid-chevron-right",
+    "variant": "solid",
+    "title": "Chevron Right"
+  },
+  {
+    "name": "solid-chevron-up-down",
+    "variant": "solid",
+    "title": "Chevron Up Down"
+  },
+  {
+    "name": "solid-chevron-up",
+    "variant": "solid",
+    "title": "Chevron Up"
+  },
+  {
+    "name": "solid-circle-stack",
+    "variant": "solid",
+    "title": "Circle Stack"
+  },
+  {
+    "name": "solid-clipboard-document-check",
+    "variant": "solid",
+    "title": "Clipboard Document Check"
+  },
+  {
+    "name": "solid-clipboard-document-list",
+    "variant": "solid",
+    "title": "Clipboard Document List"
+  },
+  {
+    "name": "solid-clipboard-document",
+    "variant": "solid",
+    "title": "Clipboard Document"
+  },
+  {
+    "name": "solid-clipboard",
+    "variant": "solid",
+    "title": "Clipboard"
+  },
+  {
+    "name": "solid-clock",
+    "variant": "solid",
+    "title": "Clock"
+  },
+  {
+    "name": "solid-cloud-arrow-down",
+    "variant": "solid",
+    "title": "Cloud Arrow Down"
+  },
+  {
+    "name": "solid-cloud-arrow-up",
+    "variant": "solid",
+    "title": "Cloud Arrow Up"
+  },
+  {
+    "name": "solid-cloud",
+    "variant": "solid",
+    "title": "Cloud"
+  },
+  {
+    "name": "solid-code-bracket-square",
+    "variant": "solid",
+    "title": "Code Bracket Square"
+  },
+  {
+    "name": "solid-code-bracket",
+    "variant": "solid",
+    "title": "Code Bracket"
+  },
+  {
+    "name": "solid-cog-6-tooth",
+    "variant": "solid",
+    "title": "Cog 6 Tooth"
+  },
+  {
+    "name": "solid-cog-8-tooth",
+    "variant": "solid",
+    "title": "Cog 8 Tooth"
+  },
+  {
+    "name": "solid-cog",
+    "variant": "solid",
+    "title": "Cog"
+  },
+  {
+    "name": "solid-command-line",
+    "variant": "solid",
+    "title": "Command Line"
+  },
+  {
+    "name": "solid-computer-desktop",
+    "variant": "solid",
+    "title": "Computer Desktop"
+  },
+  {
+    "name": "solid-cpu-chip",
+    "variant": "solid",
+    "title": "Cpu Chip"
+  },
+  {
+    "name": "solid-credit-card",
+    "variant": "solid",
+    "title": "Credit Card"
+  },
+  {
+    "name": "solid-cube-transparent",
+    "variant": "solid",
+    "title": "Cube Transparent"
+  },
+  {
+    "name": "solid-cube",
+    "variant": "solid",
+    "title": "Cube"
+  },
+  {
+    "name": "solid-currency-bangladeshi",
+    "variant": "solid",
+    "title": "Currency Bangladeshi"
+  },
+  {
+    "name": "solid-currency-dollar",
+    "variant": "solid",
+    "title": "Currency Dollar"
+  },
+  {
+    "name": "solid-currency-euro",
+    "variant": "solid",
+    "title": "Currency Euro"
+  },
+  {
+    "name": "solid-currency-pound",
+    "variant": "solid",
+    "title": "Currency Pound"
+  },
+  {
+    "name": "solid-currency-rupee",
+    "variant": "solid",
+    "title": "Currency Rupee"
+  },
+  {
+    "name": "solid-currency-yen",
+    "variant": "solid",
+    "title": "Currency Yen"
+  },
+  {
+    "name": "solid-cursor-arrow-rays",
+    "variant": "solid",
+    "title": "Cursor Arrow Rays"
+  },
+  {
+    "name": "solid-cursor-arrow-ripple",
+    "variant": "solid",
+    "title": "Cursor Arrow Ripple"
+  },
+  {
+    "name": "solid-device-phone-mobile",
+    "variant": "solid",
+    "title": "Device Phone Mobile"
+  },
+  {
+    "name": "solid-device-tablet",
+    "variant": "solid",
+    "title": "Device Tablet"
+  },
+  {
+    "name": "solid-document-arrow-down",
+    "variant": "solid",
+    "title": "Document Arrow Down"
+  },
+  {
+    "name": "solid-document-arrow-up",
+    "variant": "solid",
+    "title": "Document Arrow Up"
+  },
+  {
+    "name": "solid-document-chart-bar",
+    "variant": "solid",
+    "title": "Document Chart Bar"
+  },
+  {
+    "name": "solid-document-check",
+    "variant": "solid",
+    "title": "Document Check"
+  },
+  {
+    "name": "solid-document-duplicate",
+    "variant": "solid",
+    "title": "Document Duplicate"
+  },
+  {
+    "name": "solid-document-magnifying-glass",
+    "variant": "solid",
+    "title": "Document Magnifying Glass"
+  },
+  {
+    "name": "solid-document-minus",
+    "variant": "solid",
+    "title": "Document Minus"
+  },
+  {
+    "name": "solid-document-plus",
+    "variant": "solid",
+    "title": "Document Plus"
+  },
+  {
+    "name": "solid-document-text",
+    "variant": "solid",
+    "title": "Document Text"
+  },
+  {
+    "name": "solid-document",
+    "variant": "solid",
+    "title": "Document"
+  },
+  {
+    "name": "solid-ellipsis-horizontal-circle",
+    "variant": "solid",
+    "title": "Ellipsis Horizontal Circle"
+  },
+  {
+    "name": "solid-ellipsis-horizontal",
+    "variant": "solid",
+    "title": "Ellipsis Horizontal"
+  },
+  {
+    "name": "solid-ellipsis-vertical",
+    "variant": "solid",
+    "title": "Ellipsis Vertical"
+  },
+  {
+    "name": "solid-envelope-open",
+    "variant": "solid",
+    "title": "Envelope Open"
+  },
+  {
+    "name": "solid-envelope",
+    "variant": "solid",
+    "title": "Envelope"
+  },
+  {
+    "name": "solid-exclamation-circle",
+    "variant": "solid",
+    "title": "Exclamation Circle"
+  },
+  {
+    "name": "solid-exclamation-triangle",
+    "variant": "solid",
+    "title": "Exclamation Triangle"
+  },
+  {
+    "name": "solid-eye-dropper",
+    "variant": "solid",
+    "title": "Eye Dropper"
+  },
+  {
+    "name": "solid-eye-slash",
+    "variant": "solid",
+    "title": "Eye Slash"
+  },
+  {
+    "name": "solid-eye",
+    "variant": "solid",
+    "title": "Eye"
+  },
+  {
+    "name": "solid-face-frown",
+    "variant": "solid",
+    "title": "Face Frown"
+  },
+  {
+    "name": "solid-face-smile",
+    "variant": "solid",
+    "title": "Face Smile"
+  },
+  {
+    "name": "solid-film",
+    "variant": "solid",
+    "title": "Film"
+  },
+  {
+    "name": "solid-finger-print",
+    "variant": "solid",
+    "title": "Finger Print"
+  },
+  {
+    "name": "solid-fire",
+    "variant": "solid",
+    "title": "Fire"
+  },
+  {
+    "name": "solid-flag",
+    "variant": "solid",
+    "title": "Flag"
+  },
+  {
+    "name": "solid-folder-arrow-down",
+    "variant": "solid",
+    "title": "Folder Arrow Down"
+  },
+  {
+    "name": "solid-folder-minus",
+    "variant": "solid",
+    "title": "Folder Minus"
+  },
+  {
+    "name": "solid-folder-open",
+    "variant": "solid",
+    "title": "Folder Open"
+  },
+  {
+    "name": "solid-folder-plus",
+    "variant": "solid",
+    "title": "Folder Plus"
+  },
+  {
+    "name": "solid-folder",
+    "variant": "solid",
+    "title": "Folder"
+  },
+  {
+    "name": "solid-forward",
+    "variant": "solid",
+    "title": "Forward"
+  },
+  {
+    "name": "solid-funnel",
+    "variant": "solid",
+    "title": "Funnel"
+  },
+  {
+    "name": "solid-gif",
+    "variant": "solid",
+    "title": "Gif"
+  },
+  {
+    "name": "solid-gift-top",
+    "variant": "solid",
+    "title": "Gift Top"
+  },
+  {
+    "name": "solid-gift",
+    "variant": "solid",
+    "title": "Gift"
+  },
+  {
+    "name": "solid-globe-alt",
+    "variant": "solid",
+    "title": "Globe Alt"
+  },
+  {
+    "name": "solid-globe-americas",
+    "variant": "solid",
+    "title": "Globe Americas"
+  },
+  {
+    "name": "solid-globe-asia-australia",
+    "variant": "solid",
+    "title": "Globe Asia Australia"
+  },
+  {
+    "name": "solid-globe-europe-africa",
+    "variant": "solid",
+    "title": "Globe Europe Africa"
+  },
+  {
+    "name": "solid-hand-raised",
+    "variant": "solid",
+    "title": "Hand Raised"
+  },
+  {
+    "name": "solid-hand-thumb-down",
+    "variant": "solid",
+    "title": "Hand Thumb Down"
+  },
+  {
+    "name": "solid-hand-thumb-up",
+    "variant": "solid",
+    "title": "Hand Thumb Up"
+  },
+  {
+    "name": "solid-hashtag",
+    "variant": "solid",
+    "title": "Hashtag"
+  },
+  {
+    "name": "solid-heart",
+    "variant": "solid",
+    "title": "Heart"
+  },
+  {
+    "name": "solid-home-modern",
+    "variant": "solid",
+    "title": "Home Modern"
+  },
+  {
+    "name": "solid-home",
+    "variant": "solid",
+    "title": "Home"
+  },
+  {
+    "name": "solid-identification",
+    "variant": "solid",
+    "title": "Identification"
+  },
+  {
+    "name": "solid-inbox-arrow-down",
+    "variant": "solid",
+    "title": "Inbox Arrow Down"
+  },
+  {
+    "name": "solid-inbox-stack",
+    "variant": "solid",
+    "title": "Inbox Stack"
+  },
+  {
+    "name": "solid-inbox",
+    "variant": "solid",
+    "title": "Inbox"
+  },
+  {
+    "name": "solid-information-circle",
+    "variant": "solid",
+    "title": "Information Circle"
+  },
+  {
+    "name": "solid-key",
+    "variant": "solid",
+    "title": "Key"
+  },
+  {
+    "name": "solid-language",
+    "variant": "solid",
+    "title": "Language"
+  },
+  {
+    "name": "solid-lifebuoy",
+    "variant": "solid",
+    "title": "Lifebuoy"
+  },
+  {
+    "name": "solid-light-bulb",
+    "variant": "solid",
+    "title": "Light Bulb"
+  },
+  {
+    "name": "solid-link",
+    "variant": "solid",
+    "title": "Link"
+  },
+  {
+    "name": "solid-list-bullet",
+    "variant": "solid",
+    "title": "List Bullet"
+  },
+  {
+    "name": "solid-lock-closed",
+    "variant": "solid",
+    "title": "Lock Closed"
+  },
+  {
+    "name": "solid-lock-open",
+    "variant": "solid",
+    "title": "Lock Open"
+  },
+  {
+    "name": "solid-magnifying-glass-circle",
+    "variant": "solid",
+    "title": "Magnifying Glass Circle"
+  },
+  {
+    "name": "solid-magnifying-glass-minus",
+    "variant": "solid",
+    "title": "Magnifying Glass Minus"
+  },
+  {
+    "name": "solid-magnifying-glass-plus",
+    "variant": "solid",
+    "title": "Magnifying Glass Plus"
+  },
+  {
+    "name": "solid-magnifying-glass",
+    "variant": "solid",
+    "title": "Magnifying Glass"
+  },
+  {
+    "name": "solid-map-pin",
+    "variant": "solid",
+    "title": "Map Pin"
+  },
+  {
+    "name": "solid-map",
+    "variant": "solid",
+    "title": "Map"
+  },
+  {
+    "name": "solid-megaphone",
+    "variant": "solid",
+    "title": "Megaphone"
+  },
+  {
+    "name": "solid-microphone",
+    "variant": "solid",
+    "title": "Microphone"
+  },
+  {
+    "name": "solid-minus-circle",
+    "variant": "solid",
+    "title": "Minus Circle"
+  },
+  {
+    "name": "solid-minus-small",
+    "variant": "solid",
+    "title": "Minus Small"
+  },
+  {
+    "name": "solid-minus",
+    "variant": "solid",
+    "title": "Minus"
+  },
+  {
+    "name": "solid-moon",
+    "variant": "solid",
+    "title": "Moon"
+  },
+  {
+    "name": "solid-musical-note",
+    "variant": "solid",
+    "title": "Musical Note"
+  },
+  {
+    "name": "solid-newspaper",
+    "variant": "solid",
+    "title": "Newspaper"
+  },
+  {
+    "name": "solid-no-symbol",
+    "variant": "solid",
+    "title": "No Symbol"
+  },
+  {
+    "name": "solid-paint-brush",
+    "variant": "solid",
+    "title": "Paint Brush"
+  },
+  {
+    "name": "solid-paper-airplane",
+    "variant": "solid",
+    "title": "Paper Airplane"
+  },
+  {
+    "name": "solid-paper-clip",
+    "variant": "solid",
+    "title": "Paper Clip"
+  },
+  {
+    "name": "solid-pause-circle",
+    "variant": "solid",
+    "title": "Pause Circle"
+  },
+  {
+    "name": "solid-pause",
+    "variant": "solid",
+    "title": "Pause"
+  },
+  {
+    "name": "solid-pencil-square",
+    "variant": "solid",
+    "title": "Pencil Square"
+  },
+  {
+    "name": "solid-pencil",
+    "variant": "solid",
+    "title": "Pencil"
+  },
+  {
+    "name": "solid-phone-arrow-down-left",
+    "variant": "solid",
+    "title": "Phone Arrow Down Left"
+  },
+  {
+    "name": "solid-phone-arrow-up-right",
+    "variant": "solid",
+    "title": "Phone Arrow Up Right"
+  },
+  {
+    "name": "solid-phone-x-mark",
+    "variant": "solid",
+    "title": "Phone X Mark"
+  },
+  {
+    "name": "solid-phone",
+    "variant": "solid",
+    "title": "Phone"
+  },
+  {
+    "name": "solid-photo",
+    "variant": "solid",
+    "title": "Photo"
+  },
+  {
+    "name": "solid-play-circle",
+    "variant": "solid",
+    "title": "Play Circle"
+  },
+  {
+    "name": "solid-play-pause",
+    "variant": "solid",
+    "title": "Play Pause"
+  },
+  {
+    "name": "solid-play",
+    "variant": "solid",
+    "title": "Play"
+  },
+  {
+    "name": "solid-plus-circle",
+    "variant": "solid",
+    "title": "Plus Circle"
+  },
+  {
+    "name": "solid-plus-small",
+    "variant": "solid",
+    "title": "Plus Small"
+  },
+  {
+    "name": "solid-plus",
+    "variant": "solid",
+    "title": "Plus"
+  },
+  {
+    "name": "solid-power",
+    "variant": "solid",
+    "title": "Power"
+  },
+  {
+    "name": "solid-presentation-chart-bar",
+    "variant": "solid",
+    "title": "Presentation Chart Bar"
+  },
+  {
+    "name": "solid-presentation-chart-line",
+    "variant": "solid",
+    "title": "Presentation Chart Line"
+  },
+  {
+    "name": "solid-printer",
+    "variant": "solid",
+    "title": "Printer"
+  },
+  {
+    "name": "solid-puzzle-piece",
+    "variant": "solid",
+    "title": "Puzzle Piece"
+  },
+  {
+    "name": "solid-qr-code",
+    "variant": "solid",
+    "title": "Qr Code"
+  },
+  {
+    "name": "solid-question-mark-circle",
+    "variant": "solid",
+    "title": "Question Mark Circle"
+  },
+  {
+    "name": "solid-queue-list",
+    "variant": "solid",
+    "title": "Queue List"
+  },
+  {
+    "name": "solid-radio",
+    "variant": "solid",
+    "title": "Radio"
+  },
+  {
+    "name": "solid-receipt-percent",
+    "variant": "solid",
+    "title": "Receipt Percent"
+  },
+  {
+    "name": "solid-receipt-refund",
+    "variant": "solid",
+    "title": "Receipt Refund"
+  },
+  {
+    "name": "solid-rectangle-group",
+    "variant": "solid",
+    "title": "Rectangle Group"
+  },
+  {
+    "name": "solid-rectangle-stack",
+    "variant": "solid",
+    "title": "Rectangle Stack"
+  },
+  {
+    "name": "solid-rocket-launch",
+    "variant": "solid",
+    "title": "Rocket Launch"
+  },
+  {
+    "name": "solid-rss",
+    "variant": "solid",
+    "title": "Rss"
+  },
+  {
+    "name": "solid-scale",
+    "variant": "solid",
+    "title": "Scale"
+  },
+  {
+    "name": "solid-scissors",
+    "variant": "solid",
+    "title": "Scissors"
+  },
+  {
+    "name": "solid-server-stack",
+    "variant": "solid",
+    "title": "Server Stack"
+  },
+  {
+    "name": "solid-server",
+    "variant": "solid",
+    "title": "Server"
+  },
+  {
+    "name": "solid-share",
+    "variant": "solid",
+    "title": "Share"
+  },
+  {
+    "name": "solid-shield-check",
+    "variant": "solid",
+    "title": "Shield Check"
+  },
+  {
+    "name": "solid-shield-exclamation",
+    "variant": "solid",
+    "title": "Shield Exclamation"
+  },
+  {
+    "name": "solid-shopping-bag",
+    "variant": "solid",
+    "title": "Shopping Bag"
+  },
+  {
+    "name": "solid-shopping-cart",
+    "variant": "solid",
+    "title": "Shopping Cart"
+  },
+  {
+    "name": "solid-signal-slash",
+    "variant": "solid",
+    "title": "Signal Slash"
+  },
+  {
+    "name": "solid-signal",
+    "variant": "solid",
+    "title": "Signal"
+  },
+  {
+    "name": "solid-sparkles",
+    "variant": "solid",
+    "title": "Sparkles"
+  },
+  {
+    "name": "solid-speaker-wave",
+    "variant": "solid",
+    "title": "Speaker Wave"
+  },
+  {
+    "name": "solid-speaker-x-mark",
+    "variant": "solid",
+    "title": "Speaker X Mark"
+  },
+  {
+    "name": "solid-square-2-stack",
+    "variant": "solid",
+    "title": "Square 2 Stack"
+  },
+  {
+    "name": "solid-square-3-stack-3d",
+    "variant": "solid",
+    "title": "Square 3 Stack 3d"
+  },
+  {
+    "name": "solid-squares-2x2",
+    "variant": "solid",
+    "title": "Squares 2x2"
+  },
+  {
+    "name": "solid-squares-plus",
+    "variant": "solid",
+    "title": "Squares Plus"
+  },
+  {
+    "name": "solid-star",
+    "variant": "solid",
+    "title": "Star"
+  },
+  {
+    "name": "solid-stop-circle",
+    "variant": "solid",
+    "title": "Stop Circle"
+  },
+  {
+    "name": "solid-stop",
+    "variant": "solid",
+    "title": "Stop"
+  },
+  {
+    "name": "solid-sun",
+    "variant": "solid",
+    "title": "Sun"
+  },
+  {
+    "name": "solid-swatch",
+    "variant": "solid",
+    "title": "Swatch"
+  },
+  {
+    "name": "solid-table-cells",
+    "variant": "solid",
+    "title": "Table Cells"
+  },
+  {
+    "name": "solid-tag",
+    "variant": "solid",
+    "title": "Tag"
+  },
+  {
+    "name": "solid-ticket",
+    "variant": "solid",
+    "title": "Ticket"
+  },
+  {
+    "name": "solid-trash",
+    "variant": "solid",
+    "title": "Trash"
+  },
+  {
+    "name": "solid-trophy",
+    "variant": "solid",
+    "title": "Trophy"
+  },
+  {
+    "name": "solid-truck",
+    "variant": "solid",
+    "title": "Truck"
+  },
+  {
+    "name": "solid-tv",
+    "variant": "solid",
+    "title": "Tv"
+  },
+  {
+    "name": "solid-user-circle",
+    "variant": "solid",
+    "title": "User Circle"
+  },
+  {
+    "name": "solid-user-group",
+    "variant": "solid",
+    "title": "User Group"
+  },
+  {
+    "name": "solid-user-minus",
+    "variant": "solid",
+    "title": "User Minus"
+  },
+  {
+    "name": "solid-user-plus",
+    "variant": "solid",
+    "title": "User Plus"
+  },
+  {
+    "name": "solid-user",
+    "variant": "solid",
+    "title": "User"
+  },
+  {
+    "name": "solid-users",
+    "variant": "solid",
+    "title": "Users"
+  },
+  {
+    "name": "solid-variable",
+    "variant": "solid",
+    "title": "Variable"
+  },
+  {
+    "name": "solid-video-camera-slash",
+    "variant": "solid",
+    "title": "Video Camera Slash"
+  },
+  {
+    "name": "solid-video-camera",
+    "variant": "solid",
+    "title": "Video Camera"
+  },
+  {
+    "name": "solid-view-columns",
+    "variant": "solid",
+    "title": "View Columns"
+  },
+  {
+    "name": "solid-viewfinder-circle",
+    "variant": "solid",
+    "title": "Viewfinder Circle"
+  },
+  {
+    "name": "solid-wallet",
+    "variant": "solid",
+    "title": "Wallet"
+  },
+  {
+    "name": "solid-wifi",
+    "variant": "solid",
+    "title": "Wifi"
+  },
+  {
+    "name": "solid-window",
+    "variant": "solid",
+    "title": "Window"
+  },
+  {
+    "name": "solid-wrench-screwdriver",
+    "variant": "solid",
+    "title": "Wrench Screwdriver"
+  },
+  {
+    "name": "solid-wrench",
+    "variant": "solid",
+    "title": "Wrench"
+  },
+  {
+    "name": "solid-x-circle",
+    "variant": "solid",
+    "title": "X Circle"
+  },
+  {
+    "name": "solid-x-mark",
+    "variant": "solid",
+    "title": "X Mark"
+  }
+]

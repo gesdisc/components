@@ -1,0 +1,8 @@
+import TerraMap from './map.component.js';
+export * from './map.component.js';
+export default TerraMap;
+declare global {
+    interface HTMLElementTagNameMap {
+        'terra-map': TerraMap;
+    }
+}
