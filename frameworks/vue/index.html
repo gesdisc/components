@@ -8,20 +8,20 @@
 
     <meta name="turbo-cache-control" />
 
-    <link rel="stylesheet" href="/assets/styles/docs.css" />
-    <link rel="stylesheet" href="/assets/styles/code-previews.css" />
-    <link rel="stylesheet" href="/assets/styles/search.css" />
+    <link rel="stylesheet" href="/components/assets/styles/docs.css" />
+    <link rel="stylesheet" href="/components/assets/styles/code-previews.css" />
+    <link rel="stylesheet" href="/components/assets/styles/search.css" />
 
-    <link rel="icon" href="/assets/images/logo.white.png" type="image/x-icon" />
+    <link rel="icon" href="/components/assets/images/logo.white.png" type="image/x-icon" />
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:creator" content="nasa_terra-ui" />
-    <meta name="twitter:image" content="https://disc.gsfc.nasa.gov/assets/images/og-image.png" />
+    <meta name="twitter:image" content="https://disc.gsfc.nasa.gov/components/assets/images/og-image.png" />
 
     <meta property="og:url" content="https://disc.gsfc.nasa.gov/frameworks/vue/" />
     <meta property="og:title" content="Vue" />
     <meta property="og:description" content="Tips for using Shoelace in your Vue 3 app." />
-    <meta property="og:image" content="https://disc.gsfc.nasa.gov/assets/images/og-image.png" />
+    <meta property="og:image" content="https://disc.gsfc.nasa.gov/components/assets/images/og-image.png" />
 
     <link rel="stylesheet" href="/dist/themes/horizon.css" />
     <script type="module" src="/dist/terra-ui-components-autoloader.js"></script>
@@ -37,11 +37,11 @@
       })();
     </script>
 
-    <script src="/assets/scripts/turbo.js" type="module"></script>
-    <script src="/assets/scripts/docs.js" defer=""></script>
-    <script src="/assets/scripts/code-previews.js" defer=""></script>
-    <script src="/assets/scripts/lunr.js" defer=""></script>
-    <script src="/assets/scripts/search.js" defer=""></script>
+    <script src="/components/assets/scripts/turbo.js" type="module"></script>
+    <script src="/components/assets/scripts/docs.js" defer=""></script>
+    <script src="/components/assets/scripts/code-previews.js" defer=""></script>
+    <script src="/components/assets/scripts/lunr.js" defer=""></script>
+    <script src="/components/assets/scripts/search.js" defer=""></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
@@ -130,7 +130,7 @@
     <aside id="sidebar" data-preserve-scroll="">
       <header>
         <a href="/" class="sidebar-logo">
-          <img src="/assets/images/logo.svg" alt="Terra UI Components" />
+          <img src="/components/assets/images/logo.svg" alt="Terra UI Components" />
           Terra UI Components
         </a>
         <div class="sidebar-version">0.0.57</div>
@@ -166,19 +166,19 @@
             <h2>Getting Started</h2>
             <ul>
               <li>
-                <a href="/">Home</a>
+                <a href="/components/">Home</a>
               </li>
               <li>
-                <a href="/getting-started/installation">Installation</a>
+                <a href="/components/getting-started/installation">Installation</a>
               </li>
               <li>
-                <a href="/getting-started/usage">Usage</a>
+                <a href="/components/getting-started/usage">Usage</a>
               </li>
               <li>
-                <a href="/getting-started/themes">Themes</a>
+                <a href="/components/getting-started/themes">Themes</a>
               </li>
               <li>
-                <a href="/getting-started/customizing">Customizing</a>
+                <a href="/components/getting-started/customizing">Customizing</a>
               </li>
             </ul>
           </li>
@@ -186,13 +186,13 @@
             <h2>Frameworks</h2>
             <ul>
               <li>
-                <a href="/frameworks/react">React</a>
+                <a href="/components/frameworks/react">React</a>
               </li>
               <li>
-                <a href="/frameworks/vue" class="active-link">Vue</a>
+                <a href="/components/frameworks/vue">Vue</a>
               </li>
               <li>
-                <a href="/frameworks/angular">Angular</a>
+                <a href="/components/frameworks/angular">Angular</a>
               </li>
             </ul>
           </li>
@@ -330,18 +330,18 @@
             Installation<a href="#installation" aria-label='Direct link to "Installation"'></a>
           </h2>
           <p>To add Shoelace to your Vue app, install the package from npm.</p>
-          <pre><code class="language-bash" id="code-block-28"><span class="token function">npm</span> <span class="token function">install</span> @nasa-terra/components
-</code><sl-copy-button class="copy-code-button" from="code-block-28"></sl-copy-button></pre>
+          <pre><code class="language-bash" id="code-block-27"><span class="token function">npm</span> <span class="token function">install</span> @nasa-terra/components
+</code><sl-copy-button class="copy-code-button" from="code-block-27"></sl-copy-button></pre>
           <p>
             Next, <a href="/getting-started/themes">include a theme</a> and set the
             <a href="/getting-started/installation#setting-the-base-path">base path</a> for icons and other assets. In
             this example, we’ll import the light theme and use the CDN as a base path.
           </p>
-          <pre><code class="language-jsx" id="code-block-29"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/themes/light.css'</span>
+          <pre><code class="language-jsx" id="code-block-28"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/themes/light.css'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> setBasePath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/utilities/base-path'</span>
 
 <span class="token function">setBasePath</span><span class="token punctuation">(</span><span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.57/cdn/'</span><span class="token punctuation">)</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-29"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-28"></sl-copy-button></pre>
           <div role="alert" class="callout callout--tip">
             <p>
               If you’d rather not use the CDN for assets, you can create a build task that copies
@@ -373,12 +373,12 @@
             components, you can import the Shoelace Vue types into your <code>tsconfig.json</code> to get better
             integration in your standard Vue and JSX templates.
           </p>
-          <pre><code class="language-json" id="code-block-30"><span class="token punctuation">{</span>
+          <pre><code class="language-json" id="code-block-29"><span class="token punctuation">{</span>
     <span class="token property">"compilerOptions"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token property">"types"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"@nasa-terra/components/dist/types/vue"</span><span class="token punctuation">]</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-30"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-29"></sl-copy-button></pre>
           <h2 id="usage" class="anchor-heading">Usage<a href="#usage" aria-label='Direct link to "Usage"'></a></h2>
           <h3 id="qr-code-generator-example" class="anchor-heading">
             QR code generator example<a
@@ -386,7 +386,7 @@
               aria-label='Direct link to "QR code generator example"'
             ></a>
           </h3>
-          <pre><code class="language-html" id="code-block-31"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+          <pre><code class="language-html" id="code-block-30"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>QR code generator<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
 
@@ -414,7 +414,7 @@
         <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-spacing-large<span class="token punctuation">)</span> 0<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-31"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-30"></sl-copy-button></pre>
           <h3 id="binding-complex-data" class="anchor-heading">
             Binding Complex Data<a href="#binding-complex-data" aria-label='Direct link to "Binding Complex Data"'></a>
           </h3>
@@ -422,8 +422,8 @@
             When binding complex data such as objects and arrays, use the <code>.prop</code> modifier to make Vue bind
             them as a property instead of an attribute.
           </p>
-          <pre><code class="language-html" id="code-block-32"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sl-color-picker</span> <span class="token attr-name">:swatches.prop</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mySwatches<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-32"></sl-copy-button></pre>
+          <pre><code class="language-html" id="code-block-31"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sl-color-picker</span> <span class="token attr-name">:swatches.prop</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mySwatches<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-31"></sl-copy-button></pre>
           <h3 id="two-way-binding" class="anchor-heading">
             Two-way Binding<a href="#two-way-binding" aria-label='Direct link to "Two-way Binding"'></a>
           </h3>
@@ -437,11 +437,11 @@
               >no support for v-model on custom elements</a
             >, but you can still achieve two-way binding manually.
           </p>
-          <pre><code class="language-html" id="code-block-33"><span class="token comment">&lt;!-- This doesn't work --&gt;</span>
+          <pre><code class="language-html" id="code-block-32"><span class="token comment">&lt;!-- This doesn't work --&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sl-input</span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sl-input</span><span class="token punctuation">&gt;</span></span>
 <span class="token comment">&lt;!-- This works, but it's a bit longer --&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sl-input</span> <span class="token attr-name">:value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span> <span class="token attr-name">@input</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name = $event.target.value<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sl-input</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-33"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-32"></sl-copy-button></pre>
           <p>
             If that’s too verbose for your liking, you can use a custom directive instead.
             <a
@@ -471,7 +471,7 @@
             elements using the <code>slot</code> attribute followed by the name of the slot it is being assigned to.
           </p>
           <p>Here is an example:</p>
-          <pre><code class="language-html" id="code-block-34"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sl-drawer</span>
+          <pre><code class="language-html" id="code-block-33"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sl-drawer</span>
     <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Drawer<span class="token punctuation">"</span></span>
     <span class="token attr-name">placement</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>start<span class="token punctuation">"</span></span>
     <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>drawer-placement-start<span class="token punctuation">"</span></span>
@@ -484,7 +484,7 @@
         <span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sl-drawer</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-34"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-33"></sl-copy-button></pre>
         </div>
       </article>
     </main>

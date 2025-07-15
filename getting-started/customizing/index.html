@@ -8,20 +8,20 @@
 
     <meta name="turbo-cache-control" />
 
-    <link rel="stylesheet" href="/assets/styles/docs.css" />
-    <link rel="stylesheet" href="/assets/styles/code-previews.css" />
-    <link rel="stylesheet" href="/assets/styles/search.css" />
+    <link rel="stylesheet" href="/components/assets/styles/docs.css" />
+    <link rel="stylesheet" href="/components/assets/styles/code-previews.css" />
+    <link rel="stylesheet" href="/components/assets/styles/search.css" />
 
-    <link rel="icon" href="/assets/images/logo.white.png" type="image/x-icon" />
+    <link rel="icon" href="/components/assets/images/logo.white.png" type="image/x-icon" />
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:creator" content="nasa_terra-ui" />
-    <meta name="twitter:image" content="https://disc.gsfc.nasa.gov/assets/images/og-image.png" />
+    <meta name="twitter:image" content="https://disc.gsfc.nasa.gov/components/assets/images/og-image.png" />
 
     <meta property="og:url" content="https://disc.gsfc.nasa.gov/getting-started/customizing/" />
     <meta property="og:title" content="Customizing" />
     <meta property="og:description" content="Learn how to customize Shoelace through parts and custom properties." />
-    <meta property="og:image" content="https://disc.gsfc.nasa.gov/assets/images/og-image.png" />
+    <meta property="og:image" content="https://disc.gsfc.nasa.gov/components/assets/images/og-image.png" />
 
     <link rel="stylesheet" href="/dist/themes/horizon.css" />
     <script type="module" src="/dist/terra-ui-components-autoloader.js"></script>
@@ -37,11 +37,11 @@
       })();
     </script>
 
-    <script src="/assets/scripts/turbo.js" type="module"></script>
-    <script src="/assets/scripts/docs.js" defer=""></script>
-    <script src="/assets/scripts/code-previews.js" defer=""></script>
-    <script src="/assets/scripts/lunr.js" defer=""></script>
-    <script src="/assets/scripts/search.js" defer=""></script>
+    <script src="/components/assets/scripts/turbo.js" type="module"></script>
+    <script src="/components/assets/scripts/docs.js" defer=""></script>
+    <script src="/components/assets/scripts/code-previews.js" defer=""></script>
+    <script src="/components/assets/scripts/lunr.js" defer=""></script>
+    <script src="/components/assets/scripts/search.js" defer=""></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
@@ -130,7 +130,7 @@
     <aside id="sidebar" data-preserve-scroll="">
       <header>
         <a href="/" class="sidebar-logo">
-          <img src="/assets/images/logo.svg" alt="Terra UI Components" />
+          <img src="/components/assets/images/logo.svg" alt="Terra UI Components" />
           Terra UI Components
         </a>
         <div class="sidebar-version">0.0.57</div>
@@ -166,19 +166,19 @@
             <h2>Getting Started</h2>
             <ul>
               <li>
-                <a href="/">Home</a>
+                <a href="/components/">Home</a>
               </li>
               <li>
-                <a href="/getting-started/installation">Installation</a>
+                <a href="/components/getting-started/installation">Installation</a>
               </li>
               <li>
-                <a href="/getting-started/usage">Usage</a>
+                <a href="/components/getting-started/usage">Usage</a>
               </li>
               <li>
-                <a href="/getting-started/themes">Themes</a>
+                <a href="/components/getting-started/themes">Themes</a>
               </li>
               <li>
-                <a href="/getting-started/customizing" class="active-link">Customizing</a>
+                <a href="/components/getting-started/customizing">Customizing</a>
               </li>
             </ul>
           </li>
@@ -186,13 +186,13 @@
             <h2>Frameworks</h2>
             <ul>
               <li>
-                <a href="/frameworks/react">React</a>
+                <a href="/components/frameworks/react">React</a>
               </li>
               <li>
-                <a href="/frameworks/vue">Vue</a>
+                <a href="/components/frameworks/vue">Vue</a>
               </li>
               <li>
-                <a href="/frameworks/angular">Angular</a>
+                <a href="/components/frameworks/angular">Angular</a>
               </li>
             </ul>
           </li>
@@ -332,7 +332,7 @@
             an example that changes the primary theme to purple based on existing
             <a href="/tokens/color#primitives">color primitives</a>.
           </p>
-          <pre><code class="language-css" id="code-block-35"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+          <pre><code class="language-css" id="code-block-20"><span class="token selector">:root</span> <span class="token punctuation">{</span>
     <span class="token comment">/* Changes the primary theme color to purple using primitives */</span>
     <span class="token property">--terra-color-primary-50</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-purple-50<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token property">--terra-color-primary-100</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-purple-100<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -346,7 +346,7 @@
     <span class="token property">--terra-color-primary-900</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-purple-900<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token property">--terra-color-primary-950</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-purple-950<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-35"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-20"></sl-copy-button></pre>
           <p>
             Many design tokens are described further along in this documentation. For a complete list, refer to
             <code>src/themes/light.css</code> in the project’s
@@ -420,7 +420,7 @@
 
             <div class="code-preview__source-group" id="code-preview-source-group-2">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-36"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tomato-button<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span> Tomato Button <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+                <pre><code class="language-html" id="code-block-21"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tomato-button<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span> Tomato Button <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
   <span class="token selector">.tomato-button::part(base)</span> <span class="token punctuation">{</span>
@@ -444,7 +444,7 @@
     <span class="token property">color</span><span class="token punctuation">:</span> tomato<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-36"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-21"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -526,18 +526,18 @@
             nor do they have the same <code>--terra-</code> prefix since they’re scoped to a component.
           </p>
           <p>You can set custom properties on a component in your stylesheet.</p>
-          <pre><code class="language-css" id="code-block-37"><span class="token selector">terra-avatar</span> <span class="token punctuation">{</span>
+          <pre><code class="language-css" id="code-block-22"><span class="token selector">terra-avatar</span> <span class="token punctuation">{</span>
     <span class="token property">--size</span><span class="token punctuation">:</span> 6rem<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-37"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-22"></sl-copy-button></pre>
           <p>This will also work if you need to target a subset of components with a specific class.</p>
-          <pre><code class="language-css" id="code-block-38"><span class="token selector">terra-avatar.your-class</span> <span class="token punctuation">{</span>
+          <pre><code class="language-css" id="code-block-23"><span class="token selector">terra-avatar.your-class</span> <span class="token punctuation">{</span>
     <span class="token property">--size</span><span class="token punctuation">:</span> 6rem<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-38"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-23"></sl-copy-button></pre>
           <p>Alternatively, you can set them inline directly on the element.</p>
-          <pre><code class="language-html" id="code-block-39"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sl-avatar</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">--size</span><span class="token punctuation">:</span> 6rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sl-avatar</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-39"></sl-copy-button></pre>
+          <pre><code class="language-html" id="code-block-24"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sl-avatar</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">--size</span><span class="token punctuation">:</span> 6rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sl-avatar</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-24"></sl-copy-button></pre>
           <p>
             Not all components expose CSS custom properties. For those that do, they can be found in the component’s API
             documentation.
@@ -563,7 +563,7 @@
             <code>options</code> or <code>null</code> to disable the animation.
           </p>
           <p>This example will make all dialogs use a custom show animation.</p>
-          <pre><code class="language-js" id="code-block-40"><span class="token keyword">import</span> <span class="token punctuation">{</span> setDefaultAnimation <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/utilities/animation-registry.js'</span>
+          <pre><code class="language-js" id="code-block-25"><span class="token keyword">import</span> <span class="token punctuation">{</span> setDefaultAnimation <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/utilities/animation-registry.js'</span>
 
 <span class="token comment">// Change the default animation for all dialogs</span>
 <span class="token function">setDefaultAnimation</span><span class="token punctuation">(</span><span class="token string">'dialog.show'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
@@ -575,7 +575,7 @@
         <span class="token literal-property property">duration</span><span class="token operator">:</span> <span class="token number">500</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-40"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-25"></sl-copy-button></pre>
           <div role="alert" class="callout callout--tip">
             <p>
               To support RTL languages in your animation, you can pass an additional property called
@@ -590,7 +590,7 @@
             <code>keyframes</code> and <code>options</code>.
           </p>
           <p>In this example, only the target dialog will use a custom show animation.</p>
-          <pre><code class="language-js" id="code-block-41"><span class="token keyword">import</span> <span class="token punctuation">{</span> setAnimation <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/utilities/animation-registry.js'</span>
+          <pre><code class="language-js" id="code-block-26"><span class="token keyword">import</span> <span class="token punctuation">{</span> setAnimation <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/utilities/animation-registry.js'</span>
 
 <span class="token comment">// Change the animation for a single dialog</span>
 <span class="token keyword">const</span> dialog <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#my-dialog'</span><span class="token punctuation">)</span>
@@ -604,7 +604,7 @@
         <span class="token literal-property property">duration</span><span class="token operator">:</span> <span class="token number">500</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-41"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-26"></sl-copy-button></pre>
           <p>
             To learn more about creating Web Animations, refer to the documentation for
             <a
