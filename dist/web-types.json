@@ -55,6 +55,33 @@
           }
         },
         {
+          "name": "terra-browse-variables",
+          "description": "Browse through the NASA CMR or Giovanni catalogs.\n---\n",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "catalog",
+              "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
+              "value": { "type": "'giovanni'", "default": "'giovanni'" }
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "catalog",
+                "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
+                "type": "'giovanni'"
+              },
+              { "name": "searchQuery", "type": "string" },
+              { "name": "selectedFacets", "type": "SelectedFacets" },
+              { "name": "selectedVariables", "type": "Variable[]" },
+              { "name": "showVariablesBrowse", "type": "boolean" }
+            ],
+            "events": []
+          }
+        },
+        {
           "name": "terra-alert",
           "description": "Alerts are used to display important messages inline or as toast notifications.\n---\n\n\n### **Events:**\n - **terra-show** - Emitted when the alert opens.\n- **terra-after-show** - Emitted after the alert opens and all animations are complete.\n- **terra-hide** - Emitted when the alert closes.\n- **terra-after-hide** - Emitted after the alert closes and all animations are complete.\n\n### **Methods:**\n - **show()** - Shows the alert.\n- **hide()** - Hides the alert\n- **toast()** - Displays the alert as a toast notification. This will move the alert out of its position in the DOM and, when\ndismissed, it will be removed from the DOM completely. By storing a reference to the alert, you can reuse it by\ncalling this method again. The returned promise will resolve after the alert is hidden.\n\n### **Slots:**\n - _default_ - The alert's main content.\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.\n- **icon** - The container that wraps the optional icon.\n- **message** - The container that wraps the alert's main content.",
           "doc-url": "",
@@ -154,33 +181,6 @@
                 "description": "Emitted after the alert closes and all animations are complete."
               }
             ]
-          }
-        },
-        {
-          "name": "terra-browse-variables",
-          "description": "Browse through the NASA CMR or Giovanni catalogs.\n---\n",
-          "doc-url": "",
-          "attributes": [
-            {
-              "name": "catalog",
-              "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
-              "value": { "type": "'giovanni'", "default": "'giovanni'" }
-            }
-          ],
-          "events": [],
-          "js": {
-            "properties": [
-              {
-                "name": "catalog",
-                "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
-                "type": "'giovanni'"
-              },
-              { "name": "searchQuery", "type": "string" },
-              { "name": "selectedFacets", "type": "SelectedFacets" },
-              { "name": "selectedVariables", "type": "Variable[]" },
-              { "name": "showVariablesBrowse", "type": "boolean" }
-            ],
-            "events": []
           }
         },
         {
@@ -737,6 +737,28 @@
                 "description": "called when a subset job enters a final state (e.g. successful, failed, completed_with_errors)"
               }
             ]
+          }
+        },
+        {
+          "name": "terra-data-subsetter-history",
+          "description": "Short summary of the component's intended use.\n---\n\n\n### **Slots:**\n - _default_ - The default slot.\n- **example** - An example slot.\n\n### **CSS Properties:**\n - **--example** - An example CSS custom property. _(default: undefined)_\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.",
+          "doc-url": "",
+          "attributes": [
+            { "name": "bearer-token", "value": { "type": "string" } }
+          ],
+          "slots": [
+            { "name": "", "description": "The default slot." },
+            { "name": "example", "description": "An example slot." }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              { "name": "bearerToken", "type": "string" },
+              { "name": "collapsed", "type": "boolean" },
+              { "name": "selectedJob", "type": "string | undefined" },
+              { "name": "dialog", "type": "TerraDialog" }
+            ],
+            "events": []
           }
         },
         {

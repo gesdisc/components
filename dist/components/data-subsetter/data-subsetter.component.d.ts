@@ -43,6 +43,7 @@ export default class TerraDataSubsetter extends TerraElement {
     refineParameters: boolean;
     showDownloadMenu: boolean;
     spatialPicker: TerraSpatialPicker;
+    jobIdChanged(): void;
     firstUpdated(): void;
     disconnectedCallback(): void;
     collectionChanged(): void;

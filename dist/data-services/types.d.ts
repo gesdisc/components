@@ -79,6 +79,7 @@ export type SubsetJobOptions = SearchOptions & {
     startDate?: string;
     endDate?: string;
     format?: string;
+    labels?: string[];
 };
 export declare enum Status {
     FETCHING = "fetching",
@@ -91,6 +92,10 @@ export declare enum Status {
     RUNNING_WITH_ERRORS = "running_with_errors",
     COMPLETE_WITH_ERRORS = "complete_with_errors"
 }
+export type SubsetJobs = {
+    count: number;
+    jobs: Array<SubsetJobStatus>;
+};
 export type SubsetJobStatus = {
     jobID: string;
     status: Status;

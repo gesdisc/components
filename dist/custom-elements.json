@@ -130,6 +130,265 @@
     },
     {
       "kind": "javascript-module",
+      "path": "components/browse-variables/browse-variables.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TerraBrowseVariables",
+          "members": [
+            {
+              "kind": "field",
+              "name": "dependencies",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{\n        'terra-variable-keyword-search': TerraVariableKeywordSearch,\n        'terra-button': TerraButton,\n        'terra-skeleton': TerraSkeleton,\n        'terra-icon': TerraIcon,\n        'terra-loader': TerraLoader,\n    }"
+            },
+            {
+              "kind": "field",
+              "name": "catalog",
+              "type": {
+                "text": "'giovanni'"
+              },
+              "default": "'giovanni'",
+              "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
+              "attribute": "catalog"
+            },
+            {
+              "kind": "field",
+              "name": "searchQuery",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "selectedFacets",
+              "type": {
+                "text": "SelectedFacets"
+              },
+              "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "selectedVariables",
+              "type": {
+                "text": "Variable[]"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "showVariablesBrowse",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "#controller",
+              "privacy": "private",
+              "default": "new BrowseVariablesController(this)"
+            },
+            {
+              "kind": "method",
+              "name": "handleSelectedVariablesChange"
+            },
+            {
+              "kind": "method",
+              "name": "reset"
+            },
+            {
+              "kind": "method",
+              "name": "handleObservationChange"
+            },
+            {
+              "kind": "method",
+              "name": "toggleFacetSelect",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleSearch",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "TerraVariableKeywordSearchChangeEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#selectFacetField",
+              "parameters": [
+                {
+                  "name": "facet",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "field",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "selectOneFieldAtATime",
+                  "default": "false",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "given a field, ex: \"observations\": \"Model\", will add the field to any existing selected facets\nif \"selectedOneFieldAtATime\" is true, then we will only select that one field"
+            },
+            {
+              "kind": "method",
+              "name": "#clearFacet",
+              "parameters": [
+                {
+                  "name": "facet",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#unselectFacetField",
+              "parameters": [
+                {
+                  "name": "facet",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "field",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleVariableSelection",
+              "parameters": [
+                {
+                  "name": "variable",
+                  "type": {
+                    "text": "Variable"
+                  }
+                },
+                {
+                  "name": "checked",
+                  "type": {
+                    "text": "Boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#renderCategorySelect"
+            },
+            {
+              "kind": "method",
+              "name": "#renderFacet",
+              "parameters": [
+                {
+                  "name": "facetKey",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "title",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "fields",
+                  "optional": true,
+                  "type": {
+                    "text": "FacetField[]"
+                  }
+                },
+                {
+                  "name": "open",
+                  "optional": true,
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#renderVariablesBrowse"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "catalog",
+              "type": {
+                "text": "'giovanni'"
+              },
+              "default": "'giovanni'",
+              "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
+              "fieldName": "catalog"
+            }
+          ],
+          "superclass": {
+            "name": "TerraElement",
+            "module": "/src/internal/terra-element.js"
+          },
+          "summary": "Browse through the NASA CMR or Giovanni catalogs.",
+          "tagNameWithoutPrefix": "browse-variables",
+          "tagName": "terra-browse-variables",
+          "customElement": true,
+          "jsDoc": "/**\n * @summary Browse through the NASA CMR or Giovanni catalogs.\n * @documentation https://disc.gsfc.nasa.gov/components/browse-variables\n * @status MVP\n * @since 1.0\n *\n * @emits terra-variables-change - emitted when the user selects or unselects variables\n *\n * @dependency terra-variable-keyword-search\n * @dependency terra-button\n * @dependency terra-skeleton\n * @dependency terra-icon\n * @dependency terra-loader\n */",
+          "documentation": "https://disc.gsfc.nasa.gov/components/browse-variables",
+          "status": "MVP",
+          "since": "1.0",
+          "dependencies": [
+            "terra-variable-keyword-search",
+            "terra-button",
+            "terra-skeleton",
+            "terra-icon",
+            "terra-loader"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TerraBrowseVariables",
+            "module": "components/browse-variables/browse-variables.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "components/alert/alert.js",
       "declarations": [
         {
@@ -425,265 +684,6 @@
           "declaration": {
             "name": "TerraAlert",
             "module": "components/alert/alert.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "components/browse-variables/browse-variables.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TerraBrowseVariables",
-          "members": [
-            {
-              "kind": "field",
-              "name": "dependencies",
-              "type": {
-                "text": "object"
-              },
-              "static": true,
-              "default": "{\n        'terra-variable-keyword-search': TerraVariableKeywordSearch,\n        'terra-button': TerraButton,\n        'terra-skeleton': TerraSkeleton,\n        'terra-icon': TerraIcon,\n        'terra-loader': TerraLoader,\n    }"
-            },
-            {
-              "kind": "field",
-              "name": "catalog",
-              "type": {
-                "text": "'giovanni'"
-              },
-              "default": "'giovanni'",
-              "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
-              "attribute": "catalog"
-            },
-            {
-              "kind": "field",
-              "name": "searchQuery",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "selectedFacets",
-              "type": {
-                "text": "SelectedFacets"
-              },
-              "default": "{}"
-            },
-            {
-              "kind": "field",
-              "name": "selectedVariables",
-              "type": {
-                "text": "Variable[]"
-              },
-              "default": "[]"
-            },
-            {
-              "kind": "field",
-              "name": "showVariablesBrowse",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "#controller",
-              "privacy": "private",
-              "default": "new BrowseVariablesController(this)"
-            },
-            {
-              "kind": "method",
-              "name": "handleSelectedVariablesChange"
-            },
-            {
-              "kind": "method",
-              "name": "reset"
-            },
-            {
-              "kind": "method",
-              "name": "handleObservationChange"
-            },
-            {
-              "kind": "method",
-              "name": "toggleFacetSelect",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "handleSearch",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "TerraVariableKeywordSearchChangeEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#selectFacetField",
-              "parameters": [
-                {
-                  "name": "facet",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "field",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "selectOneFieldAtATime",
-                  "default": "false",
-                  "type": {
-                    "text": "boolean"
-                  }
-                }
-              ],
-              "description": "given a field, ex: \"observations\": \"Model\", will add the field to any existing selected facets\nif \"selectedOneFieldAtATime\" is true, then we will only select that one field"
-            },
-            {
-              "kind": "method",
-              "name": "#clearFacet",
-              "parameters": [
-                {
-                  "name": "facet",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#unselectFacetField",
-              "parameters": [
-                {
-                  "name": "facet",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "field",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#handleVariableSelection",
-              "parameters": [
-                {
-                  "name": "variable",
-                  "type": {
-                    "text": "Variable"
-                  }
-                },
-                {
-                  "name": "checked",
-                  "type": {
-                    "text": "Boolean"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#renderCategorySelect"
-            },
-            {
-              "kind": "method",
-              "name": "#renderFacet",
-              "parameters": [
-                {
-                  "name": "facetKey",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "title",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "fields",
-                  "optional": true,
-                  "type": {
-                    "text": "FacetField[]"
-                  }
-                },
-                {
-                  "name": "open",
-                  "optional": true,
-                  "type": {
-                    "text": "boolean"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#renderVariablesBrowse"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "catalog",
-              "type": {
-                "text": "'giovanni'"
-              },
-              "default": "'giovanni'",
-              "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
-              "fieldName": "catalog"
-            }
-          ],
-          "superclass": {
-            "name": "TerraElement",
-            "module": "/src/internal/terra-element.js"
-          },
-          "summary": "Browse through the NASA CMR or Giovanni catalogs.",
-          "tagNameWithoutPrefix": "browse-variables",
-          "tagName": "terra-browse-variables",
-          "customElement": true,
-          "jsDoc": "/**\n * @summary Browse through the NASA CMR or Giovanni catalogs.\n * @documentation https://disc.gsfc.nasa.gov/components/browse-variables\n * @status MVP\n * @since 1.0\n *\n * @emits terra-variables-change - emitted when the user selects or unselects variables\n *\n * @dependency terra-variable-keyword-search\n * @dependency terra-button\n * @dependency terra-skeleton\n * @dependency terra-icon\n * @dependency terra-loader\n */",
-          "documentation": "https://disc.gsfc.nasa.gov/components/browse-variables",
-          "status": "MVP",
-          "since": "1.0",
-          "dependencies": [
-            "terra-variable-keyword-search",
-            "terra-button",
-            "terra-skeleton",
-            "terra-icon",
-            "terra-loader"
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "TerraBrowseVariables",
-            "module": "components/browse-variables/browse-variables.js"
           }
         }
       ]
@@ -2243,6 +2243,10 @@
             },
             {
               "kind": "method",
+              "name": "jobIdChanged"
+            },
+            {
+              "kind": "method",
               "name": "collectionChanged"
             },
             {
@@ -2472,6 +2476,10 @@
             },
             {
               "kind": "method",
+              "name": "#getJobMessageText"
+            },
+            {
+              "kind": "method",
               "name": "#estimateJobSize"
             },
             {
@@ -2606,6 +2614,149 @@
           "declaration": {
             "name": "TerraDataSubsetter",
             "module": "components/data-subsetter/data-subsetter.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "components/data-subsetter-history/data-subsetter-history.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TerraDataSubsetterHistory",
+          "cssProperties": [
+            {
+              "description": "An example CSS custom property.",
+              "name": "--example"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The component's base wrapper.",
+              "name": "base"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The default slot.",
+              "name": ""
+            },
+            {
+              "description": "An example slot.",
+              "name": "example"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "dependencies",
+              "type": {
+                "text": "Record<string, typeof TerraElement>"
+              },
+              "static": true,
+              "default": "{\n        'terra-icon': TerraIcon,\n        'terra-data-subsetter': TerraDataSubsetter,\n        'terra-dialog': TerraDialog,\n    }"
+            },
+            {
+              "kind": "field",
+              "name": "bearerToken",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "bearer-token"
+            },
+            {
+              "kind": "field",
+              "name": "collapsed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "selectedJob",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "dialog",
+              "type": {
+                "text": "TerraDialog"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "#controller",
+              "privacy": "private",
+              "default": "new DataSubsetterHistoryController(this)"
+            },
+            {
+              "kind": "method",
+              "name": "toggleCollapsed",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#renderHistoryItems",
+              "parameters": [
+                {
+                  "name": "subsetJobs",
+                  "type": {
+                    "text": "SubsetJobs"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleHistoryItemClick",
+              "parameters": [
+                {
+                  "name": "job",
+                  "type": {
+                    "text": "SubsetJobStatus"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "bearer-token",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "bearerToken"
+            }
+          ],
+          "superclass": {
+            "name": "TerraElement",
+            "module": "/src/internal/terra-element.js"
+          },
+          "summary": "Short summary of the component's intended use.",
+          "tagNameWithoutPrefix": "data-subsetter-history",
+          "tagName": "terra-data-subsetter-history",
+          "customElement": true,
+          "jsDoc": "/**\n * @summary Short summary of the component's intended use.\n * @documentation https://disc.gsfc.nasa.gov/components/data-subsetter-history\n * @status experimental\n * @since 1.0\n *\n * @dependency terra-example\n *\n * @slot - The default slot.\n * @slot example - An example slot.\n *\n * @csspart base - The component's base wrapper.\n *\n * @cssproperty --example - An example CSS custom property.\n */",
+          "documentation": "https://disc.gsfc.nasa.gov/components/data-subsetter-history",
+          "status": "experimental",
+          "since": "1.0",
+          "dependencies": [
+            "terra-example"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TerraDataSubsetterHistory",
+            "module": "components/data-subsetter-history/data-subsetter-history.js"
           }
         }
       ]
