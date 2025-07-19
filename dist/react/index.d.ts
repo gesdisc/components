@@ -1,6 +1,6 @@
 export { default as TerraAccordion } from './accordion/index.js';
-export { default as TerraBrowseVariables } from './browse-variables/index.js';
 export { default as TerraAlert } from './alert/index.js';
+export { default as TerraBrowseVariables } from './browse-variables/index.js';
 export { default as TerraButton } from './button/index.js';
 export { default as TerraChip } from './chip/index.js';
 export { default as TerraCombobox } from './combobox/index.js';

@@ -3,9 +3,6 @@ import {
   getFriendlyNameForMimeType
 } from "./chunk.SF6MBAEP.js";
 import {
-  TerraDatePicker
-} from "./chunk.YDL3OEP3.js";
-import {
   TerraSpatialPicker
 } from "./chunk.GIM4PFOW.js";
 import {
@@ -14,6 +11,9 @@ import {
 import {
   data_subsetter_styles_default
 } from "./chunk.PB7YQQRO.js";
+import {
+  TerraDatePicker
+} from "./chunk.YDL3OEP3.js";
 import {
   TerraAccordion
 } from "./chunk.7XB4JM5V.js";

@@ -6,10 +6,10 @@ import {
 } from "./chunk.SLTME5AP.js";
 import {
   data_subsetter_history_styles_default
-} from "./chunk.TOHRWIE5.js";
+} from "./chunk.P25BARSR.js";
 import {
   TerraDataSubsetter
-} from "./chunk.6RMH53AN.js";
+} from "./chunk.7IP3UOTV.js";
 import {
   TerraIcon
 } from "./chunk.JFQ72RBA.js";
@@ -40,6 +40,7 @@ var TerraDataSubsetterHistory = class extends TerraElement {
     super(...arguments);
     __privateAdd(this, _renderHistoryItems);
     __privateAdd(this, _handleHistoryItemClick);
+    this.label = "History";
     this.collapsed = false;
     __privateAdd(this, _controller, new DataSubsetterHistoryController(this));
   }
@@ -54,23 +55,28 @@ var TerraDataSubsetterHistory = class extends TerraElement {
     return x`
             <div class="${this.collapsed ? "collapsed" : ""}">
                 <div class="history-header" @click=${this.toggleCollapsed}>
-                    <span class="count">0:1</span>
-                    <span>History</span>
+                    <span>${this.label}</span>
                 </div>
 
                 <div class="history-panel">
-                    <div class="tabs">
-                        <button class="tab active">
-                            All <span class="count">1</span>
-                        </button>
-                        <button class="tab">Done <span class="count">0</span></button>
-                        <button class="tab">
-                            Active <span class="count">1</span>
-                        </button>
+                    <div
+                        style="display: flex; align-items: center; justify-content: flex-end; padding: 5px 20px;"
+                    >
+                        <a
+                            href="https://harmony.earthdata.nasa.gov/jobs"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style="font-size: 0.98em; color: #0066cc; text-decoration: none; display: flex; align-items: center; gap: 4px;"
+                        >
+                            View all
+                            <terra-icon
+                                name="outline-arrow-top-right-on-square"
+                                library="heroicons"
+                                size="32px"
+                            ></terra-icon>
+                        </a>
                     </div>
-
                     <div class="history-list">
-                        ${this.selectedJob}
                         ${__privateGet(this, _controller).jobs ? __privateMethod(this, _renderHistoryItems, renderHistoryItems_fn).call(this, __privateGet(this, _controller).jobs) : T}
                     </div>
                 </div>
@@ -93,13 +99,15 @@ renderHistoryItems_fn = function(subsetJobs) {
   ).map((job) => {
     var _a;
     let fillColor = "#0066cc";
-    if (job.status === "successful") {
+    if (job.status === "successful" /* SUCCESSFUL */ || job.status === "complete_with_errors" /* COMPLETE_WITH_ERRORS */ || job.status === "running_with_errors" /* RUNNING_WITH_ERRORS */) {
       fillColor = "#28a745";
-    } else if (job.status === "failed") {
+    } else if (job.status === "failed" /* FAILED */) {
       fillColor = "#dc3545";
-    } else if (job.status === "canceled" || job.status === "complete_with_errors" || job.status === "running_with_errors") {
+    } else if (job.status === "canceled" /* CANCELED */) {
       fillColor = "#ffc107";
     }
+    const progressLabel = job.status === "failed" /* FAILED */ || job.status === "canceled" /* CANCELED */ ? job.status : `${job.progress}%`;
+    const progress = job.status === "failed" /* FAILED */ || job.status === "canceled" /* CANCELED */ ? 100 : job.progress;
     return x`
                     <div
                         class="history-item"
@@ -114,9 +122,9 @@ renderHistoryItems_fn = function(subsetJobs) {
                         <div class="progress-bar">
                             <div
                                 class="progress-fill"
-                                style="width: ${job.progress}%; background-color: ${fillColor}"
+                                style="width: ${progress}%; background-color: ${fillColor}"
                             >
-                                ${job.progress}%
+                                ${progressLabel}
                             </div>
                         </div>
                     </div>
@@ -135,6 +143,9 @@ TerraDataSubsetterHistory.dependencies = {
   "terra-dialog": TerraDialog
 };
 TerraDataSubsetterHistory.styles = [component_styles_default, data_subsetter_history_styles_default];
+__decorateClass([
+  n()
+], TerraDataSubsetterHistory.prototype, "label", 2);
 __decorateClass([
   n({ attribute: "bearer-token" })
 ], TerraDataSubsetterHistory.prototype, "bearerToken", 2);

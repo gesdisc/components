@@ -20,6 +20,7 @@ export default class TerraDataSubsetterHistory extends TerraElement {
     #private;
     static dependencies: Record<string, typeof TerraElement>;
     static styles: CSSResultGroup;
+    label: string;
     bearerToken: string;
     collapsed: boolean;
     selectedJob?: string;
