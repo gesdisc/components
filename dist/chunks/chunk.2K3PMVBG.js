@@ -7,16 +7,16 @@ import {
 } from "./chunk.YDL3OEP3.js";
 import {
   TerraSpatialPicker
-} from "./chunk.GIM4PFOW.js";
+} from "./chunk.6LAYIBDF.js";
 import {
   DataSubsetterController
-} from "./chunk.JWJT6KMO.js";
+} from "./chunk.SRM7NAJD.js";
 import {
   data_subsetter_styles_default
-} from "./chunk.PB7YQQRO.js";
+} from "./chunk.R4TXOOHX.js";
 import {
   TerraAccordion
-} from "./chunk.7XB4JM5V.js";
+} from "./chunk.7L66B6Z5.js";
 import {
   TerraIcon
 } from "./chunk.JFQ72RBA.js";
@@ -49,7 +49,7 @@ import {
 } from "./chunk.6JHIJHTB.js";
 
 // src/components/data-subsetter/data-subsetter.component.ts
-var _controller, _renderSubsetOptions, renderSubsetOptions_fn, _renderSearchForCollection, renderSearchForCollection_fn, _renderOutputFormatSelection, renderOutputFormatSelection_fn, _renderDateRangeSelection, renderDateRangeSelection_fn, _handleStartDateChange, _handleEndDateChange, _resetDateRangeSelection, _resetFormatSelection, _getCollectionDateRange, getCollectionDateRange_fn, _renderSpatialSelection, renderSpatialSelection_fn, _handleSpatialChange, _resetSpatialSelection, _renderVariableSelection, renderVariableSelection_fn, _buildVariableTree, buildVariableTree_fn, _renderVariableTree, renderVariableTree_fn, _getAllGroupPaths, getAllGroupPaths_fn, _toggleGroupExpand, toggleGroupExpand_fn, _toggleExpandCollapseAll, toggleExpandCollapseAll_fn, _toggleVariableSelection, toggleVariableSelection_fn, _markFieldTouched, markFieldTouched_fn, _resetVariableSelection, _renderJobStatus, renderJobStatus_fn, _renderSelectedParams, renderSelectedParams_fn, _cancelJob, cancelJob_fn, _getData, getData_fn, _touchAllFields, touchAllFields_fn, _numberOfFilesFoundEstimate, numberOfFilesFoundEstimate_fn, _getDocumentationLinks, getDocumentationLinks_fn, _getDataLinks, getDataLinks_fn, _hasAtLeastOneSubsetOption, hasAtLeastOneSubsetOption_fn, _hasSpatialSubset, hasSpatialSubset_fn, _renderJobMessage, renderJobMessage_fn, _getJobMessageText, getJobMessageText_fn, _estimateJobSize, estimateJobSize_fn, _refineParameters, refineParameters_fn, _toggleDownloadMenu, toggleDownloadMenu_fn, _downloadLinksAsTxt, downloadLinksAsTxt_fn, _downloadPythonScript, downloadPythonScript_fn, _downloadEarthdataDownload, downloadEarthdataDownload_fn, _handleClickOutside, handleClickOutside_fn, _handleJupyterNotebookClick, handleJupyterNotebookClick_fn;
+var _controller, _renderSubsetOptions, renderSubsetOptions_fn, _renderSearchForCollection, renderSearchForCollection_fn, _renderOutputFormatSelection, renderOutputFormatSelection_fn, _renderDateRangeSelection, renderDateRangeSelection_fn, _handleStartDateChange, _handleEndDateChange, _resetDateRangeSelection, _resetFormatSelection, _getCollectionDateRange, getCollectionDateRange_fn, _handleRegionAccordionToggle, handleRegionAccordionToggle_fn, _renderSpatialSelection, renderSpatialSelection_fn, _handleSpatialChange, _resetSpatialSelection, _renderVariableSelection, renderVariableSelection_fn, _buildVariableTree, buildVariableTree_fn, _renderVariableTree, renderVariableTree_fn, _getAllGroupPaths, getAllGroupPaths_fn, _toggleGroupExpand, toggleGroupExpand_fn, _toggleExpandCollapseAll, toggleExpandCollapseAll_fn, _toggleVariableSelection, toggleVariableSelection_fn, _markFieldTouched, markFieldTouched_fn, _resetVariableSelection, _renderJobStatus, renderJobStatus_fn, _renderSelectedParams, renderSelectedParams_fn, _cancelJob, cancelJob_fn, _getData, getData_fn, _touchAllFields, touchAllFields_fn, _numberOfFilesFoundEstimate, numberOfFilesFoundEstimate_fn, _getDocumentationLinks, getDocumentationLinks_fn, _getDataLinks, getDataLinks_fn, _hasAtLeastOneSubsetOption, hasAtLeastOneSubsetOption_fn, _hasSpatialSubset, hasSpatialSubset_fn, _renderJobMessage, renderJobMessage_fn, _getJobMessageText, getJobMessageText_fn, _estimateJobSize, estimateJobSize_fn, _refineParameters, refineParameters_fn, _toggleDownloadMenu, toggleDownloadMenu_fn, _downloadLinksAsTxt, downloadLinksAsTxt_fn, _downloadPythonScript, downloadPythonScript_fn, _downloadEarthdataDownload, downloadEarthdataDownload_fn, _handleClickOutside, handleClickOutside_fn, _handleJupyterNotebookClick, handleJupyterNotebookClick_fn;
 var TerraDataSubsetter = class extends TerraElement {
   constructor() {
     super(...arguments);
@@ -58,6 +58,7 @@ var TerraDataSubsetter = class extends TerraElement {
     __privateAdd(this, _renderOutputFormatSelection);
     __privateAdd(this, _renderDateRangeSelection);
     __privateAdd(this, _getCollectionDateRange);
+    __privateAdd(this, _handleRegionAccordionToggle);
     __privateAdd(this, _renderSpatialSelection);
     __privateAdd(this, _renderVariableSelection);
     __privateAdd(this, _buildVariableTree);
@@ -101,6 +102,7 @@ var TerraDataSubsetter = class extends TerraElement {
     this.selectedTab = "web-links";
     this.refineParameters = false;
     this.showDownloadMenu = false;
+    this.renderedInDialog = false;
     __privateAdd(this, _controller, new DataSubsetterController(this));
     __privateAdd(this, _handleStartDateChange, (e2) => {
       __privateMethod(this, _markFieldTouched, markFieldTouched_fn).call(this, "date");
@@ -159,6 +161,9 @@ var TerraDataSubsetter = class extends TerraElement {
       __privateGet(this, _controller).fetchJobByID(this.jobId);
     }
     document.addEventListener("click", __privateMethod(this, _handleClickOutside, handleClickOutside_fn).bind(this));
+    if (this.closest("terra-dialog")) {
+      this.renderedInDialog = true;
+    }
   }
   disconnectedCallback() {
     super.disconnectedCallback();
@@ -182,6 +187,8 @@ var TerraDataSubsetter = class extends TerraElement {
   }
   render() {
     var _a, _b, _c;
+    const showJobStatus = __privateGet(this, _controller).currentJob && !this.refineParameters;
+    const showMinimizeButton = showJobStatus && this.renderedInDialog;
     return x`
             <div class="container">
                 <div class="header">
@@ -195,12 +202,36 @@ var TerraDataSubsetter = class extends TerraElement {
                         </svg>
                         ${(_c = (_b = (_a = this.collectionWithServices) == null ? void 0 : _a.collection) == null ? void 0 : _b.EntryTitle) != null ? _c : x`Download Data`}
                     </h1>
-                    <button class="close-btn" onclick="closeDialog()">×</button>
+
+                    ${showMinimizeButton ? x`<button
+                              class="minimize-btn"
+                              @click=${() => this.minimizeDialog()}
+                          >
+                              -
+                          </button>` : T}
                 </div>
 
-                ${__privateGet(this, _controller).currentJob && !this.refineParameters ? __privateMethod(this, _renderJobStatus, renderJobStatus_fn).call(this) : __privateMethod(this, _renderSubsetOptions, renderSubsetOptions_fn).call(this)}
+                ${showJobStatus ? __privateMethod(this, _renderJobStatus, renderJobStatus_fn).call(this) : __privateMethod(this, _renderSubsetOptions, renderSubsetOptions_fn).call(this)}
             </div>
         `;
+  }
+  minimizeDialog() {
+    var _a;
+    (_a = this.closest("terra-dialog")) == null ? void 0 : _a.hide();
+  }
+  renderHistoryPanel() {
+    const existingHistoryPanel = document.querySelector(
+      "terra-data-subsetter-history"
+    );
+    if (!existingHistoryPanel) {
+      const historyPanel = document.createElement(
+        "terra-data-subsetter-history"
+      );
+      if (this.bearerToken) {
+        historyPanel.setAttribute("bearer-token", this.bearerToken);
+      }
+      document.body.appendChild(historyPanel);
+    }
   }
 };
 _controller = new WeakMap();
@@ -536,6 +567,11 @@ getCollectionDateRange_fn = function() {
     endDate: maxEnd ? maxEnd.toISOString().slice(0, 10) : null
   };
 };
+_handleRegionAccordionToggle = new WeakSet();
+handleRegionAccordionToggle_fn = function() {
+  var _a;
+  (_a = this.spatialPicker) == null ? void 0 : _a.invalidateSize();
+};
 _renderSpatialSelection = new WeakSet();
 renderSpatialSelection_fn = function() {
   var _a, _b, _c, _d, _e, _f;
@@ -545,7 +581,9 @@ renderSpatialSelection_fn = function() {
     boundingRects = [boundingRects];
   }
   return x`
-            <terra-accordion>
+            <terra-accordion
+                @terra-accordion-toggle=${__privateMethod(this, _handleRegionAccordionToggle, handleRegionAccordionToggle_fn)}
+            >
                 <div slot="summary">
                     <span class="accordion-title">Refine Region:</span>
                 </div>
@@ -1388,6 +1426,9 @@ __decorateClass([
 __decorateClass([
   r()
 ], TerraDataSubsetter.prototype, "showDownloadMenu", 2);
+__decorateClass([
+  r()
+], TerraDataSubsetter.prototype, "renderedInDialog", 2);
 __decorateClass([
   e('[part~="spatial-picker"]')
 ], TerraDataSubsetter.prototype, "spatialPicker", 2);

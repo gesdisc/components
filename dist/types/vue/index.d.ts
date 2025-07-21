@@ -30,6 +30,9 @@ type TerraAccordionProps = {
   open?: TerraAccordion["open"];
   /**  */
   showArrow?: TerraAccordion["showArrow"];
+
+  /** emitted when the accordion opens or closes */
+  onTerraAccordionToggle?: (e: CustomEvent<never>) => void;
 };
 
 type TerraAlertProps = {
@@ -229,6 +232,8 @@ type TerraDataSubsetterProps = {
   refineParameters?: TerraDataSubsetter["refineParameters"];
   /**  */
   showDownloadMenu?: TerraDataSubsetter["showDownloadMenu"];
+  /**  */
+  renderedInDialog?: TerraDataSubsetter["renderedInDialog"];
   /**  */
   spatialPicker?: TerraDataSubsetter["spatialPicker"];
   /** called when a subset job enters a final state (e.g. successful, failed, completed_with_errors) */
@@ -567,6 +572,9 @@ export type CustomElements = {
    * A collapsible content panel for showing and hiding content.
    * ---
    *
+   *
+   * ### **Events:**
+   *  - **terra-accordion-toggle** - emitted when the accordion opens or closes
    *
    * ### **Slots:**
    *  - _default_ - The default slot for accordion content.

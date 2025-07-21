@@ -1,6 +1,6 @@
 import {
   TerraMap
-} from "./chunk.LIIBWGJ2.js";
+} from "./chunk.P2Z7CLZF.js";
 
 // src/react/map/index.ts
 import * as React from "react";

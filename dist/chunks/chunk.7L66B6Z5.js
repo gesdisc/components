@@ -56,6 +56,11 @@ var TerraAccordion = class extends TerraElement {
   handleToggle(e) {
     const details = e.currentTarget;
     this.open = details.open;
+    this.emit("terra-accordion-toggle", {
+      detail: {
+        open: this.open
+      }
+    });
   }
 };
 TerraAccordion.styles = [component_styles_default, accordion_styles_default];

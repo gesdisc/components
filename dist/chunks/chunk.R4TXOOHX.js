@@ -38,7 +38,7 @@ var data_subsetter_styles_default = i`
         gap: 8px;
     }
 
-    .close-btn {
+    .minimize-btn {
         background: none;
         border: none;
         font-size: 20px;
@@ -49,7 +49,7 @@ var data_subsetter_styles_default = i`
         transition: background-color 0.2s;
     }
 
-    .close-btn:hover {
+    .minimize-btn:hover {
         background-color: #f8f9fa;
     }
 
@@ -440,7 +440,7 @@ var data_subsetter_styles_default = i`
         gap: 8px;
     }
 
-    .close-btn {
+    .minimize-btn {
         background: none;
         border: none;
         font-size: 20px;
@@ -451,7 +451,7 @@ var data_subsetter_styles_default = i`
         transition: background-color 0.2s;
     }
 
-    .close-btn:hover {
+    .minimize-btn:hover {
         background-color: #f8f9fa;
     }
 

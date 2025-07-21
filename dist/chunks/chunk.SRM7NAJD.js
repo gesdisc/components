@@ -43,6 +43,7 @@ var DataSubsetterController = class {
       task: async ([], { signal }) => {
         var _a, _b, _c, _d, _e;
         let job;
+        __privateGet(this, _host).renderHistoryPanel();
         if ((_a = this.currentJob) == null ? void 0 : _a.jobID) {
           job = await __privateGet(this, _dataService).getSubsetJobStatus(
             this.currentJob.jobID,

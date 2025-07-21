@@ -1,6 +1,6 @@
 import {
   TerraAccordion
-} from "../../chunks/chunk.7XB4JM5V.js";
+} from "../../chunks/chunk.7L66B6Z5.js";
 import "../../chunks/chunk.JFQ72RBA.js";
 import "../../chunks/chunk.VORUJ5MH.js";
 import "../../chunks/chunk.UA5HHAYZ.js";

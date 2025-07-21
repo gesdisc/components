@@ -134,7 +134,6 @@ var TerraMap = class extends TerraElement {
         `;
   }
   invalidateSize() {
-    console.log("invalidate size ", this.map.map);
     this.map.map.invalidateSize();
   }
 };

@@ -42,10 +42,13 @@ export default class TerraDataSubsetter extends TerraElement {
     selectedTab: 'web-links' | 'selected-params';
     refineParameters: boolean;
     showDownloadMenu: boolean;
+    renderedInDialog: boolean;
     spatialPicker: TerraSpatialPicker;
     jobIdChanged(): void;
     firstUpdated(): void;
     disconnectedCallback(): void;
     collectionChanged(): void;
     render(): import("lit-html").TemplateResult<1>;
+    minimizeDialog(): void;
+    renderHistoryPanel(): void;
 }

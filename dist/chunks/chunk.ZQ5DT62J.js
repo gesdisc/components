@@ -1,6 +1,6 @@
 import {
   TerraAccordion
-} from "./chunk.7XB4JM5V.js";
+} from "./chunk.7L66B6Z5.js";
 
 // src/components/accordion/accordion.ts
 var accordion_default = TerraAccordion;

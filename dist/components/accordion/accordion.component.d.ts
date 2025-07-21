@@ -15,6 +15,8 @@ import TerraIcon from '../icon/icon.component.js';
  * @property {string} summary - The summary/header for the accordion. Use the property for simple text, or the slot for custom content.
  * @property {boolean} open - Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.
  *
+ * @event terra-accordion-toggle - emitted when the accordion opens or closes
+ *
  * @dependency terra-icon
  */
 export default class TerraAccordion extends TerraElement {

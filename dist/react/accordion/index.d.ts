@@ -1,4 +1,7 @@
 import Component from '../../components/accordion/accordion.component.js';
+import { type EventName } from '@lit/react';
+import type { TerraAccordionToggleEvent } from '../../events/events.js';
+export type { TerraAccordionToggleEvent } from '../../events/events.js';
 /**
  * @summary A collapsible content panel for showing and hiding content.
  * @documentation https://disc.gsfc.nasa.gov/components/accordion
@@ -13,7 +16,11 @@ import Component from '../../components/accordion/accordion.component.js';
  * @property {string} summary - The summary/header for the accordion. Use the property for simple text, or the slot for custom content.
  * @property {boolean} open - Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.
  *
+ * @event terra-accordion-toggle - emitted when the accordion opens or closes
+ *
  * @dependency terra-icon
  */
-declare const reactWrapper: import("@lit/react").ReactWebComponent<Component, {}>;
+declare const reactWrapper: import("@lit/react").ReactWebComponent<Component, {
+    onTerraAccordionToggle: EventName<TerraAccordionToggleEvent>;
+}>;
 export default reactWrapper;

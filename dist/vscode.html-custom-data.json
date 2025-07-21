@@ -4,7 +4,7 @@
   "tags": [
     {
       "name": "terra-accordion",
-      "description": "A collapsible content panel for showing and hiding content.\n---\n\n\n### **Slots:**\n - _default_ - The default slot for accordion content.\n- **summary** - The summary/header for the accordion (optional, overrides summary property)",
+      "description": "A collapsible content panel for showing and hiding content.\n---\n\n\n### **Events:**\n - **terra-accordion-toggle** - emitted when the accordion opens or closes\n\n### **Slots:**\n - _default_ - The default slot for accordion content.\n- **summary** - The summary/header for the accordion (optional, overrides summary property)",
       "attributes": [
         {
           "name": "summary",

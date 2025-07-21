@@ -1,6 +1,6 @@
 import {
   TerraMap
-} from "./chunk.LIIBWGJ2.js";
+} from "./chunk.P2Z7CLZF.js";
 
 // src/components/map/map.ts
 var map_default = TerraMap;

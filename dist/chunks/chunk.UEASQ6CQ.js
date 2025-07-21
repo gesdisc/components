@@ -1,6 +1,6 @@
 import {
   TerraSpatialPicker
-} from "./chunk.GIM4PFOW.js";
+} from "./chunk.6LAYIBDF.js";
 
 // src/react/spatial-picker/index.ts
 import * as React from "react";

@@ -73,6 +73,14 @@
               ]
             }
           ],
+          "events": [
+            {
+              "description": "emitted when the accordion opens or closes",
+              "name": "terra-accordion-toggle",
+              "reactName": "onTerraAccordionToggle",
+              "eventName": "TerraAccordionToggleEvent"
+            }
+          ],
           "attributes": [
             {
               "name": "summary",
@@ -108,7 +116,7 @@
           "tagNameWithoutPrefix": "accordion",
           "tagName": "terra-accordion",
           "customElement": true,
-          "jsDoc": "/**\n * @summary A collapsible content panel for showing and hiding content.\n * @documentation https://disc.gsfc.nasa.gov/components/accordion\n * @status experimental\n * @since 1.0\n *\n * The TerraAccordion component provides a simple, accessible way to show and hide content. It uses native <details> and <summary> elements for built-in accessibility and keyboard support. The summary/header can be set via the `summary` property for simple text, or via a named `summary` slot for custom content (such as icons or rich HTML). The open state can be controlled with the `open` property, which is reflected as an attribute.\n *\n * @slot - The default slot for accordion content.\n * @slot summary - The summary/header for the accordion (optional, overrides summary property)\n *\n * @property {string} summary - The summary/header for the accordion. Use the property for simple text, or the slot for custom content.\n * @property {boolean} open - Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.\n *\n * @dependency terra-icon\n */",
+          "jsDoc": "/**\n * @summary A collapsible content panel for showing and hiding content.\n * @documentation https://disc.gsfc.nasa.gov/components/accordion\n * @status experimental\n * @since 1.0\n *\n * The TerraAccordion component provides a simple, accessible way to show and hide content. It uses native <details> and <summary> elements for built-in accessibility and keyboard support. The summary/header can be set via the `summary` property for simple text, or via a named `summary` slot for custom content (such as icons or rich HTML). The open state can be controlled with the `open` property, which is reflected as an attribute.\n *\n * @slot - The default slot for accordion content.\n * @slot summary - The summary/header for the accordion (optional, overrides summary property)\n *\n * @property {string} summary - The summary/header for the accordion. Use the property for simple text, or the slot for custom content.\n * @property {boolean} open - Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.\n *\n * @event terra-accordion-toggle - emitted when the accordion opens or closes\n *\n * @dependency terra-icon\n */",
           "documentation": "https://disc.gsfc.nasa.gov/components/accordion",
           "status": "experimental",
           "since": "1.0",
@@ -2230,6 +2238,14 @@
             },
             {
               "kind": "field",
+              "name": "renderedInDialog",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
               "name": "spatialPicker",
               "type": {
                 "text": "TerraSpatialPicker"
@@ -2248,6 +2264,10 @@
             {
               "kind": "method",
               "name": "collectionChanged"
+            },
+            {
+              "kind": "method",
+              "name": "minimizeDialog"
             },
             {
               "kind": "method",
@@ -2288,6 +2308,10 @@
             {
               "kind": "method",
               "name": "#getCollectionDateRange"
+            },
+            {
+              "kind": "method",
+              "name": "#handleRegionAccordionToggle"
             },
             {
               "kind": "method",
@@ -2549,6 +2573,10 @@
             {
               "kind": "method",
               "name": "#handleJupyterNotebookClick"
+            },
+            {
+              "kind": "method",
+              "name": "renderHistoryPanel"
             }
           ],
           "events": [
