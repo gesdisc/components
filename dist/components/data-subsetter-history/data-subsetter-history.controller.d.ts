@@ -6,7 +6,7 @@ import { type SubsetJobs } from '../../data-services/types.js';
 export declare class DataSubsetterHistoryController {
     #private;
     jobs?: SubsetJobs;
-    task: Task<[], SubsetJobs>;
+    task: Task<[], SubsetJobs | undefined>;
     constructor(host: ReactiveControllerHost & TerraDataSubsetterHistory);
     hostConnected(): void;
     hostDisconnected(): void;

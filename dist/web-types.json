@@ -748,7 +748,12 @@
               "name": "label",
               "value": { "type": "string", "default": "'History'" }
             },
-            { "name": "bearer-token", "value": { "type": "string" } }
+            { "name": "bearer-token", "value": { "type": "string" } },
+            {
+              "name": "always-show",
+              "description": "if a user has never done a subset request, by default they don't see the history panel at all\nthis prop allows you to override that behavior and always show the history panel",
+              "value": { "type": "boolean" }
+            }
           ],
           "slots": [
             { "name": "", "description": "The default slot." },
@@ -759,8 +764,14 @@
             "properties": [
               { "name": "label", "type": "string" },
               { "name": "bearerToken", "type": "string" },
+              {
+                "name": "alwaysShow",
+                "description": "if a user has never done a subset request, by default they don't see the history panel at all\nthis prop allows you to override that behavior and always show the history panel",
+                "type": "boolean"
+              },
               { "name": "collapsed", "type": "boolean" },
               { "name": "selectedJob", "type": "string | undefined" },
+              { "name": "hideCancelled", "type": "boolean" },
               { "name": "dialog", "type": "TerraDialog" }
             ],
             "events": []

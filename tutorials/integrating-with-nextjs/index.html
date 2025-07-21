@@ -342,8 +342,8 @@
             Instructions<a href="#instructions" aria-label='Direct link to "Instructions"'></a>
           </h2>
           <p>To get started using Shoelace with NextJS, the following packages must be installed.</p>
-          <pre><code class="language-bash" id="code-block-295"><span class="token function">yarn</span> <span class="token function">add</span> @nasa-terra/components copy-webpack-plugin next-compose-plugins next-transpile-modules
-</code><sl-copy-button class="copy-code-button" from="code-block-295"></sl-copy-button></pre>
+          <pre><code class="language-bash" id="code-block-105"><span class="token function">yarn</span> <span class="token function">add</span> @nasa-terra/components copy-webpack-plugin next-compose-plugins next-transpile-modules
+</code><sl-copy-button class="copy-code-button" from="code-block-105"></sl-copy-button></pre>
           <h3 id="enabling-esm" class="anchor-heading">
             Enabling ESM<a href="#enabling-esm" aria-label='Direct link to "Enabling ESM"'></a>
           </h3>
@@ -351,8 +351,8 @@
             Because Shoelace utilizes ESM, we need to modify our <code>package.json</code> to support ESM packages.
             Simply add the following to your root of <code>package.json</code>:
           </p>
-          <pre><code id="code-block-296">"type": "module"
-</code><sl-copy-button class="copy-code-button" from="code-block-296"></sl-copy-button></pre>
+          <pre><code id="code-block-106">"type": "module"
+</code><sl-copy-button class="copy-code-button" from="code-block-106"></sl-copy-button></pre>
           <p>
             There’s one more step to enable ESM in NextJS, but we’ll tackle that in our Next configuration modification.
           </p>
@@ -363,8 +363,8 @@
             ></a>
           </h3>
           <p>The next step is to import Shoelace’s default theme (stylesheet) in your <code>_app.js</code> file:</p>
-          <pre><code class="language-css" id="code-block-297">import <span class="token string">'@nasa-terra/components/dist/themes/light.css'</span><span class="token punctuation">;</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-297"></sl-copy-button></pre>
+          <pre><code class="language-css" id="code-block-107">import <span class="token string">'@nasa-terra/components/dist/themes/light.css'</span><span class="token punctuation">;</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-107"></sl-copy-button></pre>
           <h3 id="defining-custom-elements" class="anchor-heading">
             Defining Custom Elements<a
               href="#defining-custom-elements"
@@ -387,7 +387,7 @@
             >
             to add in the custom components before the first render:
           </p>
-          <pre><code class="language-javascript" id="code-block-298"><span class="token keyword">function</span> <span class="token function">CustomEls</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> <span class="token constant">URL</span> <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <pre><code class="language-javascript" id="code-block-108"><span class="token keyword">function</span> <span class="token function">CustomEls</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> <span class="token constant">URL</span> <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// useRef to avoid re-renders</span>
     <span class="token keyword">const</span> customEls <span class="token operator">=</span> <span class="token function">useRef</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
 
@@ -412,7 +412,7 @@
 
     <span class="token keyword">return</span> <span class="token keyword">null</span>
 <span class="token punctuation">}</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-298"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-108"></sl-copy-button></pre>
           <div role="alert" class="callout callout--tip">
             <p>
               If we use <code>useEffect</code> instead of <code>useLayoutEffect</code>, the initial render will occur
@@ -442,7 +442,7 @@
             for trying to use <code>useLayoutEffect</code> in SSR, which is disallowed. To fix this problem, we’ll
             conditionally render the <code>CustomEls</code> component to only render in the browser
           </p>
-          <pre><code class="language-javascript" id="code-block-299"><span class="token keyword">function</span> <span class="token function">MyApp</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> Component<span class="token punctuation">,</span> pageProps<span class="token punctuation">,</span> <span class="token constant">URL</span> <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <pre><code class="language-javascript" id="code-block-109"><span class="token keyword">function</span> <span class="token function">MyApp</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> Component<span class="token punctuation">,</span> pageProps<span class="token punctuation">,</span> <span class="token constant">URL</span> <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> isBrowser <span class="token operator">=</span> <span class="token keyword">typeof</span> window <span class="token operator">!==</span> <span class="token string">'undefined'</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>
         <span class="token operator">&lt;</span><span class="token operator">&gt;</span>
@@ -451,7 +451,7 @@
         <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token operator">&gt;</span>
     <span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-299"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-109"></sl-copy-button></pre>
           <h3 id="environmental-variable" class="anchor-heading">
             Environmental Variable<a
               href="#environmental-variable"
@@ -469,20 +469,20 @@
               >environmental variables</a
             >. Create a <code>.local.env</code> file and put the following inside:
           </p>
-          <pre><code id="code-block-300">BASE_URL="localhost:3000"
-</code><sl-copy-button class="copy-code-button" from="code-block-300"></sl-copy-button></pre>
+          <pre><code id="code-block-110">BASE_URL="localhost:3000"
+</code><sl-copy-button class="copy-code-button" from="code-block-110"></sl-copy-button></pre>
           <p>
             Then, modify your <code>MyApp</code> class in <code>_app.js</code> to pass this process environment into
             your render:
           </p>
-          <pre><code class="language-javascript" id="code-block-301">MyApp<span class="token punctuation">.</span><span class="token function-variable function">getInitialProps</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token parameter">context</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <pre><code class="language-javascript" id="code-block-111">MyApp<span class="token punctuation">.</span><span class="token function-variable function">getInitialProps</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token parameter">context</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> <span class="token constant">URL</span> <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">BASE_URL</span>
 
     <span class="token keyword">return</span> <span class="token punctuation">{</span>
         <span class="token constant">URL</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-301"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-111"></sl-copy-button></pre>
           <div role="alert" class="callout callout--tip">
             <p>
               You’ll need to set this <code>BASE_URL</code> variable inside the build process of whatever local build or
@@ -497,7 +497,7 @@
             Next we need to add Shoelace’s assets to the final build output. To do this, modify
             <code>next.config.js</code> to look like this.
           </p>
-          <pre><code class="language-javascript" id="code-block-302"><span class="token keyword">import</span> <span class="token punctuation">{</span> dirname<span class="token punctuation">,</span> resolve <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'path'</span>
+          <pre><code class="language-javascript" id="code-block-112"><span class="token keyword">import</span> <span class="token punctuation">{</span> dirname<span class="token punctuation">,</span> resolve <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'path'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> fileURLToPath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'url'</span>
 <span class="token keyword">import</span> CopyPlugin <span class="token keyword">from</span> <span class="token string">'copy-webpack-plugin'</span>
 <span class="token keyword">import</span> withPlugins <span class="token keyword">from</span> <span class="token string">'next-compose-plugins'</span>
@@ -527,7 +527,7 @@
         <span class="token keyword">return</span> config
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-302"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-112"></sl-copy-button></pre>
           <div role="alert" class="callout callout--tip">
             <p>
               This will copy the files from <code>node_modules</code> into your <code>static</code> folder on every

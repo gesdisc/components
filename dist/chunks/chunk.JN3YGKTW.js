@@ -14,12 +14,11 @@ import {
 // src/components/data-subsetter-history/data-subsetter-history.controller.ts
 var EXPANDED_JOBS_POLL_MILLIS = 3e3;
 var COLLAPSED_JOBS_POLL_MILLIS = 1e4;
-var _host, _dataService, _windowIsVisible, _jobTimeout, _getDataService, getDataService_fn, _handleVisibilityChange, handleVisibilityChange_fn, _poll, poll_fn;
+var _host, _dataService, _windowIsVisible, _jobTimeout, _getDataService, getDataService_fn, _handleVisibilityChange, handleVisibilityChange_fn;
 var DataSubsetterHistoryController = class {
   constructor(host) {
     __privateAdd(this, _getDataService);
     __privateAdd(this, _handleVisibilityChange);
-    __privateAdd(this, _poll);
     __privateAdd(this, _host, void 0);
     __privateAdd(this, _dataService, void 0);
     __privateAdd(this, _windowIsVisible, true);
@@ -28,14 +27,21 @@ var DataSubsetterHistoryController = class {
     __privateSet(this, _dataService, __privateMethod(this, _getDataService, getDataService_fn).call(this));
     this.task = new h(host, {
       task: async ([], { signal }) => {
-        this.jobs = await __privateGet(this, _dataService).getSubsetJobs({
-          bearerToken: __privateGet(this, _host).bearerToken,
-          signal
-        });
+        clearTimeout(__privateGet(this, _jobTimeout));
+        const shouldFetch = __privateGet(this, _windowIsVisible) && (!__privateGet(this, _host).collapsed || !this.jobs);
+        if (shouldFetch) {
+          this.jobs = await __privateGet(this, _dataService).getSubsetJobs({
+            bearerToken: __privateGet(this, _host).bearerToken,
+            signal
+          });
+        }
+        __privateSet(this, _jobTimeout, setTimeout(
+          () => this.task.run(),
+          !__privateGet(this, _host).collapsed ? EXPANDED_JOBS_POLL_MILLIS : COLLAPSED_JOBS_POLL_MILLIS
+        ));
         return this.jobs;
       },
-      args: () => [],
-      autoRun: false
+      args: () => []
     });
   }
   hostConnected() {
@@ -43,7 +49,6 @@ var DataSubsetterHistoryController = class {
       "visibilitychange",
       __privateMethod(this, _handleVisibilityChange, handleVisibilityChange_fn).bind(this)
     );
-    __privateMethod(this, _poll, poll_fn).call(this);
   }
   hostDisconnected() {
     document.removeEventListener(
@@ -66,19 +71,7 @@ getDataService_fn = function() {
 _handleVisibilityChange = new WeakSet();
 handleVisibilityChange_fn = function() {
   __privateSet(this, _windowIsVisible, document.visibilityState === "visible");
-  __privateMethod(this, _poll, poll_fn).call(this);
-};
-_poll = new WeakSet();
-poll_fn = async function() {
-  clearTimeout(__privateGet(this, _jobTimeout));
-  if (!__privateGet(this, _windowIsVisible)) {
-    return;
-  }
-  await this.task.run();
-  __privateSet(this, _jobTimeout, setTimeout(
-    () => __privateMethod(this, _poll, poll_fn).call(this),
-    !__privateGet(this, _host).collapsed ? EXPANDED_JOBS_POLL_MILLIS : COLLAPSED_JOBS_POLL_MILLIS
-  ));
+  this.task.run();
 };
 
 export {

@@ -2677,11 +2677,20 @@
             },
             {
               "kind": "field",
+              "name": "alwaysShow",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "if a user has never done a subset request, by default they don't see the history panel at all\nthis prop allows you to override that behavior and always show the history panel",
+              "attribute": "always-show"
+            },
+            {
+              "kind": "field",
               "name": "collapsed",
               "type": {
                 "text": "boolean"
               },
-              "default": "false"
+              "default": "true"
             },
             {
               "kind": "field",
@@ -2689,6 +2698,14 @@
               "type": {
                 "text": "string | undefined"
               }
+            },
+            {
+              "kind": "field",
+              "name": "hideCancelled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
             },
             {
               "kind": "field",
@@ -2748,6 +2765,14 @@
                 "text": "string"
               },
               "fieldName": "bearerToken"
+            },
+            {
+              "name": "always-show",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "if a user has never done a subset request, by default they don't see the history panel at all\nthis prop allows you to override that behavior and always show the history panel",
+              "fieldName": "alwaysShow"
             }
           ],
           "superclass": {

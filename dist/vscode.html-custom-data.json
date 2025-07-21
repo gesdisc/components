@@ -386,7 +386,12 @@
       "description": "Short summary of the component's intended use.\n---\n\n\n### **Slots:**\n - _default_ - The default slot.\n- **example** - An example slot.\n\n### **CSS Properties:**\n - **--example** - An example CSS custom property. _(default: undefined)_\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.",
       "attributes": [
         { "name": "label", "values": [] },
-        { "name": "bearer-token", "values": [] }
+        { "name": "bearer-token", "values": [] },
+        {
+          "name": "always-show",
+          "description": "if a user has never done a subset request, by default they don't see the history panel at all\nthis prop allows you to override that behavior and always show the history panel",
+          "values": []
+        }
       ],
       "references": [
         {

@@ -240,10 +240,15 @@ type TerraDataSubsetterHistoryProps = {
   label?: TerraDataSubsetterHistory["label"];
   /**  */
   "bearer-token"?: TerraDataSubsetterHistory["bearerToken"];
+  /** if a user has never done a subset request, by default they don't see the history panel at all
+this prop allows you to override that behavior and always show the history panel */
+  "always-show"?: TerraDataSubsetterHistory["alwaysShow"];
   /**  */
   collapsed?: TerraDataSubsetterHistory["collapsed"];
   /**  */
   selectedJob?: TerraDataSubsetterHistory["selectedJob"];
+  /**  */
+  hideCancelled?: TerraDataSubsetterHistory["hideCancelled"];
   /**  */
   dialog?: TerraDataSubsetterHistory["dialog"];
 };
