@@ -3,8 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="" />
-    <title>Giovanni Search</title>
+    <meta
+      name="description"
+      content="Shows a floating panel with a user's recent data subset requests and their status, with quick access to results and re-submission."
+    />
+    <title>Data Subsetter History</title>
 
     <meta name="turbo-cache-control" />
 
@@ -18,9 +21,12 @@
     <meta name="twitter:creator" content="nasa_terra-ui" />
     <meta name="twitter:image" content="https://disc.gsfc.nasa.gov/components/assets/images/og-image.png" />
 
-    <meta property="og:url" content="https://disc.gsfc.nasa.gov/components/variable-keyword-search/" />
-    <meta property="og:title" content="Giovanni Search" />
-    <meta property="og:description" content="" />
+    <meta property="og:url" content="https://disc.gsfc.nasa.gov/components/data-subsetter-history/" />
+    <meta property="og:title" content="Data Subsetter History" />
+    <meta
+      property="og:description"
+      content="Shows a floating panel with a user's recent data subset requests and their status, with quick access to results and re-submission."
+    />
     <meta property="og:image" content="https://disc.gsfc.nasa.gov/components/assets/images/og-image.png" />
 
     <link rel="stylesheet" href="/dist/themes/horizon.css" />
@@ -232,7 +238,7 @@
               </li>
 
               <li>
-                <a href="/components/data-subsetter-history"> Data Subsetter History </a>
+                <a href="/components/data-subsetter-history" class="active-link"> Data Subsetter History </a>
               </li>
 
               <li>
@@ -284,7 +290,7 @@
               </li>
 
               <li>
-                <a href="/components/variable-keyword-search" class="active-link"> Variable Keyword Search </a>
+                <a href="/components/variable-keyword-search"> Variable Keyword Search </a>
               </li>
             </ul>
           </li>
@@ -298,48 +304,72 @@
         <div class="content__toc">
           <ul>
             <li class="top">
-              <a href="#">Giovanni Search</a>
+              <a href="#">Data Subsetter History</a>
             </li>
-            <li data-level="2"><a href="#examples">Examples</a></li>
-            <li data-level="3"><a href="#first-example">First Example</a></li>
-            <li data-level="3"><a href="#second-example">Second Example</a></li>
-            <li data-level="2"><a href="#importing">Importing</a></li>
+            <li data-level="2"><a href="#overview">Overview</a></li>
             <li data-level="2"><a href="#properties">Properties</a></li>
-            <li data-level="2"><a href="#events">Events</a></li>
-            <li data-level="2"><a href="#custom-properties">Custom Properties</a></li>
-            <li data-level="2"><a href="#parts">Parts</a></li>
+            <li data-level="2"><a href="#examples">Examples</a></li>
+            <li data-level="3"><a href="#basic-usage">Basic Usage</a></li>
+            <li data-level="2"><a href="#best-practices">Best Practices</a></li>
+            <li data-level="2"><a href="#accessibility">Accessibility</a></li>
+            <li data-level="2"><a href="#importing">Importing</a></li>
+            <li data-level="2"><a href="#properties-1">Properties</a></li>
+            <li data-level="2"><a href="#dependencies">Dependencies</a></li>
           </ul>
         </div>
 
         <div class="content__body">
           <header class="component-header">
-            <h1>Variable Keyword Search</h1>
+            <h1>Data Subsetter History</h1>
 
             <div class="component-header__tag">
-              <code>&lt;terra-variable-keyword-search&gt; | TerraVariableKeywordSearch</code>
+              <code>&lt;terra-data-subsetter-history&gt; | TerraDataSubsetterHistory</code>
             </div>
 
             <div class="component-header__info">
               <sl-badge variant="neutral" pill=""> Since 1.0 </sl-badge>
-              <sl-badge variant="neutral" pill="" style="text-transform: capitalize"> MVP </sl-badge>
+              <sl-badge variant="primary" pill="" style="text-transform: capitalize"> stable </sl-badge>
             </div>
           </header>
 
-          <p class="component-summary">Fuzzy-search for dataset keywords in combobox with list autocomplete.</p>
+          <p class="component-summary">
+            Shows a floating panel with a user’s recent data subset requests and their status, with quick access to
+            results and re-submission.
+          </p>
+
+          <h2 id="overview" class="anchor-heading">
+            Overview<a href="#overview" aria-label='Direct link to "Overview"'></a>
+          </h2>
+          <p>
+            The <code>&lt;terra-data-subsetter-history&gt;</code> component displays a floating panel showing a user’s
+            recent data subset requests, their status, and quick access to results. It integrates with
+            <code>&lt;terra-data-subsetter&gt;</code> for viewing and re-running jobs. The panel is typically shown in
+            the lower right of the screen and is intended for authenticated users.
+          </p>
 
           <div class="code-preview">
             <div class="code-preview__preview">
-              <terra-variable-keyword-search></terra-variable-keyword-search>
+              <terra-alert open="" variant="success">
+                <terra-icon slot="icon" name="outline-check-circle" library="heroicons"></terra-icon>
+                The history panel is at the bottom right of your screen
+              </terra-alert>
+
+              <terra-data-subsetter-history bearer-token="YOUR_EARTHDATA_BEARER_TOKEN"></terra-data-subsetter-history>
 
               <div class="code-preview__resizer">
                 <sl-icon name="grip-vertical"></sl-icon>
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-94">
+            <div class="code-preview__source-group" id="code-preview-source-group-54">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-320"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-variable-keyword-search</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-variable-keyword-search</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-320"></sl-copy-button></pre>
+                <pre><code class="language-html" id="code-block-226"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-alert</span> <span class="token attr-name">open</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>success<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>icon<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outline-check-circle<span class="token punctuation">"</span></span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>heroicons<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
+  The history panel is at the bottom right of your screen
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-alert</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-data-subsetter-history</span> <span class="token attr-name">bearer-token</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>YOUR_EARTHDATA_BEARER_TOKEN<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-data-subsetter-history</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-226"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -348,7 +378,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-94"
+                aria-controls="code-preview-source-group-54"
               >
                 Source
                 <svg
@@ -382,18 +412,120 @@
             </div>
           </div>
 
+          <h2 id="properties" class="anchor-heading">
+            Properties<a href="#properties" aria-label='Direct link to "Properties"'></a>
+          </h2>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>label</code></td>
+                  <td>string</td>
+                  <td>“History”</td>
+                  <td>The label shown at the top of the history panel.</td>
+                </tr>
+                <tr>
+                  <td><code>bearer-token</code></td>
+                  <td>string</td>
+                  <td>—</td>
+                  <td>NASA Earthdata bearer token for fetching user-specific job history.</td>
+                </tr>
+                <tr>
+                  <td><code>always-show</code></td>
+                  <td>boolean</td>
+                  <td>false</td>
+                  <td>If true, always show the panel even if the user has no jobs.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <h2 id="examples" class="anchor-heading">
             Examples<a href="#examples" aria-label='Direct link to "Examples"'></a>
           </h2>
-          <h3 id="first-example" class="anchor-heading">
-            First Example<a href="#first-example" aria-label='Direct link to "First Example"'></a>
+          <h3 id="basic-usage" class="anchor-heading">
+            Basic Usage<a href="#basic-usage" aria-label='Direct link to "Basic Usage"'></a>
           </h3>
-          <p>TODO</p>
-          <h3 id="second-example" class="anchor-heading">
-            Second Example<a href="#second-example" aria-label='Direct link to "Second Example"'></a>
-          </h3>
-          <p>TODO</p>
-          <p>[component-metadata:terra-variable-keyword-search]</p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-data-subsetter-history bearer-token="YOUR_EARTHDATA_BEARER_TOKEN"></terra-data-subsetter-history>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-55">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-227"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-data-subsetter-history</span> <span class="token attr-name">bearer-token</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>YOUR_EARTHDATA_BEARER_TOKEN<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-data-subsetter-history</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-227"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-55"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h2 id="best-practices" class="anchor-heading">
+            Best Practices<a href="#best-practices" aria-label='Direct link to "Best Practices"'></a>
+          </h2>
+          <ul>
+            <li>Use <code>always-show</code> if you want to encourage new users to create their first request.</li>
+            <li>Place the component once per page, typically at the root level, to avoid duplicate panels.</li>
+            <li>Clicking a job opens the full job details in a dialog for review or re-download.</li>
+          </ul>
+          <h2 id="accessibility" class="anchor-heading">
+            Accessibility<a href="#accessibility" aria-label='Direct link to "Accessibility"'></a>
+          </h2>
+          <ul>
+            <li>The panel and dialog are keyboard accessible.</li>
+            <li>All interactive elements have clear focus indicators.</li>
+            <li>Uses ARIA roles and labels for screen readers.</li>
+          </ul>
+          <p>[component-metadata:terra-data-subsetter-history]</p>
 
           <h2 id="importing" class="anchor-heading">
             Importing<a href="#importing" aria-label='Direct link to "Importing"'></a>
@@ -422,7 +554,7 @@
                 >
                 using a script tag:
               </p>
-              <pre><code class="language-html" id="code-block-321"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.57/cdn/components/variable-keyword-search/variable-keyword-search.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code><sl-copy-button class="copy-code-button" from="code-block-321"></sl-copy-button></pre>
+              <pre><code class="language-html" id="code-block-228"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.57/cdn/components/data-subsetter-history/data-subsetter-history.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code><sl-copy-button class="copy-code-button" from="code-block-228"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="import">
@@ -437,7 +569,7 @@
                 >
                 using a JavaScript import:
               </p>
-              <pre><code class="language-js" id="code-block-322"><span class="token keyword">import</span> <span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.57/cdn/components/variable-keyword-search/variable-keyword-search.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-322"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-229"><span class="token keyword">import</span> <span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.57/cdn/components/data-subsetter-history/data-subsetter-history.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-229"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="bundler">
@@ -445,17 +577,17 @@
                 To import this component using
                 <a href="/components/getting-started/installation#bundling">a bundler</a>:
               </p>
-              <pre><code class="language-js" id="code-block-323"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/variable-keyword-search/variable-keyword-search.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-323"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-230"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/data-subsetter-history/data-subsetter-history.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-230"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="react">
               <p>To import this component as a <a href="/components/frameworks/react">React component</a>:</p>
-              <pre><code class="language-js" id="code-block-324"><span class="token keyword">import</span> TerraVariableKeywordSearch <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/variable-keyword-search'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-324"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-231"><span class="token keyword">import</span> TerraDataSubsetterHistory <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/data-subsetter-history'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-231"></sl-copy-button></pre>
             </sl-tab-panel>
           </sl-tab-group>
 
-          <h2 id="properties" class="anchor-heading">
-            Properties<a href="#properties" aria-label='Direct link to "Properties"'></a>
+          <h2 id="properties-1" class="anchor-heading">
+            Properties<a href="#properties-1" aria-label='Direct link to "Properties"'></a>
           </h2>
 
           <div class="table-scroll">
@@ -472,69 +604,24 @@
               <tbody>
                 <tr>
                   <td>
-                    <code class="nowrap">label</code>
-                  </td>
-                  <td>Label the combobox with this.</td>
-                  <td style="text-align: center"></td>
-                  <td>
-                    <code>string</code>
-                  </td>
-                  <td>
-                    <code>'Enter search terms (e.g., precipitation, AOD)'</code>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <code class="nowrap">placeholder</code>
-                  </td>
-                  <td>Set a placeholder for the combobox with this. Defaults to the label’s value.</td>
-                  <td style="text-align: center"></td>
-                  <td>
-                    <code>string</code>
-                  </td>
-                  <td>-</td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <code class="nowrap">hideLabel</code>
+                    <code class="nowrap">alwaysShow</code>
 
                     <br />
                     <sl-tooltip content="This attribute is different from its property">
                       <small>
-                        <code class="nowrap"> hide-label </code>
+                        <code class="nowrap"> always-show </code>
                       </small>
                     </sl-tooltip>
                   </td>
-                  <td>Hide the combobox’s label text. When hidden, still presents to screen readers.</td>
+                  <td>
+                    if a user has never done a subset request, by default they don’t see the history panel at all this
+                    prop allows you to override that behavior and always show the history panel
+                  </td>
                   <td style="text-align: center"></td>
                   <td>
                     <code>boolean</code>
                   </td>
-                  <td>
-                    <code>true</code>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <code class="nowrap">searchConfig</code>
-                  </td>
-                  <td>
-                    type can be <code>Boolean</code>, <code>String</code>, <code>Number</code>, <code>Object</code>, or
-                    <code>Array</code>
-                  </td>
-                  <td style="text-align: center"></td>
-                  <td>
-                    <code>object</code>
-                  </td>
-                  <td>
-                    <code
-                      >{ //* @see {@link https://www.fusejs.io/api/options.html#options} keys: ['id'],
-                      useExtendedSearch: true, }</code
-                    >
-                  </td>
+                  <td>-</td>
                 </tr>
 
                 <tr>
@@ -560,136 +647,37 @@
             >
           </p>
 
-          <h2 id="events" class="anchor-heading">Events<a href="#events" aria-label='Direct link to "Events"'></a></h2>
-
-          <div class="table-scroll">
-            <table>
-              <thead>
-                <tr>
-                  <th class="table-name" data-flavor="html">Name</th>
-                  <th class="table-name" data-flavor="react">React Event</th>
-                  <th class="table-description">Description</th>
-                  <th class="table-event-detail">Event Detail</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td data-flavor="html">
-                    <code class="nowrap">terra-variable-keyword-search-change</code>
-                  </td>
-                  <td data-flavor="react">
-                    <code class="nowrap">onTerraVariableKeywordSearchChange</code>
-                  </td>
-                  <td>Emitted when an option is selected.</td>
-                  <td>-</td>
-                </tr>
-
-                <tr>
-                  <td data-flavor="html">
-                    <code class="nowrap">terra-search</code>
-                  </td>
-                  <td data-flavor="react">
-                    <code class="nowrap">onTerraSearch</code>
-                  </td>
-                  <td>Emitted when the component is triggering a search (like a form triggering submit).</td>
-                  <td>-</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p>
-            <em>Learn more about <a href="/components/getting-started/usage#events">events</a>.</em>
-          </p>
-
-          <h2 id="custom-properties" class="anchor-heading">
-            Custom Properties<a href="#custom-properties" aria-label='Direct link to "Custom Properties"'></a>
+          <h2 id="dependencies" class="anchor-heading">
+            Dependencies<a href="#dependencies" aria-label='Direct link to "Dependencies"'></a>
           </h2>
 
-          <div class="table-scroll">
-            <table>
-              <thead>
-                <tr>
-                  <th class="table-name">Name</th>
-                  <th class="table-description">Description</th>
-                  <th class="table-default">Default</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="nowrap">
-                    <code>--host-height</code>
-                  </td>
-                  <td>The height of the host element.</td>
-                  <td></td>
-                </tr>
+          <p>This component automatically imports the following dependencies.</p>
 
-                <tr>
-                  <td class="nowrap">
-                    <code>--label-height</code>
-                  </td>
-                  <td>The height of the input’s label element.</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <ul>
+            <li>
+              <code>&lt;terra-accordion&gt;</code>
+            </li>
 
-          <p>
-            <em
-              >Learn more about
-              <a href="/components/getting-started/usage#custom-properties">customizing CSS custom properties</a>.</em
-            >
-          </p>
+            <li>
+              <code>&lt;terra-data-subsetter&gt;</code>
+            </li>
 
-          <h2 id="parts" class="anchor-heading">Parts<a href="#parts" aria-label='Direct link to "Parts"'></a></h2>
+            <li>
+              <code>&lt;terra-date-picker&gt;</code>
+            </li>
 
-          <div class="table-scroll">
-            <table>
-              <thead>
-                <tr>
-                  <th class="table-name">Name</th>
-                  <th class="table-description">Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="nowrap">
-                    <code>base</code>
-                  </td>
-                  <td>A <code>search</code> element, the component’s base.</td>
-                </tr>
+            <li>
+              <code>&lt;terra-dialog&gt;</code>
+            </li>
 
-                <tr>
-                  <td class="nowrap">
-                    <code>combobox</code>
-                  </td>
-                  <td>An <code>input</code> element used for searching.</td>
-                </tr>
+            <li>
+              <code>&lt;terra-icon&gt;</code>
+            </li>
 
-                <tr>
-                  <td class="nowrap">
-                    <code>button</code>
-                  </td>
-                  <td>A <code>button</code> used for toggling the listbox’s visibility.</td>
-                </tr>
-
-                <tr>
-                  <td class="nowrap">
-                    <code>listbox</code>
-                  </td>
-                  <td>A <code>ul</code> that holds the clickable options.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p>
-            <em
-              >Learn more about
-              <a href="/components/getting-started/customizing/#css-parts">customizing CSS parts</a>.</em
-            >
-          </p>
+            <li>
+              <code>&lt;terra-spatial-picker&gt;</code>
+            </li>
+          </ul>
         </div>
       </article>
     </main>

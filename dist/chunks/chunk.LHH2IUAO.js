@@ -12,8 +12,7 @@ import {
 } from "./chunk.6JHIJHTB.js";
 
 // src/components/data-subsetter-history/data-subsetter-history.controller.ts
-var EXPANDED_JOBS_POLL_MILLIS = 3e3;
-var COLLAPSED_JOBS_POLL_MILLIS = 1e4;
+var JOBS_POLL_MILLIS = 3e3;
 var _host, _dataService, _windowIsVisible, _jobTimeout, _getDataService, getDataService_fn, _handleVisibilityChange, handleVisibilityChange_fn;
 var DataSubsetterHistoryController = class {
   constructor(host) {
@@ -35,10 +34,7 @@ var DataSubsetterHistoryController = class {
             signal
           });
         }
-        __privateSet(this, _jobTimeout, setTimeout(
-          () => this.task.run(),
-          !__privateGet(this, _host).collapsed ? EXPANDED_JOBS_POLL_MILLIS : COLLAPSED_JOBS_POLL_MILLIS
-        ));
+        __privateSet(this, _jobTimeout, setTimeout(() => this.task.run(), JOBS_POLL_MILLIS));
         return this.jobs;
       },
       args: () => []

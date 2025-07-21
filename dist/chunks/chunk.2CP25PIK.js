@@ -1433,7 +1433,7 @@ __decorateClass([
   e('[part~="spatial-picker"]')
 ], TerraDataSubsetter.prototype, "spatialPicker", 2);
 __decorateClass([
-  watch(["jobId"])
+  watch(["jobId"], { waitUntilFirstUpdate: true })
 ], TerraDataSubsetter.prototype, "jobIdChanged", 1);
 __decorateClass([
   watch(["collectionWithServices"])

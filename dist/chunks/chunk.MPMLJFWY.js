@@ -1,6 +1,6 @@
 import {
   TerraDataSubsetter
-} from "./chunk.2K3PMVBG.js";
+} from "./chunk.2CP25PIK.js";
 
 // src/react/data-subsetter/index.ts
 import * as React from "react";
