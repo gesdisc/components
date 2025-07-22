@@ -1,6 +1,9 @@
 import {
-  getGraphQLClient,
-  gql
+  GET_SEARCH_KEYWORDS,
+  GET_VARIABLES
+} from "./chunk.ALY47PFL.js";
+import {
+  getGraphQLClient
 } from "./chunk.3SGYVIRQ.js";
 import {
   getUTCDate
@@ -12,64 +15,7 @@ import {
   __spreadValues
 } from "./chunk.6JHIJHTB.js";
 
-// src/variable-catalog/queries.ts
-var GET_SEARCH_KEYWORDS = gql`
-    query {
-        aesirKeywords {
-            id
-        }
-    }
-`;
-var GET_VARIABLES = gql`
-    query GetVariables(
-        $q: String
-        $includeFields: String
-        $rows: String
-        $filter: FilterInput
-        $variableEntryIds: [String]
-    ) {
-        getVariables(
-            q: $q
-            includeFields: $includeFields
-            rows: $rows
-            filter: $filter
-            variableEntryIds: $variableEntryIds
-        ) {
-            count
-            total
-            variables {
-                dataFieldId
-                dataProductShortName
-                dataProductVersion
-                dataFieldShortName
-                dataFieldAccessName
-                dataFieldLongName
-                dataProductLongName
-                dataProductTimeInterval
-                dataProductWest
-                dataProductSouth
-                dataProductEast
-                dataProductNorth
-                dataProductSpatialResolution
-                dataProductBeginDateTime
-                dataProductEndDateTime
-                dataFieldKeywords
-                dataFieldUnits
-                dataProductDescriptionUrl
-                dataFieldDescriptionUrl
-            }
-            facets {
-                category
-                values {
-                    name
-                    count
-                }
-            }
-        }
-    }
-`;
-
-// src/variable-catalog/giovanni-variable-catalog.ts
+// src/metadata-catalog/giovanni-variable-catalog.ts
 var _adaptVariablesForResponse, adaptVariablesForResponse_fn, _getReasonableInitialStartAndEndDateTime, getReasonableInitialStartAndEndDateTime_fn;
 var GiovanniVariableCatalog = class {
   constructor() {

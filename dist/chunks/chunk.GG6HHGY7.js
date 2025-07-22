@@ -1,6 +1,6 @@
 import {
   TerraVariableKeywordSearch
-} from "./chunk.Z3QR5QW7.js";
+} from "./chunk.2NYYMBMH.js";
 import {
   TerraSkeleton
 } from "./chunk.OKIDU3QF.js";
@@ -12,7 +12,7 @@ import {
 } from "./chunk.FXMM2J3O.js";
 import {
   BrowseVariablesController
-} from "./chunk.JYPMBBIH.js";
+} from "./chunk.ZNCGOQ44.js";
 import {
   s
 } from "./chunk.UGTZ22DI.js";

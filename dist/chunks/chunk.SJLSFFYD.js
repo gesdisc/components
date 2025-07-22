@@ -3,7 +3,7 @@ import {
 } from "./chunk.U47NJ4KV.js";
 import {
   TerraTimeSeries
-} from "./chunk.6NMCBEWU.js";
+} from "./chunk.RPHFLDQN.js";
 import {
   TerraDateRangeSlider
 } from "./chunk.YVYJWONC.js";
@@ -15,7 +15,7 @@ import {
 } from "./chunk.4YP22UYD.js";
 import {
   GiovanniVariableCatalog
-} from "./chunk.2YFBVDNY.js";
+} from "./chunk.WDABPW4H.js";
 import {
   h
 } from "./chunk.UGTZ22DI.js";

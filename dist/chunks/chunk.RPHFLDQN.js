@@ -18,7 +18,7 @@ import {
 } from "./chunk.FXMM2J3O.js";
 import {
   GiovanniVariableCatalog
-} from "./chunk.2YFBVDNY.js";
+} from "./chunk.WDABPW4H.js";
 import {
   h as h2,
   s

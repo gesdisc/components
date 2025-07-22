@@ -1,11 +1,10 @@
-import { Status, type CollectionWithAvailableServices, type DataServiceInterface, type SubsetJobOptions, type SubsetJobStatus, type SearchOptions, type SubsetJobs, type CmrSearchResult } from './types.js';
+import { Status, type CollectionWithAvailableServices, type DataServiceInterface, type SubsetJobOptions, type SubsetJobStatus, type SearchOptions, type SubsetJobs } from './types.js';
 export declare const HARMONY_CONFIG: {
     baseUrl: string;
     cmrUrl: string;
 };
 export declare const FINAL_STATUSES: Set<Status>;
 export declare class HarmonyDataService implements DataServiceInterface {
-    searchCmr(keyword: string, type: 'collection' | 'variable' | 'all', options?: SearchOptions): Promise<Array<CmrSearchResult>>;
     getCollectionWithAvailableServices(collectionEntryId: string, options?: SearchOptions): Promise<CollectionWithAvailableServices>;
     createSubsetJob(collectionConceptId: string, subsetOptions?: SubsetJobOptions): Promise<SubsetJobStatus | undefined>;
     getSubsetJobs(searchOptions?: SearchOptions): Promise<SubsetJobs>;

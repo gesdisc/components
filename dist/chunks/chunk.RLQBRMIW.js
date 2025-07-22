@@ -10,7 +10,7 @@ import {
 } from "./chunk.4YP22UYD.js";
 import {
   DataSubsetterController
-} from "./chunk.SYA2GJN2.js";
+} from "./chunk.MNE6AST4.js";
 import {
   data_subsetter_styles_default
 } from "./chunk.R4TXOOHX.js";
@@ -119,6 +119,8 @@ var TerraDataSubsetter = class extends TerraElement {
     this.renderedInDialog = false;
     this.collectionSearchType = "all";
     this.collectionSearchLoading = false;
+    this.collectionLoading = false;
+    this.collectionAccordionOpen = true;
     __privateAdd(this, _controller, new DataSubsetterController(this));
     __privateAdd(this, _handleStartDateChange, (e2) => {
       __privateMethod(this, _markFieldTouched, markFieldTouched_fn).call(this, "date");
@@ -187,19 +189,9 @@ var TerraDataSubsetter = class extends TerraElement {
   }
   collectionChanged() {
     const { startDate, endDate } = __privateMethod(this, _getCollectionDateRange, getCollectionDateRange_fn).call(this);
-    if (startDate && endDate) {
-      const end = new Date(endDate);
-      const start = new Date(startDate);
-      const sevenDaysAgo = new Date(end);
-      sevenDaysAgo.setDate(end.getDate() - 6);
-      const defaultStart = sevenDaysAgo > start ? sevenDaysAgo : start;
-      this.selectedDateRange = {
-        startDate: defaultStart.toISOString().slice(0, 10),
-        endDate
-      };
-    } else {
-      this.selectedDateRange = { startDate, endDate };
-    }
+    this.selectedDateRange = { startDate, endDate };
+    this.collectionLoading = false;
+    this.collectionAccordionOpen = false;
   }
   render() {
     var _a, _b, _c;
@@ -327,7 +319,7 @@ renderSearchForCollection_fn = function() {
     placeholder = "Search variables (e.g. rainfall, hurricanes, etc.)";
   }
   return x`
-            <terra-accordion open>
+            <terra-accordion .open=${this.collectionAccordionOpen}>
                 <div slot="summary">
                     <span class="accordion-title">Collection:</span>
                 </div>
@@ -336,10 +328,18 @@ renderSearchForCollection_fn = function() {
                     slot="summary-right"
                     style="display: flex; align-items: center; gap: 10px"
                 >
-                    <span class="accordion-value" id="selected-collection-display"
-                        >Please select a collection</span
-                    >
-                    <button class="reset-btn">Reset</button>
+                    ${this.collectionEntryId ? x` <span
+                                  class="accordion-value"
+                                  id="selected-collection-display"
+                                  >${this.collectionEntryId}</span
+                              >
+
+                              <button
+                                  class="reset-btn"
+                                  @click=${() => this.collectionEntryId = void 0}
+                              >
+                                  Reset
+                              </button>` : T}
                 </div>
 
                 <div class="search-tabs-mini">
@@ -374,7 +374,7 @@ renderSearchForCollection_fn = function() {
   )}"
                     />
 
-                    <button class="search-button-mini" onclick="performSearch()">
+                    <button class="search-button-mini">
                         <svg
                             class="search-icon-mini"
                             viewBox="0 0 24 24"
@@ -420,7 +420,24 @@ renderSearchForCollection_fn = function() {
                             >
                                 ${(_b = this.collectionSearchResults) == null ? void 0 : _b.map(
     (item) => x`
-                                        <div class="result-item-mini">
+                                        <div
+                                            class="result-item-mini"
+                                            @click=${() => {
+      this.collectionEntryId = item.collectionEntryId;
+      this.collectionAccordionOpen = false;
+      this.collectionLoading = true;
+      if (item.type === "variable") {
+        this.selectedVariables = [
+          {
+            name: item.entryId,
+            href: "",
+            conceptId: item.conceptId
+          }
+        ];
+      }
+    }}
+                                            style="cursor: pointer;"
+                                        >
                                             <div class="result-title-mini">
                                                 ${item.title}
                                             </div>
@@ -434,6 +451,10 @@ renderSearchForCollection_fn = function() {
                                                 <span>📅 2000-02-24 - ongoing</span>
                                                 <span>🌍 Global</span>
                                                 <span>🏢 ${item.provider}</span>
+                                                ${item.type === "variable" ? x` <span
+                                                          >📊
+                                                          ${item.collectionEntryId}</span
+                                                      >` : T}
                                                 <span class="tag-mini"
                                                     >${item.type.toUpperCase()}</span
                                                 >
@@ -450,6 +471,29 @@ renderSearchForCollection_fn = function() {
                               </div>` : T}
                 </div>
             </terra-accordion>
+
+            ${this.collectionLoading ? x`
+                      <div
+                          class="collection-loading-bar"
+                          style="display: flex; align-items: center; gap: 10px; margin: 16px 0;"
+                      >
+                          <span
+                              class="loading-spinner"
+                              style="width: 20px; height: 20px; border: 3px solid #ccc; border-top: 3px solid #31708f; border-radius: 50%; display: inline-block; animation: spin 1s linear infinite;"
+                          ></span>
+                          Retrieving collection, please wait...
+                      </div>
+                      <style>
+                          @keyframes spin {
+                              0% {
+                                  transform: rotate(0deg);
+                              }
+                              100% {
+                                  transform: rotate(360deg);
+                              }
+                          }
+                      </style>
+                  ` : T}
         `;
 };
 _renderOutputFormatSelection = new WeakSet();
@@ -1470,6 +1514,12 @@ __decorateClass([
 __decorateClass([
   r()
 ], TerraDataSubsetter.prototype, "collectionSearchResults", 2);
+__decorateClass([
+  r()
+], TerraDataSubsetter.prototype, "collectionLoading", 2);
+__decorateClass([
+  r()
+], TerraDataSubsetter.prototype, "collectionAccordionOpen", 2);
 __decorateClass([
   e('[part~="spatial-picker"]')
 ], TerraDataSubsetter.prototype, "spatialPicker", 2);

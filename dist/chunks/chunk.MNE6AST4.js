@@ -1,10 +1,22 @@
 import {
   FINAL_STATUSES,
   HarmonyDataService
-} from "./chunk.XDPLSBIK.js";
+} from "./chunk.LJ4ZBVVY.js";
 import {
   Fuse
 } from "./chunk.QZV6EAIM.js";
+import {
+  GET_CMR_SEARCH_RESULTS_ALL,
+  GET_CMR_SEARCH_RESULTS_COLLECTIONS,
+  GET_CMR_SEARCH_RESULTS_VARIABLES
+} from "./chunk.ALY47PFL.js";
+import {
+  ApolloClient,
+  CachePersistor_default,
+  HttpLink,
+  InMemoryCache,
+  require_localforage
+} from "./chunk.3SGYVIRQ.js";
 import {
   h
 } from "./chunk.UGTZ22DI.js";
@@ -17,21 +29,125 @@ import {
   __privateMethod,
   __privateSet,
   __spreadProps,
-  __spreadValues
+  __spreadValues,
+  __toESM
 } from "./chunk.6JHIJHTB.js";
+
+// src/lib/cmr-graphql-client.ts
+var import_localforage = __toESM(require_localforage(), 1);
+import_localforage.default.config({
+  name: "terra-cmr-cache",
+  storeName: "terra-cmr-cache-store",
+  description: "CMR cache for the Terra Component Library"
+});
+var GraphQLClientManager = class _GraphQLClientManager {
+  constructor() {
+    const cache = new InMemoryCache();
+    const persistor = new CachePersistor_default({
+      cache,
+      storage: {
+        getItem: async (key) => {
+          return await import_localforage.default.getItem(key);
+        },
+        setItem: async (key, value) => {
+          return await import_localforage.default.setItem(key, value);
+        },
+        removeItem: async (key) => {
+          return await import_localforage.default.removeItem(key);
+        }
+      },
+      debug: false
+    });
+    this.client = new ApolloClient({
+      link: new HttpLink({
+        uri: "https://graphql.earthdata.nasa.gov/api"
+      }),
+      cache,
+      defaultOptions: {
+        query: {
+          fetchPolicy: "cache-first"
+        }
+      }
+    });
+    this.initializationPromise = persistor.restore().catch((error) => {
+      console.error("Error restoring Apollo cache:", error);
+    });
+  }
+  static getInstance() {
+    if (!_GraphQLClientManager.instance) {
+      _GraphQLClientManager.instance = new _GraphQLClientManager();
+    }
+    return _GraphQLClientManager.instance;
+  }
+  async getClient() {
+    await this.initializationPromise;
+    return this.client;
+  }
+};
+async function getGraphQLClient() {
+  return await GraphQLClientManager.getInstance().getClient();
+}
+
+// src/metadata-catalog/cmr-catalog.ts
+var CmrCatalog = class {
+  async searchCmr(keyword, type, options) {
+    var _a, _b, _c, _d, _e, _f;
+    const client = await getGraphQLClient();
+    const response = await client.query({
+      query: type === "collection" ? GET_CMR_SEARCH_RESULTS_COLLECTIONS : type === "variable" ? GET_CMR_SEARCH_RESULTS_VARIABLES : GET_CMR_SEARCH_RESULTS_ALL,
+      variables: {
+        keyword
+      },
+      context: {
+        fetchOptions: {
+          signal: options == null ? void 0 : options.signal
+        }
+      },
+      fetchPolicy: "network-only"
+    });
+    if (response.errors) {
+      throw new Error(`Failed to search CMR: ${response.errors[0].message}`);
+    }
+    const collections = (_c = (_b = (_a = response.data.collections) == null ? void 0 : _a.items) == null ? void 0 : _b.map((collection) => ({
+      type: "collection",
+      collectionConceptId: collection.conceptId,
+      collectionEntryId: collection.nativeId,
+      conceptId: collection.conceptId,
+      entryId: collection.nativeId,
+      provider: collection.provider,
+      title: collection.title
+    }))) != null ? _c : [];
+    const variables = (_f = (_e = (_d = response.data.variables) == null ? void 0 : _d.items) == null ? void 0 : _e.map((variable) => {
+      var _a2, _b2, _c2, _d2;
+      return {
+        type: "variable",
+        collectionConceptId: (_b2 = (_a2 = variable.collections.items) == null ? void 0 : _a2[0]) == null ? void 0 : _b2.conceptId,
+        collectionEntryId: (_d2 = (_c2 = variable.collections.items) == null ? void 0 : _c2[0]) == null ? void 0 : _d2.nativeId,
+        conceptId: variable.conceptId,
+        entryId: variable.name,
+        provider: variable.providerId,
+        title: variable.longName
+      };
+    })) != null ? _f : [];
+    return [...collections, ...variables];
+  }
+};
 
 // src/components/data-subsetter/data-subsetter.controller.ts
 var JOB_STATUS_POLL_MILLIS = 3e3;
-var _host, _dataService, _getDataService, getDataService_fn, _getEmptyJob, getEmptyJob_fn, _buildJobLabels, buildJobLabels_fn;
+var _host, _dataService, _metadataCatalog, _getMetadataCatalog, getMetadataCatalog_fn, _getDataService, getDataService_fn, _getEmptyJob, getEmptyJob_fn, _buildJobLabels, buildJobLabels_fn;
 var DataSubsetterController = class {
   constructor(host) {
+    __privateAdd(this, _getMetadataCatalog);
     __privateAdd(this, _getDataService);
     __privateAdd(this, _getEmptyJob);
     __privateAdd(this, _buildJobLabels);
     __privateAdd(this, _host, void 0);
     __privateAdd(this, _dataService, void 0);
+    __privateAdd(this, _metadataCatalog, void 0);
     __privateSet(this, _host, host);
     __privateSet(this, _dataService, __privateMethod(this, _getDataService, getDataService_fn).call(this));
+    __privateSet(this, _metadataCatalog, __privateMethod(this, _getMetadataCatalog, getMetadataCatalog_fn).call(this));
     this.fetchCollectionTask = new h(host, {
       task: async ([collectionEntryId], { signal }) => {
         __privateGet(this, _host).collectionWithServices = collectionEntryId ? await __privateGet(this, _dataService).getCollectionWithAvailableServices(
@@ -43,28 +159,30 @@ var DataSubsetterController = class {
       args: () => [__privateGet(this, _host).collectionEntryId]
     });
     this.searchCmrTask = new h(host, {
-      task: async ([searchQuery], { signal }) => {
+      task: async ([searchQuery, searchType], { signal }) => {
         if (!searchQuery) {
           __privateGet(this, _host).collectionSearchResults = void 0;
           return __privateGet(this, _host).collectionSearchResults;
         }
         __privateGet(this, _host).collectionSearchLoading = true;
-        const results = await __privateGet(this, _dataService).searchCmr(
+        const results = await __privateGet(this, _metadataCatalog).searchCmr(
           searchQuery,
-          "all",
+          searchType,
           {
             signal
           }
         );
         const fuse = new Fuse(results, {
-          keys: ["title", "entryId", "provider"],
-          threshold: 0.4
+          keys: ["title", "entryId", "provider"]
         });
         __privateGet(this, _host).collectionSearchResults = fuse.search(searchQuery).map((result) => result.item);
         __privateGet(this, _host).collectionSearchLoading = false;
         return __privateGet(this, _host).collectionSearchResults;
       },
-      args: () => [__privateGet(this, _host).collectionSearchQuery]
+      args: () => [
+        __privateGet(this, _host).collectionSearchQuery,
+        __privateGet(this, _host).collectionSearchType
+      ]
     });
     this.jobStatusTask = new h(host, {
       task: async ([], { signal }) => {
@@ -161,6 +279,11 @@ var DataSubsetterController = class {
 };
 _host = new WeakMap();
 _dataService = new WeakMap();
+_metadataCatalog = new WeakMap();
+_getMetadataCatalog = new WeakSet();
+getMetadataCatalog_fn = function() {
+  return new CmrCatalog();
+};
 _getDataService = new WeakSet();
 getDataService_fn = function() {
   return new HarmonyDataService();

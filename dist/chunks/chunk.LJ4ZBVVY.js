@@ -1,127 +1,12 @@
 import {
-  ApolloClient,
-  CachePersistor_default,
-  HttpLink,
-  InMemoryCache,
   getGraphQLClient,
-  gql,
-  require_localforage
+  gql
 } from "./chunk.3SGYVIRQ.js";
 import {
-  __spreadValues,
-  __toESM
+  __spreadValues
 } from "./chunk.6JHIJHTB.js";
 
-// src/lib/cmr-graphql-client.ts
-var import_localforage = __toESM(require_localforage(), 1);
-import_localforage.default.config({
-  name: "terra-cmr-cache",
-  storeName: "terra-cmr-cache-store",
-  description: "CMR cache for the Terra Component Library"
-});
-var GraphQLClientManager = class _GraphQLClientManager {
-  constructor() {
-    const cache = new InMemoryCache();
-    const persistor = new CachePersistor_default({
-      cache,
-      storage: {
-        getItem: async (key) => {
-          return await import_localforage.default.getItem(key);
-        },
-        setItem: async (key, value) => {
-          return await import_localforage.default.setItem(key, value);
-        },
-        removeItem: async (key) => {
-          return await import_localforage.default.removeItem(key);
-        }
-      },
-      debug: false
-    });
-    this.client = new ApolloClient({
-      link: new HttpLink({
-        uri: "https://graphql.earthdata.nasa.gov/api"
-      }),
-      cache,
-      defaultOptions: {
-        query: {
-          fetchPolicy: "cache-first"
-        }
-      }
-    });
-    this.initializationPromise = persistor.restore().catch((error) => {
-      console.error("Error restoring Apollo cache:", error);
-    });
-  }
-  static getInstance() {
-    if (!_GraphQLClientManager.instance) {
-      _GraphQLClientManager.instance = new _GraphQLClientManager();
-    }
-    return _GraphQLClientManager.instance;
-  }
-  async getClient() {
-    await this.initializationPromise;
-    return this.client;
-  }
-};
-async function getGraphQLClient2() {
-  return await GraphQLClientManager.getInstance().getClient();
-}
-
 // src/data-services/queries.ts
-var GET_CMR_SEARCH_RESULTS_ALL = gql`
-    query GetCMRSearchResultsAll($keyword: String!) {
-        collections(params: { keyword: $keyword }) {
-            items {
-                conceptId
-                nativeId
-                provider
-                title
-            }
-        }
-        variables(params: { keyword: $keyword }) {
-            items {
-                conceptId
-                name
-                providerId
-                longName
-                collections {
-                    items {
-                        conceptId
-                    }
-                }
-            }
-        }
-    }
-`;
-var GET_CMR_SEARCH_RESULTS_COLLECTIONS = gql`
-    query GetCMRSearchResultsCollections($keyword: String!) {
-        collections(params: { keyword: $keyword }) {
-            items {
-                conceptId
-                nativeId
-                provider
-                title
-            }
-        }
-    }
-`;
-var GET_CMR_SEARCH_RESULTS_VARIABLES = gql`
-    query GetCMRSearchResultsVariables($keyword: String!) {
-        variables(params: { keyword: $keyword }) {
-            items {
-                conceptId
-                name
-                providerId
-                longName
-                collections {
-                    items {
-                        conceptId
-                    }
-                }
-            }
-        }
-    }
-`;
 var GET_SERVICE_CAPABILITIES = gql`
     query GetServiceCapabilities($collectionEntryId: String) {
         getServiceCapabilities(input: { collectionEntryId: $collectionEntryId }) {
@@ -297,45 +182,6 @@ var FINAL_STATUSES = /* @__PURE__ */ new Set([
   "complete_with_errors" /* COMPLETE_WITH_ERRORS */
 ]);
 var HarmonyDataService = class {
-  async searchCmr(keyword, type, options) {
-    var _a, _b, _c, _d, _e, _f;
-    const client = await getGraphQLClient2();
-    console.log("Searching for ", keyword);
-    const response = await client.query({
-      query: type === "collection" ? GET_CMR_SEARCH_RESULTS_COLLECTIONS : type === "variable" ? GET_CMR_SEARCH_RESULTS_VARIABLES : GET_CMR_SEARCH_RESULTS_ALL,
-      variables: {
-        keyword
-      },
-      context: {
-        fetchOptions: {
-          signal: options == null ? void 0 : options.signal
-        }
-      }
-    });
-    if (response.errors) {
-      throw new Error(`Failed to search CMR: ${response.errors[0].message}`);
-    }
-    const collections = (_c = (_b = (_a = response.data.collections) == null ? void 0 : _a.items) == null ? void 0 : _b.map((collection) => ({
-      type: "collection",
-      collectionConceptId: collection.conceptId,
-      conceptId: collection.conceptId,
-      entryId: collection.nativeId,
-      provider: collection.provider,
-      title: collection.title
-    }))) != null ? _c : [];
-    const variables = (_f = (_e = (_d = response.data.variables) == null ? void 0 : _d.items) == null ? void 0 : _e.map((variable) => {
-      var _a2, _b2;
-      return {
-        type: "variable",
-        collectionConceptId: (_b2 = (_a2 = variable.collections.items) == null ? void 0 : _a2[0]) == null ? void 0 : _b2.conceptId,
-        conceptId: variable.conceptId,
-        entryId: variable.name,
-        provider: variable.providerId,
-        title: variable.longName
-      };
-    })) != null ? _f : [];
-    return [...collections, ...variables];
-  }
   async getCollectionWithAvailableServices(collectionEntryId, options) {
     const client = await getGraphQLClient();
     console.log(

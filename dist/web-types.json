@@ -746,6 +746,8 @@
                 "name": "collectionSearchResults",
                 "type": "Array<CmrSearchResult> | undefined"
               },
+              { "name": "collectionLoading", "type": "boolean" },
+              { "name": "collectionAccordionOpen", "type": "boolean" },
               { "name": "spatialPicker", "type": "TerraSpatialPicker" }
             ],
             "events": [

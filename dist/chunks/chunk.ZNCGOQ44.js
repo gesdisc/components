@@ -1,6 +1,6 @@
 import {
   GiovanniVariableCatalog
-} from "./chunk.2YFBVDNY.js";
+} from "./chunk.WDABPW4H.js";
 import {
   h
 } from "./chunk.UGTZ22DI.js";

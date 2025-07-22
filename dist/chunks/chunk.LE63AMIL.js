@@ -1,6 +1,6 @@
 import {
   TerraBrowseVariables
-} from "./chunk.WMOWJMIG.js";
+} from "./chunk.GG6HHGY7.js";
 
 // src/components/browse-variables/browse-variables.ts
 var browse_variables_default = TerraBrowseVariables;

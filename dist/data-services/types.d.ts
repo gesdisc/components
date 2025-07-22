@@ -7,37 +7,6 @@ export interface DataServiceInterface {
     createSubsetJob(collectionConceptId: string, subsetOptions?: SubsetJobOptions): Promise<SubsetJobStatus | undefined>;
     getSubsetJobStatus(jobId: string): Promise<SubsetJobStatus>;
 }
-export type CmrSearchResult = {
-    type: 'collection' | 'variable';
-    collectionConceptId: string;
-    conceptId: string;
-    entryId: string;
-    provider: string;
-    title: string;
-};
-export type CmrSearchResultsResponse = {
-    collections?: {
-        items: Array<{
-            conceptId: string;
-            nativeId: string;
-            provider: string;
-            title: string;
-        }>;
-    };
-    variables?: {
-        items: Array<{
-            conceptId: string;
-            name: string;
-            providerId: string;
-            longName: string;
-            collections: {
-                items: Array<{
-                    conceptId: string;
-                }>;
-            };
-        }>;
-    };
-};
 export interface CollectionWithAvailableServices {
     conceptId: string;
     shortName: string;

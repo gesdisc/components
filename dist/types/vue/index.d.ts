@@ -243,6 +243,10 @@ type TerraDataSubsetterProps = {
   /**  */
   collectionSearchResults?: TerraDataSubsetter["collectionSearchResults"];
   /**  */
+  collectionLoading?: TerraDataSubsetter["collectionLoading"];
+  /**  */
+  collectionAccordionOpen?: TerraDataSubsetter["collectionAccordionOpen"];
+  /**  */
   spatialPicker?: TerraDataSubsetter["spatialPicker"];
   /** called when a subset job enters a final state (e.g. successful, failed, completed_with_errors) */
   onTerraSubsetJobComplete?: (e: CustomEvent<never>) => void;
