@@ -1,2 +1,2 @@
 import { ApolloClient } from '@apollo/client/core';
-export declare function getGraphQLClient(): Promise<ApolloClient<any>>;
+export declare function getGraphQLClient(clientKey?: string): Promise<ApolloClient<any>>;

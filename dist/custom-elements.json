@@ -4,399 +4,6 @@
   "modules": [
     {
       "kind": "javascript-module",
-      "path": "components/accordion/accordion.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TerraAccordion",
-          "slots": [
-            {
-              "description": "The default slot for accordion content.",
-              "name": ""
-            },
-            {
-              "description": "The summary/header for the accordion (optional, overrides summary property)",
-              "name": "summary"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "dependencies",
-              "type": {
-                "text": "object"
-              },
-              "static": true,
-              "default": "{\n        'terra-icon': TerraIcon,\n    }"
-            },
-            {
-              "kind": "field",
-              "name": "summary",
-              "type": {
-                "text": "string"
-              },
-              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
-              "attribute": "summary"
-            },
-            {
-              "kind": "field",
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
-              "attribute": "open",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "showArrow",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "attribute": "showArrow"
-            },
-            {
-              "kind": "method",
-              "name": "handleToggle",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "description": "emitted when the accordion opens or closes",
-              "name": "terra-accordion-toggle",
-              "reactName": "onTerraAccordionToggle",
-              "eventName": "TerraAccordionToggleEvent"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "summary",
-              "type": {
-                "text": "string"
-              },
-              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
-              "fieldName": "summary"
-            },
-            {
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
-              "fieldName": "open"
-            },
-            {
-              "name": "showArrow",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "fieldName": "showArrow"
-            }
-          ],
-          "superclass": {
-            "name": "TerraElement",
-            "module": "/src/internal/terra-element.js"
-          },
-          "summary": "A collapsible content panel for showing and hiding content.",
-          "tagNameWithoutPrefix": "accordion",
-          "tagName": "terra-accordion",
-          "customElement": true,
-          "jsDoc": "/**\n * @summary A collapsible content panel for showing and hiding content.\n * @documentation https://disc.gsfc.nasa.gov/components/accordion\n * @status experimental\n * @since 1.0\n *\n * The TerraAccordion component provides a simple, accessible way to show and hide content. It uses native <details> and <summary> elements for built-in accessibility and keyboard support. The summary/header can be set via the `summary` property for simple text, or via a named `summary` slot for custom content (such as icons or rich HTML). The open state can be controlled with the `open` property, which is reflected as an attribute.\n *\n * @slot - The default slot for accordion content.\n * @slot summary - The summary/header for the accordion (optional, overrides summary property)\n *\n * @property {string} summary - The summary/header for the accordion. Use the property for simple text, or the slot for custom content.\n * @property {boolean} open - Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.\n *\n * @event terra-accordion-toggle - emitted when the accordion opens or closes\n *\n * @dependency terra-icon\n */",
-          "documentation": "https://disc.gsfc.nasa.gov/components/accordion",
-          "status": "experimental",
-          "since": "1.0",
-          "dependencies": [
-            "terra-icon"
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "TerraAccordion",
-            "module": "components/accordion/accordion.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "components/browse-variables/browse-variables.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TerraBrowseVariables",
-          "members": [
-            {
-              "kind": "field",
-              "name": "dependencies",
-              "type": {
-                "text": "object"
-              },
-              "static": true,
-              "default": "{\n        'terra-variable-keyword-search': TerraVariableKeywordSearch,\n        'terra-button': TerraButton,\n        'terra-skeleton': TerraSkeleton,\n        'terra-icon': TerraIcon,\n        'terra-loader': TerraLoader,\n    }"
-            },
-            {
-              "kind": "field",
-              "name": "catalog",
-              "type": {
-                "text": "'giovanni'"
-              },
-              "default": "'giovanni'",
-              "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
-              "attribute": "catalog"
-            },
-            {
-              "kind": "field",
-              "name": "searchQuery",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "selectedFacets",
-              "type": {
-                "text": "SelectedFacets"
-              },
-              "default": "{}"
-            },
-            {
-              "kind": "field",
-              "name": "selectedVariables",
-              "type": {
-                "text": "Variable[]"
-              },
-              "default": "[]"
-            },
-            {
-              "kind": "field",
-              "name": "showVariablesBrowse",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "#controller",
-              "privacy": "private",
-              "default": "new BrowseVariablesController(this)"
-            },
-            {
-              "kind": "method",
-              "name": "handleSelectedVariablesChange"
-            },
-            {
-              "kind": "method",
-              "name": "reset"
-            },
-            {
-              "kind": "method",
-              "name": "handleObservationChange"
-            },
-            {
-              "kind": "method",
-              "name": "toggleFacetSelect",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "handleSearch",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "TerraVariableKeywordSearchChangeEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#selectFacetField",
-              "parameters": [
-                {
-                  "name": "facet",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "field",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "selectOneFieldAtATime",
-                  "default": "false",
-                  "type": {
-                    "text": "boolean"
-                  }
-                }
-              ],
-              "description": "given a field, ex: \"observations\": \"Model\", will add the field to any existing selected facets\nif \"selectedOneFieldAtATime\" is true, then we will only select that one field"
-            },
-            {
-              "kind": "method",
-              "name": "#clearFacet",
-              "parameters": [
-                {
-                  "name": "facet",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#unselectFacetField",
-              "parameters": [
-                {
-                  "name": "facet",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "field",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#handleVariableSelection",
-              "parameters": [
-                {
-                  "name": "variable",
-                  "type": {
-                    "text": "Variable"
-                  }
-                },
-                {
-                  "name": "checked",
-                  "type": {
-                    "text": "Boolean"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#renderCategorySelect"
-            },
-            {
-              "kind": "method",
-              "name": "#renderFacet",
-              "parameters": [
-                {
-                  "name": "facetKey",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "title",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "fields",
-                  "optional": true,
-                  "type": {
-                    "text": "FacetField[]"
-                  }
-                },
-                {
-                  "name": "open",
-                  "optional": true,
-                  "type": {
-                    "text": "boolean"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#renderVariablesBrowse"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "catalog",
-              "type": {
-                "text": "'giovanni'"
-              },
-              "default": "'giovanni'",
-              "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
-              "fieldName": "catalog"
-            }
-          ],
-          "superclass": {
-            "name": "TerraElement",
-            "module": "/src/internal/terra-element.js"
-          },
-          "summary": "Browse through the NASA CMR or Giovanni catalogs.",
-          "tagNameWithoutPrefix": "browse-variables",
-          "tagName": "terra-browse-variables",
-          "customElement": true,
-          "jsDoc": "/**\n * @summary Browse through the NASA CMR or Giovanni catalogs.\n * @documentation https://disc.gsfc.nasa.gov/components/browse-variables\n * @status MVP\n * @since 1.0\n *\n * @emits terra-variables-change - emitted when the user selects or unselects variables\n *\n * @dependency terra-variable-keyword-search\n * @dependency terra-button\n * @dependency terra-skeleton\n * @dependency terra-icon\n * @dependency terra-loader\n */",
-          "documentation": "https://disc.gsfc.nasa.gov/components/browse-variables",
-          "status": "MVP",
-          "since": "1.0",
-          "dependencies": [
-            "terra-variable-keyword-search",
-            "terra-button",
-            "terra-skeleton",
-            "terra-icon",
-            "terra-loader"
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "TerraBrowseVariables",
-            "module": "components/browse-variables/browse-variables.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "components/alert/alert.js",
       "declarations": [
         {
@@ -692,6 +299,399 @@
           "declaration": {
             "name": "TerraAlert",
             "module": "components/alert/alert.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "components/browse-variables/browse-variables.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TerraBrowseVariables",
+          "members": [
+            {
+              "kind": "field",
+              "name": "dependencies",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{\n        'terra-variable-keyword-search': TerraVariableKeywordSearch,\n        'terra-button': TerraButton,\n        'terra-skeleton': TerraSkeleton,\n        'terra-icon': TerraIcon,\n        'terra-loader': TerraLoader,\n    }"
+            },
+            {
+              "kind": "field",
+              "name": "catalog",
+              "type": {
+                "text": "'giovanni'"
+              },
+              "default": "'giovanni'",
+              "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
+              "attribute": "catalog"
+            },
+            {
+              "kind": "field",
+              "name": "searchQuery",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "selectedFacets",
+              "type": {
+                "text": "SelectedFacets"
+              },
+              "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "selectedVariables",
+              "type": {
+                "text": "Variable[]"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "showVariablesBrowse",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "#controller",
+              "privacy": "private",
+              "default": "new BrowseVariablesController(this)"
+            },
+            {
+              "kind": "method",
+              "name": "handleSelectedVariablesChange"
+            },
+            {
+              "kind": "method",
+              "name": "reset"
+            },
+            {
+              "kind": "method",
+              "name": "handleObservationChange"
+            },
+            {
+              "kind": "method",
+              "name": "toggleFacetSelect",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleSearch",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "TerraVariableKeywordSearchChangeEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#selectFacetField",
+              "parameters": [
+                {
+                  "name": "facet",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "field",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "selectOneFieldAtATime",
+                  "default": "false",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "given a field, ex: \"observations\": \"Model\", will add the field to any existing selected facets\nif \"selectedOneFieldAtATime\" is true, then we will only select that one field"
+            },
+            {
+              "kind": "method",
+              "name": "#clearFacet",
+              "parameters": [
+                {
+                  "name": "facet",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#unselectFacetField",
+              "parameters": [
+                {
+                  "name": "facet",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "field",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleVariableSelection",
+              "parameters": [
+                {
+                  "name": "variable",
+                  "type": {
+                    "text": "Variable"
+                  }
+                },
+                {
+                  "name": "checked",
+                  "type": {
+                    "text": "Boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#renderCategorySelect"
+            },
+            {
+              "kind": "method",
+              "name": "#renderFacet",
+              "parameters": [
+                {
+                  "name": "facetKey",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "title",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "fields",
+                  "optional": true,
+                  "type": {
+                    "text": "FacetField[]"
+                  }
+                },
+                {
+                  "name": "open",
+                  "optional": true,
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#renderVariablesBrowse"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "catalog",
+              "type": {
+                "text": "'giovanni'"
+              },
+              "default": "'giovanni'",
+              "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
+              "fieldName": "catalog"
+            }
+          ],
+          "superclass": {
+            "name": "TerraElement",
+            "module": "/src/internal/terra-element.js"
+          },
+          "summary": "Browse through the NASA CMR or Giovanni catalogs.",
+          "tagNameWithoutPrefix": "browse-variables",
+          "tagName": "terra-browse-variables",
+          "customElement": true,
+          "jsDoc": "/**\n * @summary Browse through the NASA CMR or Giovanni catalogs.\n * @documentation https://disc.gsfc.nasa.gov/components/browse-variables\n * @status MVP\n * @since 1.0\n *\n * @emits terra-variables-change - emitted when the user selects or unselects variables\n *\n * @dependency terra-variable-keyword-search\n * @dependency terra-button\n * @dependency terra-skeleton\n * @dependency terra-icon\n * @dependency terra-loader\n */",
+          "documentation": "https://disc.gsfc.nasa.gov/components/browse-variables",
+          "status": "MVP",
+          "since": "1.0",
+          "dependencies": [
+            "terra-variable-keyword-search",
+            "terra-button",
+            "terra-skeleton",
+            "terra-icon",
+            "terra-loader"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TerraBrowseVariables",
+            "module": "components/browse-variables/browse-variables.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "components/accordion/accordion.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TerraAccordion",
+          "slots": [
+            {
+              "description": "The default slot for accordion content.",
+              "name": ""
+            },
+            {
+              "description": "The summary/header for the accordion (optional, overrides summary property)",
+              "name": "summary"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "dependencies",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{\n        'terra-icon': TerraIcon,\n    }"
+            },
+            {
+              "kind": "field",
+              "name": "summary",
+              "type": {
+                "text": "string"
+              },
+              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
+              "attribute": "summary"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
+              "attribute": "open",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "showArrow",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "showArrow"
+            },
+            {
+              "kind": "method",
+              "name": "handleToggle",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "description": "emitted when the accordion opens or closes",
+              "name": "terra-accordion-toggle",
+              "reactName": "onTerraAccordionToggle",
+              "eventName": "TerraAccordionToggleEvent"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "summary",
+              "type": {
+                "text": "string"
+              },
+              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
+              "fieldName": "summary"
+            },
+            {
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
+              "fieldName": "open"
+            },
+            {
+              "name": "showArrow",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "showArrow"
+            }
+          ],
+          "superclass": {
+            "name": "TerraElement",
+            "module": "/src/internal/terra-element.js"
+          },
+          "summary": "A collapsible content panel for showing and hiding content.",
+          "tagNameWithoutPrefix": "accordion",
+          "tagName": "terra-accordion",
+          "customElement": true,
+          "jsDoc": "/**\n * @summary A collapsible content panel for showing and hiding content.\n * @documentation https://disc.gsfc.nasa.gov/components/accordion\n * @status experimental\n * @since 1.0\n *\n * The TerraAccordion component provides a simple, accessible way to show and hide content. It uses native <details> and <summary> elements for built-in accessibility and keyboard support. The summary/header can be set via the `summary` property for simple text, or via a named `summary` slot for custom content (such as icons or rich HTML). The open state can be controlled with the `open` property, which is reflected as an attribute.\n *\n * @slot - The default slot for accordion content.\n * @slot summary - The summary/header for the accordion (optional, overrides summary property)\n *\n * @property {string} summary - The summary/header for the accordion. Use the property for simple text, or the slot for custom content.\n * @property {boolean} open - Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.\n *\n * @event terra-accordion-toggle - emitted when the accordion opens or closes\n *\n * @dependency terra-icon\n */",
+          "documentation": "https://disc.gsfc.nasa.gov/components/accordion",
+          "status": "experimental",
+          "since": "1.0",
+          "dependencies": [
+            "terra-icon"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TerraAccordion",
+            "module": "components/accordion/accordion.js"
           }
         }
       ]
@@ -1462,362 +1462,6 @@
           "declaration": {
             "name": "TerraChip",
             "module": "components/chip/chip.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "components/combobox/combobox.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TerraCombobox",
-          "cssProperties": [
-            {
-              "description": "The height of the host element.",
-              "name": "--host-height"
-            },
-            {
-              "description": "The height of the search help element.",
-              "name": "--help-height"
-            },
-            {
-              "description": "The height of the input's label element.",
-              "name": "--label-height"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "A `search` element, the component's base.",
-              "name": "base"
-            },
-            {
-              "description": "An `input` element used for searching.",
-              "name": "combobox"
-            },
-            {
-              "description": "A `button` used for toggling the listbox's visibility.",
-              "name": "button"
-            },
-            {
-              "description": "A `ul` that holds the clickable options.",
-              "name": "listbox"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "shadowRootOptions",
-              "type": {
-                "text": "object"
-              },
-              "static": true,
-              "default": "{\n        ...LitElement.shadowRootOptions,\n        delegatesFocus: true,\n    }"
-            },
-            {
-              "kind": "field",
-              "name": "tagName",
-              "type": {
-                "text": "string"
-              },
-              "static": true,
-              "default": "'terra-combobox'"
-            },
-            {
-              "kind": "field",
-              "name": "initialQuery",
-              "type": {
-                "text": "string"
-              },
-              "static": true,
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "#combobox",
-              "privacy": "private",
-              "type": {
-                "text": "HTMLInputElement | null"
-              },
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "#listbox",
-              "privacy": "private",
-              "type": {
-                "text": "HTMLUListElement | null"
-              },
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "#searchEngine",
-              "privacy": "private",
-              "type": {
-                "text": "Fuse<GroupedListItem | ListItem> | null"
-              },
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "#walker",
-              "privacy": "private",
-              "type": {
-                "text": "TreeWalker | null"
-              },
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Search for Items'",
-              "description": "Label the combobox with this.",
-              "attribute": "label"
-            },
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Item'",
-              "description": "name the combobox with this.",
-              "attribute": "name"
-            },
-            {
-              "kind": "field",
-              "name": "placeholder",
-              "type": {
-                "text": "string"
-              },
-              "description": "Set a placeholder for the combobox with this.\nDefaults to the label's value.",
-              "attribute": "placeholder"
-            },
-            {
-              "kind": "field",
-              "name": "hideHelp",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Hide the combobox's help text.\nWhen hidden, not rendered at all.",
-              "attribute": "hide-help"
-            },
-            {
-              "kind": "field",
-              "name": "hideLabel",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Hide the combobox's label text.\nWhen hidden, still presents to screen readers.",
-              "attribute": "hide-label"
-            },
-            {
-              "kind": "field",
-              "name": "status",
-              "type": {
-                "text": "'INITIAL' | 'PENDING' | 'COMPLETE' | 'ERROR'"
-              },
-              "default": "'INITIAL'",
-              "description": "status of the content",
-              "attribute": "status"
-            },
-            {
-              "kind": "field",
-              "name": "content",
-              "type": {
-                "text": "Content"
-              },
-              "default": "{\n        type: SearchableListType.GroupedListItem,\n        data: [],\n    }",
-              "description": "content or data of the combobox. This could be of type string | GroupedListItem[] | ListItem[] | undefined",
-              "attribute": "content"
-            },
-            {
-              "kind": "field",
-              "name": "isExpanded",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "query"
-            },
-            {
-              "kind": "field",
-              "name": "searchResults",
-              "type": {
-                "text": "GroupedListItem[] | ListItem[]"
-              },
-              "default": "[]"
-            },
-            {
-              "kind": "method",
-              "name": "contentChanged",
-              "parameters": [
-                {
-                  "name": "_oldValue",
-                  "type": {
-                    "text": "any"
-                  }
-                },
-                {
-                  "name": "newValue",
-                  "type": {
-                    "text": "any"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "field",
-              "name": "#renderListItem",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "#renderGroupListItem",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "#renderError",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "#renderLoading",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "#dispatchChange",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "#handleButtonClick",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "#handleComboboxChange",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "#handleOptionClick",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "#handleKeydown",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "#manageListboxVisibility",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "#selectOption",
-              "privacy": "private"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Search for Items'",
-              "description": "Label the combobox with this.",
-              "fieldName": "label"
-            },
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Item'",
-              "description": "name the combobox with this.",
-              "fieldName": "name"
-            },
-            {
-              "name": "placeholder",
-              "type": {
-                "text": "string"
-              },
-              "description": "Set a placeholder for the combobox with this.\nDefaults to the label's value.",
-              "fieldName": "placeholder"
-            },
-            {
-              "name": "hide-help",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Hide the combobox's help text.\nWhen hidden, not rendered at all.",
-              "fieldName": "hideHelp"
-            },
-            {
-              "name": "hide-label",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Hide the combobox's label text.\nWhen hidden, still presents to screen readers.",
-              "fieldName": "hideLabel"
-            },
-            {
-              "name": "status",
-              "type": {
-                "text": "'INITIAL' | 'PENDING' | 'COMPLETE' | 'ERROR'"
-              },
-              "default": "'INITIAL'",
-              "description": "status of the content",
-              "fieldName": "status"
-            },
-            {
-              "name": "content",
-              "type": {
-                "text": "Content"
-              },
-              "default": "{\n        type: SearchableListType.GroupedListItem,\n        data: [],\n    }",
-              "description": "content or data of the combobox. This could be of type string | GroupedListItem[] | ListItem[] | undefined",
-              "fieldName": "content"
-            }
-          ],
-          "superclass": {
-            "name": "TerraElement",
-            "module": "/src/internal/terra-element.js"
-          },
-          "summary": "Fuzzy-search for combobox with list autocomplete.",
-          "tagNameWithoutPrefix": "combobox",
-          "tagName": "terra-combobox",
-          "customElement": true,
-          "jsDoc": "/**\n * @summary Fuzzy-search for combobox with list autocomplete.\n * @documentation https://disc.gsfc.nasa.gov/components/combobox\n * @status experimental\n * @since 1.0\n *\n * @csspart base - A `search` element, the component's base.\n * @csspart combobox - An `input` element used for searching.\n * @csspart button - A `button` used for toggling the listbox's visibility.\n * @csspart listbox - A `ul` that holds the clickable options.\n *\n * @cssproperty --host-height - The height of the host element.\n * @cssproperty --help-height - The height of the search help element.\n * @cssproperty --label-height - The height of the input's label element.\n */",
-          "documentation": "https://disc.gsfc.nasa.gov/components/combobox",
-          "status": "experimental",
-          "since": "1.0"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "TerraCombobox",
-            "module": "components/combobox/combobox.js"
           }
         }
       ]
@@ -2846,6 +2490,362 @@
           "declaration": {
             "name": "TerraDataSubsetterHistory",
             "module": "components/data-subsetter-history/data-subsetter-history.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "components/combobox/combobox.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TerraCombobox",
+          "cssProperties": [
+            {
+              "description": "The height of the host element.",
+              "name": "--host-height"
+            },
+            {
+              "description": "The height of the search help element.",
+              "name": "--help-height"
+            },
+            {
+              "description": "The height of the input's label element.",
+              "name": "--label-height"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "A `search` element, the component's base.",
+              "name": "base"
+            },
+            {
+              "description": "An `input` element used for searching.",
+              "name": "combobox"
+            },
+            {
+              "description": "A `button` used for toggling the listbox's visibility.",
+              "name": "button"
+            },
+            {
+              "description": "A `ul` that holds the clickable options.",
+              "name": "listbox"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "shadowRootOptions",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{\n        ...LitElement.shadowRootOptions,\n        delegatesFocus: true,\n    }"
+            },
+            {
+              "kind": "field",
+              "name": "tagName",
+              "type": {
+                "text": "string"
+              },
+              "static": true,
+              "default": "'terra-combobox'"
+            },
+            {
+              "kind": "field",
+              "name": "initialQuery",
+              "type": {
+                "text": "string"
+              },
+              "static": true,
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "#combobox",
+              "privacy": "private",
+              "type": {
+                "text": "HTMLInputElement | null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "#listbox",
+              "privacy": "private",
+              "type": {
+                "text": "HTMLUListElement | null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "#searchEngine",
+              "privacy": "private",
+              "type": {
+                "text": "Fuse<GroupedListItem | ListItem> | null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "#walker",
+              "privacy": "private",
+              "type": {
+                "text": "TreeWalker | null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Search for Items'",
+              "description": "Label the combobox with this.",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Item'",
+              "description": "name the combobox with this.",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "description": "Set a placeholder for the combobox with this.\nDefaults to the label's value.",
+              "attribute": "placeholder"
+            },
+            {
+              "kind": "field",
+              "name": "hideHelp",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Hide the combobox's help text.\nWhen hidden, not rendered at all.",
+              "attribute": "hide-help"
+            },
+            {
+              "kind": "field",
+              "name": "hideLabel",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Hide the combobox's label text.\nWhen hidden, still presents to screen readers.",
+              "attribute": "hide-label"
+            },
+            {
+              "kind": "field",
+              "name": "status",
+              "type": {
+                "text": "'INITIAL' | 'PENDING' | 'COMPLETE' | 'ERROR'"
+              },
+              "default": "'INITIAL'",
+              "description": "status of the content",
+              "attribute": "status"
+            },
+            {
+              "kind": "field",
+              "name": "content",
+              "type": {
+                "text": "Content"
+              },
+              "default": "{\n        type: SearchableListType.GroupedListItem,\n        data: [],\n    }",
+              "description": "content or data of the combobox. This could be of type string | GroupedListItem[] | ListItem[] | undefined",
+              "attribute": "content"
+            },
+            {
+              "kind": "field",
+              "name": "isExpanded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "query"
+            },
+            {
+              "kind": "field",
+              "name": "searchResults",
+              "type": {
+                "text": "GroupedListItem[] | ListItem[]"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "method",
+              "name": "contentChanged",
+              "parameters": [
+                {
+                  "name": "_oldValue",
+                  "type": {
+                    "text": "any"
+                  }
+                },
+                {
+                  "name": "newValue",
+                  "type": {
+                    "text": "any"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "#renderListItem",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "#renderGroupListItem",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "#renderError",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "#renderLoading",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "#dispatchChange",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "#handleButtonClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "#handleComboboxChange",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "#handleOptionClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "#handleKeydown",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "#manageListboxVisibility",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "#selectOption",
+              "privacy": "private"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Search for Items'",
+              "description": "Label the combobox with this.",
+              "fieldName": "label"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Item'",
+              "description": "name the combobox with this.",
+              "fieldName": "name"
+            },
+            {
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "description": "Set a placeholder for the combobox with this.\nDefaults to the label's value.",
+              "fieldName": "placeholder"
+            },
+            {
+              "name": "hide-help",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Hide the combobox's help text.\nWhen hidden, not rendered at all.",
+              "fieldName": "hideHelp"
+            },
+            {
+              "name": "hide-label",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Hide the combobox's label text.\nWhen hidden, still presents to screen readers.",
+              "fieldName": "hideLabel"
+            },
+            {
+              "name": "status",
+              "type": {
+                "text": "'INITIAL' | 'PENDING' | 'COMPLETE' | 'ERROR'"
+              },
+              "default": "'INITIAL'",
+              "description": "status of the content",
+              "fieldName": "status"
+            },
+            {
+              "name": "content",
+              "type": {
+                "text": "Content"
+              },
+              "default": "{\n        type: SearchableListType.GroupedListItem,\n        data: [],\n    }",
+              "description": "content or data of the combobox. This could be of type string | GroupedListItem[] | ListItem[] | undefined",
+              "fieldName": "content"
+            }
+          ],
+          "superclass": {
+            "name": "TerraElement",
+            "module": "/src/internal/terra-element.js"
+          },
+          "summary": "Fuzzy-search for combobox with list autocomplete.",
+          "tagNameWithoutPrefix": "combobox",
+          "tagName": "terra-combobox",
+          "customElement": true,
+          "jsDoc": "/**\n * @summary Fuzzy-search for combobox with list autocomplete.\n * @documentation https://disc.gsfc.nasa.gov/components/combobox\n * @status experimental\n * @since 1.0\n *\n * @csspart base - A `search` element, the component's base.\n * @csspart combobox - An `input` element used for searching.\n * @csspart button - A `button` used for toggling the listbox's visibility.\n * @csspart listbox - A `ul` that holds the clickable options.\n *\n * @cssproperty --host-height - The height of the host element.\n * @cssproperty --help-height - The height of the search help element.\n * @cssproperty --label-height - The height of the input's label element.\n */",
+          "documentation": "https://disc.gsfc.nasa.gov/components/combobox",
+          "status": "experimental",
+          "since": "1.0"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TerraCombobox",
+            "module": "components/combobox/combobox.js"
           }
         }
       ]
