@@ -126,7 +126,7 @@ var DataSubsetterController = class {
     });
     this.jobStatusTask = new h(host, {
       task: async ([], { signal }) => {
-        var _a, _b, _c, _d, _e;
+        var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j;
         let job;
         __privateGet(this, _host).renderHistoryPanel();
         if ((_a = this.currentJob) == null ? void 0 : _a.jobID) {
@@ -136,13 +136,13 @@ var DataSubsetterController = class {
           );
         } else {
           const labels = __privateMethod(this, _buildJobLabels, buildJobLabels_fn).call(this);
-          let subsetOptions = __spreadProps(__spreadValues(__spreadValues(__spreadValues({
+          let subsetOptions = __spreadProps(__spreadValues(__spreadValues(__spreadValues(__spreadValues({}, ((_b = __privateGet(this, _host).collectionWithServices) == null ? void 0 : _b.variableSubset) && {
             variableConceptIds: __privateGet(this, _host).selectedVariables.map(
               (v) => v.conceptId
             )
-          }, "w" in ((_b = __privateGet(this, _host).spatialSelection) != null ? _b : {}) && {
+          }), "w" in ((_c = __privateGet(this, _host).spatialSelection) != null ? _c : {}) && ((_d = __privateGet(this, _host).collectionWithServices) == null ? void 0 : _d.bboxSubset) && {
             boundingBox: __privateGet(this, _host).spatialSelection
-          }), __privateGet(this, _host).selectedDateRange.startDate && __privateGet(this, _host).selectedDateRange.endDate && {
+          }), __privateGet(this, _host).selectedDateRange.startDate && __privateGet(this, _host).selectedDateRange.endDate && ((_e = __privateGet(this, _host).collectionWithServices) == null ? void 0 : _e.temporalSubset) && {
             startDate: getUTCDate(
               __privateGet(this, _host).selectedDateRange.startDate
             ).toISOString(),
@@ -150,18 +150,18 @@ var DataSubsetterController = class {
               __privateGet(this, _host).selectedDateRange.endDate,
               true
             ).toISOString()
-          }), __privateGet(this, _host).selectedFormat && {
+          }), __privateGet(this, _host).selectedFormat && ((_g = (_f = __privateGet(this, _host).collectionWithServices) == null ? void 0 : _f.outputFormats) == null ? void 0 : _g.length) && {
             format: __privateGet(this, _host).selectedFormat
           }), {
             labels
           });
           console.log(
-            `Creating a job for collection, ${(_c = __privateGet(this, _host).collectionWithServices) == null ? void 0 : _c.conceptId}, with subset options`,
+            `Creating a job for collection, ${(_h = __privateGet(this, _host).collectionWithServices) == null ? void 0 : _h.conceptId}, with subset options`,
             subsetOptions
           );
           this.currentJob = __privateMethod(this, _getEmptyJob, getEmptyJob_fn).call(this);
           job = await __privateGet(this, _dataService).createSubsetJob(
-            (_e = (_d = __privateGet(this, _host).collectionWithServices) == null ? void 0 : _d.conceptId) != null ? _e : "",
+            (_j = (_i = __privateGet(this, _host).collectionWithServices) == null ? void 0 : _i.conceptId) != null ? _j : "",
             __spreadProps(__spreadValues({}, subsetOptions), {
               signal,
               bearerToken: __privateGet(this, _host).bearerToken

@@ -10,7 +10,7 @@ import {
 } from "./chunk.IIY5GYJC.js";
 import {
   DataSubsetterController
-} from "./chunk.5EETUO5R.js";
+} from "./chunk.HGRJJR6G.js";
 import {
   data_subsetter_styles_default
 } from "./chunk.R4TXOOHX.js";
@@ -63,7 +63,7 @@ var debounce = (delay) => {
 };
 
 // src/components/data-subsetter/data-subsetter.component.ts
-var _controller, _renderSubsetOptions, renderSubsetOptions_fn, _renderSearchForCollection, renderSearchForCollection_fn, _renderOutputFormatSelection, renderOutputFormatSelection_fn, _renderDateRangeSelection, renderDateRangeSelection_fn, _handleStartDateChange, _handleEndDateChange, _resetDateRangeSelection, _resetFormatSelection, _getCollectionDateRange, getCollectionDateRange_fn, _handleRegionAccordionToggle, handleRegionAccordionToggle_fn, _renderSpatialSelection, renderSpatialSelection_fn, _handleSpatialChange, _resetSpatialSelection, _renderVariableSelection, renderVariableSelection_fn, _buildVariableTree, buildVariableTree_fn, _renderVariableTree, renderVariableTree_fn, _getAllGroupPaths, getAllGroupPaths_fn, _toggleGroupExpand, toggleGroupExpand_fn, _toggleExpandCollapseAll, toggleExpandCollapseAll_fn, _toggleVariableSelection, toggleVariableSelection_fn, _markFieldTouched, markFieldTouched_fn, _resetVariableSelection, _renderJobStatus, renderJobStatus_fn, _renderSelectedParams, renderSelectedParams_fn, _cancelJob, cancelJob_fn, _getData, getData_fn, _touchAllFields, touchAllFields_fn, _numberOfFilesFoundEstimate, numberOfFilesFoundEstimate_fn, _getDocumentationLinks, getDocumentationLinks_fn, _getDataLinks, getDataLinks_fn, _hasAtLeastOneSubsetOption, hasAtLeastOneSubsetOption_fn, _hasSpatialSubset, hasSpatialSubset_fn, _renderJobMessage, renderJobMessage_fn, _getJobMessageText, getJobMessageText_fn, _estimateJobSize, estimateJobSize_fn, _refineParameters, refineParameters_fn, _toggleDownloadMenu, toggleDownloadMenu_fn, _downloadLinksAsTxt, downloadLinksAsTxt_fn, _downloadPythonScript, downloadPythonScript_fn, _downloadEarthdataDownload, downloadEarthdataDownload_fn, _handleClickOutside, handleClickOutside_fn, _handleJupyterNotebookClick, handleJupyterNotebookClick_fn;
+var _controller, _renderSubsetOptions, renderSubsetOptions_fn, _renderSearchForCollection, renderSearchForCollection_fn, _renderOutputFormatSelection, renderOutputFormatSelection_fn, _renderDateRangeSelection, renderDateRangeSelection_fn, _handleStartDateChange, _handleEndDateChange, _resetDateRangeSelection, _resetFormatSelection, _getCollectionDateRange, getCollectionDateRange_fn, _handleRegionAccordionToggle, handleRegionAccordionToggle_fn, _renderSpatialSelection, renderSpatialSelection_fn, _handleSpatialChange, _resetSpatialSelection, _renderVariableSelection, renderVariableSelection_fn, _buildVariableTree, buildVariableTree_fn, _renderVariableTree, renderVariableTree_fn, _getAllGroupPaths, getAllGroupPaths_fn, _toggleGroupExpand, toggleGroupExpand_fn, _toggleExpandCollapseAll, toggleExpandCollapseAll_fn, _toggleVariableSelection, toggleVariableSelection_fn, _markFieldTouched, markFieldTouched_fn, _resetVariableSelection, _renderJobStatus, renderJobStatus_fn, _renderSelectedParams, renderSelectedParams_fn, _cancelJob, cancelJob_fn, _getData, getData_fn, _touchAllFields, touchAllFields_fn, _numberOfFilesFoundEstimate, numberOfFilesFoundEstimate_fn, _getDocumentationLinks, getDocumentationLinks_fn, _getDataLinks, getDataLinks_fn, _hasAtLeastOneSubsetOption, hasAtLeastOneSubsetOption_fn, _hasSpatialSubset, hasSpatialSubset_fn, _renderJobMessage, renderJobMessage_fn, _getJobMessageText, getJobMessageText_fn, _estimateJobSize, estimateJobSize_fn, _refineParameters, refineParameters_fn, _toggleDownloadMenu, toggleDownloadMenu_fn, _downloadLinksAsTxt, downloadLinksAsTxt_fn, _downloadPythonScript, downloadPythonScript_fn, _downloadEarthdataDownload, downloadEarthdataDownload_fn, _handleClickOutside, handleClickOutside_fn, _handleJupyterNotebookClick, handleJupyterNotebookClick_fn, _renderAvailableTemporalRangeSection, renderAvailableTemporalRangeSection_fn, _renderAvailableSpatialRangeSection, renderAvailableSpatialRangeSection_fn;
 var TerraDataSubsetter = class extends TerraElement {
   constructor() {
     super(...arguments);
@@ -102,6 +102,8 @@ var TerraDataSubsetter = class extends TerraElement {
     __privateAdd(this, _downloadEarthdataDownload);
     __privateAdd(this, _handleClickOutside);
     __privateAdd(this, _handleJupyterNotebookClick);
+    __privateAdd(this, _renderAvailableTemporalRangeSection);
+    __privateAdd(this, _renderAvailableSpatialRangeSection);
     this.showCollectionSearch = true;
     this.selectedVariables = [];
     this.expandedVariableGroups = /* @__PURE__ */ new Set();
@@ -248,10 +250,16 @@ var TerraDataSubsetter = class extends TerraElement {
 _controller = new WeakMap();
 _renderSubsetOptions = new WeakSet();
 renderSubsetOptions_fn = function() {
-  var _a, _b, _c, _d;
+  var _a, _b, _c, _d, _e, _f, _g, _h;
   const estimates = __privateMethod(this, _estimateJobSize, estimateJobSize_fn).call(this);
+  const hasSubsetOption = __privateMethod(this, _hasAtLeastOneSubsetOption, hasAtLeastOneSubsetOption_fn).call(this);
+  const collection = (_a = this.collectionWithServices) == null ? void 0 : _a.collection;
+  const temporalExtents = collection == null ? void 0 : collection.TemporalExtents;
+  const spatialExtent = collection == null ? void 0 : collection.SpatialExtent;
+  const showTemporalSection = temporalExtents && temporalExtents.length;
+  const showSpatialSection = spatialExtent && ((_c = (_b = spatialExtent.HorizontalSpatialDomain) == null ? void 0 : _b.Geometry) == null ? void 0 : _c.BoundingRectangles);
   return x`
-            ${estimates ? x`<div
+            ${hasSubsetOption && estimates ? x`<div
                       class="size-info ${estimates.links >= 150 ? "warning" : "neutral"}"
                   >
                       <h2>Estimated size of results</h2>
@@ -277,19 +285,22 @@ renderSubsetOptions_fn = function() {
                           ${__privateMethod(this, _renderSearchForCollection, renderSearchForCollection_fn).call(this)}
                       </div>
                   ` : T}
-            ${__privateMethod(this, _hasAtLeastOneSubsetOption, hasAtLeastOneSubsetOption_fn).call(this) ? x`
+            ${hasSubsetOption ? x`
                       <div class="section">
                           <h2 class="section-title">
                               Method Options
                               <span class="help-icon">?</span>
                           </h2>
 
-                          ${((_a = this.collectionWithServices) == null ? void 0 : _a.temporalSubset) ? __privateMethod(this, _renderDateRangeSelection, renderDateRangeSelection_fn).call(this) : T}
+                          ${((_d = this.collectionWithServices) == null ? void 0 : _d.temporalSubset) ? __privateMethod(this, _renderDateRangeSelection, renderDateRangeSelection_fn).call(this) : T}
                           ${__privateMethod(this, _hasSpatialSubset, hasSpatialSubset_fn).call(this) ? __privateMethod(this, _renderSpatialSelection, renderSpatialSelection_fn).call(this) : T}
-                          ${((_b = this.collectionWithServices) == null ? void 0 : _b.variableSubset) ? __privateMethod(this, _renderVariableSelection, renderVariableSelection_fn).call(this) : T}
+                          ${((_e = this.collectionWithServices) == null ? void 0 : _e.variableSubset) ? __privateMethod(this, _renderVariableSelection, renderVariableSelection_fn).call(this) : T}
                       </div>
-                  ` : T}
-            ${((_d = (_c = this.collectionWithServices) == null ? void 0 : _c.outputFormats) == null ? void 0 : _d.length) ? x`
+                  ` : x`
+                      ${showTemporalSection && !((_f = this.collectionWithServices) == null ? void 0 : _f.temporalSubset) ? __privateMethod(this, _renderAvailableTemporalRangeSection, renderAvailableTemporalRangeSection_fn).call(this) : T}
+                      ${showSpatialSection && !__privateMethod(this, _hasSpatialSubset, hasSpatialSubset_fn).call(this) ? __privateMethod(this, _renderAvailableSpatialRangeSection, renderAvailableSpatialRangeSection_fn).call(this) : T}
+                  `}
+            ${((_h = (_g = this.collectionWithServices) == null ? void 0 : _g.outputFormats) == null ? void 0 : _h.length) && hasSubsetOption ? x`
                       <div class="section">
                           <h2 class="section-title">
                               Output Format
@@ -297,6 +308,17 @@ renderSubsetOptions_fn = function() {
                           </h2>
 
                           ${__privateMethod(this, _renderOutputFormatSelection, renderOutputFormatSelection_fn).call(this)}
+                      </div>
+                  ` : T}
+            ${!hasSubsetOption && estimates ? x`
+                      <div
+                          class="neutral-info"
+                          style="margin-top: 24px; padding: 16px 20px; border-radius: 6px; background: #f8f9fa; color: #555; border: 1px solid #ccc;"
+                      >
+                          <strong>Estimated result size:</strong><br />
+                          Your request will return approximately
+                          <b>${estimates.links.toLocaleString()}</b> files covering
+                          <b>${estimates.days.toLocaleString()}</b> days.
                       </div>
                   ` : T}
 
@@ -435,6 +457,7 @@ renderSearchForCollection_fn = function() {
           }
         ];
       }
+      this.requestUpdate();
     }}
                                             style="cursor: pointer;"
                                         >
@@ -1446,6 +1469,49 @@ subsetter`,
       "*"
     );
   }, 500);
+};
+_renderAvailableTemporalRangeSection = new WeakSet();
+renderAvailableTemporalRangeSection_fn = function() {
+  const { startDate, endDate } = __privateMethod(this, _getCollectionDateRange, getCollectionDateRange_fn).call(this);
+  if (!startDate || !endDate)
+    return T;
+  return x`
+            <div class="section" style="margin-bottom: 16px;">
+                <h2 class="section-title">Available Date Range</h2>
+                <div style="color: #31708f; margin-top: 8px;">
+                    <strong>${startDate}</strong> to <strong>${endDate}</strong>
+                </div>
+                <div style="font-size: 0.95em; color: #666;">
+                    This collection does not support temporal subsetting.
+                </div>
+            </div>
+        `;
+};
+_renderAvailableSpatialRangeSection = new WeakSet();
+renderAvailableSpatialRangeSection_fn = function() {
+  var _a, _b, _c, _d, _e;
+  const boundingRects = (_e = (_d = (_c = (_b = (_a = this.collectionWithServices) == null ? void 0 : _a.collection) == null ? void 0 : _b.SpatialExtent) == null ? void 0 : _c.HorizontalSpatialDomain) == null ? void 0 : _d.Geometry) == null ? void 0 : _e.BoundingRectangles;
+  if (!boundingRects || !Array.isArray(boundingRects) || !boundingRects.length)
+    return T;
+  return x`
+            <div class="section" style="margin-bottom: 16px;">
+                <h2 class="section-title">Available Spatial Area</h2>
+                <div style="color: #31708f; margin-top: 8px;">
+                    ${boundingRects.map(
+    (rect) => x`<div>
+                                <strong>Bounding Box:</strong>
+                                ${rect.WestBoundingCoordinate},
+                                ${rect.SouthBoundingCoordinate},
+                                ${rect.EastBoundingCoordinate},
+                                ${rect.NorthBoundingCoordinate}
+                            </div>`
+  )}
+                </div>
+                <div style="font-size: 0.95em; color: #666;">
+                    This collection does not support spatial subsetting.
+                </div>
+            </div>
+        `;
 };
 TerraDataSubsetter.styles = [component_styles_default, data_subsetter_styles_default];
 TerraDataSubsetter.dependencies = {

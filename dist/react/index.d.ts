@@ -1,12 +1,12 @@
-export { default as TerraAlert } from './alert/index.js';
-export { default as TerraBrowseVariables } from './browse-variables/index.js';
 export { default as TerraAccordion } from './accordion/index.js';
+export { default as TerraBrowseVariables } from './browse-variables/index.js';
+export { default as TerraAlert } from './alert/index.js';
 export { default as TerraButton } from './button/index.js';
 export { default as TerraChip } from './chip/index.js';
+export { default as TerraCombobox } from './combobox/index.js';
 export { default as TerraDataRods } from './data-rods/index.js';
 export { default as TerraDataSubsetter } from './data-subsetter/index.js';
 export { default as TerraDataSubsetterHistory } from './data-subsetter-history/index.js';
-export { default as TerraCombobox } from './combobox/index.js';
 export { default as TerraDatePicker } from './date-picker/index.js';
 export { default as TerraDateRangeSlider } from './date-range-slider/index.js';
 export { default as TerraDialog } from './dialog/index.js';
