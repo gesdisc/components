@@ -7,6 +7,7 @@ export declare class DataSubsetterController {
     #private;
     jobStatusTask: Task<[], SubsetJobStatus | undefined>;
     fetchCollectionTask: Task<[string], any | undefined>;
+    searchCmrTask: Task<[string | undefined], any | undefined>;
     currentJob: SubsetJobStatus | null;
     constructor(host: ReactiveControllerHost & TerraDataSubsetter);
     render(renderFunctions: StatusRenderer<any>): unknown;

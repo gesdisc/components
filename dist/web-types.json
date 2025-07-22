@@ -736,6 +736,16 @@
               { "name": "refineParameters", "type": "boolean" },
               { "name": "showDownloadMenu", "type": "boolean" },
               { "name": "renderedInDialog", "type": "boolean" },
+              {
+                "name": "collectionSearchType",
+                "type": "'collection' | 'variable' | 'all'"
+              },
+              { "name": "collectionSearchQuery", "type": "string | undefined" },
+              { "name": "collectionSearchLoading", "type": "boolean" },
+              {
+                "name": "collectionSearchResults",
+                "type": "Array<CmrSearchResult> | undefined"
+              },
               { "name": "spatialPicker", "type": "TerraSpatialPicker" }
             ],
             "events": [

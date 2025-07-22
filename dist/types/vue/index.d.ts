@@ -235,6 +235,14 @@ type TerraDataSubsetterProps = {
   /**  */
   renderedInDialog?: TerraDataSubsetter["renderedInDialog"];
   /**  */
+  collectionSearchType?: TerraDataSubsetter["collectionSearchType"];
+  /**  */
+  collectionSearchQuery?: TerraDataSubsetter["collectionSearchQuery"];
+  /**  */
+  collectionSearchLoading?: TerraDataSubsetter["collectionSearchLoading"];
+  /**  */
+  collectionSearchResults?: TerraDataSubsetter["collectionSearchResults"];
+  /**  */
   spatialPicker?: TerraDataSubsetter["spatialPicker"];
   /** called when a subset job enters a final state (e.g. successful, failed, completed_with_errors) */
   onTerraSubsetJobComplete?: (e: CustomEvent<never>) => void;

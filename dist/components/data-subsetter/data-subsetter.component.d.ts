@@ -1,6 +1,6 @@
 import TerraElement from '../../internal/terra-element.js';
 import type { CSSResultGroup } from 'lit';
-import { type BoundingBox, type CollectionWithAvailableServices, type Variable } from '../../data-services/types.js';
+import { type BoundingBox, type CmrSearchResult, type CollectionWithAvailableServices, type Variable } from '../../data-services/types.js';
 import TerraSpatialPicker from '../spatial-picker/spatial-picker.component.js';
 import type { LatLng } from '../map/type.js';
 /**
@@ -39,6 +39,10 @@ export default class TerraDataSubsetter extends TerraElement {
     refineParameters: boolean;
     showDownloadMenu: boolean;
     renderedInDialog: boolean;
+    collectionSearchType: 'collection' | 'variable' | 'all';
+    collectionSearchQuery?: string;
+    collectionSearchLoading: boolean;
+    collectionSearchResults?: Array<CmrSearchResult>;
     spatialPicker: TerraSpatialPicker;
     jobIdChanged(): void;
     firstUpdated(): void;
@@ -46,5 +50,6 @@ export default class TerraDataSubsetter extends TerraElement {
     collectionChanged(): void;
     render(): import("lit-html").TemplateResult<1>;
     minimizeDialog(): void;
+    handleCollectionSearch(searchTerm: string): void;
     renderHistoryPanel(): void;
 }
