@@ -731,7 +731,7 @@ var data_subsetter_styles_default = i`
     }
 
     .results-container-mini {
-        max-height: 300px;
+        max-height: 320px;
         overflow-y: auto;
     }
 

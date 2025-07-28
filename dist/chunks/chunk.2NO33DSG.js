@@ -23,6 +23,7 @@ var GET_CMR_SEARCH_RESULTS_ALL = gql`
                     items {
                         conceptId
                         nativeId
+                        title
                     }
                 }
             }

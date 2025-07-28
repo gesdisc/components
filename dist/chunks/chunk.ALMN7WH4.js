@@ -9,7 +9,7 @@ import {
   GET_CMR_SEARCH_RESULTS_ALL,
   GET_CMR_SEARCH_RESULTS_COLLECTIONS,
   GET_CMR_SEARCH_RESULTS_VARIABLES
-} from "./chunk.ZZEU3QDK.js";
+} from "./chunk.2NO33DSG.js";
 import {
   getGraphQLClient
 } from "./chunk.2M3INLAP.js";
@@ -52,17 +52,19 @@ var CmrCatalog = class {
       type: "collection",
       collectionConceptId: collection.conceptId,
       collectionEntryId: collection.nativeId,
+      summary: collection.title,
       conceptId: collection.conceptId,
       entryId: collection.nativeId,
       provider: collection.provider,
       title: collection.title
     }))) != null ? _c : [];
     const variables = (_f = (_e = (_d = response.data.variables) == null ? void 0 : _d.items) == null ? void 0 : _e.map((variable) => {
-      var _a2, _b2, _c2, _d2;
+      var _a2, _b2, _c2, _d2, _e2, _f2, _g;
       return {
         type: "variable",
         collectionConceptId: (_b2 = (_a2 = variable.collections.items) == null ? void 0 : _a2[0]) == null ? void 0 : _b2.conceptId,
         collectionEntryId: (_d2 = (_c2 = variable.collections.items) == null ? void 0 : _c2[0]) == null ? void 0 : _d2.nativeId,
+        summary: (_g = (_f2 = (_e2 = variable.collections.items) == null ? void 0 : _e2[0]) == null ? void 0 : _f2.title) != null ? _g : "",
         conceptId: variable.conceptId,
         entryId: variable.name,
         provider: variable.providerId,

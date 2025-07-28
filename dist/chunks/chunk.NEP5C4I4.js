@@ -1,6 +1,6 @@
 import {
   TerraBrowseVariables
-} from "./chunk.6AGXRZBL.js";
+} from "./chunk.KWYOAGWF.js";
 
 // src/react/browse-variables/index.ts
 import * as React from "react";

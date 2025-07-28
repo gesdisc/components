@@ -1,7 +1,7 @@
 import {
   GET_SEARCH_KEYWORDS,
   GET_VARIABLES
-} from "./chunk.ZZEU3QDK.js";
+} from "./chunk.2NO33DSG.js";
 import {
   getGraphQLClient
 } from "./chunk.2M3INLAP.js";

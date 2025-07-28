@@ -1,6 +1,6 @@
 import {
   TerraTimeSeries
-} from "./chunk.FLLHMTYM.js";
+} from "./chunk.UGEBXH3Z.js";
 
 // src/react/time-series/index.ts
 import * as React from "react";

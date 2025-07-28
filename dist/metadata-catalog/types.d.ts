@@ -10,6 +10,7 @@ export type CmrSearchResult = {
     type: 'collection' | 'variable';
     collectionConceptId: string;
     collectionEntryId: string;
+    summary: string;
     conceptId: string;
     entryId: string;
     provider: string;
@@ -34,6 +35,7 @@ export type CmrSearchResultsResponse = {
                 items: Array<{
                     conceptId: string;
                     nativeId: string;
+                    title: string;
                 }>;
             };
         }>;

@@ -10,10 +10,10 @@ import {
 } from "./chunk.IIY5GYJC.js";
 import {
   DataSubsetterController
-} from "./chunk.HGRJJR6G.js";
+} from "./chunk.ALMN7WH4.js";
 import {
   data_subsetter_styles_default
-} from "./chunk.R4TXOOHX.js";
+} from "./chunk.EPOKVQ7Z.js";
 import {
   TerraAccordion
 } from "./chunk.7L66B6Z5.js";
@@ -468,7 +468,7 @@ renderSearchForCollection_fn = function() {
                                                 ${item.entryId}
                                             </div>
                                             <div class="result-description-mini">
-                                                ${item.title}
+                                                ${item.summary || item.title}
                                             </div>
                                             <div class="result-meta-mini">
                                                 <span>📅 2000-02-24 - ongoing</span>

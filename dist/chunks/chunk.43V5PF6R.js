@@ -1,6 +1,6 @@
 import {
   TerraVariableKeywordSearch
-} from "./chunk.PCX3KHB6.js";
+} from "./chunk.AFN5VBUH.js";
 
 // src/react/variable-keyword-search/index.ts
 import * as React from "react";

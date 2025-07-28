@@ -1,6 +1,6 @@
 import {
   TerraDataRods
-} from "./chunk.MP6QFFF2.js";
+} from "./chunk.RIMM2FHX.js";
 
 // src/react/data-rods/index.ts
 import * as React from "react";
