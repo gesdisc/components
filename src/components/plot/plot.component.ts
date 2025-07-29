@@ -76,7 +76,7 @@ export default class TerraPlot extends TerraElement {
             this.base,
             this.data,
             {
-                title: this.plotTitle, // support for adding a title directly
+                title: this.plotTitle as any, // support for adding a title directly
                 ...this.layout, // or complete access to the Plotly layout
             },
             { responsive: true, ...this.config }

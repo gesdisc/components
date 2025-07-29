@@ -13,6 +13,8 @@ export function mergeTooltips(
     const isRtl = slider.noUiSlider.options.direction === 'rtl'
     const isVertical = slider.noUiSlider.options.orientation === 'vertical'
     const tooltips = slider.noUiSlider.getTooltips()
+    
+    
     const origins = slider.noUiSlider.getOrigins()
 
     // Move tooltips into the origin element. The default stylesheet handles this.
@@ -32,21 +34,21 @@ export function mergeTooltips(
             var atPool = 0
 
             // Assign the first tooltip to the first pool, if the tooltip is configured
-            if (tooltips[0]) {
+            if (tooltips && tooltips[0]) {
                 pools[0][0] = 0
                 poolPositions[0][0] = positions[0]
                 poolValues[0][0] = values[0]
             }
 
             for (var i = 1; i < positions.length; i++) {
-                if (!tooltips[i] || positions[i] - positions[i - 1] > threshold) {
+                if (!tooltips || !(tooltips[i] instanceof HTMLElement) || positions[i] - positions[i - 1] > threshold) {
                     atPool++
                     pools[atPool] = []
                     poolValues[atPool] = []
                     poolPositions[atPool] = []
                 }
 
-                if (tooltips[i]) {
+                if (tooltips && tooltips[i]) {
                     pools[atPool].push(i)
                     poolValues[atPool].push(values[i])
                     poolPositions[atPool].push(positions[i])
