@@ -6256,7 +6256,7 @@
   "package": {
     "name": "@nasa-terra/components",
     "description": "A collection of NASA Earthdata components",
-    "version": "0.0.57",
+    "version": "0.0.58",
     "author": "NASA GES DISC <https://disc.gsfc.nasa.gov>",
     "homepage": "https://github.com/gesdisc/components",
     "license": "MIT"
