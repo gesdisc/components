@@ -90,6 +90,11 @@ export default class TerraDataRods extends TerraElement {
 
     #catalog = new GiovanniVariableCatalog()
 
+    /**
+     * anytime user selects invalid dates
+     */
+    @state() private dateErrorMessage?: string
+
     // @ts-expect-error
     #fetchVariableTask = new Task(this, {
         task: async (_args, { signal }) => {
@@ -160,7 +165,13 @@ export default class TerraDataRods extends TerraElement {
                 start-date=${this.startDate}
                 end-date=${this.endDate}
                 @terra-date-range-change="${this.#handleDateRangeSliderChangeEvent}"
+                @terra-date-selection-invalid="${this.#handleInvalidDateSelection}"
             ></terra-date-range-slider>
+            ${this.dateErrorMessage
+                ? html`<div class="date-error" style="color: red;">
+                      ${this.dateErrorMessage}
+                  </div>`
+                : null}
         `
     }
 
@@ -178,6 +189,13 @@ export default class TerraDataRods extends TerraElement {
     #handleDateRangeSliderChangeEvent(event: TerraDateRangeChangeEvent) {
         this.startDate = event.detail.startDate
         this.endDate = event.detail.endDate
+    }
+
+    /**
+     * anytime user selects invalid dates outside variable date range
+     */
+    #handleInvalidDateSelection(event: CustomEvent) {
+        this.dateErrorMessage = event.detail.message
     }
 
     #handleVariableChange(event: TerraComboboxChangeEvent) {
