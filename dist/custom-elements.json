@@ -4,140 +4,6 @@
   "modules": [
     {
       "kind": "javascript-module",
-      "path": "components/accordion/accordion.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TerraAccordion",
-          "slots": [
-            {
-              "description": "The default slot for accordion content.",
-              "name": ""
-            },
-            {
-              "description": "The summary/header for the accordion (optional, overrides summary property)",
-              "name": "summary"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "dependencies",
-              "type": {
-                "text": "object"
-              },
-              "static": true,
-              "default": "{\n        'terra-icon': TerraIcon,\n    }"
-            },
-            {
-              "kind": "field",
-              "name": "summary",
-              "type": {
-                "text": "string"
-              },
-              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
-              "attribute": "summary"
-            },
-            {
-              "kind": "field",
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
-              "attribute": "open",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "showArrow",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "attribute": "showArrow"
-            },
-            {
-              "kind": "method",
-              "name": "handleToggle",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "description": "emitted when the accordion opens or closes",
-              "name": "terra-accordion-toggle",
-              "reactName": "onTerraAccordionToggle",
-              "eventName": "TerraAccordionToggleEvent"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "summary",
-              "type": {
-                "text": "string"
-              },
-              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
-              "fieldName": "summary"
-            },
-            {
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
-              "fieldName": "open"
-            },
-            {
-              "name": "showArrow",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "fieldName": "showArrow"
-            }
-          ],
-          "superclass": {
-            "name": "TerraElement",
-            "module": "/src/internal/terra-element.js"
-          },
-          "summary": "A collapsible content panel for showing and hiding content.",
-          "tagNameWithoutPrefix": "accordion",
-          "tagName": "terra-accordion",
-          "customElement": true,
-          "jsDoc": "/**\n * @summary A collapsible content panel for showing and hiding content.\n * @documentation https://disc.gsfc.nasa.gov/components/accordion\n * @status experimental\n * @since 1.0\n *\n * The TerraAccordion component provides a simple, accessible way to show and hide content. It uses native <details> and <summary> elements for built-in accessibility and keyboard support. The summary/header can be set via the `summary` property for simple text, or via a named `summary` slot for custom content (such as icons or rich HTML). The open state can be controlled with the `open` property, which is reflected as an attribute.\n *\n * @slot - The default slot for accordion content.\n * @slot summary - The summary/header for the accordion (optional, overrides summary property)\n *\n * @property {string} summary - The summary/header for the accordion. Use the property for simple text, or the slot for custom content.\n * @property {boolean} open - Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.\n *\n * @event terra-accordion-toggle - emitted when the accordion opens or closes\n *\n * @dependency terra-icon\n */",
-          "documentation": "https://disc.gsfc.nasa.gov/components/accordion",
-          "status": "experimental",
-          "since": "1.0",
-          "dependencies": [
-            "terra-icon"
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "TerraAccordion",
-            "module": "components/accordion/accordion.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "components/alert/alert.js",
       "declarations": [
         {
@@ -692,6 +558,140 @@
           "declaration": {
             "name": "TerraBrowseVariables",
             "module": "components/browse-variables/browse-variables.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "components/accordion/accordion.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TerraAccordion",
+          "slots": [
+            {
+              "description": "The default slot for accordion content.",
+              "name": ""
+            },
+            {
+              "description": "The summary/header for the accordion (optional, overrides summary property)",
+              "name": "summary"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "dependencies",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{\n        'terra-icon': TerraIcon,\n    }"
+            },
+            {
+              "kind": "field",
+              "name": "summary",
+              "type": {
+                "text": "string"
+              },
+              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
+              "attribute": "summary"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
+              "attribute": "open",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "showArrow",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "showArrow"
+            },
+            {
+              "kind": "method",
+              "name": "handleToggle",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "description": "emitted when the accordion opens or closes",
+              "name": "terra-accordion-toggle",
+              "reactName": "onTerraAccordionToggle",
+              "eventName": "TerraAccordionToggleEvent"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "summary",
+              "type": {
+                "text": "string"
+              },
+              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
+              "fieldName": "summary"
+            },
+            {
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
+              "fieldName": "open"
+            },
+            {
+              "name": "showArrow",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "showArrow"
+            }
+          ],
+          "superclass": {
+            "name": "TerraElement",
+            "module": "/src/internal/terra-element.js"
+          },
+          "summary": "A collapsible content panel for showing and hiding content.",
+          "tagNameWithoutPrefix": "accordion",
+          "tagName": "terra-accordion",
+          "customElement": true,
+          "jsDoc": "/**\n * @summary A collapsible content panel for showing and hiding content.\n * @documentation https://disc.gsfc.nasa.gov/components/accordion\n * @status experimental\n * @since 1.0\n *\n * The TerraAccordion component provides a simple, accessible way to show and hide content. It uses native <details> and <summary> elements for built-in accessibility and keyboard support. The summary/header can be set via the `summary` property for simple text, or via a named `summary` slot for custom content (such as icons or rich HTML). The open state can be controlled with the `open` property, which is reflected as an attribute.\n *\n * @slot - The default slot for accordion content.\n * @slot summary - The summary/header for the accordion (optional, overrides summary property)\n *\n * @property {string} summary - The summary/header for the accordion. Use the property for simple text, or the slot for custom content.\n * @property {boolean} open - Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.\n *\n * @event terra-accordion-toggle - emitted when the accordion opens or closes\n *\n * @dependency terra-icon\n */",
+          "documentation": "https://disc.gsfc.nasa.gov/components/accordion",
+          "status": "experimental",
+          "since": "1.0",
+          "dependencies": [
+            "terra-icon"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TerraAccordion",
+            "module": "components/accordion/accordion.js"
           }
         }
       ]
@@ -6258,7 +6258,7 @@
     "description": "A collection of NASA Earthdata components",
     "version": "0.0.58",
     "author": "NASA GES DISC <https://disc.gsfc.nasa.gov>",
-    "homepage": "https://github.com/gesdisc/components",
+    "homepage": "https://github.com/nasa/terra-ui-components",
     "license": "MIT"
   }
 }
