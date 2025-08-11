@@ -11,17 +11,17 @@ import {
   variable_combobox_default
 } from "./chunks/chunk.JNV35V4W.js";
 import {
-  spatial_picker_default
-} from "./chunks/chunk.SCQVA7LI.js";
-import {
   time_series_default
 } from "./chunks/chunk.LSIKO3TT.js";
+import {
+  skeleton_default
+} from "./chunks/chunk.4QXYPJHP.js";
 import {
   plot_default
 } from "./chunks/chunk.NQ6SVY42.js";
 import {
-  skeleton_default
-} from "./chunks/chunk.4QXYPJHP.js";
+  spatial_picker_default
+} from "./chunks/chunk.SCQVA7LI.js";
 import {
   login_default
 } from "./chunks/chunk.KAYNBYLR.js";

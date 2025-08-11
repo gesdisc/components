@@ -59,11 +59,11 @@ import {
   date_picker_default
 } from "../chunks/chunk.CWC4JV6T.js";
 import {
-  accordion_default
-} from "../chunks/chunk.DBLOGMXH.js";
-import {
   alert_default
 } from "../chunks/chunk.NM2NAH3X.js";
+import {
+  accordion_default
+} from "../chunks/chunk.DBLOGMXH.js";
 import "../chunks/chunk.AZL5M2UE.js";
 import "../chunks/chunk.4JHRCMYB.js";
 import "../chunks/chunk.5P7TDN4M.js";
