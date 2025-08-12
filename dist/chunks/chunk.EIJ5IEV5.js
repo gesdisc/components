@@ -5,7 +5,7 @@ import {
 } from "./chunk.GJIEQWA2.js";
 import {
   time_series_styles_default
-} from "./chunk.Y7I2RXN6.js";
+} from "./chunk.KYM5SUNP.js";
 import {
   TerraPlot,
   require_plotly_min
@@ -180,6 +180,9 @@ var TerraTimeSeries = class extends TerraElement {
                               <header>
                                   <h2 class="title">
                                       ${this.catalogVariable.dataFieldLongName}
+                                      <span class="region">
+                                          Region: ${this.location}
+                                      </span>
                                   </h2>
 
                                   <div class="toggles">
@@ -248,12 +251,12 @@ var TerraTimeSeries = class extends TerraElement {
                                       </terra-button>
 
                                       <terra-button
-                                          circle
                                           outline
                                           aria-expanded=${this.activeMenuItem === "jupyter"}
                                           aria-controls="menu"
                                           aria-haspopup="true"
-                                          class="toggle"
+                                          class="toggle square-button"
+                                          variant="warning"
                                           @mouseenter=${__privateMethod(this, _handleActiveMenuItem, handleActiveMenuItem_fn)}
                                           data-menu-name="jupyter"
                                       >

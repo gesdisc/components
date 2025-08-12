@@ -41,6 +41,12 @@ var time_series_styles_default = i`
         font-size: 1.25rem;
     }
 
+    .region {
+        margin: 0;
+        font-size: 0.75rem;
+        display: block;
+    }
+
     .toggles {
         display: flex;
         justify-content: space-between;
@@ -49,6 +55,12 @@ var time_series_styles_default = i`
 
     .toggle {
         position: relative;
+    }
+
+    .square-button {
+        border-radius: 0 !important; /* square corners */
+        width: 2.5em;
+        height: 2.5em;
     }
 
     .toggle[aria-expanded='true']::after {

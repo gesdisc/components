@@ -1,6 +1,6 @@
 import {
   TerraTimeSeries
-} from "./chunk.FM53LVYV.js";
+} from "./chunk.EIJ5IEV5.js";
 
 // src/components/time-series/time-series.ts
 var time_series_default = TerraTimeSeries;

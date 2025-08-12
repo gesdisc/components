@@ -1,8 +1,8 @@
 import type { DefineComponent } from "vue";
 
 import type { TerraAccordion } from "../../components/accordion/accordion.component.js";
-import type { TerraBrowseVariables } from "../../components/browse-variables/browse-variables.component.js";
 import type { TerraAlert } from "../../components/alert/alert.component.js";
+import type { TerraBrowseVariables } from "../../components/browse-variables/browse-variables.component.js";
 import type { TerraButton } from "../../components/button/button.component.js";
 import type { TerraChip } from "../../components/chip/chip.component.js";
 import type { TerraCombobox } from "../../components/combobox/combobox.component.js";
@@ -35,20 +35,6 @@ type TerraAccordionProps = {
   onTerraAccordionToggle?: (e: CustomEvent<never>) => void;
 };
 
-type TerraBrowseVariablesProps = {
-  /** Allows the user to switch the catalog between different providers
-TODO: add support for CMR catalog and make it the default */
-  catalog?: TerraBrowseVariables["catalog"];
-  /**  */
-  searchQuery?: TerraBrowseVariables["searchQuery"];
-  /**  */
-  selectedFacets?: TerraBrowseVariables["selectedFacets"];
-  /**  */
-  selectedVariables?: TerraBrowseVariables["selectedVariables"];
-  /**  */
-  showVariablesBrowse?: TerraBrowseVariables["showVariablesBrowse"];
-};
-
 type TerraAlertProps = {
   /** Indicates whether or not the alert is open. You can toggle this attribute to show and hide the alert, or you can
 use the `show()` and `hide()` methods and this attribute will reflect the alert's open state. */
@@ -76,6 +62,20 @@ Typically used to indicate the remaining time before a whole app refresh. */
   onTerraHide?: (e: CustomEvent<never>) => void;
   /** Emitted after the alert closes and all animations are complete. */
   onTerraAfterHide?: (e: CustomEvent<never>) => void;
+};
+
+type TerraBrowseVariablesProps = {
+  /** Allows the user to switch the catalog between different providers
+TODO: add support for CMR catalog and make it the default */
+  catalog?: TerraBrowseVariables["catalog"];
+  /**  */
+  searchQuery?: TerraBrowseVariables["searchQuery"];
+  /**  */
+  selectedFacets?: TerraBrowseVariables["selectedFacets"];
+  /**  */
+  selectedVariables?: TerraBrowseVariables["selectedVariables"];
+  /**  */
+  showVariablesBrowse?: TerraBrowseVariables["showVariablesBrowse"];
 };
 
 type TerraButtonProps = {
@@ -595,13 +595,6 @@ export type CustomElements = {
   "terra-accordion": DefineComponent<TerraAccordionProps>;
 
   /**
-   * Browse through the NASA CMR or Giovanni catalogs.
-   * ---
-   *
-   */
-  "terra-browse-variables": DefineComponent<TerraBrowseVariablesProps>;
-
-  /**
    * Alerts are used to display important messages inline or as toast notifications.
    * ---
    *
@@ -628,6 +621,13 @@ export type CustomElements = {
    * - **message** - The container that wraps the alert's main content.
    */
   "terra-alert": DefineComponent<TerraAlertProps>;
+
+  /**
+   * Browse through the NASA CMR or Giovanni catalogs.
+   * ---
+   *
+   */
+  "terra-browse-variables": DefineComponent<TerraBrowseVariablesProps>;
 
   /**
    * Buttons represent actions that are available to the user.

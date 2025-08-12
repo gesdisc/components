@@ -348,7 +348,10 @@ var _TerraVariableCombobox = class _TerraVariableCombobox extends TerraElement {
       initial: () => x`<li class="updating">Updating List of Variables</li>`,
       pending: () => x`<li class="updating">Updating List of Variables</li>`,
       complete: (list) => {
-        __privateSet(this, _searchableList, list);
+        const filtered = list.filter(
+          (item) => !(item.collectionShortName === "GPM_3IMERGHH" && item.collectionVersion === "06")
+        );
+        __privateSet(this, _searchableList, filtered);
         __privateSet(this, _searchEngine, new Fuse(__privateGet(this, _searchableList), {
           //* @see {@link https://www.fusejs.io/examples.html#nested-search}
           findAllMatches: true,
