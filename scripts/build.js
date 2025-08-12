@@ -14,6 +14,8 @@ import * as path from 'path'
 import { readFileSync } from 'fs'
 import { replace } from 'esbuild-plugin-replace'
 
+import { polyfillNode } from 'esbuild-plugin-polyfill-node' // Import used to bypass issues with using open layers in the browser;
+
 const { serve } = commandLineArgs([{ name: 'serve', type: Boolean }])
 const outdir = 'dist'
 const cdndir = 'cdn'
@@ -110,8 +112,6 @@ async function buildTheSource() {
             ...(await globby('./src/utilities/**/!(*.(style|test)).ts')),
             // Theme stylesheets
             ...(await globby('./src/themes/**/!(*.test).ts')),
-            // React wrappers
-            ...(await globby('./src/react/**/*.ts')),
         ],
         outdir: cdndir,
         chunkNames: 'chunks/[name].[hash]',
@@ -128,7 +128,12 @@ async function buildTheSource() {
         //
         external: alwaysExternal,
         splitting: true,
+        loader: {
+            // Tell esbuild how to handle image files
+            '.tif': 'file',  // Treat .tif files as static assets (copy to output directory)
+        },
         plugins: [
+            polyfillNode(),
             replace({
                 __COMPONENTS_VERSION__: componentsVersion,
             }),
