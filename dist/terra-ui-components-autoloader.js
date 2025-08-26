@@ -1,9 +1,16 @@
 import {
   getBasePath
-} from "./chunks/chunk.NQKBKXPW.js";
-import "./chunks/chunk.6JHIJHTB.js";
+} from "./chunks/chunk.XTPAHWLJ.js";
+import {
+  init_buffer,
+  init_dirname,
+  init_process
+} from "./chunks/chunk.ES5U5CWG.js";
 
 // src/terra-ui-components-autoloader.ts
+init_dirname();
+init_buffer();
+init_process();
 var observer = new MutationObserver((mutations) => {
   for (const { addedNodes } of mutations) {
     for (const node of addedNodes) {

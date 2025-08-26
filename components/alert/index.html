@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-layout="component" data-terra-ui-components-version="0.0.58">
+<html lang="en" data-layout="component" data-terra-ui-components-version="0.0.60">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -85,6 +85,41 @@
       >
         <sl-icon name="github"></sl-icon>
       </a>
+      <sl-dropdown id="environment-selector" placement="bottom-end" distance="3">
+        <terra-button
+          slot="trigger"
+          size="large"
+          variant="text"
+          caret=""
+          title="Environment"
+          data-optional=""
+          data-valid=""
+          data-user-valid=""
+        >
+          <span id="environment-display">UAT</span>
+        </terra-button>
+        <sl-menu role="menu">
+          <sl-menu-item
+            type="checkbox"
+            value="uat"
+            tabindex="-1"
+            role="menuitemcheckbox"
+            aria-checked="true"
+            aria-disabled="false"
+            checked=""
+            >UAT</sl-menu-item
+          >
+          <sl-menu-item
+            type="checkbox"
+            value="prod"
+            tabindex="-1"
+            role="menuitemcheckbox"
+            aria-checked="false"
+            aria-disabled="false"
+            >PROD</sl-menu-item
+          >
+        </sl-menu>
+      </sl-dropdown>
       <sl-dropdown id="theme-selector" placement="bottom-end" distance="3">
         <terra-button
           slot="trigger"
@@ -139,7 +174,7 @@
           <img src="/components/assets/images/logo.svg" alt="Terra UI Components" />
           Terra UI Components
         </a>
-        <div class="sidebar-version">0.0.58</div>
+        <div class="sidebar-version">0.0.60</div>
       </header>
 
       <div class="sidebar-buttons">
@@ -279,6 +314,10 @@
 
               <li>
                 <a href="/components/spatial-picker"> Spatial Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/time-average-map"> Time Average Map </a>
               </li>
 
               <li>
@@ -1118,7 +1157,7 @@
                 >
                 using a script tag:
               </p>
-              <pre><code class="language-html" id="code-block-130"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.58/cdn/components/alert/alert.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code><sl-copy-button class="copy-code-button" from="code-block-130"></sl-copy-button></pre>
+              <pre><code class="language-html" id="code-block-130"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.60/cdn/components/alert/alert.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code><sl-copy-button class="copy-code-button" from="code-block-130"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="import">
@@ -1133,7 +1172,7 @@
                 >
                 using a JavaScript import:
               </p>
-              <pre><code class="language-js" id="code-block-131"><span class="token keyword">import</span> <span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.58/cdn/components/alert/alert.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-131"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-131"><span class="token keyword">import</span> <span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.60/cdn/components/alert/alert.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-131"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="bundler">

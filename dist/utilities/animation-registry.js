@@ -1,9 +1,15 @@
 import {
   __spreadProps,
-  __spreadValues
-} from "../chunks/chunk.6JHIJHTB.js";
+  __spreadValues,
+  init_buffer,
+  init_dirname,
+  init_process
+} from "../chunks/chunk.ES5U5CWG.js";
 
 // src/utilities/animation-registry.ts
+init_dirname();
+init_buffer();
+init_process();
 var defaultAnimationRegistry = /* @__PURE__ */ new Map();
 var customAnimationRegistry = /* @__PURE__ */ new WeakMap();
 function ensureAnimation(animation) {

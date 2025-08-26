@@ -1,176 +1,202 @@
+import "./chunks/chunk.JSME7CPI.js";
 import {
   getFormControls,
   serialize
-} from "./chunks/chunk.JPF7QPZA.js";
-import "./chunks/chunk.HAL7R4WT.js";
-import {
-  variable_keyword_search_default
-} from "./chunks/chunk.SUWQHD5W.js";
-import "./chunks/chunk.QL5C2XOW.js";
+} from "./chunks/chunk.6CNJJQTP.js";
+import "./chunks/chunk.XIEATAX6.js";
 import {
   variable_combobox_default
-} from "./chunks/chunk.YNCEPVLA.js";
+} from "./chunks/chunk.5JAY7RR2.js";
 import {
-  spatial_picker_default
-} from "./chunks/chunk.SCQVA7LI.js";
+  variable_keyword_search_default
+} from "./chunks/chunk.SB2X4C6T.js";
 import {
   time_series_default
-} from "./chunks/chunk.WMQJT7OI.js";
+} from "./chunks/chunk.UAGOWXK6.js";
+import {
+  spatial_picker_default
+} from "./chunks/chunk.XSV4L4HH.js";
+import {
+  time_average_map_default
+} from "./chunks/chunk.ZXC6RHMH.js";
+import "./chunks/chunk.BT3DDTSX.js";
+import "./chunks/chunk.CUBZ2AR7.js";
+import "./chunks/chunk.LVLBJGO2.js";
+import "./chunks/chunk.53BRHB5N.js";
+import "./chunks/chunk.35RTBIL7.js";
 import {
   plot_default
-} from "./chunks/chunk.NQ6SVY42.js";
+} from "./chunks/chunk.RYE4OYZD.js";
 import {
   skeleton_default
-} from "./chunks/chunk.4QXYPJHP.js";
+} from "./chunks/chunk.X2IOT3QW.js";
 import {
   login_default
-} from "./chunks/chunk.WHTMDM2J.js";
+} from "./chunks/chunk.O3KEWF5A.js";
 import {
   map_default
-} from "./chunks/chunk.FGARPPB6.js";
+} from "./chunks/chunk.D2IF3VCS.js";
 import {
   date_range_slider_default
-} from "./chunks/chunk.IQAZA7JC.js";
+} from "./chunks/chunk.SOYNYAFJ.js";
 import {
   dialog_default
-} from "./chunks/chunk.7FS56NMF.js";
+} from "./chunks/chunk.3LGPK5BC.js";
 import {
   data_subsetter_history_default
-} from "./chunks/chunk.YMDTJNA5.js";
+} from "./chunks/chunk.ZQY7PBEL.js";
 import {
   date_picker_default
-} from "./chunks/chunk.LGGLWXQG.js";
+} from "./chunks/chunk.TDRCQGR6.js";
 import {
   data_rods_default
-} from "./chunks/chunk.OTOAOE6P.js";
-import "./chunks/chunk.NXX5YFMH.js";
-import "./chunks/chunk.PSFQZRWT.js";
-import "./chunks/chunk.4UYNOT7W.js";
-import "./chunks/chunk.YCRGAL67.js";
-import "./chunks/chunk.RU6G6JLS.js";
-import "./chunks/chunk.EIJ5IEV5.js";
-import "./chunks/chunk.GJIEQWA2.js";
-import "./chunks/chunk.KYM5SUNP.js";
-import "./chunks/chunk.SE7II5KQ.js";
-import "./chunks/chunk.PRXO3ACA.js";
-import "./chunks/chunk.GGEKGV6U.js";
-import "./chunks/chunk.FCGFGTMF.js";
-import "./chunks/chunk.KW4TJM4C.js";
-import "./chunks/chunk.WTMN7OUL.js";
-import "./chunks/chunk.2RXDDBWK.js";
+} from "./chunks/chunk.PCLCZVZS.js";
+import "./chunks/chunk.EJ6E3H6F.js";
+import "./chunks/chunk.OUMT4R6D.js";
+import "./chunks/chunk.XR5EZIHP.js";
+import "./chunks/chunk.MUYS3VLW.js";
+import "./chunks/chunk.WFTS65OQ.js";
+import "./chunks/chunk.JKJ7L7N3.js";
+import "./chunks/chunk.5KOP2B3E.js";
+import "./chunks/chunk.SIOVEWZT.js";
+import "./chunks/chunk.TZU3U7IW.js";
+import "./chunks/chunk.4VO545RN.js";
+import "./chunks/chunk.UNUA3ZP5.js";
+import "./chunks/chunk.M26YYT7Q.js";
+import "./chunks/chunk.YP5CFEBW.js";
+import "./chunks/chunk.HRMDCVXQ.js";
+import "./chunks/chunk.JFG62QF5.js";
 import {
   data_subsetter_default
-} from "./chunks/chunk.7YVI55TP.js";
-import "./chunks/chunk.VEQHHSHW.js";
-import "./chunks/chunk.KF37YBDI.js";
-import "./chunks/chunk.UBNZ4DBW.js";
-import "./chunks/chunk.UVJ37R4U.js";
-import "./chunks/chunk.CGZ2SSXS.js";
-import "./chunks/chunk.JAELNYWG.js";
-import "./chunks/chunk.SF6MBAEP.js";
-import "./chunks/chunk.MONXQKIF.js";
+} from "./chunks/chunk.WEI6BHHT.js";
+import "./chunks/chunk.FAURKCNE.js";
+import "./chunks/chunk.2KUHUTX5.js";
+import "./chunks/chunk.OCA57Y5E.js";
+import "./chunks/chunk.S5LWJDD7.js";
+import "./chunks/chunk.GJZZSGUB.js";
+import "./chunks/chunk.HX5JJUSQ.js";
+import "./chunks/chunk.2DYHCVKO.js";
+import "./chunks/chunk.Z3JS3RFN.js";
 import {
   loader_default
-} from "./chunks/chunk.4JHRCMYB.js";
-import "./chunks/chunk.74Y2IRDI.js";
-import "./chunks/chunk.55FSQEQ4.js";
-import "./chunks/chunk.PSAJO4PE.js";
-import "./chunks/chunk.T62DVZZX.js";
-import "./chunks/chunk.POKHGMEN.js";
-import "./chunks/chunk.YT4332SP.js";
-import "./chunks/chunk.27EMK3NO.js";
-import "./chunks/chunk.WPFWUJCE.js";
-import "./chunks/chunk.VHHIJXG2.js";
-import "./chunks/chunk.UNYSSZSF.js";
-import "./chunks/chunk.JRFFBQCS.js";
-import "./chunks/chunk.TZK42POE.js";
-import "./chunks/chunk.P3EJ4JOE.js";
-import "./chunks/chunk.INKFF7NB.js";
-import "./chunks/chunk.EPOKVQ7Z.js";
+} from "./chunks/chunk.OKHSUXPR.js";
+import "./chunks/chunk.PJUSGZQ3.js";
+import "./chunks/chunk.YUBHCVQF.js";
+import "./chunks/chunk.SHDK2N2Y.js";
+import "./chunks/chunk.BWVNIMGD.js";
+import "./chunks/chunk.Y6ERTCCJ.js";
+import "./chunks/chunk.CGUQRNUM.js";
+import "./chunks/chunk.F3YLYDI6.js";
+import "./chunks/chunk.ARB3UVS4.js";
+import "./chunks/chunk.4IW2ACWY.js";
+import "./chunks/chunk.Z2YYVPVO.js";
+import "./chunks/chunk.26Y3U5MM.js";
+import "./chunks/chunk.EGZALHQH.js";
+import "./chunks/chunk.DX5ZMKGE.js";
+import "./chunks/chunk.HJCBOBYP.js";
+import "./chunks/chunk.IAVIA55D.js";
+import "./chunks/chunk.XPUSLKRS.js";
+import "./chunks/chunk.YILV227S.js";
 import {
   chip_default
-} from "./chunks/chunk.H3X77KDF.js";
-import "./chunks/chunk.443GQYQB.js";
-import "./chunks/chunk.Y4WP4EBM.js";
+} from "./chunks/chunk.3SAZLY6W.js";
+import "./chunks/chunk.SSCIFK7Q.js";
+import "./chunks/chunk.LAO4X5YG.js";
 import {
   combobox_default
-} from "./chunks/chunk.EA4E2MY5.js";
-import "./chunks/chunk.NEWIN3MV.js";
-import "./chunks/chunk.PZRCJWJ4.js";
-import "./chunks/chunk.QB5SASDL.js";
-import "./chunks/chunk.USC76EZL.js";
-import "./chunks/chunk.LMGJJIIS.js";
-import "./chunks/chunk.UVHPNM6M.js";
+} from "./chunks/chunk.OM4EBECB.js";
+import "./chunks/chunk.KUNULB2K.js";
+import "./chunks/chunk.NFS2RDEX.js";
+import "./chunks/chunk.EDY6YM3Y.js";
+import "./chunks/chunk.H2ZXIXPU.js";
+import "./chunks/chunk.CRDKTZBT.js";
+import "./chunks/chunk.A4UWQ65F.js";
 import {
   browse_variables_default
-} from "./chunks/chunk.IMXGEC7P.js";
-import "./chunks/chunk.3AQCOFQL.js";
-import "./chunks/chunk.4HPBCPG2.js";
-import "./chunks/chunk.RFZZEXLC.js";
-import "./chunks/chunk.NMJ34B6C.js";
-import "./chunks/chunk.SCFJOPPV.js";
-import "./chunks/chunk.YV6IU3OX.js";
-import "./chunks/chunk.7PAVW6KC.js";
+} from "./chunks/chunk.BIQVRCHB.js";
+import "./chunks/chunk.JDRYXXSJ.js";
+import "./chunks/chunk.JV5EK3LF.js";
+import "./chunks/chunk.XZXJLHTQ.js";
+import "./chunks/chunk.T2JGMK2I.js";
+import "./chunks/chunk.YSADKTSA.js";
+import "./chunks/chunk.7Y3JZAL2.js";
+import "./chunks/chunk.75PZH4W2.js";
 import {
   getAnimationNames,
   getEasingNames
-} from "./chunks/chunk.MQSKD234.js";
-import "./chunks/chunk.FPSSRS2U.js";
-import "./chunks/chunk.KKRCWOV3.js";
-import "./chunks/chunk.NYEDLELY.js";
+} from "./chunks/chunk.3SQ33WJL.js";
+import "./chunks/chunk.CJDWJPSB.js";
+import "./chunks/chunk.T263RY5Y.js";
+import "./chunks/chunk.YIT2FCRS.js";
 import {
   icon_default
-} from "./chunks/chunk.Q6UYTNS4.js";
-import "./chunks/chunk.2XCNCXGV.js";
-import "./chunks/chunk.QEA4QW6G.js";
-import "./chunks/chunk.QZV6EAIM.js";
-import "./chunks/chunk.J3PR6S65.js";
-import "./chunks/chunk.IIXAYWB6.js";
-import "./chunks/chunk.B7RSR5QT.js";
-import "./chunks/chunk.IVOVCCTS.js";
-import "./chunks/chunk.UGTZ22DI.js";
-import "./chunks/chunk.EZMKGB3F.js";
-import "./chunks/chunk.4EVDB43F.js";
+} from "./chunks/chunk.QOCYKON6.js";
+import "./chunks/chunk.QFJLPXXJ.js";
+import "./chunks/chunk.CUQN55UX.js";
+import "./chunks/chunk.WOK6C4SG.js";
+import "./chunks/chunk.RZAYZ5CG.js";
+import "./chunks/chunk.22DVIRSW.js";
+import "./chunks/chunk.AQODH346.js";
+import "./chunks/chunk.3AZLGGEX.js";
+import "./chunks/chunk.TZ27CWAV.js";
+import "./chunks/chunk.GL52MTKN.js";
+import "./chunks/chunk.6WGBX3KH.js";
 import {
   button_default
-} from "./chunks/chunk.CP7RNEMV.js";
-import "./chunks/chunk.ETTS3KR7.js";
-import "./chunks/chunk.XZGF7NVJ.js";
-import "./chunks/chunk.GNSDRDLV.js";
-import "./chunks/chunk.YVG2XG3L.js";
+} from "./chunks/chunk.2R3BVYMU.js";
+import "./chunks/chunk.AXFH3ZZE.js";
+import "./chunks/chunk.XUOBHXPV.js";
+import "./chunks/chunk.J7JLAL3A.js";
+import "./chunks/chunk.VIFKXWLG.js";
 import {
   accordion_default
-} from "./chunks/chunk.M6FPOZDG.js";
-import "./chunks/chunk.GY3WMEC5.js";
-import "./chunks/chunk.3AVJ4SFR.js";
-import "./chunks/chunk.VORUJ5MH.js";
+} from "./chunks/chunk.2KCVDG3C.js";
+import "./chunks/chunk.PB6VJJ42.js";
+import "./chunks/chunk.6PRBTCJU.js";
+import "./chunks/chunk.TUBLTX7O.js";
 import {
   registerIconLibrary,
   unregisterIconLibrary
-} from "./chunks/chunk.UA5HHAYZ.js";
-import "./chunks/chunk.UOCDT7HQ.js";
-import "./chunks/chunk.UCNEPIMI.js";
-import "./chunks/chunk.4XR5KYKG.js";
-import "./chunks/chunk.6NYH4BZ2.js";
+} from "./chunks/chunk.VLR7MGN6.js";
+import "./chunks/chunk.S2GS7WAM.js";
+import "./chunks/chunk.ZAEJJQNF.js";
+import "./chunks/chunk.6YECHPFP.js";
+import "./chunks/chunk.HWIFPU5V.js";
 import {
   getBasePath,
   setBasePath
-} from "./chunks/chunk.NQKBKXPW.js";
-import "./chunks/chunk.CPHER7LT.js";
+} from "./chunks/chunk.XTPAHWLJ.js";
+import "./chunks/chunk.I4WNPQOC.js";
 import {
   alert_default
-} from "./chunks/chunk.QUHOY7JA.js";
-import "./chunks/chunk.UR6UU3IH.js";
-import "./chunks/chunk.6OAPBJRP.js";
-import "./chunks/chunk.YVSJQ4KD.js";
-import "./chunks/chunk.UP75L23G.js";
-import "./chunks/chunk.6MMTW476.js";
-import "./chunks/chunk.IH64XZC2.js";
-import "./chunks/chunk.2FFSUM6T.js";
-import "./chunks/chunk.3WD5HVRH.js";
-import "./chunks/chunk.PQFHJHNO.js";
-import "./chunks/chunk.PH7RLQK2.js";
-import "./chunks/chunk.6JHIJHTB.js";
+} from "./chunks/chunk.XYK6YQI5.js";
+import "./chunks/chunk.MELTUHNW.js";
+import "./chunks/chunk.GRPID3HM.js";
+import "./chunks/chunk.DVOLO45B.js";
+import "./chunks/chunk.5WLTVPIO.js";
+import "./chunks/chunk.ZEDYVCUT.js";
+import "./chunks/chunk.BFLNWCV5.js";
+import "./chunks/chunk.KACZXI5J.js";
+import "./chunks/chunk.BXZTBSH6.js";
+import "./chunks/chunk.KAJGV2AN.js";
+import "./chunks/chunk.IIGBOCK5.js";
+import "./chunks/chunk.LL3RMB25.js";
+import "./chunks/chunk.M73GHNHJ.js";
+import {
+  init_buffer,
+  init_dirname,
+  init_process
+} from "./chunks/chunk.ES5U5CWG.js";
+
+// src/terra-ui-components.ts
+init_dirname();
+init_buffer();
+init_process();
+
+// src/events/events.ts
+init_dirname();
+init_buffer();
+init_process();
 export {
   accordion_default as TerraAccordion,
   alert_default as TerraAlert,
@@ -191,6 +217,7 @@ export {
   plot_default as TerraPlot,
   skeleton_default as TerraSkeleton,
   spatial_picker_default as TerraSpatialPicker,
+  time_average_map_default as TerraTimeAverageMap,
   time_series_default as TerraTimeSeries,
   variable_combobox_default as TerraVariableCombobox,
   variable_keyword_search_default as TerraVariableKeywordSearch,

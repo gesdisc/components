@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-layout="component" data-terra-ui-components-version="0.0.58">
+<html lang="en" data-layout="component" data-terra-ui-components-version="0.0.60">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -79,6 +79,41 @@
       >
         <sl-icon name="github"></sl-icon>
       </a>
+      <sl-dropdown id="environment-selector" placement="bottom-end" distance="3">
+        <terra-button
+          slot="trigger"
+          size="large"
+          variant="text"
+          caret=""
+          title="Environment"
+          data-optional=""
+          data-valid=""
+          data-user-valid=""
+        >
+          <span id="environment-display">UAT</span>
+        </terra-button>
+        <sl-menu role="menu">
+          <sl-menu-item
+            type="checkbox"
+            value="uat"
+            tabindex="-1"
+            role="menuitemcheckbox"
+            aria-checked="true"
+            aria-disabled="false"
+            checked=""
+            >UAT</sl-menu-item
+          >
+          <sl-menu-item
+            type="checkbox"
+            value="prod"
+            tabindex="-1"
+            role="menuitemcheckbox"
+            aria-checked="false"
+            aria-disabled="false"
+            >PROD</sl-menu-item
+          >
+        </sl-menu>
+      </sl-dropdown>
       <sl-dropdown id="theme-selector" placement="bottom-end" distance="3">
         <terra-button
           slot="trigger"
@@ -133,7 +168,7 @@
           <img src="/components/assets/images/logo.svg" alt="Terra UI Components" />
           Terra UI Components
         </a>
-        <div class="sidebar-version">0.0.58</div>
+        <div class="sidebar-version">0.0.60</div>
       </header>
 
       <div class="sidebar-buttons">
@@ -276,6 +311,10 @@
               </li>
 
               <li>
+                <a href="/components/time-average-map"> Time Average Map </a>
+              </li>
+
+              <li>
                 <a href="/components/time-series"> Time Series </a>
               </li>
 
@@ -340,10 +379,10 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-76">
+            <div class="code-preview__source-group" id="code-preview-source-group-82">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-264"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-map</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-map</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-264"></sl-copy-button></pre>
+                <pre><code class="language-html" id="code-block-283"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-map</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-map</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-283"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -352,7 +391,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-76"
+                aria-controls="code-preview-source-group-82"
               >
                 Source
                 <svg
@@ -399,10 +438,10 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-77">
+            <div class="code-preview__source-group" id="code-preview-source-group-83">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-265"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-map</span> <span class="token attr-name">has-navigation</span> <span class="token attr-name">has-shape-selector</span> <span class="token attr-name">has-coord-tracker</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-map</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-265"></sl-copy-button></pre>
+                <pre><code class="language-html" id="code-block-284"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-map</span> <span class="token attr-name">has-navigation</span> <span class="token attr-name">has-shape-selector</span> <span class="token attr-name">has-coord-tracker</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-map</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-284"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -411,7 +450,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-77"
+                aria-controls="code-preview-source-group-83"
               >
                 Source
                 <svg
@@ -474,7 +513,7 @@
                 >
                 using a script tag:
               </p>
-              <pre><code class="language-html" id="code-block-266"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.58/cdn/components/map/map.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code><sl-copy-button class="copy-code-button" from="code-block-266"></sl-copy-button></pre>
+              <pre><code class="language-html" id="code-block-285"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.60/cdn/components/map/map.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code><sl-copy-button class="copy-code-button" from="code-block-285"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="import">
@@ -489,7 +528,7 @@
                 >
                 using a JavaScript import:
               </p>
-              <pre><code class="language-js" id="code-block-267"><span class="token keyword">import</span> <span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.58/cdn/components/map/map.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-267"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-286"><span class="token keyword">import</span> <span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.60/cdn/components/map/map.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-286"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="bundler">
@@ -497,12 +536,12 @@
                 To import this component using
                 <a href="/components/getting-started/installation#bundling">a bundler</a>:
               </p>
-              <pre><code class="language-js" id="code-block-268"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/map/map.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-268"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-287"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/map/map.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-287"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="react">
               <p>To import this component as a <a href="/components/frameworks/react">React component</a>:</p>
-              <pre><code class="language-js" id="code-block-269"><span class="token keyword">import</span> TerraMap <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/map'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-269"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-288"><span class="token keyword">import</span> TerraMap <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/map'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-288"></sl-copy-button></pre>
             </sl-tab-panel>
           </sl-tab-group>
 

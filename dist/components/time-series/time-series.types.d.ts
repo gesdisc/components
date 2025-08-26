@@ -9,6 +9,10 @@ export type VariableDbEntry = TimeSeriesData & {
     endDate: string;
     /** unique key to identify unique record */
     key: string;
+    /** environment used when fetching the data */
+    environment?: string;
+    /** timestamp when the data was cached */
+    cachedAt: number;
 };
 export type TimeSeriesData = {
     metadata: TimeSeriesMetadata;

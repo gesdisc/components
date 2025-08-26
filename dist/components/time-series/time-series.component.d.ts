@@ -7,6 +7,7 @@ import TerraPlot from '../plot/plot.component.js';
 import type { CSSResultGroup } from 'lit';
 import type { MenuNames } from './time-series.types.js';
 import type { Variable } from '../browse-variables/browse-variables.types.js';
+import { AuthController } from '../../auth/auth.controller.js';
 /**
  * @summary A component for visualizing time series data using the GES DISC Giovanni API.
  * @documentation https://disc.gsfc.nasa.gov/components/time-series
@@ -52,6 +53,7 @@ export default class TerraTimeSeries extends TerraElement {
     endDate?: string;
     /**
      * The point location in "lat,lon" format.
+     * Or the bounding box in "west,south,east,north" format.
      */
     location?: string;
     /**
@@ -59,7 +61,7 @@ export default class TerraTimeSeries extends TerraElement {
      * The component provides the header "Authorization: Bearer" (the request header and authentication scheme).
      * The property's value will be inserted after "Bearer" (the authentication scheme).
      */
-    bearerToken: string;
+    bearerToken?: string;
     plot: TerraPlot;
     menu: HTMLMenuElement;
     catalogVariable: Variable;
@@ -80,7 +82,9 @@ export default class TerraTimeSeries extends TerraElement {
      */
     activeMenuItem: MenuNames;
     handleFocus(_oldValue: MenuNames, newValue: MenuNames): void;
+    _authController: AuthController<this>;
     connectedCallback(): void;
     disconnectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
+    getVariableEntryId(): string | undefined;
 }

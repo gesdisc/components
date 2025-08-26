@@ -9,6 +9,7 @@ export declare class AuthController<C> {
     constructor(host: ReactiveControllerHost & C);
     get state(): AuthState;
     login(): void;
+    logout(): void;
     render(renderFunctions: StatusRenderer<AuthState>): unknown;
     disconnectedCallback(): void;
 }

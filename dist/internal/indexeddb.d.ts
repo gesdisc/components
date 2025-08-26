@@ -14,3 +14,4 @@ export declare function getDb(): Promise<IDBPDatabase<unknown>>;
 export declare function withDb<T>(callback: (db: IDBPDatabase) => Promise<T>): Promise<T>;
 export declare function getDataByKey<T>(store: IndexedDbStores, key: string): Promise<T>;
 export declare function storeDataByKey<T>(store: IndexedDbStores, key: string, data: T): Promise<void>;
+export declare function deleteDataByKey(store: IndexedDbStores, key: string): Promise<void>;

@@ -1,11 +1,10 @@
 import 'leaflet-draw';
 import type { LatLngBoundsExpression } from 'leaflet';
-import type { BoundingBox, LatLng } from './type.js';
 export declare function parseBoundingBox(inputString: string): number[][] | {
     lat: number;
     lng: number;
 };
-export declare function StringifyBoundingBox(input: LatLng | BoundingBox): string;
+export declare function StringifyBoundingBox(input: any): string;
 export interface MapViewOptions {
     latitude?: number;
     longitude?: number;

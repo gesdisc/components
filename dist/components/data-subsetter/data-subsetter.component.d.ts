@@ -2,8 +2,8 @@ import TerraElement from '../../internal/terra-element.js';
 import type { CSSResultGroup } from 'lit';
 import { type BoundingBox, type CollectionWithAvailableServices, type Variable } from '../../data-services/types.js';
 import TerraSpatialPicker from '../spatial-picker/spatial-picker.component.js';
-import type { LatLng } from '../map/type.js';
 import type { CmrSearchResult } from '../../metadata-catalog/types.js';
+import type { LatLng } from 'leaflet';
 /**
  * @summary Easily allow users to select, subset, and download NASA Earth science data collections with spatial, temporal, and variable filters.
  * @documentation https://disc.gsfc.nasa.gov/components/data-subsetter

@@ -50,6 +50,7 @@ export default class TerraMap extends TerraElement {
     _mapController: MapController;
     connectedCallback(): Promise<void>;
     firstUpdated(): Promise<void>;
+    getDrawLayer(): any;
     selectTemplate(): import("lit-html").TemplateResult<1>;
     render(): import("lit-html").TemplateResult<1>;
     invalidateSize(): void;

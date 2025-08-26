@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-layout="component" data-terra-ui-components-version="0.0.58">
+<html lang="en" data-layout="component" data-terra-ui-components-version="0.0.60">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -85,6 +85,41 @@
       >
         <sl-icon name="github"></sl-icon>
       </a>
+      <sl-dropdown id="environment-selector" placement="bottom-end" distance="3">
+        <terra-button
+          slot="trigger"
+          size="large"
+          variant="text"
+          caret=""
+          title="Environment"
+          data-optional=""
+          data-valid=""
+          data-user-valid=""
+        >
+          <span id="environment-display">UAT</span>
+        </terra-button>
+        <sl-menu role="menu">
+          <sl-menu-item
+            type="checkbox"
+            value="uat"
+            tabindex="-1"
+            role="menuitemcheckbox"
+            aria-checked="true"
+            aria-disabled="false"
+            checked=""
+            >UAT</sl-menu-item
+          >
+          <sl-menu-item
+            type="checkbox"
+            value="prod"
+            tabindex="-1"
+            role="menuitemcheckbox"
+            aria-checked="false"
+            aria-disabled="false"
+            >PROD</sl-menu-item
+          >
+        </sl-menu>
+      </sl-dropdown>
       <sl-dropdown id="theme-selector" placement="bottom-end" distance="3">
         <terra-button
           slot="trigger"
@@ -139,7 +174,7 @@
           <img src="/components/assets/images/logo.svg" alt="Terra UI Components" />
           Terra UI Components
         </a>
-        <div class="sidebar-version">0.0.58</div>
+        <div class="sidebar-version">0.0.60</div>
       </header>
 
       <div class="sidebar-buttons">
@@ -282,6 +317,10 @@
               </li>
 
               <li>
+                <a href="/components/time-average-map"> Time Average Map </a>
+              </li>
+
+              <li>
                 <a href="/components/time-series" class="active-link"> Time Series </a>
               </li>
 
@@ -306,11 +345,8 @@
             <li class="top">
               <a href="#">Time Series</a>
             </li>
-            <li data-level="2"><a href="#all-data-pre-configured">All Data Pre-Configured</a></li>
-            <li data-level="2">
-              <a href="#collection-and-variable-pre-configured">Collection and Variable Pre-Configured</a>
-            </li>
-            <li data-level="2"><a href="#no-pre-configured-data">No Pre-Configured Data</a></li>
+            <li data-level="2"><a href="#point-based-time-series">Point-based Time Series</a></li>
+            <li data-level="2"><a href="#area-averaged-time-series">Area-averaged Time Series</a></li>
             <li data-level="2"><a href="#importing">Importing</a></li>
             <li data-level="2"><a href="#properties">Properties</a></li>
             <li data-level="2"><a href="#events">Events</a></li>
@@ -335,38 +371,51 @@
 
           <p class="component-summary">A component for visualizing time series data using the GES DISC Giovanni API.</p>
 
-          <h2 id="all-data-pre-configured" class="anchor-heading">
-            All Data Pre-Configured<a
-              href="#all-data-pre-configured"
-              aria-label='Direct link to "All Data Pre-Configured"'
+          <h2 id="point-based-time-series" class="anchor-heading">
+            Point-based Time Series<a
+              href="#point-based-time-series"
+              aria-label='Direct link to "Point-based Time Series"'
             ></a>
           </h2>
 
           <div class="code-preview">
             <div class="code-preview__preview">
-              <terra-time-series
-                collection="NLDAS_FORA0125_H_2_0"
-                variable="LWdown"
-                start-date="01/01/2019"
-                end-date="03/01/2019"
-                location="33.9375,-86.9375"
-              ></terra-time-series>
+              <terra-login style="width: 100%">
+                <span slot="loading">Loading…please wait</span>
+
+                <terra-time-series
+                  slot="logged-in"
+                  collection="NLDAS_FORA0125_H_2_0"
+                  variable="LWdown"
+                  start-date="01/01/2019"
+                  end-date="03/01/2019"
+                  location="33.9375,-86.9375"
+                ></terra-time-series>
+
+                <p slot="logged-out">Please login to view this plot</p>
+              </terra-login>
 
               <div class="code-preview__resizer">
                 <sl-icon name="grip-vertical"></sl-icon>
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-88">
+            <div class="code-preview__source-group" id="code-preview-source-group-93">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-305"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-time-series</span>
-    <span class="token attr-name">collection</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>NLDAS_FORA0125_H_2_0<span class="token punctuation">"</span></span>
-    <span class="token attr-name">variable</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>LWdown<span class="token punctuation">"</span></span>
-    <span class="token attr-name">start-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>01/01/2019<span class="token punctuation">"</span></span>
-    <span class="token attr-name">end-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>03/01/2019<span class="token punctuation">"</span></span>
-    <span class="token attr-name">location</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>33.9375,-86.9375<span class="token punctuation">"</span></span>
-<span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-time-series</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-305"></sl-copy-button></pre>
+                <pre><code class="language-html" id="code-block-322"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-login</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">width</span><span class="token punctuation">:</span> 100%</span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>loading<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Loading...please wait<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-time-series</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>logged-in<span class="token punctuation">"</span></span>
+        <span class="token attr-name">collection</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>NLDAS_FORA0125_H_2_0<span class="token punctuation">"</span></span>
+        <span class="token attr-name">variable</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>LWdown<span class="token punctuation">"</span></span>
+        <span class="token attr-name">start-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>01/01/2019<span class="token punctuation">"</span></span>
+        <span class="token attr-name">end-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>03/01/2019<span class="token punctuation">"</span></span>
+        <span class="token attr-name">location</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>33.9375,-86.9375<span class="token punctuation">"</span></span>
+    <span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-time-series</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>logged-out<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Please login to view this plot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-login</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-322"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -375,7 +424,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-88"
+                aria-controls="code-preview-source-group-93"
               >
                 Source
                 <svg
@@ -409,110 +458,65 @@
             </div>
           </div>
 
-          <h2 id="collection-and-variable-pre-configured" class="anchor-heading">
-            Collection and Variable Pre-Configured<a
-              href="#collection-and-variable-pre-configured"
-              aria-label='Direct link to "Collection and Variable Pre-Configured"'
+          <h2 id="area-averaged-time-series" class="anchor-heading">
+            Area-averaged Time Series<a
+              href="#area-averaged-time-series"
+              aria-label='Direct link to "Area-averaged Time Series"'
             ></a>
           </h2>
 
           <div class="code-preview">
             <div class="code-preview__preview">
-              <terra-time-series
-                collection="M2T1NXSLV_5_12_4"
-                variable="V50M"
-                start-date="05/03/2024"
-                end-date="06/03/2024"
-              ></terra-time-series>
+              <terra-login style="width: 100%">
+                <span slot="loading">Loading…please wait</span>
+
+                <template slot="logged-in">
+                  <terra-time-series
+                    collection="M2T1NXAER_5.12.4"
+                    variable="BCCMASS"
+                    start-date="01/01/2009"
+                    end-date="01/05/2009"
+                    location="62,5,95,40"
+                  ></terra-time-series>
+                </template>
+
+                <p slot="logged-out">Please login to view this plot</p>
+              </terra-login>
 
               <div class="code-preview__resizer">
                 <sl-icon name="grip-vertical"></sl-icon>
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-89">
-              <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-306"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-time-series</span>
-    <span class="token attr-name">collection</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>M2T1NXSLV_5_12_4<span class="token punctuation">"</span></span>
-    <span class="token attr-name">variable</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>V50M<span class="token punctuation">"</span></span>
-    <span class="token attr-name">start-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>05/03/2024<span class="token punctuation">"</span></span>
-    <span class="token attr-name">end-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>06/03/2024<span class="token punctuation">"</span></span>
-<span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-time-series</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-306"></sl-copy-button></pre>
-              </div>
-            </div>
-
-            <div class="code-preview__buttons">
-              <button
-                type="button"
-                class="code-preview__button code-preview__toggle"
-                aria-expanded="false"
-                aria-controls="code-preview-source-group-89"
-              >
-                Source
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </button>
-
-              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
-                <svg
-                  width="138"
-                  height="26"
-                  viewBox="0 0 138 26"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path
-                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          <h2 id="no-pre-configured-data" class="anchor-heading">
-            No Pre-Configured Data<a
-              href="#no-pre-configured-data"
-              aria-label='Direct link to "No Pre-Configured Data"'
-            ></a>
-          </h2>
-
-          <div class="code-preview">
-            <div class="code-preview__preview">
-              <terra-time-series></terra-time-series>
-
-              <div class="code-preview__resizer">
-                <sl-icon name="grip-vertical"></sl-icon>
-              </div>
-            </div>
-
-            <div class="code-preview__source-group" id="code-preview-source-group-90">
+            <div class="code-preview__source-group" id="code-preview-source-group-94">
               <div class="code-preview__source code-preview__source--html" data-flavor="html">
-                <pre><code class="language-html" id="code-block-307"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-time-series</span>
-<span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-time-series</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-307"></sl-copy-button></pre>
+                <pre><code class="language-html" id="code-block-323"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-login</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">width</span><span class="token punctuation">:</span> 100%</span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>loading<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Loading...please wait<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>logged-in<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-time-series</span>
+            <span class="token attr-name">collection</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>M2T1NXAER_5.12.4<span class="token punctuation">"</span></span>
+            <span class="token attr-name">variable</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>BCCMASS<span class="token punctuation">"</span></span>
+            <span class="token attr-name">start-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>01/01/2009<span class="token punctuation">"</span></span>
+            <span class="token attr-name">end-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>01/05/2009<span class="token punctuation">"</span></span>
+            <span class="token attr-name">location</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>62,5,95,40<span class="token punctuation">"</span></span>
+        <span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-time-series</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>logged-out<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Please login to view this plot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-login</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-323"></sl-copy-button></pre>
               </div>
 
               <div class="code-preview__source code-preview__source--react" data-flavor="react">
-                <pre><code class="language-jsx" id="code-block-308"><span class="token keyword">import</span> TerraTimeSeries <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/time-series'</span>
+                <pre><code class="language-jsx" id="code-block-324"><span class="token keyword">import</span> TerraTimeSeries <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/time-series'</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TerraTimeSeries</span></span>
     <span class="token attr-name">collection</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>GPM_3IMERGHH_06<span class="token punctuation">"</span></span>
     <span class="token attr-name">variable</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>precipitationCal<span class="token punctuation">"</span></span>
     <span class="token attr-name">start-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>01/01/2019<span class="token punctuation">"</span></span>
     <span class="token attr-name">end-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>09/01/2021<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TerraTimeSeries</span></span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-308"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-324"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -521,7 +525,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-90"
+                aria-controls="code-preview-source-group-94"
               >
                 Source
                 <svg
@@ -592,7 +596,7 @@
                 >
                 using a script tag:
               </p>
-              <pre><code class="language-html" id="code-block-309"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.58/cdn/components/time-series/time-series.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code><sl-copy-button class="copy-code-button" from="code-block-309"></sl-copy-button></pre>
+              <pre><code class="language-html" id="code-block-325"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.60/cdn/components/time-series/time-series.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code><sl-copy-button class="copy-code-button" from="code-block-325"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="import">
@@ -607,7 +611,7 @@
                 >
                 using a JavaScript import:
               </p>
-              <pre><code class="language-js" id="code-block-310"><span class="token keyword">import</span> <span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.58/cdn/components/time-series/time-series.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-310"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-326"><span class="token keyword">import</span> <span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.60/cdn/components/time-series/time-series.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-326"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="bundler">
@@ -615,12 +619,12 @@
                 To import this component using
                 <a href="/components/getting-started/installation#bundling">a bundler</a>:
               </p>
-              <pre><code class="language-js" id="code-block-311"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/time-series/time-series.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-311"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-327"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/time-series/time-series.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-327"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="react">
               <p>To import this component as a <a href="/components/frameworks/react">React component</a>:</p>
-              <pre><code class="language-js" id="code-block-312"><span class="token keyword">import</span> TerraTimeSeries <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/time-series'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-312"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-328"><span class="token keyword">import</span> TerraTimeSeries <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/time-series'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-328"></sl-copy-button></pre>
             </sl-tab-panel>
           </sl-tab-group>
 
@@ -740,7 +744,9 @@
                   <td>
                     <code class="nowrap">location</code>
                   </td>
-                  <td>The point location in “lat,lon” format.</td>
+                  <td>
+                    The point location in “lat,lon” format. Or the bounding box in “west,south,east,north” format.
+                  </td>
                   <td style="text-align: center">
                     <sl-icon label="yes" name="check-lg"></sl-icon>
                   </td>
@@ -768,7 +774,7 @@
                   </td>
                   <td style="text-align: center"></td>
                   <td>
-                    <code>string</code>
+                    <code>string | undefined</code>
                   </td>
                   <td>-</td>
                 </tr>

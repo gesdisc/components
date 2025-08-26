@@ -72,6 +72,7 @@ export default class TerraSpatialPicker extends TerraElement {
     private _blur;
     private _focus;
     private _click;
+    private _emitMapChange;
     open(): void;
     close(): void;
     private _handleMapChange;

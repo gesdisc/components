@@ -20,5 +20,7 @@ export default class TerraLogin extends TerraElement {
     };
     static styles: CSSResultGroup;
     buttonLabel: string;
+    login(): void;
+    logout(): void;
     render(): import("lit-html").TemplateResult<1>;
 }
