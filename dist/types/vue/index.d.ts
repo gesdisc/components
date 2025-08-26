@@ -268,6 +268,8 @@ this prop allows you to override that behavior and always show the history panel
   hideCancelled?: TerraDataSubsetterHistory["hideCancelled"];
   /**  */
   dialog?: TerraDataSubsetterHistory["dialog"];
+  /**  */
+  _authController?: TerraDataSubsetterHistory["_authController"];
 };
 
 type TerraDatePickerProps = {
@@ -386,6 +388,9 @@ type TerraLoaderProps = {
 };
 
 type TerraLoginProps = {
+  /**  */
+  "button-label"?: TerraLogin["buttonLabel"];
+
   /** Emitted when a bearer token has been received from EDL. */
   onTerraLogin?: (e: CustomEvent<never>) => void;
 };

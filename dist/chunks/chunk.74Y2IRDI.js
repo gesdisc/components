@@ -5,15 +5,8 @@ import {
 // src/components/login/login.styles.ts
 var login_styles_default = i`
     :host {
-        --block-size: 20rem;
-        --inline-size: 14rem;
-
-        block-size: var(--block-size);
         box-sizing: border-box;
-        inline-size: var(--inline-size);
         color: #1b1b1b; /* HDS uses this color for body text but does not have a defined color in the HDS palette */
-        contain: layout size style;
-        contain-intrinsic-size: auto var(--block-size) auto var(--block-size);
         display: block;
         font-family: var(--terra-font-family--public-sans);
     }

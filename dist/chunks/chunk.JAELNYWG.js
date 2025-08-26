@@ -3,6 +3,10 @@ import {
   getFriendlyNameForMimeType
 } from "./chunk.SF6MBAEP.js";
 import {
+  AuthController,
+  TerraLogin
+} from "./chunk.MONXQKIF.js";
+import {
   TerraDatePicker
 } from "./chunk.55FSQEQ4.js";
 import {
@@ -63,10 +67,11 @@ var debounce = (delay) => {
 };
 
 // src/components/data-subsetter/data-subsetter.component.ts
-var _controller, _renderSubsetOptions, renderSubsetOptions_fn, _renderSearchForCollection, renderSearchForCollection_fn, _renderOutputFormatSelection, renderOutputFormatSelection_fn, _renderDateRangeSelection, renderDateRangeSelection_fn, _handleStartDateChange, _handleEndDateChange, _resetDateRangeSelection, _resetFormatSelection, _getCollectionDateRange, getCollectionDateRange_fn, _handleRegionAccordionToggle, handleRegionAccordionToggle_fn, _renderSpatialSelection, renderSpatialSelection_fn, _handleSpatialChange, _resetSpatialSelection, _renderVariableSelection, renderVariableSelection_fn, _buildVariableTree, buildVariableTree_fn, _renderVariableTree, renderVariableTree_fn, _getAllGroupPaths, getAllGroupPaths_fn, _toggleGroupExpand, toggleGroupExpand_fn, _toggleExpandCollapseAll, toggleExpandCollapseAll_fn, _toggleVariableSelection, toggleVariableSelection_fn, _markFieldTouched, markFieldTouched_fn, _resetVariableSelection, _renderJobStatus, renderJobStatus_fn, _renderSelectedParams, renderSelectedParams_fn, _cancelJob, cancelJob_fn, _getData, getData_fn, _touchAllFields, touchAllFields_fn, _numberOfFilesFoundEstimate, numberOfFilesFoundEstimate_fn, _getDocumentationLinks, getDocumentationLinks_fn, _getDataLinks, getDataLinks_fn, _hasAtLeastOneSubsetOption, hasAtLeastOneSubsetOption_fn, _hasSpatialSubset, hasSpatialSubset_fn, _renderJobMessage, renderJobMessage_fn, _getJobMessageText, getJobMessageText_fn, _estimateJobSize, estimateJobSize_fn, _refineParameters, refineParameters_fn, _toggleDownloadMenu, toggleDownloadMenu_fn, _downloadLinksAsTxt, downloadLinksAsTxt_fn, _downloadPythonScript, downloadPythonScript_fn, _downloadEarthdataDownload, downloadEarthdataDownload_fn, _handleClickOutside, handleClickOutside_fn, _handleJupyterNotebookClick, handleJupyterNotebookClick_fn, _renderAvailableTemporalRangeSection, renderAvailableTemporalRangeSection_fn, _renderAvailableSpatialRangeSection, renderAvailableSpatialRangeSection_fn;
+var _controller, _authController, _renderSizeInfo, renderSizeInfo_fn, _renderSubsetOptions, renderSubsetOptions_fn, _renderSearchForCollection, renderSearchForCollection_fn, _renderOutputFormatSelection, renderOutputFormatSelection_fn, _renderDateRangeSelection, renderDateRangeSelection_fn, _handleStartDateChange, _handleEndDateChange, _resetDateRangeSelection, _resetFormatSelection, _getCollectionDateRange, getCollectionDateRange_fn, _handleRegionAccordionToggle, handleRegionAccordionToggle_fn, _renderSpatialSelection, renderSpatialSelection_fn, _handleSpatialChange, _resetSpatialSelection, _renderVariableSelection, renderVariableSelection_fn, _buildVariableTree, buildVariableTree_fn, _renderVariableTree, renderVariableTree_fn, _getAllGroupPaths, getAllGroupPaths_fn, _toggleGroupExpand, toggleGroupExpand_fn, _toggleExpandCollapseAll, toggleExpandCollapseAll_fn, _toggleVariableSelection, toggleVariableSelection_fn, _markFieldTouched, markFieldTouched_fn, _resetVariableSelection, _renderJobStatus, renderJobStatus_fn, _renderSelectedParams, renderSelectedParams_fn, _cancelJob, cancelJob_fn, _getData, getData_fn, _touchAllFields, touchAllFields_fn, _numberOfFilesFoundEstimate, numberOfFilesFoundEstimate_fn, _getDocumentationLinks, getDocumentationLinks_fn, _getDataLinks, getDataLinks_fn, _hasAtLeastOneSubsetOption, hasAtLeastOneSubsetOption_fn, _hasSpatialSubset, hasSpatialSubset_fn, _renderJobMessage, renderJobMessage_fn, _getJobMessageText, getJobMessageText_fn, _estimateJobSize, estimateJobSize_fn, _refineParameters, refineParameters_fn, _toggleDownloadMenu, toggleDownloadMenu_fn, _downloadLinksAsTxt, downloadLinksAsTxt_fn, _downloadPythonScript, downloadPythonScript_fn, _downloadEarthdataDownload, downloadEarthdataDownload_fn, _handleClickOutside, handleClickOutside_fn, _handleJupyterNotebookClick, handleJupyterNotebookClick_fn, _renderAvailableTemporalRangeSection, renderAvailableTemporalRangeSection_fn, _renderAvailableSpatialRangeSection, renderAvailableSpatialRangeSection_fn;
 var TerraDataSubsetter = class extends TerraElement {
   constructor() {
     super(...arguments);
+    __privateAdd(this, _renderSizeInfo);
     __privateAdd(this, _renderSubsetOptions);
     __privateAdd(this, _renderSearchForCollection);
     __privateAdd(this, _renderOutputFormatSelection);
@@ -124,6 +129,7 @@ var TerraDataSubsetter = class extends TerraElement {
     this.collectionLoading = false;
     this.collectionAccordionOpen = true;
     __privateAdd(this, _controller, new DataSubsetterController(this));
+    __privateAdd(this, _authController, new AuthController(this));
     __privateAdd(this, _handleStartDateChange, (e2) => {
       __privateMethod(this, _markFieldTouched, markFieldTouched_fn).call(this, "date");
       const datePicker = e2.currentTarget;
@@ -248,6 +254,39 @@ var TerraDataSubsetter = class extends TerraElement {
   }
 };
 _controller = new WeakMap();
+_authController = new WeakMap();
+_renderSizeInfo = new WeakSet();
+renderSizeInfo_fn = function(estimates) {
+  if (!__privateGet(this, _authController).state.isLoading && !__privateGet(this, _authController).state.user) {
+    return x`
+                <div class="size-info warning">
+                    <terra-login>
+                        <h2 slot="logged-out">Limited access as a guest.</h2>
+
+                        <p slot="logged-out">
+                            Your results will be capped at 10 links. Log in for full
+                            access to all data.
+                        </p>
+                    </terra-login>
+                </div>
+            `;
+  }
+  return x`<div
+            class="size-info ${estimates.links >= 150 ? "warning" : "neutral"}"
+        >
+            <h2>Estimated size of results</h2>
+            <div class="size-stats">
+                ${estimates.days.toLocaleString()} days,
+                ${estimates.links.toLocaleString()} links
+            </div>
+            ${estimates.links >= 150 ? x`<div class="size-warning">
+                      You are about to retrieve ${estimates.links.toLocaleString()}
+                      file links from the archive. You may
+                      <strong>speed up the request</strong> by limiting the scope of
+                      your search.
+                  </div>` : T}
+        </div>`;
+};
 _renderSubsetOptions = new WeakSet();
 renderSubsetOptions_fn = function() {
   var _a, _b, _c, _d, _e, _f, _g, _h;
@@ -259,22 +298,7 @@ renderSubsetOptions_fn = function() {
   const showTemporalSection = temporalExtents && temporalExtents.length;
   const showSpatialSection = spatialExtent && ((_c = (_b = spatialExtent.HorizontalSpatialDomain) == null ? void 0 : _b.Geometry) == null ? void 0 : _c.BoundingRectangles);
   return x`
-            ${hasSubsetOption && estimates ? x`<div
-                      class="size-info ${estimates.links >= 150 ? "warning" : "neutral"}"
-                  >
-                      <h2>Estimated size of results</h2>
-                      <div class="size-stats">
-                          ${estimates.days.toLocaleString()} days,
-                          ${estimates.links.toLocaleString()} links
-                      </div>
-                      ${estimates.links >= 150 ? x`<div class="size-warning">
-                                You are about to retrieve
-                                ${estimates.links.toLocaleString()} file links from
-                                the archive. You may
-                                <strong>speed up the request</strong> by limiting the
-                                scope of your search.
-                            </div>` : T}
-                  </div>` : T}
+            ${hasSubsetOption && estimates ? __privateMethod(this, _renderSizeInfo, renderSizeInfo_fn).call(this, estimates) : T}
             ${this.showCollectionSearch ? x`
                       <div class="section">
                           <h2 class="section-title">
@@ -1518,7 +1542,8 @@ TerraDataSubsetter.dependencies = {
   "terra-accordion": TerraAccordion,
   "terra-date-picker": TerraDatePicker,
   "terra-icon": TerraIcon,
-  "terra-spatial-picker": TerraSpatialPicker
+  "terra-spatial-picker": TerraSpatialPicker,
+  "terra-login": TerraLogin
 };
 __decorateClass([
   n({ reflect: true, attribute: "collection-entry-id" })

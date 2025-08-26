@@ -787,7 +787,8 @@
               { "name": "collapsed", "type": "boolean" },
               { "name": "selectedJob", "type": "string | undefined" },
               { "name": "hideCancelled", "type": "boolean" },
-              { "name": "dialog", "type": "TerraDialog" }
+              { "name": "dialog", "type": "TerraDialog" },
+              { "name": "_authController" }
             ],
             "events": []
           }
@@ -1169,7 +1170,12 @@
           "name": "terra-login",
           "description": "A form that logs in to Earthdata Login (EDL) and returns a bearer token.\n---\n\n\n### **Events:**\n - **terra-login** - Emitted when a bearer token has been received from EDL.",
           "doc-url": "",
-          "attributes": [],
+          "attributes": [
+            {
+              "name": "button-label",
+              "value": { "type": "string", "default": "'Earthdata Login'" }
+            }
+          ],
           "events": [
             {
               "name": "terra-login",
@@ -1177,7 +1183,7 @@
             }
           ],
           "js": {
-            "properties": [],
+            "properties": [{ "name": "buttonLabel", "type": "string" }],
             "events": [
               {
                 "name": "terra-login",

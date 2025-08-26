@@ -28,7 +28,7 @@ var DataSubsetterHistoryController = class {
       task: async ([], { signal }) => {
         clearTimeout(__privateGet(this, _jobTimeout));
         const shouldFetch = __privateGet(this, _windowIsVisible) && (!__privateGet(this, _host).collapsed || !this.jobs);
-        if (shouldFetch) {
+        if (shouldFetch && __privateGet(this, _host).bearerToken) {
           this.jobs = await __privateGet(this, _dataService).getSubsetJobs({
             bearerToken: __privateGet(this, _host).bearerToken,
             signal
@@ -37,7 +37,7 @@ var DataSubsetterHistoryController = class {
         __privateSet(this, _jobTimeout, setTimeout(() => this.task.run(), JOBS_POLL_MILLIS));
         return this.jobs;
       },
-      args: () => []
+      args: () => [__privateGet(this, _host).bearerToken]
     });
   }
   hostConnected() {

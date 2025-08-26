@@ -570,7 +570,7 @@
     {
       "name": "terra-login",
       "description": "A form that logs in to Earthdata Login (EDL) and returns a bearer token.\n---\n\n\n### **Events:**\n - **terra-login** - Emitted when a bearer token has been received from EDL.",
-      "attributes": [],
+      "attributes": [{ "name": "button-label", "values": [] }],
       "references": [
         {
           "name": "Documentation",

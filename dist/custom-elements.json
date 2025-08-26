@@ -2089,7 +2089,7 @@
                 "text": "Record<string, typeof TerraElement>"
               },
               "static": true,
-              "default": "{\n        'terra-accordion': TerraAccordion,\n        'terra-date-picker': TerraDatePicker,\n        'terra-icon': TerraIcon,\n        'terra-spatial-picker': TerraSpatialPicker,\n    }"
+              "default": "{\n        'terra-accordion': TerraAccordion,\n        'terra-date-picker': TerraDatePicker,\n        'terra-icon': TerraIcon,\n        'terra-spatial-picker': TerraSpatialPicker,\n        'terra-login': TerraLogin,\n    }"
             },
             {
               "kind": "field",
@@ -2282,6 +2282,12 @@
               "default": "new DataSubsetterController(this)"
             },
             {
+              "kind": "field",
+              "name": "#authController",
+              "privacy": "private",
+              "default": "new AuthController(this)"
+            },
+            {
               "kind": "method",
               "name": "jobIdChanged"
             },
@@ -2292,6 +2298,18 @@
             {
               "kind": "method",
               "name": "minimizeDialog"
+            },
+            {
+              "kind": "method",
+              "name": "#renderSizeInfo",
+              "parameters": [
+                {
+                  "name": "estimates",
+                  "type": {
+                    "text": "{ days: number; links: number }"
+                  }
+                }
+              ]
             },
             {
               "kind": "method",
@@ -2772,6 +2790,11 @@
               "name": "#controller",
               "privacy": "private",
               "default": "new DataSubsetterHistoryController(this)"
+            },
+            {
+              "kind": "field",
+              "name": "_authController",
+              "default": "new AuthController(this)"
             },
             {
               "kind": "method",
@@ -4044,27 +4067,6 @@
           "members": [
             {
               "kind": "field",
-              "name": "#clientID",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "#formRef",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "#serverURL",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "#loginTask",
-              "privacy": "private",
-              "default": "new Task(this, {\n        task: async ([], { signal }) => {\n            const code = await this.#getAccessCode(signal)\n            const accessToken = await this.#exchangeCodeForAccessToken(code, signal)\n\n            this.emit('terra-login', { detail: accessToken })\n            this.#clearForm()\n        },\n    })"
-            },
-            {
-              "kind": "field",
               "name": "dependencies",
               "type": {
                 "text": "object"
@@ -4073,71 +4075,23 @@
               "default": "{\n        'terra-button': TerraButton,\n        'terra-icon': TerraIcon,\n        'terra-loader': TerraLoader,\n    }"
             },
             {
-              "kind": "method",
-              "name": "#getAccessCode",
-              "return": {
-                "type": {
-                  "text": "Promise<string>"
-                }
+              "kind": "field",
+              "name": "buttonLabel",
+              "type": {
+                "text": "string"
               },
-              "parameters": [
-                {
-                  "name": "signal",
-                  "type": {
-                    "text": "AbortSignal"
-                  }
-                }
-              ],
-              "description": "Using a fetch that contains our credentials, get a code from EDL that we can use to exchange for an JWT."
+              "default": "'Earthdata Login'",
+              "attribute": "button-label"
+            },
+            {
+              "kind": "field",
+              "name": "#authController",
+              "privacy": "private",
+              "default": "new AuthController(this)"
             },
             {
               "kind": "method",
-              "name": "#exchangeCodeForAccessToken",
-              "parameters": [
-                {
-                  "name": "code",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "signal",
-                  "type": {
-                    "text": "AbortSignal"
-                  }
-                }
-              ],
-              "description": "Check for a code and attempt to exchange it for a JWT, accessing only the access_token."
-            },
-            {
-              "kind": "method",
-              "name": "#handleSubmit",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "SubmitEvent"
-                  }
-                }
-              ],
-              "description": "If the user submits our form to log in to EDL, use a fetch request to get an authorization code, then exchange it for an access token."
-            },
-            {
-              "kind": "method",
-              "name": "#handleKeypress",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#clearForm",
-              "description": "Clear the given form of all entries."
+              "name": "#handleLogin"
             }
           ],
           "events": [
@@ -4146,6 +4100,16 @@
               "name": "terra-login",
               "reactName": "onTerraLogin",
               "eventName": "TerraLoginEvent"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "button-label",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Earthdata Login'",
+              "fieldName": "buttonLabel"
             }
           ],
           "superclass": {

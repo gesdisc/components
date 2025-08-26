@@ -3,13 +3,16 @@ import {
 } from "./chunk.KF37YBDI.js";
 import {
   DataSubsetterHistoryController
-} from "./chunk.YWCFAQU3.js";
+} from "./chunk.UVJ37R4U.js";
 import {
   data_subsetter_history_styles_default
 } from "./chunk.CGZ2SSXS.js";
 import {
   TerraDataSubsetter
-} from "./chunk.QZWOQUEK.js";
+} from "./chunk.JAELNYWG.js";
+import {
+  AuthController
+} from "./chunk.MONXQKIF.js";
 import {
   TerraIcon
 } from "./chunk.3AVJ4SFR.js";
@@ -44,6 +47,7 @@ var TerraDataSubsetterHistory = class extends TerraElement {
     this.collapsed = true;
     this.hideCancelled = true;
     __privateAdd(this, _controller, new DataSubsetterHistoryController(this));
+    this._authController = new AuthController(this);
   }
   connectedCallback() {
     super.connectedCallback();

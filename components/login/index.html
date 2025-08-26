@@ -300,12 +300,8 @@
             <li class="top">
               <a href="#">Login</a>
             </li>
-            <li data-level="2"><a href="#examples">Examples</a></li>
-            <li data-level="3"><a href="#first-example">First Example</a></li>
-            <li data-level="3"><a href="#second-example">Second Example</a></li>
             <li data-level="2"><a href="#importing">Importing</a></li>
             <li data-level="2"><a href="#events">Events</a></li>
-            <li data-level="2"><a href="#methods">Methods</a></li>
           </ul>
         </div>
 
@@ -327,15 +323,10 @@
 
           <div class="code-preview">
             <div class="code-preview__preview">
-              <terra-login></terra-login>
-
-              <script type="module">
-                const element = document.querySelector('terra-login');
-
-                element.addEventListener('terra-login', e => {
-                  console.log(e);
-                });
-              </script>
+              <terra-login>
+                <span slot="loading">Please wait…checking if you are logged in…</span>
+                <span slot="logged-in">You are logged in!</span>
+              </terra-login>
 
               <div class="code-preview__resizer">
                 <sl-icon name="grip-vertical"></sl-icon>
@@ -344,15 +335,10 @@
 
             <div class="code-preview__source-group" id="code-preview-source-group-83">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-284"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-login</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-login</span><span class="token punctuation">&gt;</span></span>
-
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
-  <span class="token keyword">const</span> element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'terra-login'</span><span class="token punctuation">)</span>
-
-  element<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'terra-login'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+                <pre><code class="language-html" id="code-block-284"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-login</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>loading<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Please wait...checking if you are logged in...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>logged-in<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>You are logged in!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-login</span><span class="token punctuation">&gt;</span></span>
 </code><sl-copy-button class="copy-code-button" from="code-block-284"></sl-copy-button></pre>
               </div>
             </div>
@@ -396,17 +382,6 @@
             </div>
           </div>
 
-          <h2 id="examples" class="anchor-heading">
-            Examples<a href="#examples" aria-label='Direct link to "Examples"'></a>
-          </h2>
-          <h3 id="first-example" class="anchor-heading">
-            First Example<a href="#first-example" aria-label='Direct link to "First Example"'></a>
-          </h3>
-          <p>TODO</p>
-          <h3 id="second-example" class="anchor-heading">
-            Second Example<a href="#second-example" aria-label='Direct link to "Second Example"'></a>
-          </h3>
-          <p>TODO</p>
           <p>[component-metadata:terra-login]</p>
 
           <h2 id="importing" class="anchor-heading">
@@ -497,71 +472,6 @@
 
           <p>
             <em>Learn more about <a href="/components/getting-started/usage#events">events</a>.</em>
-          </p>
-
-          <h2 id="methods" class="anchor-heading">
-            Methods<a href="#methods" aria-label='Direct link to "Methods"'></a>
-          </h2>
-
-          <div class="table-scroll">
-            <table>
-              <thead>
-                <tr>
-                  <th class="table-name">Name</th>
-                  <th class="table-description">Description</th>
-                  <th class="table-arguments">Arguments</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="nowrap">
-                    <code>#getAccessCode()</code>
-                  </td>
-                  <td>
-                    Using a fetch that contains our credentials, get a code from EDL that we can use to exchange for an
-                    JWT.
-                  </td>
-                  <td>
-                    <code> signal: AbortSignal </code>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="nowrap">
-                    <code>#exchangeCodeForAccessToken()</code>
-                  </td>
-                  <td>Check for a code and attempt to exchange it for a JWT, accessing only the access_token.</td>
-                  <td>
-                    <code> code: string , signal: AbortSignal </code>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="nowrap">
-                    <code>#handleSubmit()</code>
-                  </td>
-                  <td>
-                    If the user submits our form to log in to EDL, use a fetch request to get an authorization code,
-                    then exchange it for an access token.
-                  </td>
-                  <td>
-                    <code> event: SubmitEvent </code>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="nowrap">
-                    <code>#clearForm()</code>
-                  </td>
-                  <td>Clear the given form of all entries.</td>
-                  <td>-</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p>
-            <em>Learn more about <a href="/components/getting-started/usage#methods">methods</a>.</em>
           </p>
         </div>
       </article>
