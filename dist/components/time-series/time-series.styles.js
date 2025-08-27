@@ -1,6 +1,6 @@
 import {
   time_series_styles_default
-} from "../../chunks/chunk.SIOVEWZT.js";
+} from "../../chunks/chunk.TPKJOGOH.js";
 import "../../chunks/chunk.LL3RMB25.js";
 import "../../chunks/chunk.M73GHNHJ.js";
 import "../../chunks/chunk.ES5U5CWG.js";

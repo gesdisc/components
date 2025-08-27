@@ -1,6 +1,6 @@
-export { default as TerraAlert } from './alert/index.js';
-export { default as TerraBrowseVariables } from './browse-variables/index.js';
 export { default as TerraAccordion } from './accordion/index.js';
+export { default as TerraBrowseVariables } from './browse-variables/index.js';
+export { default as TerraAlert } from './alert/index.js';
 export { default as TerraButton } from './button/index.js';
 export { default as TerraChip } from './chip/index.js';
 export { default as TerraCombobox } from './combobox/index.js';
@@ -15,6 +15,7 @@ export { default as TerraLoader } from './loader/index.js';
 export { default as TerraLogin } from './login/index.js';
 export { default as TerraMap } from './map/index.js';
 export { default as TerraPlot } from './plot/index.js';
+export { default as TerraPlotToolbar } from './plot-toolbar/index.js';
 export { default as TerraSkeleton } from './skeleton/index.js';
 export { default as TerraSpatialPicker } from './spatial-picker/index.js';
 export { default as TerraTimeAverageMap } from './time-average-map/index.js';

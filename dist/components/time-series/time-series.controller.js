@@ -1,7 +1,8 @@
 import {
   TimeSeriesController,
   plotlyDefaultData
-} from "../../chunks/chunk.5KOP2B3E.js";
+} from "../../chunks/chunk.IFVS3ZJN.js";
+import "../../chunks/chunk.OEPHY277.js";
 import "../../chunks/chunk.M26YYT7Q.js";
 import "../../chunks/chunk.XPUSLKRS.js";
 import "../../chunks/chunk.3AZLGGEX.js";

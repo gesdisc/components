@@ -303,6 +303,10 @@
               </li>
 
               <li>
+                <a href="/components/plot-toolbar"> Plot Toolbar </a>
+              </li>
+
+              <li>
                 <a href="/components/skeleton"> Skeleton </a>
               </li>
 
@@ -370,18 +374,18 @@
             Installation<a href="#installation" aria-label='Direct link to "Installation"'></a>
           </h2>
           <p>To add Shoelace to your Vue app, install the package from npm.</p>
-          <pre><code class="language-bash" id="code-block-3"><span class="token function">npm</span> <span class="token function">install</span> @nasa-terra/components
-</code><sl-copy-button class="copy-code-button" from="code-block-3"></sl-copy-button></pre>
+          <pre><code class="language-bash" id="code-block-20"><span class="token function">npm</span> <span class="token function">install</span> @nasa-terra/components
+</code><sl-copy-button class="copy-code-button" from="code-block-20"></sl-copy-button></pre>
           <p>
             Next, <a href="/getting-started/themes">include a theme</a> and set the
             <a href="/getting-started/installation#setting-the-base-path">base path</a> for icons and other assets. In
             this example, we’ll import the light theme and use the CDN as a base path.
           </p>
-          <pre><code class="language-jsx" id="code-block-4"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/themes/light.css'</span>
+          <pre><code class="language-jsx" id="code-block-21"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/themes/light.css'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> setBasePath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/utilities/base-path'</span>
 
 <span class="token function">setBasePath</span><span class="token punctuation">(</span><span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.60/cdn/'</span><span class="token punctuation">)</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-4"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-21"></sl-copy-button></pre>
           <div role="alert" class="callout callout--tip">
             <p>
               If you’d rather not use the CDN for assets, you can create a build task that copies
@@ -396,7 +400,7 @@
             You’ll need to tell Vue to ignore Shoelace components. This is pretty easy because they all start with
             <code>terra-</code>.
           </p>
-          <pre><code class="language-js" id="code-block-5"><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
+          <pre><code class="language-js" id="code-block-22"><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
 <span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'./App.vue'</span>
 
 Vue<span class="token punctuation">.</span>config<span class="token punctuation">.</span>ignoredElements <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">terra-</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">]</span>
@@ -406,7 +410,7 @@ Vue<span class="token punctuation">.</span>config<span class="token punctuation"
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 app<span class="token punctuation">.</span><span class="token function">$mount</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-5"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-22"></sl-copy-button></pre>
           <p>Now you can start using Shoelace components in your app!</p>
           <h2 id="usage" class="anchor-heading">Usage<a href="#usage" aria-label='Direct link to "Usage"'></a></h2>
           <h3 id="binding-complex-data" class="anchor-heading">
@@ -416,8 +420,8 @@ app<span class="token punctuation">.</span><span class="token function">$mount</
             When binding complex data such as objects and arrays, use the <code>.prop</code> modifier to make Vue bind
             them as a property instead of an attribute.
           </p>
-          <pre><code class="language-html" id="code-block-6"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sl-color-picker</span> <span class="token attr-name">:swatches.prop</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mySwatches<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-6"></sl-copy-button></pre>
+          <pre><code class="language-html" id="code-block-23"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sl-color-picker</span> <span class="token attr-name">:swatches.prop</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mySwatches<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-23"></sl-copy-button></pre>
           <h3 id="two-way-binding" class="anchor-heading">
             Two-way Binding<a href="#two-way-binding" aria-label='Direct link to "Two-way Binding"'></a>
           </h3>
@@ -431,11 +435,11 @@ app<span class="token punctuation">.</span><span class="token function">$mount</
               >no support for v-model on custom elements</a
             >, but you can still achieve two-way binding manually.
           </p>
-          <pre><code class="language-html" id="code-block-7"><span class="token comment">&lt;!-- This doesn't work --&gt;</span>
+          <pre><code class="language-html" id="code-block-24"><span class="token comment">&lt;!-- This doesn't work --&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sl-input</span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sl-input</span><span class="token punctuation">&gt;</span></span>
 <span class="token comment">&lt;!-- This works, but it's a bit longer --&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sl-input</span> <span class="token attr-name">:value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span> <span class="token attr-name">@input</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name = $event.target.value<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sl-input</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-7"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-24"></sl-copy-button></pre>
           <p>
             If that’s too verbose for your liking, you can use a custom directive instead.
             <a
@@ -448,10 +452,10 @@ app<span class="token punctuation">.</span><span class="token function">$mount</
             adds a custom directive that will work just like <code>v-model</code> but for Shoelace components. To
             install it, use this command.
           </p>
-          <pre><code class="language-bash" id="code-block-8"><span class="token function">npm</span> <span class="token function">install</span> @shoelace-style/vue-terra-model@1
-</code><sl-copy-button class="copy-code-button" from="code-block-8"></sl-copy-button></pre>
+          <pre><code class="language-bash" id="code-block-25"><span class="token function">npm</span> <span class="token function">install</span> @shoelace-style/vue-terra-model@1
+</code><sl-copy-button class="copy-code-button" from="code-block-25"></sl-copy-button></pre>
           <p>Next, import the directive and enable it like this.</p>
-          <pre><code class="language-js" id="code-block-9"><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
+          <pre><code class="language-js" id="code-block-26"><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
 <span class="token keyword">import</span> ShoelaceModelDirective <span class="token keyword">from</span> <span class="token string">'@shoelace-style/vue-terra-model'</span>
 <span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'./App.vue'</span>
 
@@ -463,10 +467,10 @@ Vue<span class="token punctuation">.</span>config<span class="token punctuation"
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 app<span class="token punctuation">.</span><span class="token function">$mount</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-9"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-26"></sl-copy-button></pre>
           <p>Now you can use the <code>v-terra-model</code> directive to keep your data in sync!</p>
-          <pre><code class="language-html" id="code-block-10"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sl-input</span> <span class="token attr-name">v-terra-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sl-input</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-10"></sl-copy-button></pre>
+          <pre><code class="language-html" id="code-block-27"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sl-input</span> <span class="token attr-name">v-terra-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sl-input</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-27"></sl-copy-button></pre>
           <div role="alert" class="callout callout--tip">
             <p>
               Are you using Shoelace with Vue?
