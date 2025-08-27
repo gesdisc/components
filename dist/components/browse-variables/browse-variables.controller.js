@@ -1,11 +1,10 @@
 import {
   BrowseVariablesController
-} from "../../chunks/chunk.RZAYZ5CG.js";
-import "../../chunks/chunk.22DVIRSW.js";
+} from "../../chunks/chunk.5JLTH2LZ.js";
+import "../../chunks/chunk.E4Y3ZGGY.js";
 import "../../chunks/chunk.AQODH346.js";
 import "../../chunks/chunk.3AZLGGEX.js";
-import "../../chunks/chunk.TZ27CWAV.js";
-import "../../chunks/chunk.GL52MTKN.js";
+import "../../chunks/chunk.VYOUAAH7.js";
 import "../../chunks/chunk.KAJGV2AN.js";
 import "../../chunks/chunk.M73GHNHJ.js";
 import "../../chunks/chunk.ES5U5CWG.js";

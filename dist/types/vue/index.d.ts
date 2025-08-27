@@ -1,8 +1,8 @@
 import type { DefineComponent } from "vue";
 
-import type { TerraAccordion } from "../../components/accordion/accordion.component.js";
 import type { TerraAlert } from "../../components/alert/alert.component.js";
 import type { TerraBrowseVariables } from "../../components/browse-variables/browse-variables.component.js";
+import type { TerraAccordion } from "../../components/accordion/accordion.component.js";
 import type { TerraButton } from "../../components/button/button.component.js";
 import type { TerraChip } from "../../components/chip/chip.component.js";
 import type { TerraCombobox } from "../../components/combobox/combobox.component.js";
@@ -24,18 +24,6 @@ import type { TerraTimeAverageMap } from "../../components/time-average-map/time
 import type { TerraTimeSeries, CustomEvent } from "../../components/time-series/time-series.component.js";
 import type { TerraVariableCombobox } from "../../components/variable-combobox/variable-combobox.component.js";
 import type { TerraVariableKeywordSearch } from "../../components/variable-keyword-search/variable-keyword-search.component.js";
-
-type TerraAccordionProps = {
-  /** The summary/header for the accordion. Use the property for simple text, or the slot for custom content. */
-  summary?: TerraAccordion["summary"];
-  /** Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction. */
-  open?: TerraAccordion["open"];
-  /**  */
-  showArrow?: TerraAccordion["showArrow"];
-
-  /** emitted when the accordion opens or closes */
-  onTerraAccordionToggle?: (e: CustomEvent<never>) => void;
-};
 
 type TerraAlertProps = {
   /** Indicates whether or not the alert is open. You can toggle this attribute to show and hide the alert, or you can
@@ -71,6 +59,8 @@ type TerraBrowseVariablesProps = {
 TODO: add support for CMR catalog and make it the default */
   catalog?: TerraBrowseVariables["catalog"];
   /**  */
+  "selected-variable-entry-ids"?: TerraBrowseVariables["selectedVariableEntryIds"];
+  /**  */
   searchQuery?: TerraBrowseVariables["searchQuery"];
   /**  */
   selectedFacets?: TerraBrowseVariables["selectedFacets"];
@@ -78,6 +68,18 @@ TODO: add support for CMR catalog and make it the default */
   selectedVariables?: TerraBrowseVariables["selectedVariables"];
   /**  */
   showVariablesBrowse?: TerraBrowseVariables["showVariablesBrowse"];
+};
+
+type TerraAccordionProps = {
+  /** The summary/header for the accordion. Use the property for simple text, or the slot for custom content. */
+  summary?: TerraAccordion["summary"];
+  /** Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction. */
+  open?: TerraAccordion["open"];
+  /**  */
+  showArrow?: TerraAccordion["showArrow"];
+
+  /** emitted when the accordion opens or closes */
+  onTerraAccordionToggle?: (e: CustomEvent<never>) => void;
 };
 
 type TerraButtonProps = {
@@ -509,6 +511,8 @@ the default is false, the map is positioned absolute under the input */
   /**  */
   mapValue?: TerraSpatialPicker["mapValue"];
   /**  */
+  error?: TerraSpatialPicker["error"];
+  /**  */
   spatialInput?: TerraSpatialPicker["spatialInput"];
   /**  */
   map?: TerraSpatialPicker["map"];
@@ -536,6 +540,12 @@ The property's value will be inserted after "Bearer" (the authentication scheme)
   activeMenuItem?: TerraTimeAverageMap["activeMenuItem"];
   /**  */
   menu?: TerraTimeAverageMap["menu"];
+  /**  */
+  catalogVariable?: TerraTimeAverageMap["catalogVariable"];
+  /**  */
+  _authController?: TerraTimeAverageMap["_authController"];
+  /** anytime the collection or variable changes, we'll fetch the variable from the catalog to get all of it's metadata */
+  _fetchVariableTask?: TerraTimeAverageMap["_fetchVariableTask"];
 };
 
 type TerraTimeSeriesProps = {
@@ -560,6 +570,8 @@ The property's value will be inserted after "Bearer" (the authentication scheme)
   "bearer-token"?: TerraTimeSeries["bearerToken"];
   /**  */
   plot?: TerraTimeSeries["plot"];
+  /**  */
+  plotToolbar?: TerraTimeSeries["plotToolbar"];
   /**  */
   catalogVariable?: TerraTimeSeries["catalogVariable"];
   /** if true, we'll show a warning to the user about them requesting a large number of data points */
@@ -636,20 +648,6 @@ When hidden, still presents to screen readers. */
 
 export type CustomElements = {
   /**
-   * A collapsible content panel for showing and hiding content.
-   * ---
-   *
-   *
-   * ### **Events:**
-   *  - **terra-accordion-toggle** - emitted when the accordion opens or closes
-   *
-   * ### **Slots:**
-   *  - _default_ - The default slot for accordion content.
-   * - **summary** - The summary/header for the accordion (optional, overrides summary property)
-   */
-  "terra-accordion": DefineComponent<TerraAccordionProps>;
-
-  /**
    * Alerts are used to display important messages inline or as toast notifications.
    * ---
    *
@@ -683,6 +681,20 @@ export type CustomElements = {
    *
    */
   "terra-browse-variables": DefineComponent<TerraBrowseVariablesProps>;
+
+  /**
+   * A collapsible content panel for showing and hiding content.
+   * ---
+   *
+   *
+   * ### **Events:**
+   *  - **terra-accordion-toggle** - emitted when the accordion opens or closes
+   *
+   * ### **Slots:**
+   *  - _default_ - The default slot for accordion content.
+   * - **summary** - The summary/header for the accordion (optional, overrides summary property)
+   */
+  "terra-accordion": DefineComponent<TerraAccordionProps>;
 
   /**
    * Buttons represent actions that are available to the user.

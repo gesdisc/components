@@ -31,7 +31,7 @@ export default class TerraPlotToolbar extends TerraElement {
     catalogVariable: Variable;
     variableEntryId: string;
     plot?: TerraPlot;
-    timeSeriesData?: Partial<Data>[] | undefined;
+    timeSeriesData?: Partial<Data>[] | Blob;
     location: string;
     startDate: string;
     endDate: string;
@@ -40,5 +40,6 @@ export default class TerraPlotToolbar extends TerraElement {
     activeMenuItem: MenuNames;
     menu: HTMLMenuElement;
     handleFocus(_oldValue: MenuNames, newValue: MenuNames): void;
+    closeMenu(): void;
     render(): import("lit-html/directive.js").DirectiveResult<typeof import("lit-html/directives/cache.js").CacheDirective>;
 }

@@ -64,6 +64,7 @@ export default class TerraTimeSeries extends TerraElement {
      */
     bearerToken?: string;
     plot: TerraPlot;
+    plotToolbar: TerraPlotToolbar;
     catalogVariable: Variable;
     /**
      * user quota reached maximum request

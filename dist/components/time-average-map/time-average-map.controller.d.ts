@@ -10,4 +10,5 @@ export declare class TimeAvgMapController {
     constructor(host: ReactiveControllerHost & TerraTimeAvgMap);
     render(renderFunctions: StatusRenderer<any>): any;
     fetchJobByID(jobID: string): void;
+    getCacheKey(): string;
 }

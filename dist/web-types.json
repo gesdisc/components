@@ -1,69 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json",
   "name": "@nasa-terra/components",
-  "version": "0.0.60",
+  "version": "0.0.64",
   "description-markup": "markdown",
   "contributions": {
     "html": {
       "elements": [
-        {
-          "name": "terra-accordion",
-          "description": "A collapsible content panel for showing and hiding content.\n---\n\n\n### **Events:**\n - **terra-accordion-toggle** - emitted when the accordion opens or closes\n\n### **Slots:**\n - _default_ - The default slot for accordion content.\n- **summary** - The summary/header for the accordion (optional, overrides summary property)",
-          "doc-url": "",
-          "attributes": [
-            {
-              "name": "summary",
-              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
-              "value": { "type": "string" }
-            },
-            {
-              "name": "open",
-              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
-              "value": { "type": "boolean", "default": "false" }
-            },
-            {
-              "name": "showArrow",
-              "value": { "type": "boolean", "default": "true" }
-            }
-          ],
-          "slots": [
-            {
-              "name": "",
-              "description": "The default slot for accordion content."
-            },
-            {
-              "name": "summary",
-              "description": "The summary/header for the accordion (optional, overrides summary property)"
-            }
-          ],
-          "events": [
-            {
-              "name": "terra-accordion-toggle",
-              "description": "emitted when the accordion opens or closes"
-            }
-          ],
-          "js": {
-            "properties": [
-              {
-                "name": "summary",
-                "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
-                "type": "string"
-              },
-              {
-                "name": "open",
-                "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
-                "type": "boolean"
-              },
-              { "name": "showArrow", "type": "boolean" }
-            ],
-            "events": [
-              {
-                "name": "terra-accordion-toggle",
-                "description": "emitted when the accordion opens or closes"
-              }
-            ]
-          }
-        },
         {
           "name": "terra-alert",
           "description": "Alerts are used to display important messages inline or as toast notifications.\n---\n\n\n### **Events:**\n - **terra-show** - Emitted when the alert opens.\n- **terra-after-show** - Emitted after the alert opens and all animations are complete.\n- **terra-hide** - Emitted when the alert closes.\n- **terra-after-hide** - Emitted after the alert closes and all animations are complete.\n\n### **Methods:**\n - **show()** - Shows the alert.\n- **hide()** - Hides the alert\n- **toast()** - Displays the alert as a toast notification. This will move the alert out of its position in the DOM and, when\ndismissed, it will be removed from the DOM completely. By storing a reference to the alert, you can reuse it by\ncalling this method again. The returned promise will resolve after the alert is hidden.\n\n### **Slots:**\n - _default_ - The alert's main content.\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.\n- **icon** - The container that wraps the optional icon.\n- **message** - The container that wraps the alert's main content.",
@@ -175,6 +117,10 @@
               "name": "catalog",
               "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
               "value": { "type": "'giovanni'", "default": "'giovanni'" }
+            },
+            {
+              "name": "selected-variable-entry-ids",
+              "value": { "type": "string | undefined" }
             }
           ],
           "events": [],
@@ -185,12 +131,74 @@
                 "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
                 "type": "'giovanni'"
               },
+              {
+                "name": "selectedVariableEntryIds",
+                "type": "string | undefined"
+              },
               { "name": "searchQuery", "type": "string" },
               { "name": "selectedFacets", "type": "SelectedFacets" },
               { "name": "selectedVariables", "type": "Variable[]" },
               { "name": "showVariablesBrowse", "type": "boolean" }
             ],
             "events": []
+          }
+        },
+        {
+          "name": "terra-accordion",
+          "description": "A collapsible content panel for showing and hiding content.\n---\n\n\n### **Events:**\n - **terra-accordion-toggle** - emitted when the accordion opens or closes\n\n### **Slots:**\n - _default_ - The default slot for accordion content.\n- **summary** - The summary/header for the accordion (optional, overrides summary property)",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "summary",
+              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
+              "value": { "type": "string" }
+            },
+            {
+              "name": "open",
+              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "showArrow",
+              "value": { "type": "boolean", "default": "true" }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "The default slot for accordion content."
+            },
+            {
+              "name": "summary",
+              "description": "The summary/header for the accordion (optional, overrides summary property)"
+            }
+          ],
+          "events": [
+            {
+              "name": "terra-accordion-toggle",
+              "description": "emitted when the accordion opens or closes"
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "summary",
+                "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
+                "type": "string"
+              },
+              {
+                "name": "open",
+                "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
+                "type": "boolean"
+              },
+              { "name": "showArrow", "type": "boolean" }
+            ],
+            "events": [
+              {
+                "name": "terra-accordion-toggle",
+                "description": "emitted when the accordion opens or closes"
+              }
+            ]
           }
         },
         {
@@ -1335,7 +1343,7 @@
             { "name": "plot", "value": { "type": "TerraPlot | undefined" } },
             {
               "name": "timeSeriesData",
-              "value": { "type": "Partial<Data>[] | undefined | undefined" }
+              "value": { "type": "Partial<Data>[] | Blob | undefined" }
             },
             { "name": "location", "value": { "type": "string" } },
             { "name": "startDate", "value": { "type": "string" } },
@@ -1355,7 +1363,7 @@
               { "name": "plot", "type": "TerraPlot | undefined" },
               {
                 "name": "timeSeriesData",
-                "type": "Partial<Data>[] | undefined | undefined"
+                "type": "Partial<Data>[] | Blob | undefined"
               },
               { "name": "location", "type": "string" },
               { "name": "startDate", "type": "string" },
@@ -1544,6 +1552,7 @@
                 "type": "boolean"
               },
               { "name": "mapValue", "type": "any" },
+              { "name": "error", "type": "string" },
               { "name": "spatialInput", "type": "HTMLInputElement" },
               { "name": "map", "type": "TerraMap" }
             ],
@@ -1601,7 +1610,13 @@
                 "type": "string"
               },
               { "name": "long_name", "type": "string" },
-              { "name": "menu", "type": "HTMLMenuElement" }
+              { "name": "menu", "type": "HTMLMenuElement" },
+              { "name": "catalogVariable", "type": "Variable" },
+              { "name": "_authController" },
+              {
+                "name": "_fetchVariableTask",
+                "description": "anytime the collection or variable changes, we'll fetch the variable from the catalog to get all of it's metadata"
+              }
             ],
             "events": []
           }
@@ -1696,6 +1711,7 @@
                 "type": "string | undefined"
               },
               { "name": "plot", "type": "TerraPlot" },
+              { "name": "plotToolbar", "type": "TerraPlotToolbar" },
               { "name": "catalogVariable", "type": "Variable" },
               {
                 "name": "showDataPointWarning",

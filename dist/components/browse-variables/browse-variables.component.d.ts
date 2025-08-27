@@ -36,6 +36,7 @@ export default class TerraBrowseVariables extends TerraElement {
      * TODO: add support for CMR catalog and make it the default
      */
     catalog: 'giovanni';
+    selectedVariableEntryIds?: string;
     searchQuery: string;
     selectedFacets: SelectedFacets;
     selectedVariables: Variable[];

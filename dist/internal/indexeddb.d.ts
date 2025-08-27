@@ -1,7 +1,8 @@
 import { type IDBPDatabase } from 'idb';
 export declare const DB_NAME = "terra";
 export declare enum IndexedDbStores {
-    TIME_SERIES = "time-series"
+    TIME_SERIES = "time-series",
+    TIME_AVERAGE_MAP = "time-average-map"
 }
 /**
  * Get the indexedDB database

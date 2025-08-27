@@ -67,6 +67,7 @@ export default class TerraSpatialPicker extends TerraElement {
      */
     showMapOnFocus: boolean;
     mapValue: any;
+    error: string;
     spatialInput: HTMLInputElement;
     map: TerraMap;
     private _blur;
