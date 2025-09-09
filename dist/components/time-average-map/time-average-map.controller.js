@@ -1,6 +1,6 @@
 import {
   TimeAvgMapController
-} from "../../chunks/chunk.2UIKXGCO.js";
+} from "../../chunks/chunk.DM4WLF6C.js";
 import "../../chunks/chunk.T24K5VZW.js";
 import "../../chunks/chunk.MHNGCUSQ.js";
 import "../../chunks/chunk.XPUSLKRS.js";

@@ -2,13 +2,13 @@ import type { DefineComponent } from "vue";
 
 import type { TerraAccordion } from "../../components/accordion/accordion.component.js";
 import type { TerraAlert } from "../../components/alert/alert.component.js";
-import type { TerraBrowseVariables } from "../../components/browse-variables/browse-variables.component.js";
 import type { TerraButton } from "../../components/button/button.component.js";
 import type { TerraChip } from "../../components/chip/chip.component.js";
+import type { TerraBrowseVariables } from "../../components/browse-variables/browse-variables.component.js";
+import type { TerraDataRods } from "../../components/data-rods/data-rods.component.js";
 import type { TerraCombobox } from "../../components/combobox/combobox.component.js";
 import type { TerraDataSubsetter } from "../../components/data-subsetter/data-subsetter.component.js";
 import type { TerraDataSubsetterHistory } from "../../components/data-subsetter-history/data-subsetter-history.component.js";
-import type { TerraDataRods } from "../../components/data-rods/data-rods.component.js";
 import type { TerraDatePicker } from "../../components/date-picker/date-picker.component.js";
 import type { TerraDateRangeSlider } from "../../components/date-range-slider/date-range-slider.component.js";
 import type { TerraDialog } from "../../components/dialog/dialog.component.js";
@@ -64,22 +64,6 @@ Typically used to indicate the remaining time before a whole app refresh. */
   onTerraHide?: (e: CustomEvent<never>) => void;
   /** Emitted after the alert closes and all animations are complete. */
   onTerraAfterHide?: (e: CustomEvent<never>) => void;
-};
-
-type TerraBrowseVariablesProps = {
-  /** Allows the user to switch the catalog between different providers
-TODO: add support for CMR catalog and make it the default */
-  catalog?: TerraBrowseVariables["catalog"];
-  /**  */
-  "selected-variable-entry-ids"?: TerraBrowseVariables["selectedVariableEntryIds"];
-  /**  */
-  searchQuery?: TerraBrowseVariables["searchQuery"];
-  /**  */
-  selectedFacets?: TerraBrowseVariables["selectedFacets"];
-  /**  */
-  selectedVariables?: TerraBrowseVariables["selectedVariables"];
-  /**  */
-  showVariablesBrowse?: TerraBrowseVariables["showVariablesBrowse"];
 };
 
 type TerraButtonProps = {
@@ -152,6 +136,47 @@ value of this attribute must be an id of a form in the same document or shadow r
 type TerraChipProps = {
   /**  */
   size?: TerraChip["size"];
+};
+
+type TerraBrowseVariablesProps = {
+  /** Allows the user to switch the catalog between different providers
+TODO: add support for CMR catalog and make it the default */
+  catalog?: TerraBrowseVariables["catalog"];
+  /**  */
+  "selected-variable-entry-ids"?: TerraBrowseVariables["selectedVariableEntryIds"];
+  /**  */
+  searchQuery?: TerraBrowseVariables["searchQuery"];
+  /**  */
+  selectedFacets?: TerraBrowseVariables["selectedFacets"];
+  /**  */
+  selectedVariables?: TerraBrowseVariables["selectedVariables"];
+  /**  */
+  showVariablesBrowse?: TerraBrowseVariables["showVariablesBrowse"];
+};
+
+type TerraDataRodsProps = {
+  /** a variable entry ID (ex: GPM_3IMERGHH_06_precipitationCal) */
+  "variable-entry-id"?: TerraDataRods["variableEntryId"];
+  /** a collection entry id (ex: GPM_3IMERGHH_06)
+only required if you don't include a variableEntryId */
+  collection?: TerraDataRods["collection"];
+  /** a variable short name to plot (ex: precipitationCal)
+only required if you don't include a variableEntryId */
+  variable?: TerraDataRods["variable"];
+  /** The start date for the time series plot. (ex: 2021-01-01) */
+  "start-date"?: TerraDataRods["startDate"];
+  /** The end date for the time series plot. (ex: 2021-01-01) */
+  "end-date"?: TerraDataRods["endDate"];
+  /** The point location in "lat,lon" format. */
+  location?: TerraDataRods["location"];
+  /** The token to be used for authentication with remote servers.
+The component provides the header "Authorization: Bearer" (the request header and authentication scheme).
+The property's value will be inserted after "Bearer" (the authentication scheme). */
+  "bearer-token"?: TerraDataRods["bearerToken"];
+  /**  */
+  catalogVariable?: TerraDataRods["catalogVariable"];
+  /** Emitted whenever the date range of the date slider is updated */
+  onTerraDateRangeChange?: (e: CustomEvent<never>) => void;
 };
 
 type TerraComboboxProps = {
@@ -249,31 +274,6 @@ this prop allows you to override that behavior and always show the history panel
   dialog?: TerraDataSubsetterHistory["dialog"];
   /**  */
   _authController?: TerraDataSubsetterHistory["_authController"];
-};
-
-type TerraDataRodsProps = {
-  /** a variable entry ID (ex: GPM_3IMERGHH_06_precipitationCal) */
-  "variable-entry-id"?: TerraDataRods["variableEntryId"];
-  /** a collection entry id (ex: GPM_3IMERGHH_06)
-only required if you don't include a variableEntryId */
-  collection?: TerraDataRods["collection"];
-  /** a variable short name to plot (ex: precipitationCal)
-only required if you don't include a variableEntryId */
-  variable?: TerraDataRods["variable"];
-  /** The start date for the time series plot. (ex: 2021-01-01) */
-  "start-date"?: TerraDataRods["startDate"];
-  /** The end date for the time series plot. (ex: 2021-01-01) */
-  "end-date"?: TerraDataRods["endDate"];
-  /** The point location in "lat,lon" format. */
-  location?: TerraDataRods["location"];
-  /** The token to be used for authentication with remote servers.
-The component provides the header "Authorization: Bearer" (the request header and authentication scheme).
-The property's value will be inserted after "Bearer" (the authentication scheme). */
-  "bearer-token"?: TerraDataRods["bearerToken"];
-  /**  */
-  catalogVariable?: TerraDataRods["catalogVariable"];
-  /** Emitted whenever the date range of the date slider is updated */
-  onTerraDateRangeChange?: (e: CustomEvent<never>) => void;
 };
 
 type TerraDatePickerProps = {
@@ -519,7 +519,7 @@ the default is false, the map is positioned absolute under the input */
 };
 
 type TerraTimeAverageMapProps = {
-  /** a collection entry id (ex: GPM_3IMERGHH_06) */
+  /**  */
   collection?: TerraTimeAverageMap["collection"];
   /**  */
   variable?: TerraTimeAverageMap["variable"];
@@ -527,21 +527,22 @@ type TerraTimeAverageMapProps = {
   "start-date"?: TerraTimeAverageMap["startDate"];
   /**  */
   "end-date"?: TerraTimeAverageMap["endDate"];
-  /** The point location in "lat,lon" format.
-Or the bounding box in "west,south,east,north" format. */
+  /**  */
   location?: TerraTimeAverageMap["location"];
-  /** The token to be used for authentication with remote servers.
-The component provides the header "Authorization: Bearer" (the request header and authentication scheme).
-The property's value will be inserted after "Bearer" (the authentication scheme). */
+  /**  */
   "bearer-token"?: TerraTimeAverageMap["bearerToken"];
   /**  */
   long_name?: TerraTimeAverageMap["long_name"];
   /**  */
   activeMenuItem?: TerraTimeAverageMap["activeMenuItem"];
   /**  */
-  menu?: TerraTimeAverageMap["menu"];
-  /**  */
   catalogVariable?: TerraTimeAverageMap["catalogVariable"];
+  /**  */
+  colormaps?: TerraTimeAverageMap["colormaps"];
+  /**  */
+  colorMapName?: TerraTimeAverageMap["colorMapName"];
+  /**  */
+  menu?: TerraTimeAverageMap["menu"];
   /**  */
   _authController?: TerraTimeAverageMap["_authController"];
   /** anytime the collection or variable changes, we'll fetch the variable from the catalog to get all of it's metadata */
@@ -690,13 +691,6 @@ export type CustomElements = {
   "terra-alert": DefineComponent<TerraAlertProps>;
 
   /**
-   * Browse through the NASA CMR or Giovanni catalogs.
-   * ---
-   *
-   */
-  "terra-browse-variables": DefineComponent<TerraBrowseVariablesProps>;
-
-  /**
    * Buttons represent actions that are available to the user.
    * ---
    *
@@ -736,6 +730,23 @@ export type CustomElements = {
   "terra-chip": DefineComponent<TerraChipProps>;
 
   /**
+   * Browse through the NASA CMR or Giovanni catalogs.
+   * ---
+   *
+   */
+  "terra-browse-variables": DefineComponent<TerraBrowseVariablesProps>;
+
+  /**
+   * A component for visualizing Hydrology Data Rods time series using the GES DISC Giovanni API
+   * ---
+   *
+   *
+   * ### **Events:**
+   *  - **terra-date-range-change** - Emitted whenever the date range of the date slider is updated
+   */
+  "terra-data-rods": DefineComponent<TerraDataRodsProps>;
+
+  /**
    * Fuzzy-search for combobox with list autocomplete.
    * ---
    *
@@ -769,16 +780,6 @@ export type CustomElements = {
    *
    */
   "terra-data-subsetter-history": DefineComponent<TerraDataSubsetterHistoryProps>;
-
-  /**
-   * A component for visualizing Hydrology Data Rods time series using the GES DISC Giovanni API
-   * ---
-   *
-   *
-   * ### **Events:**
-   *  - **terra-date-range-change** - Emitted whenever the date range of the date slider is updated
-   */
-  "terra-data-rods": DefineComponent<TerraDataRodsProps>;
 
   /**
    * A date picker component that supports single date selection or date range selection.

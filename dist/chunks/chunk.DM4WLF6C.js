@@ -47,10 +47,9 @@ var TimeAvgMapController = class {
         const start_date = new Date((_b = (_a = __privateGet(this, _host)) == null ? void 0 : _a.startDate) != null ? _b : Date.now());
         const end_date = new Date((_d = (_c = __privateGet(this, _host)) == null ? void 0 : _c.endDate) != null ? _d : Date.now());
         const [w, s, e, n] = (_f = (_e = __privateGet(this, _host).location) == null ? void 0 : _e.split(",")) != null ? _f : [];
-        const parts = __privateGet(this, _host).collection.split("_");
-        const collectionEntryId = parts[0] + "_" + parts.slice(1).join(".");
+        const collection = `${__privateGet(this, _host).catalogVariable.dataProductShortName}_${__privateGet(this, _host).catalogVariable.dataProductVersion}`;
         let subsetOptions = {
-          collectionEntryId: `${collectionEntryId}`,
+          collectionEntryId: `${collection}`,
           variableConceptIds: ["parameter_vars"],
           variableEntryIds: [
             `${__privateGet(this, _host).collection}_${__privateGet(this, _host).variable}`

@@ -138,6 +138,281 @@
     },
     {
       "kind": "javascript-module",
+      "path": "components/browse-variables/browse-variables.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TerraBrowseVariables",
+          "members": [
+            {
+              "kind": "field",
+              "name": "dependencies",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{\n        'terra-variable-keyword-search': TerraVariableKeywordSearch,\n        'terra-button': TerraButton,\n        'terra-skeleton': TerraSkeleton,\n        'terra-icon': TerraIcon,\n        'terra-loader': TerraLoader,\n    }"
+            },
+            {
+              "kind": "field",
+              "name": "catalog",
+              "type": {
+                "text": "'giovanni'"
+              },
+              "default": "'giovanni'",
+              "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
+              "attribute": "catalog"
+            },
+            {
+              "kind": "field",
+              "name": "selectedVariableEntryIds",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "selected-variable-entry-ids",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "searchQuery",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "selectedFacets",
+              "type": {
+                "text": "SelectedFacets"
+              },
+              "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "selectedVariables",
+              "type": {
+                "text": "Variable[]"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "showVariablesBrowse",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "#controller",
+              "privacy": "private",
+              "default": "new BrowseVariablesController(this)"
+            },
+            {
+              "kind": "method",
+              "name": "handleSelectedVariablesChange"
+            },
+            {
+              "kind": "method",
+              "name": "reset"
+            },
+            {
+              "kind": "method",
+              "name": "handleObservationChange"
+            },
+            {
+              "kind": "method",
+              "name": "toggleFacetSelect",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleSearch",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "TerraVariableKeywordSearchChangeEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#selectFacetField",
+              "parameters": [
+                {
+                  "name": "facet",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "field",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "selectOneFieldAtATime",
+                  "default": "false",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "given a field, ex: \"observations\": \"Model\", will add the field to any existing selected facets\nif \"selectedOneFieldAtATime\" is true, then we will only select that one field"
+            },
+            {
+              "kind": "method",
+              "name": "#clearFacet",
+              "parameters": [
+                {
+                  "name": "facet",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#unselectFacetField",
+              "parameters": [
+                {
+                  "name": "facet",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "field",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleVariableSelection",
+              "parameters": [
+                {
+                  "name": "variable",
+                  "type": {
+                    "text": "Variable"
+                  }
+                },
+                {
+                  "name": "checked",
+                  "type": {
+                    "text": "Boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#renderCategorySelect"
+            },
+            {
+              "kind": "method",
+              "name": "#renderFacet",
+              "parameters": [
+                {
+                  "name": "facetKey",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "title",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "fields",
+                  "optional": true,
+                  "type": {
+                    "text": "FacetField[]"
+                  }
+                },
+                {
+                  "name": "open",
+                  "optional": true,
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#renderVariablesBrowse"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "catalog",
+              "type": {
+                "text": "'giovanni'"
+              },
+              "default": "'giovanni'",
+              "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
+              "fieldName": "catalog"
+            },
+            {
+              "name": "selected-variable-entry-ids",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "selectedVariableEntryIds"
+            }
+          ],
+          "superclass": {
+            "name": "TerraElement",
+            "module": "/src/internal/terra-element.js"
+          },
+          "summary": "Browse through the NASA CMR or Giovanni catalogs.",
+          "tagNameWithoutPrefix": "browse-variables",
+          "tagName": "terra-browse-variables",
+          "customElement": true,
+          "jsDoc": "/**\n * @summary Browse through the NASA CMR or Giovanni catalogs.\n * @documentation https://disc.gsfc.nasa.gov/components/browse-variables\n * @status MVP\n * @since 1.0\n *\n * @emits terra-variables-change - emitted when the user selects or unselects variables\n *\n * @dependency terra-variable-keyword-search\n * @dependency terra-button\n * @dependency terra-skeleton\n * @dependency terra-icon\n * @dependency terra-loader\n */",
+          "documentation": "https://disc.gsfc.nasa.gov/components/browse-variables",
+          "status": "MVP",
+          "since": "1.0",
+          "dependencies": [
+            "terra-variable-keyword-search",
+            "terra-button",
+            "terra-skeleton",
+            "terra-icon",
+            "terra-loader"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TerraBrowseVariables",
+            "module": "components/browse-variables/browse-variables.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "components/alert/alert.js",
       "declarations": [
         {
@@ -433,281 +708,6 @@
           "declaration": {
             "name": "TerraAlert",
             "module": "components/alert/alert.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "components/browse-variables/browse-variables.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TerraBrowseVariables",
-          "members": [
-            {
-              "kind": "field",
-              "name": "dependencies",
-              "type": {
-                "text": "object"
-              },
-              "static": true,
-              "default": "{\n        'terra-variable-keyword-search': TerraVariableKeywordSearch,\n        'terra-button': TerraButton,\n        'terra-skeleton': TerraSkeleton,\n        'terra-icon': TerraIcon,\n        'terra-loader': TerraLoader,\n    }"
-            },
-            {
-              "kind": "field",
-              "name": "catalog",
-              "type": {
-                "text": "'giovanni'"
-              },
-              "default": "'giovanni'",
-              "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
-              "attribute": "catalog"
-            },
-            {
-              "kind": "field",
-              "name": "selectedVariableEntryIds",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "selected-variable-entry-ids",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "searchQuery",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "selectedFacets",
-              "type": {
-                "text": "SelectedFacets"
-              },
-              "default": "{}"
-            },
-            {
-              "kind": "field",
-              "name": "selectedVariables",
-              "type": {
-                "text": "Variable[]"
-              },
-              "default": "[]"
-            },
-            {
-              "kind": "field",
-              "name": "showVariablesBrowse",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "#controller",
-              "privacy": "private",
-              "default": "new BrowseVariablesController(this)"
-            },
-            {
-              "kind": "method",
-              "name": "handleSelectedVariablesChange"
-            },
-            {
-              "kind": "method",
-              "name": "reset"
-            },
-            {
-              "kind": "method",
-              "name": "handleObservationChange"
-            },
-            {
-              "kind": "method",
-              "name": "toggleFacetSelect",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "handleSearch",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "TerraVariableKeywordSearchChangeEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#selectFacetField",
-              "parameters": [
-                {
-                  "name": "facet",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "field",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "selectOneFieldAtATime",
-                  "default": "false",
-                  "type": {
-                    "text": "boolean"
-                  }
-                }
-              ],
-              "description": "given a field, ex: \"observations\": \"Model\", will add the field to any existing selected facets\nif \"selectedOneFieldAtATime\" is true, then we will only select that one field"
-            },
-            {
-              "kind": "method",
-              "name": "#clearFacet",
-              "parameters": [
-                {
-                  "name": "facet",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#unselectFacetField",
-              "parameters": [
-                {
-                  "name": "facet",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "field",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#handleVariableSelection",
-              "parameters": [
-                {
-                  "name": "variable",
-                  "type": {
-                    "text": "Variable"
-                  }
-                },
-                {
-                  "name": "checked",
-                  "type": {
-                    "text": "Boolean"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#renderCategorySelect"
-            },
-            {
-              "kind": "method",
-              "name": "#renderFacet",
-              "parameters": [
-                {
-                  "name": "facetKey",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "title",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "fields",
-                  "optional": true,
-                  "type": {
-                    "text": "FacetField[]"
-                  }
-                },
-                {
-                  "name": "open",
-                  "optional": true,
-                  "type": {
-                    "text": "boolean"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#renderVariablesBrowse"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "catalog",
-              "type": {
-                "text": "'giovanni'"
-              },
-              "default": "'giovanni'",
-              "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
-              "fieldName": "catalog"
-            },
-            {
-              "name": "selected-variable-entry-ids",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "selectedVariableEntryIds"
-            }
-          ],
-          "superclass": {
-            "name": "TerraElement",
-            "module": "/src/internal/terra-element.js"
-          },
-          "summary": "Browse through the NASA CMR or Giovanni catalogs.",
-          "tagNameWithoutPrefix": "browse-variables",
-          "tagName": "terra-browse-variables",
-          "customElement": true,
-          "jsDoc": "/**\n * @summary Browse through the NASA CMR or Giovanni catalogs.\n * @documentation https://disc.gsfc.nasa.gov/components/browse-variables\n * @status MVP\n * @since 1.0\n *\n * @emits terra-variables-change - emitted when the user selects or unselects variables\n *\n * @dependency terra-variable-keyword-search\n * @dependency terra-button\n * @dependency terra-skeleton\n * @dependency terra-icon\n * @dependency terra-loader\n */",
-          "documentation": "https://disc.gsfc.nasa.gov/components/browse-variables",
-          "status": "MVP",
-          "since": "1.0",
-          "dependencies": [
-            "terra-variable-keyword-search",
-            "terra-button",
-            "terra-skeleton",
-            "terra-icon",
-            "terra-loader"
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "TerraBrowseVariables",
-            "module": "components/browse-variables/browse-variables.js"
           }
         }
       ]
@@ -5426,7 +5426,6 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "a collection entry id (ex: GPM_3IMERGHH_06)",
               "attribute": "collection",
               "reflects": true
             },
@@ -5463,9 +5462,25 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "The point location in \"lat,lon\" format.\nOr the bounding box in \"west,south,east,north\" format.",
               "attribute": "location",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "bearerToken",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "bearer-token"
+            },
+            {
+              "kind": "field",
+              "name": "long_name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "long_name"
             },
             {
               "kind": "field",
@@ -5474,6 +5489,36 @@
                 "text": "any"
               },
               "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "catalogVariable",
+              "type": {
+                "text": "Variable"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "colormaps",
+              "type": {
+                "text": "array"
+              },
+              "default": "[\n        'jet', 'hsv', 'hot', 'cool', 'spring', 'summer', 'autumn', 'winter', 'bone',\n        'copper', 'greys', 'YIGnBu', 'greens', 'YIOrRd', 'bluered', 'RdBu', 'picnic',\n        'rainbow', 'portland', 'blackbody', 'earth', 'electric', 'viridis', 'inferno',\n        'magma', 'plasma', 'warm', 'cool', 'bathymetry', 'cdom', 'chlorophyll', 'density',\n        'fressurface-blue', 'freesurface-red', 'oxygen', 'par', 'phase', 'salinity',\n        'temperature', 'turbidity', 'velocity-blue', 'velocity-green', 'cubhelix'\n    ]"
+            },
+            {
+              "kind": "field",
+              "name": "colorMapName",
+              "type": {
+                "text": "string"
+              },
+              "default": "'density'"
+            },
+            {
+              "kind": "field",
+              "name": "menu",
+              "type": {
+                "text": "HTMLMenuElement"
+              }
             },
             {
               "kind": "method",
@@ -5495,38 +5540,6 @@
             },
             {
               "kind": "field",
-              "name": "bearerToken",
-              "type": {
-                "text": "string"
-              },
-              "description": "The token to be used for authentication with remote servers.\nThe component provides the header \"Authorization: Bearer\" (the request header and authentication scheme).\nThe property's value will be inserted after \"Bearer\" (the authentication scheme).",
-              "attribute": "bearer-token"
-            },
-            {
-              "kind": "field",
-              "name": "long_name",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "long_name"
-            },
-            {
-              "kind": "field",
-              "name": "menu",
-              "type": {
-                "text": "HTMLMenuElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "catalogVariable",
-              "type": {
-                "text": "Variable"
-              }
-            },
-            {
-              "kind": "field",
               "name": "#controller",
               "privacy": "private",
               "type": {
@@ -5538,11 +5551,6 @@
               "name": "#catalog",
               "privacy": "private",
               "default": "new GiovanniVariableCatalog()"
-            },
-            {
-              "kind": "field",
-              "name": "_authController",
-              "default": "new AuthController(this)"
             },
             {
               "kind": "field",
@@ -5564,8 +5572,13 @@
             },
             {
               "kind": "field",
+              "name": "_authController",
+              "default": "new AuthController(this)"
+            },
+            {
+              "kind": "field",
               "name": "_fetchVariableTask",
-              "default": "new Task(this, {\n        task: async (_args, { signal }) => {\n            const variableEntryId = this.getVariableEntryId()\n\n            if (!variableEntryId) {\n                return\n            }\n\n            console.debug('Fetch variable ', variableEntryId)\n\n            const variable = await this.#catalog.getVariable(variableEntryId, {\n                signal,\n            })\n\n            console.debug('Found variable ', variable)\n\n            if (!variable) {\n                return\n            }\n\n            // if we don't have dates, use the example initial dates, which is the last 7 days of data\n            this.startDate =\n                this.startDate ?? variable.exampleInitialStartDate?.toISOString()\n            this.endDate =\n                this.endDate ?? variable.exampleInitialEndDate?.toISOString()\n\n            this.catalogVariable = variable\n        },\n        args: () => [this.collection, this.variable],\n    })",
+              "default": "new Task(this, {\n        task: async (_args, { signal }) => {\n            const variableEntryId = this.getVariableEntryId()\n\n            if (!variableEntryId) {\n                return\n            }\n\n            console.debug('Fetch variable ', variableEntryId)\n\n            const variable = await this.#catalog.getVariable(variableEntryId, {\n                signal,\n            })\n\n            console.debug('Found variable ', variable)\n\n            if (!variable) {\n                return\n            }\n\n            // if we don't have dates, use the example initial dates, which is the last 7 days of data\n            this.startDate =\n                this.startDate ?? variable.exampleInitialStartDate?.toISOString()\n            this.endDate =\n                this.endDate ?? variable.exampleInitialEndDate?.toISOString()\n\n            this.catalogVariable = variable\n        },\n        args: () => [this.collection, this.variable],\n        autoRun: false\n    })",
               "description": "anytime the collection or variable changes, we'll fetch the variable from the catalog to get all of it's metadata"
             },
             {
@@ -5596,6 +5609,102 @@
             {
               "kind": "method",
               "name": "getVariableEntryId"
+            },
+            {
+              "kind": "method",
+              "name": "renderPixelValues",
+              "parameters": [
+                {
+                  "name": "map",
+                  "type": {
+                    "text": "Map"
+                  }
+                },
+                {
+                  "name": "gtLayer",
+                  "type": {
+                    "text": "WebGLTileLayer"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getMinMax",
+              "parameters": [
+                {
+                  "name": "gtSource",
+                  "type": {
+                    "text": "any"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getColorStops",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": {
+                    "text": "any"
+                  }
+                },
+                {
+                  "name": "min",
+                  "type": {
+                    "text": "any"
+                  }
+                },
+                {
+                  "name": "max",
+                  "type": {
+                    "text": "any"
+                  }
+                },
+                {
+                  "name": "steps",
+                  "type": {
+                    "text": "any"
+                  }
+                },
+                {
+                  "name": "reverse",
+                  "type": {
+                    "text": "any"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "applyColorToLayer",
+              "parameters": [
+                {
+                  "name": "gtSource",
+                  "type": {
+                    "text": "any"
+                  }
+                },
+                {
+                  "name": "color",
+                  "type": {
+                    "text": "String"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#onColorMapChange",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
             }
           ],
           "attributes": [
@@ -5604,7 +5713,6 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "a collection entry id (ex: GPM_3IMERGHH_06)",
               "fieldName": "collection"
             },
             {
@@ -5633,7 +5741,6 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "The point location in \"lat,lon\" format.\nOr the bounding box in \"west,south,east,north\" format.",
               "fieldName": "location"
             },
             {
@@ -5641,7 +5748,6 @@
               "type": {
                 "text": "string"
               },
-              "description": "The token to be used for authentication with remote servers.\nThe component provides the header \"Authorization: Bearer\" (the request header and authentication scheme).\nThe property's value will be inserted after \"Bearer\" (the authentication scheme).",
               "fieldName": "bearerToken"
             },
             {

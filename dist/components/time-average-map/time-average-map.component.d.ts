@@ -1,3 +1,5 @@
+import { Map } from 'ol';
+import WebGLTileLayer from 'ol/layer/WebGLTile.js';
 import GeoTIFF from 'ol/source/GeoTIFF.js';
 import TerraElement from '../../internal/terra-element.js';
 import type { CSSResultGroup } from 'lit';
@@ -15,29 +17,19 @@ export default class TerraTimeAverageMap extends TerraElement {
         'terra-icon': typeof TerraIcon;
         'terra-plot-toolbar': typeof TerraPlotToolbar;
     };
-    /**
-     * a collection entry id (ex: GPM_3IMERGHH_06)
-     */
     collection?: string;
     variable?: string;
     startDate?: string;
     endDate?: string;
-    /**
-     * The point location in "lat,lon" format.
-     * Or the bounding box in "west,south,east,north" format.
-     */
     location?: string;
-    activeMenuItem: any;
-    handleFocus(_oldValue: any, newValue: any): void;
-    /**
-     * The token to be used for authentication with remote servers.
-     * The component provides the header "Authorization: Bearer" (the request header and authentication scheme).
-     * The property's value will be inserted after "Bearer" (the authentication scheme).
-     */
     bearerToken: string;
     long_name: string;
-    menu: HTMLMenuElement;
+    activeMenuItem: any;
     catalogVariable: Variable;
+    colormaps: string[];
+    colorMapName: string;
+    menu: HTMLMenuElement;
+    handleFocus(_oldValue: any, newValue: any): void;
     _authController: AuthController<this>;
     /**
      * anytime the collection or variable changes, we'll fetch the variable from the catalog to get all of it's metadata
@@ -50,5 +42,12 @@ export default class TerraTimeAverageMap extends TerraElement {
         [key: string]: string;
     }>;
     getVariableEntryId(): string | undefined;
+    renderPixelValues(map: Map, gtLayer: WebGLTileLayer): void;
+    getMinMax(gtSource: any): Promise<{
+        min: number;
+        max: number;
+    }>;
+    getColorStops(name: any, min: any, max: any, steps: any, reverse: any): any[];
+    applyColorToLayer(gtSource: any, color: String): Promise<void>;
     render(): import("lit-html").TemplateResult<1>;
 }
