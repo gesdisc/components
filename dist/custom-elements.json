@@ -4,6 +4,140 @@
   "modules": [
     {
       "kind": "javascript-module",
+      "path": "components/accordion/accordion.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TerraAccordion",
+          "slots": [
+            {
+              "description": "The default slot for accordion content.",
+              "name": ""
+            },
+            {
+              "description": "The summary/header for the accordion (optional, overrides summary property)",
+              "name": "summary"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "dependencies",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{\n        'terra-icon': TerraIcon,\n    }"
+            },
+            {
+              "kind": "field",
+              "name": "summary",
+              "type": {
+                "text": "string"
+              },
+              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
+              "attribute": "summary"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
+              "attribute": "open",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "showArrow",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "showArrow"
+            },
+            {
+              "kind": "method",
+              "name": "handleToggle",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "description": "emitted when the accordion opens or closes",
+              "name": "terra-accordion-toggle",
+              "reactName": "onTerraAccordionToggle",
+              "eventName": "TerraAccordionToggleEvent"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "summary",
+              "type": {
+                "text": "string"
+              },
+              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
+              "fieldName": "summary"
+            },
+            {
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
+              "fieldName": "open"
+            },
+            {
+              "name": "showArrow",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "showArrow"
+            }
+          ],
+          "superclass": {
+            "name": "TerraElement",
+            "module": "/src/internal/terra-element.js"
+          },
+          "summary": "A collapsible content panel for showing and hiding content.",
+          "tagNameWithoutPrefix": "accordion",
+          "tagName": "terra-accordion",
+          "customElement": true,
+          "jsDoc": "/**\n * @summary A collapsible content panel for showing and hiding content.\n * @documentation https://disc.gsfc.nasa.gov/components/accordion\n * @status experimental\n * @since 1.0\n *\n * The TerraAccordion component provides a simple, accessible way to show and hide content. It uses native <details> and <summary> elements for built-in accessibility and keyboard support. The summary/header can be set via the `summary` property for simple text, or via a named `summary` slot for custom content (such as icons or rich HTML). The open state can be controlled with the `open` property, which is reflected as an attribute.\n *\n * @slot - The default slot for accordion content.\n * @slot summary - The summary/header for the accordion (optional, overrides summary property)\n *\n * @property {string} summary - The summary/header for the accordion. Use the property for simple text, or the slot for custom content.\n * @property {boolean} open - Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.\n *\n * @event terra-accordion-toggle - emitted when the accordion opens or closes\n *\n * @dependency terra-icon\n */",
+          "documentation": "https://disc.gsfc.nasa.gov/components/accordion",
+          "status": "experimental",
+          "since": "1.0",
+          "dependencies": [
+            "terra-icon"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TerraAccordion",
+            "module": "components/accordion/accordion.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "components/alert/alert.js",
       "declarations": [
         {
@@ -299,140 +433,6 @@
           "declaration": {
             "name": "TerraAlert",
             "module": "components/alert/alert.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "components/accordion/accordion.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TerraAccordion",
-          "slots": [
-            {
-              "description": "The default slot for accordion content.",
-              "name": ""
-            },
-            {
-              "description": "The summary/header for the accordion (optional, overrides summary property)",
-              "name": "summary"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "dependencies",
-              "type": {
-                "text": "object"
-              },
-              "static": true,
-              "default": "{\n        'terra-icon': TerraIcon,\n    }"
-            },
-            {
-              "kind": "field",
-              "name": "summary",
-              "type": {
-                "text": "string"
-              },
-              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
-              "attribute": "summary"
-            },
-            {
-              "kind": "field",
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
-              "attribute": "open",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "showArrow",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "attribute": "showArrow"
-            },
-            {
-              "kind": "method",
-              "name": "handleToggle",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "description": "emitted when the accordion opens or closes",
-              "name": "terra-accordion-toggle",
-              "reactName": "onTerraAccordionToggle",
-              "eventName": "TerraAccordionToggleEvent"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "summary",
-              "type": {
-                "text": "string"
-              },
-              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
-              "fieldName": "summary"
-            },
-            {
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
-              "fieldName": "open"
-            },
-            {
-              "name": "showArrow",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "fieldName": "showArrow"
-            }
-          ],
-          "superclass": {
-            "name": "TerraElement",
-            "module": "/src/internal/terra-element.js"
-          },
-          "summary": "A collapsible content panel for showing and hiding content.",
-          "tagNameWithoutPrefix": "accordion",
-          "tagName": "terra-accordion",
-          "customElement": true,
-          "jsDoc": "/**\n * @summary A collapsible content panel for showing and hiding content.\n * @documentation https://disc.gsfc.nasa.gov/components/accordion\n * @status experimental\n * @since 1.0\n *\n * The TerraAccordion component provides a simple, accessible way to show and hide content. It uses native <details> and <summary> elements for built-in accessibility and keyboard support. The summary/header can be set via the `summary` property for simple text, or via a named `summary` slot for custom content (such as icons or rich HTML). The open state can be controlled with the `open` property, which is reflected as an attribute.\n *\n * @slot - The default slot for accordion content.\n * @slot summary - The summary/header for the accordion (optional, overrides summary property)\n *\n * @property {string} summary - The summary/header for the accordion. Use the property for simple text, or the slot for custom content.\n * @property {boolean} open - Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.\n *\n * @event terra-accordion-toggle - emitted when the accordion opens or closes\n *\n * @dependency terra-icon\n */",
-          "documentation": "https://disc.gsfc.nasa.gov/components/accordion",
-          "status": "experimental",
-          "since": "1.0",
-          "dependencies": [
-            "terra-icon"
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "TerraAccordion",
-            "module": "components/accordion/accordion.js"
           }
         }
       ]
@@ -2899,405 +2899,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "components/date-range-slider/date-range-slider.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TerraDateRangeSlider",
-          "cssProperties": [
-            {
-              "description": "An example CSS custom property.",
-              "name": "--example"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "The component's base wrapper.",
-              "name": "base"
-            }
-          ],
-          "slots": [
-            {
-              "description": "The default slot.",
-              "name": ""
-            },
-            {
-              "description": "An example slot.",
-              "name": "example"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "slider",
-              "type": {
-                "text": "HTMLElement & { noUiSlider: API }"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "timeScale",
-              "type": {
-                "text": "TimeScale"
-              },
-              "default": "'daily'",
-              "attribute": "time-scale"
-            },
-            {
-              "kind": "field",
-              "name": "minDate",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "min-date"
-            },
-            {
-              "kind": "field",
-              "name": "maxDate",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "max-date"
-            },
-            {
-              "kind": "field",
-              "name": "startDate",
-              "type": {
-                "text": "string"
-              },
-              "description": "The start date for the time series plot.",
-              "attribute": "start-date"
-            },
-            {
-              "kind": "field",
-              "name": "endDate",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "end-date"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "disabled",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "hasPips",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "attribute": "has-pips",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "updateSlider"
-            },
-            {
-              "kind": "method",
-              "name": "disabledChanged"
-            },
-            {
-              "kind": "method",
-              "name": "renderSlider"
-            },
-            {
-              "kind": "method",
-              "name": "renderEmptySlider"
-            },
-            {
-              "kind": "method",
-              "name": "_getStep",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_getSliderFormatter",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "Formatter"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "_formatDate",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "date",
-                  "type": {
-                    "text": "string | number | Date"
-                  }
-                }
-              ]
-            }
-          ],
-          "attributes": [
-            {
-              "name": "time-scale",
-              "type": {
-                "text": "TimeScale"
-              },
-              "default": "'daily'",
-              "fieldName": "timeScale"
-            },
-            {
-              "name": "min-date",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "minDate"
-            },
-            {
-              "name": "max-date",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "maxDate"
-            },
-            {
-              "name": "start-date",
-              "type": {
-                "text": "string"
-              },
-              "description": "The start date for the time series plot.",
-              "fieldName": "startDate"
-            },
-            {
-              "name": "end-date",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "endDate"
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "disabled"
-            },
-            {
-              "name": "has-pips",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "fieldName": "hasPips"
-            }
-          ],
-          "superclass": {
-            "name": "TerraElement",
-            "module": "/src/internal/terra-element.js"
-          },
-          "summary": "Short summary of the component's intended use.",
-          "tagNameWithoutPrefix": "date-range-slider",
-          "tagName": "terra-date-range-slider",
-          "customElement": true,
-          "jsDoc": "/**\n * @summary Short summary of the component's intended use.\n * @documentation https://disc.gsfc.nasa.gov/components/date-range-slider\n * @status experimental\n * @since 1.0\n *\n * @slot - The default slot.\n * @slot example - An example slot.\n *\n * @csspart base - The component's base wrapper.\n *\n * @cssproperty --example - An example CSS custom property.\n */",
-          "documentation": "https://disc.gsfc.nasa.gov/components/date-range-slider",
-          "status": "experimental",
-          "since": "1.0"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "TerraDateRangeSlider",
-            "module": "components/date-range-slider/date-range-slider.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "components/dialog/dialog.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TerraDialog",
-          "slots": [
-            {
-              "description": "The dialog's main content",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "dialogEl",
-              "type": {
-                "text": "HTMLDialogElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "id",
-              "type": {
-                "text": "string"
-              },
-              "description": "the ID to be used for accessibility associations",
-              "attribute": "id"
-            },
-            {
-              "kind": "field",
-              "name": "width",
-              "type": {
-                "text": "string"
-              },
-              "default": "'fit-content'",
-              "description": "the width of the dialog",
-              "attribute": "width",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "clickOutsideToClose",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "description": "allow closing the dialog when clicking outside of it",
-              "attribute": "click-outside-to-close",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "showBackdrop",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "description": "Show a backdrop behind the dialog",
-              "attribute": "show-backdrop",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "toggle"
-            },
-            {
-              "kind": "method",
-              "name": "show"
-            },
-            {
-              "kind": "method",
-              "name": "hide",
-              "parameters": [
-                {
-                  "name": "reason",
-                  "optional": true,
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#handleBackdropClick",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "description": "Emitted when the dialog opens.",
-              "name": "terra-dialog-show",
-              "reactName": "onTerraDialogShow",
-              "eventName": "TerraDialogShowEvent"
-            },
-            {
-              "description": "Emitted when the dialog closes.",
-              "name": "terra-dialog-hide",
-              "reactName": "onTerraDialogHide",
-              "eventName": "TerraDialogHideEvent"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "id",
-              "type": {
-                "text": "string"
-              },
-              "description": "the ID to be used for accessibility associations",
-              "fieldName": "id"
-            },
-            {
-              "name": "width",
-              "type": {
-                "text": "string"
-              },
-              "default": "'fit-content'",
-              "description": "the width of the dialog",
-              "fieldName": "width"
-            },
-            {
-              "name": "click-outside-to-close",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "description": "allow closing the dialog when clicking outside of it",
-              "fieldName": "clickOutsideToClose"
-            },
-            {
-              "name": "show-backdrop",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "description": "Show a backdrop behind the dialog",
-              "fieldName": "showBackdrop"
-            }
-          ],
-          "superclass": {
-            "name": "TerraElement",
-            "module": "/src/internal/terra-element.js"
-          },
-          "summary": "Used to create both modal and non-modal dialog boxes.",
-          "tagNameWithoutPrefix": "dialog",
-          "tagName": "terra-dialog",
-          "customElement": true,
-          "jsDoc": "/**\n * @summary Used to create both modal and non-modal dialog boxes.\n * @documentation https://disc.gsfc.nasa.gov/components/dialog\n * @status stable\n * @since 1.0\n *\n * @slot - The dialog's main content\n *\n * @event terra-dialog-show - Emitted when the dialog opens.\n * @event terra-dialog-hide - Emitted when the dialog closes.\n */",
-          "documentation": "https://disc.gsfc.nasa.gov/components/dialog",
-          "status": "stable",
-          "since": "1.0"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "TerraDialog",
-            "module": "components/dialog/dialog.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "components/date-picker/date-picker.js",
       "declarations": [
         {
@@ -3715,6 +3316,405 @@
           "declaration": {
             "name": "TerraDatePicker",
             "module": "components/date-picker/date-picker.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "components/date-range-slider/date-range-slider.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TerraDateRangeSlider",
+          "cssProperties": [
+            {
+              "description": "An example CSS custom property.",
+              "name": "--example"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The component's base wrapper.",
+              "name": "base"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The default slot.",
+              "name": ""
+            },
+            {
+              "description": "An example slot.",
+              "name": "example"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "slider",
+              "type": {
+                "text": "HTMLElement & { noUiSlider: API }"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "timeScale",
+              "type": {
+                "text": "TimeScale"
+              },
+              "default": "'daily'",
+              "attribute": "time-scale"
+            },
+            {
+              "kind": "field",
+              "name": "minDate",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "min-date"
+            },
+            {
+              "kind": "field",
+              "name": "maxDate",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "max-date"
+            },
+            {
+              "kind": "field",
+              "name": "startDate",
+              "type": {
+                "text": "string"
+              },
+              "description": "The start date for the time series plot.",
+              "attribute": "start-date"
+            },
+            {
+              "kind": "field",
+              "name": "endDate",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "end-date"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hasPips",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "has-pips",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "updateSlider"
+            },
+            {
+              "kind": "method",
+              "name": "disabledChanged"
+            },
+            {
+              "kind": "method",
+              "name": "renderSlider"
+            },
+            {
+              "kind": "method",
+              "name": "renderEmptySlider"
+            },
+            {
+              "kind": "method",
+              "name": "_getStep",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_getSliderFormatter",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "Formatter"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_formatDate",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "date",
+                  "type": {
+                    "text": "string | number | Date"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "time-scale",
+              "type": {
+                "text": "TimeScale"
+              },
+              "default": "'daily'",
+              "fieldName": "timeScale"
+            },
+            {
+              "name": "min-date",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "minDate"
+            },
+            {
+              "name": "max-date",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "maxDate"
+            },
+            {
+              "name": "start-date",
+              "type": {
+                "text": "string"
+              },
+              "description": "The start date for the time series plot.",
+              "fieldName": "startDate"
+            },
+            {
+              "name": "end-date",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "endDate"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "has-pips",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "hasPips"
+            }
+          ],
+          "superclass": {
+            "name": "TerraElement",
+            "module": "/src/internal/terra-element.js"
+          },
+          "summary": "Short summary of the component's intended use.",
+          "tagNameWithoutPrefix": "date-range-slider",
+          "tagName": "terra-date-range-slider",
+          "customElement": true,
+          "jsDoc": "/**\n * @summary Short summary of the component's intended use.\n * @documentation https://disc.gsfc.nasa.gov/components/date-range-slider\n * @status experimental\n * @since 1.0\n *\n * @slot - The default slot.\n * @slot example - An example slot.\n *\n * @csspart base - The component's base wrapper.\n *\n * @cssproperty --example - An example CSS custom property.\n */",
+          "documentation": "https://disc.gsfc.nasa.gov/components/date-range-slider",
+          "status": "experimental",
+          "since": "1.0"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TerraDateRangeSlider",
+            "module": "components/date-range-slider/date-range-slider.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "components/dialog/dialog.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TerraDialog",
+          "slots": [
+            {
+              "description": "The dialog's main content",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "dialogEl",
+              "type": {
+                "text": "HTMLDialogElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "id",
+              "type": {
+                "text": "string"
+              },
+              "description": "the ID to be used for accessibility associations",
+              "attribute": "id"
+            },
+            {
+              "kind": "field",
+              "name": "width",
+              "type": {
+                "text": "string"
+              },
+              "default": "'fit-content'",
+              "description": "the width of the dialog",
+              "attribute": "width",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "clickOutsideToClose",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "allow closing the dialog when clicking outside of it",
+              "attribute": "click-outside-to-close",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "showBackdrop",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Show a backdrop behind the dialog",
+              "attribute": "show-backdrop",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "toggle"
+            },
+            {
+              "kind": "method",
+              "name": "show"
+            },
+            {
+              "kind": "method",
+              "name": "hide",
+              "parameters": [
+                {
+                  "name": "reason",
+                  "optional": true,
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleBackdropClick",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "description": "Emitted when the dialog opens.",
+              "name": "terra-dialog-show",
+              "reactName": "onTerraDialogShow",
+              "eventName": "TerraDialogShowEvent"
+            },
+            {
+              "description": "Emitted when the dialog closes.",
+              "name": "terra-dialog-hide",
+              "reactName": "onTerraDialogHide",
+              "eventName": "TerraDialogHideEvent"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "id",
+              "type": {
+                "text": "string"
+              },
+              "description": "the ID to be used for accessibility associations",
+              "fieldName": "id"
+            },
+            {
+              "name": "width",
+              "type": {
+                "text": "string"
+              },
+              "default": "'fit-content'",
+              "description": "the width of the dialog",
+              "fieldName": "width"
+            },
+            {
+              "name": "click-outside-to-close",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "allow closing the dialog when clicking outside of it",
+              "fieldName": "clickOutsideToClose"
+            },
+            {
+              "name": "show-backdrop",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Show a backdrop behind the dialog",
+              "fieldName": "showBackdrop"
+            }
+          ],
+          "superclass": {
+            "name": "TerraElement",
+            "module": "/src/internal/terra-element.js"
+          },
+          "summary": "Used to create both modal and non-modal dialog boxes.",
+          "tagNameWithoutPrefix": "dialog",
+          "tagName": "terra-dialog",
+          "customElement": true,
+          "jsDoc": "/**\n * @summary Used to create both modal and non-modal dialog boxes.\n * @documentation https://disc.gsfc.nasa.gov/components/dialog\n * @status stable\n * @since 1.0\n *\n * @slot - The dialog's main content\n *\n * @event terra-dialog-show - Emitted when the dialog opens.\n * @event terra-dialog-hide - Emitted when the dialog closes.\n */",
+          "documentation": "https://disc.gsfc.nasa.gov/components/dialog",
+          "status": "stable",
+          "since": "1.0"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TerraDialog",
+            "module": "components/dialog/dialog.js"
           }
         }
       ]

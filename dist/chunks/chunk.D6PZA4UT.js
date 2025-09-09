@@ -18,7 +18,7 @@ import {
 } from "./chunk.3AZLGGEX.js";
 import {
   browse_variables_styles_default
-} from "./chunk.6WGBX3KH.js";
+} from "./chunk.KH6OCEZI.js";
 import {
   TerraButton
 } from "./chunk.QBCKG623.js";
@@ -410,7 +410,7 @@ renderVariablesBrowse_fn = function() {
                                             />
                                             <strong
                                                 >${variable.dataFieldLongName}</strong
-                                            ><br />
+                                            >
                                             <span
                                                 >${variable.dataProductShortName}
                                                 &bull;
@@ -426,21 +426,19 @@ renderVariablesBrowse_fn = function() {
                                                 ${variable.dataFieldLongName}
                                             </h4>
                                             <p>
-                                                <strong>Spatial Resolution</strong
-                                                ><br />
+                                                <strong>Spatial Resolution</strong>
                                                 ${variable.dataProductSpatialResolution}
                                             </p>
                                             <p>
-                                                <strong>Temporal Coverage</strong
-                                                ><br />
+                                                <strong>Temporal Coverage</strong>
                                                 ${variable.dataProductBeginDateTime}&puncsp;&ndash;&puncsp;${variable.dataProductEndDateTime}
                                             </p>
                                             <p>
-                                                <strong>Region Coverage</strong><br />
+                                                <strong>Region Coverage</strong>
                                                 ${variable.dataProductWest},${variable.dataProductSouth},${variable.dataProductEast},${variable.dataProductNorth}
                                             </p>
                                             <p>
-                                                <strong>Dataset</strong><br />
+                                                <strong>Dataset</strong>
                                                 ${variable.dataProductShortName}_${variable.dataProductVersion}
                                             </p>
                                         </sl-drawer>

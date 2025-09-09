@@ -19,7 +19,6 @@ export default css`
     --terra-color-nasa-red-shade: hsla(357, 99%, 36%, 1);
     --terra-color-nasa-blue-tint: hsla(212, 100%, 58%, 1);
     --terra-color-nasa-blue-shade: hsla(218, 86%, 31%, 1);
-    --terra-color-nasa-blue-dark: hsla(214, 52%, 24.5%, 1);
 
     --terra-color-international-orange: hsla(23, 83%, 53%, 1);
     --terra-color-international-orange-tint: hsl(23, 82%, 61%);
@@ -27,6 +26,8 @@ export default css`
     --terra-color-active-green: hsla(145, 67%, 57%, 1);
     --terra-color-active-green-tint: hsl(145, 52%, 64%, 1);
     --terra-color-active-green-shade: hsla(144, 75%, 38%, 1);
+    --terra-color-nasa-blue-dark: hsla(214, 52%, 24.5%, 1);
+    --terra-color-blue-light: hsla(218, 62%, 85%, 1);
 
     --terra-color-carbon-90: hsla(240, 8%, 10%, 1);
     --terra-color-carbon-80: hsla(240, 4%, 19%, 1);
