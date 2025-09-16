@@ -106,7 +106,7 @@
 
         // Wait until idle to fetch the index
         wait(() => {
-            fetch('/assets/search.json')
+            fetch('/components/assets/search.json')
                 .then(res => res.json())
                 .then(data => {
                     if (!window.lunr) {
