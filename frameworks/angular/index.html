@@ -18,7 +18,7 @@
     <meta name="twitter:creator" content="nasa_terra-ui" />
     <meta name="twitter:image" content="https://gesdisc.github.io/components/assets/images/og-image.png" />
 
-    <meta property="og:url" content="https://gesdisc.github.io/frameworks/angular/" />
+    <meta property="og:url" content="https://gesdisc.github.io/components/frameworks/angular/" />
     <meta property="og:title" content="Angular" />
     <meta property="og:description" content="Tips for using Terra UI Components in your Angular app." />
     <meta property="og:image" content="https://gesdisc.github.io/components/assets/images/og-image.png" />
@@ -379,8 +379,8 @@
             ></a>
           </h3>
           <p>To add Terra UI Components to your Angular app, install the package from npm.</p>
-          <pre><code class="language-bash" id="code-block-3"><span class="token function">npm</span> <span class="token function">install</span> @nasa-terra/components
-</code><sl-copy-button class="copy-code-button" from="code-block-3"></sl-copy-button></pre>
+          <pre><code class="language-bash" id="code-block-76"><span class="token function">npm</span> <span class="token function">install</span> @nasa-terra/components
+</code><sl-copy-button class="copy-code-button" from="code-block-76"></sl-copy-button></pre>
           <h3 id="update-the-angular-configuration" class="anchor-heading">
             Update the Angular Configuration<a
               href="#update-the-angular-configuration"
@@ -395,7 +395,7 @@
             file. However, the Angular way to do it is by adding a script configurations into your angular.json file as
             follows:
           </p>
-          <pre><code class="language-json" id="code-block-4"><span class="token property">"architect"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <pre><code class="language-json" id="code-block-77"><span class="token property">"architect"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
   <span class="token property">"build"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     ...
     <span class="token property">"options"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -408,7 +408,7 @@
         <span class="token string">"@nasa-terra/components/dist/terra-ui-components.js"</span>
       <span class="token punctuation">]</span>
       ...
-</code><sl-copy-button class="copy-code-button" from="code-block-4"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-77"></sl-copy-button></pre>
           <h3 id="setting-up-the-base-path" class="anchor-heading">
             Setting up the base path<a
               href="#setting-up-the-base-path"
@@ -419,10 +419,10 @@
             Next, set the <a href="/getting-started/installation#setting-the-base-path">base path</a> for icons and
             other assets in the <code>main.ts</code>. In this example, we’ll use the CDN as a base path.
           </p>
-          <pre><code class="language-jsx" id="code-block-5"><span class="token keyword">import</span> <span class="token punctuation">{</span> setBasePath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/utilities/base-path'</span>
+          <pre><code class="language-jsx" id="code-block-78"><span class="token keyword">import</span> <span class="token punctuation">{</span> setBasePath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/utilities/base-path'</span>
 
 <span class="token function">setBasePath</span><span class="token punctuation">(</span><span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.100/cdn/'</span><span class="token punctuation">)</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-5"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-78"></sl-copy-button></pre>
           <div role="alert" class="callout callout--tip">
             <p>
               If you’d rather not use the CDN for assets, you can create a build task that copies
@@ -434,7 +434,7 @@
             Configuration<a href="#configuration" aria-label='Direct link to "Configuration"'></a>
           </h2>
           <p>Then make sure to apply the custom elements schema as shown below.</p>
-          <pre><code class="language-js" id="code-block-6"><span class="token keyword">import</span> <span class="token punctuation">{</span> BrowserModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/platform-browser'</span>
+          <pre><code class="language-js" id="code-block-79"><span class="token keyword">import</span> <span class="token punctuation">{</span> BrowserModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/platform-browser'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> NgModule<span class="token punctuation">,</span> <span class="token constant">CUSTOM_ELEMENTS_SCHEMA</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/core'</span>
 
 <span class="token keyword">import</span> <span class="token punctuation">{</span> AppComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./app.component'</span>
@@ -447,14 +447,14 @@
     <span class="token literal-property property">schemas</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token constant">CUSTOM_ELEMENTS_SCHEMA</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AppModule</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-6"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-79"></sl-copy-button></pre>
           <h2 id="reference-terra-ui-components-in-your-angular-component-code" class="anchor-heading">
             Reference Terra UI Components in your Angular component code<a
               href="#reference-terra-ui-components-in-your-angular-component-code"
               aria-label='Direct link to "Reference Terra UI Components in your Angular component code"'
             ></a>
           </h2>
-          <pre><code class="language-js" id="code-block-7"><span class="token keyword">import</span> <span class="token punctuation">{</span> SlDrawer <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components'</span><span class="token punctuation">;</span>
+          <pre><code class="language-js" id="code-block-80"><span class="token keyword">import</span> <span class="token punctuation">{</span> SlDrawer <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components'</span><span class="token punctuation">;</span>
 
 @<span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   <span class="token literal-property property">selector</span><span class="token operator">:</span> <span class="token string">'app-drawer-example'</span><span class="token punctuation">,</span>
@@ -481,7 +481,7 @@
     <span class="token keyword">this</span><span class="token punctuation">.</span>drawer<span class="token operator">?.</span>nativeElement<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-7"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-80"></sl-copy-button></pre>
           <p>Now you can start using Terra UI Components in your app!</p>
           <div role="alert" class="callout callout--tip">
             <p>

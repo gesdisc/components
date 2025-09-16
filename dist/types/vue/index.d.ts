@@ -1,11 +1,11 @@
 import type { DefineComponent } from "vue";
 
 import type { TerraAccordion } from "../../components/accordion/accordion.component.js";
-import type { TerraBrowseVariables } from "../../components/browse-variables/browse-variables.component.js";
 import type { TerraAlert } from "../../components/alert/alert.component.js";
+import type { TerraBrowseVariables } from "../../components/browse-variables/browse-variables.component.js";
 import type { TerraButton } from "../../components/button/button.component.js";
-import type { TerraChip } from "../../components/chip/chip.component.js";
 import type { TerraCombobox } from "../../components/combobox/combobox.component.js";
+import type { TerraChip } from "../../components/chip/chip.component.js";
 import type { TerraDataRods } from "../../components/data-rods/data-rods.component.js";
 import type { TerraDataSubsetter } from "../../components/data-subsetter/data-subsetter.component.js";
 import type { TerraDataSubsetterHistory } from "../../components/data-subsetter-history/data-subsetter-history.component.js";
@@ -37,22 +37,6 @@ type TerraAccordionProps = {
   onTerraAccordionToggle?: (e: CustomEvent<never>) => void;
 };
 
-type TerraBrowseVariablesProps = {
-  /** Allows the user to switch the catalog between different providers
-TODO: add support for CMR catalog and make it the default */
-  catalog?: TerraBrowseVariables["catalog"];
-  /**  */
-  "selected-variable-entry-ids"?: TerraBrowseVariables["selectedVariableEntryIds"];
-  /**  */
-  searchQuery?: TerraBrowseVariables["searchQuery"];
-  /**  */
-  selectedFacets?: TerraBrowseVariables["selectedFacets"];
-  /**  */
-  selectedVariables?: TerraBrowseVariables["selectedVariables"];
-  /**  */
-  showVariablesBrowse?: TerraBrowseVariables["showVariablesBrowse"];
-};
-
 type TerraAlertProps = {
   /** Indicates whether or not the alert is open. You can toggle this attribute to show and hide the alert, or you can
 use the `show()` and `hide()` methods and this attribute will reflect the alert's open state. */
@@ -80,6 +64,22 @@ Typically used to indicate the remaining time before a whole app refresh. */
   onTerraHide?: (e: CustomEvent<never>) => void;
   /** Emitted after the alert closes and all animations are complete. */
   onTerraAfterHide?: (e: CustomEvent<never>) => void;
+};
+
+type TerraBrowseVariablesProps = {
+  /** Allows the user to switch the catalog between different providers
+TODO: add support for CMR catalog and make it the default */
+  catalog?: TerraBrowseVariables["catalog"];
+  /**  */
+  "selected-variable-entry-ids"?: TerraBrowseVariables["selectedVariableEntryIds"];
+  /**  */
+  searchQuery?: TerraBrowseVariables["searchQuery"];
+  /**  */
+  selectedFacets?: TerraBrowseVariables["selectedFacets"];
+  /**  */
+  selectedVariables?: TerraBrowseVariables["selectedVariables"];
+  /**  */
+  showVariablesBrowse?: TerraBrowseVariables["showVariablesBrowse"];
 };
 
 type TerraButtonProps = {
@@ -149,11 +149,6 @@ value of this attribute must be an id of a form in the same document or shadow r
   validationMessage?: TerraButton["validationMessage"];
 };
 
-type TerraChipProps = {
-  /**  */
-  size?: TerraChip["size"];
-};
-
 type TerraComboboxProps = {
   /** Label the combobox with this. */
   label?: TerraCombobox["label"];
@@ -178,6 +173,11 @@ When hidden, still presents to screen readers. */
   query?: TerraCombobox["query"];
   /**  */
   searchResults?: TerraCombobox["searchResults"];
+};
+
+type TerraChipProps = {
+  /**  */
+  size?: TerraChip["size"];
 };
 
 type TerraDataRodsProps = {
@@ -680,13 +680,6 @@ export type CustomElements = {
   "terra-accordion": DefineComponent<TerraAccordionProps>;
 
   /**
-   * Browse through the NASA CMR or Giovanni catalogs.
-   * ---
-   *
-   */
-  "terra-browse-variables": DefineComponent<TerraBrowseVariablesProps>;
-
-  /**
    * Alerts are used to display important messages inline or as toast notifications.
    * ---
    *
@@ -713,6 +706,13 @@ export type CustomElements = {
    * - **message** - The container that wraps the alert's main content.
    */
   "terra-alert": DefineComponent<TerraAlertProps>;
+
+  /**
+   * Browse through the NASA CMR or Giovanni catalogs.
+   * ---
+   *
+   */
+  "terra-browse-variables": DefineComponent<TerraBrowseVariablesProps>;
 
   /**
    * Buttons represent actions that are available to the user.
@@ -744,16 +744,6 @@ export type CustomElements = {
   "terra-button": DefineComponent<TerraButtonProps>;
 
   /**
-   * Used for contacts and tags
-   * ---
-   *
-   *
-   * ### **Slots:**
-   *  - _default_ - The chip's label.
-   */
-  "terra-chip": DefineComponent<TerraChipProps>;
-
-  /**
    * Fuzzy-search for combobox with list autocomplete.
    * ---
    *
@@ -770,6 +760,16 @@ export type CustomElements = {
    * - **listbox** - A `ul` that holds the clickable options.
    */
   "terra-combobox": DefineComponent<TerraComboboxProps>;
+
+  /**
+   * Used for contacts and tags
+   * ---
+   *
+   *
+   * ### **Slots:**
+   *  - _default_ - The chip's label.
+   */
+  "terra-chip": DefineComponent<TerraChipProps>;
 
   /**
    * A component for visualizing Hydrology Data Rods time series using the GES DISC Giovanni API

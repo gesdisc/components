@@ -65,41 +65,6 @@
           }
         },
         {
-          "name": "terra-browse-variables",
-          "description": "Browse through the NASA CMR or Giovanni catalogs.\n---\n",
-          "doc-url": "",
-          "attributes": [
-            {
-              "name": "catalog",
-              "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
-              "value": { "type": "'giovanni'", "default": "'giovanni'" }
-            },
-            {
-              "name": "selected-variable-entry-ids",
-              "value": { "type": "string | undefined" }
-            }
-          ],
-          "events": [],
-          "js": {
-            "properties": [
-              {
-                "name": "catalog",
-                "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
-                "type": "'giovanni'"
-              },
-              {
-                "name": "selectedVariableEntryIds",
-                "type": "string | undefined"
-              },
-              { "name": "searchQuery", "type": "string" },
-              { "name": "selectedFacets", "type": "SelectedFacets" },
-              { "name": "selectedVariables", "type": "Variable[]" },
-              { "name": "showVariablesBrowse", "type": "boolean" }
-            ],
-            "events": []
-          }
-        },
-        {
           "name": "terra-alert",
           "description": "Alerts are used to display important messages inline or as toast notifications.\n---\n\n\n### **Events:**\n - **terra-show** - Emitted when the alert opens.\n- **terra-after-show** - Emitted after the alert opens and all animations are complete.\n- **terra-hide** - Emitted when the alert closes.\n- **terra-after-hide** - Emitted after the alert closes and all animations are complete.\n\n### **Methods:**\n - **show()** - Shows the alert.\n- **hide()** - Hides the alert\n- **toast()** - Displays the alert as a toast notification. This will move the alert out of its position in the DOM and, when\ndismissed, it will be removed from the DOM completely. By storing a reference to the alert, you can reuse it by\ncalling this method again. The returned promise will resolve after the alert is hidden.\n\n### **Slots:**\n - _default_ - The alert's main content.\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.\n- **icon** - The container that wraps the optional icon.\n- **message** - The container that wraps the alert's main content.",
           "doc-url": "",
@@ -199,6 +164,41 @@
                 "description": "Emitted after the alert closes and all animations are complete."
               }
             ]
+          }
+        },
+        {
+          "name": "terra-browse-variables",
+          "description": "Browse through the NASA CMR or Giovanni catalogs.\n---\n",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "catalog",
+              "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
+              "value": { "type": "'giovanni'", "default": "'giovanni'" }
+            },
+            {
+              "name": "selected-variable-entry-ids",
+              "value": { "type": "string | undefined" }
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "catalog",
+                "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
+                "type": "'giovanni'"
+              },
+              {
+                "name": "selectedVariableEntryIds",
+                "type": "string | undefined"
+              },
+              { "name": "searchQuery", "type": "string" },
+              { "name": "selectedFacets", "type": "SelectedFacets" },
+              { "name": "selectedVariables", "type": "Variable[]" },
+              { "name": "showVariablesBrowse", "type": "boolean" }
+            ],
+            "events": []
           }
         },
         {
@@ -479,28 +479,6 @@
           }
         },
         {
-          "name": "terra-chip",
-          "description": "Used for contacts and tags\n---\n\n\n### **Slots:**\n - _default_ - The chip's label.",
-          "doc-url": "",
-          "attributes": [
-            {
-              "name": "size",
-              "value": {
-                "type": "'small' | 'medium' | 'large'",
-                "default": "'medium'"
-              }
-            }
-          ],
-          "slots": [{ "name": "", "description": "The chip's label." }],
-          "events": [],
-          "js": {
-            "properties": [
-              { "name": "size", "type": "'small' | 'medium' | 'large'" }
-            ],
-            "events": []
-          }
-        },
-        {
           "name": "terra-combobox",
           "description": "Fuzzy-search for combobox with list autocomplete.\n---\n\n\n### **CSS Properties:**\n - **--host-height** - The height of the host element. _(default: undefined)_\n- **--help-height** - The height of the search help element. _(default: undefined)_\n- **--label-height** - The height of the input's label element. _(default: undefined)_\n\n### **CSS Parts:**\n - **base** - A `search` element, the component's base.\n- **combobox** - An `input` element used for searching.\n- **button** - A `button` used for toggling the listbox's visibility.\n- **listbox** - A `ul` that holds the clickable options.",
           "doc-url": "",
@@ -591,6 +569,28 @@
                 "name": "searchResults",
                 "type": "GroupedListItem[] | ListItem[]"
               }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "terra-chip",
+          "description": "Used for contacts and tags\n---\n\n\n### **Slots:**\n - _default_ - The chip's label.",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "size",
+              "value": {
+                "type": "'small' | 'medium' | 'large'",
+                "default": "'medium'"
+              }
+            }
+          ],
+          "slots": [{ "name": "", "description": "The chip's label." }],
+          "events": [],
+          "js": {
+            "properties": [
+              { "name": "size", "type": "'small' | 'medium' | 'large'" }
             ],
             "events": []
           }
