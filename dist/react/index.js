@@ -56,11 +56,11 @@ import {
   accordion_default
 } from "../chunks/chunk.O7U4B5LF.js";
 import {
-  alert_default
-} from "../chunks/chunk.FDKOXSBU.js";
-import {
   browse_variables_default
 } from "../chunks/chunk.OD7Q7LQR.js";
+import {
+  alert_default
+} from "../chunks/chunk.FDKOXSBU.js";
 import {
   button_default
 } from "../chunks/chunk.44SLIWKA.js";

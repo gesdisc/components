@@ -1,17 +1,17 @@
 import type { DefineComponent } from "vue";
 
-import type { TerraAccordion } from "../../components/accordion/accordion.component.js";
 import type { TerraAlert } from "../../components/alert/alert.component.js";
+import type { TerraAccordion } from "../../components/accordion/accordion.component.js";
 import type { TerraBrowseVariables } from "../../components/browse-variables/browse-variables.component.js";
 import type { TerraButton } from "../../components/button/button.component.js";
-import type { TerraCombobox } from "../../components/combobox/combobox.component.js";
 import type { TerraChip } from "../../components/chip/chip.component.js";
+import type { TerraCombobox } from "../../components/combobox/combobox.component.js";
 import type { TerraDataRods } from "../../components/data-rods/data-rods.component.js";
 import type { TerraDataSubsetter } from "../../components/data-subsetter/data-subsetter.component.js";
-import type { TerraDataSubsetterHistory } from "../../components/data-subsetter-history/data-subsetter-history.component.js";
 import type { TerraDatePicker } from "../../components/date-picker/date-picker.component.js";
 import type { TerraDateRangeSlider } from "../../components/date-range-slider/date-range-slider.component.js";
 import type { TerraDialog } from "../../components/dialog/dialog.component.js";
+import type { TerraDataSubsetterHistory } from "../../components/data-subsetter-history/data-subsetter-history.component.js";
 import type { TerraIcon } from "../../components/icon/icon.component.js";
 import type { TerraLoader } from "../../components/loader/loader.component.js";
 import type { TerraLogin } from "../../components/login/login.component.js";
@@ -24,18 +24,6 @@ import type { TerraTimeAverageMap } from "../../components/time-average-map/time
 import type { TerraTimeSeries, CustomEvent } from "../../components/time-series/time-series.component.js";
 import type { TerraVariableCombobox } from "../../components/variable-combobox/variable-combobox.component.js";
 import type { TerraVariableKeywordSearch } from "../../components/variable-keyword-search/variable-keyword-search.component.js";
-
-type TerraAccordionProps = {
-  /** The summary/header for the accordion. Use the property for simple text, or the slot for custom content. */
-  summary?: TerraAccordion["summary"];
-  /** Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction. */
-  open?: TerraAccordion["open"];
-  /**  */
-  showArrow?: TerraAccordion["showArrow"];
-
-  /** emitted when the accordion opens or closes */
-  onTerraAccordionToggle?: (e: CustomEvent<never>) => void;
-};
 
 type TerraAlertProps = {
   /** Indicates whether or not the alert is open. You can toggle this attribute to show and hide the alert, or you can
@@ -64,6 +52,18 @@ Typically used to indicate the remaining time before a whole app refresh. */
   onTerraHide?: (e: CustomEvent<never>) => void;
   /** Emitted after the alert closes and all animations are complete. */
   onTerraAfterHide?: (e: CustomEvent<never>) => void;
+};
+
+type TerraAccordionProps = {
+  /** The summary/header for the accordion. Use the property for simple text, or the slot for custom content. */
+  summary?: TerraAccordion["summary"];
+  /** Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction. */
+  open?: TerraAccordion["open"];
+  /**  */
+  showArrow?: TerraAccordion["showArrow"];
+
+  /** emitted when the accordion opens or closes */
+  onTerraAccordionToggle?: (e: CustomEvent<never>) => void;
 };
 
 type TerraBrowseVariablesProps = {
@@ -149,6 +149,11 @@ value of this attribute must be an id of a form in the same document or shadow r
   validationMessage?: TerraButton["validationMessage"];
 };
 
+type TerraChipProps = {
+  /**  */
+  size?: TerraChip["size"];
+};
+
 type TerraComboboxProps = {
   /** Label the combobox with this. */
   label?: TerraCombobox["label"];
@@ -173,11 +178,6 @@ When hidden, still presents to screen readers. */
   query?: TerraCombobox["query"];
   /**  */
   searchResults?: TerraCombobox["searchResults"];
-};
-
-type TerraChipProps = {
-  /**  */
-  size?: TerraChip["size"];
 };
 
 type TerraDataRodsProps = {
@@ -258,26 +258,6 @@ type TerraDataSubsetterProps = {
   spatialPicker?: TerraDataSubsetter["spatialPicker"];
   /** called when a subset job enters a final state (e.g. successful, failed, completed_with_errors) */
   onTerraSubsetJobComplete?: (e: CustomEvent<never>) => void;
-};
-
-type TerraDataSubsetterHistoryProps = {
-  /**  */
-  label?: TerraDataSubsetterHistory["label"];
-  /**  */
-  "bearer-token"?: TerraDataSubsetterHistory["bearerToken"];
-  /** if a user has never done a subset request, by default they don't see the history panel at all
-this prop allows you to override that behavior and always show the history panel */
-  "always-show"?: TerraDataSubsetterHistory["alwaysShow"];
-  /**  */
-  collapsed?: TerraDataSubsetterHistory["collapsed"];
-  /**  */
-  selectedJob?: TerraDataSubsetterHistory["selectedJob"];
-  /**  */
-  hideCancelled?: TerraDataSubsetterHistory["hideCancelled"];
-  /**  */
-  dialog?: TerraDataSubsetterHistory["dialog"];
-  /**  */
-  _authController?: TerraDataSubsetterHistory["_authController"];
 };
 
 type TerraDatePickerProps = {
@@ -361,6 +341,26 @@ type TerraDialogProps = {
   onTerraDialogShow?: (e: CustomEvent<never>) => void;
   /** Emitted when the dialog closes. */
   onTerraDialogHide?: (e: CustomEvent<never>) => void;
+};
+
+type TerraDataSubsetterHistoryProps = {
+  /**  */
+  label?: TerraDataSubsetterHistory["label"];
+  /**  */
+  "bearer-token"?: TerraDataSubsetterHistory["bearerToken"];
+  /** if a user has never done a subset request, by default they don't see the history panel at all
+this prop allows you to override that behavior and always show the history panel */
+  "always-show"?: TerraDataSubsetterHistory["alwaysShow"];
+  /**  */
+  collapsed?: TerraDataSubsetterHistory["collapsed"];
+  /**  */
+  selectedJob?: TerraDataSubsetterHistory["selectedJob"];
+  /**  */
+  hideCancelled?: TerraDataSubsetterHistory["hideCancelled"];
+  /**  */
+  dialog?: TerraDataSubsetterHistory["dialog"];
+  /**  */
+  _authController?: TerraDataSubsetterHistory["_authController"];
 };
 
 type TerraIconProps = {
@@ -666,20 +666,6 @@ When hidden, still presents to screen readers. */
 
 export type CustomElements = {
   /**
-   * A collapsible content panel for showing and hiding content.
-   * ---
-   *
-   *
-   * ### **Events:**
-   *  - **terra-accordion-toggle** - emitted when the accordion opens or closes
-   *
-   * ### **Slots:**
-   *  - _default_ - The default slot for accordion content.
-   * - **summary** - The summary/header for the accordion (optional, overrides summary property)
-   */
-  "terra-accordion": DefineComponent<TerraAccordionProps>;
-
-  /**
    * Alerts are used to display important messages inline or as toast notifications.
    * ---
    *
@@ -706,6 +692,20 @@ export type CustomElements = {
    * - **message** - The container that wraps the alert's main content.
    */
   "terra-alert": DefineComponent<TerraAlertProps>;
+
+  /**
+   * A collapsible content panel for showing and hiding content.
+   * ---
+   *
+   *
+   * ### **Events:**
+   *  - **terra-accordion-toggle** - emitted when the accordion opens or closes
+   *
+   * ### **Slots:**
+   *  - _default_ - The default slot for accordion content.
+   * - **summary** - The summary/header for the accordion (optional, overrides summary property)
+   */
+  "terra-accordion": DefineComponent<TerraAccordionProps>;
 
   /**
    * Browse through the NASA CMR or Giovanni catalogs.
@@ -744,6 +744,16 @@ export type CustomElements = {
   "terra-button": DefineComponent<TerraButtonProps>;
 
   /**
+   * Used for contacts and tags
+   * ---
+   *
+   *
+   * ### **Slots:**
+   *  - _default_ - The chip's label.
+   */
+  "terra-chip": DefineComponent<TerraChipProps>;
+
+  /**
    * Fuzzy-search for combobox with list autocomplete.
    * ---
    *
@@ -760,16 +770,6 @@ export type CustomElements = {
    * - **listbox** - A `ul` that holds the clickable options.
    */
   "terra-combobox": DefineComponent<TerraComboboxProps>;
-
-  /**
-   * Used for contacts and tags
-   * ---
-   *
-   *
-   * ### **Slots:**
-   *  - _default_ - The chip's label.
-   */
-  "terra-chip": DefineComponent<TerraChipProps>;
 
   /**
    * A component for visualizing Hydrology Data Rods time series using the GES DISC Giovanni API
@@ -790,13 +790,6 @@ export type CustomElements = {
    *  - **terra-subset-job-complete** - called when a subset job enters a final state (e.g. successful, failed, completed_with_errors)
    */
   "terra-data-subsetter": DefineComponent<TerraDataSubsetterProps>;
-
-  /**
-   * Shows a floating panel with a user's recent data subset requests and their status, with quick access to results and re-submission.
-   * ---
-   *
-   */
-  "terra-data-subsetter-history": DefineComponent<TerraDataSubsetterHistoryProps>;
 
   /**
    * A date picker component that supports single date selection or date range selection.
@@ -842,6 +835,13 @@ export type CustomElements = {
    *  - _default_ - The dialog's main content
    */
   "terra-dialog": DefineComponent<TerraDialogProps>;
+
+  /**
+   * Shows a floating panel with a user's recent data subset requests and their status, with quick access to results and re-submission.
+   * ---
+   *
+   */
+  "terra-data-subsetter-history": DefineComponent<TerraDataSubsetterHistoryProps>;
 
   /**
    * Icons are symbols that can be used to represent various options within an application.
