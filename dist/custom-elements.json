@@ -4,6 +4,140 @@
   "modules": [
     {
       "kind": "javascript-module",
+      "path": "components/accordion/accordion.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TerraAccordion",
+          "slots": [
+            {
+              "description": "The default slot for accordion content.",
+              "name": ""
+            },
+            {
+              "description": "The summary/header for the accordion (optional, overrides summary property)",
+              "name": "summary"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "dependencies",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{\n        'terra-icon': TerraIcon,\n    }"
+            },
+            {
+              "kind": "field",
+              "name": "summary",
+              "type": {
+                "text": "string"
+              },
+              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
+              "attribute": "summary"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
+              "attribute": "open",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "showArrow",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "showArrow"
+            },
+            {
+              "kind": "method",
+              "name": "handleToggle",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "description": "emitted when the accordion opens or closes",
+              "name": "terra-accordion-toggle",
+              "reactName": "onTerraAccordionToggle",
+              "eventName": "TerraAccordionToggleEvent"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "summary",
+              "type": {
+                "text": "string"
+              },
+              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
+              "fieldName": "summary"
+            },
+            {
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
+              "fieldName": "open"
+            },
+            {
+              "name": "showArrow",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "showArrow"
+            }
+          ],
+          "superclass": {
+            "name": "TerraElement",
+            "module": "/src/internal/terra-element.js"
+          },
+          "summary": "A collapsible content panel for showing and hiding content.",
+          "tagNameWithoutPrefix": "accordion",
+          "tagName": "terra-accordion",
+          "customElement": true,
+          "jsDoc": "/**\n * @summary A collapsible content panel for showing and hiding content.\n * @documentation https://disc.gsfc.nasa.gov/components/accordion\n * @status experimental\n * @since 1.0\n *\n * The TerraAccordion component provides a simple, accessible way to show and hide content. It uses native <details> and <summary> elements for built-in accessibility and keyboard support. The summary/header can be set via the `summary` property for simple text, or via a named `summary` slot for custom content (such as icons or rich HTML). The open state can be controlled with the `open` property, which is reflected as an attribute.\n *\n * @slot - The default slot for accordion content.\n * @slot summary - The summary/header for the accordion (optional, overrides summary property)\n *\n * @property {string} summary - The summary/header for the accordion. Use the property for simple text, or the slot for custom content.\n * @property {boolean} open - Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.\n *\n * @event terra-accordion-toggle - emitted when the accordion opens or closes\n *\n * @dependency terra-icon\n */",
+          "documentation": "https://disc.gsfc.nasa.gov/components/accordion",
+          "status": "experimental",
+          "since": "1.0",
+          "dependencies": [
+            "terra-icon"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TerraAccordion",
+            "module": "components/accordion/accordion.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "components/alert/alert.js",
       "declarations": [
         {
@@ -299,140 +433,6 @@
           "declaration": {
             "name": "TerraAlert",
             "module": "components/alert/alert.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "components/accordion/accordion.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TerraAccordion",
-          "slots": [
-            {
-              "description": "The default slot for accordion content.",
-              "name": ""
-            },
-            {
-              "description": "The summary/header for the accordion (optional, overrides summary property)",
-              "name": "summary"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "dependencies",
-              "type": {
-                "text": "object"
-              },
-              "static": true,
-              "default": "{\n        'terra-icon': TerraIcon,\n    }"
-            },
-            {
-              "kind": "field",
-              "name": "summary",
-              "type": {
-                "text": "string"
-              },
-              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
-              "attribute": "summary"
-            },
-            {
-              "kind": "field",
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
-              "attribute": "open",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "showArrow",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "attribute": "showArrow"
-            },
-            {
-              "kind": "method",
-              "name": "handleToggle",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "description": "emitted when the accordion opens or closes",
-              "name": "terra-accordion-toggle",
-              "reactName": "onTerraAccordionToggle",
-              "eventName": "TerraAccordionToggleEvent"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "summary",
-              "type": {
-                "text": "string"
-              },
-              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
-              "fieldName": "summary"
-            },
-            {
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
-              "fieldName": "open"
-            },
-            {
-              "name": "showArrow",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "fieldName": "showArrow"
-            }
-          ],
-          "superclass": {
-            "name": "TerraElement",
-            "module": "/src/internal/terra-element.js"
-          },
-          "summary": "A collapsible content panel for showing and hiding content.",
-          "tagNameWithoutPrefix": "accordion",
-          "tagName": "terra-accordion",
-          "customElement": true,
-          "jsDoc": "/**\n * @summary A collapsible content panel for showing and hiding content.\n * @documentation https://disc.gsfc.nasa.gov/components/accordion\n * @status experimental\n * @since 1.0\n *\n * The TerraAccordion component provides a simple, accessible way to show and hide content. It uses native <details> and <summary> elements for built-in accessibility and keyboard support. The summary/header can be set via the `summary` property for simple text, or via a named `summary` slot for custom content (such as icons or rich HTML). The open state can be controlled with the `open` property, which is reflected as an attribute.\n *\n * @slot - The default slot for accordion content.\n * @slot summary - The summary/header for the accordion (optional, overrides summary property)\n *\n * @property {string} summary - The summary/header for the accordion. Use the property for simple text, or the slot for custom content.\n * @property {boolean} open - Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.\n *\n * @event terra-accordion-toggle - emitted when the accordion opens or closes\n *\n * @dependency terra-icon\n */",
-          "documentation": "https://disc.gsfc.nasa.gov/components/accordion",
-          "status": "experimental",
-          "since": "1.0",
-          "dependencies": [
-            "terra-icon"
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "TerraAccordion",
-            "module": "components/accordion/accordion.js"
           }
         }
       ]
@@ -2735,6 +2735,176 @@
     },
     {
       "kind": "javascript-module",
+      "path": "components/data-subsetter-history/data-subsetter-history.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TerraDataSubsetterHistory",
+          "members": [
+            {
+              "kind": "field",
+              "name": "dependencies",
+              "type": {
+                "text": "Record<string, typeof TerraElement>"
+              },
+              "static": true,
+              "default": "{\n        'terra-icon': TerraIcon,\n        'terra-data-subsetter': TerraDataSubsetter,\n        'terra-dialog': TerraDialog,\n    }"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "'History'",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "bearerToken",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "bearer-token"
+            },
+            {
+              "kind": "field",
+              "name": "alwaysShow",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "if a user has never done a subset request, by default they don't see the history panel at all\nthis prop allows you to override that behavior and always show the history panel",
+              "attribute": "always-show"
+            },
+            {
+              "kind": "field",
+              "name": "collapsed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "selectedJob",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hideCancelled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "dialog",
+              "type": {
+                "text": "TerraDialog"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "#controller",
+              "privacy": "private",
+              "default": "new DataSubsetterHistoryController(this)"
+            },
+            {
+              "kind": "field",
+              "name": "_authController",
+              "default": "new AuthController(this)"
+            },
+            {
+              "kind": "method",
+              "name": "toggleCollapsed",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#renderHistoryItems",
+              "parameters": [
+                {
+                  "name": "subsetJobs",
+                  "type": {
+                    "text": "SubsetJobs"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleHistoryItemClick",
+              "parameters": [
+                {
+                  "name": "job",
+                  "type": {
+                    "text": "SubsetJobStatus"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "'History'",
+              "fieldName": "label"
+            },
+            {
+              "name": "bearer-token",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "bearerToken"
+            },
+            {
+              "name": "always-show",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "if a user has never done a subset request, by default they don't see the history panel at all\nthis prop allows you to override that behavior and always show the history panel",
+              "fieldName": "alwaysShow"
+            }
+          ],
+          "superclass": {
+            "name": "TerraElement",
+            "module": "/src/internal/terra-element.js"
+          },
+          "summary": "Shows a floating panel with a user's recent data subset requests and their status, with quick access to results and re-submission.",
+          "tagNameWithoutPrefix": "data-subsetter-history",
+          "tagName": "terra-data-subsetter-history",
+          "customElement": true,
+          "jsDoc": "/**\n * @summary Shows a floating panel with a user's recent data subset requests and their status, with quick access to results and re-submission.\n * @documentation https://disc.gsfc.nasa.gov/components/data-subsetter-history\n * @status stable\n * @since 1.0\n *\n * @dependency terra-icon\n * @dependency terra-data-subsetter\n * @dependency terra-dialog\n */",
+          "documentation": "https://disc.gsfc.nasa.gov/components/data-subsetter-history",
+          "status": "stable",
+          "since": "1.0",
+          "dependencies": [
+            "terra-icon",
+            "terra-data-subsetter",
+            "terra-dialog"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TerraDataSubsetterHistory",
+            "module": "components/data-subsetter-history/data-subsetter-history.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "components/date-picker/date-picker.js",
       "declarations": [
         {
@@ -3562,176 +3732,6 @@
           "declaration": {
             "name": "TerraDialog",
             "module": "components/dialog/dialog.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "components/data-subsetter-history/data-subsetter-history.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TerraDataSubsetterHistory",
-          "members": [
-            {
-              "kind": "field",
-              "name": "dependencies",
-              "type": {
-                "text": "Record<string, typeof TerraElement>"
-              },
-              "static": true,
-              "default": "{\n        'terra-icon': TerraIcon,\n        'terra-data-subsetter': TerraDataSubsetter,\n        'terra-dialog': TerraDialog,\n    }"
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "'History'",
-              "attribute": "label"
-            },
-            {
-              "kind": "field",
-              "name": "bearerToken",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "bearer-token"
-            },
-            {
-              "kind": "field",
-              "name": "alwaysShow",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "if a user has never done a subset request, by default they don't see the history panel at all\nthis prop allows you to override that behavior and always show the history panel",
-              "attribute": "always-show"
-            },
-            {
-              "kind": "field",
-              "name": "collapsed",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true"
-            },
-            {
-              "kind": "field",
-              "name": "selectedJob",
-              "type": {
-                "text": "string | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "hideCancelled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true"
-            },
-            {
-              "kind": "field",
-              "name": "dialog",
-              "type": {
-                "text": "TerraDialog"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "#controller",
-              "privacy": "private",
-              "default": "new DataSubsetterHistoryController(this)"
-            },
-            {
-              "kind": "field",
-              "name": "_authController",
-              "default": "new AuthController(this)"
-            },
-            {
-              "kind": "method",
-              "name": "toggleCollapsed",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "#renderHistoryItems",
-              "parameters": [
-                {
-                  "name": "subsetJobs",
-                  "type": {
-                    "text": "SubsetJobs"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#handleHistoryItemClick",
-              "parameters": [
-                {
-                  "name": "job",
-                  "type": {
-                    "text": "SubsetJobStatus"
-                  }
-                }
-              ]
-            }
-          ],
-          "attributes": [
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "'History'",
-              "fieldName": "label"
-            },
-            {
-              "name": "bearer-token",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "bearerToken"
-            },
-            {
-              "name": "always-show",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "if a user has never done a subset request, by default they don't see the history panel at all\nthis prop allows you to override that behavior and always show the history panel",
-              "fieldName": "alwaysShow"
-            }
-          ],
-          "superclass": {
-            "name": "TerraElement",
-            "module": "/src/internal/terra-element.js"
-          },
-          "summary": "Shows a floating panel with a user's recent data subset requests and their status, with quick access to results and re-submission.",
-          "tagNameWithoutPrefix": "data-subsetter-history",
-          "tagName": "terra-data-subsetter-history",
-          "customElement": true,
-          "jsDoc": "/**\n * @summary Shows a floating panel with a user's recent data subset requests and their status, with quick access to results and re-submission.\n * @documentation https://disc.gsfc.nasa.gov/components/data-subsetter-history\n * @status stable\n * @since 1.0\n *\n * @dependency terra-icon\n * @dependency terra-data-subsetter\n * @dependency terra-dialog\n */",
-          "documentation": "https://disc.gsfc.nasa.gov/components/data-subsetter-history",
-          "status": "stable",
-          "since": "1.0",
-          "dependencies": [
-            "terra-icon",
-            "terra-data-subsetter",
-            "terra-dialog"
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "TerraDataSubsetterHistory",
-            "module": "components/data-subsetter-history/data-subsetter-history.js"
           }
         }
       ]

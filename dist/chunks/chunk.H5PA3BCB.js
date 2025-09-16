@@ -1,4 +1,8 @@
 import {
+  clearSelection,
+  walkToOption
+} from "./chunk.CRDKTZBT.js";
+import {
   c
 } from "./chunk.NFS2RDEX.js";
 import {
@@ -7,10 +11,6 @@ import {
 import {
   combobox_styles_default
 } from "./chunk.H2ZXIXPU.js";
-import {
-  clearSelection,
-  walkToOption
-} from "./chunk.CRDKTZBT.js";
 import {
   n as n2
 } from "./chunk.QFJLPXXJ.js";
