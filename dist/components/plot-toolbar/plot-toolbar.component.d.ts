@@ -6,6 +6,8 @@ import { type Data } from 'plotly.js-dist-min';
 import type TerraPlot from '../plot/plot.component.js';
 import TerraButton from '../button/button.component.js';
 import TerraIcon from '../icon/icon.component.js';
+import TerraMap from '../map/map.component.js';
+import { AuthController } from '../../auth/auth.controller.js';
 /**
  * @summary Short summary of the component's intended use.
  * @documentation https://disc.gsfc.nasa.gov/components/plot-toolbar
@@ -27,6 +29,7 @@ export default class TerraPlotToolbar extends TerraElement {
     static dependencies: {
         'terra-icon': typeof TerraIcon;
         'terra-button': typeof TerraButton;
+        'terra-map': typeof TerraMap;
     };
     catalogVariable: Variable;
     variableEntryId: string;
@@ -37,8 +40,12 @@ export default class TerraPlotToolbar extends TerraElement {
     endDate: string;
     cacheKey: string;
     dataType: DataType;
+    showLocation: boolean;
     activeMenuItem: MenuNames;
+    showLocationTooltip: boolean;
+    locationMapValue: any;
     menu: HTMLMenuElement;
+    _authController: AuthController<this>;
     handleFocus(_oldValue: MenuNames, newValue: MenuNames): void;
     closeMenu(): void;
     render(): import("lit-html/directive.js").DirectiveResult<typeof import("lit-html/directives/cache.js").CacheDirective>;

@@ -1,69 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json",
   "name": "@nasa-terra/components",
-  "version": "0.0.64",
+  "version": "0.0.100",
   "description-markup": "markdown",
   "contributions": {
     "html": {
       "elements": [
-        {
-          "name": "terra-accordion",
-          "description": "A collapsible content panel for showing and hiding content.\n---\n\n\n### **Events:**\n - **terra-accordion-toggle** - emitted when the accordion opens or closes\n\n### **Slots:**\n - _default_ - The default slot for accordion content.\n- **summary** - The summary/header for the accordion (optional, overrides summary property)",
-          "doc-url": "",
-          "attributes": [
-            {
-              "name": "summary",
-              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
-              "value": { "type": "string" }
-            },
-            {
-              "name": "open",
-              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
-              "value": { "type": "boolean", "default": "false" }
-            },
-            {
-              "name": "showArrow",
-              "value": { "type": "boolean", "default": "true" }
-            }
-          ],
-          "slots": [
-            {
-              "name": "",
-              "description": "The default slot for accordion content."
-            },
-            {
-              "name": "summary",
-              "description": "The summary/header for the accordion (optional, overrides summary property)"
-            }
-          ],
-          "events": [
-            {
-              "name": "terra-accordion-toggle",
-              "description": "emitted when the accordion opens or closes"
-            }
-          ],
-          "js": {
-            "properties": [
-              {
-                "name": "summary",
-                "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
-                "type": "string"
-              },
-              {
-                "name": "open",
-                "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
-                "type": "boolean"
-              },
-              { "name": "showArrow", "type": "boolean" }
-            ],
-            "events": [
-              {
-                "name": "terra-accordion-toggle",
-                "description": "emitted when the accordion opens or closes"
-              }
-            ]
-          }
-        },
         {
           "name": "terra-alert",
           "description": "Alerts are used to display important messages inline or as toast notifications.\n---\n\n\n### **Events:**\n - **terra-show** - Emitted when the alert opens.\n- **terra-after-show** - Emitted after the alert opens and all animations are complete.\n- **terra-hide** - Emitted when the alert closes.\n- **terra-after-hide** - Emitted after the alert closes and all animations are complete.\n\n### **Methods:**\n - **show()** - Shows the alert.\n- **hide()** - Hides the alert\n- **toast()** - Displays the alert as a toast notification. This will move the alert out of its position in the DOM and, when\ndismissed, it will be removed from the DOM completely. By storing a reference to the alert, you can reuse it by\ncalling this method again. The returned promise will resolve after the alert is hidden.\n\n### **Slots:**\n - _default_ - The alert's main content.\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.\n- **icon** - The container that wraps the optional icon.\n- **message** - The container that wraps the alert's main content.",
@@ -162,6 +104,99 @@
               {
                 "name": "terra-after-hide",
                 "description": "Emitted after the alert closes and all animations are complete."
+              }
+            ]
+          }
+        },
+        {
+          "name": "terra-browse-variables",
+          "description": "Browse through the NASA CMR or Giovanni catalogs.\n---\n",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "catalog",
+              "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
+              "value": { "type": "'giovanni'", "default": "'giovanni'" }
+            },
+            {
+              "name": "selected-variable-entry-ids",
+              "value": { "type": "string | undefined" }
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "catalog",
+                "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
+                "type": "'giovanni'"
+              },
+              {
+                "name": "selectedVariableEntryIds",
+                "type": "string | undefined"
+              },
+              { "name": "searchQuery", "type": "string" },
+              { "name": "selectedFacets", "type": "SelectedFacets" },
+              { "name": "selectedVariables", "type": "Variable[]" },
+              { "name": "showVariablesBrowse", "type": "boolean" }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "terra-accordion",
+          "description": "A collapsible content panel for showing and hiding content.\n---\n\n\n### **Events:**\n - **terra-accordion-toggle** - emitted when the accordion opens or closes\n\n### **Slots:**\n - _default_ - The default slot for accordion content.\n- **summary** - The summary/header for the accordion (optional, overrides summary property)",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "summary",
+              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
+              "value": { "type": "string" }
+            },
+            {
+              "name": "open",
+              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "showArrow",
+              "value": { "type": "boolean", "default": "true" }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "The default slot for accordion content."
+            },
+            {
+              "name": "summary",
+              "description": "The summary/header for the accordion (optional, overrides summary property)"
+            }
+          ],
+          "events": [
+            {
+              "name": "terra-accordion-toggle",
+              "description": "emitted when the accordion opens or closes"
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "summary",
+                "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
+                "type": "string"
+              },
+              {
+                "name": "open",
+                "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
+                "type": "boolean"
+              },
+              { "name": "showArrow", "type": "boolean" }
+            ],
+            "events": [
+              {
+                "name": "terra-accordion-toggle",
+                "description": "emitted when the accordion opens or closes"
               }
             ]
           }
@@ -466,135 +501,6 @@
           }
         },
         {
-          "name": "terra-browse-variables",
-          "description": "Browse through the NASA CMR or Giovanni catalogs.\n---\n",
-          "doc-url": "",
-          "attributes": [
-            {
-              "name": "catalog",
-              "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
-              "value": { "type": "'giovanni'", "default": "'giovanni'" }
-            },
-            {
-              "name": "selected-variable-entry-ids",
-              "value": { "type": "string | undefined" }
-            }
-          ],
-          "events": [],
-          "js": {
-            "properties": [
-              {
-                "name": "catalog",
-                "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
-                "type": "'giovanni'"
-              },
-              {
-                "name": "selectedVariableEntryIds",
-                "type": "string | undefined"
-              },
-              { "name": "searchQuery", "type": "string" },
-              { "name": "selectedFacets", "type": "SelectedFacets" },
-              { "name": "selectedVariables", "type": "Variable[]" },
-              { "name": "showVariablesBrowse", "type": "boolean" }
-            ],
-            "events": []
-          }
-        },
-        {
-          "name": "terra-data-rods",
-          "description": "A component for visualizing Hydrology Data Rods time series using the GES DISC Giovanni API\n---\n\n\n### **Events:**\n - **terra-date-range-change** - Emitted whenever the date range of the date slider is updated",
-          "doc-url": "",
-          "attributes": [
-            {
-              "name": "variable-entry-id",
-              "description": "a variable entry ID (ex: GPM_3IMERGHH_06_precipitationCal)",
-              "value": { "type": "string | undefined" }
-            },
-            {
-              "name": "collection",
-              "description": "a collection entry id (ex: GPM_3IMERGHH_06)\nonly required if you don't include a variableEntryId",
-              "value": { "type": "string | undefined" }
-            },
-            {
-              "name": "variable",
-              "description": "a variable short name to plot (ex: precipitationCal)\nonly required if you don't include a variableEntryId",
-              "value": { "type": "string | undefined" }
-            },
-            {
-              "name": "start-date",
-              "description": "The start date for the time series plot. (ex: 2021-01-01)",
-              "value": { "type": "string | undefined" }
-            },
-            {
-              "name": "end-date",
-              "description": "The end date for the time series plot. (ex: 2021-01-01)",
-              "value": { "type": "string | undefined" }
-            },
-            {
-              "name": "location",
-              "description": "The point location in \"lat,lon\" format.",
-              "value": { "type": "string | undefined" }
-            },
-            {
-              "name": "bearer-token",
-              "description": "The token to be used for authentication with remote servers.\nThe component provides the header \"Authorization: Bearer\" (the request header and authentication scheme).\nThe property's value will be inserted after \"Bearer\" (the authentication scheme).",
-              "value": { "type": "string" }
-            }
-          ],
-          "events": [
-            {
-              "name": "terra-date-range-change",
-              "description": "Emitted whenever the date range of the date slider is updated"
-            }
-          ],
-          "js": {
-            "properties": [
-              {
-                "name": "variableEntryId",
-                "description": "a variable entry ID (ex: GPM_3IMERGHH_06_precipitationCal)",
-                "type": "string | undefined"
-              },
-              {
-                "name": "collection",
-                "description": "a collection entry id (ex: GPM_3IMERGHH_06)\nonly required if you don't include a variableEntryId",
-                "type": "string | undefined"
-              },
-              {
-                "name": "variable",
-                "description": "a variable short name to plot (ex: precipitationCal)\nonly required if you don't include a variableEntryId",
-                "type": "string | undefined"
-              },
-              {
-                "name": "startDate",
-                "description": "The start date for the time series plot. (ex: 2021-01-01)",
-                "type": "string | undefined"
-              },
-              {
-                "name": "endDate",
-                "description": "The end date for the time series plot. (ex: 2021-01-01)",
-                "type": "string | undefined"
-              },
-              {
-                "name": "location",
-                "description": "The point location in \"lat,lon\" format.",
-                "type": "string | undefined"
-              },
-              {
-                "name": "bearerToken",
-                "description": "The token to be used for authentication with remote servers.\nThe component provides the header \"Authorization: Bearer\" (the request header and authentication scheme).\nThe property's value will be inserted after \"Bearer\" (the authentication scheme).",
-                "type": "string"
-              },
-              { "name": "catalogVariable", "type": "Variable" }
-            ],
-            "events": [
-              {
-                "name": "terra-date-range-change",
-                "description": "Emitted whenever the date range of the date slider is updated"
-              }
-            ]
-          }
-        },
-        {
           "name": "terra-combobox",
           "description": "Fuzzy-search for combobox with list autocomplete.\n---\n\n\n### **CSS Properties:**\n - **--host-height** - The height of the host element. _(default: undefined)_\n- **--help-height** - The height of the search help element. _(default: undefined)_\n- **--label-height** - The height of the input's label element. _(default: undefined)_\n\n### **CSS Parts:**\n - **base** - A `search` element, the component's base.\n- **combobox** - An `input` element used for searching.\n- **button** - A `button` used for toggling the listbox's visibility.\n- **listbox** - A `ul` that holds the clickable options.",
           "doc-url": "",
@@ -690,6 +596,101 @@
           }
         },
         {
+          "name": "terra-data-rods",
+          "description": "A component for visualizing Hydrology Data Rods time series using the GES DISC Giovanni API\n---\n\n\n### **Events:**\n - **terra-date-range-change** - Emitted whenever the date range of the date slider is updated",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "variable-entry-id",
+              "description": "a variable entry ID (ex: GPM_3IMERGHH_06_precipitationCal)",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "collection",
+              "description": "a collection entry id (ex: GPM_3IMERGHH_06)\nonly required if you don't include a variableEntryId",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "variable",
+              "description": "a variable short name to plot (ex: precipitationCal)\nonly required if you don't include a variableEntryId",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "start-date",
+              "description": "The start date for the time series plot. (ex: 2021-01-01)",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "end-date",
+              "description": "The end date for the time series plot. (ex: 2021-01-01)",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "location",
+              "description": "The point location in \"lat,lon\" format.",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "bearer-token",
+              "description": "The token to be used for authentication with remote servers.\nThe component provides the header \"Authorization: Bearer\" (the request header and authentication scheme).\nThe property's value will be inserted after \"Bearer\" (the authentication scheme).",
+              "value": { "type": "string" }
+            }
+          ],
+          "events": [
+            {
+              "name": "terra-date-range-change",
+              "description": "Emitted whenever the date range of the date slider is updated"
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "variableEntryId",
+                "description": "a variable entry ID (ex: GPM_3IMERGHH_06_precipitationCal)",
+                "type": "string | undefined"
+              },
+              {
+                "name": "collection",
+                "description": "a collection entry id (ex: GPM_3IMERGHH_06)\nonly required if you don't include a variableEntryId",
+                "type": "string | undefined"
+              },
+              {
+                "name": "variable",
+                "description": "a variable short name to plot (ex: precipitationCal)\nonly required if you don't include a variableEntryId",
+                "type": "string | undefined"
+              },
+              {
+                "name": "startDate",
+                "description": "The start date for the time series plot. (ex: 2021-01-01)",
+                "type": "string | undefined"
+              },
+              {
+                "name": "endDate",
+                "description": "The end date for the time series plot. (ex: 2021-01-01)",
+                "type": "string | undefined"
+              },
+              {
+                "name": "location",
+                "description": "The point location in \"lat,lon\" format.",
+                "type": "string | undefined"
+              },
+              {
+                "name": "bearerToken",
+                "description": "The token to be used for authentication with remote servers.\nThe component provides the header \"Authorization: Bearer\" (the request header and authentication scheme).\nThe property's value will be inserted after \"Bearer\" (the authentication scheme).",
+                "type": "string"
+              },
+              { "name": "catalogVariable", "type": "Variable" },
+              { "name": "_fetchVariableTask" }
+            ],
+            "events": [
+              {
+                "name": "terra-date-range-change",
+                "description": "Emitted whenever the date range of the date slider is updated"
+              }
+            ]
+          }
+        },
+        {
           "name": "terra-data-subsetter",
           "description": "Easily allow users to select, subset, and download NASA Earth science data collections with spatial, temporal, and variable filters.\n---\n\n\n### **Events:**\n - **terra-subset-job-complete** - called when a subset job enters a final state (e.g. successful, failed, completed_with_errors)",
           "doc-url": "",
@@ -701,6 +702,10 @@
             {
               "name": "show-collection-search",
               "value": { "type": "boolean | undefined", "default": "true" }
+            },
+            {
+              "name": "show-history-panel",
+              "value": { "type": "boolean | undefined", "default": "false" }
             },
             { "name": "job-id", "value": { "type": "string | undefined" } },
             {
@@ -718,6 +723,7 @@
             "properties": [
               { "name": "collectionEntryId", "type": "string | undefined" },
               { "name": "showCollectionSearch", "type": "boolean | undefined" },
+              { "name": "showHistoryPanel", "type": "boolean | undefined" },
               { "name": "jobId", "type": "string | undefined" },
               { "name": "bearerToken", "type": "string | undefined" },
               {
@@ -821,7 +827,7 @@
             },
             {
               "name": "allow-input",
-              "value": { "type": "boolean", "default": "false" }
+              "value": { "type": "boolean", "default": "true" }
             },
             {
               "name": "alt-format",
@@ -972,6 +978,11 @@
               "value": { "type": "string", "default": "'fit-content'" }
             },
             {
+              "name": "open",
+              "description": "used to set the dialog's open state",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
               "name": "click-outside-to-close",
               "description": "allow closing the dialog when clicking outside of it",
               "value": { "type": "boolean", "default": "true" }
@@ -1005,6 +1016,11 @@
                 "name": "width",
                 "description": "the width of the dialog",
                 "type": "string"
+              },
+              {
+                "name": "open",
+                "description": "used to set the dialog's open state",
+                "type": "boolean"
               },
               {
                 "name": "clickOutsideToClose",
@@ -1243,6 +1259,10 @@
               "name": "hide-point-selection",
               "value": { "type": "boolean | undefined" }
             },
+            {
+              "name": "staticMode",
+              "value": { "type": "boolean | undefined", "default": "false" }
+            },
             { "name": "value", "value": { "type": "any", "default": "[]" } }
           ],
           "events": [],
@@ -1283,6 +1303,7 @@
                 "type": "boolean | undefined"
               },
               { "name": "hidePointSelection", "type": "boolean | undefined" },
+              { "name": "staticMode", "type": "boolean | undefined" },
               { "name": "value", "type": "any" },
               { "name": "mapElement", "type": "HTMLDivElement" },
               { "name": "map" },
@@ -1349,7 +1370,11 @@
             { "name": "startDate", "value": { "type": "string" } },
             { "name": "endDate", "value": { "type": "string" } },
             { "name": "cacheKey", "value": { "type": "string" } },
-            { "name": "dataType", "value": { "type": "DataType" } }
+            { "name": "dataType", "value": { "type": "DataType" } },
+            {
+              "name": "show-location",
+              "value": { "type": "boolean", "default": "true" }
+            }
           ],
           "slots": [
             { "name": "", "description": "The default slot." },
@@ -1370,8 +1395,12 @@
               { "name": "endDate", "type": "string" },
               { "name": "cacheKey", "type": "string" },
               { "name": "dataType", "type": "DataType" },
+              { "name": "showLocation", "type": "boolean" },
               { "name": "activeMenuItem", "type": "MenuNames" },
-              { "name": "menu", "type": "HTMLMenuElement" }
+              { "name": "showLocationTooltip", "type": "boolean" },
+              { "name": "locationMapValue", "type": "any" },
+              { "name": "menu", "type": "HTMLMenuElement" },
+              { "name": "_authController" }
             ],
             "events": []
           }
@@ -1554,7 +1583,8 @@
               { "name": "mapValue", "type": "any" },
               { "name": "error", "type": "string" },
               { "name": "spatialInput", "type": "HTMLInputElement" },
-              { "name": "map", "type": "TerraMap" }
+              { "name": "map", "type": "TerraMap" },
+              { "name": "spatialPicker", "type": "HTMLElement" }
             ],
             "events": []
           }
@@ -1564,12 +1594,19 @@
           "description": "\n---\n",
           "doc-url": "",
           "attributes": [
-            { "name": "collection", "value": { "type": "string | undefined" } },
+            {
+              "name": "collection",
+              "description": "a collection entry id (ex: GPM_3IMERGHH_06)",
+              "value": { "type": "string | undefined" }
+            },
             { "name": "variable", "value": { "type": "string | undefined" } },
             { "name": "start-date", "value": { "type": "string | undefined" } },
             { "name": "end-date", "value": { "type": "string | undefined" } },
-            { "name": "location", "value": { "type": "string | undefined" } },
-            { "name": "bearer-token", "value": { "type": "string" } },
+            {
+              "name": "location",
+              "description": "The point location in \"lat,lon\" format.\nOr the bounding box in \"west,south,east,north\" format.",
+              "value": { "type": "string | undefined" }
+            },
             {
               "name": "long_name",
               "value": { "type": "string", "default": "''" }
@@ -1578,18 +1615,24 @@
           "events": [],
           "js": {
             "properties": [
-              { "name": "collection", "type": "string | undefined" },
+              {
+                "name": "collection",
+                "description": "a collection entry id (ex: GPM_3IMERGHH_06)",
+                "type": "string | undefined"
+              },
               { "name": "variable", "type": "string | undefined" },
               { "name": "startDate", "type": "string | undefined" },
               { "name": "endDate", "type": "string | undefined" },
-              { "name": "location", "type": "string | undefined" },
-              { "name": "bearerToken", "type": "string" },
+              {
+                "name": "location",
+                "description": "The point location in \"lat,lon\" format.\nOr the bounding box in \"west,south,east,north\" format.",
+                "type": "string | undefined"
+              },
               { "name": "long_name", "type": "string" },
               { "name": "activeMenuItem", "type": "any" },
               { "name": "catalogVariable", "type": "Variable" },
               { "name": "colormaps", "type": "array" },
               { "name": "colorMapName", "type": "string" },
-              { "name": "menu", "type": "HTMLMenuElement" },
               { "name": "_authController" },
               {
                 "name": "_fetchVariableTask",
@@ -1701,7 +1744,8 @@
                 "description": "stores the estimated",
                 "type": "number"
               },
-              { "name": "_authController" }
+              { "name": "_authController" },
+              { "name": "_fetchVariableTask" }
             ],
             "events": [
               {

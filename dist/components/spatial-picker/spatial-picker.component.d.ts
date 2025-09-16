@@ -68,16 +68,26 @@ export default class TerraSpatialPicker extends TerraElement {
     showMapOnFocus: boolean;
     mapValue: any;
     error: string;
+    private _popoverFlipped;
     spatialInput: HTMLInputElement;
     map: TerraMap;
+    spatialPicker: HTMLElement;
+    setValue(value: string): void;
     private _blur;
     private _focus;
     private _click;
+    /**
+     * The spatial picker will either be positioned above or below the input depending on the space available
+     * @returns
+     */
+    private _checkPopoverPosition;
     private _emitMapChange;
     open(): void;
     close(): void;
     private _handleMapChange;
     firstUpdated(): void;
+    private _handleResize;
+    disconnectedCallback(): void;
     renderMap(): import("lit-html").TemplateResult<1>;
     render(): import("lit-html").TemplateResult<1>;
     invalidateSize(): void;

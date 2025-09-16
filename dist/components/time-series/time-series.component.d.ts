@@ -79,8 +79,8 @@ export default class TerraTimeSeries extends TerraElement {
      */
     estimatedDataPoints: number;
     _authController: AuthController<this>;
+    _fetchVariableTask: import("@lit/task").Task<(string | undefined)[], void>;
     connectedCallback(): void;
     disconnectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
-    getVariableEntryId(): string | undefined;
 }

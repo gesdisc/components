@@ -4,415 +4,6 @@
   "modules": [
     {
       "kind": "javascript-module",
-      "path": "components/accordion/accordion.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TerraAccordion",
-          "slots": [
-            {
-              "description": "The default slot for accordion content.",
-              "name": ""
-            },
-            {
-              "description": "The summary/header for the accordion (optional, overrides summary property)",
-              "name": "summary"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "dependencies",
-              "type": {
-                "text": "object"
-              },
-              "static": true,
-              "default": "{\n        'terra-icon': TerraIcon,\n    }"
-            },
-            {
-              "kind": "field",
-              "name": "summary",
-              "type": {
-                "text": "string"
-              },
-              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
-              "attribute": "summary"
-            },
-            {
-              "kind": "field",
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
-              "attribute": "open",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "showArrow",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "attribute": "showArrow"
-            },
-            {
-              "kind": "method",
-              "name": "handleToggle",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "description": "emitted when the accordion opens or closes",
-              "name": "terra-accordion-toggle",
-              "reactName": "onTerraAccordionToggle",
-              "eventName": "TerraAccordionToggleEvent"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "summary",
-              "type": {
-                "text": "string"
-              },
-              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
-              "fieldName": "summary"
-            },
-            {
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
-              "fieldName": "open"
-            },
-            {
-              "name": "showArrow",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "fieldName": "showArrow"
-            }
-          ],
-          "superclass": {
-            "name": "TerraElement",
-            "module": "/src/internal/terra-element.js"
-          },
-          "summary": "A collapsible content panel for showing and hiding content.",
-          "tagNameWithoutPrefix": "accordion",
-          "tagName": "terra-accordion",
-          "customElement": true,
-          "jsDoc": "/**\n * @summary A collapsible content panel for showing and hiding content.\n * @documentation https://disc.gsfc.nasa.gov/components/accordion\n * @status experimental\n * @since 1.0\n *\n * The TerraAccordion component provides a simple, accessible way to show and hide content. It uses native <details> and <summary> elements for built-in accessibility and keyboard support. The summary/header can be set via the `summary` property for simple text, or via a named `summary` slot for custom content (such as icons or rich HTML). The open state can be controlled with the `open` property, which is reflected as an attribute.\n *\n * @slot - The default slot for accordion content.\n * @slot summary - The summary/header for the accordion (optional, overrides summary property)\n *\n * @property {string} summary - The summary/header for the accordion. Use the property for simple text, or the slot for custom content.\n * @property {boolean} open - Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.\n *\n * @event terra-accordion-toggle - emitted when the accordion opens or closes\n *\n * @dependency terra-icon\n */",
-          "documentation": "https://disc.gsfc.nasa.gov/components/accordion",
-          "status": "experimental",
-          "since": "1.0",
-          "dependencies": [
-            "terra-icon"
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "TerraAccordion",
-            "module": "components/accordion/accordion.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "components/browse-variables/browse-variables.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TerraBrowseVariables",
-          "members": [
-            {
-              "kind": "field",
-              "name": "dependencies",
-              "type": {
-                "text": "object"
-              },
-              "static": true,
-              "default": "{\n        'terra-variable-keyword-search': TerraVariableKeywordSearch,\n        'terra-button': TerraButton,\n        'terra-skeleton': TerraSkeleton,\n        'terra-icon': TerraIcon,\n        'terra-loader': TerraLoader,\n    }"
-            },
-            {
-              "kind": "field",
-              "name": "catalog",
-              "type": {
-                "text": "'giovanni'"
-              },
-              "default": "'giovanni'",
-              "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
-              "attribute": "catalog"
-            },
-            {
-              "kind": "field",
-              "name": "selectedVariableEntryIds",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "selected-variable-entry-ids",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "searchQuery",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "selectedFacets",
-              "type": {
-                "text": "SelectedFacets"
-              },
-              "default": "{}"
-            },
-            {
-              "kind": "field",
-              "name": "selectedVariables",
-              "type": {
-                "text": "Variable[]"
-              },
-              "default": "[]"
-            },
-            {
-              "kind": "field",
-              "name": "showVariablesBrowse",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "#controller",
-              "privacy": "private",
-              "default": "new BrowseVariablesController(this)"
-            },
-            {
-              "kind": "method",
-              "name": "handleSelectedVariablesChange"
-            },
-            {
-              "kind": "method",
-              "name": "reset"
-            },
-            {
-              "kind": "method",
-              "name": "handleObservationChange"
-            },
-            {
-              "kind": "method",
-              "name": "toggleFacetSelect",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "handleSearch",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "TerraVariableKeywordSearchChangeEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#selectFacetField",
-              "parameters": [
-                {
-                  "name": "facet",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "field",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "selectOneFieldAtATime",
-                  "default": "false",
-                  "type": {
-                    "text": "boolean"
-                  }
-                }
-              ],
-              "description": "given a field, ex: \"observations\": \"Model\", will add the field to any existing selected facets\nif \"selectedOneFieldAtATime\" is true, then we will only select that one field"
-            },
-            {
-              "kind": "method",
-              "name": "#clearFacet",
-              "parameters": [
-                {
-                  "name": "facet",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#unselectFacetField",
-              "parameters": [
-                {
-                  "name": "facet",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "field",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#handleVariableSelection",
-              "parameters": [
-                {
-                  "name": "variable",
-                  "type": {
-                    "text": "Variable"
-                  }
-                },
-                {
-                  "name": "checked",
-                  "type": {
-                    "text": "Boolean"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#renderCategorySelect"
-            },
-            {
-              "kind": "method",
-              "name": "#renderFacet",
-              "parameters": [
-                {
-                  "name": "facetKey",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "title",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "fields",
-                  "optional": true,
-                  "type": {
-                    "text": "FacetField[]"
-                  }
-                },
-                {
-                  "name": "open",
-                  "optional": true,
-                  "type": {
-                    "text": "boolean"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#renderVariablesBrowse"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "catalog",
-              "type": {
-                "text": "'giovanni'"
-              },
-              "default": "'giovanni'",
-              "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
-              "fieldName": "catalog"
-            },
-            {
-              "name": "selected-variable-entry-ids",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "selectedVariableEntryIds"
-            }
-          ],
-          "superclass": {
-            "name": "TerraElement",
-            "module": "/src/internal/terra-element.js"
-          },
-          "summary": "Browse through the NASA CMR or Giovanni catalogs.",
-          "tagNameWithoutPrefix": "browse-variables",
-          "tagName": "terra-browse-variables",
-          "customElement": true,
-          "jsDoc": "/**\n * @summary Browse through the NASA CMR or Giovanni catalogs.\n * @documentation https://disc.gsfc.nasa.gov/components/browse-variables\n * @status MVP\n * @since 1.0\n *\n * @emits terra-variables-change - emitted when the user selects or unselects variables\n *\n * @dependency terra-variable-keyword-search\n * @dependency terra-button\n * @dependency terra-skeleton\n * @dependency terra-icon\n * @dependency terra-loader\n */",
-          "documentation": "https://disc.gsfc.nasa.gov/components/browse-variables",
-          "status": "MVP",
-          "since": "1.0",
-          "dependencies": [
-            "terra-variable-keyword-search",
-            "terra-button",
-            "terra-skeleton",
-            "terra-icon",
-            "terra-loader"
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "TerraBrowseVariables",
-            "module": "components/browse-variables/browse-variables.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "components/alert/alert.js",
       "declarations": [
         {
@@ -708,6 +299,415 @@
           "declaration": {
             "name": "TerraAlert",
             "module": "components/alert/alert.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "components/browse-variables/browse-variables.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TerraBrowseVariables",
+          "members": [
+            {
+              "kind": "field",
+              "name": "dependencies",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{\n        'terra-variable-keyword-search': TerraVariableKeywordSearch,\n        'terra-button': TerraButton,\n        'terra-skeleton': TerraSkeleton,\n        'terra-icon': TerraIcon,\n        'terra-loader': TerraLoader,\n    }"
+            },
+            {
+              "kind": "field",
+              "name": "catalog",
+              "type": {
+                "text": "'giovanni'"
+              },
+              "default": "'giovanni'",
+              "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
+              "attribute": "catalog"
+            },
+            {
+              "kind": "field",
+              "name": "selectedVariableEntryIds",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "selected-variable-entry-ids",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "searchQuery",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "selectedFacets",
+              "type": {
+                "text": "SelectedFacets"
+              },
+              "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "selectedVariables",
+              "type": {
+                "text": "Variable[]"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "showVariablesBrowse",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "#controller",
+              "privacy": "private",
+              "default": "new BrowseVariablesController(this)"
+            },
+            {
+              "kind": "method",
+              "name": "handleSelectedVariablesChange"
+            },
+            {
+              "kind": "method",
+              "name": "reset"
+            },
+            {
+              "kind": "method",
+              "name": "handleObservationChange"
+            },
+            {
+              "kind": "method",
+              "name": "toggleFacetSelect",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleSearch",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "TerraVariableKeywordSearchChangeEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#selectFacetField",
+              "parameters": [
+                {
+                  "name": "facet",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "field",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "selectOneFieldAtATime",
+                  "default": "false",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "given a field, ex: \"observations\": \"Model\", will add the field to any existing selected facets\nif \"selectedOneFieldAtATime\" is true, then we will only select that one field"
+            },
+            {
+              "kind": "method",
+              "name": "#clearFacet",
+              "parameters": [
+                {
+                  "name": "facet",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#unselectFacetField",
+              "parameters": [
+                {
+                  "name": "facet",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "field",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#handleVariableSelection",
+              "parameters": [
+                {
+                  "name": "variable",
+                  "type": {
+                    "text": "Variable"
+                  }
+                },
+                {
+                  "name": "checked",
+                  "type": {
+                    "text": "Boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#renderCategorySelect"
+            },
+            {
+              "kind": "method",
+              "name": "#renderFacet",
+              "parameters": [
+                {
+                  "name": "facetKey",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "title",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "fields",
+                  "optional": true,
+                  "type": {
+                    "text": "FacetField[]"
+                  }
+                },
+                {
+                  "name": "open",
+                  "optional": true,
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#renderVariablesBrowse"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "catalog",
+              "type": {
+                "text": "'giovanni'"
+              },
+              "default": "'giovanni'",
+              "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
+              "fieldName": "catalog"
+            },
+            {
+              "name": "selected-variable-entry-ids",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "selectedVariableEntryIds"
+            }
+          ],
+          "superclass": {
+            "name": "TerraElement",
+            "module": "/src/internal/terra-element.js"
+          },
+          "summary": "Browse through the NASA CMR or Giovanni catalogs.",
+          "tagNameWithoutPrefix": "browse-variables",
+          "tagName": "terra-browse-variables",
+          "customElement": true,
+          "jsDoc": "/**\n * @summary Browse through the NASA CMR or Giovanni catalogs.\n * @documentation https://disc.gsfc.nasa.gov/components/browse-variables\n * @status MVP\n * @since 1.0\n *\n * @emits terra-variables-change - emitted when the user selects or unselects variables\n *\n * @dependency terra-variable-keyword-search\n * @dependency terra-button\n * @dependency terra-skeleton\n * @dependency terra-icon\n * @dependency terra-loader\n */",
+          "documentation": "https://disc.gsfc.nasa.gov/components/browse-variables",
+          "status": "MVP",
+          "since": "1.0",
+          "dependencies": [
+            "terra-variable-keyword-search",
+            "terra-button",
+            "terra-skeleton",
+            "terra-icon",
+            "terra-loader"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TerraBrowseVariables",
+            "module": "components/browse-variables/browse-variables.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "components/accordion/accordion.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TerraAccordion",
+          "slots": [
+            {
+              "description": "The default slot for accordion content.",
+              "name": ""
+            },
+            {
+              "description": "The summary/header for the accordion (optional, overrides summary property)",
+              "name": "summary"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "dependencies",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{\n        'terra-icon': TerraIcon,\n    }"
+            },
+            {
+              "kind": "field",
+              "name": "summary",
+              "type": {
+                "text": "string"
+              },
+              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
+              "attribute": "summary"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
+              "attribute": "open",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "showArrow",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "showArrow"
+            },
+            {
+              "kind": "method",
+              "name": "handleToggle",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "description": "emitted when the accordion opens or closes",
+              "name": "terra-accordion-toggle",
+              "reactName": "onTerraAccordionToggle",
+              "eventName": "TerraAccordionToggleEvent"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "summary",
+              "type": {
+                "text": "string"
+              },
+              "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
+              "fieldName": "summary"
+            },
+            {
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
+              "fieldName": "open"
+            },
+            {
+              "name": "showArrow",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "showArrow"
+            }
+          ],
+          "superclass": {
+            "name": "TerraElement",
+            "module": "/src/internal/terra-element.js"
+          },
+          "summary": "A collapsible content panel for showing and hiding content.",
+          "tagNameWithoutPrefix": "accordion",
+          "tagName": "terra-accordion",
+          "customElement": true,
+          "jsDoc": "/**\n * @summary A collapsible content panel for showing and hiding content.\n * @documentation https://disc.gsfc.nasa.gov/components/accordion\n * @status experimental\n * @since 1.0\n *\n * The TerraAccordion component provides a simple, accessible way to show and hide content. It uses native <details> and <summary> elements for built-in accessibility and keyboard support. The summary/header can be set via the `summary` property for simple text, or via a named `summary` slot for custom content (such as icons or rich HTML). The open state can be controlled with the `open` property, which is reflected as an attribute.\n *\n * @slot - The default slot for accordion content.\n * @slot summary - The summary/header for the accordion (optional, overrides summary property)\n *\n * @property {string} summary - The summary/header for the accordion. Use the property for simple text, or the slot for custom content.\n * @property {boolean} open - Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.\n *\n * @event terra-accordion-toggle - emitted when the accordion opens or closes\n *\n * @dependency terra-icon\n */",
+          "documentation": "https://disc.gsfc.nasa.gov/components/accordion",
+          "status": "experimental",
+          "since": "1.0",
+          "dependencies": [
+            "terra-icon"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "TerraAccordion",
+            "module": "components/accordion/accordion.js"
           }
         }
       ]
@@ -1934,19 +1934,7 @@
             },
             {
               "kind": "field",
-              "name": "#catalog",
-              "privacy": "private",
-              "default": "new GiovanniVariableCatalog()"
-            },
-            {
-              "kind": "field",
-              "name": "#fetchVariableTask",
-              "privacy": "private",
-              "default": "new Task(this, {\n        task: async (_args, { signal }) => {\n            const variableEntryId = this.#getVariableEntryId()\n\n            console.debug('fetch variable ', variableEntryId)\n\n            if (!variableEntryId) {\n                return\n            }\n\n            const variable = await this.#catalog.getVariable(variableEntryId, {\n                signal,\n            })\n\n            console.debug('found variable ', variable)\n\n            if (!variable) {\n                return\n            }\n\n            this.startDate =\n                this.startDate ?? variable.exampleInitialStartDate?.toISOString()\n            this.endDate =\n                this.endDate ?? variable.exampleInitialEndDate?.toISOString()\n            this.catalogVariable = variable\n        },\n        args: () => [this.variableEntryId, this.collection, this.variable],\n    })"
-            },
-            {
-              "kind": "method",
-              "name": "#getVariableEntryId"
+              "name": "_fetchVariableTask"
             },
             {
               "kind": "method",
@@ -2105,7 +2093,7 @@
                 "text": "Record<string, typeof TerraElement>"
               },
               "static": true,
-              "default": "{\n        'terra-accordion': TerraAccordion,\n        'terra-date-picker': TerraDatePicker,\n        'terra-icon': TerraIcon,\n        'terra-spatial-picker': TerraSpatialPicker,\n        'terra-login': TerraLogin,\n    }"
+              "default": "{\n        'terra-accordion': TerraAccordion,\n        'terra-date-picker': TerraDatePicker,\n        'terra-icon': TerraIcon,\n        'terra-spatial-picker': TerraSpatialPicker,\n        'terra-login': TerraLogin,\n        'terra-loader': TerraLoader,\n    }"
             },
             {
               "kind": "field",
@@ -2124,6 +2112,16 @@
               },
               "default": "true",
               "attribute": "show-collection-search",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "showHistoryPanel",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "attribute": "show-history-panel",
               "reflects": true
             },
             {
@@ -2682,6 +2680,14 @@
               "fieldName": "showCollectionSearch"
             },
             {
+              "name": "show-history-panel",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "fieldName": "showHistoryPanel"
+            },
+            {
               "name": "job-id",
               "type": {
                 "text": "string | undefined"
@@ -3001,7 +3007,7 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
+              "default": "true",
               "attribute": "allow-input"
             },
             {
@@ -3195,7 +3201,7 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "false",
+              "default": "true",
               "fieldName": "allowInput"
             },
             {
@@ -3589,6 +3595,17 @@
             },
             {
               "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "used to set the dialog's open state",
+              "attribute": "open",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "clickOutsideToClose",
               "type": {
                 "text": "boolean"
@@ -3619,16 +3636,7 @@
             },
             {
               "kind": "method",
-              "name": "hide",
-              "parameters": [
-                {
-                  "name": "reason",
-                  "optional": true,
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ]
+              "name": "hide"
             },
             {
               "kind": "method",
@@ -3674,6 +3682,15 @@
               "default": "'fit-content'",
               "description": "the width of the dialog",
               "fieldName": "width"
+            },
+            {
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "used to set the dialog's open state",
+              "fieldName": "open"
             },
             {
               "name": "click-outside-to-close",
@@ -4244,6 +4261,15 @@
             },
             {
               "kind": "field",
+              "name": "staticMode",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "attribute": "staticMode"
+            },
+            {
+              "kind": "field",
               "name": "value",
               "type": {
                 "text": "any"
@@ -4382,6 +4408,14 @@
                 "text": "boolean | undefined"
               },
               "fieldName": "hidePointSelection"
+            },
+            {
+              "name": "staticMode",
+              "type": {
+                "text": "boolean | undefined"
+              },
+              "default": "false",
+              "fieldName": "staticMode"
             },
             {
               "name": "value",
@@ -4599,7 +4633,7 @@
                 "text": "object"
               },
               "static": true,
-              "default": "{\n        'terra-icon': TerraIcon,\n        'terra-button': TerraButton,\n    }"
+              "default": "{\n        'terra-icon': TerraIcon,\n        'terra-button': TerraButton,\n        'terra-map': TerraMap,\n    }"
             },
             {
               "kind": "field",
@@ -4675,9 +4709,43 @@
             },
             {
               "kind": "field",
+              "name": "showLocation",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "show-location"
+            },
+            {
+              "kind": "field",
               "name": "activeMenuItem",
               "type": {
                 "text": "MenuNames"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "showLocationTooltip",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "locationMapValue",
+              "type": {
+                "text": "any"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "#tooltipTimeout",
+              "privacy": "private",
+              "type": {
+                "text": "number | null"
               },
               "default": "null"
             },
@@ -4687,6 +4755,11 @@
               "type": {
                 "text": "HTMLMenuElement"
               }
+            },
+            {
+              "kind": "field",
+              "name": "_authController",
+              "default": "new AuthController(this)"
             },
             {
               "kind": "method",
@@ -4709,6 +4782,18 @@
             {
               "kind": "method",
               "name": "closeMenu"
+            },
+            {
+              "kind": "method",
+              "name": "#handleLocationMouseEnter"
+            },
+            {
+              "kind": "method",
+              "name": "#handleLocationMouseLeave"
+            },
+            {
+              "kind": "method",
+              "name": "#getLocationIcon"
             },
             {
               "kind": "method",
@@ -4753,6 +4838,42 @@
             {
               "kind": "method",
               "name": "#handleJupyterNotebookClick"
+            },
+            {
+              "kind": "method",
+              "name": "#sendDataToJupyterNotebook",
+              "parameters": [
+                {
+                  "name": "jupyterWindow",
+                  "type": {
+                    "text": "Window"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#sendTimeSeriesDataToJupyterNotebook",
+              "parameters": [
+                {
+                  "name": "jupyterWindow",
+                  "type": {
+                    "text": "Window"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#sendMapDataToJupyterNotebook",
+              "parameters": [
+                {
+                  "name": "jupyterWindow",
+                  "type": {
+                    "text": "Window"
+                  }
+                }
+              ]
             },
             {
               "kind": "method",
@@ -4863,6 +4984,14 @@
                 "text": "DataType"
               },
               "fieldName": "dataType"
+            },
+            {
+              "name": "show-location",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "showLocation"
             }
           ],
           "superclass": {
@@ -5175,6 +5304,15 @@
             },
             {
               "kind": "field",
+              "name": "_popoverFlipped",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
               "name": "spatialInput",
               "type": {
                 "text": "HTMLInputElement"
@@ -5186,6 +5324,25 @@
               "type": {
                 "text": "TerraMap"
               }
+            },
+            {
+              "kind": "field",
+              "name": "spatialPicker",
+              "type": {
+                "text": "HTMLElement"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "setValue",
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
             },
             {
               "kind": "method",
@@ -5212,6 +5369,17 @@
             },
             {
               "kind": "method",
+              "name": "_checkPopoverPosition",
+              "privacy": "private",
+              "description": "The spatial picker will either be positioned above or below the input depending on the space available",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "method",
               "name": "_emitMapChange",
               "privacy": "private"
             },
@@ -5235,6 +5403,11 @@
                   }
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleResize",
+              "privacy": "private"
             },
             {
               "kind": "method",
@@ -5418,7 +5591,7 @@
                 "text": "object"
               },
               "static": true,
-              "default": "{\n        'terra-button': TerraButton,\n        'terra-icon': TerraIcon,\n        'terra-plot-toolbar': TerraPlotToolbar,\n    }"
+              "default": "{\n        'terra-button': TerraButton,\n        'terra-icon': TerraIcon,\n        'terra-plot-toolbar': TerraPlotToolbar,\n        'terra-loader': TerraLoader,\n    }"
             },
             {
               "kind": "field",
@@ -5426,6 +5599,7 @@
               "type": {
                 "text": "string | undefined"
               },
+              "description": "a collection entry id (ex: GPM_3IMERGHH_06)",
               "attribute": "collection",
               "reflects": true
             },
@@ -5462,16 +5636,9 @@
               "type": {
                 "text": "string | undefined"
               },
+              "description": "The point location in \"lat,lon\" format.\nOr the bounding box in \"west,south,east,north\" format.",
               "attribute": "location",
               "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "bearerToken",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "bearer-token"
             },
             {
               "kind": "field",
@@ -5503,7 +5670,7 @@
               "type": {
                 "text": "array"
               },
-              "default": "[\n        'jet', 'hsv', 'hot', 'cool', 'spring', 'summer', 'autumn', 'winter', 'bone',\n        'copper', 'greys', 'YIGnBu', 'greens', 'YIOrRd', 'bluered', 'RdBu', 'picnic',\n        'rainbow', 'portland', 'blackbody', 'earth', 'electric', 'viridis', 'inferno',\n        'magma', 'plasma', 'warm', 'cool', 'bathymetry', 'cdom', 'chlorophyll', 'density',\n        'fressurface-blue', 'freesurface-red', 'oxygen', 'par', 'phase', 'salinity',\n        'temperature', 'turbidity', 'velocity-blue', 'velocity-green', 'cubhelix'\n    ]"
+              "default": "[\n        'jet',\n        'hsv',\n        'hot',\n        'cool',\n        'spring',\n        'summer',\n        'autumn',\n        'winter',\n        'bone',\n        'copper',\n        'greys',\n        'YIGnBu',\n        'greens',\n        'YIOrRd',\n        'bluered',\n        'RdBu',\n        'picnic',\n        'rainbow',\n        'portland',\n        'blackbody',\n        'earth',\n        'electric',\n        'viridis',\n        'inferno',\n        'magma',\n        'plasma',\n        'warm',\n        'cool',\n        'bathymetry',\n        'cdom',\n        'chlorophyll',\n        'density',\n        'fressurface-blue',\n        'freesurface-red',\n        'oxygen',\n        'par',\n        'phase',\n        'salinity',\n        'temperature',\n        'turbidity',\n        'velocity-blue',\n        'velocity-green',\n        'cubhelix',\n    ]"
             },
             {
               "kind": "field",
@@ -5515,42 +5682,11 @@
             },
             {
               "kind": "field",
-              "name": "menu",
-              "type": {
-                "text": "HTMLMenuElement"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "handleFocus",
-              "parameters": [
-                {
-                  "name": "_oldValue",
-                  "type": {
-                    "text": "any"
-                  }
-                },
-                {
-                  "name": "newValue",
-                  "type": {
-                    "text": "any"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "field",
               "name": "#controller",
               "privacy": "private",
               "type": {
                 "text": "TimeAvgMapController"
               }
-            },
-            {
-              "kind": "field",
-              "name": "#catalog",
-              "privacy": "private",
-              "default": "new GiovanniVariableCatalog()"
             },
             {
               "kind": "field",
@@ -5578,12 +5714,23 @@
             {
               "kind": "field",
               "name": "_fetchVariableTask",
-              "default": "new Task(this, {\n        task: async (_args, { signal }) => {\n            const variableEntryId = this.getVariableEntryId()\n\n            if (!variableEntryId) {\n                return\n            }\n\n            console.debug('Fetch variable ', variableEntryId)\n\n            const variable = await this.#catalog.getVariable(variableEntryId, {\n                signal,\n            })\n\n            console.debug('Found variable ', variable)\n\n            if (!variable) {\n                return\n            }\n\n            // if we don't have dates, use the example initial dates, which is the last 7 days of data\n            this.startDate =\n                this.startDate ?? variable.exampleInitialStartDate?.toISOString()\n            this.endDate =\n                this.endDate ?? variable.exampleInitialEndDate?.toISOString()\n\n            this.catalogVariable = variable\n        },\n        args: () => [this.collection, this.variable],\n        autoRun: false\n    })",
               "description": "anytime the collection or variable changes, we'll fetch the variable from the catalog to get all of it's metadata"
             },
             {
               "kind": "method",
-              "name": "updateGeoTIFFLayer"
+              "name": "handlePropertyChange"
+            },
+            {
+              "kind": "method",
+              "name": "updateGeoTIFFLayer",
+              "parameters": [
+                {
+                  "name": "blob",
+                  "type": {
+                    "text": "Blob"
+                  }
+                }
+              ]
             },
             {
               "kind": "method",
@@ -5605,10 +5752,6 @@
                   }
                 }
               ]
-            },
-            {
-              "kind": "method",
-              "name": "getVariableEntryId"
             },
             {
               "kind": "method",
@@ -5705,6 +5848,11 @@
                   }
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "#abortDataLoad",
+              "description": "aborts the underlying data loading task, which cancels the network request"
             }
           ],
           "attributes": [
@@ -5713,6 +5861,7 @@
               "type": {
                 "text": "string | undefined"
               },
+              "description": "a collection entry id (ex: GPM_3IMERGHH_06)",
               "fieldName": "collection"
             },
             {
@@ -5741,14 +5890,8 @@
               "type": {
                 "text": "string | undefined"
               },
+              "description": "The point location in \"lat,lon\" format.\nOr the bounding box in \"west,south,east,north\" format.",
               "fieldName": "location"
-            },
-            {
-              "name": "bearer-token",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "bearerToken"
             },
             {
               "name": "long_name",
@@ -5925,20 +6068,12 @@
             },
             {
               "kind": "field",
-              "name": "#catalog",
-              "privacy": "private",
-              "default": "new GiovanniVariableCatalog()"
-            },
-            {
-              "kind": "field",
               "name": "_authController",
               "default": "new AuthController(this)"
             },
             {
               "kind": "field",
-              "name": "#fetchVariableTask",
-              "privacy": "private",
-              "default": "new Task(this, {\n        task: async (_args, { signal }) => {\n            const variableEntryId = this.getVariableEntryId()\n\n            console.debug('fetch variable ', variableEntryId)\n\n            if (!variableEntryId) {\n                return\n            }\n\n            const variable = await this.#catalog.getVariable(variableEntryId, {\n                signal,\n            })\n\n            console.debug('found variable ', variable)\n\n            if (!variable) {\n                return\n            }\n\n            this.startDate =\n                this.startDate ?? variable.exampleInitialStartDate?.toISOString()\n            this.endDate =\n                this.endDate ?? variable.exampleInitialEndDate?.toISOString()\n\n            this.catalogVariable = variable\n        },\n        args: () => [this.variableEntryId, this.collection, this.variable],\n    })"
+              "name": "_fetchVariableTask"
             },
             {
               "kind": "field",
@@ -5969,10 +6104,6 @@
                   }
                 }
               ]
-            },
-            {
-              "kind": "method",
-              "name": "getVariableEntryId"
             },
             {
               "kind": "method",
@@ -6860,7 +6991,7 @@
   "package": {
     "name": "@nasa-terra/components",
     "description": "A collection of NASA Earthdata components",
-    "version": "0.0.64",
+    "version": "0.0.100",
     "author": "NASA GES DISC <https://disc.gsfc.nasa.gov>",
     "homepage": "https://github.com/nasa/terra-ui-components",
     "license": "MIT"

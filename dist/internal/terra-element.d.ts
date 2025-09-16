@@ -17,6 +17,7 @@ export default class TerraElement extends LitElement {
     dir: string;
     lang: string;
     environment?: Environment;
+    bearerToken?: string;
     /** Emits a custom event with more convenient defaults. */
     emit<T extends string & keyof EventTypesWithoutRequiredDetail>(name: EventTypeDoesNotRequireDetail<T>, options?: SlEventInit<T> | undefined): GetCustomEventType<T>;
     emit<T extends string & keyof EventTypesWithRequiredDetail>(name: EventTypeRequiresDetail<T>, options: SlEventInit<T>): GetCustomEventType<T>;

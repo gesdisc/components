@@ -1,7 +1,7 @@
 import {
   Environment,
   getEnvironment
-} from "../chunks/chunk.BXZTBSH6.js";
+} from "../chunks/chunk.AISR4ZJL.js";
 import "../chunks/chunk.ES5U5CWG.js";
 export {
   Environment,

@@ -3,47 +3,6 @@
   "version": 1.1,
   "tags": [
     {
-      "name": "terra-accordion",
-      "description": "A collapsible content panel for showing and hiding content.\n---\n\n\n### **Events:**\n - **terra-accordion-toggle** - emitted when the accordion opens or closes\n\n### **Slots:**\n - _default_ - The default slot for accordion content.\n- **summary** - The summary/header for the accordion (optional, overrides summary property)",
-      "attributes": [
-        {
-          "name": "summary",
-          "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
-          "values": []
-        },
-        {
-          "name": "open",
-          "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
-          "values": []
-        },
-        { "name": "showArrow", "values": [] }
-      ],
-      "references": [
-        {
-          "name": "Documentation",
-          "url": "https://disc.gsfc.nasa.gov/components/accordion"
-        }
-      ]
-    },
-    {
-      "name": "terra-browse-variables",
-      "description": "Browse through the NASA CMR or Giovanni catalogs.\n---\n",
-      "attributes": [
-        {
-          "name": "catalog",
-          "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
-          "values": [{ "name": "giovanni" }]
-        },
-        { "name": "selected-variable-entry-ids", "values": [] }
-      ],
-      "references": [
-        {
-          "name": "Documentation",
-          "url": "https://disc.gsfc.nasa.gov/components/browse-variables"
-        }
-      ]
-    },
-    {
       "name": "terra-alert",
       "description": "Alerts are used to display important messages inline or as toast notifications.\n---\n\n\n### **Events:**\n - **terra-show** - Emitted when the alert opens.\n- **terra-after-show** - Emitted after the alert opens and all animations are complete.\n- **terra-hide** - Emitted when the alert closes.\n- **terra-after-hide** - Emitted after the alert closes and all animations are complete.\n\n### **Methods:**\n - **show()** - Shows the alert.\n- **hide()** - Hides the alert\n- **toast()** - Displays the alert as a toast notification. This will move the alert out of its position in the DOM and, when\ndismissed, it will be removed from the DOM completely. By storing a reference to the alert, you can reuse it by\ncalling this method again. The returned promise will resolve after the alert is hidden.\n\n### **Slots:**\n - _default_ - The alert's main content.\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.\n- **icon** - The container that wraps the optional icon.\n- **message** - The container that wraps the alert's main content.",
       "attributes": [
@@ -84,6 +43,47 @@
         {
           "name": "Documentation",
           "url": "https://disc.gsfc.nasa.gov/components/alert"
+        }
+      ]
+    },
+    {
+      "name": "terra-browse-variables",
+      "description": "Browse through the NASA CMR or Giovanni catalogs.\n---\n",
+      "attributes": [
+        {
+          "name": "catalog",
+          "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
+          "values": [{ "name": "giovanni" }]
+        },
+        { "name": "selected-variable-entry-ids", "values": [] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/browse-variables"
+        }
+      ]
+    },
+    {
+      "name": "terra-accordion",
+      "description": "A collapsible content panel for showing and hiding content.\n---\n\n\n### **Events:**\n - **terra-accordion-toggle** - emitted when the accordion opens or closes\n\n### **Slots:**\n - _default_ - The default slot for accordion content.\n- **summary** - The summary/header for the accordion (optional, overrides summary property)",
+      "attributes": [
+        {
+          "name": "summary",
+          "description": "The summary/header for the accordion. Use the property for simple text, or the slot for custom content.",
+          "values": []
+        },
+        {
+          "name": "open",
+          "description": "Whether the accordion is open or not. This property is reflected as an attribute and can be controlled programmatically or by user interaction.",
+          "values": []
+        },
+        { "name": "showArrow", "values": [] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/accordion"
         }
       ]
     },
@@ -372,6 +372,7 @@
       "attributes": [
         { "name": "collection-entry-id", "values": [] },
         { "name": "show-collection-search", "values": [] },
+        { "name": "show-history-panel", "values": [] },
         { "name": "job-id", "values": [] },
         { "name": "bearer-token", "values": [] }
       ],
@@ -475,6 +476,11 @@
         {
           "name": "width",
           "description": "the width of the dialog",
+          "values": []
+        },
+        {
+          "name": "open",
+          "description": "used to set the dialog's open state",
           "values": []
         },
         {
@@ -615,6 +621,7 @@
         },
         { "name": "hide-bounding-box-selection", "values": [] },
         { "name": "hide-point-selection", "values": [] },
+        { "name": "staticMode", "values": [] },
         { "name": "value", "values": [] }
       ],
       "references": [
@@ -655,7 +662,8 @@
         { "name": "startDate", "values": [] },
         { "name": "endDate", "values": [] },
         { "name": "cacheKey", "values": [] },
-        { "name": "dataType", "values": [{ "name": "DataType" }] }
+        { "name": "dataType", "values": [{ "name": "DataType" }] },
+        { "name": "show-location", "values": [] }
       ],
       "references": [
         {
@@ -765,12 +773,19 @@
       "name": "terra-time-average-map",
       "description": "\n---\n",
       "attributes": [
-        { "name": "collection", "values": [] },
+        {
+          "name": "collection",
+          "description": "a collection entry id (ex: GPM_3IMERGHH_06)",
+          "values": []
+        },
         { "name": "variable", "values": [] },
         { "name": "start-date", "values": [] },
         { "name": "end-date", "values": [] },
-        { "name": "location", "values": [] },
-        { "name": "bearer-token", "values": [] },
+        {
+          "name": "location",
+          "description": "The point location in \"lat,lon\" format.\nOr the bounding box in \"west,south,east,north\" format.",
+          "values": []
+        },
         { "name": "long_name", "values": [] }
       ],
       "references": [

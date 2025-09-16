@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-layout="component" data-terra-ui-components-version="0.0.64">
+<html lang="en" data-layout="component" data-terra-ui-components-version="0.0.100">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -168,7 +168,7 @@
           <img src="/components/assets/images/logo.svg" alt="Terra UI Components" />
           Terra UI Components
         </a>
-        <div class="sidebar-version">0.0.64</div>
+        <div class="sidebar-version">0.0.100</div>
       </header>
 
       <div class="sidebar-buttons">
@@ -351,6 +351,7 @@
             </li>
             <li data-level="2"><a href="#importing">Importing</a></li>
             <li data-level="2"><a href="#properties">Properties</a></li>
+            <li data-level="2"><a href="#methods">Methods</a></li>
           </ul>
         </div>
 
@@ -396,9 +397,9 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-88">
+            <div class="code-preview__source-group" id="code-preview-source-group-86">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-305"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-time-average-map</span>
+                <pre><code class="language-html" id="code-block-303"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-time-average-map</span>
     <span class="token attr-name">collection</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>M2T1NXAER_5_12_4<span class="token punctuation">"</span></span>
     <span class="token attr-name">variable</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>BCCMASS<span class="token punctuation">"</span></span>
     <span class="token attr-name">start-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>01/01/2009<span class="token punctuation">"</span></span>
@@ -407,7 +408,7 @@
     <span class="token attr-name">bearer-token</span> <span class="token attr-value"><span class="token punctuation attr-equals">=</span> <span class="token punctuation">"</span>YOUR_BEARER_TOKEN<span class="token punctuation">"</span></span>
 
 <span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-time-average-map</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-305"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-303"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -416,7 +417,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-88"
+                aria-controls="code-preview-source-group-86"
               >
                 Source
                 <svg
@@ -477,7 +478,7 @@
                 >
                 using a script tag:
               </p>
-              <pre><code class="language-html" id="code-block-306"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.64/cdn/components/time-average-map/time-average-map.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code><sl-copy-button class="copy-code-button" from="code-block-306"></sl-copy-button></pre>
+              <pre><code class="language-html" id="code-block-304"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.100/cdn/components/time-average-map/time-average-map.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code><sl-copy-button class="copy-code-button" from="code-block-304"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="import">
@@ -492,7 +493,7 @@
                 >
                 using a JavaScript import:
               </p>
-              <pre><code class="language-js" id="code-block-307"><span class="token keyword">import</span> <span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.64/cdn/components/time-average-map/time-average-map.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-307"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-305"><span class="token keyword">import</span> <span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.100/cdn/components/time-average-map/time-average-map.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-305"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="bundler">
@@ -500,12 +501,12 @@
                 To import this component using
                 <a href="/components/getting-started/installation#bundling">a bundler</a>:
               </p>
-              <pre><code class="language-js" id="code-block-308"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/time-average-map/time-average-map.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-308"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-306"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/time-average-map/time-average-map.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-306"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="react">
               <p>To import this component as a <a href="/components/frameworks/react">React component</a>:</p>
-              <pre><code class="language-js" id="code-block-309"><span class="token keyword">import</span> TerraTimeAverageMap <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/time-average-map'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-309"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-307"><span class="token keyword">import</span> TerraTimeAverageMap <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/time-average-map'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-307"></sl-copy-button></pre>
             </sl-tab-panel>
           </sl-tab-group>
 
@@ -527,6 +528,36 @@
               <tbody>
                 <tr>
                   <td>
+                    <code class="nowrap">collection</code>
+                  </td>
+                  <td>a collection entry id (ex: GPM_3IMERGHH_06)</td>
+                  <td style="text-align: center">
+                    <sl-icon label="yes" name="check-lg"></sl-icon>
+                  </td>
+                  <td>
+                    <code>string | undefined</code>
+                  </td>
+                  <td>-</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">location</code>
+                  </td>
+                  <td>
+                    The point location in “lat,lon” format. Or the bounding box in “west,south,east,north” format.
+                  </td>
+                  <td style="text-align: center">
+                    <sl-icon label="yes" name="check-lg"></sl-icon>
+                  </td>
+                  <td>
+                    <code>string | undefined</code>
+                  </td>
+                  <td>-</td>
+                </tr>
+
+                <tr>
+                  <td>
                     <code class="nowrap">_fetchVariableTask</code>
                   </td>
                   <td>
@@ -535,18 +566,7 @@
                   </td>
                   <td style="text-align: center"></td>
                   <td>-</td>
-                  <td>
-                    <code
-                      >new Task(this, { task: async (_args, { signal }) =&gt; { const variableEntryId =
-                      this.getVariableEntryId() if (!variableEntryId) { return } console.debug('Fetch variable ',
-                      variableEntryId) const variable = await this.#catalog.getVariable(variableEntryId, { signal, })
-                      console.debug('Found variable ', variable) if (!variable) { return } // if we don't have dates,
-                      use the example initial dates, which is the last 7 days of data this.startDate = this.startDate ??
-                      variable.exampleInitialStartDate?.toISOString() this.endDate = this.endDate ??
-                      variable.exampleInitialEndDate?.toISOString() this.catalogVariable = variable }, args: () =&gt;
-                      [this.collection, this.variable], autoRun: false })</code
-                    >
-                  </td>
+                  <td>-</td>
                 </tr>
 
                 <tr>
@@ -570,6 +590,35 @@
               >Learn more about
               <a href="/components/getting-started/usage#attributes-and-properties">attributes and properties</a>.</em
             >
+          </p>
+
+          <h2 id="methods" class="anchor-heading">
+            Methods<a href="#methods" aria-label='Direct link to "Methods"'></a>
+          </h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name">Name</th>
+                  <th class="table-description">Description</th>
+                  <th class="table-arguments">Arguments</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap">
+                    <code>#abortDataLoad()</code>
+                  </td>
+                  <td>aborts the underlying data loading task, which cancels the network request</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em>Learn more about <a href="/components/getting-started/usage#methods">methods</a>.</em>
           </p>
         </div>
       </article>
