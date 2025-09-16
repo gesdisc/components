@@ -26,6 +26,24 @@
       ]
     },
     {
+      "name": "terra-browse-variables",
+      "description": "Browse through the NASA CMR or Giovanni catalogs.\n---\n",
+      "attributes": [
+        {
+          "name": "catalog",
+          "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
+          "values": [{ "name": "giovanni" }]
+        },
+        { "name": "selected-variable-entry-ids", "values": [] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://disc.gsfc.nasa.gov/components/browse-variables"
+        }
+      ]
+    },
+    {
       "name": "terra-alert",
       "description": "Alerts are used to display important messages inline or as toast notifications.\n---\n\n\n### **Events:**\n - **terra-show** - Emitted when the alert opens.\n- **terra-after-show** - Emitted after the alert opens and all animations are complete.\n- **terra-hide** - Emitted when the alert closes.\n- **terra-after-hide** - Emitted after the alert closes and all animations are complete.\n\n### **Methods:**\n - **show()** - Shows the alert.\n- **hide()** - Hides the alert\n- **toast()** - Displays the alert as a toast notification. This will move the alert out of its position in the DOM and, when\ndismissed, it will be removed from the DOM completely. By storing a reference to the alert, you can reuse it by\ncalling this method again. The returned promise will resolve after the alert is hidden.\n\n### **Slots:**\n - _default_ - The alert's main content.\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.\n- **icon** - The container that wraps the optional icon.\n- **message** - The container that wraps the alert's main content.",
       "attributes": [
@@ -66,24 +84,6 @@
         {
           "name": "Documentation",
           "url": "https://disc.gsfc.nasa.gov/components/alert"
-        }
-      ]
-    },
-    {
-      "name": "terra-browse-variables",
-      "description": "Browse through the NASA CMR or Giovanni catalogs.\n---\n",
-      "attributes": [
-        {
-          "name": "catalog",
-          "description": "Allows the user to switch the catalog between different providers\nTODO: add support for CMR catalog and make it the default",
-          "values": [{ "name": "giovanni" }]
-        },
-        { "name": "selected-variable-entry-ids", "values": [] }
-      ],
-      "references": [
-        {
-          "name": "Documentation",
-          "url": "https://disc.gsfc.nasa.gov/components/browse-variables"
         }
       ]
     },
