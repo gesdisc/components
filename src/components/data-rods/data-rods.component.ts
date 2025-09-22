@@ -153,7 +153,9 @@ export default class TerraDataRods extends TerraElement {
                 location=${this.location}
                 bearer-token=${this.bearerToken}
                 @terra-date-range-change=${this.#handleTimeSeriesDateRangeChange}
-            ></terra-time-series>
+            >
+              <li slot="help-links"><a href="./information/tools?title=Hydrology%20Data%20Rods">User Guide</a></li>
+            </terra-time-series>
 
             <terra-date-range-slider
                 exportparts="slider:date-range-slider__slider"
