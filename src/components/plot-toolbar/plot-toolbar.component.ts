@@ -345,6 +345,7 @@ export default class TerraPlotToolbar extends TerraElement {
         return html`
             <h3 class="sr-only">Help Links</h3>
             <ul>
+                <slot name="help-links"></slot>
                 <li>
                     <a href="https://forum.earthdata.nasa.gov/viewforum.php?f=7&DAAC=3" rel"noopener noreffer">Earthdata User Forum
                         <terra-icon
@@ -353,7 +354,6 @@ export default class TerraPlotToolbar extends TerraElement {
                         ></terra-icon>
                     </a>
                 </li>
-                <slot name="help-links"></slot>
             </ul>                  
         `
     }
