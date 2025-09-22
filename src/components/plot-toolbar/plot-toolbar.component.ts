@@ -353,6 +353,7 @@ export default class TerraPlotToolbar extends TerraElement {
                         ></terra-icon>
                     </a>
                 </li>
+                <slot name="help-links"></slot>
             </ul>                  
         `
     }
