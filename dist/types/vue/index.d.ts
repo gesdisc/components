@@ -201,8 +201,6 @@ The property's value will be inserted after "Bearer" (the authentication scheme)
   "bearer-token"?: TerraDataRods["bearerToken"];
   /**  */
   catalogVariable?: TerraDataRods["catalogVariable"];
-  /**  */
-  _fetchVariableTask?: TerraDataRods["_fetchVariableTask"];
   /** Emitted whenever the date range of the date slider is updated */
   onTerraDateRangeChange?: (e: CustomEvent<never>) => void;
 };
@@ -212,8 +210,6 @@ type TerraDataSubsetterProps = {
   "collection-entry-id"?: TerraDataSubsetter["collectionEntryId"];
   /**  */
   "show-collection-search"?: TerraDataSubsetter["showCollectionSearch"];
-  /**  */
-  "show-history-panel"?: TerraDataSubsetter["showHistoryPanel"];
   /**  */
   "job-id"?: TerraDataSubsetter["jobId"];
   /**  */
@@ -349,8 +345,6 @@ type TerraDialogProps = {
   id?: TerraDialog["id"];
   /** the width of the dialog */
   width?: TerraDialog["width"];
-  /** used to set the dialog's open state */
-  open?: TerraDialog["open"];
   /** allow closing the dialog when clicking outside of it */
   "click-outside-to-close"?: TerraDialog["clickOutsideToClose"];
   /** Show a backdrop behind the dialog */
@@ -423,8 +417,6 @@ type TerraMapProps = {
   /**  */
   "hide-point-selection"?: TerraMap["hidePointSelection"];
   /**  */
-  staticMode?: TerraMap["staticMode"];
-  /**  */
   value?: TerraMap["value"];
   /**  */
   mapElement?: TerraMap["mapElement"];
@@ -469,17 +461,9 @@ type TerraPlotToolbarProps = {
   /**  */
   dataType?: TerraPlotToolbar["dataType"];
   /**  */
-  "show-location"?: TerraPlotToolbar["showLocation"];
-  /**  */
   activeMenuItem?: TerraPlotToolbar["activeMenuItem"];
   /**  */
-  showLocationTooltip?: TerraPlotToolbar["showLocationTooltip"];
-  /**  */
-  locationMapValue?: TerraPlotToolbar["locationMapValue"];
-  /**  */
   menu?: TerraPlotToolbar["menu"];
-  /**  */
-  _authController?: TerraPlotToolbar["_authController"];
 };
 
 type TerraSkeletonProps = {
@@ -532,12 +516,10 @@ the default is false, the map is positioned absolute under the input */
   spatialInput?: TerraSpatialPicker["spatialInput"];
   /**  */
   map?: TerraSpatialPicker["map"];
-  /**  */
-  spatialPicker?: TerraSpatialPicker["spatialPicker"];
 };
 
 type TerraTimeAverageMapProps = {
-  /** a collection entry id (ex: GPM_3IMERGHH_06) */
+  /**  */
   collection?: TerraTimeAverageMap["collection"];
   /**  */
   variable?: TerraTimeAverageMap["variable"];
@@ -545,9 +527,10 @@ type TerraTimeAverageMapProps = {
   "start-date"?: TerraTimeAverageMap["startDate"];
   /**  */
   "end-date"?: TerraTimeAverageMap["endDate"];
-  /** The point location in "lat,lon" format.
-Or the bounding box in "west,south,east,north" format. */
+  /**  */
   location?: TerraTimeAverageMap["location"];
+  /**  */
+  "bearer-token"?: TerraTimeAverageMap["bearerToken"];
   /**  */
   long_name?: TerraTimeAverageMap["long_name"];
   /**  */
@@ -558,6 +541,8 @@ Or the bounding box in "west,south,east,north" format. */
   colormaps?: TerraTimeAverageMap["colormaps"];
   /**  */
   colorMapName?: TerraTimeAverageMap["colorMapName"];
+  /**  */
+  menu?: TerraTimeAverageMap["menu"];
   /**  */
   _authController?: TerraTimeAverageMap["_authController"];
   /** anytime the collection or variable changes, we'll fetch the variable from the catalog to get all of it's metadata */
@@ -596,8 +581,6 @@ The property's value will be inserted after "Bearer" (the authentication scheme)
   estimatedDataPoints?: TerraTimeSeries["estimatedDataPoints"];
   /**  */
   _authController?: TerraTimeSeries["_authController"];
-  /**  */
-  _fetchVariableTask?: TerraTimeSeries["_fetchVariableTask"];
   /** Emitted whenever the date range is modified */
   onTerraDateRangeChange?: (e: CustomEvent<CustomEvent>) => void;
   /** Emitted whenever time series data has been fetched from Giovanni */

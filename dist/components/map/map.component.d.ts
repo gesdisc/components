@@ -39,7 +39,6 @@ export default class TerraMap extends TerraElement {
     hasShapeSelector: boolean;
     hideBoundingBoxSelection?: boolean;
     hidePointSelection?: boolean;
-    staticMode?: boolean;
     value: any;
     mapElement: HTMLDivElement;
     valueChanged(_oldValue: any, newValue: any): void;

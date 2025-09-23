@@ -1,4 +1,3 @@
-import type { ReactiveControllerHost } from 'lit';
 import type { Variable } from '../components/browse-variables/browse-variables.types.js';
 export type SearchOptions = {
     signal?: AbortSignal;
@@ -65,12 +64,4 @@ export type GetVariablesResponse = {
     total: number;
     variables: Variable[];
     facets: GiovanniFacet[];
-};
-export type HostWithMaybeProperties = ReactiveControllerHost & {
-    variableEntryId?: string;
-    collection?: string;
-    variable?: string;
-    startDate?: string;
-    endDate?: string;
-    catalogVariable?: Variable;
 };

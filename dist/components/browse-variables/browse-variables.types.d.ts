@@ -52,7 +52,6 @@ export type Variable = {
     dataFieldUnits: string;
     dataProductDescriptionUrl: string;
     dataFieldDescriptionUrl: string;
-    dataProductInstrumentShortName: string;
 } & Partial<ExampleInitialDates>;
 export type ExampleInitialDates = {
     exampleInitialStartDate: Date;

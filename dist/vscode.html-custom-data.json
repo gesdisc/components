@@ -372,7 +372,6 @@
       "attributes": [
         { "name": "collection-entry-id", "values": [] },
         { "name": "show-collection-search", "values": [] },
-        { "name": "show-history-panel", "values": [] },
         { "name": "job-id", "values": [] },
         { "name": "bearer-token", "values": [] }
       ],
@@ -476,11 +475,6 @@
         {
           "name": "width",
           "description": "the width of the dialog",
-          "values": []
-        },
-        {
-          "name": "open",
-          "description": "used to set the dialog's open state",
           "values": []
         },
         {
@@ -621,7 +615,6 @@
         },
         { "name": "hide-bounding-box-selection", "values": [] },
         { "name": "hide-point-selection", "values": [] },
-        { "name": "staticMode", "values": [] },
         { "name": "value", "values": [] }
       ],
       "references": [
@@ -662,8 +655,7 @@
         { "name": "startDate", "values": [] },
         { "name": "endDate", "values": [] },
         { "name": "cacheKey", "values": [] },
-        { "name": "dataType", "values": [{ "name": "DataType" }] },
-        { "name": "show-location", "values": [] }
+        { "name": "dataType", "values": [{ "name": "DataType" }] }
       ],
       "references": [
         {
@@ -773,19 +765,12 @@
       "name": "terra-time-average-map",
       "description": "\n---\n",
       "attributes": [
-        {
-          "name": "collection",
-          "description": "a collection entry id (ex: GPM_3IMERGHH_06)",
-          "values": []
-        },
+        { "name": "collection", "values": [] },
         { "name": "variable", "values": [] },
         { "name": "start-date", "values": [] },
         { "name": "end-date", "values": [] },
-        {
-          "name": "location",
-          "description": "The point location in \"lat,lon\" format.\nOr the bounding box in \"west,south,east,north\" format.",
-          "values": []
-        },
+        { "name": "location", "values": [] },
+        { "name": "bearer-token", "values": [] },
         { "name": "long_name", "values": [] }
       ],
       "references": [

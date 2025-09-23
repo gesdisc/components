@@ -23,7 +23,6 @@ export default class TerraDataSubsetter extends TerraElement {
     static dependencies: Record<string, typeof TerraElement>;
     collectionEntryId?: string;
     showCollectionSearch?: boolean;
-    showHistoryPanel?: boolean;
     jobId?: string;
     bearerToken?: string;
     collectionWithServices?: CollectionWithAvailableServices;

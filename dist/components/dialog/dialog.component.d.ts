@@ -19,14 +19,12 @@ export default class TerraDialog extends TerraElement {
     id: string;
     /** the width of the dialog */
     width: string;
-    /** used to set the dialog's open state */
-    open: boolean;
     /** allow closing the dialog when clicking outside of it */
     clickOutsideToClose: boolean;
     /** Show a backdrop behind the dialog */
     showBackdrop: boolean;
     toggle(): void;
     show(): void;
-    hide(): void;
+    hide(reason?: string): void;
     render(): import("lit-html").TemplateResult<1>;
 }

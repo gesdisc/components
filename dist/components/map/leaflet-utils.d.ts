@@ -13,7 +13,6 @@ export interface MapViewOptions {
     maxZoom: number;
     hasCoordTracker?: boolean;
     hasNavigation?: boolean;
-    staticMode?: boolean;
     hideBoundingBoxDrawTool?: boolean;
     hidePointSelectionDrawTool?: boolean;
     initialValue?: LatLngBoundsExpression;

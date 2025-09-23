@@ -1934,7 +1934,19 @@
             },
             {
               "kind": "field",
-              "name": "_fetchVariableTask"
+              "name": "#catalog",
+              "privacy": "private",
+              "default": "new GiovanniVariableCatalog()"
+            },
+            {
+              "kind": "field",
+              "name": "#fetchVariableTask",
+              "privacy": "private",
+              "default": "new Task(this, {\n        task: async (_args, { signal }) => {\n            const variableEntryId = this.#getVariableEntryId()\n\n            console.debug('fetch variable ', variableEntryId)\n\n            if (!variableEntryId) {\n                return\n            }\n\n            const variable = await this.#catalog.getVariable(variableEntryId, {\n                signal,\n            })\n\n            console.debug('found variable ', variable)\n\n            if (!variable) {\n                return\n            }\n\n            this.startDate =\n                this.startDate ?? variable.exampleInitialStartDate?.toISOString()\n            this.endDate =\n                this.endDate ?? variable.exampleInitialEndDate?.toISOString()\n            this.catalogVariable = variable\n        },\n        args: () => [this.variableEntryId, this.collection, this.variable],\n    })"
+            },
+            {
+              "kind": "method",
+              "name": "#getVariableEntryId"
             },
             {
               "kind": "method",
@@ -2093,7 +2105,7 @@
                 "text": "Record<string, typeof TerraElement>"
               },
               "static": true,
-              "default": "{\n        'terra-accordion': TerraAccordion,\n        'terra-date-picker': TerraDatePicker,\n        'terra-icon': TerraIcon,\n        'terra-spatial-picker': TerraSpatialPicker,\n        'terra-login': TerraLogin,\n        'terra-loader': TerraLoader,\n    }"
+              "default": "{\n        'terra-accordion': TerraAccordion,\n        'terra-date-picker': TerraDatePicker,\n        'terra-icon': TerraIcon,\n        'terra-spatial-picker': TerraSpatialPicker,\n        'terra-login': TerraLogin,\n    }"
             },
             {
               "kind": "field",
@@ -2112,16 +2124,6 @@
               },
               "default": "true",
               "attribute": "show-collection-search",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "showHistoryPanel",
-              "type": {
-                "text": "boolean | undefined"
-              },
-              "default": "false",
-              "attribute": "show-history-panel",
               "reflects": true
             },
             {
@@ -2680,14 +2682,6 @@
               "fieldName": "showCollectionSearch"
             },
             {
-              "name": "show-history-panel",
-              "type": {
-                "text": "boolean | undefined"
-              },
-              "default": "false",
-              "fieldName": "showHistoryPanel"
-            },
-            {
               "name": "job-id",
               "type": {
                 "text": "string | undefined"
@@ -3007,7 +3001,7 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "true",
+              "default": "false",
               "attribute": "allow-input"
             },
             {
@@ -3201,7 +3195,7 @@
               "type": {
                 "text": "boolean"
               },
-              "default": "true",
+              "default": "false",
               "fieldName": "allowInput"
             },
             {
@@ -3595,17 +3589,6 @@
             },
             {
               "kind": "field",
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "used to set the dialog's open state",
-              "attribute": "open",
-              "reflects": true
-            },
-            {
-              "kind": "field",
               "name": "clickOutsideToClose",
               "type": {
                 "text": "boolean"
@@ -3636,7 +3619,16 @@
             },
             {
               "kind": "method",
-              "name": "hide"
+              "name": "hide",
+              "parameters": [
+                {
+                  "name": "reason",
+                  "optional": true,
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
             },
             {
               "kind": "method",
@@ -3682,15 +3674,6 @@
               "default": "'fit-content'",
               "description": "the width of the dialog",
               "fieldName": "width"
-            },
-            {
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "used to set the dialog's open state",
-              "fieldName": "open"
             },
             {
               "name": "click-outside-to-close",
@@ -4261,15 +4244,6 @@
             },
             {
               "kind": "field",
-              "name": "staticMode",
-              "type": {
-                "text": "boolean | undefined"
-              },
-              "default": "false",
-              "attribute": "staticMode"
-            },
-            {
-              "kind": "field",
               "name": "value",
               "type": {
                 "text": "any"
@@ -4408,14 +4382,6 @@
                 "text": "boolean | undefined"
               },
               "fieldName": "hidePointSelection"
-            },
-            {
-              "name": "staticMode",
-              "type": {
-                "text": "boolean | undefined"
-              },
-              "default": "false",
-              "fieldName": "staticMode"
             },
             {
               "name": "value",
@@ -4633,7 +4599,7 @@
                 "text": "object"
               },
               "static": true,
-              "default": "{\n        'terra-icon': TerraIcon,\n        'terra-button': TerraButton,\n        'terra-map': TerraMap,\n    }"
+              "default": "{\n        'terra-icon': TerraIcon,\n        'terra-button': TerraButton,\n    }"
             },
             {
               "kind": "field",
@@ -4709,43 +4675,9 @@
             },
             {
               "kind": "field",
-              "name": "showLocation",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "attribute": "show-location"
-            },
-            {
-              "kind": "field",
               "name": "activeMenuItem",
               "type": {
                 "text": "MenuNames"
-              },
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "showLocationTooltip",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "locationMapValue",
-              "type": {
-                "text": "any"
-              },
-              "default": "[]"
-            },
-            {
-              "kind": "field",
-              "name": "#tooltipTimeout",
-              "privacy": "private",
-              "type": {
-                "text": "number | null"
               },
               "default": "null"
             },
@@ -4755,11 +4687,6 @@
               "type": {
                 "text": "HTMLMenuElement"
               }
-            },
-            {
-              "kind": "field",
-              "name": "_authController",
-              "default": "new AuthController(this)"
             },
             {
               "kind": "method",
@@ -4782,18 +4709,6 @@
             {
               "kind": "method",
               "name": "closeMenu"
-            },
-            {
-              "kind": "method",
-              "name": "#handleLocationMouseEnter"
-            },
-            {
-              "kind": "method",
-              "name": "#handleLocationMouseLeave"
-            },
-            {
-              "kind": "method",
-              "name": "#getLocationIcon"
             },
             {
               "kind": "method",
@@ -4838,42 +4753,6 @@
             {
               "kind": "method",
               "name": "#handleJupyterNotebookClick"
-            },
-            {
-              "kind": "method",
-              "name": "#sendDataToJupyterNotebook",
-              "parameters": [
-                {
-                  "name": "jupyterWindow",
-                  "type": {
-                    "text": "Window"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#sendTimeSeriesDataToJupyterNotebook",
-              "parameters": [
-                {
-                  "name": "jupyterWindow",
-                  "type": {
-                    "text": "Window"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#sendMapDataToJupyterNotebook",
-              "parameters": [
-                {
-                  "name": "jupyterWindow",
-                  "type": {
-                    "text": "Window"
-                  }
-                }
-              ]
             },
             {
               "kind": "method",
@@ -4984,14 +4863,6 @@
                 "text": "DataType"
               },
               "fieldName": "dataType"
-            },
-            {
-              "name": "show-location",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "fieldName": "showLocation"
             }
           ],
           "superclass": {
@@ -5304,15 +5175,6 @@
             },
             {
               "kind": "field",
-              "name": "_popoverFlipped",
-              "type": {
-                "text": "boolean"
-              },
-              "privacy": "private",
-              "default": "false"
-            },
-            {
-              "kind": "field",
               "name": "spatialInput",
               "type": {
                 "text": "HTMLInputElement"
@@ -5324,25 +5186,6 @@
               "type": {
                 "text": "TerraMap"
               }
-            },
-            {
-              "kind": "field",
-              "name": "spatialPicker",
-              "type": {
-                "text": "HTMLElement"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "setValue",
-              "parameters": [
-                {
-                  "name": "value",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ]
             },
             {
               "kind": "method",
@@ -5369,17 +5212,6 @@
             },
             {
               "kind": "method",
-              "name": "_checkPopoverPosition",
-              "privacy": "private",
-              "description": "The spatial picker will either be positioned above or below the input depending on the space available",
-              "return": {
-                "type": {
-                  "text": ""
-                }
-              }
-            },
-            {
-              "kind": "method",
               "name": "_emitMapChange",
               "privacy": "private"
             },
@@ -5393,6 +5225,19 @@
             },
             {
               "kind": "method",
+              "name": "_updateURLParam",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "string | null"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "_handleMapChange",
               "privacy": "private",
               "parameters": [
@@ -5403,11 +5248,6 @@
                   }
                 }
               ]
-            },
-            {
-              "kind": "method",
-              "name": "_handleResize",
-              "privacy": "private"
             },
             {
               "kind": "method",
@@ -5591,7 +5431,7 @@
                 "text": "object"
               },
               "static": true,
-              "default": "{\n        'terra-button': TerraButton,\n        'terra-icon': TerraIcon,\n        'terra-plot-toolbar': TerraPlotToolbar,\n        'terra-loader': TerraLoader,\n    }"
+              "default": "{\n        'terra-button': TerraButton,\n        'terra-icon': TerraIcon,\n        'terra-plot-toolbar': TerraPlotToolbar,\n    }"
             },
             {
               "kind": "field",
@@ -5599,7 +5439,6 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "a collection entry id (ex: GPM_3IMERGHH_06)",
               "attribute": "collection",
               "reflects": true
             },
@@ -5636,9 +5475,16 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "The point location in \"lat,lon\" format.\nOr the bounding box in \"west,south,east,north\" format.",
               "attribute": "location",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "bearerToken",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "bearer-token"
             },
             {
               "kind": "field",
@@ -5670,7 +5516,7 @@
               "type": {
                 "text": "array"
               },
-              "default": "[\n        'jet',\n        'hsv',\n        'hot',\n        'cool',\n        'spring',\n        'summer',\n        'autumn',\n        'winter',\n        'bone',\n        'copper',\n        'greys',\n        'YIGnBu',\n        'greens',\n        'YIOrRd',\n        'bluered',\n        'RdBu',\n        'picnic',\n        'rainbow',\n        'portland',\n        'blackbody',\n        'earth',\n        'electric',\n        'viridis',\n        'inferno',\n        'magma',\n        'plasma',\n        'warm',\n        'cool',\n        'bathymetry',\n        'cdom',\n        'chlorophyll',\n        'density',\n        'fressurface-blue',\n        'freesurface-red',\n        'oxygen',\n        'par',\n        'phase',\n        'salinity',\n        'temperature',\n        'turbidity',\n        'velocity-blue',\n        'velocity-green',\n        'cubhelix',\n    ]"
+              "default": "[\n        'jet', 'hsv', 'hot', 'cool', 'spring', 'summer', 'autumn', 'winter', 'bone',\n        'copper', 'greys', 'YIGnBu', 'greens', 'YIOrRd', 'bluered', 'RdBu', 'picnic',\n        'rainbow', 'portland', 'blackbody', 'earth', 'electric', 'viridis', 'inferno',\n        'magma', 'plasma', 'warm', 'cool', 'bathymetry', 'cdom', 'chlorophyll', 'density',\n        'fressurface-blue', 'freesurface-red', 'oxygen', 'par', 'phase', 'salinity',\n        'temperature', 'turbidity', 'velocity-blue', 'velocity-green', 'cubhelix'\n    ]"
             },
             {
               "kind": "field",
@@ -5682,11 +5528,42 @@
             },
             {
               "kind": "field",
+              "name": "menu",
+              "type": {
+                "text": "HTMLMenuElement"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleFocus",
+              "parameters": [
+                {
+                  "name": "_oldValue",
+                  "type": {
+                    "text": "any"
+                  }
+                },
+                {
+                  "name": "newValue",
+                  "type": {
+                    "text": "any"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
               "name": "#controller",
               "privacy": "private",
               "type": {
                 "text": "TimeAvgMapController"
               }
+            },
+            {
+              "kind": "field",
+              "name": "#catalog",
+              "privacy": "private",
+              "default": "new GiovanniVariableCatalog()"
             },
             {
               "kind": "field",
@@ -5714,23 +5591,12 @@
             {
               "kind": "field",
               "name": "_fetchVariableTask",
+              "default": "new Task(this, {\n        task: async (_args, { signal }) => {\n            const variableEntryId = this.getVariableEntryId()\n\n            if (!variableEntryId) {\n                return\n            }\n\n            console.debug('Fetch variable ', variableEntryId)\n\n            const variable = await this.#catalog.getVariable(variableEntryId, {\n                signal,\n            })\n\n            console.debug('Found variable ', variable)\n\n            if (!variable) {\n                return\n            }\n\n            // if we don't have dates, use the example initial dates, which is the last 7 days of data\n            this.startDate =\n                this.startDate ?? variable.exampleInitialStartDate?.toISOString()\n            this.endDate =\n                this.endDate ?? variable.exampleInitialEndDate?.toISOString()\n\n            this.catalogVariable = variable\n        },\n        args: () => [this.collection, this.variable],\n        autoRun: false\n    })",
               "description": "anytime the collection or variable changes, we'll fetch the variable from the catalog to get all of it's metadata"
             },
             {
               "kind": "method",
-              "name": "handlePropertyChange"
-            },
-            {
-              "kind": "method",
-              "name": "updateGeoTIFFLayer",
-              "parameters": [
-                {
-                  "name": "blob",
-                  "type": {
-                    "text": "Blob"
-                  }
-                }
-              ]
+              "name": "updateGeoTIFFLayer"
             },
             {
               "kind": "method",
@@ -5752,6 +5618,10 @@
                   }
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "getVariableEntryId"
             },
             {
               "kind": "method",
@@ -5848,11 +5718,6 @@
                   }
                 }
               ]
-            },
-            {
-              "kind": "method",
-              "name": "#abortDataLoad",
-              "description": "aborts the underlying data loading task, which cancels the network request"
             }
           ],
           "attributes": [
@@ -5861,7 +5726,6 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "a collection entry id (ex: GPM_3IMERGHH_06)",
               "fieldName": "collection"
             },
             {
@@ -5890,8 +5754,14 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "The point location in \"lat,lon\" format.\nOr the bounding box in \"west,south,east,north\" format.",
               "fieldName": "location"
+            },
+            {
+              "name": "bearer-token",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "bearerToken"
             },
             {
               "name": "long_name",
@@ -6068,12 +5938,20 @@
             },
             {
               "kind": "field",
+              "name": "#catalog",
+              "privacy": "private",
+              "default": "new GiovanniVariableCatalog()"
+            },
+            {
+              "kind": "field",
               "name": "_authController",
               "default": "new AuthController(this)"
             },
             {
               "kind": "field",
-              "name": "_fetchVariableTask"
+              "name": "#fetchVariableTask",
+              "privacy": "private",
+              "default": "new Task(this, {\n        task: async (_args, { signal }) => {\n            const variableEntryId = this.getVariableEntryId()\n\n            console.debug('fetch variable ', variableEntryId)\n\n            if (!variableEntryId) {\n                return\n            }\n\n            const variable = await this.#catalog.getVariable(variableEntryId, {\n                signal,\n            })\n\n            console.debug('found variable ', variable)\n\n            if (!variable) {\n                return\n            }\n\n            this.startDate =\n                this.startDate ?? variable.exampleInitialStartDate?.toISOString()\n            this.endDate =\n                this.endDate ?? variable.exampleInitialEndDate?.toISOString()\n\n            this.catalogVariable = variable\n        },\n        args: () => [this.variableEntryId, this.collection, this.variable],\n    })"
             },
             {
               "kind": "field",
@@ -6104,6 +5982,10 @@
                   }
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "getVariableEntryId"
             },
             {
               "kind": "method",
@@ -6991,7 +6873,7 @@
   "package": {
     "name": "@nasa-terra/components",
     "description": "A collection of NASA Earthdata components",
-    "version": "0.0.100",
+    "version": "0.0.64",
     "author": "NASA GES DISC <https://disc.gsfc.nasa.gov>",
     "homepage": "https://github.com/nasa/terra-ui-components",
     "license": "MIT"

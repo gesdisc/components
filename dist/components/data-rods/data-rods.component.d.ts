@@ -55,6 +55,5 @@ export default class TerraDataRods extends TerraElement {
      */
     bearerToken: string;
     catalogVariable: Variable;
-    _fetchVariableTask: import("@lit/task").Task<(string | undefined)[], void>;
     render(): import("lit-html").TemplateResult<1>;
 }

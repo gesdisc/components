@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json",
   "name": "@nasa-terra/components",
-  "version": "0.0.100",
+  "version": "0.0.64",
   "description-markup": "markdown",
   "contributions": {
     "html": {
@@ -679,8 +679,7 @@
                 "description": "The token to be used for authentication with remote servers.\nThe component provides the header \"Authorization: Bearer\" (the request header and authentication scheme).\nThe property's value will be inserted after \"Bearer\" (the authentication scheme).",
                 "type": "string"
               },
-              { "name": "catalogVariable", "type": "Variable" },
-              { "name": "_fetchVariableTask" }
+              { "name": "catalogVariable", "type": "Variable" }
             ],
             "events": [
               {
@@ -703,10 +702,6 @@
               "name": "show-collection-search",
               "value": { "type": "boolean | undefined", "default": "true" }
             },
-            {
-              "name": "show-history-panel",
-              "value": { "type": "boolean | undefined", "default": "false" }
-            },
             { "name": "job-id", "value": { "type": "string | undefined" } },
             {
               "name": "bearer-token",
@@ -723,7 +718,6 @@
             "properties": [
               { "name": "collectionEntryId", "type": "string | undefined" },
               { "name": "showCollectionSearch", "type": "boolean | undefined" },
-              { "name": "showHistoryPanel", "type": "boolean | undefined" },
               { "name": "jobId", "type": "string | undefined" },
               { "name": "bearerToken", "type": "string | undefined" },
               {
@@ -827,7 +821,7 @@
             },
             {
               "name": "allow-input",
-              "value": { "type": "boolean", "default": "true" }
+              "value": { "type": "boolean", "default": "false" }
             },
             {
               "name": "alt-format",
@@ -978,11 +972,6 @@
               "value": { "type": "string", "default": "'fit-content'" }
             },
             {
-              "name": "open",
-              "description": "used to set the dialog's open state",
-              "value": { "type": "boolean", "default": "false" }
-            },
-            {
               "name": "click-outside-to-close",
               "description": "allow closing the dialog when clicking outside of it",
               "value": { "type": "boolean", "default": "true" }
@@ -1016,11 +1005,6 @@
                 "name": "width",
                 "description": "the width of the dialog",
                 "type": "string"
-              },
-              {
-                "name": "open",
-                "description": "used to set the dialog's open state",
-                "type": "boolean"
               },
               {
                 "name": "clickOutsideToClose",
@@ -1259,10 +1243,6 @@
               "name": "hide-point-selection",
               "value": { "type": "boolean | undefined" }
             },
-            {
-              "name": "staticMode",
-              "value": { "type": "boolean | undefined", "default": "false" }
-            },
             { "name": "value", "value": { "type": "any", "default": "[]" } }
           ],
           "events": [],
@@ -1303,7 +1283,6 @@
                 "type": "boolean | undefined"
               },
               { "name": "hidePointSelection", "type": "boolean | undefined" },
-              { "name": "staticMode", "type": "boolean | undefined" },
               { "name": "value", "type": "any" },
               { "name": "mapElement", "type": "HTMLDivElement" },
               { "name": "map" },
@@ -1370,11 +1349,7 @@
             { "name": "startDate", "value": { "type": "string" } },
             { "name": "endDate", "value": { "type": "string" } },
             { "name": "cacheKey", "value": { "type": "string" } },
-            { "name": "dataType", "value": { "type": "DataType" } },
-            {
-              "name": "show-location",
-              "value": { "type": "boolean", "default": "true" }
-            }
+            { "name": "dataType", "value": { "type": "DataType" } }
           ],
           "slots": [
             { "name": "", "description": "The default slot." },
@@ -1395,12 +1370,8 @@
               { "name": "endDate", "type": "string" },
               { "name": "cacheKey", "type": "string" },
               { "name": "dataType", "type": "DataType" },
-              { "name": "showLocation", "type": "boolean" },
               { "name": "activeMenuItem", "type": "MenuNames" },
-              { "name": "showLocationTooltip", "type": "boolean" },
-              { "name": "locationMapValue", "type": "any" },
-              { "name": "menu", "type": "HTMLMenuElement" },
-              { "name": "_authController" }
+              { "name": "menu", "type": "HTMLMenuElement" }
             ],
             "events": []
           }
@@ -1583,8 +1554,7 @@
               { "name": "mapValue", "type": "any" },
               { "name": "error", "type": "string" },
               { "name": "spatialInput", "type": "HTMLInputElement" },
-              { "name": "map", "type": "TerraMap" },
-              { "name": "spatialPicker", "type": "HTMLElement" }
+              { "name": "map", "type": "TerraMap" }
             ],
             "events": []
           }
@@ -1594,19 +1564,12 @@
           "description": "\n---\n",
           "doc-url": "",
           "attributes": [
-            {
-              "name": "collection",
-              "description": "a collection entry id (ex: GPM_3IMERGHH_06)",
-              "value": { "type": "string | undefined" }
-            },
+            { "name": "collection", "value": { "type": "string | undefined" } },
             { "name": "variable", "value": { "type": "string | undefined" } },
             { "name": "start-date", "value": { "type": "string | undefined" } },
             { "name": "end-date", "value": { "type": "string | undefined" } },
-            {
-              "name": "location",
-              "description": "The point location in \"lat,lon\" format.\nOr the bounding box in \"west,south,east,north\" format.",
-              "value": { "type": "string | undefined" }
-            },
+            { "name": "location", "value": { "type": "string | undefined" } },
+            { "name": "bearer-token", "value": { "type": "string" } },
             {
               "name": "long_name",
               "value": { "type": "string", "default": "''" }
@@ -1615,24 +1578,18 @@
           "events": [],
           "js": {
             "properties": [
-              {
-                "name": "collection",
-                "description": "a collection entry id (ex: GPM_3IMERGHH_06)",
-                "type": "string | undefined"
-              },
+              { "name": "collection", "type": "string | undefined" },
               { "name": "variable", "type": "string | undefined" },
               { "name": "startDate", "type": "string | undefined" },
               { "name": "endDate", "type": "string | undefined" },
-              {
-                "name": "location",
-                "description": "The point location in \"lat,lon\" format.\nOr the bounding box in \"west,south,east,north\" format.",
-                "type": "string | undefined"
-              },
+              { "name": "location", "type": "string | undefined" },
+              { "name": "bearerToken", "type": "string" },
               { "name": "long_name", "type": "string" },
               { "name": "activeMenuItem", "type": "any" },
               { "name": "catalogVariable", "type": "Variable" },
               { "name": "colormaps", "type": "array" },
               { "name": "colorMapName", "type": "string" },
+              { "name": "menu", "type": "HTMLMenuElement" },
               { "name": "_authController" },
               {
                 "name": "_fetchVariableTask",
@@ -1744,8 +1701,7 @@
                 "description": "stores the estimated",
                 "type": "number"
               },
-              { "name": "_authController" },
-              { "name": "_fetchVariableTask" }
+              { "name": "_authController" }
             ],
             "events": [
               {
