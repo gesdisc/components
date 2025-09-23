@@ -6,6 +6,8 @@ import { html, nothing } from 'lit'
 import { parseBoundingBox, StringifyBoundingBox } from '../map/leaflet-utils.js'
 import { property, query, state } from 'lit/decorators.js'
 import type { CSSResultGroup } from 'lit'
+import type { TerraMapChangeEvent } from '../../events/terra-map-change.js'
+import { MapEventType } from '../map/type.js'
 
 /**
  * @summary A component that allows input of coordinates and rendering of map.
@@ -105,6 +107,9 @@ export default class TerraSpatialPicker extends TerraElement {
     @state()
     mapValue: any
 
+    @state()
+    error: string = ''
+
     @query('.spatial-picker__input')
     spatialInput: HTMLInputElement
 
@@ -112,57 +117,26 @@ export default class TerraSpatialPicker extends TerraElement {
     map: TerraMap
 
     private _blur(e: FocusEvent) {
-        const inputValue = (e.target as HTMLInputElement).value
+        try {
+            this.mapValue = this.spatialInput.value
+                ? parseBoundingBox(this.spatialInput.value)
+                : []
 
-        if (inputValue === '') {
-            this.mapValue = []
-        } else {
-            const parsedValue = parseBoundingBox(inputValue)
-
-            if (Array.isArray(parsedValue)) {
-                this.mapValue = parsedValue.map((coordArray: number[]) => {
-                    // Round each number in the inner array (lat, lng) to 2 decimal places
-                    return coordArray.map((coord: number) =>
-                        parseFloat(coord.toFixed(2))
-                    )
-                })
-            } else if (
-                parsedValue &&
-                typeof parsedValue === 'object' &&
-                'lat' in parsedValue &&
-                'lng' in parsedValue
-            ) {
-                // Handle lat/lng object
-                const { lat, lng } = parsedValue
-                this.mapValue = {
-                    lat: parseFloat(lat.toFixed(2)),
-                    lng: parseFloat(lng.toFixed(2)),
-                }
-            } else {
-                this.mapValue = []
-            }
+            this.error = ''
+        } catch (error) {
+            this.error =
+                error instanceof Error
+                    ? error.message
+                    : 'Invalid spatial area (format: LAT, LNG or LAT, LNG, LAT, LNG)'
         }
+
+        this._emitMapChange()
 
         // Don't hide if clicking within the map component
         const relatedTarget = e.relatedTarget as HTMLElement
         if (!relatedTarget?.closest('terra-map')) {
             this.isExpanded = false
         }
-
-        this.emit('terra-map-change', {
-            detail: {
-                cause: 'draw',
-                latLng: this.mapValue,
-                geoJson: {
-                    type: 'Feature',
-                    geometry: {
-                        type: 'Point',
-                        coordinates: [this.mapValue.lng, this.mapValue.lat],
-                    },
-                    properties: {},
-                },
-            },
-        })
     }
 
     private _focus() {
@@ -173,6 +147,40 @@ export default class TerraSpatialPicker extends TerraElement {
 
     private _click() {
         this.isExpanded = !this.isExpanded
+    }
+
+    private _emitMapChange() {
+        const layer = this.map?.getDrawLayer()
+
+        if (!layer) {
+            return
+        }
+
+        if ('getLatLng' in layer) {
+            this.mapValue = layer.getLatLng()
+
+            this.emit('terra-map-change', {
+                detail: {
+                    type: MapEventType.POINT,
+                    cause: 'draw',
+                    latLng: this.mapValue,
+                    geoJson: layer.toGeoJSON(),
+                },
+            })
+        } else if ('getBounds' in layer) {
+            this.mapValue = layer.getBounds()
+
+            this.emit('terra-map-change', {
+                detail: {
+                    type: MapEventType.BBOX,
+                    cause: 'draw',
+                    bounds: this.mapValue,
+                    geoJson: layer.toGeoJSON(),
+                },
+            })
+        } else {
+            this.mapValue = []
+        }
     }
 
     open() {
@@ -195,7 +203,7 @@ export default class TerraSpatialPicker extends TerraElement {
         window.history.replaceState({}, '', url.toString())
     }
 
-    private _handleMapChange(event: CustomEvent) {
+    private _handleMapChange(event: TerraMapChangeEvent) {
         switch (event.detail.cause) {
             case 'clear':
                 this.spatialInput.value = ''
@@ -206,14 +214,16 @@ export default class TerraSpatialPicker extends TerraElement {
 
             case 'draw':
                 let stringified = ''
-                if (event.detail.bounds) {
+                if (event.detail.type === MapEventType.BBOX) {
                     stringified = StringifyBoundingBox(event.detail.bounds)
                     this.spatialInput.value = stringified
-                } else if (event.detail.latLng) {
+                } else if (event.detail.type === MapEventType.POINT) {
                     stringified = StringifyBoundingBox(event.detail.latLng)
                     this.spatialInput.value = stringified
                 }
                 this._updateURLParam(stringified)
+                this._emitMapChange()
+
                 break
 
             default:
@@ -302,6 +312,9 @@ export default class TerraSpatialPicker extends TerraElement {
                         </svg>
                     </terra-button>
                 </div>
+                ${this.error
+                    ? html`<div class="spatial-picker__error">${this.error}</div>`
+                    : nothing}
                 ${expanded
                     ? html`<div
                           style="${this.inline

@@ -8,4 +8,6 @@ from .data_rods import TerraDataRods
 from .accordion import TerraAccordion
 from .data_subsetter import TerraDataSubsetter
 from .data_subsetter_history import TerraDataSubsetterHistory
-__all__ = ["TerraBaseWidget", "TerraDateRangeSlider", "TerraTimeSeries", "TerraLogin", "TerraDialog", "TerraDatePicker", "TerraDataRods", "TerraAccordion", "TerraDataSubsetter", "TerraDataSubsetterHistory"]
+from .time_average_map import TerraTimeAverageMap
+from .plot_toolbar import TerraPlotToolbar
+__all__ = ["TerraBaseWidget", "TerraDateRangeSlider", "TerraTimeSeries", "TerraLogin", "TerraDialog", "TerraDatePicker", "TerraDataRods", "TerraAccordion", "TerraDataSubsetter", "TerraDataSubsetterHistory", "TerraTimeAverageMap", "TerraPlotToolbar"]

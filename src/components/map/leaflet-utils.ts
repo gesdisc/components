@@ -1,7 +1,6 @@
 import * as L from 'leaflet'
 import 'leaflet-draw'
 import type { LatLngBoundsExpression, LatLngBoundsLiteral } from 'leaflet'
-import type { BoundingBox, LatLng } from './type.js'
 import { GiovanniGeoJsonShapes } from '../../geojson/giovanni-geojson.js'
 
 // There is a leaflet bug with type sometimes being undefined. This is a temporary fix
@@ -15,7 +14,7 @@ export function parseBoundingBox(inputString: string) {
     // Check if there are exactly four elements (two pairs of coordinates)
     if (coords.length !== 2 && coords.length !== 4) {
         throw new Error(
-            'Input string must contain exactly two or four numerical values. e.g "9.51, 21.80" or "52.03, -9.38, 96.33, 32.90"'
+            'Input must contain exactly 2 or 4 numbers. e.g "9.51, 21.80" or "52.03, -9.38, 96.33, 32.90"'
         )
     }
 
@@ -45,7 +44,7 @@ export function parseBoundingBox(inputString: string) {
     return leafletBounds
 }
 
-export function StringifyBoundingBox(input: LatLng | BoundingBox): string {
+export function StringifyBoundingBox(input: any): string {
     if ('_southWest' in input && '_northEast' in input) {
         // It's a BoundingBox
         return `${input._southWest.lng.toFixed(2)}, ${input._southWest.lat.toFixed(
@@ -118,7 +117,7 @@ export class Leaflet {
                 'lat' in options.initialValue &&
                 'lng' in options.initialValue
             ) {
-                L.marker(options.initialValue as LatLng, {
+                L.marker(options.initialValue as any, {
                     icon: L.icon({
                         iconUrl:
                             'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
@@ -133,7 +132,11 @@ export class Leaflet {
                 return
             }
 
-            if ((options.initialValue as LatLngBoundsLiteral)?.length > 0) {
+            if (
+                options.initialValue &&
+                ((options.initialValue as LatLngBoundsLiteral)?.length > 0 ||
+                    'getNorthEast' in options.initialValue)
+            ) {
                 L.rectangle(options.initialValue as LatLngBoundsExpression, {
                     stroke: true,
                     color: '#3388ff',

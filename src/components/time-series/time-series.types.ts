@@ -10,6 +10,10 @@ export type VariableDbEntry = TimeSeriesData & {
     endDate: string
     /** unique key to identify unique record */
     key: string
+    /** environment used when fetching the data */
+    environment?: string
+    /** timestamp when the data was cached */
+    cachedAt: number
 }
 
 export type TimeSeriesData = {
@@ -33,7 +37,5 @@ export type TimeSeriesMetadata = {
     lon: number
     [key: string]: string | number
 }
-
-export type MenuNames = 'download' | 'help' | 'information' | 'jupyter' | null
 
 export type MaybeBearerToken = string | null

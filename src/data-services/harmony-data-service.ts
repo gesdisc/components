@@ -10,15 +10,17 @@ import {
     Status,
     type CollectionWithAvailableServices,
     type DataServiceInterface,
-    type SubsetJobOptions,
     type SubsetJobStatus,
     type SearchOptions,
     type SubsetJobs,
+    type CreateSubsetJobInput,
 } from './types.js'
 
 export const HARMONY_CONFIG = {
     baseUrl: 'https://harmony.earthdata.nasa.gov',
     cmrUrl: 'https://cmr.earthdata.nasa.gov/search',
+    proxyUrl:
+        'https://lpo4uv7f0h.execute-api.us-east-1.amazonaws.com/default/harmony-link-proxy',
 }
 
 export const FINAL_STATUSES = new Set<Status>([
@@ -52,6 +54,7 @@ export class HarmonyDataService implements DataServiceInterface {
                     ...(options?.bearerToken && {
                         authorization: options.bearerToken,
                     }),
+                    'x-environment': options?.environment ?? 'prod',
                 },
                 fetchOptions: {
                     signal: options?.signal,
@@ -69,50 +72,51 @@ export class HarmonyDataService implements DataServiceInterface {
     }
 
     async createSubsetJob(
-        collectionConceptId: string,
-        subsetOptions?: SubsetJobOptions
+        input: CreateSubsetJobInput,
+        options?: SearchOptions
     ): Promise<SubsetJobStatus | undefined> {
-        const client = await getGraphQLClient()
-
-        console.log(
-            'creating subset job ',
-            CREATE_SUBSET_JOB,
-            collectionConceptId,
-            subsetOptions
-        )
-
-        const response = await client.mutate<{
-            createSubsetJob: SubsetJobStatus
-        }>({
-            mutation: CREATE_SUBSET_JOB,
-            variables: {
-                collectionConceptId,
-                variableConceptIds: subsetOptions?.variableConceptIds,
-                boundingBox: subsetOptions?.boundingBox,
-                startDate: subsetOptions?.startDate,
-                endDate: subsetOptions?.endDate,
-                format: subsetOptions?.format,
-                labels: subsetOptions?.labels,
-            },
-            context: {
-                headers: {
-                    ...(subsetOptions?.bearerToken && {
-                        authorization: subsetOptions.bearerToken,
-                    }),
+        try {
+            const client = await getGraphQLClient()
+            const response = await client.mutate<{
+                createSubsetJob: SubsetJobStatus
+            }>({
+                mutation: CREATE_SUBSET_JOB,
+                variables: {
+                    collectionConceptId: input.collectionConceptId,
+                    collectionEntryId: input.collectionEntryId,
+                    variableConceptIds: input.variableConceptIds,
+                    variableEntryIds: input.variableEntryIds,
+                    average: input.average,
+                    boundingBox: input.boundingBox,
+                    startDate: input.startDate,
+                    endDate: input.endDate,
+                    format: input.format,
+                    labels: input.labels,
                 },
-                fetchOptions: {
-                    signal: subsetOptions?.signal,
+                context: {
+                    headers: {
+                        ...(options?.bearerToken && {
+                            authorization: options.bearerToken,
+                        }),
+                        'x-environment': options?.environment ?? 'prod',
+                    },
+                    fetchOptions: {
+                        signal: options?.signal,
+                    },
                 },
-            },
-        })
+            })
 
-        if (response.errors) {
-            throw new Error(
-                `Failed to create subset job: ${response.errors[0].message}`
-            )
+            if (response.errors) {
+                throw new Error(
+                    `Failed to create subset job: ${response.errors[0].message}`
+                )
+            }
+
+            return response.data?.createSubsetJob
+        } catch (err) {
+            console.error('createSubsetJob ERROR: ', err)
+            throw err
         }
-
-        return response.data?.createSubsetJob
     }
 
     async getSubsetJobs(searchOptions?: SearchOptions): Promise<SubsetJobs> {
@@ -127,6 +131,7 @@ export class HarmonyDataService implements DataServiceInterface {
                     ...(searchOptions?.bearerToken && {
                         authorization: searchOptions.bearerToken,
                     }),
+                    'x-environment': searchOptions?.environment ?? 'prod',
                 },
                 fetchOptions: {
                     signal: searchOptions?.signal,
@@ -162,6 +167,7 @@ export class HarmonyDataService implements DataServiceInterface {
                     ...(searchOptions?.bearerToken && {
                         authorization: searchOptions.bearerToken,
                     }),
+                    'x-environment': searchOptions?.environment ?? 'prod',
                 },
                 fetchOptions: {
                     signal: searchOptions?.signal,
@@ -197,6 +203,7 @@ export class HarmonyDataService implements DataServiceInterface {
                     ...(options?.bearerToken && {
                         authorization: options.bearerToken,
                     }),
+                    'x-environment': options?.environment ?? 'prod',
                 },
             },
             fetchPolicy: 'no-cache', //! important, we don't want to get cached results here!
@@ -209,5 +216,41 @@ export class HarmonyDataService implements DataServiceInterface {
         }
 
         return response.data.cancelSubsetJob
+    }
+
+    async getSubsetJobData(
+        job: SubsetJobStatus,
+        options?: SearchOptions
+    ): Promise<{ blob: Blob; text: string }> {
+        const link = job.links.find(link => link.rel === 'data')?.href
+
+        if (!link) {
+            throw new Error('No data link found for job')
+        }
+
+        const proxyUrl = `${HARMONY_CONFIG.proxyUrl}?url=${encodeURIComponent(link)}`
+
+        console.log('fetching data from ', proxyUrl)
+
+        const response = await fetch(proxyUrl, {
+            headers: {
+                ...(options?.bearerToken && {
+                    Authorization: `Bearer ${options?.bearerToken}`,
+                }),
+            },
+            signal: options?.signal,
+        })
+
+        if (!response.ok) {
+            throw new Error(
+                `Failed to fetch subset job link contents: ${response.statusText}`
+            )
+        }
+
+        const clonedResponse = response.clone()
+        const blob = await response.blob()
+        const text = await clonedResponse.text()
+
+        return { blob, text }
     }
 }

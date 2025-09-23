@@ -16,7 +16,6 @@ import TerraDatePicker from '../date-picker/date-picker.component.js'
 import TerraIcon from '../icon/icon.component.js'
 import TerraSpatialPicker from '../spatial-picker/spatial-picker.component.js'
 import type { TerraMapChangeEvent } from '../../events/terra-map-change.js'
-import type { LatLng } from '../map/type.js'
 import { getBasePath } from '../../utilities/base-path.js'
 import {
     defaultSubsetFileMimeType,
@@ -25,6 +24,10 @@ import {
 import { watch } from '../../internal/watch.js'
 import { debounce } from '../../internal/debounce.js'
 import type { CmrSearchResult } from '../../metadata-catalog/types.js'
+import type { LatLng } from 'leaflet'
+import { MapEventType } from '../map/type.js'
+import { AuthController } from '../../auth/auth.controller.js'
+import TerraLogin from '../login/login.component.js'
 
 /**
  * @summary Easily allow users to select, subset, and download NASA Earth science data collections with spatial, temporal, and variable filters.
@@ -46,6 +49,7 @@ export default class TerraDataSubsetter extends TerraElement {
         'terra-date-picker': TerraDatePicker,
         'terra-icon': TerraIcon,
         'terra-spatial-picker': TerraSpatialPicker,
+        'terra-login': TerraLogin,
     }
 
     @property({ reflect: true, attribute: 'collection-entry-id' })
@@ -122,6 +126,7 @@ export default class TerraDataSubsetter extends TerraElement {
     spatialPicker: TerraSpatialPicker
 
     #controller = new DataSubsetterController(this)
+    #authController = new AuthController(this)
 
     @watch(['jobId'], { waitUntilFirstUpdate: true })
     jobIdChanged() {
@@ -202,6 +207,44 @@ export default class TerraDataSubsetter extends TerraElement {
         this.closest('terra-dialog')?.hide()
     }
 
+    #renderSizeInfo(estimates: { days: number; links: number }) {
+        if (
+            !this.#authController.state.isLoading &&
+            !this.#authController.state.user
+        ) {
+            return html`
+                <div class="size-info warning">
+                    <terra-login>
+                        <h2 slot="logged-out">Limited access as a guest.</h2>
+
+                        <p slot="logged-out">
+                            Your results will be capped at 10 links. Log in for full
+                            access to all data.
+                        </p>
+                    </terra-login>
+                </div>
+            `
+        }
+
+        return html`<div
+            class="size-info ${estimates.links >= 150 ? 'warning' : 'neutral'}"
+        >
+            <h2>Estimated size of results</h2>
+            <div class="size-stats">
+                ${estimates.days.toLocaleString()} days,
+                ${estimates.links.toLocaleString()} links
+            </div>
+            ${estimates.links >= 150
+                ? html`<div class="size-warning">
+                      You are about to retrieve ${estimates.links.toLocaleString()}
+                      file links from the archive. You may
+                      <strong>speed up the request</strong> by limiting the scope of
+                      your search.
+                  </div>`
+                : nothing}
+        </div>`
+    }
+
     #renderSubsetOptions() {
         const estimates = this.#estimateJobSize()
         const hasSubsetOption = this.#hasAtLeastOneSubsetOption()
@@ -215,26 +258,7 @@ export default class TerraDataSubsetter extends TerraElement {
 
         return html`
             ${hasSubsetOption && estimates
-                ? html`<div
-                      class="size-info ${estimates.links >= 150
-                          ? 'warning'
-                          : 'neutral'}"
-                  >
-                      <h2>Estimated size of results</h2>
-                      <div class="size-stats">
-                          ${estimates.days.toLocaleString()} days,
-                          ${estimates.links.toLocaleString()} links
-                      </div>
-                      ${estimates.links >= 150
-                          ? html`<div class="size-warning">
-                                You are about to retrieve
-                                ${estimates.links.toLocaleString()} file links from
-                                the archive. You may
-                                <strong>speed up the request</strong> by limiting the
-                                scope of your search.
-                            </div>`
-                          : nothing}
-                  </div>`
+                ? this.#renderSizeInfo(estimates)
                 : nothing}
             ${this.showCollectionSearch
                 ? html`
@@ -797,14 +821,14 @@ export default class TerraDataSubsetter extends TerraElement {
         this.#markFieldTouched('spatial')
         const round2 = (n: number) => parseFloat(Number(n).toFixed(2))
 
-        if (e.detail?.bounds) {
+        if (e.detail.type === MapEventType.BBOX) {
             this.spatialSelection = {
-                e: round2(e.detail.bounds._northEast.lng),
-                n: round2(e.detail.bounds._northEast.lat),
-                w: round2(e.detail.bounds._southWest.lng),
-                s: round2(e.detail.bounds._southWest.lat),
+                e: round2(e.detail.bounds.getNorthEast().lng),
+                n: round2(e.detail.bounds.getNorthEast().lat),
+                w: round2(e.detail.bounds.getSouthWest().lng),
+                s: round2(e.detail.bounds.getSouthWest().lat),
             }
-        } else if (e.detail?.latLng) {
+        } else if (e.detail.type === MapEventType.POINT) {
             this.spatialSelection = e.detail.latLng
         } else {
             this.spatialSelection = null
