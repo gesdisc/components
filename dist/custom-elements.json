@@ -507,6 +507,15 @@
             },
             {
               "kind": "field",
+              "name": "activeIndex",
+              "type": {
+                "text": "number | undefined"
+              },
+              "privacy": "private",
+              "default": "undefined"
+            },
+            {
+              "kind": "field",
               "name": "#controller",
               "privacy": "private",
               "default": "new BrowseVariablesController(this)"

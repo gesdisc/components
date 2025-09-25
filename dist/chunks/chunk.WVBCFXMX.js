@@ -18,7 +18,7 @@ import {
 } from "./chunk.3AZLGGEX.js";
 import {
   browse_variables_styles_default
-} from "./chunk.KH6OCEZI.js";
+} from "./chunk.CQRQFMSR.js";
 import {
   TerraButton
 } from "./chunk.QBCKG623.js";
@@ -77,6 +77,7 @@ var TerraBrowseVariables = class extends TerraElement {
     this.selectedFacets = {};
     this.selectedVariables = [];
     this.showVariablesBrowse = false;
+    this.activeIndex = void 0;
     __privateAdd(this, _controller, new BrowseVariablesController(this));
   }
   handleSelectedVariablesChange() {
@@ -311,6 +312,7 @@ renderVariablesBrowse_fn = function() {
     { title: "Special Features", facetKey: "specialFeatures" },
     { title: "Portal", facetKey: "portals" }
   ];
+  const variables = __privateGet(this, _controller).variables;
   return x`<div class="scrollable variables-container">
             <header>
                 <!-- TODO: add back in once we aren't filtering by Cloud Giovanni Catalog (or Cloud Giovanni supports all variables) 
@@ -375,105 +377,92 @@ renderVariablesBrowse_fn = function() {
   )}
             </aside>
 
-            <main>
-                <section class="group">
+            <main class="variable-layout">
+                <!-- LEFT COLUMN -->
+                <section class="left-column">
                     <ul class="variable-list">
-                        ${__privateGet(this, _controller).variables.map((variable) => {
-    return x`
-                                <li
-                                    aria-selected="false"
-                                    class="variable-list-item"
-                                    @click=${(event) => {
-      const target = event.currentTarget;
-      const targetCheckbox = target.querySelector(
-        'input[type="checkbox"]'
-      );
-      if (!targetCheckbox) {
-        return;
-      }
-      target == null ? void 0 : target.setAttribute(
-        "aria-selected",
-        `${targetCheckbox.checked}`
-      );
-    }}
-                                >
-                                    <div class="variable">
-                                        <label>
-                                            <input
-                                                data-variable=${variable}
-                                                type="checkbox"
-                                                @change=${(e) => {
-      const input = e.currentTarget;
-      __privateMethod(this, _handleVariableSelection, handleVariableSelection_fn).call(this, variable, input.checked);
-    }}
-                                                style="display: none;"
-                                            />
-                                            <strong
-                                                >${variable.dataFieldLongName}</strong
-                                            >
-                                            <span
-                                                >${variable.dataProductShortName}
-                                                &bull;
-                                                ${variable.dataProductTimeInterval}
-                                                &bull;
-                                                ${variable.dataProductSpatialResolution}</span
-                                            >
-                                        </label>
-
-                                        <sl-drawer contained>
-                                            <h4 slot="label">
-                                                <strong>Science Name</strong><br />
-                                                ${variable.dataFieldLongName}
-                                            </h4>
-                                            <p>
-                                                <strong>Spatial Resolution</strong>
-                                                ${variable.dataProductSpatialResolution}
-                                            </p>
-                                            <p>
-                                                <strong>Temporal Coverage</strong>
-                                                ${variable.dataProductBeginDateTime}&puncsp;&ndash;&puncsp;${variable.dataProductEndDateTime}
-                                            </p>
-                                            <p>
-                                                <strong>Region Coverage</strong>
-                                                ${variable.dataProductWest},${variable.dataProductSouth},${variable.dataProductEast},${variable.dataProductNorth}
-                                            </p>
-                                            <p>
-                                                <strong>Dataset</strong>
-                                                ${variable.dataProductShortName}_${variable.dataProductVersion}
-                                            </p>
-                                        </sl-drawer>
-
-                                        <terra-button
-                                            @click=${(event) => {
-      var _a;
-      const button = event.currentTarget;
-      const drawer = (_a = button.closest(".variable")) == null ? void 0 : _a.querySelector(
-        "sl-drawer"
-      );
-      drawer.show();
-    }}
-                                            aria-label="View variable details."
-                                            circle
-                                            class="variable-details-button"
-                                            outline
-                                            type="button"
+                        ${variables.map((variable, index) => x`
+                            <li
+                                aria-selected="false"
+                                class="variable-list-item"
+                                @mouseenter=${() => this.activeIndex = index}
+                                @mouseleave=${() => this.activeIndex = void 0}
+                                @focusin=${() => this.activeIndex = index}
+                                @focusout=${() => this.activeIndex = void 0}
+                                @click=${(event) => {
+    const target = event.currentTarget;
+    const targetCheckbox = target.querySelector(
+      'input[type="checkbox"]'
+    );
+    if (!targetCheckbox) {
+      return;
+    }
+    target == null ? void 0 : target.setAttribute(
+      "aria-selected",
+      `${targetCheckbox.checked}`
+    );
+  }}
+                            >
+                                <div class="variable">
+                                    <label>
+                                        <input
+                                            data-variable=${variable}
+                                            type="checkbox"
+                                            @change=${(e) => {
+    const input = e.currentTarget;
+    __privateMethod(this, _handleVariableSelection, handleVariableSelection_fn).call(this, variable, input.checked);
+  }}
+                                            style="display: none;"
+                                        />
+                                        <strong
+                                            >${variable.dataFieldLongName}</strong
                                         >
-                                            <slot name="label">
-                                                <terra-icon
-                                                    font-size="1.5em"
-                                                    library="heroicons"
-                                                    name="outline-information-circle"
-                                                ></terra-icon>
-                                            </slot>
-                                        </terra-button>
-                                    </div>
-                                </li>
-                            `;
-  })}
+                                        <span
+                                            >${variable.dataProductShortName}
+                                            &bull;
+                                            ${variable.dataProductTimeInterval}
+                                            &bull;
+                                            ${variable.dataProductSpatialResolution}</span
+                                        >
+                                    </label>
+                                </div>
+                            </li>
+                        `)}
                     </ul>
                 </section>
+
+                <!-- RIGHT COLUMN -->
+                <section class="right-column">
+                    ${this.activeIndex !== void 0 ? x`
+                        <h4>
+                            Science Name:<br />
+                            ${variables[this.activeIndex].dataFieldLongName}
+                        </h4>
+                        <p> 
+                            <label><strong>Spatial Resolution:</strong></label>
+                            ${variables[this.activeIndex].dataProductSpatialResolution}
+                        </p>
+                        <p>
+                            <label><strong>Temporal Coverage:</strong></label>
+                            ${variables[this.activeIndex].dataProductBeginDateTime}
+                            –
+                            ${variables[this.activeIndex].dataProductEndDateTime}
+                        </p>
+                        <p>
+                            <label><strong>Region Coverage:</strong></label>
+                            ${variables[this.activeIndex].dataProductWest},
+                            ${variables[this.activeIndex].dataProductSouth},
+                            ${variables[this.activeIndex].dataProductEast},
+                            ${variables[this.activeIndex].dataProductNorth}
+                        </p>
+                        <p>
+                            <label><strong>Dataset:</strong></label>
+                            ${variables[this.activeIndex].dataProductShortName}_${variables[this.activeIndex].dataProductVersion}
+                        </p>
+                        ` : x`<p class="placeholder">Hover over a variable to see details</p>`}
+                </section>
             </main>
-        </div>`;
+        `;
 };
 TerraBrowseVariables.styles = [component_styles_default, browse_variables_styles_default];
 TerraBrowseVariables.dependencies = {
@@ -501,6 +490,9 @@ __decorateClass([
 __decorateClass([
   r()
 ], TerraBrowseVariables.prototype, "showVariablesBrowse", 2);
+__decorateClass([
+  r()
+], TerraBrowseVariables.prototype, "activeIndex", 2);
 __decorateClass([
   watch("selectedVariables")
 ], TerraBrowseVariables.prototype, "handleSelectedVariablesChange", 1);

@@ -1,6 +1,6 @@
 import {
   TerraBrowseVariables
-} from "./chunk.D6PZA4UT.js";
+} from "./chunk.WVBCFXMX.js";
 import {
   init_buffer,
   init_dirname,

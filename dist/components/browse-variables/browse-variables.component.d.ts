@@ -41,6 +41,7 @@ export default class TerraBrowseVariables extends TerraElement {
     selectedFacets: SelectedFacets;
     selectedVariables: Variable[];
     showVariablesBrowse: boolean;
+    private activeIndex;
     handleSelectedVariablesChange(): void;
     reset(): void;
     handleObservationChange(): void;

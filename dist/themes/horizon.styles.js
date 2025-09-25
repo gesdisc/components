@@ -102,6 +102,10 @@ export default css`
     --terra-font-family--public-sans: "Public Sans", sans-serif;
     --terra-font-family--dm-mono: "DM Mono", monospace;
 
+    --terra-font-color-primary: var(--terra-color-carbon-90);
+    --terra-font-color-secondary: var(--terra-color-carbon-70);
+    --terra-font-color-tertiary: var(--terra-color-carbon-50);
+
     --terra-font-size-2x-small: 0.625rem;
     --terra-font-size-x-small: 0.75rem;
     --terra-font-size-small: 0.875rem;
