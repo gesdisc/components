@@ -37,7 +37,13 @@ export default class TerraPlotToolbar extends TerraElement {
     endDate: string;
     cacheKey: string;
     dataType: DataType;
+    colormap: string;
+    opacity: number;
+    pixelValue: string;
+    pixelCoordinates: string;
     activeMenuItem: MenuNames;
+    colormaps: string[];
+    colorMapName: string;
     menu: HTMLMenuElement;
     handleFocus(_oldValue: MenuNames, newValue: MenuNames): void;
     closeMenu(): void;

@@ -9,6 +9,7 @@ import TerraPlotToolbar from '../plot-toolbar/plot-toolbar.component.js';
 import { Task } from '@lit/task';
 import type { Variable } from '../browse-variables/browse-variables.types.js';
 import { AuthController } from '../../auth/auth.controller.js';
+import TerraLoader from '../loader/loader.component.js';
 export default class TerraTimeAverageMap extends TerraElement {
     #private;
     static styles: CSSResultGroup;
@@ -16,6 +17,7 @@ export default class TerraTimeAverageMap extends TerraElement {
         'terra-button': typeof TerraButton;
         'terra-icon': typeof TerraIcon;
         'terra-plot-toolbar': typeof TerraPlotToolbar;
+        'terra-loader': typeof TerraLoader;
     };
     collection?: string;
     variable?: string;
@@ -24,12 +26,9 @@ export default class TerraTimeAverageMap extends TerraElement {
     location?: string;
     bearerToken: string;
     long_name: string;
-    activeMenuItem: any;
     catalogVariable: Variable;
-    colormaps: string[];
-    colorMapName: string;
-    menu: HTMLMenuElement;
-    handleFocus(_oldValue: any, newValue: any): void;
+    pixelValue: string;
+    pixelCoordinates: string;
     _authController: AuthController<this>;
     /**
      * anytime the collection or variable changes, we'll fetch the variable from the catalog to get all of it's metadata

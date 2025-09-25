@@ -461,7 +461,19 @@ type TerraPlotToolbarProps = {
   /**  */
   dataType?: TerraPlotToolbar["dataType"];
   /**  */
+  colormap?: TerraPlotToolbar["colormap"];
+  /**  */
+  opacity?: TerraPlotToolbar["opacity"];
+  /**  */
+  pixelValue?: TerraPlotToolbar["pixelValue"];
+  /**  */
+  pixelCoordinates?: TerraPlotToolbar["pixelCoordinates"];
+  /**  */
   activeMenuItem?: TerraPlotToolbar["activeMenuItem"];
+  /**  */
+  colormaps?: TerraPlotToolbar["colormaps"];
+  /**  */
+  colorMapName?: TerraPlotToolbar["colorMapName"];
   /**  */
   menu?: TerraPlotToolbar["menu"];
 };
@@ -534,15 +546,11 @@ type TerraTimeAverageMapProps = {
   /**  */
   long_name?: TerraTimeAverageMap["long_name"];
   /**  */
-  activeMenuItem?: TerraTimeAverageMap["activeMenuItem"];
-  /**  */
   catalogVariable?: TerraTimeAverageMap["catalogVariable"];
   /**  */
-  colormaps?: TerraTimeAverageMap["colormaps"];
+  pixelValue?: TerraTimeAverageMap["pixelValue"];
   /**  */
-  colorMapName?: TerraTimeAverageMap["colorMapName"];
-  /**  */
-  menu?: TerraTimeAverageMap["menu"];
+  pixelCoordinates?: TerraTimeAverageMap["pixelCoordinates"];
   /**  */
   _authController?: TerraTimeAverageMap["_authController"];
   /** anytime the collection or variable changes, we'll fetch the variable from the catalog to get all of it's metadata */
