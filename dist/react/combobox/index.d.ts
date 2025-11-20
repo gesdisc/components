@@ -1,7 +1,7 @@
 import Component from '../../components/combobox/combobox.component.js';
 /**
  * @summary Fuzzy-search for combobox with list autocomplete.
- * @documentation https://disc.gsfc.nasa.gov/components/combobox
+ * @documentation https://terra-ui.netlify.app/components/combobox
  * @status experimental
  * @since 1.0
  *

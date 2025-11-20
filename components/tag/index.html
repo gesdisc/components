@@ -1,0 +1,1985 @@
+<!doctype html>
+<html lang="en" data-layout="component" data-terra-ui-components-version="0.0.111">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Tags are simple labels that help categorize items." />
+    <title>Tag</title>
+
+    <meta name="turbo-cache-control" />
+
+    <link rel="stylesheet" href="/components/assets/styles/docs.css" />
+    <link rel="stylesheet" href="/components/assets/styles/code-previews.css" />
+    <link rel="stylesheet" href="/components/assets/styles/search.css" />
+
+    <link rel="icon" href="/components/assets/images/logo.white.png" type="image/x-icon" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="nasa_terra-ui" />
+    <meta name="twitter:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
+
+    <meta property="og:url" content="https://terra-ui.netlify.app/components/tag/" />
+    <meta property="og:title" content="Tag" />
+    <meta property="og:description" content="Tags are simple labels that help categorize items." />
+    <meta property="og:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
+
+    <link rel="stylesheet" href="/dist/themes/horizon.css" />
+    <script type="module" src="/dist/terra-ui-components-autoloader.js"></script>
+
+    <script>
+      (() => {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = localStorage.getItem('theme') || 'auto';
+        document.documentElement.classList.toggle(
+          'terra-theme-dark',
+          theme === 'dark' || (theme === 'auto' && prefersDark)
+        );
+      })();
+    </script>
+
+    <script src="/components/assets/scripts/turbo.js" type="module"></script>
+    <script src="/components/assets/scripts/docs.js" defer=""></script>
+    <script src="/components/assets/scripts/code-previews.js" defer=""></script>
+    <script src="/components/assets/scripts/lunr.js" defer=""></script>
+    <script src="/components/assets/scripts/search.js" defer=""></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono&amp;family=Inter&amp;family=Public+Sans&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"
+    ></script>
+  </head>
+  <body>
+    <a id="skip-to-main" class="visually-hidden" href="#main-content" data-smooth-link="false">
+      Skip to main content
+    </a>
+
+    <header id="top-nav" class="top-nav">
+      <div class="top-nav__left">
+        <a href="/" class="top-nav__logo">
+          <terra-icon name="nasa-logo" font-size="4rem"></terra-icon>
+          <span class="top-nav__title">Terra UI</span>
+        </a>
+      </div>
+
+      <div class="top-nav__right">
+        <terra-dropdown id="about-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="About"> About </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="project-overview">
+              <a href="/components/">Project Overview</a>
+            </terra-menu-item>
+            <terra-menu-item value="contributing">
+              <a href="/components/about/contributing">Contributing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="getting-started-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Getting Started">
+            Getting Started
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="installation">
+              <a href="/components/getting-started/installation">Installation</a>
+            </terra-menu-item>
+            <terra-menu-item value="usage">
+              <a href="/components/getting-started/usage">Usage</a>
+            </terra-menu-item>
+            <terra-menu-item value="themes">
+              <a href="/components/getting-started/themes">Themes</a>
+            </terra-menu-item>
+            <terra-menu-item value="customizing">
+              <a href="/components/getting-started/customizing">Customizing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <terra-dropdown id="frameworks-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Frameworks">
+            Frameworks
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="react">
+              <a href="/components/frameworks/react">React</a>
+            </terra-menu-item>
+            <terra-menu-item value="vue">
+              <a href="/components/frameworks/vue">Vue</a>
+            </terra-menu-item>
+            <terra-menu-item value="angular">
+              <a href="/components/frameworks/angular">Angular</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <button
+          class="top-nav__search"
+          type="button"
+          title="Press / to search"
+          aria-label="Search"
+          data-plugin="search"
+        >
+          <sl-icon name="search"></sl-icon>
+        </button>
+        <a
+          href="https://github.com/nasa/terra-ui-components"
+          title="View Terra UI Components on GitHub"
+          class="top-nav__icon-link external-link"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <sl-icon name="github"></sl-icon>
+        </a>
+        <terra-dropdown id="environment-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Environment"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <span id="environment-display">UAT</span>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="uat"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >UAT</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="prod"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >PROD</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="theme-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Press \ to toggle"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
+            <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="light"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Light</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="dark"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Dark</terra-menu-item
+            >
+            <hr
+              role="separator"
+              aria-orientation="horizontal"
+              style="
+                margin: var(--terra-spacing-x-small) 0;
+                border: none;
+                border-top: 1px solid var(--terra-panel-border-color);
+              "
+            />
+            <terra-menu-item
+              type="checkbox"
+              value="auto"
+              tabindex="0"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >System</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+      </div>
+    </header>
+
+    <button id="menu-toggle" type="button" aria-label="Menu">
+      <svg width="148" height="148" viewBox="0 0 148 148" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="currentColor" stroke-width="18" fill="none" fill-rule="evenodd" stroke-linecap="round">
+          <path d="M9.5 125.5h129M9.5 74.5h129M9.5 23.5h129"></path>
+        </g>
+      </svg>
+    </button>
+
+    <aside id="sidebar" data-preserve-scroll="">
+      <div class="sidebar-buttons">
+        <terra-button
+          size="small"
+          class="repo-button repo-button--github"
+          href="https://github.com/nasa/terra-ui-components"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="github"></sl-icon> Code
+        </terra-button>
+        <terra-button
+          size="small"
+          class="repo-button repo-button--star"
+          href="https://github.com/nasa/terra-ui-components/stargazers"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="star-fill"></sl-icon> Star
+        </terra-button>
+      </div>
+
+      <nav>
+        <ul>
+          <li>
+            <h2>Design System</h2>
+            <ul>
+              <li>
+                <a href="/components/horizon-design-system">Overview</a>
+              </li>
+              <li>
+                <a href="/components/tokens/typography">Typography</a>
+              </li>
+              <li>
+                <a href="/components/tokens/color">Color</a>
+              </li>
+              <li>
+                <a href="/components/tokens/spacing">Spacing</a>
+              </li>
+              <li>
+                <a href="/components/tokens/elevation">Elevation</a>
+              </li>
+              <li>
+                <a href="/components/tokens/border-radius">Border Radius</a>
+              </li>
+              <li>
+                <a href="/components/tokens/transition">Transition</a>
+              </li>
+              <li>
+                <a href="/components/tokens/z-index">Z-index</a>
+              </li>
+              <li>
+                <a href="/components/tokens/more">More Tokens</a>
+              </li>
+              <li>
+                <a href="/components/horizon-design-system/#adoption-status">HDS Adoption Status</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2>Forms</h2>
+            <ul>
+              <li>
+                <a href="/components/forms">Overview</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2>Elements</h2>
+            <ul>
+              <li>
+                <a href="/components/alert"> Alert </a>
+              </li>
+
+              <li>
+                <a href="/components/avatar"> Avatar </a>
+              </li>
+
+              <li>
+                <a href="/components/button"> Button </a>
+              </li>
+
+              <li>
+                <a href="/components/caption"> Caption </a>
+              </li>
+
+              <li>
+                <a href="/components/checkbox"> Checkbox </a>
+              </li>
+
+              <li>
+                <a href="/components/chip"> Chip </a>
+              </li>
+
+              <li>
+                <a href="/components/date-picker"> Date Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/file-upload"> File Upload </a>
+              </li>
+
+              <li>
+                <a href="/components/icon"> Icon </a>
+              </li>
+
+              <li>
+                <a href="/components/input"> Input </a>
+              </li>
+
+              <li>
+                <a href="/components/loader"> Loader </a>
+              </li>
+
+              <li>
+                <a href="/components/option"> Option </a>
+              </li>
+
+              <li>
+                <a href="/components/pagination"> Pagination </a>
+              </li>
+
+              <li>
+                <a href="/components/radio"> Radio </a>
+              </li>
+
+              <li>
+                <a href="/components/radio-group"> Radio Group </a>
+              </li>
+
+              <li>
+                <a href="/components/scroll-hint"> Scroll Hint </a>
+              </li>
+
+              <li>
+                <a href="/components/select"> Select </a>
+              </li>
+
+              <li>
+                <a href="/components/slider"> Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/status-indicator"> Status Indicator </a>
+              </li>
+
+              <li>
+                <a href="/components/tag" class="active-link"> Tag </a>
+              </li>
+
+              <li>
+                <a href="/components/textarea"> Textarea </a>
+              </li>
+
+              <li>
+                <a href="/components/toggle"> Toggle </a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2>Components</h2>
+            <ul>
+              <li>
+                <a href="/components/accordion"> Accordion </a>
+              </li>
+
+              <li>
+                <a href="/components/browse-variables"> Browse Variables </a>
+              </li>
+
+              <li>
+                <a href="/components/combobox"> Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/data-access"> Data Access </a>
+              </li>
+
+              <li>
+                <a href="/components/data-rods"> Data Rods </a>
+              </li>
+
+              <li>
+                <a href="/components/data-subsetter"> Data Subsetter </a>
+              </li>
+
+              <li>
+                <a href="/components/data-subsetter-history"> Data Subsetter History </a>
+              </li>
+
+              <li>
+                <a href="/components/date-range-slider"> Date Range Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/dialog"> Dialog </a>
+              </li>
+
+              <li>
+                <a href="/components/dropdown"> Dropdown </a>
+              </li>
+
+              <li>
+                <a href="/components/login"> Login </a>
+              </li>
+
+              <li>
+                <a href="/components/map"> Map </a>
+              </li>
+
+              <li>
+                <a href="/components/menu"> Menu </a>
+              </li>
+
+              <li>
+                <a href="/components/menu-item"> Menu Item </a>
+              </li>
+
+              <li>
+                <a href="/components/plot"> Plot </a>
+              </li>
+
+              <li>
+                <a href="/components/plot-toolbar"> Plot Toolbar </a>
+              </li>
+
+              <li>
+                <a href="/components/popup"> Popup </a>
+              </li>
+
+              <li>
+                <a href="/components/skeleton"> Skeleton </a>
+              </li>
+
+              <li>
+                <a href="/components/spatial-picker"> Spatial Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/time-average-map"> Time Average Map </a>
+              </li>
+
+              <li>
+                <a href="/components/time-series"> Time Series </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-combobox"> Variable Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-keyword-search"> Variable Keyword Search </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+      <a id="main-content"></a>
+      <article id="content" class="content content--with-toc">
+        <div class="content__toc">
+          <ul>
+            <li class="top">
+              <a href="#">Tag</a>
+            </li>
+            <li data-level="2"><a href="#usage">Usage</a></li>
+            <li data-level="2"><a href="#variants">Variants</a></li>
+            <li data-level="3"><a href="#content-tags">Content Tags</a></li>
+            <li data-level="3"><a href="#topic-tags">Topic Tags</a></li>
+            <li data-level="3"><a href="#urgent-labels">Urgent Labels</a></li>
+            <li data-level="2"><a href="#sizes">Sizes</a></li>
+            <li data-level="2"><a href="#stacking">Stacking</a></li>
+            <li data-level="2"><a href="#dark-mode">Dark Mode</a></li>
+            <li data-level="3"><a href="#light-background">Light Background</a></li>
+            <li data-level="3"><a href="#dark-background">Dark Background</a></li>
+            <li data-level="2"><a href="#events">Events</a></li>
+            <li data-level="2"><a href="#customization">Customization</a></li>
+            <li data-level="3"><a href="#design-tokens">Design Tokens</a></li>
+            <li data-level="2"><a href="#importing">Importing</a></li>
+            <li data-level="2"><a href="#slots">Slots</a></li>
+            <li data-level="2"><a href="#properties">Properties</a></li>
+            <li data-level="2"><a href="#events-1">Events</a></li>
+            <li data-level="2"><a href="#custom-properties">Custom Properties</a></li>
+            <li data-level="2"><a href="#parts">Parts</a></li>
+            <li data-level="2"><a href="#dependencies">Dependencies</a></li>
+          </ul>
+        </div>
+
+        <div class="content__body">
+          <header class="component-header">
+            <h1>Tag</h1>
+
+            <div class="component-header__tag">
+              <code>&lt;terra-tag&gt; | TerraTag</code>
+            </div>
+
+            <div class="component-header__info">
+              <sl-badge variant="neutral" pill=""> Since 1.0 </sl-badge>
+              <sl-badge variant="primary" pill="" style="text-transform: capitalize"> stable </sl-badge>
+            </div>
+          </header>
+
+          <p class="component-summary">Tags are simple labels that help categorize items.</p>
+
+          <h2 id="usage" class="anchor-heading">Usage<a href="#usage" aria-label='Direct link to "Usage"'></a></h2>
+          <p>
+            Tags come in three variants: content tags (with icons), topic tags (clickable labels), and urgent labels
+            (for breaking news). Use the <code>variant</code> prop to specify which type of tag you need.
+          </p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-tag variant="content" icon="asteroid">Feature</terra-tag>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-249">
+              <div class="code-preview__source code-preview__source--html" data-flavor="html">
+                <pre><code class="language-html" id="code-block-581"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span> <span class="token attr-name">icon</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>asteroid<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Feature<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-581"></sl-copy-button></pre>
+              </div>
+
+              <div class="code-preview__source code-preview__source--react" data-flavor="react">
+                <pre><code class="language-jsx" id="code-block-582"><span class="token keyword">import</span> TerraTag <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/tag'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TerraTag</span></span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span> <span class="token attr-name">icon</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>asteroid<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">Feature</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TerraTag</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-582"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-249"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" title="Show HTML code" class="code-preview__button code-preview__button--html">
+                HTML
+              </button>
+
+              <button type="button" title="Show React code" class="code-preview__button code-preview__button--react">
+                React
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h2 id="variants" class="anchor-heading">
+            Variants<a href="#variants" aria-label='Direct link to "Variants"'></a>
+          </h2>
+          <h3 id="content-tags" class="anchor-heading">
+            Content Tags<a href="#content-tags" aria-label='Direct link to "Content Tags"'></a>
+          </h3>
+          <p>
+            Content tags contain an icon and a label, and are added to card components to identify content types.
+            Content tags help visitors know what to expect when they engage with content. Only use one content tag per
+            card.
+          </p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-tag variant="content" icon="asteroid">Feature</terra-tag>
+              <terra-tag variant="content" icon="chevron-right-circle">Article</terra-tag>
+              <terra-tag variant="content" icon="caret">Interactive</terra-tag>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-250">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-583"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span> <span class="token attr-name">icon</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>asteroid<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Feature<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span> <span class="token attr-name">icon</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>chevron-right-circle<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Article<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span> <span class="token attr-name">icon</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>caret<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Interactive<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-583"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-250"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <p>You can also use custom icons via the icon slot:</p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-tag variant="content">
+                <terra-icon slot="icon" name="outline-microphone" library="heroicons"></terra-icon>
+                Podcast
+              </terra-tag>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-251">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-584"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>icon<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outline-microphone<span class="token punctuation">"</span></span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>heroicons<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
+    Podcast
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-584"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-251"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="topic-tags" class="anchor-heading">
+            Topic Tags<a href="#topic-tags" aria-label='Direct link to "Topic Tags"'></a>
+          </h3>
+          <p>
+            Topic tags are shown on article and press release pages to assign content to multiple topics or subjects.
+            Topic tags aid in discovery, since they are clickable and direct to topic, subtopic, or mission pages to
+            view other content with that tag. These tags can stack up to form tight clusters.
+          </p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-tag variant="topic">Humans in Space</terra-tag>
+              <terra-tag variant="topic">Missions</terra-tag>
+              <terra-tag variant="topic">Solar System</terra-tag>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-252">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-585"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>topic<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Humans in Space<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>topic<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Missions<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>topic<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Solar System<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-585"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-252"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <p>Topic tags can be used as links by providing an <code>href</code>:</p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-tag variant="topic" href="/topics/humans-in-space">Humans in Space</terra-tag>
+              <terra-tag variant="topic" href="/topics/missions">Missions</terra-tag>
+              <terra-tag variant="topic" href="/topics/solar-system">Solar System</terra-tag>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-253">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-586"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>topic<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/topics/humans-in-space<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Humans in Space<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>topic<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/topics/missions<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Missions<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>topic<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/topics/solar-system<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Solar System<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-586"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-253"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="urgent-labels" class="anchor-heading">
+            Urgent Labels<a href="#urgent-labels" aria-label='Direct link to "Urgent Labels"'></a>
+          </h3>
+          <p>
+            Urgent labels are used to label Breaking News or Live content in those specific modules. They have a bold
+            red fill that draws attention to these important and immediate updates.
+          </p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-tag variant="urgent">Breaking News</terra-tag>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-254">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-587"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>urgent<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Breaking News<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-587"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-254"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h2 id="sizes" class="anchor-heading">Sizes<a href="#sizes" aria-label='Direct link to "Sizes"'></a></h2>
+          <p>
+            Tags support three sizes: <code>small</code>, <code>medium</code> (default), and <code>large</code>. The
+            size affects the font size, icon size (for content tags), and padding (for topic and urgent tags).
+          </p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <div>
+                <terra-tag variant="content" icon="asteroid" size="small">Small</terra-tag>
+                <terra-tag variant="content" icon="asteroid" size="medium">Medium</terra-tag>
+                <terra-tag variant="content" icon="asteroid" size="large">Large</terra-tag>
+              </div>
+
+              <div>
+                <terra-tag variant="topic" size="small">Small Topic</terra-tag>
+                <terra-tag variant="topic" size="medium">Medium Topic</terra-tag>
+                <terra-tag variant="topic" size="large">Large Topic</terra-tag>
+              </div>
+
+              <div>
+                <terra-tag variant="urgent" size="small">SMALL</terra-tag>
+                <terra-tag variant="urgent" size="medium">MEDIUM</terra-tag>
+                <terra-tag variant="urgent" size="large">LARGE</terra-tag>
+              </div>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-255">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-588"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span> <span class="token attr-name">icon</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>asteroid<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Small<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span> <span class="token attr-name">icon</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>asteroid<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>medium<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Medium<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span> <span class="token attr-name">icon</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>asteroid<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>large<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Large<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>topic<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Small Topic<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>topic<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>medium<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Medium Topic<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>topic<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>large<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Large Topic<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>urgent<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>SMALL<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>urgent<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>medium<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>MEDIUM<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>urgent<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>large<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>LARGE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-588"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-255"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h2 id="stacking" class="anchor-heading">
+            Stacking<a href="#stacking" aria-label='Direct link to "Stacking"'></a>
+          </h2>
+          <p>By default, tags sit side by side. Use the <code>stack</code> prop to make tags stack vertically:</p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-tag variant="topic" stack="">Humans in Space</terra-tag>
+              <terra-tag variant="topic" stack="">Missions</terra-tag>
+              <terra-tag variant="topic" stack="">Solar System</terra-tag>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-256">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-589"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>topic<span class="token punctuation">"</span></span> <span class="token attr-name">stack</span><span class="token punctuation">&gt;</span></span>Humans in Space<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>topic<span class="token punctuation">"</span></span> <span class="token attr-name">stack</span><span class="token punctuation">&gt;</span></span>Missions<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>topic<span class="token punctuation">"</span></span> <span class="token attr-name">stack</span><span class="token punctuation">&gt;</span></span>Solar System<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-589"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-256"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h2 id="dark-mode" class="anchor-heading">
+            Dark Mode<a href="#dark-mode" aria-label='Direct link to "Dark Mode"'></a>
+          </h2>
+          <p>
+            Tags automatically adapt to dark mode based on system preference. Use the <code>dark</code> prop to force
+            dark mode styles when placing the component on a dark background.
+          </p>
+          <h3 id="light-background" class="anchor-heading">
+            Light Background<a href="#light-background" aria-label='Direct link to "Light Background"'></a>
+          </h3>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <div style="background-color: #f5f5f5; padding: 2rem">
+                <terra-tag variant="content" icon="asteroid">Feature</terra-tag>
+                <br /><br />
+                <terra-tag variant="topic">Humans in Space</terra-tag>
+                <br /><br />
+                <terra-tag variant="urgent">Breaking News</terra-tag>
+              </div>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-257">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-590"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">background-color</span><span class="token punctuation">:</span> #f5f5f5<span class="token punctuation">;</span> <span class="token property">padding</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span> <span class="token attr-name">icon</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>asteroid<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Feature<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>topic<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Humans in Space<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>urgent<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Breaking News<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-590"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-257"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="dark-background" class="anchor-heading">
+            Dark Background<a href="#dark-background" aria-label='Direct link to "Dark Background"'></a>
+          </h3>
+          <p>When placing tags on a dark background, use the <code>dark</code> prop to ensure proper contrast:</p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <div style="background-color: #1a1a1a; padding: 2rem">
+                <terra-tag variant="content" icon="asteroid" dark="">Feature</terra-tag>
+                <br /><br />
+                <terra-tag variant="topic" dark="">Humans in Space</terra-tag>
+                <br /><br />
+                <terra-tag variant="urgent" dark="">Breaking News</terra-tag>
+              </div>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-258">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-591"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">background-color</span><span class="token punctuation">:</span> #1a1a1a<span class="token punctuation">;</span> <span class="token property">padding</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span> <span class="token attr-name">icon</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>asteroid<span class="token punctuation">"</span></span> <span class="token attr-name">dark</span><span class="token punctuation">&gt;</span></span>Feature<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>topic<span class="token punctuation">"</span></span> <span class="token attr-name">dark</span><span class="token punctuation">&gt;</span></span>Humans in Space<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>urgent<span class="token punctuation">"</span></span> <span class="token attr-name">dark</span><span class="token punctuation">&gt;</span></span>Breaking News<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-591"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-258"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h2 id="events" class="anchor-heading">Events<a href="#events" aria-label='Direct link to "Events"'></a></h2>
+          <p>Topic tags emit a <code>terra-click</code> event when clicked (unless they have an <code>href</code>):</p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-tag variant="topic" class="clickable-tag">Click me</terra-tag>
+              <script>
+                (() => {
+                  const tag = document.querySelector('.clickable-tag');
+                  tag.addEventListener('terra-click', e => {
+                    alert('Tag clicked!');
+                  });
+                })();
+              </script>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-259">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-592"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-tag</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>topic<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>clickable-tag<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Click me<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-tag</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">const</span> tag <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'.clickable-tag'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    tag<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'terra-click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'Tag clicked!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-592"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-259"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h2 id="customization" class="anchor-heading">
+            Customization<a href="#customization" aria-label='Direct link to "Customization"'></a>
+          </h2>
+          <p>You can customize tag appearance using CSS custom properties:</p>
+          <pre><code class="language-css" id="code-block-593"><span class="token selector">terra-tag</span> <span class="token punctuation">{</span>
+    <span class="token property">--terra-tag-font-family</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-font-family--inter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">--terra-tag-font-size-medium</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-font-size-small<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">--terra-tag-font-weight</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-font-weight-normal<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">--terra-tag-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-carbon-90<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">--terra-tag-background-color</span><span class="token punctuation">:</span> transparent<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-593"></sl-copy-button></pre>
+          <h3 id="design-tokens" class="anchor-heading">
+            Design Tokens<a href="#design-tokens" aria-label='Direct link to "Design Tokens"'></a>
+          </h3>
+          <p>The following design tokens are available for customization:</p>
+          <p><strong>Typography:</strong></p>
+          <ul>
+            <li>
+              <code>--terra-tag-font-family</code>: Font family (default: <code>--terra-font-family--inter</code>)
+            </li>
+            <li>
+              <code>--terra-tag-font-size-small</code>: Font size for small tags (default:
+              <code>--terra-font-size-x-small</code>)
+            </li>
+            <li>
+              <code>--terra-tag-font-size-medium</code>: Font size for medium tags (default:
+              <code>--terra-font-size-small</code>)
+            </li>
+            <li>
+              <code>--terra-tag-font-size-large</code>: Font size for large tags (default:
+              <code>--terra-font-size-medium</code>)
+            </li>
+            <li>
+              <code>--terra-tag-font-weight</code>: Font weight (default: <code>--terra-font-weight-normal</code>)
+            </li>
+            <li>
+              <code>--terra-tag-font-weight-urgent</code>: Font weight for urgent tags (default:
+              <code>--terra-font-weight-bold</code>)
+            </li>
+          </ul>
+          <p><strong>Colors:</strong></p>
+          <ul>
+            <li>
+              <code>--terra-tag-color</code>: Text color (default: <code>--terra-color-carbon-90</code> in light mode,
+              <code>--terra-color-carbon-60</code> in dark mode)
+            </li>
+            <li><code>--terra-tag-background-color</code>: Background color (default: <code>transparent</code>)</li>
+            <li>
+              <code>--terra-tag-border-color</code>: Border color for topic tags (default:
+              <code>--terra-color-carbon-30</code> in light mode, <code>--terra-color-carbon-20</code> in dark mode)
+            </li>
+            <li>
+              <code>--terra-tag-border-color-hover</code>: Border color for topic tags on hover (default:
+              <code>--terra-color-carbon-40</code> in light mode, <code>--terra-color-carbon-30</code> in dark mode)
+            </li>
+            <li>
+              <code>--terra-tag-background-color-hover</code>: Background color for topic tags on hover (default:
+              <code>--terra-color-carbon-5</code> in light mode, <code>--terra-color-carbon-10</code> in dark mode)
+            </li>
+            <li>
+              <code>--terra-tag-icon-border-color</code>: Border color for content tag icons (default:
+              <code>--terra-color-carbon-40</code> in light mode, <code>--terra-color-carbon-30</code> in dark mode)
+            </li>
+            <li>
+              <code>--terra-tag-urgent-color</code>: Text color for urgent tags (default:
+              <code>--terra-color-spacesuit-white</code>)
+            </li>
+            <li>
+              <code>--terra-tag-urgent-background-color</code>: Background color for urgent tags (default:
+              <code>--terra-color-nasa-red</code>)
+            </li>
+          </ul>
+          <p><strong>Icon Sizes (Content Tags):</strong></p>
+          <ul>
+            <li>
+              <code>--terra-tag-icon-size-small</code>: Size of small content tag icon circles (default:
+              <code>1.25rem</code>)
+            </li>
+            <li>
+              <code>--terra-tag-icon-size-medium</code>: Size of medium content tag icon circles (default:
+              <code>1.5rem</code>)
+            </li>
+            <li>
+              <code>--terra-tag-icon-size-large</code>: Size of large content tag icon circles (default:
+              <code>1.75rem</code>)
+            </li>
+            <li>
+              <code>--terra-tag-icon-inner-size-small</code>: Inner icon size for small content tags (default:
+              <code>0.75rem</code>)
+            </li>
+            <li>
+              <code>--terra-tag-icon-inner-size-medium</code>: Inner icon size for medium content tags (default:
+              <code>0.875rem</code>)
+            </li>
+            <li>
+              <code>--terra-tag-icon-inner-size-large</code>: Inner icon size for large content tags (default:
+              <code>1rem</code>)
+            </li>
+          </ul>
+          <p><strong>Padding (Topic and Urgent Tags):</strong></p>
+          <ul>
+            <li>
+              <code>--terra-tag-padding-small</code>: Padding for small topic/urgent tags (default:
+              <code>0.25rem 0.5rem</code>)
+            </li>
+            <li>
+              <code>--terra-tag-padding-medium</code>: Padding for medium topic/urgent tags (default:
+              <code>var(--terra-spacing-x-small) var(--terra-spacing-small)</code>)
+            </li>
+            <li>
+              <code>--terra-tag-padding-large</code>: Padding for large topic/urgent tags (default:
+              <code>0.625rem 1rem</code>)
+            </li>
+          </ul>
+          <p>
+            All tokens automatically adapt to dark mode when dark mode is active (via system preference or the
+            <code>dark</code> prop).
+          </p>
+          <p>[component-metadata:terra-tag]</p>
+
+          <h2 id="importing" class="anchor-heading">
+            Importing<a href="#importing" aria-label='Direct link to "Importing"'></a>
+          </h2>
+          <p>
+            If you’re using the autoloader or the traditional loader, you can ignore this section. Otherwise, feel free
+            to use any of the following snippets to
+            <a href="/components/getting-started/installation#cherry-picking">cherry pick</a> this component.
+          </p>
+
+          <sl-tab-group>
+            <sl-tab slot="nav" panel="script">Script</sl-tab>
+            <sl-tab slot="nav" panel="import">Import</sl-tab>
+            <sl-tab slot="nav" panel="bundler">Bundler</sl-tab>
+            <sl-tab slot="nav" panel="react">React</sl-tab>
+
+            <sl-tab-panel name="script">
+              <p>
+                To import this component from
+                <a
+                  href="https://www.jsdelivr.com/package/npm/@nasa-terra/components"
+                  class="external-link"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  >the CDN</a
+                >
+                using a script tag:
+              </p>
+              <pre><code class="language-html" id="code-block-594"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.111/cdn/components/tag/tag.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code><sl-copy-button class="copy-code-button" from="code-block-594"></sl-copy-button></pre>
+            </sl-tab-panel>
+
+            <sl-tab-panel name="import">
+              <p>
+                To import this component from
+                <a
+                  href="https://www.jsdelivr.com/package/npm/@nasa-terra/components"
+                  class="external-link"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  >the CDN</a
+                >
+                using a JavaScript import:
+              </p>
+              <pre><code class="language-js" id="code-block-595"><span class="token keyword">import</span> <span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.111/cdn/components/tag/tag.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-595"></sl-copy-button></pre>
+            </sl-tab-panel>
+
+            <sl-tab-panel name="bundler">
+              <p>
+                To import this component using
+                <a href="/components/getting-started/installation#bundling">a bundler</a>:
+              </p>
+              <pre><code class="language-js" id="code-block-596"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/tag/tag.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-596"></sl-copy-button></pre>
+            </sl-tab-panel>
+
+            <sl-tab-panel name="react">
+              <p>To import this component as a <a href="/components/frameworks/react">React component</a>:</p>
+              <pre><code class="language-js" id="code-block-597"><span class="token keyword">import</span> TerraTag <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/tag'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-597"></sl-copy-button></pre>
+            </sl-tab-panel>
+          </sl-tab-group>
+
+          <h2 id="slots" class="anchor-heading">Slots<a href="#slots" aria-label='Direct link to "Slots"'></a></h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name">Name</th>
+                  <th class="table-description">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap">(default)</td>
+                  <td>The tag label text.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>icon</code>
+                  </td>
+                  <td>Optional icon slot for content tags (overrides icon prop).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em>Learn more about <a href="/components/getting-started/usage#slots">using slots</a>.</em>
+          </p>
+
+          <h2 id="properties" class="anchor-heading">
+            Properties<a href="#properties" aria-label='Direct link to "Properties"'></a>
+          </h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name">Name</th>
+                  <th class="table-description">Description</th>
+                  <th class="table-reflects">Reflects</th>
+                  <th class="table-type">Type</th>
+                  <th class="table-default">Default</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <code class="nowrap">variant</code>
+                  </td>
+                  <td>The tag variant. Determines the styling and behavior.</td>
+                  <td style="text-align: center">
+                    <sl-icon label="yes" name="check-lg"></sl-icon>
+                  </td>
+                  <td>
+                    <code>'content' | 'topic' | 'urgent'</code>
+                  </td>
+                  <td>
+                    <code>'content'</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">size</code>
+                  </td>
+                  <td>The size of the tag.</td>
+                  <td style="text-align: center">
+                    <sl-icon label="yes" name="check-lg"></sl-icon>
+                  </td>
+                  <td>
+                    <code>'small' | 'medium' | 'large'</code>
+                  </td>
+                  <td>
+                    <code>'medium'</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">icon</code>
+                  </td>
+                  <td>The icon name for content tags. Used with the default icon library.</td>
+                  <td style="text-align: center">
+                    <sl-icon label="yes" name="check-lg"></sl-icon>
+                  </td>
+                  <td>
+                    <code>string | undefined</code>
+                  </td>
+                  <td>-</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">iconLibrary</code>
+                  </td>
+                  <td>The icon library to use for content tags.</td>
+                  <td style="text-align: center">
+                    <sl-icon label="yes" name="check-lg"></sl-icon>
+                  </td>
+                  <td>
+                    <code>'default' | 'heroicons' | string</code>
+                  </td>
+                  <td>
+                    <code>'default'</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">stack</code>
+                  </td>
+                  <td>When true, tags will stack vertically instead of sitting side by side.</td>
+                  <td style="text-align: center">
+                    <sl-icon label="yes" name="check-lg"></sl-icon>
+                  </td>
+                  <td>
+                    <code>boolean</code>
+                  </td>
+                  <td>
+                    <code>false</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">dark</code>
+                  </td>
+                  <td>
+                    When true, forces dark mode styles regardless of system preference. Useful when placing the
+                    component on a dark background.
+                  </td>
+                  <td style="text-align: center">
+                    <sl-icon label="yes" name="check-lg"></sl-icon>
+                  </td>
+                  <td>
+                    <code>boolean</code>
+                  </td>
+                  <td>
+                    <code>false</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">href</code>
+                  </td>
+                  <td>The href for topic tags. If provided, the tag will be rendered as a link.</td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>string | undefined</code>
+                  </td>
+                  <td>-</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>updateComplete</code>
+                  </td>
+                  <td>
+                    A read-only promise that resolves when the component has
+                    <a href="/components/getting-started/usage?#component-rendering-and-updating">finished updating</a>.
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em
+              >Learn more about
+              <a href="/components/getting-started/usage#attributes-and-properties">attributes and properties</a>.</em
+            >
+          </p>
+
+          <h2 id="events-1" class="anchor-heading">
+            Events<a href="#events-1" aria-label='Direct link to "Events"'></a>
+          </h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name" data-flavor="html">Name</th>
+                  <th class="table-name" data-flavor="react">React Event</th>
+                  <th class="table-description">Description</th>
+                  <th class="table-event-detail">Event Detail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-flavor="html">
+                    <code class="nowrap">terra-click</code>
+                  </td>
+                  <td data-flavor="react">
+                    <code class="nowrap">onTerraClick</code>
+                  </td>
+                  <td>Emitted when a topic tag is clicked (unless href is provided).</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em>Learn more about <a href="/components/getting-started/usage#events">events</a>.</em>
+          </p>
+
+          <h2 id="custom-properties" class="anchor-heading">
+            Custom Properties<a href="#custom-properties" aria-label='Direct link to "Custom Properties"'></a>
+          </h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name">Name</th>
+                  <th class="table-description">Description</th>
+                  <th class="table-default">Default</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-tag-font-family</code>
+                  </td>
+                  <td>The font family for the tag.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-tag-font-size-small</code>
+                  </td>
+                  <td>The font size for small tags.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-tag-font-size-medium</code>
+                  </td>
+                  <td>The font size for medium tags.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-tag-font-size-large</code>
+                  </td>
+                  <td>The font size for large tags.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-tag-font-weight</code>
+                  </td>
+                  <td>The font weight for the tag.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-tag-font-weight-urgent</code>
+                  </td>
+                  <td>The font weight for urgent tags.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-tag-color</code>
+                  </td>
+                  <td>The text color of the tag.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-tag-background-color</code>
+                  </td>
+                  <td>The background color of the tag.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-tag-border-color</code>
+                  </td>
+                  <td>The border color for topic tags.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-tag-border-color-hover</code>
+                  </td>
+                  <td>The border color for topic tags on hover.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-tag-background-color-hover</code>
+                  </td>
+                  <td>The background color for topic tags on hover.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-tag-icon-border-color</code>
+                  </td>
+                  <td>The border color for content tag icons.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-tag-icon-size-small</code>
+                  </td>
+                  <td>The size of small content tag icons.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-tag-icon-size-medium</code>
+                  </td>
+                  <td>The size of medium content tag icons.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-tag-icon-size-large</code>
+                  </td>
+                  <td>The size of large content tag icons.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-tag-icon-inner-size-small</code>
+                  </td>
+                  <td>The inner icon size for small content tags.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-tag-icon-inner-size-medium</code>
+                  </td>
+                  <td>The inner icon size for medium content tags.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-tag-icon-inner-size-large</code>
+                  </td>
+                  <td>The inner icon size for large content tags.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-tag-urgent-color</code>
+                  </td>
+                  <td>The text color for urgent tags.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-tag-urgent-background-color</code>
+                  </td>
+                  <td>The background color for urgent tags.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-tag-padding-small</code>
+                  </td>
+                  <td>The padding for small topic/urgent tags.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-tag-padding-medium</code>
+                  </td>
+                  <td>The padding for medium topic/urgent tags.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-tag-padding-large</code>
+                  </td>
+                  <td>The padding for large topic/urgent tags.</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em
+              >Learn more about
+              <a href="/components/getting-started/usage#custom-properties">customizing CSS custom properties</a>.</em
+            >
+          </p>
+
+          <h2 id="parts" class="anchor-heading">Parts<a href="#parts" aria-label='Direct link to "Parts"'></a></h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name">Name</th>
+                  <th class="table-description">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap">
+                    <code>base</code>
+                  </td>
+                  <td>The component’s base wrapper.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>icon</code>
+                  </td>
+                  <td>The icon element (content tags only).</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>label</code>
+                  </td>
+                  <td>The text label.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em
+              >Learn more about
+              <a href="/components/getting-started/customizing/#css-parts">customizing CSS parts</a>.</em
+            >
+          </p>
+
+          <h2 id="dependencies" class="anchor-heading">
+            Dependencies<a href="#dependencies" aria-label='Direct link to "Dependencies"'></a>
+          </h2>
+
+          <p>This component automatically imports the following dependencies.</p>
+
+          <ul>
+            <li>
+              <code>&lt;terra-icon&gt;</code>
+            </li>
+          </ul>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

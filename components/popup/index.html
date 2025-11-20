@@ -1,0 +1,2106 @@
+<!doctype html>
+<html lang="en" data-layout="component" data-terra-ui-components-version="0.0.111">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content='Popup is a utility that lets you declaratively anchor "popup" containers to another element.'
+    />
+    <title>Popup</title>
+
+    <meta name="turbo-cache-control" />
+
+    <link rel="stylesheet" href="/components/assets/styles/docs.css" />
+    <link rel="stylesheet" href="/components/assets/styles/code-previews.css" />
+    <link rel="stylesheet" href="/components/assets/styles/search.css" />
+
+    <link rel="icon" href="/components/assets/images/logo.white.png" type="image/x-icon" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="nasa_terra-ui" />
+    <meta name="twitter:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
+
+    <meta property="og:url" content="https://terra-ui.netlify.app/components/popup/" />
+    <meta property="og:title" content="Popup" />
+    <meta
+      property="og:description"
+      content='Popup is a utility that lets you declaratively anchor "popup" containers to another element.'
+    />
+    <meta property="og:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
+
+    <link rel="stylesheet" href="/dist/themes/horizon.css" />
+    <script type="module" src="/dist/terra-ui-components-autoloader.js"></script>
+
+    <script>
+      (() => {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = localStorage.getItem('theme') || 'auto';
+        document.documentElement.classList.toggle(
+          'terra-theme-dark',
+          theme === 'dark' || (theme === 'auto' && prefersDark)
+        );
+      })();
+    </script>
+
+    <script src="/components/assets/scripts/turbo.js" type="module"></script>
+    <script src="/components/assets/scripts/docs.js" defer=""></script>
+    <script src="/components/assets/scripts/code-previews.js" defer=""></script>
+    <script src="/components/assets/scripts/lunr.js" defer=""></script>
+    <script src="/components/assets/scripts/search.js" defer=""></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono&amp;family=Inter&amp;family=Public+Sans&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"
+    ></script>
+  </head>
+  <body>
+    <a id="skip-to-main" class="visually-hidden" href="#main-content" data-smooth-link="false">
+      Skip to main content
+    </a>
+
+    <header id="top-nav" class="top-nav">
+      <div class="top-nav__left">
+        <a href="/" class="top-nav__logo">
+          <terra-icon name="nasa-logo" font-size="4rem"></terra-icon>
+          <span class="top-nav__title">Terra UI</span>
+        </a>
+      </div>
+
+      <div class="top-nav__right">
+        <terra-dropdown id="about-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="About"> About </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="project-overview">
+              <a href="/components/">Project Overview</a>
+            </terra-menu-item>
+            <terra-menu-item value="contributing">
+              <a href="/components/about/contributing">Contributing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="getting-started-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Getting Started">
+            Getting Started
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="installation">
+              <a href="/components/getting-started/installation">Installation</a>
+            </terra-menu-item>
+            <terra-menu-item value="usage">
+              <a href="/components/getting-started/usage">Usage</a>
+            </terra-menu-item>
+            <terra-menu-item value="themes">
+              <a href="/components/getting-started/themes">Themes</a>
+            </terra-menu-item>
+            <terra-menu-item value="customizing">
+              <a href="/components/getting-started/customizing">Customizing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <terra-dropdown id="frameworks-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Frameworks">
+            Frameworks
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="react">
+              <a href="/components/frameworks/react">React</a>
+            </terra-menu-item>
+            <terra-menu-item value="vue">
+              <a href="/components/frameworks/vue">Vue</a>
+            </terra-menu-item>
+            <terra-menu-item value="angular">
+              <a href="/components/frameworks/angular">Angular</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <button
+          class="top-nav__search"
+          type="button"
+          title="Press / to search"
+          aria-label="Search"
+          data-plugin="search"
+        >
+          <sl-icon name="search"></sl-icon>
+        </button>
+        <a
+          href="https://github.com/nasa/terra-ui-components"
+          title="View Terra UI Components on GitHub"
+          class="top-nav__icon-link external-link"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <sl-icon name="github"></sl-icon>
+        </a>
+        <terra-dropdown id="environment-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Environment"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <span id="environment-display">UAT</span>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="uat"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >UAT</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="prod"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >PROD</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="theme-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Press \ to toggle"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
+            <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="light"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Light</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="dark"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Dark</terra-menu-item
+            >
+            <hr
+              role="separator"
+              aria-orientation="horizontal"
+              style="
+                margin: var(--terra-spacing-x-small) 0;
+                border: none;
+                border-top: 1px solid var(--terra-panel-border-color);
+              "
+            />
+            <terra-menu-item
+              type="checkbox"
+              value="auto"
+              tabindex="0"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >System</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+      </div>
+    </header>
+
+    <button id="menu-toggle" type="button" aria-label="Menu">
+      <svg width="148" height="148" viewBox="0 0 148 148" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="currentColor" stroke-width="18" fill="none" fill-rule="evenodd" stroke-linecap="round">
+          <path d="M9.5 125.5h129M9.5 74.5h129M9.5 23.5h129"></path>
+        </g>
+      </svg>
+    </button>
+
+    <aside id="sidebar" data-preserve-scroll="">
+      <div class="sidebar-buttons">
+        <terra-button
+          size="small"
+          class="repo-button repo-button--github"
+          href="https://github.com/nasa/terra-ui-components"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="github"></sl-icon> Code
+        </terra-button>
+        <terra-button
+          size="small"
+          class="repo-button repo-button--star"
+          href="https://github.com/nasa/terra-ui-components/stargazers"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="star-fill"></sl-icon> Star
+        </terra-button>
+      </div>
+
+      <nav>
+        <ul>
+          <li>
+            <h2>Design System</h2>
+            <ul>
+              <li>
+                <a href="/components/horizon-design-system">Overview</a>
+              </li>
+              <li>
+                <a href="/components/tokens/typography">Typography</a>
+              </li>
+              <li>
+                <a href="/components/tokens/color">Color</a>
+              </li>
+              <li>
+                <a href="/components/tokens/spacing">Spacing</a>
+              </li>
+              <li>
+                <a href="/components/tokens/elevation">Elevation</a>
+              </li>
+              <li>
+                <a href="/components/tokens/border-radius">Border Radius</a>
+              </li>
+              <li>
+                <a href="/components/tokens/transition">Transition</a>
+              </li>
+              <li>
+                <a href="/components/tokens/z-index">Z-index</a>
+              </li>
+              <li>
+                <a href="/components/tokens/more">More Tokens</a>
+              </li>
+              <li>
+                <a href="/components/horizon-design-system/#adoption-status">HDS Adoption Status</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2>Forms</h2>
+            <ul>
+              <li>
+                <a href="/components/forms">Overview</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2>Elements</h2>
+            <ul>
+              <li>
+                <a href="/components/alert"> Alert </a>
+              </li>
+
+              <li>
+                <a href="/components/avatar"> Avatar </a>
+              </li>
+
+              <li>
+                <a href="/components/button"> Button </a>
+              </li>
+
+              <li>
+                <a href="/components/caption"> Caption </a>
+              </li>
+
+              <li>
+                <a href="/components/checkbox"> Checkbox </a>
+              </li>
+
+              <li>
+                <a href="/components/chip"> Chip </a>
+              </li>
+
+              <li>
+                <a href="/components/date-picker"> Date Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/file-upload"> File Upload </a>
+              </li>
+
+              <li>
+                <a href="/components/icon"> Icon </a>
+              </li>
+
+              <li>
+                <a href="/components/input"> Input </a>
+              </li>
+
+              <li>
+                <a href="/components/loader"> Loader </a>
+              </li>
+
+              <li>
+                <a href="/components/option"> Option </a>
+              </li>
+
+              <li>
+                <a href="/components/pagination"> Pagination </a>
+              </li>
+
+              <li>
+                <a href="/components/radio"> Radio </a>
+              </li>
+
+              <li>
+                <a href="/components/radio-group"> Radio Group </a>
+              </li>
+
+              <li>
+                <a href="/components/scroll-hint"> Scroll Hint </a>
+              </li>
+
+              <li>
+                <a href="/components/select"> Select </a>
+              </li>
+
+              <li>
+                <a href="/components/slider"> Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/status-indicator"> Status Indicator </a>
+              </li>
+
+              <li>
+                <a href="/components/tag"> Tag </a>
+              </li>
+
+              <li>
+                <a href="/components/textarea"> Textarea </a>
+              </li>
+
+              <li>
+                <a href="/components/toggle"> Toggle </a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2>Components</h2>
+            <ul>
+              <li>
+                <a href="/components/accordion"> Accordion </a>
+              </li>
+
+              <li>
+                <a href="/components/browse-variables"> Browse Variables </a>
+              </li>
+
+              <li>
+                <a href="/components/combobox"> Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/data-access"> Data Access </a>
+              </li>
+
+              <li>
+                <a href="/components/data-rods"> Data Rods </a>
+              </li>
+
+              <li>
+                <a href="/components/data-subsetter"> Data Subsetter </a>
+              </li>
+
+              <li>
+                <a href="/components/data-subsetter-history"> Data Subsetter History </a>
+              </li>
+
+              <li>
+                <a href="/components/date-range-slider"> Date Range Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/dialog"> Dialog </a>
+              </li>
+
+              <li>
+                <a href="/components/dropdown"> Dropdown </a>
+              </li>
+
+              <li>
+                <a href="/components/login"> Login </a>
+              </li>
+
+              <li>
+                <a href="/components/map"> Map </a>
+              </li>
+
+              <li>
+                <a href="/components/menu"> Menu </a>
+              </li>
+
+              <li>
+                <a href="/components/menu-item"> Menu Item </a>
+              </li>
+
+              <li>
+                <a href="/components/plot"> Plot </a>
+              </li>
+
+              <li>
+                <a href="/components/plot-toolbar"> Plot Toolbar </a>
+              </li>
+
+              <li>
+                <a href="/components/popup" class="active-link"> Popup </a>
+              </li>
+
+              <li>
+                <a href="/components/skeleton"> Skeleton </a>
+              </li>
+
+              <li>
+                <a href="/components/spatial-picker"> Spatial Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/time-average-map"> Time Average Map </a>
+              </li>
+
+              <li>
+                <a href="/components/time-series"> Time Series </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-combobox"> Variable Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-keyword-search"> Variable Keyword Search </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+      <a id="main-content"></a>
+      <article id="content" class="content content--with-toc">
+        <div class="content__toc">
+          <ul>
+            <li class="top">
+              <a href="#">Popup</a>
+            </li>
+            <li data-level="2"><a href="#examples">Examples</a></li>
+            <li data-level="3"><a href="#basic-popup">Basic Popup</a></li>
+            <li data-level="3"><a href="#placement">Placement</a></li>
+            <li data-level="3"><a href="#distance-and-skidding">Distance and Skidding</a></li>
+            <li data-level="3"><a href="#flip-and-shift">Flip and Shift</a></li>
+            <li data-level="3"><a href="#arrow">Arrow</a></li>
+            <li data-level="3"><a href="#auto-size">Auto Size</a></li>
+            <li data-level="3"><a href="#sync-widthheight">Sync Width/Height</a></li>
+            <li data-level="3"><a href="#fixed-strategy">Fixed Strategy</a></li>
+            <li data-level="3"><a href="#external-anchor">External Anchor</a></li>
+            <li data-level="2"><a href="#importing">Importing</a></li>
+            <li data-level="2"><a href="#slots">Slots</a></li>
+            <li data-level="2"><a href="#properties">Properties</a></li>
+            <li data-level="2"><a href="#events">Events</a></li>
+            <li data-level="2"><a href="#methods">Methods</a></li>
+            <li data-level="2"><a href="#custom-properties">Custom Properties</a></li>
+            <li data-level="2"><a href="#parts">Parts</a></li>
+          </ul>
+        </div>
+
+        <div class="content__body">
+          <header class="component-header">
+            <h1>Popup</h1>
+
+            <div class="component-header__tag">
+              <code>&lt;terra-popup&gt; | TerraPopup</code>
+            </div>
+
+            <div class="component-header__info">
+              <sl-badge variant="neutral" pill=""> Since 2.0 </sl-badge>
+              <sl-badge variant="primary" pill="" style="text-transform: capitalize"> stable </sl-badge>
+            </div>
+          </header>
+
+          <p class="component-summary">
+            Popup is a utility that lets you declaratively anchor “popup” containers to another element.
+          </p>
+
+          <h1>Popup</h1>
+          <p>
+            Popup is a utility component that lets you declaratively anchor “popup” containers to another element. It
+            uses Floating UI under the hood to handle positioning, flipping, shifting, and more.
+          </p>
+          <h2 id="examples" class="anchor-heading">
+            Examples<a href="#examples" aria-label='Direct link to "Examples"'></a>
+          </h2>
+          <h3 id="basic-popup" class="anchor-heading">
+            Basic Popup<a href="#basic-popup" aria-label='Direct link to "Basic Popup"'></a>
+          </h3>
+          <p>A simple popup anchored to a button.</p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-popup active="">
+                <terra-button slot="anchor">Hover me</terra-button>
+                <div
+                  style="
+                    padding: 1rem;
+                    background: white;
+                    border: 1px solid var(--terra-color-carbon-20);
+                    border-radius: var(--terra-border-radius-medium);
+                  "
+                >
+                  This is a popup!
+                </div>
+              </terra-popup>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-193">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-492"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-popup</span> <span class="token attr-name">active</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>anchor<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Hover me<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">padding</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span> <span class="token property">background</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span> <span class="token property">border</span><span class="token punctuation">:</span> 1px solid <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-carbon-20<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-border-radius-medium<span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    This is a popup!
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-popup</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-492"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-193"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="placement" class="anchor-heading">
+            Placement<a href="#placement" aria-label='Direct link to "Placement"'></a>
+          </h3>
+          <p>The <code>placement</code> attribute controls where the popup appears relative to its anchor.</p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <div style="display: flex; gap: 1rem; flex-wrap: wrap; padding: 2rem">
+                <terra-popup active="" placement="top">
+                  <terra-button slot="anchor">Top</terra-button>
+                  <div
+                    style="
+                      padding: 0.5rem;
+                      background: white;
+                      border: 1px solid var(--terra-color-carbon-20);
+                      border-radius: var(--terra-border-radius-medium);
+                    "
+                  >
+                    Popup
+                  </div>
+                </terra-popup>
+
+                <terra-popup active="" placement="bottom">
+                  <terra-button slot="anchor">Bottom</terra-button>
+                  <div
+                    style="
+                      padding: 0.5rem;
+                      background: white;
+                      border: 1px solid var(--terra-color-carbon-20);
+                      border-radius: var(--terra-border-radius-medium);
+                    "
+                  >
+                    Popup
+                  </div>
+                </terra-popup>
+
+                <terra-popup active="" placement="left">
+                  <terra-button slot="anchor">Left</terra-button>
+                  <div
+                    style="
+                      padding: 0.5rem;
+                      background: white;
+                      border: 1px solid var(--terra-color-carbon-20);
+                      border-radius: var(--terra-border-radius-medium);
+                    "
+                  >
+                    Popup
+                  </div>
+                </terra-popup>
+
+                <terra-popup active="" placement="right">
+                  <terra-button slot="anchor">Right</terra-button>
+                  <div
+                    style="
+                      padding: 0.5rem;
+                      background: white;
+                      border: 1px solid var(--terra-color-carbon-20);
+                      border-radius: var(--terra-border-radius-medium);
+                    "
+                  >
+                    Popup
+                  </div>
+                </terra-popup>
+              </div>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-194">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-493"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span> <span class="token property">gap</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span> <span class="token property">flex-wrap</span><span class="token punctuation">:</span> wrap<span class="token punctuation">;</span> <span class="token property">padding</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-popup</span> <span class="token attr-name">active</span> <span class="token attr-name">placement</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>top<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>anchor<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Top<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">padding</span><span class="token punctuation">:</span> 0.5rem<span class="token punctuation">;</span> <span class="token property">background</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span> <span class="token property">border</span><span class="token punctuation">:</span> 1px solid <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-carbon-20<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-border-radius-medium<span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>Popup<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-popup</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-popup</span> <span class="token attr-name">active</span> <span class="token attr-name">placement</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bottom<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>anchor<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Bottom<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">padding</span><span class="token punctuation">:</span> 0.5rem<span class="token punctuation">;</span> <span class="token property">background</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span> <span class="token property">border</span><span class="token punctuation">:</span> 1px solid <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-carbon-20<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-border-radius-medium<span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>Popup<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-popup</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-popup</span> <span class="token attr-name">active</span> <span class="token attr-name">placement</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>left<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>anchor<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Left<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">padding</span><span class="token punctuation">:</span> 0.5rem<span class="token punctuation">;</span> <span class="token property">background</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span> <span class="token property">border</span><span class="token punctuation">:</span> 1px solid <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-carbon-20<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-border-radius-medium<span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>Popup<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-popup</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-popup</span> <span class="token attr-name">active</span> <span class="token attr-name">placement</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>right<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>anchor<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Right<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">padding</span><span class="token punctuation">:</span> 0.5rem<span class="token punctuation">;</span> <span class="token property">background</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span> <span class="token property">border</span><span class="token punctuation">:</span> 1px solid <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-carbon-20<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-border-radius-medium<span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>Popup<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-popup</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-493"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-194"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="distance-and-skidding" class="anchor-heading">
+            Distance and Skidding<a
+              href="#distance-and-skidding"
+              aria-label='Direct link to "Distance and Skidding"'
+            ></a>
+          </h3>
+          <p>
+            Use the <code>distance</code> attribute to set the distance between the anchor and popup, and
+            <code>skidding</code> to offset along the anchor.
+          </p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-popup active="" distance="20" skidding="10">
+                <terra-button slot="anchor">With Distance</terra-button>
+                <div
+                  style="
+                    padding: 1rem;
+                    background: white;
+                    border: 1px solid var(--terra-color-carbon-20);
+                    border-radius: var(--terra-border-radius-medium);
+                  "
+                >
+                  This popup has distance and skidding applied.
+                </div>
+              </terra-popup>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-195">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-494"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-popup</span> <span class="token attr-name">active</span> <span class="token attr-name">distance</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>20<span class="token punctuation">"</span></span> <span class="token attr-name">skidding</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>10<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>anchor<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>With Distance<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">padding</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span> <span class="token property">background</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span> <span class="token property">border</span><span class="token punctuation">:</span> 1px solid <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-carbon-20<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-border-radius-medium<span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    This popup has distance and skidding applied.
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-popup</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-494"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-195"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="flip-and-shift" class="anchor-heading">
+            Flip and Shift<a href="#flip-and-shift" aria-label='Direct link to "Flip and Shift"'></a>
+          </h3>
+          <p>
+            Use the <code>flip</code> attribute to automatically flip the popup to the opposite side when it doesn’t
+            fit, and <code>shift</code> to move it along the axis to keep it in view.
+          </p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <div style="display: flex; gap: 1rem; padding: 2rem">
+                <terra-popup active="" placement="top" flip="">
+                  <terra-button slot="anchor">Flip Enabled</terra-button>
+                  <div
+                    style="
+                      padding: 1rem;
+                      background: white;
+                      border: 1px solid var(--terra-color-carbon-20);
+                      border-radius: var(--terra-border-radius-medium);
+                    "
+                  >
+                    This will flip to bottom if there’s no space above.
+                  </div>
+                </terra-popup>
+
+                <terra-popup active="" placement="right" shift="">
+                  <terra-button slot="anchor">Shift Enabled</terra-button>
+                  <div
+                    style="
+                      padding: 1rem;
+                      background: white;
+                      border: 1px solid var(--terra-color-carbon-20);
+                      border-radius: var(--terra-border-radius-medium);
+                    "
+                  >
+                    This will shift to stay in view.
+                  </div>
+                </terra-popup>
+              </div>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-196">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-495"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span> <span class="token property">gap</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span> <span class="token property">padding</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-popup</span> <span class="token attr-name">active</span> <span class="token attr-name">placement</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>top<span class="token punctuation">"</span></span> <span class="token attr-name">flip</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>anchor<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Flip Enabled<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">padding</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span> <span class="token property">background</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span> <span class="token property">border</span><span class="token punctuation">:</span> 1px solid <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-carbon-20<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-border-radius-medium<span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+      This will flip to bottom if there's no space above.
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-popup</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-popup</span> <span class="token attr-name">active</span> <span class="token attr-name">placement</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>right<span class="token punctuation">"</span></span> <span class="token attr-name">shift</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>anchor<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Shift Enabled<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">padding</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span> <span class="token property">background</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span> <span class="token property">border</span><span class="token punctuation">:</span> 1px solid <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-carbon-20<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-border-radius-medium<span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+      This will shift to stay in view.
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-popup</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-495"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-196"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="arrow" class="anchor-heading">Arrow<a href="#arrow" aria-label='Direct link to "Arrow"'></a></h3>
+          <p>Add an arrow to the popup using the <code>arrow</code> attribute.</p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-popup active="" arrow="">
+                <terra-button slot="anchor">With Arrow</terra-button>
+                <div
+                  style="
+                    padding: 1rem;
+                    background: white;
+                    border: 1px solid var(--terra-color-carbon-20);
+                    border-radius: var(--terra-border-radius-medium);
+                  "
+                >
+                  This popup has an arrow pointing to the anchor.
+                </div>
+              </terra-popup>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-197">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-496"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-popup</span> <span class="token attr-name">active</span> <span class="token attr-name">arrow</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>anchor<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>With Arrow<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">padding</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span> <span class="token property">background</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span> <span class="token property">border</span><span class="token punctuation">:</span> 1px solid <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-carbon-20<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-border-radius-medium<span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    This popup has an arrow pointing to the anchor.
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-popup</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-496"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-197"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="auto-size" class="anchor-heading">
+            Auto Size<a href="#auto-size" aria-label='Direct link to "Auto Size"'></a>
+          </h3>
+          <p>Use the <code>auto-size</code> attribute to automatically resize the popup to prevent overflow.</p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-popup active="" auto-size="vertical" style="max-width: 200px">
+                <terra-button slot="anchor">Auto Size</terra-button>
+                <div
+                  style="
+                    padding: 1rem;
+                    background: white;
+                    border: 1px solid var(--terra-color-carbon-20);
+                    border-radius: var(--terra-border-radius-medium);
+                  "
+                >
+                  This popup will automatically resize vertically to fit in the viewport.
+                </div>
+              </terra-popup>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-198">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-497"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-popup</span> <span class="token attr-name">active</span> <span class="token attr-name">auto-size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>vertical<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">max-width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>anchor<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Auto Size<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">padding</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span> <span class="token property">background</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span> <span class="token property">border</span><span class="token punctuation">:</span> 1px solid <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-carbon-20<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-border-radius-medium<span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    This popup will automatically resize vertically to fit in the viewport.
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-popup</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-497"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-198"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="sync-widthheight" class="anchor-heading">
+            Sync Width/Height<a href="#sync-widthheight" aria-label='Direct link to "Sync Width/Height"'></a>
+          </h3>
+          <p>Use the <code>sync</code> attribute to match the popup’s width or height to the anchor element.</p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-popup active="" sync="width">
+                <terra-button slot="anchor" style="width: 200px">Sync Width</terra-button>
+                <div
+                  style="
+                    padding: 1rem;
+                    background: white;
+                    border: 1px solid var(--terra-color-carbon-20);
+                    border-radius: var(--terra-border-radius-medium);
+                  "
+                >
+                  This popup’s width matches the button.
+                </div>
+              </terra-popup>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-199">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-498"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-popup</span> <span class="token attr-name">active</span> <span class="token attr-name">sync</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>anchor<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>Sync Width<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">padding</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span> <span class="token property">background</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span> <span class="token property">border</span><span class="token punctuation">:</span> 1px solid <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-carbon-20<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-border-radius-medium<span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    This popup's width matches the button.
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-popup</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-498"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-199"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="fixed-strategy" class="anchor-heading">
+            Fixed Strategy<a href="#fixed-strategy" aria-label='Direct link to "Fixed Strategy"'></a>
+          </h3>
+          <p>Use the <code>strategy="fixed"</code> attribute when the popup needs to escape overflow containers.</p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <div style="height: 200px; overflow: auto; border: 1px solid var(--terra-color-carbon-20); padding: 1rem">
+                <p>Scroll down to see the popup…</p>
+                <div style="height: 300px"></div>
+                <terra-popup active="" strategy="fixed">
+                  <terra-button slot="anchor">Fixed Strategy</terra-button>
+                  <div
+                    style="
+                      padding: 1rem;
+                      background: white;
+                      border: 1px solid var(--terra-color-carbon-20);
+                      border-radius: var(--terra-border-radius-medium);
+                    "
+                  >
+                    This popup uses fixed positioning to escape the overflow container.
+                  </div>
+                </terra-popup>
+              </div>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-200">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-499"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span> <span class="token property">overflow</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span> <span class="token property">border</span><span class="token punctuation">:</span> 1px solid <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-carbon-20<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token property">padding</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Scroll down to see the popup...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">height</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-popup</span> <span class="token attr-name">active</span> <span class="token attr-name">strategy</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fixed<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>anchor<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Fixed Strategy<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">padding</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span> <span class="token property">background</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span> <span class="token property">border</span><span class="token punctuation">:</span> 1px solid <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-carbon-20<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-border-radius-medium<span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+      This popup uses fixed positioning to escape the overflow container.
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-popup</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-499"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-200"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="external-anchor" class="anchor-heading">
+            External Anchor<a href="#external-anchor" aria-label='Direct link to "External Anchor"'></a>
+          </h3>
+          <p>You can anchor the popup to an element outside of it using the <code>anchor</code> attribute.</p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-button id="external-anchor">External Anchor</terra-button>
+              <terra-popup active="" anchor="#external-anchor">
+                <div
+                  style="
+                    padding: 1rem;
+                    background: white;
+                    border: 1px solid var(--terra-color-carbon-20);
+                    border-radius: var(--terra-border-radius-medium);
+                  "
+                >
+                  This popup is anchored to the button above.
+                </div>
+              </terra-popup>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-201">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-500"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>external-anchor<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>External Anchor<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-popup</span> <span class="token attr-name">active</span> <span class="token attr-name">anchor</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#external-anchor<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">padding</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span> <span class="token property">background</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span> <span class="token property">border</span><span class="token punctuation">:</span> 1px solid <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-carbon-20<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-border-radius-medium<span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    This popup is anchored to the button above.
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-popup</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-500"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-201"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <p>[component-metadata:terra-popup]</p>
+
+          <h2 id="importing" class="anchor-heading">
+            Importing<a href="#importing" aria-label='Direct link to "Importing"'></a>
+          </h2>
+          <p>
+            If you’re using the autoloader or the traditional loader, you can ignore this section. Otherwise, feel free
+            to use any of the following snippets to
+            <a href="/components/getting-started/installation#cherry-picking">cherry pick</a> this component.
+          </p>
+
+          <sl-tab-group>
+            <sl-tab slot="nav" panel="script">Script</sl-tab>
+            <sl-tab slot="nav" panel="import">Import</sl-tab>
+            <sl-tab slot="nav" panel="bundler">Bundler</sl-tab>
+            <sl-tab slot="nav" panel="react">React</sl-tab>
+
+            <sl-tab-panel name="script">
+              <p>
+                To import this component from
+                <a
+                  href="https://www.jsdelivr.com/package/npm/@nasa-terra/components"
+                  class="external-link"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  >the CDN</a
+                >
+                using a script tag:
+              </p>
+              <pre><code class="language-html" id="code-block-501"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.111/cdn/components/popup/popup.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code><sl-copy-button class="copy-code-button" from="code-block-501"></sl-copy-button></pre>
+            </sl-tab-panel>
+
+            <sl-tab-panel name="import">
+              <p>
+                To import this component from
+                <a
+                  href="https://www.jsdelivr.com/package/npm/@nasa-terra/components"
+                  class="external-link"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  >the CDN</a
+                >
+                using a JavaScript import:
+              </p>
+              <pre><code class="language-js" id="code-block-502"><span class="token keyword">import</span> <span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.111/cdn/components/popup/popup.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-502"></sl-copy-button></pre>
+            </sl-tab-panel>
+
+            <sl-tab-panel name="bundler">
+              <p>
+                To import this component using
+                <a href="/components/getting-started/installation#bundling">a bundler</a>:
+              </p>
+              <pre><code class="language-js" id="code-block-503"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/popup/popup.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-503"></sl-copy-button></pre>
+            </sl-tab-panel>
+
+            <sl-tab-panel name="react">
+              <p>To import this component as a <a href="/components/frameworks/react">React component</a>:</p>
+              <pre><code class="language-js" id="code-block-504"><span class="token keyword">import</span> TerraPopup <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/popup'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-504"></sl-copy-button></pre>
+            </sl-tab-panel>
+          </sl-tab-group>
+
+          <h2 id="slots" class="anchor-heading">Slots<a href="#slots" aria-label='Direct link to "Slots"'></a></h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name">Name</th>
+                  <th class="table-description">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap">(default)</td>
+                  <td>The popup’s content.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>anchor</code>
+                  </td>
+                  <td>
+                    The element the popup will be anchored to. If the anchor lives outside of the popup, you can use the
+                    <code>anchor</code> attribute or property instead.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em>Learn more about <a href="/components/getting-started/usage#slots">using slots</a>.</em>
+          </p>
+
+          <h2 id="properties" class="anchor-heading">
+            Properties<a href="#properties" aria-label='Direct link to "Properties"'></a>
+          </h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name">Name</th>
+                  <th class="table-description">Description</th>
+                  <th class="table-reflects">Reflects</th>
+                  <th class="table-type">Type</th>
+                  <th class="table-default">Default</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <code class="nowrap">popup</code>
+                  </td>
+                  <td>
+                    A reference to the internal popup container. Useful for animating and styling the popup with
+                    JavaScript.
+                  </td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>HTMLElement</code>
+                  </td>
+                  <td>-</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">anchor</code>
+                  </td>
+                  <td>
+                    The element the popup will be anchored to. If the anchor lives outside of the popup, you can provide
+                    the anchor element <code>id</code>, a DOM element reference, or a <code>VirtualElement</code>. If
+                    the anchor lives inside the popup, use the <code>anchor</code> slot instead.
+                  </td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>Element | string | VirtualElement</code>
+                  </td>
+                  <td>-</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">active</code>
+                  </td>
+                  <td>
+                    Activates the positioning logic and shows the popup. When this attribute is removed, the positioning
+                    logic is torn down and the popup will be hidden.
+                  </td>
+                  <td style="text-align: center">
+                    <sl-icon label="yes" name="check-lg"></sl-icon>
+                  </td>
+                  <td>
+                    <code>boolean</code>
+                  </td>
+                  <td>
+                    <code>false</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">placement</code>
+                  </td>
+                  <td>
+                    The preferred placement of the popup. Note that the actual placement will vary as configured to keep
+                    the panel inside of the viewport.
+                  </td>
+                  <td style="text-align: center">
+                    <sl-icon label="yes" name="check-lg"></sl-icon>
+                  </td>
+                  <td>
+                    <code>
+                      'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'right' |
+                      'right-start' | 'right-end' | 'left' | 'left-start' | 'left-end'</code
+                    >
+                  </td>
+                  <td>
+                    <code>'top'</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">strategy</code>
+                  </td>
+                  <td>
+                    Determines how the popup is positioned. The <code>absolute</code> strategy works well in most cases,
+                    but if overflow is clipped, using a <code>fixed</code> position strategy can often workaround it.
+                  </td>
+                  <td style="text-align: center">
+                    <sl-icon label="yes" name="check-lg"></sl-icon>
+                  </td>
+                  <td>
+                    <code>'absolute' | 'fixed'</code>
+                  </td>
+                  <td>
+                    <code>'absolute'</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">distance</code>
+                  </td>
+                  <td>The distance in pixels from which to offset the panel away from its anchor.</td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>number</code>
+                  </td>
+                  <td>
+                    <code>0</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">skidding</code>
+                  </td>
+                  <td>The distance in pixels from which to offset the panel along its anchor.</td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>number</code>
+                  </td>
+                  <td>
+                    <code>0</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">arrow</code>
+                  </td>
+                  <td>
+                    Attaches an arrow to the popup. The arrow’s size and color can be customized using the
+                    <code>--arrow-size</code> and <code>--arrow-color</code> custom properties. For additional
+                    customizations, you can also target the arrow using <code>::part(arrow)</code> in your stylesheet.
+                  </td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>boolean</code>
+                  </td>
+                  <td>
+                    <code>false</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">arrowPlacement</code>
+
+                    <br />
+                    <sl-tooltip content="This attribute is different from its property">
+                      <small>
+                        <code class="nowrap"> arrow-placement </code>
+                      </small>
+                    </sl-tooltip>
+                  </td>
+                  <td>
+                    The placement of the arrow. The default is <code>anchor</code>, which will align the arrow as close
+                    to the center of the anchor as possible, considering available space and <code>arrow-padding</code>.
+                    A value of <code>start</code>, <code>end</code>, or <code>center</code> will align the arrow to the
+                    start, end, or center of the popover instead.
+                  </td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code> 'start' | 'end' | 'center' | 'anchor'</code>
+                  </td>
+                  <td>
+                    <code>'anchor'</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">arrowPadding</code>
+
+                    <br />
+                    <sl-tooltip content="This attribute is different from its property">
+                      <small>
+                        <code class="nowrap"> arrow-padding </code>
+                      </small>
+                    </sl-tooltip>
+                  </td>
+                  <td>
+                    The amount of padding between the arrow and the edges of the popup. If the popup has a
+                    border-radius, for example, this will prevent it from overflowing the corners.
+                  </td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>number</code>
+                  </td>
+                  <td>
+                    <code>10</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">flip</code>
+                  </td>
+                  <td>
+                    When set, placement of the popup will flip to the opposite site to keep it in view. You can use
+                    <code>flipFallbackPlacements</code> to further configure how the fallback placement is determined.
+                  </td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>boolean</code>
+                  </td>
+                  <td>
+                    <code>false</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">flipFallbackPlacements</code>
+
+                    <br />
+                    <sl-tooltip content="This attribute is different from its property">
+                      <small>
+                        <code class="nowrap"> flip-fallback-placements </code>
+                      </small>
+                    </sl-tooltip>
+                  </td>
+                  <td>
+                    If the preferred placement doesn’t fit, popup will be tested in these fallback placements until one
+                    fits. Must be a string of any number of placements separated by a space, e.g. “top bottom left”. If
+                    no placement fits, the flip fallback strategy will be used instead.
+                  </td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>string</code>
+                  </td>
+                  <td>
+                    <code>''</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">flipFallbackStrategy</code>
+
+                    <br />
+                    <sl-tooltip content="This attribute is different from its property">
+                      <small>
+                        <code class="nowrap"> flip-fallback-strategy </code>
+                      </small>
+                    </sl-tooltip>
+                  </td>
+                  <td>
+                    When neither the preferred placement nor the fallback placements fit, this value will be used to
+                    determine whether the popup should be positioned using the best available fit based on available
+                    space or as it was initially preferred.
+                  </td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code> 'best-fit' | 'initial'</code>
+                  </td>
+                  <td>
+                    <code>'best-fit'</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">flipBoundary</code>
+                  </td>
+                  <td>
+                    The flip boundary describes clipping element(s) that overflow will be checked relative to when
+                    flipping. By default, the boundary includes overflow ancestors that will cause the element to be
+                    clipped. If needed, you can change the boundary by passing a reference to one or more elements to
+                    this property.
+                  </td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>Element | Element[]</code>
+                  </td>
+                  <td>-</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">flipPadding</code>
+
+                    <br />
+                    <sl-tooltip content="This attribute is different from its property">
+                      <small>
+                        <code class="nowrap"> flip-padding </code>
+                      </small>
+                    </sl-tooltip>
+                  </td>
+                  <td>The amount of padding, in pixels, to exceed before the flip behavior will occur.</td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>number</code>
+                  </td>
+                  <td>
+                    <code>0</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">shift</code>
+                  </td>
+                  <td>Moves the popup along the axis to keep it in view when clipped.</td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>boolean</code>
+                  </td>
+                  <td>
+                    <code>false</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">shiftBoundary</code>
+                  </td>
+                  <td>
+                    The shift boundary describes clipping element(s) that overflow will be checked relative to when
+                    shifting. By default, the boundary includes overflow ancestors that will cause the element to be
+                    clipped. If needed, you can change the boundary by passing a reference to one or more elements to
+                    this property.
+                  </td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>Element | Element[]</code>
+                  </td>
+                  <td>-</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">shiftPadding</code>
+
+                    <br />
+                    <sl-tooltip content="This attribute is different from its property">
+                      <small>
+                        <code class="nowrap"> shift-padding </code>
+                      </small>
+                    </sl-tooltip>
+                  </td>
+                  <td>The amount of padding, in pixels, to exceed before the shift behavior will occur.</td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>number</code>
+                  </td>
+                  <td>
+                    <code>0</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">autoSize</code>
+
+                    <br />
+                    <sl-tooltip content="This attribute is different from its property">
+                      <small>
+                        <code class="nowrap"> auto-size </code>
+                      </small>
+                    </sl-tooltip>
+                  </td>
+                  <td>
+                    When set, this will cause the popup to automatically resize itself to prevent it from overflowing.
+                  </td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>'horizontal' | 'vertical' | 'both'</code>
+                  </td>
+                  <td>-</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">sync</code>
+                  </td>
+                  <td>Syncs the popup’s width or height to that of the anchor element.</td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>'width' | 'height' | 'both'</code>
+                  </td>
+                  <td>-</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">autoSizeBoundary</code>
+                  </td>
+                  <td>
+                    The auto-size boundary describes clipping element(s) that overflow will be checked relative to when
+                    resizing. By default, the boundary includes overflow ancestors that will cause the element to be
+                    clipped. If needed, you can change the boundary by passing a reference to one or more elements to
+                    this property.
+                  </td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>Element | Element[]</code>
+                  </td>
+                  <td>-</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">autoSizePadding</code>
+
+                    <br />
+                    <sl-tooltip content="This attribute is different from its property">
+                      <small>
+                        <code class="nowrap"> auto-size-padding </code>
+                      </small>
+                    </sl-tooltip>
+                  </td>
+                  <td>The amount of padding, in pixels, to exceed before the auto-size behavior will occur.</td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>number</code>
+                  </td>
+                  <td>
+                    <code>0</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">hoverBridge</code>
+
+                    <br />
+                    <sl-tooltip content="This attribute is different from its property">
+                      <small>
+                        <code class="nowrap"> hover-bridge </code>
+                      </small>
+                    </sl-tooltip>
+                  </td>
+                  <td>
+                    When a gap exists between the anchor and the popup element, this option will add a “hover bridge”
+                    that fills the gap using an invisible element. This makes listening for events such as
+                    <code>mouseenter</code> and <code>mouseleave</code> more sane because the pointer never technically
+                    leaves the element. The hover bridge will only be drawn when the popover is active.
+                  </td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>boolean</code>
+                  </td>
+                  <td>
+                    <code>false</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>updateComplete</code>
+                  </td>
+                  <td>
+                    A read-only promise that resolves when the component has
+                    <a href="/components/getting-started/usage?#component-rendering-and-updating">finished updating</a>.
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em
+              >Learn more about
+              <a href="/components/getting-started/usage#attributes-and-properties">attributes and properties</a>.</em
+            >
+          </p>
+
+          <h2 id="events" class="anchor-heading">Events<a href="#events" aria-label='Direct link to "Events"'></a></h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name" data-flavor="html">Name</th>
+                  <th class="table-name" data-flavor="react">React Event</th>
+                  <th class="table-description">Description</th>
+                  <th class="table-event-detail">Event Detail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-flavor="html">
+                    <code class="nowrap">terra-reposition</code>
+                  </td>
+                  <td data-flavor="react">
+                    <code class="nowrap">onTerraReposition</code>
+                  </td>
+                  <td>
+                    Emitted when the popup is repositioned. This event can fire a lot, so avoid putting expensive
+                    operations in your listener or consider debouncing it.
+                  </td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em>Learn more about <a href="/components/getting-started/usage#events">events</a>.</em>
+          </p>
+
+          <h2 id="methods" class="anchor-heading">
+            Methods<a href="#methods" aria-label='Direct link to "Methods"'></a>
+          </h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name">Name</th>
+                  <th class="table-description">Description</th>
+                  <th class="table-arguments">Arguments</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap">
+                    <code>reposition()</code>
+                  </td>
+                  <td>Forces the popup to recalculate and reposition itself.</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em>Learn more about <a href="/components/getting-started/usage#methods">methods</a>.</em>
+          </p>
+
+          <h2 id="custom-properties" class="anchor-heading">
+            Custom Properties<a href="#custom-properties" aria-label='Direct link to "Custom Properties"'></a>
+          </h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name">Name</th>
+                  <th class="table-description">Description</th>
+                  <th class="table-default">Default</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap">
+                    <code>--arrow-size</code>
+                  </td>
+                  <td>
+                    The size of the arrow. Note that an arrow won’t be shown unless the <code>arrow</code> attribute is
+                    used.
+                  </td>
+                  <td>6px</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--arrow-color</code>
+                  </td>
+                  <td>The color of the arrow.</td>
+                  <td>var(–terra-color-carbon-black)</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--auto-size-available-width</code>
+                  </td>
+                  <td>
+                    A read-only custom property that determines the amount of width the popup can be before overflowing.
+                    Useful for positioning child elements that need to overflow. This property is only available when
+                    using <code>auto-size</code>.
+                  </td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--auto-size-available-height</code>
+                  </td>
+                  <td>
+                    A read-only custom property that determines the amount of height the popup can be before
+                    overflowing. Useful for positioning child elements that need to overflow. This property is only
+                    available when using <code>auto-size</code>.
+                  </td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em
+              >Learn more about
+              <a href="/components/getting-started/usage#custom-properties">customizing CSS custom properties</a>.</em
+            >
+          </p>
+
+          <h2 id="parts" class="anchor-heading">Parts<a href="#parts" aria-label='Direct link to "Parts"'></a></h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name">Name</th>
+                  <th class="table-description">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap">
+                    <code>arrow</code>
+                  </td>
+                  <td>
+                    The arrow’s container. Avoid setting <code>top|bottom|left|right</code> properties, as these values
+                    are assigned dynamically as the popup moves. This is most useful for applying a background color to
+                    match the popup, and maybe a border or box shadow.
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>popup</code>
+                  </td>
+                  <td>The popup’s container. Useful for setting a background color, box shadow, etc.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>hover-bridge</code>
+                  </td>
+                  <td>
+                    The hover bridge element. Only available when the <code>hover-bridge</code> option is enabled.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em
+              >Learn more about
+              <a href="/components/getting-started/customizing/#css-parts">customizing CSS parts</a>.</em
+            >
+          </p>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

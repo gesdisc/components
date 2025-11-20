@@ -1,0 +1,1574 @@
+<!doctype html>
+<html lang="en" data-layout="component" data-terra-ui-components-version="0.0.111">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Scroll hint is an animated button that prompts visitors to scroll." />
+    <title>Scroll Hint</title>
+
+    <meta name="turbo-cache-control" />
+
+    <link rel="stylesheet" href="/components/assets/styles/docs.css" />
+    <link rel="stylesheet" href="/components/assets/styles/code-previews.css" />
+    <link rel="stylesheet" href="/components/assets/styles/search.css" />
+
+    <link rel="icon" href="/components/assets/images/logo.white.png" type="image/x-icon" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="nasa_terra-ui" />
+    <meta name="twitter:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
+
+    <meta property="og:url" content="https://terra-ui.netlify.app/components/scroll-hint/" />
+    <meta property="og:title" content="Scroll Hint" />
+    <meta property="og:description" content="Scroll hint is an animated button that prompts visitors to scroll." />
+    <meta property="og:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
+
+    <link rel="stylesheet" href="/dist/themes/horizon.css" />
+    <script type="module" src="/dist/terra-ui-components-autoloader.js"></script>
+
+    <script>
+      (() => {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = localStorage.getItem('theme') || 'auto';
+        document.documentElement.classList.toggle(
+          'terra-theme-dark',
+          theme === 'dark' || (theme === 'auto' && prefersDark)
+        );
+      })();
+    </script>
+
+    <script src="/components/assets/scripts/turbo.js" type="module"></script>
+    <script src="/components/assets/scripts/docs.js" defer=""></script>
+    <script src="/components/assets/scripts/code-previews.js" defer=""></script>
+    <script src="/components/assets/scripts/lunr.js" defer=""></script>
+    <script src="/components/assets/scripts/search.js" defer=""></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono&amp;family=Inter&amp;family=Public+Sans&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"
+    ></script>
+  </head>
+  <body>
+    <a id="skip-to-main" class="visually-hidden" href="#main-content" data-smooth-link="false">
+      Skip to main content
+    </a>
+
+    <header id="top-nav" class="top-nav">
+      <div class="top-nav__left">
+        <a href="/" class="top-nav__logo">
+          <terra-icon name="nasa-logo" font-size="4rem"></terra-icon>
+          <span class="top-nav__title">Terra UI</span>
+        </a>
+      </div>
+
+      <div class="top-nav__right">
+        <terra-dropdown id="about-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="About"> About </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="project-overview">
+              <a href="/components/">Project Overview</a>
+            </terra-menu-item>
+            <terra-menu-item value="contributing">
+              <a href="/components/about/contributing">Contributing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="getting-started-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Getting Started">
+            Getting Started
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="installation">
+              <a href="/components/getting-started/installation">Installation</a>
+            </terra-menu-item>
+            <terra-menu-item value="usage">
+              <a href="/components/getting-started/usage">Usage</a>
+            </terra-menu-item>
+            <terra-menu-item value="themes">
+              <a href="/components/getting-started/themes">Themes</a>
+            </terra-menu-item>
+            <terra-menu-item value="customizing">
+              <a href="/components/getting-started/customizing">Customizing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <terra-dropdown id="frameworks-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Frameworks">
+            Frameworks
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="react">
+              <a href="/components/frameworks/react">React</a>
+            </terra-menu-item>
+            <terra-menu-item value="vue">
+              <a href="/components/frameworks/vue">Vue</a>
+            </terra-menu-item>
+            <terra-menu-item value="angular">
+              <a href="/components/frameworks/angular">Angular</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <button
+          class="top-nav__search"
+          type="button"
+          title="Press / to search"
+          aria-label="Search"
+          data-plugin="search"
+        >
+          <sl-icon name="search"></sl-icon>
+        </button>
+        <a
+          href="https://github.com/nasa/terra-ui-components"
+          title="View Terra UI Components on GitHub"
+          class="top-nav__icon-link external-link"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <sl-icon name="github"></sl-icon>
+        </a>
+        <terra-dropdown id="environment-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Environment"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <span id="environment-display">UAT</span>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="uat"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >UAT</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="prod"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >PROD</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="theme-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Press \ to toggle"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
+            <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="light"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Light</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="dark"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Dark</terra-menu-item
+            >
+            <hr
+              role="separator"
+              aria-orientation="horizontal"
+              style="
+                margin: var(--terra-spacing-x-small) 0;
+                border: none;
+                border-top: 1px solid var(--terra-panel-border-color);
+              "
+            />
+            <terra-menu-item
+              type="checkbox"
+              value="auto"
+              tabindex="0"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >System</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+      </div>
+    </header>
+
+    <button id="menu-toggle" type="button" aria-label="Menu">
+      <svg width="148" height="148" viewBox="0 0 148 148" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="currentColor" stroke-width="18" fill="none" fill-rule="evenodd" stroke-linecap="round">
+          <path d="M9.5 125.5h129M9.5 74.5h129M9.5 23.5h129"></path>
+        </g>
+      </svg>
+    </button>
+
+    <aside id="sidebar" data-preserve-scroll="">
+      <div class="sidebar-buttons">
+        <terra-button
+          size="small"
+          class="repo-button repo-button--github"
+          href="https://github.com/nasa/terra-ui-components"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="github"></sl-icon> Code
+        </terra-button>
+        <terra-button
+          size="small"
+          class="repo-button repo-button--star"
+          href="https://github.com/nasa/terra-ui-components/stargazers"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="star-fill"></sl-icon> Star
+        </terra-button>
+      </div>
+
+      <nav>
+        <ul>
+          <li>
+            <h2>Design System</h2>
+            <ul>
+              <li>
+                <a href="/components/horizon-design-system">Overview</a>
+              </li>
+              <li>
+                <a href="/components/tokens/typography">Typography</a>
+              </li>
+              <li>
+                <a href="/components/tokens/color">Color</a>
+              </li>
+              <li>
+                <a href="/components/tokens/spacing">Spacing</a>
+              </li>
+              <li>
+                <a href="/components/tokens/elevation">Elevation</a>
+              </li>
+              <li>
+                <a href="/components/tokens/border-radius">Border Radius</a>
+              </li>
+              <li>
+                <a href="/components/tokens/transition">Transition</a>
+              </li>
+              <li>
+                <a href="/components/tokens/z-index">Z-index</a>
+              </li>
+              <li>
+                <a href="/components/tokens/more">More Tokens</a>
+              </li>
+              <li>
+                <a href="/components/horizon-design-system/#adoption-status">HDS Adoption Status</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2>Forms</h2>
+            <ul>
+              <li>
+                <a href="/components/forms">Overview</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2>Elements</h2>
+            <ul>
+              <li>
+                <a href="/components/alert"> Alert </a>
+              </li>
+
+              <li>
+                <a href="/components/avatar"> Avatar </a>
+              </li>
+
+              <li>
+                <a href="/components/button"> Button </a>
+              </li>
+
+              <li>
+                <a href="/components/caption"> Caption </a>
+              </li>
+
+              <li>
+                <a href="/components/checkbox"> Checkbox </a>
+              </li>
+
+              <li>
+                <a href="/components/chip"> Chip </a>
+              </li>
+
+              <li>
+                <a href="/components/date-picker"> Date Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/file-upload"> File Upload </a>
+              </li>
+
+              <li>
+                <a href="/components/icon"> Icon </a>
+              </li>
+
+              <li>
+                <a href="/components/input"> Input </a>
+              </li>
+
+              <li>
+                <a href="/components/loader"> Loader </a>
+              </li>
+
+              <li>
+                <a href="/components/option"> Option </a>
+              </li>
+
+              <li>
+                <a href="/components/pagination"> Pagination </a>
+              </li>
+
+              <li>
+                <a href="/components/radio"> Radio </a>
+              </li>
+
+              <li>
+                <a href="/components/radio-group"> Radio Group </a>
+              </li>
+
+              <li>
+                <a href="/components/scroll-hint" class="active-link"> Scroll Hint </a>
+              </li>
+
+              <li>
+                <a href="/components/select"> Select </a>
+              </li>
+
+              <li>
+                <a href="/components/slider"> Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/status-indicator"> Status Indicator </a>
+              </li>
+
+              <li>
+                <a href="/components/tag"> Tag </a>
+              </li>
+
+              <li>
+                <a href="/components/textarea"> Textarea </a>
+              </li>
+
+              <li>
+                <a href="/components/toggle"> Toggle </a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2>Components</h2>
+            <ul>
+              <li>
+                <a href="/components/accordion"> Accordion </a>
+              </li>
+
+              <li>
+                <a href="/components/browse-variables"> Browse Variables </a>
+              </li>
+
+              <li>
+                <a href="/components/combobox"> Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/data-access"> Data Access </a>
+              </li>
+
+              <li>
+                <a href="/components/data-rods"> Data Rods </a>
+              </li>
+
+              <li>
+                <a href="/components/data-subsetter"> Data Subsetter </a>
+              </li>
+
+              <li>
+                <a href="/components/data-subsetter-history"> Data Subsetter History </a>
+              </li>
+
+              <li>
+                <a href="/components/date-range-slider"> Date Range Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/dialog"> Dialog </a>
+              </li>
+
+              <li>
+                <a href="/components/dropdown"> Dropdown </a>
+              </li>
+
+              <li>
+                <a href="/components/login"> Login </a>
+              </li>
+
+              <li>
+                <a href="/components/map"> Map </a>
+              </li>
+
+              <li>
+                <a href="/components/menu"> Menu </a>
+              </li>
+
+              <li>
+                <a href="/components/menu-item"> Menu Item </a>
+              </li>
+
+              <li>
+                <a href="/components/plot"> Plot </a>
+              </li>
+
+              <li>
+                <a href="/components/plot-toolbar"> Plot Toolbar </a>
+              </li>
+
+              <li>
+                <a href="/components/popup"> Popup </a>
+              </li>
+
+              <li>
+                <a href="/components/skeleton"> Skeleton </a>
+              </li>
+
+              <li>
+                <a href="/components/spatial-picker"> Spatial Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/time-average-map"> Time Average Map </a>
+              </li>
+
+              <li>
+                <a href="/components/time-series"> Time Series </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-combobox"> Variable Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-keyword-search"> Variable Keyword Search </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+      <a id="main-content"></a>
+      <article id="content" class="content content--with-toc">
+        <div class="content__toc">
+          <ul>
+            <li class="top">
+              <a href="#">Scroll Hint</a>
+            </li>
+            <li data-level="2"><a href="#usage">Usage</a></li>
+            <li data-level="2"><a href="#variants-and-options">Variants and Options</a></li>
+            <li data-level="3"><a href="#light-background">Light Background</a></li>
+            <li data-level="3"><a href="#dark-background">Dark Background</a></li>
+            <li data-level="2"><a href="#behavior">Behavior</a></li>
+            <li data-level="3"><a href="#inline-position">Inline Position</a></li>
+            <li data-level="3"><a href="#fixed-position-default">Fixed Position (Default)</a></li>
+            <li data-level="2"><a href="#positioning">Positioning</a></li>
+            <li data-level="3"><a href="#fixed-position-default-1">Fixed Position (Default)</a></li>
+            <li data-level="3"><a href="#inline-position-1">Inline Position</a></li>
+            <li data-level="2"><a href="#configuration">Configuration</a></li>
+            <li data-level="3"><a href="#dark-mode">Dark Mode</a></li>
+            <li data-level="3"><a href="#inactivity-delay">Inactivity Delay</a></li>
+            <li data-level="2"><a href="#customization">Customization</a></li>
+            <li data-level="3"><a href="#design-tokens">Design Tokens</a></li>
+            <li data-level="2"><a href="#animation">Animation</a></li>
+            <li data-level="2"><a href="#importing">Importing</a></li>
+            <li data-level="2"><a href="#properties">Properties</a></li>
+            <li data-level="2"><a href="#events">Events</a></li>
+            <li data-level="2"><a href="#custom-properties">Custom Properties</a></li>
+            <li data-level="2"><a href="#parts">Parts</a></li>
+            <li data-level="2"><a href="#dependencies">Dependencies</a></li>
+          </ul>
+        </div>
+
+        <div class="content__body">
+          <header class="component-header">
+            <h1>Scroll Hint</h1>
+
+            <div class="component-header__tag">
+              <code>&lt;terra-scroll-hint&gt; | TerraScrollHint</code>
+            </div>
+
+            <div class="component-header__info">
+              <sl-badge variant="neutral" pill=""> Since 1.0 </sl-badge>
+              <sl-badge variant="primary" pill="" style="text-transform: capitalize"> stable </sl-badge>
+            </div>
+          </header>
+
+          <p class="component-summary">Scroll hint is an animated button that prompts visitors to scroll.</p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-scroll-hint inline=""></terra-scroll-hint>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-216">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-527"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-scroll-hint</span> <span class="token attr-name">inline</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-scroll-hint</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-527"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-216"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h2 id="usage" class="anchor-heading">Usage<a href="#usage" aria-label='Direct link to "Usage"'></a></h2>
+          <p>
+            The scroll hint is used on feature pages as a reminder to continue down the page. These hints are most
+            useful for immersive modules that take up most of the vertical space of the visitor’s viewport. The scroll
+            hint includes an animated button element that calls attention to it.
+          </p>
+          <p>
+            The element is clickable and triggers an animated vertical scroll. The page will scroll a distance equal to
+            the current height of the viewport to move the visitor into the next section. If the visitor clicks on the
+            scroll hint, begins scrolling, or clicks anywhere else on the screen, the scroll hint will disappear.
+          </p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <div style="padding: 2rem">
+                <p>By default, the scroll hint appears in the bottom left after 3 seconds of inactivity.</p>
+                <terra-scroll-hint></terra-scroll-hint>
+              </div>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-217">
+              <div class="code-preview__source code-preview__source--html" data-flavor="html">
+                <pre><code class="language-html" id="code-block-528"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">padding</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>By default, the scroll hint appears in the bottom left after 3 seconds of inactivity.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-scroll-hint</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-scroll-hint</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-528"></sl-copy-button></pre>
+              </div>
+
+              <div class="code-preview__source code-preview__source--react" data-flavor="react">
+                <pre><code class="language-jsx" id="code-block-529"><span class="token keyword">import</span> TerraScrollHint <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/scroll-hint'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">The scroll hint will appear in the bottom left after 3 seconds of inactivity.</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TerraScrollHint</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-529"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-217"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" title="Show HTML code" class="code-preview__button code-preview__button--html">
+                HTML
+              </button>
+
+              <button type="button" title="Show React code" class="code-preview__button code-preview__button--react">
+                React
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h2 id="variants-and-options" class="anchor-heading">
+            Variants and Options<a href="#variants-and-options" aria-label='Direct link to "Variants and Options"'></a>
+          </h2>
+          <p>
+            Scroll hints come in 2 color schemes, so they can be used in light and dark modules and pages. The component
+            automatically adapts to the current theme.
+          </p>
+          <h3 id="light-background" class="anchor-heading">
+            Light Background<a href="#light-background" aria-label='Direct link to "Light Background"'></a>
+          </h3>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <div style="background-color: #f5f5f5; padding: 2rem">
+                <h1>Light Background</h1>
+                <p>Scroll hint on light background</p>
+                <terra-scroll-hint inline=""></terra-scroll-hint>
+              </div>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-218">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-530"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">background-color</span><span class="token punctuation">:</span> #f5f5f5<span class="token punctuation">;</span> <span class="token property">padding</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Light Background<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Scroll hint on light background<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-scroll-hint</span> <span class="token attr-name">inline</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-scroll-hint</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-530"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-218"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="dark-background" class="anchor-heading">
+            Dark Background<a href="#dark-background" aria-label='Direct link to "Dark Background"'></a>
+          </h3>
+          <p>
+            When placing the scroll hint on a dark background, use the <code>dark</code> prop to force dark mode styles
+            for better visibility:
+          </p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <div style="background-color: #1a1a1a; padding: 2rem; color: white">
+                <h1>Dark Background</h1>
+                <p>Scroll hint on dark background with dark prop</p>
+                <terra-scroll-hint inline="" dark=""></terra-scroll-hint>
+              </div>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-219">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-531"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">background-color</span><span class="token punctuation">:</span> #1a1a1a<span class="token punctuation">;</span> <span class="token property">padding</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span> <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Dark Background<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Scroll hint on dark background with dark prop<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-scroll-hint</span> <span class="token attr-name">inline</span> <span class="token attr-name">dark</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-scroll-hint</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-531"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-219"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <p>
+            The <code>dark</code> prop forces dark mode styles regardless of system preference, making it perfect for
+            dark background sections even when the user’s system is in light mode.
+          </p>
+          <h2 id="behavior" class="anchor-heading">
+            Behavior<a href="#behavior" aria-label='Direct link to "Behavior"'></a>
+          </h2>
+          <p>The scroll hint behavior depends on whether it’s inline or fixed:</p>
+          <h3 id="inline-position" class="anchor-heading">
+            Inline Position<a href="#inline-position" aria-label='Direct link to "Inline Position"'></a>
+          </h3>
+          <p>When the <code>inline</code> prop is set:</p>
+          <ul>
+            <li>The scroll hint is <strong>always visible</strong> (no inactivity timer)</li>
+            <li>It remains visible regardless of user interaction</li>
+            <li>Scrolls the page down by one viewport height when clicked</li>
+            <li>Emits a <code>terra-scroll</code> event when clicked</li>
+          </ul>
+          <h3 id="fixed-position-default" class="anchor-heading">
+            Fixed Position (Default)<a
+              href="#fixed-position-default"
+              aria-label='Direct link to "Fixed Position (Default)"'
+            ></a>
+          </h3>
+          <p>When the <code>inline</code> prop is not set (default):</p>
+          <ul>
+            <li>Appears after a configurable delay of user inactivity (defaults to 3 seconds)</li>
+            <li>
+              Once shown, remains visible until the user:
+              <ul>
+                <li>Clicks on the scroll hint (triggers scroll)</li>
+                <li>Begins scrolling the page</li>
+                <li>Clicks anywhere else on the page</li>
+                <li>Scrolls to the bottom of the page (hint will not show again)</li>
+              </ul>
+            </li>
+            <li>Scrolls the page down by one viewport height when clicked</li>
+            <li>Emits a <code>terra-scroll</code> event when clicked</li>
+          </ul>
+          <h2 id="positioning" class="anchor-heading">
+            Positioning<a href="#positioning" aria-label='Direct link to "Positioning"'></a>
+          </h2>
+          <p>
+            By default, the scroll hint is positioned fixed in the bottom left corner of the viewport. Use the
+            <code>inline</code> prop to position it inline in the DOM flow instead.
+          </p>
+          <h3 id="fixed-position-default-1" class="anchor-heading">
+            Fixed Position (Default)<a
+              href="#fixed-position-default-1"
+              aria-label='Direct link to "Fixed Position (Default)"'
+            ></a>
+          </h3>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <div style="height: 200vh; padding: 2rem">
+                <h1>Fixed position (default)</h1>
+                <p>The scroll hint appears in the bottom left corner of the viewport.</p>
+                <terra-scroll-hint inactivity-delay="2000"></terra-scroll-hint>
+              </div>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-220">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-532"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">height</span><span class="token punctuation">:</span> 200vh<span class="token punctuation">;</span> <span class="token property">padding</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Fixed position (default)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>The scroll hint appears in the bottom left corner of the viewport.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-scroll-hint</span> <span class="token attr-name">inactivity-delay</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2000<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-scroll-hint</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-532"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-220"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="inline-position-1" class="anchor-heading">
+            Inline Position<a href="#inline-position-1" aria-label='Direct link to "Inline Position"'></a>
+          </h3>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <div style="height: 200vh; padding: 2rem">
+                <h1>Inline position</h1>
+                <p>The scroll hint appears inline where it’s placed in the DOM.</p>
+                <terra-scroll-hint inline="" inactivity-delay="2000"></terra-scroll-hint>
+                <p>Content continues after the scroll hint.</p>
+              </div>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-221">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-533"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">height</span><span class="token punctuation">:</span> 200vh<span class="token punctuation">;</span> <span class="token property">padding</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Inline position<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>The scroll hint appears inline where it's placed in the DOM.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-scroll-hint</span> <span class="token attr-name">inline</span> <span class="token attr-name">inactivity-delay</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2000<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-scroll-hint</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Content continues after the scroll hint.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-533"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-221"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h2 id="configuration" class="anchor-heading">
+            Configuration<a href="#configuration" aria-label='Direct link to "Configuration"'></a>
+          </h2>
+          <h3 id="dark-mode" class="anchor-heading">
+            Dark Mode<a href="#dark-mode" aria-label='Direct link to "Dark Mode"'></a>
+          </h3>
+          <p>
+            Use the <code>dark</code> prop to force dark mode styles when placing the scroll hint on a dark background,
+            regardless of system preference:
+          </p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <div style="background-color: #1a1a1a; padding: 2rem; color: white">
+                <h1>Forced Dark Mode</h1>
+                <p>This scroll hint uses dark mode styles even if your system is in light mode.</p>
+                <terra-scroll-hint inline="" dark=""></terra-scroll-hint>
+              </div>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-222">
+              <div class="code-preview__source code-preview__source--html" data-flavor="html">
+                <pre><code class="language-html" id="code-block-534"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">background-color</span><span class="token punctuation">:</span> #1a1a1a<span class="token punctuation">;</span> <span class="token property">padding</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span> <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Forced Dark Mode<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>This scroll hint uses dark mode styles even if your system is in light mode.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-scroll-hint</span> <span class="token attr-name">inline</span> <span class="token attr-name">dark</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-scroll-hint</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-534"></sl-copy-button></pre>
+              </div>
+
+              <div class="code-preview__source code-preview__source--react" data-flavor="react">
+                <pre><code class="language-jsx" id="code-block-535"><span class="token keyword">import</span> TerraScrollHint <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/scroll-hint'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">backgroundColor</span><span class="token operator">:</span> <span class="token string">'#1a1a1a'</span><span class="token punctuation">,</span> <span class="token literal-property property">padding</span><span class="token operator">:</span> <span class="token string">'2rem'</span><span class="token punctuation">,</span> <span class="token literal-property property">color</span><span class="token operator">:</span> <span class="token string">'white'</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TerraScrollHint</span></span> <span class="token attr-name">inline</span> <span class="token attr-name">dark</span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-535"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-222"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" title="Show HTML code" class="code-preview__button code-preview__button--html">
+                HTML
+              </button>
+
+              <button type="button" title="Show React code" class="code-preview__button code-preview__button--react">
+                React
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="inactivity-delay" class="anchor-heading">
+            Inactivity Delay<a href="#inactivity-delay" aria-label='Direct link to "Inactivity Delay"'></a>
+          </h3>
+          <p>
+            Use the <code>inactivityDelay</code> prop (in milliseconds) to configure how long to wait before showing the
+            scroll hint:
+          </p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <div style="height: 200vh; padding: 2rem">
+                <h1>Custom delay (5 seconds)</h1>
+                <p>This scroll hint appears after 5 seconds of inactivity.</p>
+                <terra-scroll-hint inactivity-delay="5000"></terra-scroll-hint>
+              </div>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-223">
+              <div class="code-preview__source code-preview__source--html" data-flavor="html">
+                <pre><code class="language-html" id="code-block-536"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">height</span><span class="token punctuation">:</span> 200vh<span class="token punctuation">;</span> <span class="token property">padding</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Custom delay (5 seconds)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>This scroll hint appears after 5 seconds of inactivity.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-scroll-hint</span> <span class="token attr-name">inactivity-delay</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>5000<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-scroll-hint</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-536"></sl-copy-button></pre>
+              </div>
+
+              <div class="code-preview__source code-preview__source--react" data-flavor="react">
+                <pre><code class="language-jsx" id="code-block-537"><span class="token keyword">import</span> TerraScrollHint <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/scroll-hint'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">height</span><span class="token operator">:</span> <span class="token string">'200vh'</span><span class="token punctuation">,</span> <span class="token literal-property property">padding</span><span class="token operator">:</span> <span class="token string">'2rem'</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">Custom delay</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TerraScrollHint</span></span> <span class="token attr-name">inactivityDelay</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">5000</span><span class="token punctuation">}</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-537"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-223"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" title="Show HTML code" class="code-preview__button code-preview__button--html">
+                HTML
+              </button>
+
+              <button type="button" title="Show React code" class="code-preview__button code-preview__button--react">
+                React
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h2 id="customization" class="anchor-heading">
+            Customization<a href="#customization" aria-label='Direct link to "Customization"'></a>
+          </h2>
+          <p>You can customize the scroll hint appearance using CSS custom properties:</p>
+          <pre><code class="language-css" id="code-block-538"><span class="token selector">terra-scroll-hint</span> <span class="token punctuation">{</span>
+    <span class="token property">--terra-scroll-hint-icon-background-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-carbon-black<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">--terra-scroll-hint-icon-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-spacesuit-white<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">--terra-scroll-hint-text-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-carbon-black<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">--terra-scroll-hint-ring-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-nasa-red<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-538"></sl-copy-button></pre>
+          <h3 id="design-tokens" class="anchor-heading">
+            Design Tokens<a href="#design-tokens" aria-label='Direct link to "Design Tokens"'></a>
+          </h3>
+          <p>The following design tokens are available for customization:</p>
+          <ul>
+            <li>
+              <code>--terra-scroll-hint-icon-background-color</code>: Background color of the icon circle (default:
+              <code>--terra-color-carbon-black</code> in light mode, <code>--terra-color-spacesuit-white</code> in dark
+              mode)
+            </li>
+            <li>
+              <code>--terra-scroll-hint-icon-color</code>: Color of the chevron icon (default:
+              <code>--terra-color-spacesuit-white</code> in light mode, <code>--terra-color-carbon-black</code> in dark
+              mode)
+            </li>
+            <li>
+              <code>--terra-scroll-hint-text-color</code>: Color of the “SCROLL TO CONTINUE” text (default:
+              <code>--terra-color-carbon-black</code> in light mode, <code>--terra-color-spacesuit-white</code> in dark
+              mode)
+            </li>
+            <li>
+              <code>--terra-scroll-hint-ring-color</code>: Color of the pulsing ring (default:
+              <code>--terra-color-nasa-red</code>)
+            </li>
+          </ul>
+          <p>
+            All tokens automatically adapt to dark mode when dark mode is active (via system preference or the
+            <code>dark</code> prop).
+          </p>
+          <h2 id="animation" class="anchor-heading">
+            Animation<a href="#animation" aria-label='Direct link to "Animation"'></a>
+          </h2>
+          <p>
+            The defining element of the scroll hint is the ring around its arrow icon, which rhythmically expands and
+            contracts for a subtle yet eye-catching animation. The animation respects
+            <code>prefers-reduced-motion</code> and will be disabled for users who prefer reduced motion.
+          </p>
+
+          <h2 id="importing" class="anchor-heading">
+            Importing<a href="#importing" aria-label='Direct link to "Importing"'></a>
+          </h2>
+          <p>
+            If you’re using the autoloader or the traditional loader, you can ignore this section. Otherwise, feel free
+            to use any of the following snippets to
+            <a href="/components/getting-started/installation#cherry-picking">cherry pick</a> this component.
+          </p>
+
+          <sl-tab-group>
+            <sl-tab slot="nav" panel="script">Script</sl-tab>
+            <sl-tab slot="nav" panel="import">Import</sl-tab>
+            <sl-tab slot="nav" panel="bundler">Bundler</sl-tab>
+            <sl-tab slot="nav" panel="react">React</sl-tab>
+
+            <sl-tab-panel name="script">
+              <p>
+                To import this component from
+                <a
+                  href="https://www.jsdelivr.com/package/npm/@nasa-terra/components"
+                  class="external-link"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  >the CDN</a
+                >
+                using a script tag:
+              </p>
+              <pre><code class="language-html" id="code-block-539"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.111/cdn/components/scroll-hint/scroll-hint.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code><sl-copy-button class="copy-code-button" from="code-block-539"></sl-copy-button></pre>
+            </sl-tab-panel>
+
+            <sl-tab-panel name="import">
+              <p>
+                To import this component from
+                <a
+                  href="https://www.jsdelivr.com/package/npm/@nasa-terra/components"
+                  class="external-link"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  >the CDN</a
+                >
+                using a JavaScript import:
+              </p>
+              <pre><code class="language-js" id="code-block-540"><span class="token keyword">import</span> <span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.111/cdn/components/scroll-hint/scroll-hint.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-540"></sl-copy-button></pre>
+            </sl-tab-panel>
+
+            <sl-tab-panel name="bundler">
+              <p>
+                To import this component using
+                <a href="/components/getting-started/installation#bundling">a bundler</a>:
+              </p>
+              <pre><code class="language-js" id="code-block-541"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/scroll-hint/scroll-hint.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-541"></sl-copy-button></pre>
+            </sl-tab-panel>
+
+            <sl-tab-panel name="react">
+              <p>To import this component as a <a href="/components/frameworks/react">React component</a>:</p>
+              <pre><code class="language-js" id="code-block-542"><span class="token keyword">import</span> TerraScrollHint <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/scroll-hint'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-542"></sl-copy-button></pre>
+            </sl-tab-panel>
+          </sl-tab-group>
+
+          <h2 id="properties" class="anchor-heading">
+            Properties<a href="#properties" aria-label='Direct link to "Properties"'></a>
+          </h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name">Name</th>
+                  <th class="table-description">Description</th>
+                  <th class="table-reflects">Reflects</th>
+                  <th class="table-type">Type</th>
+                  <th class="table-default">Default</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <code class="nowrap">inline</code>
+                  </td>
+                  <td>
+                    When true, the component will be positioned inline in the DOM flow instead of fixed to the viewport.
+                  </td>
+                  <td style="text-align: center">
+                    <sl-icon label="yes" name="check-lg"></sl-icon>
+                  </td>
+                  <td>
+                    <code>boolean</code>
+                  </td>
+                  <td>
+                    <code>false</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">dark</code>
+                  </td>
+                  <td>
+                    When true, forces dark mode styles regardless of system preference. Useful when placing the
+                    component on a dark background.
+                  </td>
+                  <td style="text-align: center">
+                    <sl-icon label="yes" name="check-lg"></sl-icon>
+                  </td>
+                  <td>
+                    <code>boolean</code>
+                  </td>
+                  <td>
+                    <code>false</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">inactivityDelay</code>
+                  </td>
+                  <td>
+                    The delay in milliseconds before showing the scroll hint after inactivity. Defaults to 3000ms (3
+                    seconds).
+                  </td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>number</code>
+                  </td>
+                  <td>
+                    <code>3000</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>updateComplete</code>
+                  </td>
+                  <td>
+                    A read-only promise that resolves when the component has
+                    <a href="/components/getting-started/usage?#component-rendering-and-updating">finished updating</a>.
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em
+              >Learn more about
+              <a href="/components/getting-started/usage#attributes-and-properties">attributes and properties</a>.</em
+            >
+          </p>
+
+          <h2 id="events" class="anchor-heading">Events<a href="#events" aria-label='Direct link to "Events"'></a></h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name" data-flavor="html">Name</th>
+                  <th class="table-name" data-flavor="react">React Event</th>
+                  <th class="table-description">Description</th>
+                  <th class="table-event-detail">Event Detail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-flavor="html">
+                    <code class="nowrap">terra-scroll</code>
+                  </td>
+                  <td data-flavor="react">
+                    <code class="nowrap">onTerraScroll</code>
+                  </td>
+                  <td>Emitted when the scroll hint is clicked and scrolling begins.</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em>Learn more about <a href="/components/getting-started/usage#events">events</a>.</em>
+          </p>
+
+          <h2 id="custom-properties" class="anchor-heading">
+            Custom Properties<a href="#custom-properties" aria-label='Direct link to "Custom Properties"'></a>
+          </h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name">Name</th>
+                  <th class="table-description">Description</th>
+                  <th class="table-default">Default</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-scroll-hint-icon-background-color</code>
+                  </td>
+                  <td>The background color of the icon circle.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-scroll-hint-icon-color</code>
+                  </td>
+                  <td>The color of the chevron icon.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-scroll-hint-text-color</code>
+                  </td>
+                  <td>The color of the text.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-scroll-hint-ring-color</code>
+                  </td>
+                  <td>The color of the pulsing ring.</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em
+              >Learn more about
+              <a href="/components/getting-started/usage#custom-properties">customizing CSS custom properties</a>.</em
+            >
+          </p>
+
+          <h2 id="parts" class="anchor-heading">Parts<a href="#parts" aria-label='Direct link to "Parts"'></a></h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name">Name</th>
+                  <th class="table-description">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap">
+                    <code>base</code>
+                  </td>
+                  <td>The component’s base wrapper.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>button</code>
+                  </td>
+                  <td>The clickable button element.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>icon-container</code>
+                  </td>
+                  <td>The container for the icon and pulsing ring.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>icon</code>
+                  </td>
+                  <td>The chevron icon.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>ring</code>
+                  </td>
+                  <td>The pulsing ring around the icon.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>text</code>
+                  </td>
+                  <td>The “SCROLL TO CONTINUE” text.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em
+              >Learn more about
+              <a href="/components/getting-started/customizing/#css-parts">customizing CSS parts</a>.</em
+            >
+          </p>
+
+          <h2 id="dependencies" class="anchor-heading">
+            Dependencies<a href="#dependencies" aria-label='Direct link to "Dependencies"'></a>
+          </h2>
+
+          <p>This component automatically imports the following dependencies.</p>
+
+          <ul>
+            <li>
+              <code>&lt;terra-icon&gt;</code>
+            </li>
+          </ul>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

@@ -1,9 +1,8 @@
 import TerraElement from '../../internal/terra-element.js';
-import { SlSkeleton } from '@shoelace-style/shoelace';
 import type { CSSResultGroup } from 'lit';
 /**
  * @summary Skeletons are loading indicators to represent where content will eventually be drawn.
- * @documentation https://disc.gsfc.nasa.gov/components/skeleton
+ * @documentation https://terra-ui.netlify.app/components/skeleton
  * @status experimental
  * @since 1.0
  *
@@ -11,9 +10,6 @@ import type { CSSResultGroup } from 'lit';
  */
 export default class TerraSkeleton extends TerraElement {
     static styles: CSSResultGroup;
-    static dependencies: {
-        'sl-skeleton': typeof SlSkeleton;
-    };
     rows: number;
     effect: 'pulse' | 'sheen' | 'none';
     variableWidths: boolean;

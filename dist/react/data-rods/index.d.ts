@@ -4,7 +4,7 @@ import type { TerraDateRangeChangeEvent } from '../../events/events.js';
 export type { TerraDateRangeChangeEvent } from '../../events/events.js';
 /**
  * @summary A component for visualizing Hydrology Data Rods time series using the GES DISC Giovanni API
- * @documentation https://disc.gsfc.nasa.gov/components/data-rods
+ * @documentation https://terra-ui.netlify.app/components/data-rods
  * @status mvp
  * @since 1.0
  *

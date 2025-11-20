@@ -2,9 +2,9 @@ import TerraElement from '../../internal/terra-element.js';
 import type { CSSResultGroup } from 'lit';
 /**
  * @summary Alerts are used to display important messages inline or as toast notifications.
- * @documentation https://shoelace.style/components/alert
+ * @documentation https://terra-ui.netlify.app/components/alert
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @slot - The alert's main content.
  *
@@ -39,6 +39,11 @@ export default class TerraAlert extends TerraElement {
     closable: boolean;
     /** The alert's theme variant. */
     variant: 'primary' | 'success' | 'neutral' | 'warning' | 'danger';
+    /**
+     * The alert's appearance style. "filled" uses a colored background with white text (HDS default).
+     * "white" uses a white background with a colored top border and dark text.
+     */
+    appearance: 'filled' | 'white';
     /**
      * The length of time, in milliseconds, the alert will show before closing itself. If the user interacts with
      * the alert before it closes (e.g. moves the mouse over it), the timer will restart. Defaults to `Infinity`, meaning

@@ -1,7 +1,7 @@
 import Component from '../../components/browse-variables/browse-variables.component.js';
 /**
  * @summary Browse through the NASA CMR or Giovanni catalogs.
- * @documentation https://disc.gsfc.nasa.gov/components/browse-variables
+ * @documentation https://terra-ui.netlify.app/components/browse-variables
  * @status MVP
  * @since 1.0
  *

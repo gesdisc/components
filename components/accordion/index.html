@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-layout="component" data-terra-ui-components-version="0.0.64">
+<html lang="en" data-layout="component" data-terra-ui-components-version="0.0.111">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,12 +16,12 @@
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:creator" content="nasa_terra-ui" />
-    <meta name="twitter:image" content="https://disc.gsfc.nasa.gov/components/assets/images/og-image.png" />
+    <meta name="twitter:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
 
-    <meta property="og:url" content="https://disc.gsfc.nasa.gov/components/accordion/" />
+    <meta property="og:url" content="https://terra-ui.netlify.app/components/accordion/" />
     <meta property="og:title" content="Accordion" />
     <meta property="og:description" content="" />
-    <meta property="og:image" content="https://disc.gsfc.nasa.gov/components/assets/images/og-image.png" />
+    <meta property="og:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
 
     <link rel="stylesheet" href="/dist/themes/horizon.css" />
     <script type="module" src="/dist/terra-ui-components-autoloader.js"></script>
@@ -61,6 +61,173 @@
       Skip to main content
     </a>
 
+    <header id="top-nav" class="top-nav">
+      <div class="top-nav__left">
+        <a href="/" class="top-nav__logo">
+          <terra-icon name="nasa-logo" font-size="4rem"></terra-icon>
+          <span class="top-nav__title">Terra UI</span>
+        </a>
+      </div>
+
+      <div class="top-nav__right">
+        <terra-dropdown id="about-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="About"> About </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="project-overview">
+              <a href="/components/">Project Overview</a>
+            </terra-menu-item>
+            <terra-menu-item value="contributing">
+              <a href="/components/about/contributing">Contributing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="getting-started-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Getting Started">
+            Getting Started
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="installation">
+              <a href="/components/getting-started/installation">Installation</a>
+            </terra-menu-item>
+            <terra-menu-item value="usage">
+              <a href="/components/getting-started/usage">Usage</a>
+            </terra-menu-item>
+            <terra-menu-item value="themes">
+              <a href="/components/getting-started/themes">Themes</a>
+            </terra-menu-item>
+            <terra-menu-item value="customizing">
+              <a href="/components/getting-started/customizing">Customizing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <terra-dropdown id="frameworks-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Frameworks">
+            Frameworks
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="react">
+              <a href="/components/frameworks/react">React</a>
+            </terra-menu-item>
+            <terra-menu-item value="vue">
+              <a href="/components/frameworks/vue">Vue</a>
+            </terra-menu-item>
+            <terra-menu-item value="angular">
+              <a href="/components/frameworks/angular">Angular</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <button
+          class="top-nav__search"
+          type="button"
+          title="Press / to search"
+          aria-label="Search"
+          data-plugin="search"
+        >
+          <sl-icon name="search"></sl-icon>
+        </button>
+        <a
+          href="https://github.com/nasa/terra-ui-components"
+          title="View Terra UI Components on GitHub"
+          class="top-nav__icon-link external-link"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <sl-icon name="github"></sl-icon>
+        </a>
+        <terra-dropdown id="environment-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Environment"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <span id="environment-display">UAT</span>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="uat"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >UAT</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="prod"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >PROD</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="theme-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Press \ to toggle"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
+            <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="light"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Light</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="dark"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Dark</terra-menu-item
+            >
+            <hr
+              role="separator"
+              aria-orientation="horizontal"
+              style="
+                margin: var(--terra-spacing-x-small) 0;
+                border: none;
+                border-top: 1px solid var(--terra-panel-border-color);
+              "
+            />
+            <terra-menu-item
+              type="checkbox"
+              value="auto"
+              tabindex="0"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >System</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+      </div>
+    </header>
+
     <button id="menu-toggle" type="button" aria-label="Menu">
       <svg width="148" height="148" viewBox="0 0 148 148" xmlns="http://www.w3.org/2000/svg">
         <g stroke="currentColor" stroke-width="18" fill="none" fill-rule="evenodd" stroke-linecap="round">
@@ -69,108 +236,7 @@
       </svg>
     </button>
 
-    <div id="icon-toolbar">
-      <a
-        href="https://github.com/nasa/terra-ui-components"
-        title="View Terra UI Components on GitHub"
-        class="external-link"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <sl-icon name="github"></sl-icon>
-      </a>
-      <sl-dropdown id="environment-selector" placement="bottom-end" distance="3">
-        <terra-button
-          slot="trigger"
-          size="large"
-          variant="text"
-          caret=""
-          title="Environment"
-          data-optional=""
-          data-valid=""
-          data-user-valid=""
-        >
-          <span id="environment-display">UAT</span>
-        </terra-button>
-        <sl-menu role="menu">
-          <sl-menu-item
-            type="checkbox"
-            value="uat"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="true"
-            aria-disabled="false"
-            checked=""
-            >UAT</sl-menu-item
-          >
-          <sl-menu-item
-            type="checkbox"
-            value="prod"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >PROD</sl-menu-item
-          >
-        </sl-menu>
-      </sl-dropdown>
-      <sl-dropdown id="theme-selector" placement="bottom-end" distance="3">
-        <terra-button
-          slot="trigger"
-          size="large"
-          variant="text"
-          caret=""
-          title="Press \ to toggle"
-          data-optional=""
-          data-valid=""
-          data-user-valid=""
-        >
-          <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
-          <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
-        </terra-button>
-        <sl-menu role="menu">
-          <sl-menu-item
-            type="checkbox"
-            value="light"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >Light</sl-menu-item
-          >
-          <sl-menu-item
-            type="checkbox"
-            value="dark"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >Dark</sl-menu-item
-          >
-          <sl-divider role="separator" aria-orientation="horizontal"></sl-divider>
-          <sl-menu-item
-            type="checkbox"
-            value="auto"
-            tabindex="0"
-            role="menuitemcheckbox"
-            aria-checked="true"
-            aria-disabled="false"
-            checked=""
-            >System</sl-menu-item
-          >
-        </sl-menu>
-      </sl-dropdown>
-    </div>
-
     <aside id="sidebar" data-preserve-scroll="">
-      <header>
-        <a href="/" class="sidebar-logo">
-          <img src="/components/assets/images/logo.svg" alt="Terra UI Components" />
-          Terra UI Components
-        </a>
-        <div class="sidebar-version">0.0.64</div>
-      </header>
-
       <div class="sidebar-buttons">
         <terra-button
           size="small"
@@ -190,47 +256,146 @@
         </terra-button>
       </div>
 
-      <button class="search-box" type="button" title="Press / to search" aria-label="Search" data-plugin="search">
-        <sl-icon name="search"></sl-icon>
-        <span>Search</span>
-      </button>
-
       <nav>
         <ul>
           <li>
-            <h2>Getting Started</h2>
+            <h2>Design System</h2>
             <ul>
               <li>
-                <a href="/components/">Home</a>
+                <a href="/components/horizon-design-system">Overview</a>
               </li>
               <li>
-                <a href="/components/getting-started/installation">Installation</a>
+                <a href="/components/tokens/typography">Typography</a>
               </li>
               <li>
-                <a href="/components/getting-started/usage">Usage</a>
+                <a href="/components/tokens/color">Color</a>
               </li>
               <li>
-                <a href="/components/getting-started/themes">Themes</a>
+                <a href="/components/tokens/spacing">Spacing</a>
               </li>
               <li>
-                <a href="/components/getting-started/customizing">Customizing</a>
+                <a href="/components/tokens/elevation">Elevation</a>
+              </li>
+              <li>
+                <a href="/components/tokens/border-radius">Border Radius</a>
+              </li>
+              <li>
+                <a href="/components/tokens/transition">Transition</a>
+              </li>
+              <li>
+                <a href="/components/tokens/z-index">Z-index</a>
+              </li>
+              <li>
+                <a href="/components/tokens/more">More Tokens</a>
+              </li>
+              <li>
+                <a href="/components/horizon-design-system/#adoption-status">HDS Adoption Status</a>
               </li>
             </ul>
           </li>
+
           <li>
-            <h2>Frameworks</h2>
+            <h2>Forms</h2>
             <ul>
               <li>
-                <a href="/components/frameworks/react">React</a>
-              </li>
-              <li>
-                <a href="/components/frameworks/vue">Vue</a>
-              </li>
-              <li>
-                <a href="/components/frameworks/angular">Angular</a>
+                <a href="/components/forms">Overview</a>
               </li>
             </ul>
           </li>
+
+          <li>
+            <h2>Elements</h2>
+            <ul>
+              <li>
+                <a href="/components/alert"> Alert </a>
+              </li>
+
+              <li>
+                <a href="/components/avatar"> Avatar </a>
+              </li>
+
+              <li>
+                <a href="/components/button"> Button </a>
+              </li>
+
+              <li>
+                <a href="/components/caption"> Caption </a>
+              </li>
+
+              <li>
+                <a href="/components/checkbox"> Checkbox </a>
+              </li>
+
+              <li>
+                <a href="/components/chip"> Chip </a>
+              </li>
+
+              <li>
+                <a href="/components/date-picker"> Date Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/file-upload"> File Upload </a>
+              </li>
+
+              <li>
+                <a href="/components/icon"> Icon </a>
+              </li>
+
+              <li>
+                <a href="/components/input"> Input </a>
+              </li>
+
+              <li>
+                <a href="/components/loader"> Loader </a>
+              </li>
+
+              <li>
+                <a href="/components/option"> Option </a>
+              </li>
+
+              <li>
+                <a href="/components/pagination"> Pagination </a>
+              </li>
+
+              <li>
+                <a href="/components/radio"> Radio </a>
+              </li>
+
+              <li>
+                <a href="/components/radio-group"> Radio Group </a>
+              </li>
+
+              <li>
+                <a href="/components/scroll-hint"> Scroll Hint </a>
+              </li>
+
+              <li>
+                <a href="/components/select"> Select </a>
+              </li>
+
+              <li>
+                <a href="/components/slider"> Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/status-indicator"> Status Indicator </a>
+              </li>
+
+              <li>
+                <a href="/components/tag"> Tag </a>
+              </li>
+
+              <li>
+                <a href="/components/textarea"> Textarea </a>
+              </li>
+
+              <li>
+                <a href="/components/toggle"> Toggle </a>
+              </li>
+            </ul>
+          </li>
+
           <li>
             <h2>Components</h2>
             <ul>
@@ -239,23 +404,15 @@
               </li>
 
               <li>
-                <a href="/components/alert"> Alert </a>
-              </li>
-
-              <li>
                 <a href="/components/browse-variables"> Browse Variables </a>
               </li>
 
               <li>
-                <a href="/components/button"> Button </a>
-              </li>
-
-              <li>
-                <a href="/components/chip"> Chip </a>
-              </li>
-
-              <li>
                 <a href="/components/combobox"> Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/data-access"> Data Access </a>
               </li>
 
               <li>
@@ -271,10 +428,6 @@
               </li>
 
               <li>
-                <a href="/components/date-picker"> Date Picker </a>
-              </li>
-
-              <li>
                 <a href="/components/date-range-slider"> Date Range Slider </a>
               </li>
 
@@ -283,11 +436,7 @@
               </li>
 
               <li>
-                <a href="/components/icon"> Icon </a>
-              </li>
-
-              <li>
-                <a href="/components/loader"> Loader </a>
+                <a href="/components/dropdown"> Dropdown </a>
               </li>
 
               <li>
@@ -299,11 +448,23 @@
               </li>
 
               <li>
+                <a href="/components/menu"> Menu </a>
+              </li>
+
+              <li>
+                <a href="/components/menu-item"> Menu Item </a>
+              </li>
+
+              <li>
                 <a href="/components/plot"> Plot </a>
               </li>
 
               <li>
                 <a href="/components/plot-toolbar"> Plot Toolbar </a>
+              </li>
+
+              <li>
+                <a href="/components/popup"> Popup </a>
               </li>
 
               <li>
@@ -347,6 +508,7 @@
             <li data-level="2"><a href="#examples">Examples</a></li>
             <li data-level="3"><a href="#using-the-summary-property">Using the summary property</a></li>
             <li data-level="3"><a href="#using-the-summary-slot">Using the summary slot</a></li>
+            <li data-level="3"><a href="#multiple-accordions">Multiple Accordions</a></li>
             <li data-level="2"><a href="#features">Features</a></li>
             <li data-level="2"><a href="#importing">Importing</a></li>
             <li data-level="2"><a href="#slots">Slots</a></li>
@@ -394,12 +556,12 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-9">
+            <div class="code-preview__source-group" id="code-preview-source-group-41">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-118"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-accordion</span> <span class="token attr-name">summary</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Why is the rover called Perseverance?<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                <pre><code class="language-html" id="code-block-191"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-accordion</span> <span class="token attr-name">summary</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Why is the rover called Perseverance?<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
   Perseverance is studying Mars' habitability, seeking signs of past microbial life, collecting and storing samples of selected rock and soil, and preparing for future human missions.
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-accordion</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-118"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-191"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -408,7 +570,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-9"
+                aria-controls="code-preview-source-group-41"
               >
                 Source
                 <svg
@@ -464,12 +626,12 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-10">
+            <div class="code-preview__source-group" id="code-preview-source-group-42">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-119"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-accordion</span> <span class="token attr-name">summary</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>What is Perseverance doing on Mars?<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                <pre><code class="language-html" id="code-block-192"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-accordion</span> <span class="token attr-name">summary</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>What is Perseverance doing on Mars?<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
   Perseverance is studying Mars' habitability, seeking signs of past microbial life, collecting and storing samples of selected rock and soil, and preparing for future human missions.
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-accordion</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-119"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-192"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -478,7 +640,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-10"
+                aria-controls="code-preview-source-group-42"
               >
                 Source
                 <svg
@@ -531,13 +693,13 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-11">
+            <div class="code-preview__source-group" id="code-preview-source-group-43">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-120"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-accordion</span><span class="token punctuation">&gt;</span></span>
+                <pre><code class="language-html" id="code-block-193"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-accordion</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>summary<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>How long is the 2020 mission?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
   The 2020 Mars mission is planned to last at least one Mars year (about 687 Earth days).
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-accordion</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-120"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-193"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -546,7 +708,100 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-11"
+                aria-controls="code-preview-source-group-43"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="multiple-accordions" class="anchor-heading">
+            Multiple Accordions<a href="#multiple-accordions" aria-label='Direct link to "Multiple Accordions"'></a>
+          </h3>
+          <p>Accordions stack nicely when used together, with consistent spacing between them.</p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-accordion summary="What is Perseverance doing on Mars?">
+                Perseverance is studying Mars’ habitability, seeking signs of past microbial life, collecting and
+                storing samples of selected rock and soil, and preparing for future human missions.
+              </terra-accordion>
+
+              <terra-accordion summary="Why is the rover called Perseverance?">
+                The name “Perseverance” was chosen through a nationwide student contest. It reflects the determination
+                and persistence required to explore Mars and advance our understanding of the Red Planet.
+              </terra-accordion>
+
+              <terra-accordion summary="How long is the 2020 mission?">
+                The 2020 Mars mission is planned to last at least one Mars year (about 687 Earth days), with the
+                possibility of extension based on the rover’s condition and scientific objectives.
+              </terra-accordion>
+
+              <terra-accordion summary="What instruments does Perseverance carry?">
+                Perseverance carries seven scientific instruments, including cameras, spectrometers, a
+                ground-penetrating radar, and the first microphone to record sounds on Mars. It also carries the
+                Ingenuity helicopter, the first aircraft to fly on another planet.
+              </terra-accordion>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-44">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-194"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-accordion</span> <span class="token attr-name">summary</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>What is Perseverance doing on Mars?<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  Perseverance is studying Mars' habitability, seeking signs of past microbial life, collecting and storing samples of selected rock and soil, and preparing for future human missions.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-accordion</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-accordion</span> <span class="token attr-name">summary</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Why is the rover called Perseverance?<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  The name "Perseverance" was chosen through a nationwide student contest. It reflects the determination and persistence required to explore Mars and advance our understanding of the Red Planet.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-accordion</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-accordion</span> <span class="token attr-name">summary</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>How long is the 2020 mission?<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  The 2020 Mars mission is planned to last at least one Mars year (about 687 Earth days), with the possibility of extension based on the rover's condition and scientific objectives.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-accordion</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-accordion</span> <span class="token attr-name">summary</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>What instruments does Perseverance carry?<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  Perseverance carries seven scientific instruments, including cameras, spectrometers, a ground-penetrating radar, and the first microphone to record sounds on Mars. It also carries the Ingenuity helicopter, the first aircraft to fly on another planet.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-accordion</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-194"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-44"
               >
                 Source
                 <svg
@@ -619,7 +874,7 @@
                 >
                 using a script tag:
               </p>
-              <pre><code class="language-html" id="code-block-121"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.64/cdn/components/accordion/accordion.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code><sl-copy-button class="copy-code-button" from="code-block-121"></sl-copy-button></pre>
+              <pre><code class="language-html" id="code-block-195"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.111/cdn/components/accordion/accordion.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code><sl-copy-button class="copy-code-button" from="code-block-195"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="import">
@@ -634,7 +889,7 @@
                 >
                 using a JavaScript import:
               </p>
-              <pre><code class="language-js" id="code-block-122"><span class="token keyword">import</span> <span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.64/cdn/components/accordion/accordion.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-122"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-196"><span class="token keyword">import</span> <span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.111/cdn/components/accordion/accordion.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-196"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="bundler">
@@ -642,12 +897,12 @@
                 To import this component using
                 <a href="/components/getting-started/installation#bundling">a bundler</a>:
               </p>
-              <pre><code class="language-js" id="code-block-123"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/accordion/accordion.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-123"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-197"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/accordion/accordion.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-197"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="react">
               <p>To import this component as a <a href="/components/frameworks/react">React component</a>:</p>
-              <pre><code class="language-js" id="code-block-124"><span class="token keyword">import</span> TerraAccordion <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/accordion'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-124"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-198"><span class="token keyword">import</span> TerraAccordion <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/accordion'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-198"></sl-copy-button></pre>
             </sl-tab-panel>
           </sl-tab-group>
 

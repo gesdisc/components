@@ -4,7 +4,7 @@ import type { TerraLoginEvent } from '../../events/events.js';
 export type { TerraLoginEvent } from '../../events/events.js';
 /**
  * @summary A form that logs in to Earthdata Login (EDL) and returns a bearer token.
- * @documentation https://disc.gsfc.nasa.gov/components/login
+ * @documentation https://terra-ui.netlify.app/components/login
  * @status stable
  * @since 1.0
  *

@@ -1,0 +1,1816 @@
+<!doctype html>
+<html lang="en" data-layout="component" data-terra-ui-components-version="0.0.111">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Pagination is a navigational element that allows users to navigate between content or pages."
+    />
+    <title>Pagination</title>
+
+    <meta name="turbo-cache-control" />
+
+    <link rel="stylesheet" href="/components/assets/styles/docs.css" />
+    <link rel="stylesheet" href="/components/assets/styles/code-previews.css" />
+    <link rel="stylesheet" href="/components/assets/styles/search.css" />
+
+    <link rel="icon" href="/components/assets/images/logo.white.png" type="image/x-icon" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="nasa_terra-ui" />
+    <meta name="twitter:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
+
+    <meta property="og:url" content="https://terra-ui.netlify.app/components/pagination/" />
+    <meta property="og:title" content="Pagination" />
+    <meta
+      property="og:description"
+      content="Pagination is a navigational element that allows users to navigate between content or pages."
+    />
+    <meta property="og:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
+
+    <link rel="stylesheet" href="/dist/themes/horizon.css" />
+    <script type="module" src="/dist/terra-ui-components-autoloader.js"></script>
+
+    <script>
+      (() => {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = localStorage.getItem('theme') || 'auto';
+        document.documentElement.classList.toggle(
+          'terra-theme-dark',
+          theme === 'dark' || (theme === 'auto' && prefersDark)
+        );
+      })();
+    </script>
+
+    <script src="/components/assets/scripts/turbo.js" type="module"></script>
+    <script src="/components/assets/scripts/docs.js" defer=""></script>
+    <script src="/components/assets/scripts/code-previews.js" defer=""></script>
+    <script src="/components/assets/scripts/lunr.js" defer=""></script>
+    <script src="/components/assets/scripts/search.js" defer=""></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono&amp;family=Inter&amp;family=Public+Sans&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"
+    ></script>
+  </head>
+  <body>
+    <a id="skip-to-main" class="visually-hidden" href="#main-content" data-smooth-link="false">
+      Skip to main content
+    </a>
+
+    <header id="top-nav" class="top-nav">
+      <div class="top-nav__left">
+        <a href="/" class="top-nav__logo">
+          <terra-icon name="nasa-logo" font-size="4rem"></terra-icon>
+          <span class="top-nav__title">Terra UI</span>
+        </a>
+      </div>
+
+      <div class="top-nav__right">
+        <terra-dropdown id="about-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="About"> About </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="project-overview">
+              <a href="/components/">Project Overview</a>
+            </terra-menu-item>
+            <terra-menu-item value="contributing">
+              <a href="/components/about/contributing">Contributing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="getting-started-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Getting Started">
+            Getting Started
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="installation">
+              <a href="/components/getting-started/installation">Installation</a>
+            </terra-menu-item>
+            <terra-menu-item value="usage">
+              <a href="/components/getting-started/usage">Usage</a>
+            </terra-menu-item>
+            <terra-menu-item value="themes">
+              <a href="/components/getting-started/themes">Themes</a>
+            </terra-menu-item>
+            <terra-menu-item value="customizing">
+              <a href="/components/getting-started/customizing">Customizing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <terra-dropdown id="frameworks-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Frameworks">
+            Frameworks
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="react">
+              <a href="/components/frameworks/react">React</a>
+            </terra-menu-item>
+            <terra-menu-item value="vue">
+              <a href="/components/frameworks/vue">Vue</a>
+            </terra-menu-item>
+            <terra-menu-item value="angular">
+              <a href="/components/frameworks/angular">Angular</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <button
+          class="top-nav__search"
+          type="button"
+          title="Press / to search"
+          aria-label="Search"
+          data-plugin="search"
+        >
+          <sl-icon name="search"></sl-icon>
+        </button>
+        <a
+          href="https://github.com/nasa/terra-ui-components"
+          title="View Terra UI Components on GitHub"
+          class="top-nav__icon-link external-link"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <sl-icon name="github"></sl-icon>
+        </a>
+        <terra-dropdown id="environment-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Environment"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <span id="environment-display">UAT</span>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="uat"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >UAT</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="prod"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >PROD</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="theme-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Press \ to toggle"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
+            <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="light"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Light</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="dark"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Dark</terra-menu-item
+            >
+            <hr
+              role="separator"
+              aria-orientation="horizontal"
+              style="
+                margin: var(--terra-spacing-x-small) 0;
+                border: none;
+                border-top: 1px solid var(--terra-panel-border-color);
+              "
+            />
+            <terra-menu-item
+              type="checkbox"
+              value="auto"
+              tabindex="0"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >System</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+      </div>
+    </header>
+
+    <button id="menu-toggle" type="button" aria-label="Menu">
+      <svg width="148" height="148" viewBox="0 0 148 148" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="currentColor" stroke-width="18" fill="none" fill-rule="evenodd" stroke-linecap="round">
+          <path d="M9.5 125.5h129M9.5 74.5h129M9.5 23.5h129"></path>
+        </g>
+      </svg>
+    </button>
+
+    <aside id="sidebar" data-preserve-scroll="">
+      <div class="sidebar-buttons">
+        <terra-button
+          size="small"
+          class="repo-button repo-button--github"
+          href="https://github.com/nasa/terra-ui-components"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="github"></sl-icon> Code
+        </terra-button>
+        <terra-button
+          size="small"
+          class="repo-button repo-button--star"
+          href="https://github.com/nasa/terra-ui-components/stargazers"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="star-fill"></sl-icon> Star
+        </terra-button>
+      </div>
+
+      <nav>
+        <ul>
+          <li>
+            <h2>Design System</h2>
+            <ul>
+              <li>
+                <a href="/components/horizon-design-system">Overview</a>
+              </li>
+              <li>
+                <a href="/components/tokens/typography">Typography</a>
+              </li>
+              <li>
+                <a href="/components/tokens/color">Color</a>
+              </li>
+              <li>
+                <a href="/components/tokens/spacing">Spacing</a>
+              </li>
+              <li>
+                <a href="/components/tokens/elevation">Elevation</a>
+              </li>
+              <li>
+                <a href="/components/tokens/border-radius">Border Radius</a>
+              </li>
+              <li>
+                <a href="/components/tokens/transition">Transition</a>
+              </li>
+              <li>
+                <a href="/components/tokens/z-index">Z-index</a>
+              </li>
+              <li>
+                <a href="/components/tokens/more">More Tokens</a>
+              </li>
+              <li>
+                <a href="/components/horizon-design-system/#adoption-status">HDS Adoption Status</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2>Forms</h2>
+            <ul>
+              <li>
+                <a href="/components/forms">Overview</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2>Elements</h2>
+            <ul>
+              <li>
+                <a href="/components/alert"> Alert </a>
+              </li>
+
+              <li>
+                <a href="/components/avatar"> Avatar </a>
+              </li>
+
+              <li>
+                <a href="/components/button"> Button </a>
+              </li>
+
+              <li>
+                <a href="/components/caption"> Caption </a>
+              </li>
+
+              <li>
+                <a href="/components/checkbox"> Checkbox </a>
+              </li>
+
+              <li>
+                <a href="/components/chip"> Chip </a>
+              </li>
+
+              <li>
+                <a href="/components/date-picker"> Date Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/file-upload"> File Upload </a>
+              </li>
+
+              <li>
+                <a href="/components/icon"> Icon </a>
+              </li>
+
+              <li>
+                <a href="/components/input"> Input </a>
+              </li>
+
+              <li>
+                <a href="/components/loader"> Loader </a>
+              </li>
+
+              <li>
+                <a href="/components/option"> Option </a>
+              </li>
+
+              <li>
+                <a href="/components/pagination" class="active-link"> Pagination </a>
+              </li>
+
+              <li>
+                <a href="/components/radio"> Radio </a>
+              </li>
+
+              <li>
+                <a href="/components/radio-group"> Radio Group </a>
+              </li>
+
+              <li>
+                <a href="/components/scroll-hint"> Scroll Hint </a>
+              </li>
+
+              <li>
+                <a href="/components/select"> Select </a>
+              </li>
+
+              <li>
+                <a href="/components/slider"> Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/status-indicator"> Status Indicator </a>
+              </li>
+
+              <li>
+                <a href="/components/tag"> Tag </a>
+              </li>
+
+              <li>
+                <a href="/components/textarea"> Textarea </a>
+              </li>
+
+              <li>
+                <a href="/components/toggle"> Toggle </a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2>Components</h2>
+            <ul>
+              <li>
+                <a href="/components/accordion"> Accordion </a>
+              </li>
+
+              <li>
+                <a href="/components/browse-variables"> Browse Variables </a>
+              </li>
+
+              <li>
+                <a href="/components/combobox"> Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/data-access"> Data Access </a>
+              </li>
+
+              <li>
+                <a href="/components/data-rods"> Data Rods </a>
+              </li>
+
+              <li>
+                <a href="/components/data-subsetter"> Data Subsetter </a>
+              </li>
+
+              <li>
+                <a href="/components/data-subsetter-history"> Data Subsetter History </a>
+              </li>
+
+              <li>
+                <a href="/components/date-range-slider"> Date Range Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/dialog"> Dialog </a>
+              </li>
+
+              <li>
+                <a href="/components/dropdown"> Dropdown </a>
+              </li>
+
+              <li>
+                <a href="/components/login"> Login </a>
+              </li>
+
+              <li>
+                <a href="/components/map"> Map </a>
+              </li>
+
+              <li>
+                <a href="/components/menu"> Menu </a>
+              </li>
+
+              <li>
+                <a href="/components/menu-item"> Menu Item </a>
+              </li>
+
+              <li>
+                <a href="/components/plot"> Plot </a>
+              </li>
+
+              <li>
+                <a href="/components/plot-toolbar"> Plot Toolbar </a>
+              </li>
+
+              <li>
+                <a href="/components/popup"> Popup </a>
+              </li>
+
+              <li>
+                <a href="/components/skeleton"> Skeleton </a>
+              </li>
+
+              <li>
+                <a href="/components/spatial-picker"> Spatial Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/time-average-map"> Time Average Map </a>
+              </li>
+
+              <li>
+                <a href="/components/time-series"> Time Series </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-combobox"> Variable Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-keyword-search"> Variable Keyword Search </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+      <a id="main-content"></a>
+      <article id="content" class="content content--with-toc">
+        <div class="content__toc">
+          <ul>
+            <li class="top">
+              <a href="#">Pagination</a>
+            </li>
+            <li data-level="2"><a href="#usage">Usage</a></li>
+            <li data-level="2"><a href="#variants">Variants</a></li>
+            <li data-level="3"><a href="#centered-pagination">Centered Pagination</a></li>
+            <li data-level="3"><a href="#left-aligned-pagination-with-slot">Left-Aligned Pagination with Slot</a></li>
+            <li data-level="3"><a href="#prevnext-only">Prev/Next Only</a></li>
+            <li data-level="2"><a href="#examples">Examples</a></li>
+            <li data-level="3"><a href="#first-page">First Page</a></li>
+            <li data-level="3"><a href="#middle-page">Middle Page</a></li>
+            <li data-level="3"><a href="#last-page">Last Page</a></li>
+            <li data-level="3"><a href="#many-pages-with-ellipsis">Many Pages (with Ellipsis)</a></li>
+            <li data-level="3"><a href="#few-pages-no-ellipsis">Few Pages (No Ellipsis)</a></li>
+            <li data-level="2"><a href="#events">Events</a></li>
+            <li data-level="2"><a href="#dark-mode">Dark Mode</a></li>
+            <li data-level="3"><a href="#light-background">Light Background</a></li>
+            <li data-level="3"><a href="#dark-background">Dark Background</a></li>
+            <li data-level="2"><a href="#customization">Customization</a></li>
+            <li data-level="3"><a href="#design-tokens">Design Tokens</a></li>
+            <li data-level="2"><a href="#importing">Importing</a></li>
+            <li data-level="2"><a href="#slots">Slots</a></li>
+            <li data-level="2"><a href="#properties">Properties</a></li>
+            <li data-level="2"><a href="#events-1">Events</a></li>
+            <li data-level="2"><a href="#custom-properties">Custom Properties</a></li>
+            <li data-level="2"><a href="#parts">Parts</a></li>
+            <li data-level="2"><a href="#dependencies">Dependencies</a></li>
+          </ul>
+        </div>
+
+        <div class="content__body">
+          <header class="component-header">
+            <h1>Pagination</h1>
+
+            <div class="component-header__tag">
+              <code>&lt;terra-pagination&gt; | TerraPagination</code>
+            </div>
+
+            <div class="component-header__info">
+              <sl-badge variant="neutral" pill=""> Since 1.0 </sl-badge>
+              <sl-badge variant="primary" pill="" style="text-transform: capitalize"> stable </sl-badge>
+            </div>
+          </header>
+
+          <p class="component-summary">
+            Pagination is a navigational element that allows users to navigate between content or pages.
+          </p>
+
+          <h2 id="usage" class="anchor-heading">Usage<a href="#usage" aria-label='Direct link to "Usage"'></a></h2>
+          <p>
+            Pagination is used when you cannot fit the entire content on the screen. Pagination navigates through
+            content but keeps the user on the same page. In some instances, users can choose how much content is
+            displayed per page through a filter. This will ultimately increase or decrease the total number of pages.
+          </p>
+          <h2 id="variants" class="anchor-heading">
+            Variants<a href="#variants" aria-label='Direct link to "Variants"'></a>
+          </h2>
+          <h3 id="centered-pagination" class="anchor-heading">
+            Centered Pagination<a href="#centered-pagination" aria-label='Direct link to "Centered Pagination"'></a>
+          </h3>
+          <p>
+            Centered pagination displays the full pagination controls in the center of the container. This is useful
+            when pagination is the primary focus.
+          </p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-pagination centered="" current="10" total="20"></terra-pagination>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-180">
+              <div class="code-preview__source code-preview__source--html" data-flavor="html">
+                <pre><code class="language-html" id="code-block-462"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-pagination</span> <span class="token attr-name">centered</span> <span class="token attr-name">current</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>10<span class="token punctuation">"</span></span> <span class="token attr-name">total</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>20<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-pagination</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-462"></sl-copy-button></pre>
+              </div>
+
+              <div class="code-preview__source code-preview__source--react" data-flavor="react">
+                <pre><code class="language-jsx" id="code-block-463"><span class="token keyword">import</span> TerraPagination <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/pagination'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TerraPagination</span></span> <span class="token attr-name">centered</span> <span class="token attr-name">current</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">10</span><span class="token punctuation">}</span></span> <span class="token attr-name">total</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">20</span><span class="token punctuation">}</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-463"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-180"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" title="Show HTML code" class="code-preview__button code-preview__button--html">
+                HTML
+              </button>
+
+              <button type="button" title="Show React code" class="code-preview__button code-preview__button--react">
+                React
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="left-aligned-pagination-with-slot" class="anchor-heading">
+            Left-Aligned Pagination with Slot<a
+              href="#left-aligned-pagination-with-slot"
+              aria-label='Direct link to "Left-Aligned Pagination with Slot"'
+            ></a>
+          </h3>
+          <p>
+            Left-aligned pagination displays pagination controls on the left and provides a slot on the right for
+            additional content (such as a rows per page dropdown).
+          </p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-pagination current="5" total="20">
+                <terra-dropdown>
+                  <terra-button slot="trigger" caret="">10 per page</terra-button>
+                  <terra-menu>
+                    <terra-menu-item value="10">10 per page</terra-menu-item>
+                    <terra-menu-item value="25">25 per page</terra-menu-item>
+                    <terra-menu-item value="50">50 per page</terra-menu-item>
+                  </terra-menu>
+                </terra-dropdown>
+              </terra-pagination>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-181">
+              <div class="code-preview__source code-preview__source--html" data-flavor="html">
+                <pre><code class="language-html" id="code-block-464"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-pagination</span> <span class="token attr-name">current</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>5<span class="token punctuation">"</span></span> <span class="token attr-name">total</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>20<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-dropdown</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>trigger<span class="token punctuation">"</span></span> <span class="token attr-name">caret</span><span class="token punctuation">&gt;</span></span>10 per page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-menu</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-menu-item</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>10<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>10 per page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-menu-item</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-menu-item</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>25<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>25 per page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-menu-item</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-menu-item</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>50<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>50 per page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-menu-item</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-menu</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-dropdown</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-pagination</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-464"></sl-copy-button></pre>
+              </div>
+
+              <div class="code-preview__source code-preview__source--react" data-flavor="react">
+                <pre><code class="language-jsx" id="code-block-465"><span class="token keyword">import</span> TerraPagination <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/pagination'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> TerraDropdown <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/dropdown'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/button'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> TerraMenu <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/menu'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> TerraMenuItem <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/menu-item'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TerraPagination</span></span> <span class="token attr-name">current</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span></span> <span class="token attr-name">total</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">20</span><span class="token punctuation">}</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TerraDropdown</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TerraButton</span></span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>trigger<span class="token punctuation">"</span></span> <span class="token attr-name">caret</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">10 per page</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TerraButton</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TerraMenu</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+                </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TerraMenuItem</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>10<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">10 per page</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TerraMenuItem</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+                </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TerraMenuItem</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>25<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">25 per page</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TerraMenuItem</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+                </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TerraMenuItem</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>50<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">50 per page</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TerraMenuItem</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TerraMenu</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TerraDropdown</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TerraPagination</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-465"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-181"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" title="Show HTML code" class="code-preview__button code-preview__button--html">
+                HTML
+              </button>
+
+              <button type="button" title="Show React code" class="code-preview__button code-preview__button--react">
+                React
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="prevnext-only" class="anchor-heading">
+            Prev/Next Only<a href="#prevnext-only" aria-label='Direct link to "Prev/Next Only"'></a>
+          </h3>
+          <p>
+            For mobile pagination where the number of pages doesn’t exceed 5 pages, a simplified pagination can be used
+            without numbers.
+          </p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-pagination variant="simple" current="2" total="5"></terra-pagination>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-182">
+              <div class="code-preview__source code-preview__source--html" data-flavor="html">
+                <pre><code class="language-html" id="code-block-466"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-pagination</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>simple<span class="token punctuation">"</span></span> <span class="token attr-name">current</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2<span class="token punctuation">"</span></span> <span class="token attr-name">total</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>5<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-pagination</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-466"></sl-copy-button></pre>
+              </div>
+
+              <div class="code-preview__source code-preview__source--react" data-flavor="react">
+                <pre><code class="language-jsx" id="code-block-467"><span class="token keyword">import</span> TerraPagination <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/pagination'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TerraPagination</span></span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>simple<span class="token punctuation">"</span></span> <span class="token attr-name">current</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">}</span></span> <span class="token attr-name">total</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-467"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-182"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" title="Show HTML code" class="code-preview__button code-preview__button--html">
+                HTML
+              </button>
+
+              <button type="button" title="Show React code" class="code-preview__button code-preview__button--react">
+                React
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h2 id="examples" class="anchor-heading">
+            Examples<a href="#examples" aria-label='Direct link to "Examples"'></a>
+          </h2>
+          <h3 id="first-page" class="anchor-heading">
+            First Page<a href="#first-page" aria-label='Direct link to "First Page"'></a>
+          </h3>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-pagination centered="" current="1" total="20"></terra-pagination>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-183">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-468"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-pagination</span> <span class="token attr-name">centered</span> <span class="token attr-name">current</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">total</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>20<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-pagination</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-468"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-183"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="middle-page" class="anchor-heading">
+            Middle Page<a href="#middle-page" aria-label='Direct link to "Middle Page"'></a>
+          </h3>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-pagination centered="" current="10" total="20"></terra-pagination>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-184">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-469"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-pagination</span> <span class="token attr-name">centered</span> <span class="token attr-name">current</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>10<span class="token punctuation">"</span></span> <span class="token attr-name">total</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>20<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-pagination</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-469"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-184"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="last-page" class="anchor-heading">
+            Last Page<a href="#last-page" aria-label='Direct link to "Last Page"'></a>
+          </h3>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-pagination centered="" current="20" total="20"></terra-pagination>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-185">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-470"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-pagination</span> <span class="token attr-name">centered</span> <span class="token attr-name">current</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>20<span class="token punctuation">"</span></span> <span class="token attr-name">total</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>20<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-pagination</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-470"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-185"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="many-pages-with-ellipsis" class="anchor-heading">
+            Many Pages (with Ellipsis)<a
+              href="#many-pages-with-ellipsis"
+              aria-label='Direct link to "Many Pages (with Ellipsis)"'
+            ></a>
+          </h3>
+          <p>When there are many pages, ellipsis are shown to indicate skipped pages.</p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-pagination centered="" current="50" total="100"></terra-pagination>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-186">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-471"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-pagination</span> <span class="token attr-name">centered</span> <span class="token attr-name">current</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>50<span class="token punctuation">"</span></span> <span class="token attr-name">total</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>100<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-pagination</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-471"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-186"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="few-pages-no-ellipsis" class="anchor-heading">
+            Few Pages (No Ellipsis)<a
+              href="#few-pages-no-ellipsis"
+              aria-label='Direct link to "Few Pages (No Ellipsis)"'
+            ></a>
+          </h3>
+          <p>When there are 7 or fewer pages, all page numbers are shown.</p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-pagination centered="" current="3" total="7"></terra-pagination>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-187">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-472"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-pagination</span> <span class="token attr-name">centered</span> <span class="token attr-name">current</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>3<span class="token punctuation">"</span></span> <span class="token attr-name">total</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>7<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-pagination</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-472"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-187"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h2 id="events" class="anchor-heading">Events<a href="#events" aria-label='Direct link to "Events"'></a></h2>
+          <p>Listen for the <code>terra-page-change</code> event to handle page changes:</p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-pagination id="pagination" centered="" current="5" total="20"></terra-pagination>
+              <script>
+                (() => {
+                  const pagination = document.getElementById('pagination');
+                  pagination.addEventListener('terra-page-change', e => {
+                    console.log('Page changed to:', e.detail.page);
+                  });
+                })();
+              </script>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-188">
+              <div class="code-preview__source code-preview__source--html" data-flavor="html">
+                <pre><code class="language-html" id="code-block-473"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-pagination</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pagination<span class="token punctuation">"</span></span> <span class="token attr-name">centered</span> <span class="token attr-name">current</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>5<span class="token punctuation">"</span></span> <span class="token attr-name">total</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>20<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-pagination</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">const</span> pagination <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'pagination'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    pagination<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'terra-page-change'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Page changed to:'</span><span class="token punctuation">,</span> e<span class="token punctuation">.</span>detail<span class="token punctuation">.</span>page<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-473"></sl-copy-button></pre>
+              </div>
+
+              <div class="code-preview__source code-preview__source--react" data-flavor="react">
+                <pre><code class="language-jsx" id="code-block-474"><span class="token keyword">import</span> TerraPagination <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/pagination'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">function</span> <span class="token function">handlePageChange</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Page changed to:'</span><span class="token punctuation">,</span> event<span class="token punctuation">.</span>detail<span class="token punctuation">.</span>page<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TerraPagination</span></span>
+            <span class="token attr-name">centered</span>
+            <span class="token attr-name">current</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span></span>
+            <span class="token attr-name">total</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">20</span><span class="token punctuation">}</span></span>
+            <span class="token attr-name">onTerraPageChange</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handlePageChange<span class="token punctuation">}</span></span>
+        <span class="token punctuation">/&gt;</span></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-474"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-188"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" title="Show HTML code" class="code-preview__button code-preview__button--html">
+                HTML
+              </button>
+
+              <button type="button" title="Show React code" class="code-preview__button code-preview__button--react">
+                React
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h2 id="dark-mode" class="anchor-heading">
+            Dark Mode<a href="#dark-mode" aria-label='Direct link to "Dark Mode"'></a>
+          </h2>
+          <p>Pagination automatically adapts to dark mode based on system preference.</p>
+          <h3 id="light-background" class="anchor-heading">
+            Light Background<a href="#light-background" aria-label='Direct link to "Light Background"'></a>
+          </h3>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <div style="background-color: #f5f5f5; padding: 2rem">
+                <terra-pagination centered="" current="10" total="20"></terra-pagination>
+              </div>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-189">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-475"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">background-color</span><span class="token punctuation">:</span> #f5f5f5<span class="token punctuation">;</span> <span class="token property">padding</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-pagination</span> <span class="token attr-name">centered</span> <span class="token attr-name">current</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>10<span class="token punctuation">"</span></span> <span class="token attr-name">total</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>20<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-pagination</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-475"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-189"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="dark-background" class="anchor-heading">
+            Dark Background<a href="#dark-background" aria-label='Direct link to "Dark Background"'></a>
+          </h3>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <div style="background-color: #1a1a1a; padding: 2rem">
+                <terra-pagination centered="" current="10" total="20"></terra-pagination>
+              </div>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-190">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-476"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">background-color</span><span class="token punctuation">:</span> #1a1a1a<span class="token punctuation">;</span> <span class="token property">padding</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-pagination</span> <span class="token attr-name">centered</span> <span class="token attr-name">current</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>10<span class="token punctuation">"</span></span> <span class="token attr-name">total</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>20<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-pagination</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-476"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-190"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h2 id="customization" class="anchor-heading">
+            Customization<a href="#customization" aria-label='Direct link to "Customization"'></a>
+          </h2>
+          <p>You can customize pagination appearance using CSS custom properties:</p>
+          <pre><code class="language-css" id="code-block-477"><span class="token selector">terra-pagination</span> <span class="token punctuation">{</span>
+    <span class="token property">--terra-pagination-button-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-carbon-90<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">--terra-pagination-button-background-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-spacesuit-white<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">--terra-pagination-button-border-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-carbon-20<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">--terra-pagination-button-color-current</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-spacesuit-white<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">--terra-pagination-button-background-color-current</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-nasa-blue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-477"></sl-copy-button></pre>
+          <h3 id="design-tokens" class="anchor-heading">
+            Design Tokens<a href="#design-tokens" aria-label='Direct link to "Design Tokens"'></a>
+          </h3>
+          <p>The following design tokens are available for customization:</p>
+          <ul>
+            <li>
+              <code>--terra-pagination-button-color</code>: Text color of page buttons (default:
+              <code>--terra-color-carbon-90</code> in light mode, <code>--terra-color-carbon-60</code> in dark mode)
+            </li>
+            <li>
+              <code>--terra-pagination-button-background-color</code>: Background color of page buttons (default:
+              <code>--terra-color-spacesuit-white</code> in light mode, <code>--terra-color-carbon-10</code> in dark
+              mode)
+            </li>
+            <li>
+              <code>--terra-pagination-button-border-color</code>: Border color of page buttons (default:
+              <code>--terra-color-carbon-20</code>)
+            </li>
+            <li>
+              <code>--terra-pagination-button-color-hover</code>: Text color of page buttons on hover (default:
+              <code>--terra-color-carbon-90</code> in light mode, <code>--terra-color-carbon-80</code> in dark mode)
+            </li>
+            <li>
+              <code>--terra-pagination-button-background-color-hover</code>: Background color of page buttons on hover
+              (default: <code>--terra-color-carbon-5</code>)
+            </li>
+            <li>
+              <code>--terra-pagination-button-border-color-hover</code>: Border color of page buttons on hover (default:
+              <code>--terra-color-carbon-30</code>)
+            </li>
+            <li>
+              <code>--terra-pagination-button-color-current</code>: Text color of the current page button (default:
+              <code>--terra-color-spacesuit-white</code>)
+            </li>
+            <li>
+              <code>--terra-pagination-button-background-color-current</code>: Background color of the current page
+              button (default: <code>--terra-color-nasa-blue</code> in light mode,
+              <code>--terra-color-nasa-blue-tint</code> in dark mode)
+            </li>
+            <li>
+              <code>--terra-pagination-button-border-color-current</code>: Border color of the current page button
+              (default: <code>--terra-color-nasa-blue</code> in light mode, <code>--terra-color-nasa-blue-tint</code> in
+              dark mode)
+            </li>
+          </ul>
+          <p>All tokens automatically adapt to dark mode when dark mode is active.</p>
+          <p>[component-metadata:terra-pagination]</p>
+
+          <h2 id="importing" class="anchor-heading">
+            Importing<a href="#importing" aria-label='Direct link to "Importing"'></a>
+          </h2>
+          <p>
+            If you’re using the autoloader or the traditional loader, you can ignore this section. Otherwise, feel free
+            to use any of the following snippets to
+            <a href="/components/getting-started/installation#cherry-picking">cherry pick</a> this component.
+          </p>
+
+          <sl-tab-group>
+            <sl-tab slot="nav" panel="script">Script</sl-tab>
+            <sl-tab slot="nav" panel="import">Import</sl-tab>
+            <sl-tab slot="nav" panel="bundler">Bundler</sl-tab>
+            <sl-tab slot="nav" panel="react">React</sl-tab>
+
+            <sl-tab-panel name="script">
+              <p>
+                To import this component from
+                <a
+                  href="https://www.jsdelivr.com/package/npm/@nasa-terra/components"
+                  class="external-link"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  >the CDN</a
+                >
+                using a script tag:
+              </p>
+              <pre><code class="language-html" id="code-block-478"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.111/cdn/components/pagination/pagination.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code><sl-copy-button class="copy-code-button" from="code-block-478"></sl-copy-button></pre>
+            </sl-tab-panel>
+
+            <sl-tab-panel name="import">
+              <p>
+                To import this component from
+                <a
+                  href="https://www.jsdelivr.com/package/npm/@nasa-terra/components"
+                  class="external-link"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  >the CDN</a
+                >
+                using a JavaScript import:
+              </p>
+              <pre><code class="language-js" id="code-block-479"><span class="token keyword">import</span> <span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.111/cdn/components/pagination/pagination.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-479"></sl-copy-button></pre>
+            </sl-tab-panel>
+
+            <sl-tab-panel name="bundler">
+              <p>
+                To import this component using
+                <a href="/components/getting-started/installation#bundling">a bundler</a>:
+              </p>
+              <pre><code class="language-js" id="code-block-480"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/pagination/pagination.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-480"></sl-copy-button></pre>
+            </sl-tab-panel>
+
+            <sl-tab-panel name="react">
+              <p>To import this component as a <a href="/components/frameworks/react">React component</a>:</p>
+              <pre><code class="language-js" id="code-block-481"><span class="token keyword">import</span> TerraPagination <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/pagination'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-481"></sl-copy-button></pre>
+            </sl-tab-panel>
+          </sl-tab-group>
+
+          <h2 id="slots" class="anchor-heading">Slots<a href="#slots" aria-label='Direct link to "Slots"'></a></h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name">Name</th>
+                  <th class="table-description">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap">(default)</td>
+                  <td>
+                    Content to display on the right side (e.g., rows per page dropdown). Only visible when variant is
+                    “left”.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em>Learn more about <a href="/components/getting-started/usage#slots">using slots</a>.</em>
+          </p>
+
+          <h2 id="properties" class="anchor-heading">
+            Properties<a href="#properties" aria-label='Direct link to "Properties"'></a>
+          </h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name">Name</th>
+                  <th class="table-description">Description</th>
+                  <th class="table-reflects">Reflects</th>
+                  <th class="table-type">Type</th>
+                  <th class="table-default">Default</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <code class="nowrap">current</code>
+                  </td>
+                  <td>The current page number (1-indexed).</td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>number</code>
+                  </td>
+                  <td>
+                    <code>1</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">total</code>
+                  </td>
+                  <td>The total number of pages.</td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>number</code>
+                  </td>
+                  <td>
+                    <code>1</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">variant</code>
+                  </td>
+                  <td>The pagination variant.</td>
+                  <td style="text-align: center">
+                    <sl-icon label="yes" name="check-lg"></sl-icon>
+                  </td>
+                  <td>
+                    <code>'full' | 'simple'</code>
+                  </td>
+                  <td>
+                    <code>'full'</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">centered</code>
+                  </td>
+                  <td>Whether the pagination is centered.</td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>boolean</code>
+                  </td>
+                  <td>
+                    <code>false</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>updateComplete</code>
+                  </td>
+                  <td>
+                    A read-only promise that resolves when the component has
+                    <a href="/components/getting-started/usage?#component-rendering-and-updating">finished updating</a>.
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em
+              >Learn more about
+              <a href="/components/getting-started/usage#attributes-and-properties">attributes and properties</a>.</em
+            >
+          </p>
+
+          <h2 id="events-1" class="anchor-heading">
+            Events<a href="#events-1" aria-label='Direct link to "Events"'></a>
+          </h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name" data-flavor="html">Name</th>
+                  <th class="table-name" data-flavor="react">React Event</th>
+                  <th class="table-description">Description</th>
+                  <th class="table-event-detail">Event Detail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-flavor="html">
+                    <code class="nowrap">terra-page-change</code>
+                  </td>
+                  <td data-flavor="react">
+                    <code class="nowrap">onTerraPageChange</code>
+                  </td>
+                  <td>Emitted when the page changes.</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em>Learn more about <a href="/components/getting-started/usage#events">events</a>.</em>
+          </p>
+
+          <h2 id="custom-properties" class="anchor-heading">
+            Custom Properties<a href="#custom-properties" aria-label='Direct link to "Custom Properties"'></a>
+          </h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name">Name</th>
+                  <th class="table-description">Description</th>
+                  <th class="table-default">Default</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-pagination-button-color</code>
+                  </td>
+                  <td>The text color of page buttons.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-pagination-button-background-color</code>
+                  </td>
+                  <td>The background color of page buttons.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-pagination-button-color-hover</code>
+                  </td>
+                  <td>The text color of page buttons on hover.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-pagination-button-background-color-hover</code>
+                  </td>
+                  <td>The background color of page buttons on hover.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-pagination-button-color-current</code>
+                  </td>
+                  <td>The text color of the current page button.</td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-pagination-button-background-color-current</code>
+                  </td>
+                  <td>The background color of the current page button.</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em
+              >Learn more about
+              <a href="/components/getting-started/usage#custom-properties">customizing CSS custom properties</a>.</em
+            >
+          </p>
+
+          <h2 id="parts" class="anchor-heading">Parts<a href="#parts" aria-label='Direct link to "Parts"'></a></h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name">Name</th>
+                  <th class="table-description">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap">
+                    <code>base</code>
+                  </td>
+                  <td>The component’s base wrapper.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>nav</code>
+                  </td>
+                  <td>The navigation container.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>button</code>
+                  </td>
+                  <td>The page button elements.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>button-current</code>
+                  </td>
+                  <td>The current page button.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>ellipsis</code>
+                  </td>
+                  <td>The ellipsis element.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>prev</code>
+                  </td>
+                  <td>The previous button.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>next</code>
+                  </td>
+                  <td>The next button.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>slot</code>
+                  </td>
+                  <td>The right-side slot container.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em
+              >Learn more about
+              <a href="/components/getting-started/customizing/#css-parts">customizing CSS parts</a>.</em
+            >
+          </p>
+
+          <h2 id="dependencies" class="anchor-heading">
+            Dependencies<a href="#dependencies" aria-label='Direct link to "Dependencies"'></a>
+          </h2>
+
+          <p>This component automatically imports the following dependencies.</p>
+
+          <ul>
+            <li>
+              <code>&lt;terra-icon&gt;</code>
+            </li>
+          </ul>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

@@ -4,7 +4,7 @@ import type { TerraAccordionToggleEvent } from '../../events/events.js';
 export type { TerraAccordionToggleEvent } from '../../events/events.js';
 /**
  * @summary A collapsible content panel for showing and hiding content.
- * @documentation https://disc.gsfc.nasa.gov/components/accordion
+ * @documentation https://terra-ui.netlify.app/components/accordion
  * @status experimental
  * @since 1.0
  *

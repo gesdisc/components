@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en" data-layout="default" data-terra-ui-components-version="0.0.64">
+<html lang="en" data-layout="default" data-terra-ui-components-version="0.0.111">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Everything you need to know about theming Shoelace." />
+    <meta name="description" content="Everything you need to know about theming Terra UI Components." />
     <title>Themes</title>
 
     <meta name="turbo-cache-control" />
@@ -16,12 +16,12 @@
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:creator" content="nasa_terra-ui" />
-    <meta name="twitter:image" content="https://disc.gsfc.nasa.gov/components/assets/images/og-image.png" />
+    <meta name="twitter:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
 
-    <meta property="og:url" content="https://disc.gsfc.nasa.gov/getting-started/themes/" />
+    <meta property="og:url" content="https://terra-ui.netlify.app/getting-started/themes/" />
     <meta property="og:title" content="Themes" />
-    <meta property="og:description" content="Everything you need to know about theming Shoelace." />
-    <meta property="og:image" content="https://disc.gsfc.nasa.gov/components/assets/images/og-image.png" />
+    <meta property="og:description" content="Everything you need to know about theming Terra UI Components." />
+    <meta property="og:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
 
     <link rel="stylesheet" href="/dist/themes/horizon.css" />
     <script type="module" src="/dist/terra-ui-components-autoloader.js"></script>
@@ -61,6 +61,173 @@
       Skip to main content
     </a>
 
+    <header id="top-nav" class="top-nav">
+      <div class="top-nav__left">
+        <a href="/" class="top-nav__logo">
+          <terra-icon name="nasa-logo" font-size="4rem"></terra-icon>
+          <span class="top-nav__title">Terra UI</span>
+        </a>
+      </div>
+
+      <div class="top-nav__right">
+        <terra-dropdown id="about-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="About"> About </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="project-overview">
+              <a href="/components/">Project Overview</a>
+            </terra-menu-item>
+            <terra-menu-item value="contributing">
+              <a href="/components/about/contributing">Contributing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="getting-started-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Getting Started">
+            Getting Started
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="installation">
+              <a href="/components/getting-started/installation">Installation</a>
+            </terra-menu-item>
+            <terra-menu-item value="usage">
+              <a href="/components/getting-started/usage">Usage</a>
+            </terra-menu-item>
+            <terra-menu-item value="themes">
+              <a href="/components/getting-started/themes">Themes</a>
+            </terra-menu-item>
+            <terra-menu-item value="customizing">
+              <a href="/components/getting-started/customizing">Customizing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <terra-dropdown id="frameworks-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Frameworks">
+            Frameworks
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="react">
+              <a href="/components/frameworks/react">React</a>
+            </terra-menu-item>
+            <terra-menu-item value="vue">
+              <a href="/components/frameworks/vue">Vue</a>
+            </terra-menu-item>
+            <terra-menu-item value="angular">
+              <a href="/components/frameworks/angular">Angular</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <button
+          class="top-nav__search"
+          type="button"
+          title="Press / to search"
+          aria-label="Search"
+          data-plugin="search"
+        >
+          <sl-icon name="search"></sl-icon>
+        </button>
+        <a
+          href="https://github.com/nasa/terra-ui-components"
+          title="View Terra UI Components on GitHub"
+          class="top-nav__icon-link external-link"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <sl-icon name="github"></sl-icon>
+        </a>
+        <terra-dropdown id="environment-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Environment"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <span id="environment-display">UAT</span>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="uat"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >UAT</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="prod"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >PROD</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="theme-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Press \ to toggle"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
+            <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="light"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Light</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="dark"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Dark</terra-menu-item
+            >
+            <hr
+              role="separator"
+              aria-orientation="horizontal"
+              style="
+                margin: var(--terra-spacing-x-small) 0;
+                border: none;
+                border-top: 1px solid var(--terra-panel-border-color);
+              "
+            />
+            <terra-menu-item
+              type="checkbox"
+              value="auto"
+              tabindex="0"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >System</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+      </div>
+    </header>
+
     <button id="menu-toggle" type="button" aria-label="Menu">
       <svg width="148" height="148" viewBox="0 0 148 148" xmlns="http://www.w3.org/2000/svg">
         <g stroke="currentColor" stroke-width="18" fill="none" fill-rule="evenodd" stroke-linecap="round">
@@ -69,108 +236,7 @@
       </svg>
     </button>
 
-    <div id="icon-toolbar">
-      <a
-        href="https://github.com/nasa/terra-ui-components"
-        title="View Terra UI Components on GitHub"
-        class="external-link"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <sl-icon name="github"></sl-icon>
-      </a>
-      <sl-dropdown id="environment-selector" placement="bottom-end" distance="3">
-        <terra-button
-          slot="trigger"
-          size="large"
-          variant="text"
-          caret=""
-          title="Environment"
-          data-optional=""
-          data-valid=""
-          data-user-valid=""
-        >
-          <span id="environment-display">UAT</span>
-        </terra-button>
-        <sl-menu role="menu">
-          <sl-menu-item
-            type="checkbox"
-            value="uat"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="true"
-            aria-disabled="false"
-            checked=""
-            >UAT</sl-menu-item
-          >
-          <sl-menu-item
-            type="checkbox"
-            value="prod"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >PROD</sl-menu-item
-          >
-        </sl-menu>
-      </sl-dropdown>
-      <sl-dropdown id="theme-selector" placement="bottom-end" distance="3">
-        <terra-button
-          slot="trigger"
-          size="large"
-          variant="text"
-          caret=""
-          title="Press \ to toggle"
-          data-optional=""
-          data-valid=""
-          data-user-valid=""
-        >
-          <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
-          <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
-        </terra-button>
-        <sl-menu role="menu">
-          <sl-menu-item
-            type="checkbox"
-            value="light"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >Light</sl-menu-item
-          >
-          <sl-menu-item
-            type="checkbox"
-            value="dark"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >Dark</sl-menu-item
-          >
-          <sl-divider role="separator" aria-orientation="horizontal"></sl-divider>
-          <sl-menu-item
-            type="checkbox"
-            value="auto"
-            tabindex="0"
-            role="menuitemcheckbox"
-            aria-checked="true"
-            aria-disabled="false"
-            checked=""
-            >System</sl-menu-item
-          >
-        </sl-menu>
-      </sl-dropdown>
-    </div>
-
     <aside id="sidebar" data-preserve-scroll="">
-      <header>
-        <a href="/" class="sidebar-logo">
-          <img src="/components/assets/images/logo.svg" alt="Terra UI Components" />
-          Terra UI Components
-        </a>
-        <div class="sidebar-version">0.0.64</div>
-      </header>
-
       <div class="sidebar-buttons">
         <terra-button
           size="small"
@@ -190,47 +256,146 @@
         </terra-button>
       </div>
 
-      <button class="search-box" type="button" title="Press / to search" aria-label="Search" data-plugin="search">
-        <sl-icon name="search"></sl-icon>
-        <span>Search</span>
-      </button>
-
       <nav>
         <ul>
           <li>
-            <h2>Getting Started</h2>
+            <h2>Design System</h2>
             <ul>
               <li>
-                <a href="/components/">Home</a>
+                <a href="/components/horizon-design-system">Overview</a>
               </li>
               <li>
-                <a href="/components/getting-started/installation">Installation</a>
+                <a href="/components/tokens/typography">Typography</a>
               </li>
               <li>
-                <a href="/components/getting-started/usage">Usage</a>
+                <a href="/components/tokens/color">Color</a>
               </li>
               <li>
-                <a href="/components/getting-started/themes">Themes</a>
+                <a href="/components/tokens/spacing">Spacing</a>
               </li>
               <li>
-                <a href="/components/getting-started/customizing">Customizing</a>
+                <a href="/components/tokens/elevation">Elevation</a>
+              </li>
+              <li>
+                <a href="/components/tokens/border-radius">Border Radius</a>
+              </li>
+              <li>
+                <a href="/components/tokens/transition">Transition</a>
+              </li>
+              <li>
+                <a href="/components/tokens/z-index">Z-index</a>
+              </li>
+              <li>
+                <a href="/components/tokens/more">More Tokens</a>
+              </li>
+              <li>
+                <a href="/components/horizon-design-system/#adoption-status">HDS Adoption Status</a>
               </li>
             </ul>
           </li>
+
           <li>
-            <h2>Frameworks</h2>
+            <h2>Forms</h2>
             <ul>
               <li>
-                <a href="/components/frameworks/react">React</a>
-              </li>
-              <li>
-                <a href="/components/frameworks/vue">Vue</a>
-              </li>
-              <li>
-                <a href="/components/frameworks/angular">Angular</a>
+                <a href="/components/forms">Overview</a>
               </li>
             </ul>
           </li>
+
+          <li>
+            <h2>Elements</h2>
+            <ul>
+              <li>
+                <a href="/components/alert"> Alert </a>
+              </li>
+
+              <li>
+                <a href="/components/avatar"> Avatar </a>
+              </li>
+
+              <li>
+                <a href="/components/button"> Button </a>
+              </li>
+
+              <li>
+                <a href="/components/caption"> Caption </a>
+              </li>
+
+              <li>
+                <a href="/components/checkbox"> Checkbox </a>
+              </li>
+
+              <li>
+                <a href="/components/chip"> Chip </a>
+              </li>
+
+              <li>
+                <a href="/components/date-picker"> Date Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/file-upload"> File Upload </a>
+              </li>
+
+              <li>
+                <a href="/components/icon"> Icon </a>
+              </li>
+
+              <li>
+                <a href="/components/input"> Input </a>
+              </li>
+
+              <li>
+                <a href="/components/loader"> Loader </a>
+              </li>
+
+              <li>
+                <a href="/components/option"> Option </a>
+              </li>
+
+              <li>
+                <a href="/components/pagination"> Pagination </a>
+              </li>
+
+              <li>
+                <a href="/components/radio"> Radio </a>
+              </li>
+
+              <li>
+                <a href="/components/radio-group"> Radio Group </a>
+              </li>
+
+              <li>
+                <a href="/components/scroll-hint"> Scroll Hint </a>
+              </li>
+
+              <li>
+                <a href="/components/select"> Select </a>
+              </li>
+
+              <li>
+                <a href="/components/slider"> Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/status-indicator"> Status Indicator </a>
+              </li>
+
+              <li>
+                <a href="/components/tag"> Tag </a>
+              </li>
+
+              <li>
+                <a href="/components/textarea"> Textarea </a>
+              </li>
+
+              <li>
+                <a href="/components/toggle"> Toggle </a>
+              </li>
+            </ul>
+          </li>
+
           <li>
             <h2>Components</h2>
             <ul>
@@ -239,23 +404,15 @@
               </li>
 
               <li>
-                <a href="/components/alert"> Alert </a>
-              </li>
-
-              <li>
                 <a href="/components/browse-variables"> Browse Variables </a>
               </li>
 
               <li>
-                <a href="/components/button"> Button </a>
-              </li>
-
-              <li>
-                <a href="/components/chip"> Chip </a>
-              </li>
-
-              <li>
                 <a href="/components/combobox"> Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/data-access"> Data Access </a>
               </li>
 
               <li>
@@ -271,10 +428,6 @@
               </li>
 
               <li>
-                <a href="/components/date-picker"> Date Picker </a>
-              </li>
-
-              <li>
                 <a href="/components/date-range-slider"> Date Range Slider </a>
               </li>
 
@@ -283,11 +436,7 @@
               </li>
 
               <li>
-                <a href="/components/icon"> Icon </a>
-              </li>
-
-              <li>
-                <a href="/components/loader"> Loader </a>
+                <a href="/components/dropdown"> Dropdown </a>
               </li>
 
               <li>
@@ -299,11 +448,23 @@
               </li>
 
               <li>
+                <a href="/components/menu"> Menu </a>
+              </li>
+
+              <li>
+                <a href="/components/menu-item"> Menu Item </a>
+              </li>
+
+              <li>
                 <a href="/components/plot"> Plot </a>
               </li>
 
               <li>
                 <a href="/components/plot-toolbar"> Plot Toolbar </a>
+              </li>
+
+              <li>
+                <a href="/components/popup"> Popup </a>
               </li>
 
               <li>
@@ -343,28 +504,30 @@
             <li class="top">
               <a href="#">Themes</a>
             </li>
-            <li data-level="2"><a href="#theme-basics">Theme Basics</a></li>
-            <li data-level="3"><a href="#activating-themes">Activating Themes</a></li>
+            <li data-level="2"><a href="#horizon-theme">Horizon Theme</a></li>
+            <li data-level="3"><a href="#installing-the-horizon-theme">Installing the Horizon Theme</a></li>
+            <li data-level="3"><a href="#dark-mode">Dark Mode</a></li>
+            <li data-level="2"><a href="#creating-custom-themes">Creating Custom Themes</a></li>
+            <li data-level="3"><a href="#customizing-the-horizon-theme">Customizing the Horizon Theme</a></li>
+            <li data-level="3"><a href="#creating-a-new-theme-from-scratch">Creating a New Theme from Scratch</a></li>
+            <li data-level="3"><a href="#activating-custom-themes">Activating Custom Themes</a></li>
             <li data-level="3"><a href="#using-multiple-themes">Using Multiple Themes</a></li>
-            <li data-level="2"><a href="#creating-themes">Creating Themes</a></li>
-            <li data-level="3"><a href="#customizing-a-built-in-theme">Customizing a Built-in Theme</a></li>
-            <li data-level="3"><a href="#creating-a-new-theme">Creating a New Theme</a></li>
-            <li data-level="2"><a href="#dark-theme">Dark Theme</a></li>
-            <li data-level="3">
-              <a href="#detecting-the-users-color-scheme-preference">Detecting the User’s Color Scheme Preference</a>
-            </li>
+            <li data-level="2"><a href="#design-tokens">Design Tokens</a></li>
           </ul>
         </div>
 
         <div class="content__body">
           <h1>Themes</h1>
           <p>
-            Shoelace is designed to be highly customizable through pure CSS. Out of the box, you can choose from a light
-            or dark theme. Alternatively, you can design your own theme.
+            Terra UI Components includes the <strong>Horizon theme</strong>, which implements NASA’s
+            <a href="https://website.nasa.gov/hds/" class="external-link" rel="noopener noreferrer" target="_blank"
+              >Horizon Design System</a
+            >. The Horizon theme includes both light and dark modes, with automatic dark mode detection based on system
+            preferences. You can also create your own custom themes.
           </p>
           <p>
-            A theme is nothing more than a stylesheet that uses the Shoelace API to define design tokens and apply
-            custom styles to components. To create a theme, you will need a decent understanding of CSS, including
+            A theme is a stylesheet that uses CSS custom properties (design tokens) to define styling. To create a
+            theme, you will need a decent understanding of CSS, including
             <a
               href="https://developer.mozilla.org/en-US/docs/Web/CSS/--*"
               class="external-link"
@@ -381,62 +544,167 @@
               ><code>::part</code> selector</a
             >.
           </p>
-          <div role="alert" class="callout callout--tip">
-            <p>
-              For component developers, built-in themes are also available as JavaScript modules that export
-              <a
-                href="https://lit.dev/docs/api/styles/#CSSResult"
-                class="external-link"
-                rel="noopener noreferrer"
-                target="_blank"
-                >Lit CSSResult</a
-              >
-              objects. You can find them in <code>dist/themes/*.styles.js</code>.
-            </p>
-          </div>
-          <h2 id="theme-basics" class="anchor-heading">
-            Theme Basics<a href="#theme-basics" aria-label='Direct link to "Theme Basics"'></a>
+          <h2 id="horizon-theme" class="anchor-heading">
+            Horizon Theme<a href="#horizon-theme" aria-label='Direct link to "Horizon Theme"'></a>
           </h2>
-          <p>
-            All themes are scoped to classes using the <code>terra-theme-{name}</code> convention, where
-            <code>{name}</code> is a lowercase, hyphen-delimited value representing the name of the theme. The included
-            light and dark themes use <code>terra-theme-horizon</code> and <code>terra-theme-dark</code>, respectively.
-            A custom theme called “Purple Power”, for example, would use a class called
-            <code>terra-theme-purple-power</code>
-          </p>
-          <p>
-            All selectors must be scoped to the theme’s class to ensure interoperability with other themes. You should
-            also scope them to <code>:host</code> so they can be imported and applied to custom element shadow roots.
-          </p>
-          <pre><code class="language-css" id="code-block-67"><span class="token selector">:host,
-.terra-theme-purple-power</span> <span class="token punctuation">{</span>
-    <span class="token comment">/* ... */</span>
-<span class="token punctuation">}</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-67"></sl-copy-button></pre>
-          <h3 id="activating-themes" class="anchor-heading">
-            Activating Themes<a href="#activating-themes" aria-label='Direct link to "Activating Themes"'></a>
+          <p>The Horizon theme is Terra UI’s default theme and implements NASA’s Horizon Design System. It includes:</p>
+          <ul>
+            <li>Complete design token system (colors, typography, spacing, etc.)</li>
+            <li>Automatic dark mode support via <code>prefers-color-scheme</code></li>
+            <li>Manual theme control via CSS classes</li>
+            <li>Full component styling</li>
+          </ul>
+          <h3 id="installing-the-horizon-theme" class="anchor-heading">
+            Installing the Horizon Theme<a
+              href="#installing-the-horizon-theme"
+              aria-label='Direct link to "Installing the Horizon Theme"'
+            ></a>
+          </h3>
+          <p>To use the Horizon theme, add the following to the <code>&lt;head&gt;</code> section of your page:</p>
+          <pre><code class="language-html" id="code-block-128"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span>
+    <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span>
+    <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.111/cdn/themes/horizon.css<span class="token punctuation">"</span></span>
+<span class="token punctuation">/&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-128"></sl-copy-button></pre>
+          <p>Or if you’re using npm:</p>
+          <pre><code class="language-html" id="code-block-129"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>node_modules/@nasa-terra/components/dist/themes/horizon.css<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-129"></sl-copy-button></pre>
+          <h3 id="dark-mode" class="anchor-heading">
+            Dark Mode<a href="#dark-mode" aria-label='Direct link to "Dark Mode"'></a>
           </h3>
           <p>
-            To activate a theme, import it and apply the theme’s class to the <code>&lt;html&gt;</code> element. This
-            example imports and activates the built-in dark theme.
+            The Horizon theme includes both light and dark modes in a single file. Dark mode is automatically enabled
+            when the user’s system preference is set to dark mode using CSS
+            <code>@media (prefers-color-scheme: dark)</code>.
           </p>
-          <pre><code class="language-html" id="code-block-68"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>terra-theme-dark<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+          <p><strong>Automatic dark mode (default):</strong></p>
+          <pre><code class="language-html" id="code-block-130"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- Dark mode activates automatically based on system preference --&gt;</span>
+    ...
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-130"></sl-copy-button></pre>
+          <p><strong>Force dark mode:</strong></p>
+          <pre><code class="language-html" id="code-block-131"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>terra-theme-dark<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- Always use dark mode, regardless of system preference --&gt;</span>
+    ...
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-131"></sl-copy-button></pre>
+          <p><strong>Force light mode:</strong></p>
+          <pre><code class="language-html" id="code-block-132"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>terra-theme-horizon<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- Always use light mode, regardless of system preference --&gt;</span>
+    ...
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-132"></sl-copy-button></pre>
+          <p>
+            The class-based approach takes precedence over system preference, allowing you to give users control over
+            the theme regardless of their system settings.
+          </p>
+          <h2 id="creating-custom-themes" class="anchor-heading">
+            Creating Custom Themes<a
+              href="#creating-custom-themes"
+              aria-label='Direct link to "Creating Custom Themes"'
+            ></a>
+          </h2>
+          <p>
+            You can create your own custom themes by extending the Horizon theme or building one from scratch. Custom
+            themes should follow the <code>terra-theme-{name}</code> convention, where <code>{name}</code> is a
+            lowercase, hyphen-delimited value.
+          </p>
+          <p>
+            All theme selectors must be scoped to the theme’s class to ensure interoperability with other themes. You
+            should also scope them to <code>:host</code> so they can be imported and applied to custom element shadow
+            roots.
+          </p>
+          <pre><code class="language-css" id="code-block-133"><span class="token selector">:host,
+.terra-theme-purple-power</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* Your custom theme styles */</span>
+<span class="token punctuation">}</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-133"></sl-copy-button></pre>
+          <h3 id="customizing-the-horizon-theme" class="anchor-heading">
+            Customizing the Horizon Theme<a
+              href="#customizing-the-horizon-theme"
+              aria-label='Direct link to "Customizing the Horizon Theme"'
+            ></a>
+          </h3>
+          <p>
+            The easiest way to create a custom theme is to extend the Horizon theme. Import the Horizon theme, then
+            create a separate stylesheet that overrides
+            <a href="/getting-started/customizing#design-tokens">design tokens</a> and adds
+            <a href="/getting-started/customizing#component-parts">component styles</a> to your liking. You must import
+            your custom theme <em>after</em> the Horizon theme.
+          </p>
+          <pre><code class="language-html" id="code-block-134"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>path/to/horizon.css<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>path/to/my-custom-theme.css<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-134"></sl-copy-button></pre>
+          <p>If you’re customizing the Horizon theme, scope your styles to the following selectors:</p>
+          <pre><code class="language-css" id="code-block-135"><span class="token selector">:root,
+:host,
+.terra-theme-horizon</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* Your custom overrides */</span>
+    <span class="token property">--terra-color-nasa-blue</span><span class="token punctuation">:</span> #0066cc<span class="token punctuation">;</span>
+    <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-135"></sl-copy-button></pre>
+          <p>For dark mode customizations, use:</p>
+          <pre><code class="language-css" id="code-block-136"><span class="token selector">:host,
+.terra-theme-dark</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* Your dark mode customizations */</span>
+<span class="token punctuation">}</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-136"></sl-copy-button></pre>
+          <p>
+            By customizing the Horizon theme, you’ll maintain a smaller stylesheet containing only the changes you’ve
+            made. This approach is more “future-proof,” as new design tokens that emerge in subsequent versions will be
+            accounted for by the Horizon theme.
+          </p>
+          <h3 id="creating-a-new-theme-from-scratch" class="anchor-heading">
+            Creating a New Theme from Scratch<a
+              href="#creating-a-new-theme-from-scratch"
+              aria-label='Direct link to "Creating a New Theme from Scratch"'
+            ></a>
+          </h3>
+          <p>
+            Creating a new theme from scratch is more of an undertaking than customizing the Horizon theme. At a
+            minimum, you must implement all of the required design tokens. The easiest way to do this is by “forking”
+            the Horizon theme and modifying it.
+          </p>
+          <p>
+            Start by changing the selector to match your theme’s name. Assuming your new theme is called “Purple Power”,
+            your theme should be scoped like this:
+          </p>
+          <pre><code class="language-css" id="code-block-137"><span class="token selector">:host,
+.terra-theme-purple-power</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* Your custom styles here */</span>
+<span class="token punctuation">}</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-137"></sl-copy-button></pre>
+          <p>
+            By creating a new theme, you won’t be relying on the Horizon theme as a foundation. Because the theme is
+            decoupled, you can activate it independently. This is the recommended approach if you’re looking to open
+            source your theme for others to use.
+          </p>
+          <p>
+            You will, however, need to maintain your theme more carefully, as new versions of Terra may introduce new
+            design tokens that your theme won’t have accounted for. Because of this, it’s recommended that you clearly
+            specify which version(s) of Terra your theme is designed to work with and keep it up to date as new versions
+            are released.
+          </p>
+          <h3 id="activating-custom-themes" class="anchor-heading">
+            Activating Custom Themes<a
+              href="#activating-custom-themes"
+              aria-label='Direct link to "Activating Custom Themes"'
+            ></a>
+          </h3>
+          <p>
+            To activate a custom theme, import it and apply the theme’s class to the <code>&lt;html&gt;</code> element:
+          </p>
+          <pre><code class="language-html" id="code-block-138"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>terra-theme-purple-power<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>path/to/shoelace/dist/themes/dark.css<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>path/to/purple-power.css<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
-
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
         ...
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-68"></sl-copy-button></pre>
-          <div role="alert" class="callout callout--tip">
-            <p>
-              There is one exception to this rule — the light theme <em>does not</em> need to be activated. For
-              convenience, the light theme is scoped to <code>:root</code> and will be activated by default when
-              imported.
-            </p>
-          </div>
+</code><sl-copy-button class="copy-code-button" from="code-block-138"></sl-copy-button></pre>
           <h3 id="using-multiple-themes" class="anchor-heading">
             Using Multiple Themes<a
               href="#using-multiple-themes"
@@ -444,155 +712,55 @@
             ></a>
           </h3>
           <p>
-            You can activate themes on various containers throughout the page. This example uses the light theme with a
-            dark-themed sidebar.
+            You can activate themes on various containers throughout the page. This example uses the Horizon theme with
+            a custom-themed sidebar:
           </p>
-          <pre><code class="language-html" id="code-block-69"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+          <pre><code class="language-html" id="code-block-139"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>path/to/shoelace/dist/themes/light.css<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>path/to/shoelace/dist/themes/dark.css<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>path/to/horizon.css<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>path/to/custom-sidebar.css<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
-
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nav</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>terra-theme-dark<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-            <span class="token comment">&lt;!-- dark-themed sidebar --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nav</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>terra-theme-custom-sidebar<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token comment">&lt;!-- Custom-themed sidebar --&gt;</span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nav</span><span class="token punctuation">&gt;</span></span>
-
-        <span class="token comment">&lt;!-- light-themed content --&gt;</span>
+        <span class="token comment">&lt;!-- Horizon-themed content --&gt;</span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-69"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-139"></sl-copy-button></pre>
           <p>It’s for this reason that themes must be scoped to specific classes.</p>
-          <h2 id="creating-themes" class="anchor-heading">
-            Creating Themes<a href="#creating-themes" aria-label='Direct link to "Creating Themes"'></a>
-          </h2>
-          <p>
-            There are two ways to create themes. The easiest way is to customize a built-in theme. The advanced way is
-            to create a new theme from scratch. Which method you choose depends on your project’s requirements and the
-            amount of effort you’re willing to commit to.
-          </p>
-          <h3 id="customizing-a-built-in-theme" class="anchor-heading">
-            Customizing a Built-in Theme<a
-              href="#customizing-a-built-in-theme"
-              aria-label='Direct link to "Customizing a Built-in Theme"'
-            ></a>
-          </h3>
-          <p>
-            The easiest way to customize Shoelace is to override one of the built-in themes. You can do this by
-            importing the light or dark theme as-is, then creating a separate stylesheet that overrides
-            <a href="/getting-started/customizing#design-tokens">design tokens</a> and adds
-            <a href="/getting-started/customizing#component-parts">component styles</a> to your liking. You must import
-            your theme <em>after</em> the built-in theme.
-          </p>
-          <p>If you’re customizing the light theme, you should scope your styles to the following selectors.</p>
-          <pre><code class="language-css" id="code-block-70"><span class="token selector">:root,
-:host,
-.terra-theme-horizon</span> <span class="token punctuation">{</span>
-    <span class="token comment">/* your custom styles here */</span>
-<span class="token punctuation">}</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-70"></sl-copy-button></pre>
-          <p>If you’re customizing the dark theme, you should scope your styles to the following selectors.</p>
-          <pre><code class="language-css" id="code-block-71"><span class="token selector">:host,
-.terra-theme-dark</span> <span class="token punctuation">{</span>
-    <span class="token comment">/* your custom styles here */</span>
-<span class="token punctuation">}</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-71"></sl-copy-button></pre>
-          <p>
-            By customizing a built-in theme, you’ll maintain a smaller stylesheet containing only the changes you’ve
-            made. Contrast this to <a href="#creating-a-new-theme">creating a new theme</a>, where you need to
-            explicitly define every design token required by the library. This approach is more “future-proof,” as new
-            design tokens that emerge in subsequent versions of Shoelace will be accounted for by the built-in theme.
-          </p>
-          <p>
-            While this approach is easier to maintain, the drawback is that your theme can’t be activated independently
-            — it’s tied to the built-in theme you’re extending.
-          </p>
-          <h3 id="creating-a-new-theme" class="anchor-heading">
-            Creating a New Theme<a href="#creating-a-new-theme" aria-label='Direct link to "Creating a New Theme"'></a>
-          </h3>
-          <p>
-            Creating a new theme is more of an undertaking than
-            <a href="#customizing-a-built-in-theme">customizing an existing one</a>. At a minimum, you must implement
-            all of the required design tokens. The easiest way to do this is by “forking” one of the built-in themes and
-            modifying it from there.
-          </p>
-          <p>
-            Start by changing the selector to match your theme’s name. Assuming your new theme is called “Purple Power”,
-            your theme should be scoped like this.
-          </p>
-          <pre><code class="language-css" id="code-block-72"><span class="token selector">:host,
-.terra-theme-purple-power</span> <span class="token punctuation">{</span>
-    <span class="token comment">/* your custom styles here */</span>
-<span class="token punctuation">}</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-72"></sl-copy-button></pre>
-          <p>
-            By creating a new theme, you won’t be relying on a built-in theme as a foundation. Because the theme is
-            decoupled from the built-ins, you can activate it independently as an alternative to the built-ins. This is
-            the recommended approach if you’re looking to open source your theme for others to use.
-          </p>
-          <p>
-            You will, however, need to maintain your theme more carefully, as new versions of Shoelace may introduce new
-            design tokens that your theme won’t have accounted for. Because of this, it’s recommended that you clearly
-            specify which version(s) of Shoelace your theme is designed to work with and keep it up to date as new
-            versions of Shoelace are released.
-          </p>
-          <h2 id="dark-theme" class="anchor-heading">
-            Dark Theme<a href="#dark-theme" aria-label='Direct link to "Dark Theme"'></a>
-          </h2>
-          <p>
-            The built-in dark theme uses an inverted color scale so, if you’re using design tokens as intended, you’ll
-            get dark mode for free. While this isn’t the same as a professionally curated dark theme, it provides an
-            excellent baseline for one and you’re encouraged to customize it depending on your needs.
-          </p>
-          <p>
-            The dark theme works by taking the light theme’s <a href="/tokens/color">color tokens</a> and “flipping” the
-            scale so 100 becomes 900, 200 becomes 800, 300 becomes 700, etc. Next, the luminance of each primitive was
-            fine-tuned to avoid true black, which is often undesirable in dark themes, and provide a richer experience.
-            The result is a custom dark palette that complements the light theme and makes it easy to offer light and
-            dark modes with minimal effort.
-          </p>
-          <p>To install the dark theme, add the following to the <code>&lt;head&gt;</code> section of your page.</p>
-          <pre><code class="language-html" id="code-block-73"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span>
-    <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span>
-    <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.64/cdn/themes/dark.css<span class="token punctuation">"</span></span>
-<span class="token punctuation">/&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-73"></sl-copy-button></pre>
-          <p>
-            To activate the theme, apply the <code>terra-theme-dark</code> class to the
-            <code>&lt;html&gt;</code> element.
-          </p>
-          <pre><code class="language-html" id="code-block-74"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>terra-theme-dark<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-    ...
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-74"></sl-copy-button></pre>
-          <h3 id="detecting-the-users-color-scheme-preference" class="anchor-heading">
-            Detecting the User’s Color Scheme Preference<a
-              href="#detecting-the-users-color-scheme-preference"
-              aria-label='Direct link to "Detecting the User&apos;s Color Scheme Preference"'
-            ></a>
-          </h3>
-          <p>
-            Shoelace doesn’t try to auto-detect the user’s light/dark mode preference. This should be done at the
-            application level. As a best practice, to provide a dark theme in your app, you should:
-          </p>
-          <ul>
-            <li>
-              Check for
+          <div role="alert" class="callout callout--tip">
+            <p>
+              For component developers, the Horizon theme is also available as a JavaScript module that exports
               <a
-                href="https://stackoverflow.com/a/57795495/567486"
+                href="https://lit.dev/docs/api/styles/#CSSResult"
                 class="external-link"
                 rel="noopener noreferrer"
                 target="_blank"
-                ><code>prefers-color-scheme</code></a
+                >Lit CSSResult</a
               >
-              and use its value by default
-            </li>
-            <li>Allow the user to override the setting in your app</li>
-            <li>Remember the user’s preference and restore it on subsequent logins</li>
+              objects. You can find it in <code>dist/themes/horizon.styles.js</code>.
+            </p>
+          </div>
+          <h2 id="design-tokens" class="anchor-heading">
+            Design Tokens<a href="#design-tokens" aria-label='Direct link to "Design Tokens"'></a>
+          </h2>
+          <p>
+            The Horizon theme provides a comprehensive set of design tokens that you can use and customize. These
+            include:
+          </p>
+          <ul>
+            <li><strong>Colors</strong>: NASA brand colors, neutrals, and semantic colors</li>
+            <li><strong>Typography</strong>: Font families, sizes, weights, and line heights</li>
+            <li><strong>Spacing</strong>: Consistent spacing scale</li>
+            <li><strong>Shadows</strong>: Elevation tokens</li>
+            <li><strong>Border Radius</strong>: Consistent border radius values</li>
+            <li><strong>Transitions</strong>: Animation timing values</li>
+            <li><strong>Z-index</strong>: Layering system</li>
           </ul>
           <p>
-            Shoelace avoids using the <code>prefers-color-scheme</code> media query because not all apps support dark
-            mode, and it would break things for the ones that don’t.
+            For a complete reference of all available design tokens, see the
+            <a href="/tokens/typography">Design Tokens</a> section.
           </p>
         </div>
       </article>

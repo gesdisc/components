@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-layout="component" data-terra-ui-components-version="0.0.64">
+<html lang="en" data-layout="component" data-terra-ui-components-version="0.0.111">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,12 +16,12 @@
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:creator" content="nasa_terra-ui" />
-    <meta name="twitter:image" content="https://disc.gsfc.nasa.gov/components/assets/images/og-image.png" />
+    <meta name="twitter:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
 
-    <meta property="og:url" content="https://disc.gsfc.nasa.gov/components/button/" />
+    <meta property="og:url" content="https://terra-ui.netlify.app/components/button/" />
     <meta property="og:title" content="Button" />
     <meta property="og:description" content="Buttons represent actions that are available to the user." />
-    <meta property="og:image" content="https://disc.gsfc.nasa.gov/components/assets/images/og-image.png" />
+    <meta property="og:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
 
     <link rel="stylesheet" href="/dist/themes/horizon.css" />
     <script type="module" src="/dist/terra-ui-components-autoloader.js"></script>
@@ -61,6 +61,173 @@
       Skip to main content
     </a>
 
+    <header id="top-nav" class="top-nav">
+      <div class="top-nav__left">
+        <a href="/" class="top-nav__logo">
+          <terra-icon name="nasa-logo" font-size="4rem"></terra-icon>
+          <span class="top-nav__title">Terra UI</span>
+        </a>
+      </div>
+
+      <div class="top-nav__right">
+        <terra-dropdown id="about-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="About"> About </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="project-overview">
+              <a href="/components/">Project Overview</a>
+            </terra-menu-item>
+            <terra-menu-item value="contributing">
+              <a href="/components/about/contributing">Contributing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="getting-started-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Getting Started">
+            Getting Started
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="installation">
+              <a href="/components/getting-started/installation">Installation</a>
+            </terra-menu-item>
+            <terra-menu-item value="usage">
+              <a href="/components/getting-started/usage">Usage</a>
+            </terra-menu-item>
+            <terra-menu-item value="themes">
+              <a href="/components/getting-started/themes">Themes</a>
+            </terra-menu-item>
+            <terra-menu-item value="customizing">
+              <a href="/components/getting-started/customizing">Customizing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <terra-dropdown id="frameworks-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Frameworks">
+            Frameworks
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="react">
+              <a href="/components/frameworks/react">React</a>
+            </terra-menu-item>
+            <terra-menu-item value="vue">
+              <a href="/components/frameworks/vue">Vue</a>
+            </terra-menu-item>
+            <terra-menu-item value="angular">
+              <a href="/components/frameworks/angular">Angular</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <button
+          class="top-nav__search"
+          type="button"
+          title="Press / to search"
+          aria-label="Search"
+          data-plugin="search"
+        >
+          <sl-icon name="search"></sl-icon>
+        </button>
+        <a
+          href="https://github.com/nasa/terra-ui-components"
+          title="View Terra UI Components on GitHub"
+          class="top-nav__icon-link external-link"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <sl-icon name="github"></sl-icon>
+        </a>
+        <terra-dropdown id="environment-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Environment"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <span id="environment-display">UAT</span>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="uat"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >UAT</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="prod"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >PROD</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="theme-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Press \ to toggle"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
+            <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="light"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Light</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="dark"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Dark</terra-menu-item
+            >
+            <hr
+              role="separator"
+              aria-orientation="horizontal"
+              style="
+                margin: var(--terra-spacing-x-small) 0;
+                border: none;
+                border-top: 1px solid var(--terra-panel-border-color);
+              "
+            />
+            <terra-menu-item
+              type="checkbox"
+              value="auto"
+              tabindex="0"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >System</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+      </div>
+    </header>
+
     <button id="menu-toggle" type="button" aria-label="Menu">
       <svg width="148" height="148" viewBox="0 0 148 148" xmlns="http://www.w3.org/2000/svg">
         <g stroke="currentColor" stroke-width="18" fill="none" fill-rule="evenodd" stroke-linecap="round">
@@ -69,108 +236,7 @@
       </svg>
     </button>
 
-    <div id="icon-toolbar">
-      <a
-        href="https://github.com/nasa/terra-ui-components"
-        title="View Terra UI Components on GitHub"
-        class="external-link"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <sl-icon name="github"></sl-icon>
-      </a>
-      <sl-dropdown id="environment-selector" placement="bottom-end" distance="3">
-        <terra-button
-          slot="trigger"
-          size="large"
-          variant="text"
-          caret=""
-          title="Environment"
-          data-optional=""
-          data-valid=""
-          data-user-valid=""
-        >
-          <span id="environment-display">UAT</span>
-        </terra-button>
-        <sl-menu role="menu">
-          <sl-menu-item
-            type="checkbox"
-            value="uat"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="true"
-            aria-disabled="false"
-            checked=""
-            >UAT</sl-menu-item
-          >
-          <sl-menu-item
-            type="checkbox"
-            value="prod"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >PROD</sl-menu-item
-          >
-        </sl-menu>
-      </sl-dropdown>
-      <sl-dropdown id="theme-selector" placement="bottom-end" distance="3">
-        <terra-button
-          slot="trigger"
-          size="large"
-          variant="text"
-          caret=""
-          title="Press \ to toggle"
-          data-optional=""
-          data-valid=""
-          data-user-valid=""
-        >
-          <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
-          <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
-        </terra-button>
-        <sl-menu role="menu">
-          <sl-menu-item
-            type="checkbox"
-            value="light"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >Light</sl-menu-item
-          >
-          <sl-menu-item
-            type="checkbox"
-            value="dark"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >Dark</sl-menu-item
-          >
-          <sl-divider role="separator" aria-orientation="horizontal"></sl-divider>
-          <sl-menu-item
-            type="checkbox"
-            value="auto"
-            tabindex="0"
-            role="menuitemcheckbox"
-            aria-checked="true"
-            aria-disabled="false"
-            checked=""
-            >System</sl-menu-item
-          >
-        </sl-menu>
-      </sl-dropdown>
-    </div>
-
     <aside id="sidebar" data-preserve-scroll="">
-      <header>
-        <a href="/" class="sidebar-logo">
-          <img src="/components/assets/images/logo.svg" alt="Terra UI Components" />
-          Terra UI Components
-        </a>
-        <div class="sidebar-version">0.0.64</div>
-      </header>
-
       <div class="sidebar-buttons">
         <terra-button
           size="small"
@@ -190,47 +256,146 @@
         </terra-button>
       </div>
 
-      <button class="search-box" type="button" title="Press / to search" aria-label="Search" data-plugin="search">
-        <sl-icon name="search"></sl-icon>
-        <span>Search</span>
-      </button>
-
       <nav>
         <ul>
           <li>
-            <h2>Getting Started</h2>
+            <h2>Design System</h2>
             <ul>
               <li>
-                <a href="/components/">Home</a>
+                <a href="/components/horizon-design-system">Overview</a>
               </li>
               <li>
-                <a href="/components/getting-started/installation">Installation</a>
+                <a href="/components/tokens/typography">Typography</a>
               </li>
               <li>
-                <a href="/components/getting-started/usage">Usage</a>
+                <a href="/components/tokens/color">Color</a>
               </li>
               <li>
-                <a href="/components/getting-started/themes">Themes</a>
+                <a href="/components/tokens/spacing">Spacing</a>
               </li>
               <li>
-                <a href="/components/getting-started/customizing">Customizing</a>
+                <a href="/components/tokens/elevation">Elevation</a>
+              </li>
+              <li>
+                <a href="/components/tokens/border-radius">Border Radius</a>
+              </li>
+              <li>
+                <a href="/components/tokens/transition">Transition</a>
+              </li>
+              <li>
+                <a href="/components/tokens/z-index">Z-index</a>
+              </li>
+              <li>
+                <a href="/components/tokens/more">More Tokens</a>
+              </li>
+              <li>
+                <a href="/components/horizon-design-system/#adoption-status">HDS Adoption Status</a>
               </li>
             </ul>
           </li>
+
           <li>
-            <h2>Frameworks</h2>
+            <h2>Forms</h2>
             <ul>
               <li>
-                <a href="/components/frameworks/react">React</a>
-              </li>
-              <li>
-                <a href="/components/frameworks/vue">Vue</a>
-              </li>
-              <li>
-                <a href="/components/frameworks/angular">Angular</a>
+                <a href="/components/forms">Overview</a>
               </li>
             </ul>
           </li>
+
+          <li>
+            <h2>Elements</h2>
+            <ul>
+              <li>
+                <a href="/components/alert"> Alert </a>
+              </li>
+
+              <li>
+                <a href="/components/avatar"> Avatar </a>
+              </li>
+
+              <li>
+                <a href="/components/button" class="active-link"> Button </a>
+              </li>
+
+              <li>
+                <a href="/components/caption"> Caption </a>
+              </li>
+
+              <li>
+                <a href="/components/checkbox"> Checkbox </a>
+              </li>
+
+              <li>
+                <a href="/components/chip"> Chip </a>
+              </li>
+
+              <li>
+                <a href="/components/date-picker"> Date Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/file-upload"> File Upload </a>
+              </li>
+
+              <li>
+                <a href="/components/icon"> Icon </a>
+              </li>
+
+              <li>
+                <a href="/components/input"> Input </a>
+              </li>
+
+              <li>
+                <a href="/components/loader"> Loader </a>
+              </li>
+
+              <li>
+                <a href="/components/option"> Option </a>
+              </li>
+
+              <li>
+                <a href="/components/pagination"> Pagination </a>
+              </li>
+
+              <li>
+                <a href="/components/radio"> Radio </a>
+              </li>
+
+              <li>
+                <a href="/components/radio-group"> Radio Group </a>
+              </li>
+
+              <li>
+                <a href="/components/scroll-hint"> Scroll Hint </a>
+              </li>
+
+              <li>
+                <a href="/components/select"> Select </a>
+              </li>
+
+              <li>
+                <a href="/components/slider"> Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/status-indicator"> Status Indicator </a>
+              </li>
+
+              <li>
+                <a href="/components/tag"> Tag </a>
+              </li>
+
+              <li>
+                <a href="/components/textarea"> Textarea </a>
+              </li>
+
+              <li>
+                <a href="/components/toggle"> Toggle </a>
+              </li>
+            </ul>
+          </li>
+
           <li>
             <h2>Components</h2>
             <ul>
@@ -239,23 +404,15 @@
               </li>
 
               <li>
-                <a href="/components/alert"> Alert </a>
-              </li>
-
-              <li>
                 <a href="/components/browse-variables"> Browse Variables </a>
               </li>
 
               <li>
-                <a href="/components/button" class="active-link"> Button </a>
-              </li>
-
-              <li>
-                <a href="/components/chip"> Chip </a>
-              </li>
-
-              <li>
                 <a href="/components/combobox"> Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/data-access"> Data Access </a>
               </li>
 
               <li>
@@ -271,10 +428,6 @@
               </li>
 
               <li>
-                <a href="/components/date-picker"> Date Picker </a>
-              </li>
-
-              <li>
                 <a href="/components/date-range-slider"> Date Range Slider </a>
               </li>
 
@@ -283,11 +436,7 @@
               </li>
 
               <li>
-                <a href="/components/icon"> Icon </a>
-              </li>
-
-              <li>
-                <a href="/components/loader"> Loader </a>
+                <a href="/components/dropdown"> Dropdown </a>
               </li>
 
               <li>
@@ -299,11 +448,23 @@
               </li>
 
               <li>
+                <a href="/components/menu"> Menu </a>
+              </li>
+
+              <li>
+                <a href="/components/menu-item"> Menu Item </a>
+              </li>
+
+              <li>
                 <a href="/components/plot"> Plot </a>
               </li>
 
               <li>
                 <a href="/components/plot-toolbar"> Plot Toolbar </a>
+              </li>
+
+              <li>
+                <a href="/components/popup"> Popup </a>
               </li>
 
               <li>
@@ -382,8 +543,6 @@
 
           <p class="component-summary">Buttons represent actions that are available to the user.</p>
 
-          <!-- TODO: @shoelace-style/shoelace/dist/react/button needs to be replaced with our dist -->
-
           <div class="code-preview">
             <div class="code-preview__preview">
               <terra-button>Button</terra-button>
@@ -393,17 +552,17 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-18">
+            <div class="code-preview__source-group" id="code-preview-source-group-57">
               <div class="code-preview__source code-preview__source--html" data-flavor="html">
-                <pre><code class="language-html" id="code-block-141"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span><span class="token punctuation">&gt;</span></span>Button<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-141"></sl-copy-button></pre>
+                <pre><code class="language-html" id="code-block-232"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span><span class="token punctuation">&gt;</span></span>Button<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-232"></sl-copy-button></pre>
               </div>
 
               <div class="code-preview__source code-preview__source--react" data-flavor="react">
-                <pre><code class="language-jsx" id="code-block-142"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/button'</span><span class="token punctuation">;</span>
+                <pre><code class="language-jsx" id="code-block-233"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/button'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TerraButton</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">Button</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TerraButton</span></span><span class="token punctuation">&gt;</span></span><span class="token punctuation">;</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-142"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-233"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -412,7 +571,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-18"
+                aria-controls="code-preview-source-group-57"
               >
                 Source
                 <svg
@@ -475,18 +634,18 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-19">
+            <div class="code-preview__source-group" id="code-preview-source-group-58">
               <div class="code-preview__source code-preview__source--html" data-flavor="html">
-                <pre><code class="language-html" id="code-block-143"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>default<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Default<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+                <pre><code class="language-html" id="code-block-234"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>default<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Default<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>primary<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Primary<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>success<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Success<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>warning<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Warning<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>danger<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Danger<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-143"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-234"></sl-copy-button></pre>
               </div>
 
               <div class="code-preview__source code-preview__source--react" data-flavor="react">
-                <pre><code class="language-jsx" id="code-block-144"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
+                <pre><code class="language-jsx" id="code-block-235"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
@@ -497,7 +656,7 @@
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TerraButton</span></span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>danger<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">Danger</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TerraButton</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
   </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">&gt;</span></span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-144"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-235"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -506,7 +665,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-19"
+                aria-controls="code-preview-source-group-58"
               >
                 Source
                 <svg
@@ -562,16 +721,16 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-20">
+            <div class="code-preview__source-group" id="code-preview-source-group-59">
               <div class="code-preview__source code-preview__source--html" data-flavor="html">
-                <pre><code class="language-html" id="code-block-145"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Small<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+                <pre><code class="language-html" id="code-block-236"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Small<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>medium<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Medium<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>large<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Large<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-145"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-236"></sl-copy-button></pre>
               </div>
 
               <div class="code-preview__source code-preview__source--react" data-flavor="react">
-                <pre><code class="language-jsx" id="code-block-146"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
+                <pre><code class="language-jsx" id="code-block-237"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
@@ -580,7 +739,7 @@
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TerraButton</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>large<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">Large</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TerraButton</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
   </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">&gt;</span></span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-146"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-237"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -589,7 +748,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-20"
+                aria-controls="code-preview-source-group-59"
               >
                 Source
                 <svg
@@ -649,18 +808,18 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-21">
+            <div class="code-preview__source-group" id="code-preview-source-group-60">
               <div class="code-preview__source code-preview__source--html" data-flavor="html">
-                <pre><code class="language-html" id="code-block-147"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>default<span class="token punctuation">"</span></span> <span class="token attr-name">outline</span><span class="token punctuation">&gt;</span></span>Default<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+                <pre><code class="language-html" id="code-block-238"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>default<span class="token punctuation">"</span></span> <span class="token attr-name">outline</span><span class="token punctuation">&gt;</span></span>Default<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>primary<span class="token punctuation">"</span></span> <span class="token attr-name">outline</span><span class="token punctuation">&gt;</span></span>Primary<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>success<span class="token punctuation">"</span></span> <span class="token attr-name">outline</span><span class="token punctuation">&gt;</span></span>Success<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>warning<span class="token punctuation">"</span></span> <span class="token attr-name">outline</span><span class="token punctuation">&gt;</span></span>Warning<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>danger<span class="token punctuation">"</span></span> <span class="token attr-name">outline</span><span class="token punctuation">&gt;</span></span>Danger<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-147"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-238"></sl-copy-button></pre>
               </div>
 
               <div class="code-preview__source code-preview__source--react" data-flavor="react">
-                <pre><code class="language-jsx" id="code-block-148"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
+                <pre><code class="language-jsx" id="code-block-239"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
@@ -681,7 +840,7 @@
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TerraButton</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
   </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">&gt;</span></span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-148"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-239"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -690,7 +849,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-21"
+                aria-controls="code-preview-source-group-60"
               >
                 Source
                 <svg
@@ -769,9 +928,9 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-22">
+            <div class="code-preview__source-group" id="code-preview-source-group-61">
               <div class="code-preview__source code-preview__source--html" data-flavor="html">
-                <pre><code class="language-html" id="code-block-149"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">circle</span><span class="token punctuation">&gt;</span></span>
+                <pre><code class="language-html" id="code-block-240"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">circle</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>slot</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>label<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>solid-play<span class="token punctuation">"</span></span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>heroicons<span class="token punctuation">"</span></span> <span class="token attr-name">font-size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1.5em<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>slot</span><span class="token punctuation">&gt;</span></span>
@@ -796,11 +955,11 @@
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outline-arrow-down-tray<span class="token punctuation">"</span></span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>heroicons<span class="token punctuation">"</span></span> <span class="token attr-name">font-size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2em<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>slot</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-149"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-240"></sl-copy-button></pre>
               </div>
 
               <div class="code-preview__source code-preview__source--react" data-flavor="react">
-                <pre><code class="language-jsx" id="code-block-150"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
+                <pre><code class="language-jsx" id="code-block-241"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> <span class="token operator">=</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
@@ -832,7 +991,7 @@
   </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">&gt;</span></span>
 <span class="token punctuation">)</span>
 
-</code><sl-copy-button class="copy-code-button" from="code-block-150"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-241"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -841,7 +1000,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-22"
+                aria-controls="code-preview-source-group-61"
               >
                 Source
                 <svg
@@ -902,16 +1061,16 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-23">
+            <div class="code-preview__source-group" id="code-preview-source-group-62">
               <div class="code-preview__source code-preview__source--html" data-flavor="html">
-                <pre><code class="language-html" id="code-block-151"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+                <pre><code class="language-html" id="code-block-242"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>medium<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>large<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-151"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-242"></sl-copy-button></pre>
               </div>
 
               <div class="code-preview__source code-preview__source--react" data-flavor="react">
-                <pre><code class="language-jsx" id="code-block-152"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
+                <pre><code class="language-jsx" id="code-block-243"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
@@ -926,7 +1085,7 @@
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TerraButton</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
   </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">&gt;</span></span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-152"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-243"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -935,7 +1094,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-23"
+                aria-controls="code-preview-source-group-62"
               >
                 Source
                 <svg
@@ -1001,16 +1160,16 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-24">
+            <div class="code-preview__source-group" id="code-preview-source-group-63">
               <div class="code-preview__source code-preview__source--html" data-flavor="html">
-                <pre><code class="language-html" id="code-block-153"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pagelink<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://localhost/<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>_blank<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Explore<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+                <pre><code class="language-html" id="code-block-244"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pagelink<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://localhost/<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>_blank<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Explore<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pagelink<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://localhost/<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>medium<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Explore<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pagelink<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://example.com/<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>_blank<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>large<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Explore<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-153"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-244"></sl-copy-button></pre>
               </div>
 
               <div class="code-preview__source code-preview__source--react" data-flavor="react">
-                <pre><code class="language-jsx" id="code-block-154"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
+                <pre><code class="language-jsx" id="code-block-245"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
@@ -1025,7 +1184,7 @@
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TerraButton</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
   </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">&gt;</span></span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-154"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-245"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -1034,7 +1193,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-24"
+                aria-controls="code-preview-source-group-63"
               >
                 Source
                 <svg
@@ -1098,17 +1257,17 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-25">
+            <div class="code-preview__source-group" id="code-preview-source-group-64">
               <div class="code-preview__source code-preview__source--html" data-flavor="html">
-                <pre><code class="language-html" id="code-block-155"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://example.com/<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+                <pre><code class="language-html" id="code-block-246"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://example.com/<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://example.com/<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>_blank<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>New Window<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/assets/images/wordmark.svg<span class="token punctuation">"</span></span> <span class="token attr-name">download</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>shoelace.svg<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Download<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://example.com/<span class="token punctuation">"</span></span> <span class="token attr-name">disabled</span><span class="token punctuation">&gt;</span></span>Disabled<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-155"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-246"></sl-copy-button></pre>
               </div>
 
               <div class="code-preview__source code-preview__source--react" data-flavor="react">
-                <pre><code class="language-jsx" id="code-block-156"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
+                <pre><code class="language-jsx" id="code-block-247"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
@@ -1124,7 +1283,7 @@
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TerraButton</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
   </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">&gt;</span></span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-156"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-247"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -1133,7 +1292,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-25"
+                aria-controls="code-preview-source-group-64"
               >
                 Source
                 <svg
@@ -1211,16 +1370,16 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-26">
+            <div class="code-preview__source-group" id="code-preview-source-group-65">
               <div class="code-preview__source code-preview__source--html" data-flavor="html">
-                <pre><code class="language-html" id="code-block-157"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>default<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span> <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>Small<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+                <pre><code class="language-html" id="code-block-248"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>default<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span> <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>Small<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>default<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>medium<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span> <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>Medium<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>default<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>large<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>Large<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-157"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-248"></sl-copy-button></pre>
               </div>
 
               <div class="code-preview__source code-preview__source--react" data-flavor="react">
-                <pre><code class="language-jsx" id="code-block-158"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
+                <pre><code class="language-jsx" id="code-block-249"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
@@ -1235,7 +1394,7 @@
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TerraButton</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
   </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">&gt;</span></span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-158"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-249"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -1244,7 +1403,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-26"
+                aria-controls="code-preview-source-group-65"
               >
                 Source
                 <svg
@@ -1310,16 +1469,16 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-27">
+            <div class="code-preview__source-group" id="code-preview-source-group-66">
               <div class="code-preview__source code-preview__source--html" data-flavor="html">
-                <pre><code class="language-html" id="code-block-159"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span> <span class="token attr-name">caret</span><span class="token punctuation">&gt;</span></span>Small<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+                <pre><code class="language-html" id="code-block-250"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span> <span class="token attr-name">caret</span><span class="token punctuation">&gt;</span></span>Small<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>medium<span class="token punctuation">"</span></span> <span class="token attr-name">caret</span><span class="token punctuation">&gt;</span></span>Medium<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>large<span class="token punctuation">"</span></span> <span class="token attr-name">caret</span><span class="token punctuation">&gt;</span></span>Large<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-159"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-250"></sl-copy-button></pre>
               </div>
 
               <div class="code-preview__source code-preview__source--react" data-flavor="react">
-                <pre><code class="language-jsx" id="code-block-160"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
+                <pre><code class="language-jsx" id="code-block-251"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
@@ -1334,7 +1493,7 @@
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TerraButton</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
   </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">&gt;</span></span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-160"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-251"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -1343,7 +1502,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-27"
+                aria-controls="code-preview-source-group-66"
               >
                 Source
                 <svg
@@ -1403,16 +1562,16 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-28">
+            <div class="code-preview__source-group" id="code-preview-source-group-67">
               <div class="code-preview__source code-preview__source--html" data-flavor="html">
-                <pre><code class="language-html" id="code-block-161"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">shape</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>square-right<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Square-right<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+                <pre><code class="language-html" id="code-block-252"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">shape</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>square-right<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Square-right<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">shape</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>square<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Square<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">shape</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>square-left<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Square-left<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-161"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-252"></sl-copy-button></pre>
               </div>
 
               <div class="code-preview__source code-preview__source--react" data-flavor="react">
-                <pre><code class="language-jsx" id="code-block-162"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
+                <pre><code class="language-jsx" id="code-block-253"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
@@ -1427,7 +1586,7 @@
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TerraButton</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
   </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">&gt;</span></span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-162"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-253"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -1436,7 +1595,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-28"
+                aria-controls="code-preview-source-group-67"
               >
                 Source
                 <svg
@@ -1498,17 +1657,17 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-29">
+            <div class="code-preview__source-group" id="code-preview-source-group-68">
               <div class="code-preview__source code-preview__source--html" data-flavor="html">
-                <pre><code class="language-html" id="code-block-163"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>default<span class="token punctuation">"</span></span> <span class="token attr-name">loading</span><span class="token punctuation">&gt;</span></span>Default<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+                <pre><code class="language-html" id="code-block-254"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>default<span class="token punctuation">"</span></span> <span class="token attr-name">loading</span><span class="token punctuation">&gt;</span></span>Default<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>success<span class="token punctuation">"</span></span> <span class="token attr-name">loading</span><span class="token punctuation">&gt;</span></span>Success<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>warning<span class="token punctuation">"</span></span> <span class="token attr-name">loading</span><span class="token punctuation">&gt;</span></span>Warning<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>danger<span class="token punctuation">"</span></span> <span class="token attr-name">loading</span><span class="token punctuation">&gt;</span></span>Danger<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-163"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-254"></sl-copy-button></pre>
               </div>
 
               <div class="code-preview__source code-preview__source--react" data-flavor="react">
-                <pre><code class="language-jsx" id="code-block-164"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
+                <pre><code class="language-jsx" id="code-block-255"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
@@ -1526,7 +1685,7 @@
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TerraButton</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
   </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">&gt;</span></span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-164"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-255"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -1535,7 +1694,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-29"
+                aria-controls="code-preview-source-group-68"
               >
                 Source
                 <svg
@@ -1594,17 +1753,17 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-30">
+            <div class="code-preview__source-group" id="code-preview-source-group-69">
               <div class="code-preview__source code-preview__source--html" data-flavor="html">
-                <pre><code class="language-html" id="code-block-165"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>default<span class="token punctuation">"</span></span> <span class="token attr-name">disabled</span><span class="token punctuation">&gt;</span></span>Default<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+                <pre><code class="language-html" id="code-block-256"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>default<span class="token punctuation">"</span></span> <span class="token attr-name">disabled</span><span class="token punctuation">&gt;</span></span>Default<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>success<span class="token punctuation">"</span></span> <span class="token attr-name">disabled</span><span class="token punctuation">&gt;</span></span>Success<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>warning<span class="token punctuation">"</span></span> <span class="token attr-name">disabled</span><span class="token punctuation">&gt;</span></span>Warning<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>danger<span class="token punctuation">"</span></span> <span class="token attr-name">disabled</span><span class="token punctuation">&gt;</span></span>Danger<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-165"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-256"></sl-copy-button></pre>
               </div>
 
               <div class="code-preview__source code-preview__source--react" data-flavor="react">
-                <pre><code class="language-jsx" id="code-block-166"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
+                <pre><code class="language-jsx" id="code-block-257"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@shoelace-style/shoelace/dist/react/button'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
@@ -1625,7 +1784,7 @@
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TerraButton</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
   </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">&gt;</span></span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-166"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-257"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -1634,7 +1793,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-30"
+                aria-controls="code-preview-source-group-69"
               >
                 Source
                 <svg
@@ -1733,9 +1892,9 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-31">
+            <div class="code-preview__source-group" id="code-preview-source-group-70">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-167"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pink<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Pink Button<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+                <pre><code class="language-html" id="code-block-258"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pink<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Pink Button<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
   <span class="token selector">terra-button.pink::part(base)</span> <span class="token punctuation">{</span>
@@ -1772,7 +1931,7 @@
     <span class="token property">outline-offset</span><span class="token punctuation">:</span> 4px<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-167"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-258"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -1781,7 +1940,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-31"
+                aria-controls="code-preview-source-group-70"
               >
                 Source
                 <svg
@@ -1842,7 +2001,7 @@
                 >
                 using a script tag:
               </p>
-              <pre><code class="language-html" id="code-block-168"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.64/cdn/components/button/button.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code><sl-copy-button class="copy-code-button" from="code-block-168"></sl-copy-button></pre>
+              <pre><code class="language-html" id="code-block-259"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.111/cdn/components/button/button.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code><sl-copy-button class="copy-code-button" from="code-block-259"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="import">
@@ -1857,7 +2016,7 @@
                 >
                 using a JavaScript import:
               </p>
-              <pre><code class="language-js" id="code-block-169"><span class="token keyword">import</span> <span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.64/cdn/components/button/button.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-169"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-260"><span class="token keyword">import</span> <span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.111/cdn/components/button/button.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-260"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="bundler">
@@ -1865,12 +2024,12 @@
                 To import this component using
                 <a href="/components/getting-started/installation#bundling">a bundler</a>:
               </p>
-              <pre><code class="language-js" id="code-block-170"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/button/button.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-170"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-261"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/button/button.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-261"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="react">
               <p>To import this component as a <a href="/components/frameworks/react">React component</a>:</p>
-              <pre><code class="language-js" id="code-block-171"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/button'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-171"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-262"><span class="token keyword">import</span> TerraButton <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/button'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-262"></sl-copy-button></pre>
             </sl-tab-panel>
           </sl-tab-group>
 

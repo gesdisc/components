@@ -1,0 +1,1681 @@
+<!doctype html>
+<html lang="en" data-layout="component" data-terra-ui-components-version="0.0.111">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="File upload fields allow visitors to attach one or multiple files to be submitted with a form."
+    />
+    <title>File Upload</title>
+
+    <meta name="turbo-cache-control" />
+
+    <link rel="stylesheet" href="/components/assets/styles/docs.css" />
+    <link rel="stylesheet" href="/components/assets/styles/code-previews.css" />
+    <link rel="stylesheet" href="/components/assets/styles/search.css" />
+
+    <link rel="icon" href="/components/assets/images/logo.white.png" type="image/x-icon" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="nasa_terra-ui" />
+    <meta name="twitter:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
+
+    <meta property="og:url" content="https://terra-ui.netlify.app/components/file-upload/" />
+    <meta property="og:title" content="File Upload" />
+    <meta
+      property="og:description"
+      content="File upload fields allow visitors to attach one or multiple files to be submitted with a form."
+    />
+    <meta property="og:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
+
+    <link rel="stylesheet" href="/dist/themes/horizon.css" />
+    <script type="module" src="/dist/terra-ui-components-autoloader.js"></script>
+
+    <script>
+      (() => {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = localStorage.getItem('theme') || 'auto';
+        document.documentElement.classList.toggle(
+          'terra-theme-dark',
+          theme === 'dark' || (theme === 'auto' && prefersDark)
+        );
+      })();
+    </script>
+
+    <script src="/components/assets/scripts/turbo.js" type="module"></script>
+    <script src="/components/assets/scripts/docs.js" defer=""></script>
+    <script src="/components/assets/scripts/code-previews.js" defer=""></script>
+    <script src="/components/assets/scripts/lunr.js" defer=""></script>
+    <script src="/components/assets/scripts/search.js" defer=""></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono&amp;family=Inter&amp;family=Public+Sans&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"
+    ></script>
+  </head>
+  <body>
+    <a id="skip-to-main" class="visually-hidden" href="#main-content" data-smooth-link="false">
+      Skip to main content
+    </a>
+
+    <header id="top-nav" class="top-nav">
+      <div class="top-nav__left">
+        <a href="/" class="top-nav__logo">
+          <terra-icon name="nasa-logo" font-size="4rem"></terra-icon>
+          <span class="top-nav__title">Terra UI</span>
+        </a>
+      </div>
+
+      <div class="top-nav__right">
+        <terra-dropdown id="about-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="About"> About </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="project-overview">
+              <a href="/components/">Project Overview</a>
+            </terra-menu-item>
+            <terra-menu-item value="contributing">
+              <a href="/components/about/contributing">Contributing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="getting-started-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Getting Started">
+            Getting Started
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="installation">
+              <a href="/components/getting-started/installation">Installation</a>
+            </terra-menu-item>
+            <terra-menu-item value="usage">
+              <a href="/components/getting-started/usage">Usage</a>
+            </terra-menu-item>
+            <terra-menu-item value="themes">
+              <a href="/components/getting-started/themes">Themes</a>
+            </terra-menu-item>
+            <terra-menu-item value="customizing">
+              <a href="/components/getting-started/customizing">Customizing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <terra-dropdown id="frameworks-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Frameworks">
+            Frameworks
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="react">
+              <a href="/components/frameworks/react">React</a>
+            </terra-menu-item>
+            <terra-menu-item value="vue">
+              <a href="/components/frameworks/vue">Vue</a>
+            </terra-menu-item>
+            <terra-menu-item value="angular">
+              <a href="/components/frameworks/angular">Angular</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <button
+          class="top-nav__search"
+          type="button"
+          title="Press / to search"
+          aria-label="Search"
+          data-plugin="search"
+        >
+          <sl-icon name="search"></sl-icon>
+        </button>
+        <a
+          href="https://github.com/nasa/terra-ui-components"
+          title="View Terra UI Components on GitHub"
+          class="top-nav__icon-link external-link"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <sl-icon name="github"></sl-icon>
+        </a>
+        <terra-dropdown id="environment-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Environment"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <span id="environment-display">UAT</span>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="uat"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >UAT</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="prod"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >PROD</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="theme-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Press \ to toggle"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
+            <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="light"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Light</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="dark"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Dark</terra-menu-item
+            >
+            <hr
+              role="separator"
+              aria-orientation="horizontal"
+              style="
+                margin: var(--terra-spacing-x-small) 0;
+                border: none;
+                border-top: 1px solid var(--terra-panel-border-color);
+              "
+            />
+            <terra-menu-item
+              type="checkbox"
+              value="auto"
+              tabindex="0"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >System</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+      </div>
+    </header>
+
+    <button id="menu-toggle" type="button" aria-label="Menu">
+      <svg width="148" height="148" viewBox="0 0 148 148" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="currentColor" stroke-width="18" fill="none" fill-rule="evenodd" stroke-linecap="round">
+          <path d="M9.5 125.5h129M9.5 74.5h129M9.5 23.5h129"></path>
+        </g>
+      </svg>
+    </button>
+
+    <aside id="sidebar" data-preserve-scroll="">
+      <div class="sidebar-buttons">
+        <terra-button
+          size="small"
+          class="repo-button repo-button--github"
+          href="https://github.com/nasa/terra-ui-components"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="github"></sl-icon> Code
+        </terra-button>
+        <terra-button
+          size="small"
+          class="repo-button repo-button--star"
+          href="https://github.com/nasa/terra-ui-components/stargazers"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="star-fill"></sl-icon> Star
+        </terra-button>
+      </div>
+
+      <nav>
+        <ul>
+          <li>
+            <h2>Design System</h2>
+            <ul>
+              <li>
+                <a href="/components/horizon-design-system">Overview</a>
+              </li>
+              <li>
+                <a href="/components/tokens/typography">Typography</a>
+              </li>
+              <li>
+                <a href="/components/tokens/color">Color</a>
+              </li>
+              <li>
+                <a href="/components/tokens/spacing">Spacing</a>
+              </li>
+              <li>
+                <a href="/components/tokens/elevation">Elevation</a>
+              </li>
+              <li>
+                <a href="/components/tokens/border-radius">Border Radius</a>
+              </li>
+              <li>
+                <a href="/components/tokens/transition">Transition</a>
+              </li>
+              <li>
+                <a href="/components/tokens/z-index">Z-index</a>
+              </li>
+              <li>
+                <a href="/components/tokens/more">More Tokens</a>
+              </li>
+              <li>
+                <a href="/components/horizon-design-system/#adoption-status">HDS Adoption Status</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2>Forms</h2>
+            <ul>
+              <li>
+                <a href="/components/forms">Overview</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2>Elements</h2>
+            <ul>
+              <li>
+                <a href="/components/alert"> Alert </a>
+              </li>
+
+              <li>
+                <a href="/components/avatar"> Avatar </a>
+              </li>
+
+              <li>
+                <a href="/components/button"> Button </a>
+              </li>
+
+              <li>
+                <a href="/components/caption"> Caption </a>
+              </li>
+
+              <li>
+                <a href="/components/checkbox"> Checkbox </a>
+              </li>
+
+              <li>
+                <a href="/components/chip"> Chip </a>
+              </li>
+
+              <li>
+                <a href="/components/date-picker"> Date Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/file-upload" class="active-link"> File Upload </a>
+              </li>
+
+              <li>
+                <a href="/components/icon"> Icon </a>
+              </li>
+
+              <li>
+                <a href="/components/input"> Input </a>
+              </li>
+
+              <li>
+                <a href="/components/loader"> Loader </a>
+              </li>
+
+              <li>
+                <a href="/components/option"> Option </a>
+              </li>
+
+              <li>
+                <a href="/components/pagination"> Pagination </a>
+              </li>
+
+              <li>
+                <a href="/components/radio"> Radio </a>
+              </li>
+
+              <li>
+                <a href="/components/radio-group"> Radio Group </a>
+              </li>
+
+              <li>
+                <a href="/components/scroll-hint"> Scroll Hint </a>
+              </li>
+
+              <li>
+                <a href="/components/select"> Select </a>
+              </li>
+
+              <li>
+                <a href="/components/slider"> Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/status-indicator"> Status Indicator </a>
+              </li>
+
+              <li>
+                <a href="/components/tag"> Tag </a>
+              </li>
+
+              <li>
+                <a href="/components/textarea"> Textarea </a>
+              </li>
+
+              <li>
+                <a href="/components/toggle"> Toggle </a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2>Components</h2>
+            <ul>
+              <li>
+                <a href="/components/accordion"> Accordion </a>
+              </li>
+
+              <li>
+                <a href="/components/browse-variables"> Browse Variables </a>
+              </li>
+
+              <li>
+                <a href="/components/combobox"> Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/data-access"> Data Access </a>
+              </li>
+
+              <li>
+                <a href="/components/data-rods"> Data Rods </a>
+              </li>
+
+              <li>
+                <a href="/components/data-subsetter"> Data Subsetter </a>
+              </li>
+
+              <li>
+                <a href="/components/data-subsetter-history"> Data Subsetter History </a>
+              </li>
+
+              <li>
+                <a href="/components/date-range-slider"> Date Range Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/dialog"> Dialog </a>
+              </li>
+
+              <li>
+                <a href="/components/dropdown"> Dropdown </a>
+              </li>
+
+              <li>
+                <a href="/components/login"> Login </a>
+              </li>
+
+              <li>
+                <a href="/components/map"> Map </a>
+              </li>
+
+              <li>
+                <a href="/components/menu"> Menu </a>
+              </li>
+
+              <li>
+                <a href="/components/menu-item"> Menu Item </a>
+              </li>
+
+              <li>
+                <a href="/components/plot"> Plot </a>
+              </li>
+
+              <li>
+                <a href="/components/plot-toolbar"> Plot Toolbar </a>
+              </li>
+
+              <li>
+                <a href="/components/popup"> Popup </a>
+              </li>
+
+              <li>
+                <a href="/components/skeleton"> Skeleton </a>
+              </li>
+
+              <li>
+                <a href="/components/spatial-picker"> Spatial Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/time-average-map"> Time Average Map </a>
+              </li>
+
+              <li>
+                <a href="/components/time-series"> Time Series </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-combobox"> Variable Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-keyword-search"> Variable Keyword Search </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+      <a id="main-content"></a>
+      <article id="content" class="content content--with-toc">
+        <div class="content__toc">
+          <ul>
+            <li class="top">
+              <a href="#">File Upload</a>
+            </li>
+            <li data-level="2"><a href="#examples">Examples</a></li>
+            <li data-level="3"><a href="#basic-file-upload">Basic File Upload</a></li>
+            <li data-level="3"><a href="#with-help-text">With Help Text</a></li>
+            <li data-level="3"><a href="#multiple-files">Multiple Files</a></li>
+            <li data-level="3"><a href="#with-file-type-restrictions">With File Type Restrictions</a></li>
+            <li data-level="3"><a href="#required-field">Required Field</a></li>
+            <li data-level="3"><a href="#disabled-state">Disabled State</a></li>
+            <li data-level="3"><a href="#with-maximum-file-size">With Maximum File Size</a></li>
+            <li data-level="3"><a href="#with-maximum-number-of-files">With Maximum Number of Files</a></li>
+            <li data-level="3"><a href="#form-integration">Form Integration</a></li>
+            <li data-level="2"><a href="#usage">Usage</a></li>
+            <li data-level="2"><a href="#best-practices">Best Practices</a></li>
+            <li data-level="2"><a href="#accessibility">Accessibility</a></li>
+            <li data-level="2"><a href="#importing">Importing</a></li>
+            <li data-level="2"><a href="#slots">Slots</a></li>
+            <li data-level="2"><a href="#properties">Properties</a></li>
+            <li data-level="2"><a href="#events">Events</a></li>
+            <li data-level="2"><a href="#methods">Methods</a></li>
+            <li data-level="2"><a href="#custom-properties">Custom Properties</a></li>
+            <li data-level="2"><a href="#parts">Parts</a></li>
+          </ul>
+        </div>
+
+        <div class="content__body">
+          <header class="component-header">
+            <h1>File Upload</h1>
+
+            <div class="component-header__tag">
+              <code>&lt;terra-file-upload&gt; | TerraFileUpload</code>
+            </div>
+
+            <div class="component-header__info">
+              <sl-badge variant="neutral" pill=""> Since 2.0 </sl-badge>
+              <sl-badge variant="primary" pill="" style="text-transform: capitalize"> stable </sl-badge>
+            </div>
+          </header>
+
+          <p class="component-summary">
+            File upload fields allow visitors to attach one or multiple files to be submitted with a form.
+          </p>
+
+          <h1>File Upload</h1>
+          <p>File upload fields allow visitors to attach one or multiple files to be submitted with a form.</p>
+          <h2 id="examples" class="anchor-heading">
+            Examples<a href="#examples" aria-label='Direct link to "Examples"'></a>
+          </h2>
+          <h3 id="basic-file-upload" class="anchor-heading">
+            Basic File Upload<a href="#basic-file-upload" aria-label='Direct link to "Basic File Upload"'></a>
+          </h3>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-file-upload label="Upload"></terra-file-upload>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-114">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-350"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-file-upload</span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Upload<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-file-upload</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-350"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-114"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="with-help-text" class="anchor-heading">
+            With Help Text<a href="#with-help-text" aria-label='Direct link to "With Help Text"'></a>
+          </h3>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-file-upload label="Upload" help-text="Accepts all image formats."></terra-file-upload>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-115">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-351"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-file-upload</span>
+  <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Upload<span class="token punctuation">"</span></span>
+  <span class="token attr-name">help-text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Accepts all image formats.<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-file-upload</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-351"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-115"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="multiple-files" class="anchor-heading">
+            Multiple Files<a href="#multiple-files" aria-label='Direct link to "Multiple Files"'></a>
+          </h3>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-file-upload label="Upload" multiple="" help-text="Accepts all image formats."></terra-file-upload>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-116">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-352"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-file-upload</span>
+  <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Upload<span class="token punctuation">"</span></span>
+  <span class="token attr-name">multiple</span>
+  <span class="token attr-name">help-text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Accepts all image formats.<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-file-upload</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-352"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-116"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="with-file-type-restrictions" class="anchor-heading">
+            With File Type Restrictions<a
+              href="#with-file-type-restrictions"
+              aria-label='Direct link to "With File Type Restrictions"'
+            ></a>
+          </h3>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-file-upload
+                label="Upload Images"
+                accept="image/*"
+                help-text="Accepts all image formats."
+              ></terra-file-upload>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-117">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-353"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-file-upload</span>
+  <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Upload Images<span class="token punctuation">"</span></span>
+  <span class="token attr-name">accept</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>image/*<span class="token punctuation">"</span></span>
+  <span class="token attr-name">help-text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Accepts all image formats.<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-file-upload</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-353"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-117"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="required-field" class="anchor-heading">
+            Required Field<a href="#required-field" aria-label='Direct link to "Required Field"'></a>
+          </h3>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-file-upload label="Upload" required="" help-text="Accepts all image formats."></terra-file-upload>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-118">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-354"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-file-upload</span>
+  <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Upload<span class="token punctuation">"</span></span>
+  <span class="token attr-name">required</span>
+  <span class="token attr-name">help-text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Accepts all image formats.<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-file-upload</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-354"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-118"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="disabled-state" class="anchor-heading">
+            Disabled State<a href="#disabled-state" aria-label='Direct link to "Disabled State"'></a>
+          </h3>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-file-upload label="Upload" disabled="" help-text="Accepts all image formats."></terra-file-upload>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-119">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-355"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-file-upload</span>
+  <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Upload<span class="token punctuation">"</span></span>
+  <span class="token attr-name">disabled</span>
+  <span class="token attr-name">help-text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Accepts all image formats.<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-file-upload</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-355"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-119"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="with-maximum-file-size" class="anchor-heading">
+            With Maximum File Size<a
+              href="#with-maximum-file-size"
+              aria-label='Direct link to "With Maximum File Size"'
+            ></a>
+          </h3>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-file-upload
+                label="Upload"
+                max-file-size="5242880"
+                help-text="Maximum file size: 5MB. Accepts all image formats."
+              ></terra-file-upload>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-120">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-356"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-file-upload</span>
+  <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Upload<span class="token punctuation">"</span></span>
+  <span class="token attr-name">max-file-size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>5242880<span class="token punctuation">"</span></span>
+  <span class="token attr-name">help-text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Maximum file size: 5MB. Accepts all image formats.<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-file-upload</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-356"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-120"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="with-maximum-number-of-files" class="anchor-heading">
+            With Maximum Number of Files<a
+              href="#with-maximum-number-of-files"
+              aria-label='Direct link to "With Maximum Number of Files"'
+            ></a>
+          </h3>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-file-upload
+                label="Upload"
+                multiple=""
+                max-files="3"
+                help-text="Maximum 3 files. Accepts all image formats."
+              ></terra-file-upload>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-121">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-357"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-file-upload</span>
+  <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Upload<span class="token punctuation">"</span></span>
+  <span class="token attr-name">multiple</span>
+  <span class="token attr-name">max-files</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>3<span class="token punctuation">"</span></span>
+  <span class="token attr-name">help-text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Maximum 3 files. Accepts all image formats.<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-file-upload</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-357"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-121"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="form-integration" class="anchor-heading">
+            Form Integration<a href="#form-integration" aria-label='Direct link to "Form Integration"'></a>
+          </h3>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <form id="upload-form">
+                <terra-file-upload
+                  name="files"
+                  label="Upload"
+                  required=""
+                  multiple=""
+                  accept="image/*"
+                  help-text="Accepts all image formats."
+                ></terra-file-upload>
+                <br />
+                <terra-button type="submit">Submit</terra-button>
+              </form>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-122">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-358"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>upload-form<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-file-upload</span>
+    <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>files<span class="token punctuation">"</span></span>
+    <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Upload<span class="token punctuation">"</span></span>
+    <span class="token attr-name">required</span>
+    <span class="token attr-name">multiple</span>
+    <span class="token attr-name">accept</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>image/*<span class="token punctuation">"</span></span>
+    <span class="token attr-name">help-text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Accepts all image formats.<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-file-upload</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Submit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-358"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-122"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h2 id="usage" class="anchor-heading">Usage<a href="#usage" aria-label='Direct link to "Usage"'></a></h2>
+          <p>
+            Use file upload fields when files are required as part of a form submission for an application, contest
+            entry, etc. The field can support single or multiple file uploads with drag and drop, or by clicking/tapping
+            to open a native file browser. Using one file per field is recommended when each file has a distinct
+            purpose, to make it clear for NASA team members who are receiving and reviewing form submissions.
+          </p>
+          <h2 id="best-practices" class="anchor-heading">
+            Best Practices<a href="#best-practices" aria-label='Direct link to "Best Practices"'></a>
+          </h2>
+          <ul>
+            <li><strong>Labels</strong>: Always include a clear and concise label for each file upload field.</li>
+            <li>
+              <strong>Help text</strong>: Use the <code>help-text</code> attribute to clearly explain which file formats
+              are allowed and any size or quantity restrictions.
+            </li>
+            <li>
+              <strong>File types</strong>: Unless totally necessary, it is recommended to accept multiple file formats
+              to avoid unnecessary software requirements for users.
+            </li>
+            <li>
+              <strong>File size</strong>: Be careful when requesting large files, as some visitors might have limited
+              connectivity or data plans. Use the <code>max-file-size</code> attribute to set reasonable limits.
+            </li>
+            <li>
+              <strong>Multiple files</strong>: Use the <code>multiple</code> attribute when users need to upload several
+              related files. Consider using the <code>max-files</code> attribute to limit the number of files.
+            </li>
+            <li>
+              <strong>Single vs. multiple</strong>: Using one file per field is recommended when each file has a
+              distinct purpose, to make it clear for NASA team members who are receiving and reviewing form submissions.
+            </li>
+            <li>
+              <strong>Progressive enhancement</strong>: This field should be used as a progressive enhancement of the
+              standard HTML field. The browser-default input field should be the fallback if any issues occur with this
+              custom field.
+            </li>
+          </ul>
+          <h2 id="accessibility" class="anchor-heading">
+            Accessibility<a href="#accessibility" aria-label='Direct link to "Accessibility"'></a>
+          </h2>
+          <ul>
+            <li>
+              The <code>terra-file-upload</code> component is built with accessibility in mind, using native
+              <code>&lt;input type="file"&gt;</code> under the hood.
+            </li>
+            <li>Labels are properly associated with the file input using the <code>for</code> attribute.</li>
+            <li>Required fields are indicated with an asterisk.</li>
+            <li>Help text is provided below the file upload field for additional context.</li>
+            <li>The component supports keyboard navigation (Tab to focus, Enter/Space to activate).</li>
+            <li>Focus states are clearly visible with a focus ring.</li>
+            <li>Screen readers are properly notified of file selections.</li>
+          </ul>
+          <p>[component-metadata:terra-file-upload]</p>
+
+          <h2 id="importing" class="anchor-heading">
+            Importing<a href="#importing" aria-label='Direct link to "Importing"'></a>
+          </h2>
+          <p>
+            If you’re using the autoloader or the traditional loader, you can ignore this section. Otherwise, feel free
+            to use any of the following snippets to
+            <a href="/components/getting-started/installation#cherry-picking">cherry pick</a> this component.
+          </p>
+
+          <sl-tab-group>
+            <sl-tab slot="nav" panel="script">Script</sl-tab>
+            <sl-tab slot="nav" panel="import">Import</sl-tab>
+            <sl-tab slot="nav" panel="bundler">Bundler</sl-tab>
+            <sl-tab slot="nav" panel="react">React</sl-tab>
+
+            <sl-tab-panel name="script">
+              <p>
+                To import this component from
+                <a
+                  href="https://www.jsdelivr.com/package/npm/@nasa-terra/components"
+                  class="external-link"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  >the CDN</a
+                >
+                using a script tag:
+              </p>
+              <pre><code class="language-html" id="code-block-359"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.111/cdn/components/file-upload/file-upload.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code><sl-copy-button class="copy-code-button" from="code-block-359"></sl-copy-button></pre>
+            </sl-tab-panel>
+
+            <sl-tab-panel name="import">
+              <p>
+                To import this component from
+                <a
+                  href="https://www.jsdelivr.com/package/npm/@nasa-terra/components"
+                  class="external-link"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  >the CDN</a
+                >
+                using a JavaScript import:
+              </p>
+              <pre><code class="language-js" id="code-block-360"><span class="token keyword">import</span> <span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.111/cdn/components/file-upload/file-upload.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-360"></sl-copy-button></pre>
+            </sl-tab-panel>
+
+            <sl-tab-panel name="bundler">
+              <p>
+                To import this component using
+                <a href="/components/getting-started/installation#bundling">a bundler</a>:
+              </p>
+              <pre><code class="language-js" id="code-block-361"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/file-upload/file-upload.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-361"></sl-copy-button></pre>
+            </sl-tab-panel>
+
+            <sl-tab-panel name="react">
+              <p>To import this component as a <a href="/components/frameworks/react">React component</a>:</p>
+              <pre><code class="language-js" id="code-block-362"><span class="token keyword">import</span> TerraFileUpload <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/file-upload'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-362"></sl-copy-button></pre>
+            </sl-tab-panel>
+          </sl-tab-group>
+
+          <h2 id="slots" class="anchor-heading">Slots<a href="#slots" aria-label='Direct link to "Slots"'></a></h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name">Name</th>
+                  <th class="table-description">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap">(default)</td>
+                  <td>Custom content to display inside the drop zone.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em>Learn more about <a href="/components/getting-started/usage#slots">using slots</a>.</em>
+          </p>
+
+          <h2 id="properties" class="anchor-heading">
+            Properties<a href="#properties" aria-label='Direct link to "Properties"'></a>
+          </h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name">Name</th>
+                  <th class="table-description">Description</th>
+                  <th class="table-reflects">Reflects</th>
+                  <th class="table-type">Type</th>
+                  <th class="table-default">Default</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <code class="nowrap">label</code>
+                  </td>
+                  <td>The file upload’s label.</td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>string</code>
+                  </td>
+                  <td>
+                    <code>'Upload'</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">helpText</code>
+
+                    <br />
+                    <sl-tooltip content="This attribute is different from its property">
+                      <small>
+                        <code class="nowrap"> help-text </code>
+                      </small>
+                    </sl-tooltip>
+                  </td>
+                  <td>The file upload’s help text.</td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>string</code>
+                  </td>
+                  <td>
+                    <code>''</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">name</code>
+                  </td>
+                  <td>The name of the file input, submitted as a name/value pair with form data.</td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>string</code>
+                  </td>
+                  <td>
+                    <code>''</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">multiple</code>
+                  </td>
+                  <td>Allows multiple files to be selected.</td>
+                  <td style="text-align: center">
+                    <sl-icon label="yes" name="check-lg"></sl-icon>
+                  </td>
+                  <td>
+                    <code>boolean</code>
+                  </td>
+                  <td>
+                    <code>false</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">disabled</code>
+                  </td>
+                  <td>Disables the file upload.</td>
+                  <td style="text-align: center">
+                    <sl-icon label="yes" name="check-lg"></sl-icon>
+                  </td>
+                  <td>
+                    <code>boolean</code>
+                  </td>
+                  <td>
+                    <code>false</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">required</code>
+                  </td>
+                  <td>Makes the file upload a required field.</td>
+                  <td style="text-align: center">
+                    <sl-icon label="yes" name="check-lg"></sl-icon>
+                  </td>
+                  <td>
+                    <code>boolean</code>
+                  </td>
+                  <td>
+                    <code>false</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">accept</code>
+                  </td>
+                  <td>Accepted file types (e.g., “image/*”, ”.pdf”, “image/png,image/jpeg”).</td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>string</code>
+                  </td>
+                  <td>
+                    <code>''</code>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">maxFileSize</code>
+
+                    <br />
+                    <sl-tooltip content="This attribute is different from its property">
+                      <small>
+                        <code class="nowrap"> max-file-size </code>
+                      </small>
+                    </sl-tooltip>
+                  </td>
+                  <td>Maximum file size in bytes.</td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>number | undefined</code>
+                  </td>
+                  <td>-</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="nowrap">maxFiles</code>
+
+                    <br />
+                    <sl-tooltip content="This attribute is different from its property">
+                      <small>
+                        <code class="nowrap"> max-files </code>
+                      </small>
+                    </sl-tooltip>
+                  </td>
+                  <td>Maximum number of files allowed when multiple is enabled.</td>
+                  <td style="text-align: center"></td>
+                  <td>
+                    <code>number | undefined</code>
+                  </td>
+                  <td>-</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>updateComplete</code>
+                  </td>
+                  <td>
+                    A read-only promise that resolves when the component has
+                    <a href="/components/getting-started/usage?#component-rendering-and-updating">finished updating</a>.
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em
+              >Learn more about
+              <a href="/components/getting-started/usage#attributes-and-properties">attributes and properties</a>.</em
+            >
+          </p>
+
+          <h2 id="events" class="anchor-heading">Events<a href="#events" aria-label='Direct link to "Events"'></a></h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name" data-flavor="html">Name</th>
+                  <th class="table-name" data-flavor="react">React Event</th>
+                  <th class="table-description">Description</th>
+                  <th class="table-event-detail">Event Detail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-flavor="html">
+                    <code class="nowrap">terra-change</code>
+                  </td>
+                  <td data-flavor="react">
+                    <code class="nowrap">onTerraChange</code>
+                  </td>
+                  <td>Emitted when files are selected or removed.</td>
+                  <td>-</td>
+                </tr>
+
+                <tr>
+                  <td data-flavor="html">
+                    <code class="nowrap">terra-focus</code>
+                  </td>
+                  <td data-flavor="react">
+                    <code class="nowrap">onTerraFocus</code>
+                  </td>
+                  <td>Emitted when the control gains focus.</td>
+                  <td>-</td>
+                </tr>
+
+                <tr>
+                  <td data-flavor="html">
+                    <code class="nowrap">terra-blur</code>
+                  </td>
+                  <td data-flavor="react">
+                    <code class="nowrap">onTerraBlur</code>
+                  </td>
+                  <td>Emitted when the control loses focus.</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em>Learn more about <a href="/components/getting-started/usage#events">events</a>.</em>
+          </p>
+
+          <h2 id="methods" class="anchor-heading">
+            Methods<a href="#methods" aria-label='Direct link to "Methods"'></a>
+          </h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name">Name</th>
+                  <th class="table-description">Description</th>
+                  <th class="table-arguments">Arguments</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap">
+                    <code>getFiles()</code>
+                  </td>
+                  <td>Gets the current files.</td>
+                  <td>-</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>clearFiles()</code>
+                  </td>
+                  <td>Clears all selected files.</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em>Learn more about <a href="/components/getting-started/usage#methods">methods</a>.</em>
+          </p>
+
+          <h2 id="custom-properties" class="anchor-heading">
+            Custom Properties<a href="#custom-properties" aria-label='Direct link to "Custom Properties"'></a>
+          </h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name">Name</th>
+                  <th class="table-description">Description</th>
+                  <th class="table-default">Default</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-file-upload-*</code>
+                  </td>
+                  <td>All file upload design tokens from horizon.css are supported.</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em
+              >Learn more about
+              <a href="/components/getting-started/usage#custom-properties">customizing CSS custom properties</a>.</em
+            >
+          </p>
+
+          <h2 id="parts" class="anchor-heading">Parts<a href="#parts" aria-label='Direct link to "Parts"'></a></h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name">Name</th>
+                  <th class="table-description">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap">
+                    <code>base</code>
+                  </td>
+                  <td>The component’s base wrapper.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>dropzone</code>
+                  </td>
+                  <td>The drop zone area.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>file-input</code>
+                  </td>
+                  <td>The hidden file input element.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>file-list</code>
+                  </td>
+                  <td>The container for file previews.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>file-item</code>
+                  </td>
+                  <td>Individual file preview item.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>file-thumbnail</code>
+                  </td>
+                  <td>The file thumbnail image.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>file-name</code>
+                  </td>
+                  <td>The file name text.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>change-link</code>
+                  </td>
+                  <td>The “Change files” link.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em
+              >Learn more about
+              <a href="/components/getting-started/customizing/#css-parts">customizing CSS parts</a>.</em
+            >
+          </p>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

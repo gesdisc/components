@@ -1,7 +1,7 @@
 import Component from '../../components/skeleton/skeleton.component.js';
 /**
  * @summary Skeletons are loading indicators to represent where content will eventually be drawn.
- * @documentation https://disc.gsfc.nasa.gov/components/skeleton
+ * @documentation https://terra-ui.netlify.app/components/skeleton
  * @status experimental
  * @since 1.0
  *

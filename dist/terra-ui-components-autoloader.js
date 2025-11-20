@@ -1,11 +1,11 @@
 import {
   getBasePath
-} from "./chunks/chunk.XTPAHWLJ.js";
+} from "./chunks/chunk.QOSYPLWM.js";
 import {
   init_buffer,
   init_dirname,
   init_process
-} from "./chunks/chunk.ES5U5CWG.js";
+} from "./chunks/chunk.HBV76IJU.js";
 
 // src/terra-ui-components-autoloader.ts
 init_dirname();

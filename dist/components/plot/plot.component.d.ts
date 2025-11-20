@@ -1,9 +1,9 @@
 import TerraElement from '../../internal/terra-element.js';
 import type { CSSResultGroup } from 'lit';
-import { type Data, type Layout, type Config, type PlotlyHTMLElement } from 'plotly.js-dist-min';
+import * as Plotly from 'plotly.js-dist-min';
 /**
  * @summary A web component for interactive graphs using Plotly.js.
- * @documentation https://disc.gsfc.nasa.gov/components/plot
+ * @documentation https://terra-ui.netlify.app/components/plot
  * @status experimental
  * @since 1.0
  *
@@ -12,11 +12,15 @@ import { type Data, type Layout, type Config, type PlotlyHTMLElement } from 'plo
 export default class TerraPlot extends TerraElement {
     #private;
     static styles: CSSResultGroup;
-    base: PlotlyHTMLElement;
+    base: Plotly.PlotlyHTMLElement;
     plotTitle?: string;
-    layout?: Partial<Layout>;
-    config?: Partial<Config>;
-    data: Array<Partial<Data>>;
+    layout?: Partial<Plotly.Layout>;
+    config?: Partial<Plotly.Config>;
+    data: Array<Partial<Plotly.Data>>;
+    /**
+     * Optional: Colors to assign to each time series line
+     */
+    colors: string[];
     handleDataChange(): void;
     firstUpdated(): void;
     disconnectedCallback(): void;

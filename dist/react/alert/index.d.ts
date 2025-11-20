@@ -10,9 +10,9 @@ export type { TerraHideEvent } from '../../events/events.js';
 export type { TerraAfterHideEvent } from '../../events/events.js';
 /**
  * @summary Alerts are used to display important messages inline or as toast notifications.
- * @documentation https://shoelace.style/components/alert
+ * @documentation https://terra-ui.netlify.app/components/alert
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @slot - The alert's main content.
  *

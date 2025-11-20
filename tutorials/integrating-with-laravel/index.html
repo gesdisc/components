@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en" data-layout="default" data-terra-ui-components-version="0.0.64">
+<html lang="en" data-layout="default" data-terra-ui-components-version="0.0.111">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="This page explains how to integrate Shoelace with a Laravel app." />
+    <meta name="description" content="This page explains how to integrate Terra with a Laravel app." />
     <title>Integrating with Laravel</title>
 
     <meta name="turbo-cache-control" />
@@ -16,12 +16,12 @@
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:creator" content="nasa_terra-ui" />
-    <meta name="twitter:image" content="https://disc.gsfc.nasa.gov/components/assets/images/og-image.png" />
+    <meta name="twitter:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
 
-    <meta property="og:url" content="https://disc.gsfc.nasa.gov/tutorials/integrating-with-laravel/" />
+    <meta property="og:url" content="https://terra-ui.netlify.app/tutorials/integrating-with-laravel/" />
     <meta property="og:title" content="Integrating with Laravel" />
-    <meta property="og:description" content="This page explains how to integrate Shoelace with a Laravel app." />
-    <meta property="og:image" content="https://disc.gsfc.nasa.gov/components/assets/images/og-image.png" />
+    <meta property="og:description" content="This page explains how to integrate Terra with a Laravel app." />
+    <meta property="og:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
 
     <link rel="stylesheet" href="/dist/themes/horizon.css" />
     <script type="module" src="/dist/terra-ui-components-autoloader.js"></script>
@@ -61,6 +61,173 @@
       Skip to main content
     </a>
 
+    <header id="top-nav" class="top-nav">
+      <div class="top-nav__left">
+        <a href="/" class="top-nav__logo">
+          <terra-icon name="nasa-logo" font-size="4rem"></terra-icon>
+          <span class="top-nav__title">Terra UI</span>
+        </a>
+      </div>
+
+      <div class="top-nav__right">
+        <terra-dropdown id="about-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="About"> About </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="project-overview">
+              <a href="/components/">Project Overview</a>
+            </terra-menu-item>
+            <terra-menu-item value="contributing">
+              <a href="/components/about/contributing">Contributing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="getting-started-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Getting Started">
+            Getting Started
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="installation">
+              <a href="/components/getting-started/installation">Installation</a>
+            </terra-menu-item>
+            <terra-menu-item value="usage">
+              <a href="/components/getting-started/usage">Usage</a>
+            </terra-menu-item>
+            <terra-menu-item value="themes">
+              <a href="/components/getting-started/themes">Themes</a>
+            </terra-menu-item>
+            <terra-menu-item value="customizing">
+              <a href="/components/getting-started/customizing">Customizing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <terra-dropdown id="frameworks-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Frameworks">
+            Frameworks
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="react">
+              <a href="/components/frameworks/react">React</a>
+            </terra-menu-item>
+            <terra-menu-item value="vue">
+              <a href="/components/frameworks/vue">Vue</a>
+            </terra-menu-item>
+            <terra-menu-item value="angular">
+              <a href="/components/frameworks/angular">Angular</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <button
+          class="top-nav__search"
+          type="button"
+          title="Press / to search"
+          aria-label="Search"
+          data-plugin="search"
+        >
+          <sl-icon name="search"></sl-icon>
+        </button>
+        <a
+          href="https://github.com/nasa/terra-ui-components"
+          title="View Terra UI Components on GitHub"
+          class="top-nav__icon-link external-link"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <sl-icon name="github"></sl-icon>
+        </a>
+        <terra-dropdown id="environment-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Environment"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <span id="environment-display">UAT</span>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="uat"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >UAT</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="prod"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >PROD</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="theme-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Press \ to toggle"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
+            <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="light"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Light</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="dark"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Dark</terra-menu-item
+            >
+            <hr
+              role="separator"
+              aria-orientation="horizontal"
+              style="
+                margin: var(--terra-spacing-x-small) 0;
+                border: none;
+                border-top: 1px solid var(--terra-panel-border-color);
+              "
+            />
+            <terra-menu-item
+              type="checkbox"
+              value="auto"
+              tabindex="0"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >System</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+      </div>
+    </header>
+
     <button id="menu-toggle" type="button" aria-label="Menu">
       <svg width="148" height="148" viewBox="0 0 148 148" xmlns="http://www.w3.org/2000/svg">
         <g stroke="currentColor" stroke-width="18" fill="none" fill-rule="evenodd" stroke-linecap="round">
@@ -69,108 +236,7 @@
       </svg>
     </button>
 
-    <div id="icon-toolbar">
-      <a
-        href="https://github.com/nasa/terra-ui-components"
-        title="View Terra UI Components on GitHub"
-        class="external-link"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <sl-icon name="github"></sl-icon>
-      </a>
-      <sl-dropdown id="environment-selector" placement="bottom-end" distance="3">
-        <terra-button
-          slot="trigger"
-          size="large"
-          variant="text"
-          caret=""
-          title="Environment"
-          data-optional=""
-          data-valid=""
-          data-user-valid=""
-        >
-          <span id="environment-display">UAT</span>
-        </terra-button>
-        <sl-menu role="menu">
-          <sl-menu-item
-            type="checkbox"
-            value="uat"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="true"
-            aria-disabled="false"
-            checked=""
-            >UAT</sl-menu-item
-          >
-          <sl-menu-item
-            type="checkbox"
-            value="prod"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >PROD</sl-menu-item
-          >
-        </sl-menu>
-      </sl-dropdown>
-      <sl-dropdown id="theme-selector" placement="bottom-end" distance="3">
-        <terra-button
-          slot="trigger"
-          size="large"
-          variant="text"
-          caret=""
-          title="Press \ to toggle"
-          data-optional=""
-          data-valid=""
-          data-user-valid=""
-        >
-          <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
-          <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
-        </terra-button>
-        <sl-menu role="menu">
-          <sl-menu-item
-            type="checkbox"
-            value="light"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >Light</sl-menu-item
-          >
-          <sl-menu-item
-            type="checkbox"
-            value="dark"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >Dark</sl-menu-item
-          >
-          <sl-divider role="separator" aria-orientation="horizontal"></sl-divider>
-          <sl-menu-item
-            type="checkbox"
-            value="auto"
-            tabindex="0"
-            role="menuitemcheckbox"
-            aria-checked="true"
-            aria-disabled="false"
-            checked=""
-            >System</sl-menu-item
-          >
-        </sl-menu>
-      </sl-dropdown>
-    </div>
-
     <aside id="sidebar" data-preserve-scroll="">
-      <header>
-        <a href="/" class="sidebar-logo">
-          <img src="/components/assets/images/logo.svg" alt="Terra UI Components" />
-          Terra UI Components
-        </a>
-        <div class="sidebar-version">0.0.64</div>
-      </header>
-
       <div class="sidebar-buttons">
         <terra-button
           size="small"
@@ -190,47 +256,146 @@
         </terra-button>
       </div>
 
-      <button class="search-box" type="button" title="Press / to search" aria-label="Search" data-plugin="search">
-        <sl-icon name="search"></sl-icon>
-        <span>Search</span>
-      </button>
-
       <nav>
         <ul>
           <li>
-            <h2>Getting Started</h2>
+            <h2>Design System</h2>
             <ul>
               <li>
-                <a href="/components/">Home</a>
+                <a href="/components/horizon-design-system">Overview</a>
               </li>
               <li>
-                <a href="/components/getting-started/installation">Installation</a>
+                <a href="/components/tokens/typography">Typography</a>
               </li>
               <li>
-                <a href="/components/getting-started/usage">Usage</a>
+                <a href="/components/tokens/color">Color</a>
               </li>
               <li>
-                <a href="/components/getting-started/themes">Themes</a>
+                <a href="/components/tokens/spacing">Spacing</a>
               </li>
               <li>
-                <a href="/components/getting-started/customizing">Customizing</a>
+                <a href="/components/tokens/elevation">Elevation</a>
+              </li>
+              <li>
+                <a href="/components/tokens/border-radius">Border Radius</a>
+              </li>
+              <li>
+                <a href="/components/tokens/transition">Transition</a>
+              </li>
+              <li>
+                <a href="/components/tokens/z-index">Z-index</a>
+              </li>
+              <li>
+                <a href="/components/tokens/more">More Tokens</a>
+              </li>
+              <li>
+                <a href="/components/horizon-design-system/#adoption-status">HDS Adoption Status</a>
               </li>
             </ul>
           </li>
+
           <li>
-            <h2>Frameworks</h2>
+            <h2>Forms</h2>
             <ul>
               <li>
-                <a href="/components/frameworks/react">React</a>
-              </li>
-              <li>
-                <a href="/components/frameworks/vue">Vue</a>
-              </li>
-              <li>
-                <a href="/components/frameworks/angular">Angular</a>
+                <a href="/components/forms">Overview</a>
               </li>
             </ul>
           </li>
+
+          <li>
+            <h2>Elements</h2>
+            <ul>
+              <li>
+                <a href="/components/alert"> Alert </a>
+              </li>
+
+              <li>
+                <a href="/components/avatar"> Avatar </a>
+              </li>
+
+              <li>
+                <a href="/components/button"> Button </a>
+              </li>
+
+              <li>
+                <a href="/components/caption"> Caption </a>
+              </li>
+
+              <li>
+                <a href="/components/checkbox"> Checkbox </a>
+              </li>
+
+              <li>
+                <a href="/components/chip"> Chip </a>
+              </li>
+
+              <li>
+                <a href="/components/date-picker"> Date Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/file-upload"> File Upload </a>
+              </li>
+
+              <li>
+                <a href="/components/icon"> Icon </a>
+              </li>
+
+              <li>
+                <a href="/components/input"> Input </a>
+              </li>
+
+              <li>
+                <a href="/components/loader"> Loader </a>
+              </li>
+
+              <li>
+                <a href="/components/option"> Option </a>
+              </li>
+
+              <li>
+                <a href="/components/pagination"> Pagination </a>
+              </li>
+
+              <li>
+                <a href="/components/radio"> Radio </a>
+              </li>
+
+              <li>
+                <a href="/components/radio-group"> Radio Group </a>
+              </li>
+
+              <li>
+                <a href="/components/scroll-hint"> Scroll Hint </a>
+              </li>
+
+              <li>
+                <a href="/components/select"> Select </a>
+              </li>
+
+              <li>
+                <a href="/components/slider"> Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/status-indicator"> Status Indicator </a>
+              </li>
+
+              <li>
+                <a href="/components/tag"> Tag </a>
+              </li>
+
+              <li>
+                <a href="/components/textarea"> Textarea </a>
+              </li>
+
+              <li>
+                <a href="/components/toggle"> Toggle </a>
+              </li>
+            </ul>
+          </li>
+
           <li>
             <h2>Components</h2>
             <ul>
@@ -239,23 +404,15 @@
               </li>
 
               <li>
-                <a href="/components/alert"> Alert </a>
-              </li>
-
-              <li>
                 <a href="/components/browse-variables"> Browse Variables </a>
               </li>
 
               <li>
-                <a href="/components/button"> Button </a>
-              </li>
-
-              <li>
-                <a href="/components/chip"> Chip </a>
-              </li>
-
-              <li>
                 <a href="/components/combobox"> Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/data-access"> Data Access </a>
               </li>
 
               <li>
@@ -271,10 +428,6 @@
               </li>
 
               <li>
-                <a href="/components/date-picker"> Date Picker </a>
-              </li>
-
-              <li>
                 <a href="/components/date-range-slider"> Date Range Slider </a>
               </li>
 
@@ -283,11 +436,7 @@
               </li>
 
               <li>
-                <a href="/components/icon"> Icon </a>
-              </li>
-
-              <li>
-                <a href="/components/loader"> Loader </a>
+                <a href="/components/dropdown"> Dropdown </a>
               </li>
 
               <li>
@@ -299,11 +448,23 @@
               </li>
 
               <li>
+                <a href="/components/menu"> Menu </a>
+              </li>
+
+              <li>
+                <a href="/components/menu-item"> Menu Item </a>
+              </li>
+
+              <li>
                 <a href="/components/plot"> Plot </a>
               </li>
 
               <li>
                 <a href="/components/plot-toolbar"> Plot Toolbar </a>
+              </li>
+
+              <li>
+                <a href="/components/popup"> Popup </a>
               </li>
 
               <li>
@@ -345,12 +506,12 @@
             </li>
             <li data-level="2"><a href="#requirements">Requirements</a></li>
             <li data-level="2"><a href="#instructions">Instructions</a></li>
-            <li data-level="3"><a href="#install-the-shoelace-package">Install the Shoelace package</a></li>
+            <li data-level="3"><a href="#install-the-terra-package">Install the Terra package</a></li>
             <li data-level="3"><a href="#import-the-default-theme">Import the Default Theme</a></li>
-            <li data-level="3"><a href="#import-your-shoelace-components">Import Your Shoelace Components</a></li>
+            <li data-level="3"><a href="#import-your-terra-components">Import Your Terra Components</a></li>
             <li data-level="3">
-              <a href="#copy-the-shoelace-static-assets-icons-images-etc_-to-a-public-folder"
-                >Copy the Shoelace Static Assets (icons, images, etc.) to a Public Folder</a
+              <a href="#copy-the-terra-static-assets-icons-images-etc_-to-a-public-folder"
+                >Copy the Terra Static Assets (icons, images, etc.) to a Public Folder</a
               >
             </li>
             <li data-level="3"><a href="#set-the-base-path">Set the Base Path</a></li>
@@ -365,7 +526,7 @@
         <div class="content__body">
           <h1>Integrating with Laravel</h1>
           <p>
-            This page explains how to integrate Shoelace with a
+            This page explains how to integrate Terra with a
             <a href="https://laravel.com" class="external-link" rel="noopener noreferrer" target="_blank">Laravel 9</a>
             app using Vite. For additional details refer to the
             <a href="https://laravel.com/docs/9.x/vite" class="external-link" rel="noopener noreferrer" target="_blank"
@@ -410,34 +571,34 @@
             that uses
             <a href="https://vitejs.dev/" class="external-link" rel="noopener noreferrer" target="_blank">Vite</a> to
             bundle assets. Be sure to run <code>npm install</code> to install the default Laravel front-end dependencies
-            before installing Shoelace.
+            before installing Terra.
           </p>
-          <h3 id="install-the-shoelace-package" class="anchor-heading">
-            Install the Shoelace package<a
-              href="#install-the-shoelace-package"
-              aria-label='Direct link to "Install the Shoelace package"'
+          <h3 id="install-the-terra-package" class="anchor-heading">
+            Install the Terra package<a
+              href="#install-the-terra-package"
+              aria-label='Direct link to "Install the Terra package"'
             ></a>
           </h3>
-          <pre><code class="language-bash" id="code-block-96"><span class="token function">npm</span> <span class="token function">install</span> @nasa-terra/components
-</code><sl-copy-button class="copy-code-button" from="code-block-96"></sl-copy-button></pre>
+          <pre><code class="language-bash" id="code-block-149"><span class="token function">npm</span> <span class="token function">install</span> @nasa-terra/components
+</code><sl-copy-button class="copy-code-button" from="code-block-149"></sl-copy-button></pre>
           <h3 id="import-the-default-theme" class="anchor-heading">
             Import the Default Theme<a
               href="#import-the-default-theme"
               aria-label='Direct link to "Import the Default Theme"'
             ></a>
           </h3>
-          <p>Import the Shoelace default theme (stylesheet) in <code>/resources/css/app.css</code>:</p>
-          <pre><code class="language-css" id="code-block-97"><span class="token atrule"><span class="token rule">@import</span> <span class="token string">'/node_modules/@nasa-terra/components/dist/themes/light.css'</span><span class="token punctuation">;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-97"></sl-copy-button></pre>
-          <h3 id="import-your-shoelace-components" class="anchor-heading">
-            Import Your Shoelace Components<a
-              href="#import-your-shoelace-components"
-              aria-label='Direct link to "Import Your Shoelace Components"'
+          <p>Import the Terra default theme (stylesheet) in <code>/resources/css/app.css</code>:</p>
+          <pre><code class="language-css" id="code-block-150"><span class="token atrule"><span class="token rule">@import</span> <span class="token string">'/node_modules/@nasa-terra/components/dist/themes/light.css'</span><span class="token punctuation">;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-150"></sl-copy-button></pre>
+          <h3 id="import-your-terra-components" class="anchor-heading">
+            Import Your Terra Components<a
+              href="#import-your-terra-components"
+              aria-label='Direct link to "Import Your Terra Components"'
             ></a>
           </h3>
           <p>
-            Import each Shoelace component you plan to use in <code>/resources/js/bootstrap.js</code>. Use the full path
-            to each component (as outlined in the
+            Import each Terra component you plan to use in <code>/resources/js/bootstrap.js</code>. Use the full path to
+            each component (as outlined in the
             <a
               href="https://shoelace.style/getting-started/installation#cherry-picking"
               class="external-link"
@@ -447,41 +608,41 @@
             >). You can find the full import statement for a component in the <em>Importing</em> section of the
             component’s documentation (use the <em>Bundler</em> import). Your imports should look similar to:
           </p>
-          <pre><code class="language-js" id="code-block-98"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/button/button.js'</span>
+          <pre><code class="language-js" id="code-block-151"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/button/button.js'</span>
 <span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/icon/icon.js'</span>
 <span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/dialog/dialog.js'</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-98"></sl-copy-button></pre>
-          <h3 id="copy-the-shoelace-static-assets-icons-images-etc_-to-a-public-folder" class="anchor-heading">
-            Copy the Shoelace Static Assets (icons, images, etc.) to a Public Folder<a
-              href="#copy-the-shoelace-static-assets-icons-images-etc_-to-a-public-folder"
-              aria-label='Direct link to "Copy the Shoelace Static Assets (icons, images, etc.) to a Public Folder"'
+</code><sl-copy-button class="copy-code-button" from="code-block-151"></sl-copy-button></pre>
+          <h3 id="copy-the-terra-static-assets-icons-images-etc_-to-a-public-folder" class="anchor-heading">
+            Copy the Terra Static Assets (icons, images, etc.) to a Public Folder<a
+              href="#copy-the-terra-static-assets-icons-images-etc_-to-a-public-folder"
+              aria-label='Direct link to "Copy the Terra Static Assets (icons, images, etc.) to a Public Folder"'
             ></a>
           </h3>
           <p>
             Since Vite has no way to copy arbitrary assets into your build (like webpack), you need to manually copy the
-            Shoelace static assets to your project’s public folder. Run this command from your project’s root directory
-            to copy the Shoelace static assets to the <code>./public/assets</code> folder:
+            Terra static assets to your project’s public folder. Run this command from your project’s root directory to
+            copy the Terra static assets to the <code>./public/assets</code> folder:
           </p>
-          <pre><code class="language-sh" id="code-block-99"><span class="token function">cp</span> <span class="token parameter variable">-aR</span> node_modules/@nasa-terra/components/dist/assets/ ./public/assets
-</code><sl-copy-button class="copy-code-button" from="code-block-99"></sl-copy-button></pre>
+          <pre><code class="language-sh" id="code-block-152"><span class="token function">cp</span> <span class="token parameter variable">-aR</span> node_modules/@nasa-terra/components/dist/assets/ ./public/assets
+</code><sl-copy-button class="copy-code-button" from="code-block-152"></sl-copy-button></pre>
           <h3 id="set-the-base-path" class="anchor-heading">
             Set the Base Path<a href="#set-the-base-path" aria-label='Direct link to "Set the Base Path"'></a>
           </h3>
           <p>
-            Add the base path to your Shoelace assets (icons, images, etc.) in <code>/resources/js/bootstrap.js</code>.
-            The path must point to the same folder where you copy assets to in the next step.
+            Add the base path to your Terra assets (icons, images, etc.) in <code>/resources/js/bootstrap.js</code>. The
+            path must point to the same folder where you copy assets to in the next step.
           </p>
-          <pre><code class="language-js" id="code-block-100"><span class="token keyword">import</span> <span class="token punctuation">{</span> setBasePath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/utilities/base-path.js'</span>
+          <pre><code class="language-js" id="code-block-153"><span class="token keyword">import</span> <span class="token punctuation">{</span> setBasePath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/utilities/base-path.js'</span>
 <span class="token function">setBasePath</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-100"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-153"></sl-copy-button></pre>
           <p>Example <code>/resources/js/bootstrap.js</code> file:</p>
-          <pre><code class="language-js" id="code-block-101"><span class="token keyword">import</span> <span class="token punctuation">{</span> setBasePath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/utilities/base-path.js'</span>
+          <pre><code class="language-js" id="code-block-154"><span class="token keyword">import</span> <span class="token punctuation">{</span> setBasePath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/utilities/base-path.js'</span>
 <span class="token function">setBasePath</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
 
 <span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/button/button.js'</span>
 <span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/icon/icon.js'</span>
 <span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/dialog/dialog.js'</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-101"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-154"></sl-copy-button></pre>
           <h3 id="verify-vite-entry-points" class="anchor-heading">
             Verify Vite Entry Points<a
               href="#verify-vite-entry-points"
@@ -493,13 +654,13 @@
             <code>resources/css/app.css</code> and <code>resources/js/app.js</code>. If you use a different location for
             your CSS and/or Javascript entry point, update this configuration to accordingly.
           </p>
-          <pre><code class="language-js" id="code-block-102"><span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+          <pre><code class="language-js" id="code-block-155"><span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
         <span class="token function">laravel</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
             <span class="token literal-property property">input</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"resources/css/app.css"</span><span class="token punctuation">,</span> <span class="token string">"resources/js/app.js"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
             <span class="token literal-property property">refresh</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-102"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-155"></sl-copy-button></pre>
           <h3 id="compile-front-end-assets" class="anchor-heading">
             Compile Front-End Assets<a
               href="#compile-front-end-assets"
@@ -507,12 +668,12 @@
             ></a>
           </h3>
           <p>Run the Vite development server or production build.</p>
-          <pre><code class="language-bash" id="code-block-103"><span class="token comment">## run the Vite development bundle</span>
+          <pre><code class="language-bash" id="code-block-156"><span class="token comment">## run the Vite development bundle</span>
 <span class="token function">npm</span> run dev
 
 <span class="token comment">## build a production bundle (with versioning)</span>
 <span class="token function">npm</span> run build
-</code><sl-copy-button class="copy-code-button" from="code-block-103"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-156"></sl-copy-button></pre>
           <h3 id="include-front-end-assets-in-your-layout-file" class="anchor-heading">
             Include Front-End Assets in Your Layout File<a
               href="#include-front-end-assets-in-your-layout-file"
@@ -523,11 +684,11 @@
             Add the <code>@vite()</code> Blade directive to the <code>&lt;head&gt;</code> of your application’s root
             template.
           </p>
-          <pre><code class="language-html" id="code-block-104"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+          <pre><code class="language-html" id="code-block-157"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
     ... @vite(['resources/css/app.css', 'resources/js/app.js'])
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-104"></sl-copy-button></pre>
-          <p>Have fun using Shoelace components in your Laravel app!</p>
+</code><sl-copy-button class="copy-code-button" from="code-block-157"></sl-copy-button></pre>
+          <p>Have fun using Terra components in your Laravel app!</p>
         </div>
       </article>
     </main>

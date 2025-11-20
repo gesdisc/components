@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-layout="component" data-terra-ui-components-version="0.0.64">
+<html lang="en" data-layout="component" data-terra-ui-components-version="0.0.111">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,15 +19,15 @@
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:creator" content="nasa_terra-ui" />
-    <meta name="twitter:image" content="https://disc.gsfc.nasa.gov/components/assets/images/og-image.png" />
+    <meta name="twitter:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
 
-    <meta property="og:url" content="https://disc.gsfc.nasa.gov/components/icon/" />
+    <meta property="og:url" content="https://terra-ui.netlify.app/components/icon/" />
     <meta property="og:title" content="Icon" />
     <meta
       property="og:description"
       content="Icons are symbols that can be used to represent various options within an application."
     />
-    <meta property="og:image" content="https://disc.gsfc.nasa.gov/components/assets/images/og-image.png" />
+    <meta property="og:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
 
     <link rel="stylesheet" href="/dist/themes/horizon.css" />
     <script type="module" src="/dist/terra-ui-components-autoloader.js"></script>
@@ -67,6 +67,173 @@
       Skip to main content
     </a>
 
+    <header id="top-nav" class="top-nav">
+      <div class="top-nav__left">
+        <a href="/" class="top-nav__logo">
+          <terra-icon name="nasa-logo" font-size="4rem"></terra-icon>
+          <span class="top-nav__title">Terra UI</span>
+        </a>
+      </div>
+
+      <div class="top-nav__right">
+        <terra-dropdown id="about-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="About"> About </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="project-overview">
+              <a href="/components/">Project Overview</a>
+            </terra-menu-item>
+            <terra-menu-item value="contributing">
+              <a href="/components/about/contributing">Contributing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="getting-started-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Getting Started">
+            Getting Started
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="installation">
+              <a href="/components/getting-started/installation">Installation</a>
+            </terra-menu-item>
+            <terra-menu-item value="usage">
+              <a href="/components/getting-started/usage">Usage</a>
+            </terra-menu-item>
+            <terra-menu-item value="themes">
+              <a href="/components/getting-started/themes">Themes</a>
+            </terra-menu-item>
+            <terra-menu-item value="customizing">
+              <a href="/components/getting-started/customizing">Customizing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <terra-dropdown id="frameworks-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Frameworks">
+            Frameworks
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="react">
+              <a href="/components/frameworks/react">React</a>
+            </terra-menu-item>
+            <terra-menu-item value="vue">
+              <a href="/components/frameworks/vue">Vue</a>
+            </terra-menu-item>
+            <terra-menu-item value="angular">
+              <a href="/components/frameworks/angular">Angular</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <button
+          class="top-nav__search"
+          type="button"
+          title="Press / to search"
+          aria-label="Search"
+          data-plugin="search"
+        >
+          <sl-icon name="search"></sl-icon>
+        </button>
+        <a
+          href="https://github.com/nasa/terra-ui-components"
+          title="View Terra UI Components on GitHub"
+          class="top-nav__icon-link external-link"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <sl-icon name="github"></sl-icon>
+        </a>
+        <terra-dropdown id="environment-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Environment"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <span id="environment-display">UAT</span>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="uat"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >UAT</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="prod"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >PROD</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="theme-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Press \ to toggle"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
+            <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="light"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Light</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="dark"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Dark</terra-menu-item
+            >
+            <hr
+              role="separator"
+              aria-orientation="horizontal"
+              style="
+                margin: var(--terra-spacing-x-small) 0;
+                border: none;
+                border-top: 1px solid var(--terra-panel-border-color);
+              "
+            />
+            <terra-menu-item
+              type="checkbox"
+              value="auto"
+              tabindex="0"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >System</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+      </div>
+    </header>
+
     <button id="menu-toggle" type="button" aria-label="Menu">
       <svg width="148" height="148" viewBox="0 0 148 148" xmlns="http://www.w3.org/2000/svg">
         <g stroke="currentColor" stroke-width="18" fill="none" fill-rule="evenodd" stroke-linecap="round">
@@ -75,108 +242,7 @@
       </svg>
     </button>
 
-    <div id="icon-toolbar">
-      <a
-        href="https://github.com/nasa/terra-ui-components"
-        title="View Terra UI Components on GitHub"
-        class="external-link"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <sl-icon name="github"></sl-icon>
-      </a>
-      <sl-dropdown id="environment-selector" placement="bottom-end" distance="3">
-        <terra-button
-          slot="trigger"
-          size="large"
-          variant="text"
-          caret=""
-          title="Environment"
-          data-optional=""
-          data-valid=""
-          data-user-valid=""
-        >
-          <span id="environment-display">UAT</span>
-        </terra-button>
-        <sl-menu role="menu">
-          <sl-menu-item
-            type="checkbox"
-            value="uat"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="true"
-            aria-disabled="false"
-            checked=""
-            >UAT</sl-menu-item
-          >
-          <sl-menu-item
-            type="checkbox"
-            value="prod"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >PROD</sl-menu-item
-          >
-        </sl-menu>
-      </sl-dropdown>
-      <sl-dropdown id="theme-selector" placement="bottom-end" distance="3">
-        <terra-button
-          slot="trigger"
-          size="large"
-          variant="text"
-          caret=""
-          title="Press \ to toggle"
-          data-optional=""
-          data-valid=""
-          data-user-valid=""
-        >
-          <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
-          <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
-        </terra-button>
-        <sl-menu role="menu">
-          <sl-menu-item
-            type="checkbox"
-            value="light"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >Light</sl-menu-item
-          >
-          <sl-menu-item
-            type="checkbox"
-            value="dark"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >Dark</sl-menu-item
-          >
-          <sl-divider role="separator" aria-orientation="horizontal"></sl-divider>
-          <sl-menu-item
-            type="checkbox"
-            value="auto"
-            tabindex="0"
-            role="menuitemcheckbox"
-            aria-checked="true"
-            aria-disabled="false"
-            checked=""
-            >System</sl-menu-item
-          >
-        </sl-menu>
-      </sl-dropdown>
-    </div>
-
     <aside id="sidebar" data-preserve-scroll="">
-      <header>
-        <a href="/" class="sidebar-logo">
-          <img src="/components/assets/images/logo.svg" alt="Terra UI Components" />
-          Terra UI Components
-        </a>
-        <div class="sidebar-version">0.0.64</div>
-      </header>
-
       <div class="sidebar-buttons">
         <terra-button
           size="small"
@@ -196,47 +262,146 @@
         </terra-button>
       </div>
 
-      <button class="search-box" type="button" title="Press / to search" aria-label="Search" data-plugin="search">
-        <sl-icon name="search"></sl-icon>
-        <span>Search</span>
-      </button>
-
       <nav>
         <ul>
           <li>
-            <h2>Getting Started</h2>
+            <h2>Design System</h2>
             <ul>
               <li>
-                <a href="/components/">Home</a>
+                <a href="/components/horizon-design-system">Overview</a>
               </li>
               <li>
-                <a href="/components/getting-started/installation">Installation</a>
+                <a href="/components/tokens/typography">Typography</a>
               </li>
               <li>
-                <a href="/components/getting-started/usage">Usage</a>
+                <a href="/components/tokens/color">Color</a>
               </li>
               <li>
-                <a href="/components/getting-started/themes">Themes</a>
+                <a href="/components/tokens/spacing">Spacing</a>
               </li>
               <li>
-                <a href="/components/getting-started/customizing">Customizing</a>
+                <a href="/components/tokens/elevation">Elevation</a>
+              </li>
+              <li>
+                <a href="/components/tokens/border-radius">Border Radius</a>
+              </li>
+              <li>
+                <a href="/components/tokens/transition">Transition</a>
+              </li>
+              <li>
+                <a href="/components/tokens/z-index">Z-index</a>
+              </li>
+              <li>
+                <a href="/components/tokens/more">More Tokens</a>
+              </li>
+              <li>
+                <a href="/components/horizon-design-system/#adoption-status">HDS Adoption Status</a>
               </li>
             </ul>
           </li>
+
           <li>
-            <h2>Frameworks</h2>
+            <h2>Forms</h2>
             <ul>
               <li>
-                <a href="/components/frameworks/react">React</a>
-              </li>
-              <li>
-                <a href="/components/frameworks/vue">Vue</a>
-              </li>
-              <li>
-                <a href="/components/frameworks/angular">Angular</a>
+                <a href="/components/forms">Overview</a>
               </li>
             </ul>
           </li>
+
+          <li>
+            <h2>Elements</h2>
+            <ul>
+              <li>
+                <a href="/components/alert"> Alert </a>
+              </li>
+
+              <li>
+                <a href="/components/avatar"> Avatar </a>
+              </li>
+
+              <li>
+                <a href="/components/button"> Button </a>
+              </li>
+
+              <li>
+                <a href="/components/caption"> Caption </a>
+              </li>
+
+              <li>
+                <a href="/components/checkbox"> Checkbox </a>
+              </li>
+
+              <li>
+                <a href="/components/chip"> Chip </a>
+              </li>
+
+              <li>
+                <a href="/components/date-picker"> Date Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/file-upload"> File Upload </a>
+              </li>
+
+              <li>
+                <a href="/components/icon" class="active-link"> Icon </a>
+              </li>
+
+              <li>
+                <a href="/components/input"> Input </a>
+              </li>
+
+              <li>
+                <a href="/components/loader"> Loader </a>
+              </li>
+
+              <li>
+                <a href="/components/option"> Option </a>
+              </li>
+
+              <li>
+                <a href="/components/pagination"> Pagination </a>
+              </li>
+
+              <li>
+                <a href="/components/radio"> Radio </a>
+              </li>
+
+              <li>
+                <a href="/components/radio-group"> Radio Group </a>
+              </li>
+
+              <li>
+                <a href="/components/scroll-hint"> Scroll Hint </a>
+              </li>
+
+              <li>
+                <a href="/components/select"> Select </a>
+              </li>
+
+              <li>
+                <a href="/components/slider"> Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/status-indicator"> Status Indicator </a>
+              </li>
+
+              <li>
+                <a href="/components/tag"> Tag </a>
+              </li>
+
+              <li>
+                <a href="/components/textarea"> Textarea </a>
+              </li>
+
+              <li>
+                <a href="/components/toggle"> Toggle </a>
+              </li>
+            </ul>
+          </li>
+
           <li>
             <h2>Components</h2>
             <ul>
@@ -245,23 +410,15 @@
               </li>
 
               <li>
-                <a href="/components/alert"> Alert </a>
-              </li>
-
-              <li>
                 <a href="/components/browse-variables"> Browse Variables </a>
               </li>
 
               <li>
-                <a href="/components/button"> Button </a>
-              </li>
-
-              <li>
-                <a href="/components/chip"> Chip </a>
-              </li>
-
-              <li>
                 <a href="/components/combobox"> Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/data-access"> Data Access </a>
               </li>
 
               <li>
@@ -277,10 +434,6 @@
               </li>
 
               <li>
-                <a href="/components/date-picker"> Date Picker </a>
-              </li>
-
-              <li>
                 <a href="/components/date-range-slider"> Date Range Slider </a>
               </li>
 
@@ -289,11 +442,7 @@
               </li>
 
               <li>
-                <a href="/components/icon" class="active-link"> Icon </a>
-              </li>
-
-              <li>
-                <a href="/components/loader"> Loader </a>
+                <a href="/components/dropdown"> Dropdown </a>
               </li>
 
               <li>
@@ -305,11 +454,23 @@
               </li>
 
               <li>
+                <a href="/components/menu"> Menu </a>
+              </li>
+
+              <li>
+                <a href="/components/menu-item"> Menu Item </a>
+              </li>
+
+              <li>
                 <a href="/components/plot"> Plot </a>
               </li>
 
               <li>
                 <a href="/components/plot-toolbar"> Plot Toolbar </a>
+              </li>
+
+              <li>
+                <a href="/components/popup"> Popup </a>
               </li>
 
               <li>
@@ -440,9 +601,9 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-57">
+            <div class="code-preview__source-group" id="code-preview-source-group-123">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-237">
+                <pre><code class="language-html" id="code-block-363">
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">font-size</span><span class="token punctuation">:</span>4em<span class="token punctuation">;</span><span class="token property">display</span><span class="token punctuation">:</span>flex<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">color</span><span class="token punctuation">:</span>#1C67E3<span class="token punctuation">;</span><span class="token property">font-size</span><span class="token punctuation">:</span>2rem<span class="token punctuation">;</span><span class="token property">display</span><span class="token punctuation">:</span>flex<span class="token punctuation">;</span><span class="token property">align-items</span><span class="token punctuation">:</span>center<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>solid-rocket-launch<span class="token punctuation">"</span></span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>heroicons<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
@@ -455,7 +616,7 @@
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
 
-</code><sl-copy-button class="copy-code-button" from="code-block-237"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-363"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -464,7 +625,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-57"
+                aria-controls="code-preview-source-group-123"
               >
                 Source
                 <svg
@@ -526,14 +687,14 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-58">
+            <div class="code-preview__source-group" id="code-preview-source-group-124">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-238"><span class="token comment">&lt;!-- `library="default"` not required --&gt;</span>
+                <pre><code class="language-html" id="code-block-364"><span class="token comment">&lt;!-- `library="default"` not required --&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>caret<span class="token punctuation">"</span></span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>default<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>chevron-left-circle<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>arrow-right-circle<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>asteroid<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-238"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-364"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -542,7 +703,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-58"
+                aria-controls="code-preview-source-group-124"
               >
                 Source
                 <svg
@@ -593,14 +754,14 @@
             provide all of the icons that are required by components. You can reference
             <code>src/components/library.default.ts</code> for a complete list of system icons used by Terra UI.
           </p>
-          <pre><code class="language-html" id="code-block-239"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+          <pre><code class="language-html" id="code-block-365"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
     <span class="token keyword">import</span> <span class="token punctuation">{</span> registerIconLibrary <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'/dist/utilities/icon-library.js'</span>
 
     <span class="token function">registerIconLibrary</span><span class="token punctuation">(</span><span class="token string">'default'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
         <span class="token function-variable function">resolver</span><span class="token operator">:</span> <span class="token parameter">name</span> <span class="token operator">=&gt;</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/path/to/custom/icons/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.svg</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-239"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-365"></sl-copy-button></pre>
           <h3 id="using-heroicons" class="anchor-heading">
             Using Heroicons<a href="#using-heroicons" aria-label='Direct link to "Using Heroicons"'></a>
           </h3>
@@ -616,11 +777,11 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-59">
+            <div class="code-preview__source-group" id="code-preview-source-group-125">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-240"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outline-academic-cap<span class="token punctuation">"</span></span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>heroicons<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
+                <pre><code class="language-html" id="code-block-366"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outline-academic-cap<span class="token punctuation">"</span></span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>heroicons<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>solid-academic-cap<span class="token punctuation">"</span></span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>heroicons<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-240"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-366"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -629,7 +790,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-59"
+                aria-controls="code-preview-source-group-125"
               >
                 Source
                 <svg
@@ -690,9 +851,9 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-60">
+            <div class="code-preview__source-group" id="code-preview-source-group-126">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-241"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>details</span><span class="token punctuation">&gt;</span></span>
+                <pre><code class="language-html" id="code-block-367"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>details</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>summary</span><span class="token punctuation">&gt;</span></span>Heroicons List<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>summary</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>heroicons-list<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
 
@@ -711,7 +872,7 @@
 
   ul<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> items
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-241"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-367"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -720,7 +881,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-60"
+                aria-controls="code-preview-source-group-126"
               >
                 Source
                 <svg
@@ -769,7 +930,7 @@
             icon library using the <code>heroicons</code> name and a custom resolver.
           </p>
           <p>This example will load the same set of icons from the jsDelivr CDN instead of your local assets folder.</p>
-          <pre><code class="language-html" id="code-block-242"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+          <pre><code class="language-html" id="code-block-368"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
     <span class="token keyword">import</span> <span class="token punctuation">{</span> registerIconLibrary <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'/dist/utilities/icon-library.js'</span>
 
     <span class="token function">registerIconLibrary</span><span class="token punctuation">(</span><span class="token string">'heroicons'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
@@ -777,7 +938,7 @@
             <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">https://cdn.jsdelivr.net/npm/bootstrap-icons@1.0.0/icons/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.svg</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-242"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-368"></sl-copy-button></pre>
           <h3 id="one-off-custom-icons" class="anchor-heading">
             One-Off Custom Icons<a href="#one-off-custom-icons" aria-label='Direct link to "One-Off Custom Icons"'></a>
           </h3>
@@ -796,10 +957,10 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-61">
+            <div class="code-preview__source-group" id="code-preview-source-group-127">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-243"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.earthdata.nasa.gov/tophat2/NASA_logo.svg<span class="token punctuation">"</span></span> <span class="token attr-name">font-size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>18em<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-243"></sl-copy-button></pre>
+                <pre><code class="language-html" id="code-block-369"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.earthdata.nasa.gov/tophat2/NASA_logo.svg<span class="token punctuation">"</span></span> <span class="token attr-name">font-size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>18em<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-369"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -808,7 +969,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-61"
+                aria-controls="code-preview-source-group-127"
               >
                 Source
                 <svg
@@ -862,14 +1023,14 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-62">
+            <div class="code-preview__source-group" id="code-preview-source-group-128">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-244"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outline-academic-cap<span class="token punctuation">"</span></span> <span class="token attr-name">color</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>darkorange<span class="token punctuation">"</span></span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>heroicons<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
+                <pre><code class="language-html" id="code-block-370"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outline-academic-cap<span class="token punctuation">"</span></span> <span class="token attr-name">color</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>darkorange<span class="token punctuation">"</span></span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>heroicons<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">color</span><span class="token punctuation">:</span>rebeccapurple<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>solid-academic-cap<span class="token punctuation">"</span></span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>heroicons<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-244"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-370"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -878,7 +1039,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-62"
+                aria-controls="code-preview-source-group-128"
               >
                 Source
                 <svg
@@ -931,14 +1092,14 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-63">
+            <div class="code-preview__source-group" id="code-preview-source-group-129">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-245"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outline-academic-cap<span class="token punctuation">"</span></span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>heroicons<span class="token punctuation">"</span></span> <span class="token attr-name">font-size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>4em<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
+                <pre><code class="language-html" id="code-block-371"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outline-academic-cap<span class="token punctuation">"</span></span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>heroicons<span class="token punctuation">"</span></span> <span class="token attr-name">font-size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>4em<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">font-size</span><span class="token punctuation">:</span>4em<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>solid-academic-cap<span class="token punctuation">"</span></span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>heroicons<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-245"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-371"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -947,7 +1108,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-63"
+                aria-controls="code-preview-source-group-129"
               >
                 Source
                 <svg
@@ -996,10 +1157,10 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-64">
+            <div class="code-preview__source-group" id="code-preview-source-group-130">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-246"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outline-star<span class="token punctuation">"</span></span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Add to favorites<span class="token punctuation">"</span></span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>heroicons<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-246"></sl-copy-button></pre>
+                <pre><code class="language-html" id="code-block-372"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outline-star<span class="token punctuation">"</span></span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Add to favorites<span class="token punctuation">"</span></span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>heroicons<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-372"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -1008,7 +1169,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-64"
+                aria-controls="code-preview-source-group-130"
               >
                 Source
                 <svg
@@ -1075,7 +1236,7 @@
             function.
           </p>
           <p>Here’s an example that registers an icon library located in the <code>/assets/icons</code> directory.</p>
-          <pre><code class="language-html" id="code-block-247"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+          <pre><code class="language-html" id="code-block-373"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
     <span class="token keyword">import</span> <span class="token punctuation">{</span> registerIconLibrary <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'/dist/utilities/icon-library.js'</span>
 
     <span class="token function">registerIconLibrary</span><span class="token punctuation">(</span><span class="token string">'my-icons'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
@@ -1083,14 +1244,14 @@
         <span class="token function-variable function">mutator</span><span class="token operator">:</span> <span class="token parameter">svg</span> <span class="token operator">=&gt;</span> svg<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'fill'</span><span class="token punctuation">,</span> <span class="token string">'currentColor'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-247"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-373"></sl-copy-button></pre>
           <p>
             To display an icon, set the <code>library</code> and <code>name</code> attributes of an
             <code>&lt;terra-icon&gt;</code> element.
           </p>
-          <pre><code class="language-html" id="code-block-248"><span class="token comment">&lt;!-- This will show the icon located at /assets/icons/smile.svg --&gt;</span>
+          <pre><code class="language-html" id="code-block-374"><span class="token comment">&lt;!-- This will show the icon located at /assets/icons/smile.svg --&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>my-icons<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>smile<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-248"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-374"></sl-copy-button></pre>
           <p>If an icon is used before registration occurs, it will be empty initially but shown when registered.</p>
           <p>
             The following examples demonstrate how to register a number of popular, open source icon libraries via CDN.
@@ -1129,9 +1290,9 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-65">
+            <div class="code-preview__source-group" id="code-preview-source-group-131">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-249"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+                <pre><code class="language-html" id="code-block-375"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
     <span class="token keyword">import</span> <span class="token punctuation">{</span> registerIconLibrary <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'/dist/utilities/icon-library.js'</span>
 
     <span class="token function">registerIconLibrary</span><span class="token punctuation">(</span><span class="token string">'bootstrap'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
@@ -1146,7 +1307,7 @@
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bootstrap<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>rocket-takeoff<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bootstrap<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>rocket-takeoff-fill<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-249"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-375"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -1155,7 +1316,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-65"
+                aria-controls="code-preview-source-group-131"
               >
                 Source
                 <svg
@@ -1254,9 +1415,9 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-66">
+            <div class="code-preview__source-group" id="code-preview-source-group-132">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-250"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+                <pre><code class="language-html" id="code-block-376"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
   <span class="token keyword">import</span> <span class="token punctuation">{</span> registerIconLibrary <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'/dist/utilities/icon-library.js'</span><span class="token punctuation">;</span>
 
   <span class="token function">registerIconLibrary</span><span class="token punctuation">(</span><span class="token string">'boxicons'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
@@ -1292,7 +1453,7 @@
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>boxicons<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bxl-opera<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>boxicons<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bxl-microsoft<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-250"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-376"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -1301,7 +1462,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-66"
+                aria-controls="code-preview-source-group-132"
               >
                 Source
                 <svg
@@ -1380,9 +1541,9 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-67">
+            <div class="code-preview__source-group" id="code-preview-source-group-133">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-251"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">font-size</span><span class="token punctuation">:</span> 24px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+                <pre><code class="language-html" id="code-block-377"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">font-size</span><span class="token punctuation">:</span> 24px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lucide<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>feather<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lucide<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pie-chart<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lucide<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>settings<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
@@ -1398,7 +1559,7 @@
     <span class="token function-variable function">resolver</span><span class="token operator">:</span> <span class="token parameter">name</span> <span class="token operator">=&gt;</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.svg</span><span class="token template-punctuation string">`</span></span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-251"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-377"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -1407,7 +1568,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-67"
+                aria-controls="code-preview-source-group-133"
               >
                 Source
                 <svg
@@ -1510,9 +1671,9 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-68">
+            <div class="code-preview__source-group" id="code-preview-source-group-134">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-252"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+                <pre><code class="language-html" id="code-block-378"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
   <span class="token keyword">import</span> <span class="token punctuation">{</span> registerIconLibrary <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'/dist/utilities/icon-library.js'</span><span class="token punctuation">;</span>
 
   <span class="token function">registerIconLibrary</span><span class="token punctuation">(</span><span class="token string">'fa'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
@@ -1549,7 +1710,7 @@
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fa<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fab-opera<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fa<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fab-microsoft<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-252"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-378"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -1558,7 +1719,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-68"
+                aria-controls="code-preview-source-group-134"
               >
                 Source
                 <svg
@@ -1635,9 +1796,9 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-69">
+            <div class="code-preview__source-group" id="code-preview-source-group-135">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-253"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+                <pre><code class="language-html" id="code-block-379"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
   <span class="token keyword">import</span> <span class="token punctuation">{</span> registerIconLibrary <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'/dist/utilities/icon-library.js'</span><span class="token punctuation">;</span>
 
   <span class="token function">registerIconLibrary</span><span class="token punctuation">(</span><span class="token string">'iconoir'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
@@ -1653,7 +1814,7 @@
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>iconoir<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>color-picker<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>iconoir<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wifi<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-253"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-379"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -1662,7 +1823,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-69"
+                aria-controls="code-preview-source-group-135"
               >
                 Source
                 <svg
@@ -1763,9 +1924,9 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-70">
+            <div class="code-preview__source-group" id="code-preview-source-group-136">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-254"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+                <pre><code class="language-html" id="code-block-380"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
   <span class="token keyword">import</span> <span class="token punctuation">{</span> registerIconLibrary <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'/dist/utilities/icon-library.js'</span><span class="token punctuation">;</span>
 
   <span class="token function">registerIconLibrary</span><span class="token punctuation">(</span><span class="token string">'ionicons'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
@@ -1801,7 +1962,7 @@
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ionicons<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>settings-sharp<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ionicons<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>warning-sharp<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-254"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-380"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -1810,7 +1971,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-70"
+                aria-controls="code-preview-source-group-136"
               >
                 Source
                 <svg
@@ -1899,9 +2060,9 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-71">
+            <div class="code-preview__source-group" id="code-preview-source-group-137">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-255"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+                <pre><code class="language-html" id="code-block-381"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
   <span class="token keyword">import</span> <span class="token punctuation">{</span> registerIconLibrary <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'/dist/utilities/icon-library.js'</span><span class="token punctuation">;</span>
 
   <span class="token function">registerIconLibrary</span><span class="token punctuation">(</span><span class="token string">'jam'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
@@ -1925,7 +2086,7 @@
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>jam<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>picture-f<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>jam<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>set-square-f<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-255"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-381"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -1934,7 +2095,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-71"
+                aria-controls="code-preview-source-group-137"
               >
                 Source
                 <svg
@@ -2037,9 +2198,9 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-72">
+            <div class="code-preview__source-group" id="code-preview-source-group-138">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-256"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+                <pre><code class="language-html" id="code-block-382"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
   <span class="token keyword">import</span> <span class="token punctuation">{</span> registerIconLibrary <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'/dist/utilities/icon-library.js'</span><span class="token punctuation">;</span>
 
   <span class="token function">registerIconLibrary</span><span class="token punctuation">(</span><span class="token string">'material'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
@@ -2073,7 +2234,7 @@
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>material<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>settings_sharp<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>material<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>shopping_basket_sharp<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-256"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-382"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -2082,7 +2243,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-72"
+                aria-controls="code-preview-source-group-138"
               >
                 Source
                 <svg
@@ -2175,9 +2336,9 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-73">
+            <div class="code-preview__source-group" id="code-preview-source-group-139">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-257"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+                <pre><code class="language-html" id="code-block-383"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
   <span class="token keyword">import</span> <span class="token punctuation">{</span> registerIconLibrary <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'/dist/utilities/icon-library.js'</span><span class="token punctuation">;</span>
 
   <span class="token function">registerIconLibrary</span><span class="token punctuation">(</span><span class="token string">'remixicon'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
@@ -2205,7 +2366,7 @@
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>remixicon<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>media/image-fill<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>remixicon<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>system/alert-fill<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-257"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-383"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -2214,7 +2375,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-73"
+                aria-controls="code-preview-source-group-139"
               >
                 Source
                 <svg
@@ -2300,9 +2461,9 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-74">
+            <div class="code-preview__source-group" id="code-preview-source-group-140">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-258"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+                <pre><code class="language-html" id="code-block-384"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
   <span class="token keyword">import</span> <span class="token punctuation">{</span> registerIconLibrary <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'/dist/utilities/icon-library.js'</span><span class="token punctuation">;</span>
 
   <span class="token function">registerIconLibrary</span><span class="token punctuation">(</span><span class="token string">'tabler'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
@@ -2325,7 +2486,7 @@
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tabler<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ship<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tabler<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>toilet-paper<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-258"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-384"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -2334,7 +2495,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-74"
+                aria-controls="code-preview-source-group-140"
               >
                 Source
                 <svg
@@ -2429,9 +2590,9 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-75">
+            <div class="code-preview__source-group" id="code-preview-source-group-141">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-259"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+                <pre><code class="language-html" id="code-block-385"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
   <span class="token keyword">import</span> <span class="token punctuation">{</span> registerIconLibrary <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'/dist/utilities/icon-library.js'</span><span class="token punctuation">;</span>
 
   <span class="token function">registerIconLibrary</span><span class="token punctuation">(</span><span class="token string">'unicons'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
@@ -2460,7 +2621,7 @@
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>unicons<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>rocket-s<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-icon</span> <span class="token attr-name">library</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>unicons<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>star-s<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-icon</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-259"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-385"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -2469,7 +2630,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-75"
+                aria-controls="code-preview-source-group-141"
               >
                 Source
                 <svg
@@ -2532,7 +2693,7 @@
                 >
                 using a script tag:
               </p>
-              <pre><code class="language-html" id="code-block-260"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.64/cdn/components/icon/icon.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code><sl-copy-button class="copy-code-button" from="code-block-260"></sl-copy-button></pre>
+              <pre><code class="language-html" id="code-block-386"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.111/cdn/components/icon/icon.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code><sl-copy-button class="copy-code-button" from="code-block-386"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="import">
@@ -2547,7 +2708,7 @@
                 >
                 using a JavaScript import:
               </p>
-              <pre><code class="language-js" id="code-block-261"><span class="token keyword">import</span> <span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.64/cdn/components/icon/icon.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-261"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-387"><span class="token keyword">import</span> <span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.111/cdn/components/icon/icon.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-387"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="bundler">
@@ -2555,12 +2716,12 @@
                 To import this component using
                 <a href="/components/getting-started/installation#bundling">a bundler</a>:
               </p>
-              <pre><code class="language-js" id="code-block-262"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/icon/icon.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-262"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-388"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/icon/icon.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-388"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="react">
               <p>To import this component as a <a href="/components/frameworks/react">React component</a>:</p>
-              <pre><code class="language-js" id="code-block-263"><span class="token keyword">import</span> TerraIcon <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/icon'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-263"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-389"><span class="token keyword">import</span> TerraIcon <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/icon'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-389"></sl-copy-button></pre>
             </sl-tab-panel>
           </sl-tab-group>
 

@@ -2,7 +2,7 @@ import type { CSSResultGroup, HTMLTemplateResult } from 'lit';
 import TerraElement from '../../internal/terra-element.js';
 /**
  * @summary Icons are symbols that can be used to represent various options within an application.
- * @documentation https://disc.gsfc.nasa.gov/components/icon
+ * @documentation https://terra-ui.netlify.app/components/icon
  * @status experimental
  * @since 1.0
  *

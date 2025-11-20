@@ -3,7 +3,7 @@ import TerraElement from '../../internal/terra-element.js';
 import { type Content, type GroupedListItem, type ListItem } from './type.js';
 /**
  * @summary Fuzzy-search for combobox with list autocomplete.
- * @documentation https://disc.gsfc.nasa.gov/components/combobox
+ * @documentation https://terra-ui.netlify.app/components/combobox
  * @status experimental
  * @since 1.0
  *

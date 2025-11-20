@@ -1,0 +1,1576 @@
+<!doctype html>
+<html lang="en" data-layout="default" data-terra-ui-components-version="0.0.111">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Learn how to use Horizon Design System (HDS) CSS variables and themes in your applications"
+    />
+    <title>Horizon Design System Overview</title>
+
+    <meta name="turbo-cache-control" />
+
+    <link rel="stylesheet" href="/components/assets/styles/docs.css" />
+    <link rel="stylesheet" href="/components/assets/styles/code-previews.css" />
+    <link rel="stylesheet" href="/components/assets/styles/search.css" />
+
+    <link rel="icon" href="/components/assets/images/logo.white.png" type="image/x-icon" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="nasa_terra-ui" />
+    <meta name="twitter:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
+
+    <meta property="og:url" content="https://terra-ui.netlify.app/horizon-design-system/" />
+    <meta property="og:title" content="Horizon Design System Overview" />
+    <meta
+      property="og:description"
+      content="Learn how to use Horizon Design System (HDS) CSS variables and themes in your applications"
+    />
+    <meta property="og:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
+
+    <link rel="stylesheet" href="/dist/themes/horizon.css" />
+    <script type="module" src="/dist/terra-ui-components-autoloader.js"></script>
+
+    <script>
+      (() => {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = localStorage.getItem('theme') || 'auto';
+        document.documentElement.classList.toggle(
+          'terra-theme-dark',
+          theme === 'dark' || (theme === 'auto' && prefersDark)
+        );
+      })();
+    </script>
+
+    <script src="/components/assets/scripts/turbo.js" type="module"></script>
+    <script src="/components/assets/scripts/docs.js" defer=""></script>
+    <script src="/components/assets/scripts/code-previews.js" defer=""></script>
+    <script src="/components/assets/scripts/lunr.js" defer=""></script>
+    <script src="/components/assets/scripts/search.js" defer=""></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono&amp;family=Inter&amp;family=Public+Sans&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"
+    ></script>
+  </head>
+  <body>
+    <a id="skip-to-main" class="visually-hidden" href="#main-content" data-smooth-link="false">
+      Skip to main content
+    </a>
+
+    <header id="top-nav" class="top-nav">
+      <div class="top-nav__left">
+        <a href="/" class="top-nav__logo">
+          <terra-icon name="nasa-logo" font-size="4rem"></terra-icon>
+          <span class="top-nav__title">Terra UI</span>
+        </a>
+      </div>
+
+      <div class="top-nav__right">
+        <terra-dropdown id="about-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="About"> About </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="project-overview">
+              <a href="/components/">Project Overview</a>
+            </terra-menu-item>
+            <terra-menu-item value="contributing">
+              <a href="/components/about/contributing">Contributing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="getting-started-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Getting Started">
+            Getting Started
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="installation">
+              <a href="/components/getting-started/installation">Installation</a>
+            </terra-menu-item>
+            <terra-menu-item value="usage">
+              <a href="/components/getting-started/usage">Usage</a>
+            </terra-menu-item>
+            <terra-menu-item value="themes">
+              <a href="/components/getting-started/themes">Themes</a>
+            </terra-menu-item>
+            <terra-menu-item value="customizing">
+              <a href="/components/getting-started/customizing">Customizing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <terra-dropdown id="frameworks-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Frameworks">
+            Frameworks
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="react">
+              <a href="/components/frameworks/react">React</a>
+            </terra-menu-item>
+            <terra-menu-item value="vue">
+              <a href="/components/frameworks/vue">Vue</a>
+            </terra-menu-item>
+            <terra-menu-item value="angular">
+              <a href="/components/frameworks/angular">Angular</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <button
+          class="top-nav__search"
+          type="button"
+          title="Press / to search"
+          aria-label="Search"
+          data-plugin="search"
+        >
+          <sl-icon name="search"></sl-icon>
+        </button>
+        <a
+          href="https://github.com/nasa/terra-ui-components"
+          title="View Terra UI Components on GitHub"
+          class="top-nav__icon-link external-link"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <sl-icon name="github"></sl-icon>
+        </a>
+        <terra-dropdown id="environment-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Environment"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <span id="environment-display">UAT</span>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="uat"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >UAT</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="prod"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >PROD</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="theme-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Press \ to toggle"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
+            <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="light"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Light</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="dark"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Dark</terra-menu-item
+            >
+            <hr
+              role="separator"
+              aria-orientation="horizontal"
+              style="
+                margin: var(--terra-spacing-x-small) 0;
+                border: none;
+                border-top: 1px solid var(--terra-panel-border-color);
+              "
+            />
+            <terra-menu-item
+              type="checkbox"
+              value="auto"
+              tabindex="0"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >System</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+      </div>
+    </header>
+
+    <button id="menu-toggle" type="button" aria-label="Menu">
+      <svg width="148" height="148" viewBox="0 0 148 148" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="currentColor" stroke-width="18" fill="none" fill-rule="evenodd" stroke-linecap="round">
+          <path d="M9.5 125.5h129M9.5 74.5h129M9.5 23.5h129"></path>
+        </g>
+      </svg>
+    </button>
+
+    <aside id="sidebar" data-preserve-scroll="">
+      <div class="sidebar-buttons">
+        <terra-button
+          size="small"
+          class="repo-button repo-button--github"
+          href="https://github.com/nasa/terra-ui-components"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="github"></sl-icon> Code
+        </terra-button>
+        <terra-button
+          size="small"
+          class="repo-button repo-button--star"
+          href="https://github.com/nasa/terra-ui-components/stargazers"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="star-fill"></sl-icon> Star
+        </terra-button>
+      </div>
+
+      <nav>
+        <ul>
+          <li>
+            <h2>Design System</h2>
+            <ul>
+              <li>
+                <a href="/components/horizon-design-system">Overview</a>
+              </li>
+              <li>
+                <a href="/components/tokens/typography">Typography</a>
+              </li>
+              <li>
+                <a href="/components/tokens/color">Color</a>
+              </li>
+              <li>
+                <a href="/components/tokens/spacing">Spacing</a>
+              </li>
+              <li>
+                <a href="/components/tokens/elevation">Elevation</a>
+              </li>
+              <li>
+                <a href="/components/tokens/border-radius">Border Radius</a>
+              </li>
+              <li>
+                <a href="/components/tokens/transition">Transition</a>
+              </li>
+              <li>
+                <a href="/components/tokens/z-index">Z-index</a>
+              </li>
+              <li>
+                <a href="/components/tokens/more">More Tokens</a>
+              </li>
+              <li>
+                <a href="/components/horizon-design-system/#adoption-status">HDS Adoption Status</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2>Forms</h2>
+            <ul>
+              <li>
+                <a href="/components/forms">Overview</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2>Elements</h2>
+            <ul>
+              <li>
+                <a href="/components/alert"> Alert </a>
+              </li>
+
+              <li>
+                <a href="/components/avatar"> Avatar </a>
+              </li>
+
+              <li>
+                <a href="/components/button"> Button </a>
+              </li>
+
+              <li>
+                <a href="/components/caption"> Caption </a>
+              </li>
+
+              <li>
+                <a href="/components/checkbox"> Checkbox </a>
+              </li>
+
+              <li>
+                <a href="/components/chip"> Chip </a>
+              </li>
+
+              <li>
+                <a href="/components/date-picker"> Date Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/file-upload"> File Upload </a>
+              </li>
+
+              <li>
+                <a href="/components/icon"> Icon </a>
+              </li>
+
+              <li>
+                <a href="/components/input"> Input </a>
+              </li>
+
+              <li>
+                <a href="/components/loader"> Loader </a>
+              </li>
+
+              <li>
+                <a href="/components/option"> Option </a>
+              </li>
+
+              <li>
+                <a href="/components/pagination"> Pagination </a>
+              </li>
+
+              <li>
+                <a href="/components/radio"> Radio </a>
+              </li>
+
+              <li>
+                <a href="/components/radio-group"> Radio Group </a>
+              </li>
+
+              <li>
+                <a href="/components/scroll-hint"> Scroll Hint </a>
+              </li>
+
+              <li>
+                <a href="/components/select"> Select </a>
+              </li>
+
+              <li>
+                <a href="/components/slider"> Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/status-indicator"> Status Indicator </a>
+              </li>
+
+              <li>
+                <a href="/components/tag"> Tag </a>
+              </li>
+
+              <li>
+                <a href="/components/textarea"> Textarea </a>
+              </li>
+
+              <li>
+                <a href="/components/toggle"> Toggle </a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2>Components</h2>
+            <ul>
+              <li>
+                <a href="/components/accordion"> Accordion </a>
+              </li>
+
+              <li>
+                <a href="/components/browse-variables"> Browse Variables </a>
+              </li>
+
+              <li>
+                <a href="/components/combobox"> Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/data-access"> Data Access </a>
+              </li>
+
+              <li>
+                <a href="/components/data-rods"> Data Rods </a>
+              </li>
+
+              <li>
+                <a href="/components/data-subsetter"> Data Subsetter </a>
+              </li>
+
+              <li>
+                <a href="/components/data-subsetter-history"> Data Subsetter History </a>
+              </li>
+
+              <li>
+                <a href="/components/date-range-slider"> Date Range Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/dialog"> Dialog </a>
+              </li>
+
+              <li>
+                <a href="/components/dropdown"> Dropdown </a>
+              </li>
+
+              <li>
+                <a href="/components/login"> Login </a>
+              </li>
+
+              <li>
+                <a href="/components/map"> Map </a>
+              </li>
+
+              <li>
+                <a href="/components/menu"> Menu </a>
+              </li>
+
+              <li>
+                <a href="/components/menu-item"> Menu Item </a>
+              </li>
+
+              <li>
+                <a href="/components/plot"> Plot </a>
+              </li>
+
+              <li>
+                <a href="/components/plot-toolbar"> Plot Toolbar </a>
+              </li>
+
+              <li>
+                <a href="/components/popup"> Popup </a>
+              </li>
+
+              <li>
+                <a href="/components/skeleton"> Skeleton </a>
+              </li>
+
+              <li>
+                <a href="/components/spatial-picker"> Spatial Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/time-average-map"> Time Average Map </a>
+              </li>
+
+              <li>
+                <a href="/components/time-series"> Time Series </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-combobox"> Variable Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-keyword-search"> Variable Keyword Search </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+      <a id="main-content"></a>
+      <article id="content" class="content content--with-toc">
+        <div class="content__toc">
+          <ul>
+            <li class="top">
+              <a href="#">Horizon Design System Overview</a>
+            </li>
+            <li data-level="2"><a href="#what-is-horizon-design-system">What is Horizon Design System?</a></li>
+            <li data-level="2"><a href="#using-the-horizon-theme">Using the Horizon Theme</a></li>
+            <li data-level="3"><a href="#installation">Installation</a></li>
+            <li data-level="3"><a href="#dark-mode">Dark Mode</a></li>
+            <li data-level="2"><a href="#using-css-variables-in-your-code">Using CSS Variables in Your Code</a></li>
+            <li data-level="2"><a href="#extending-the-horizon-theme">Extending the Horizon Theme</a></li>
+            <li data-level="3"><a href="#overriding-variables">Overriding Variables</a></li>
+            <li data-level="3"><a href="#creating-theme-variants">Creating Theme Variants</a></li>
+            <li data-level="2"><a href="#best-practices">Best Practices</a></li>
+            <li data-level="2"><a href="#adoption-status">Adoption Status</a></li>
+            <li data-level="3"><a href="#status-legend">Status Legend</a></li>
+            <li data-level="3"><a href="#elements">Elements</a></li>
+            <li data-level="3"><a href="#components">Components</a></li>
+            <li data-level="3"><a href="#modules">Modules</a></li>
+            <li data-level="3"><a href="#templates">Templates</a></li>
+            <li data-level="2"><a href="#contributing">Contributing</a></li>
+            <li data-level="2"><a href="#next-steps">Next Steps</a></li>
+          </ul>
+        </div>
+
+        <div class="content__body">
+          <h1>Horizon Design System Overview</h1>
+          <p>
+            The
+            <a href="https://website.nasa.gov/hds/" class="external-link" rel="noopener noreferrer" target="_blank"
+              >Horizon Design System (HDS)</a
+            >
+            is NASA’s design system for building consistent, accessible web applications. Terra UI Components includes
+            the HDS theme (<code>horizon.css</code>) which provides a comprehensive set of CSS variables that you can
+            use directly in your applications, even if you’re not using Terra web components.
+          </p>
+          <p>
+            This section shows you how to use HDS design tokens, CSS variables, and themes to style your applications
+            with NASA’s design system.
+          </p>
+          <h2 id="what-is-horizon-design-system" class="anchor-heading">
+            What is Horizon Design System?<a
+              href="#what-is-horizon-design-system"
+              aria-label='Direct link to "What is Horizon Design System?"'
+            ></a>
+          </h2>
+          <p>Horizon Design System is NASA’s official design system that provides:</p>
+          <ul>
+            <li><strong>Design Tokens</strong>: Colors, typography, spacing, and other design values</li>
+            <li><strong>Components</strong>: Reusable UI components following NASA design guidelines</li>
+            <li><strong>Accessibility</strong>: Built-in accessibility standards and best practices</li>
+            <li><strong>Consistency</strong>: Ensures visual and functional consistency across NASA applications</li>
+          </ul>
+          <h2 id="using-the-horizon-theme" class="anchor-heading">
+            Using the Horizon Theme<a
+              href="#using-the-horizon-theme"
+              aria-label='Direct link to "Using the Horizon Theme"'
+            ></a>
+          </h2>
+          <p>
+            The <code>horizon.css</code> theme file contains all the HDS design tokens as CSS custom properties (CSS
+            variables). You can import and use these variables in your own CSS, regardless of whether you’re using Terra
+            web components.
+          </p>
+          <h3 id="installation" class="anchor-heading">
+            Installation<a href="#installation" aria-label='Direct link to "Installation"'></a>
+          </h3>
+          <p>To use the Horizon theme, import the CSS file in your HTML:</p>
+          <pre><code class="language-html" id="code-block-140"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span>
+    <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span>
+    <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.111/cdn/themes/horizon.css<span class="token punctuation">"</span></span>
+<span class="token punctuation">/&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-140"></sl-copy-button></pre>
+          <p>Or if you’re using npm:</p>
+          <pre><code class="language-html" id="code-block-141"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span>
+    <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span>
+    <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>node_modules/@nasa-terra/components/dist/themes/horizon.css<span class="token punctuation">"</span></span>
+<span class="token punctuation">/&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-141"></sl-copy-button></pre>
+          <p>
+            The theme is automatically applied to <code>:root</code>, so all CSS variables are available globally once
+            imported.
+          </p>
+          <h3 id="dark-mode" class="anchor-heading">
+            Dark Mode<a href="#dark-mode" aria-label='Direct link to "Dark Mode"'></a>
+          </h3>
+          <p>
+            The <code>horizon.css</code> theme file includes both light and dark themes. Dark mode is automatically
+            enabled when the user’s system preference is set to dark mode, or you can manually control it with the
+            <code>terra-theme-dark</code> class:
+          </p>
+          <pre><code class="language-html" id="code-block-142"><span class="token comment">&lt;!-- Automatic dark mode (based on system preference) --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+    ...
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token comment">&lt;!-- Manual dark mode override --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>terra-theme-dark<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    ...
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token comment">&lt;!-- Force light mode --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>terra-theme-horizon<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    ...
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-142"></sl-copy-button></pre>
+          <h2 id="using-css-variables-in-your-code" class="anchor-heading">
+            Using CSS Variables in Your Code<a
+              href="#using-css-variables-in-your-code"
+              aria-label='Direct link to "Using CSS Variables in Your Code"'
+            ></a>
+          </h2>
+          <p>
+            Once you’ve imported the Horizon theme, you can use any of the design tokens in your own stylesheets. See
+            the <a href="/tokens/typography">Design Tokens</a> section for a complete reference of all available tokens.
+          </p>
+          <pre><code class="language-css" id="code-block-143"><span class="token selector">.my-button</span> <span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-nasa-blue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-spacesuit-white<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-spacing-small<span class="token punctuation">)</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-spacing-medium<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-border-radius-medium<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-font-family--inter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-font-size-medium<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">transition</span><span class="token punctuation">:</span> background-color <span class="token function">var</span><span class="token punctuation">(</span>--terra-transition-medium<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.my-button:hover</span> <span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-color-nasa-blue-shade<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-143"></sl-copy-button></pre>
+          <pre><code class="language-html" id="code-block-144"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>my-button<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Click Me<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-144"></sl-copy-button></pre>
+          <h2 id="extending-the-horizon-theme" class="anchor-heading">
+            Extending the Horizon Theme<a
+              href="#extending-the-horizon-theme"
+              aria-label='Direct link to "Extending the Horizon Theme"'
+            ></a>
+          </h2>
+          <p>
+            You can extend the Horizon theme by creating your own stylesheet that overrides or adds to the existing
+            variables. This is useful when you need custom colors or spacing that aren’t in the base theme.
+          </p>
+          <h3 id="overriding-variables" class="anchor-heading">
+            Overriding Variables<a href="#overriding-variables" aria-label='Direct link to "Overriding Variables"'></a>
+          </h3>
+          <p>
+            To override existing variables, create a new stylesheet and scope it to the same selectors as the Horizon
+            theme:
+          </p>
+          <pre><code class="language-css" id="code-block-145"><span class="token selector">:root,
+:host,
+.terra-theme-horizon</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* Override existing variables */</span>
+    <span class="token property">--terra-color-nasa-blue</span><span class="token punctuation">:</span> #0066cc<span class="token punctuation">;</span>
+
+    <span class="token comment">/* Add new custom variables */</span>
+    <span class="token property">--my-custom-color</span><span class="token punctuation">:</span> #ff9900<span class="token punctuation">;</span>
+    <span class="token property">--my-custom-spacing</span><span class="token punctuation">:</span> 2.5rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-145"></sl-copy-button></pre>
+          <p>Make sure to import your custom stylesheet <strong>after</strong> the Horizon theme:</p>
+          <pre><code class="language-html" id="code-block-146"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>path/to/horizon.css<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>path/to/my-custom-theme.css<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-146"></sl-copy-button></pre>
+          <h3 id="creating-theme-variants" class="anchor-heading">
+            Creating Theme Variants<a
+              href="#creating-theme-variants"
+              aria-label='Direct link to "Creating Theme Variants"'
+            ></a>
+          </h3>
+          <p>You can create entirely new theme variants by scoping your variables to a custom class:</p>
+          <pre><code class="language-css" id="code-block-147"><span class="token selector">:host,
+.terra-theme-custom</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* Your custom theme variables */</span>
+    <span class="token property">--terra-color-primary</span><span class="token punctuation">:</span> #8b5cf6<span class="token punctuation">;</span>
+    <span class="token property">--terra-color-secondary</span><span class="token punctuation">:</span> #ec4899<span class="token punctuation">;</span>
+    <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-147"></sl-copy-button></pre>
+          <p>Then apply the theme class to activate it:</p>
+          <pre><code class="language-html" id="code-block-148"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>terra-theme-custom<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    ...
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-148"></sl-copy-button></pre>
+          <h2 id="best-practices" class="anchor-heading">
+            Best Practices<a href="#best-practices" aria-label='Direct link to "Best Practices"'></a>
+          </h2>
+          <ol>
+            <li>
+              <p>
+                <strong>Use Design Tokens</strong>: Always use CSS variables instead of hardcoded values to maintain
+                consistency and enable theming. See the <a href="/tokens/typography">Design Tokens</a> section for
+                available tokens.
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>Respect the Color Palette</strong>: Stick to the HDS color palette for brand consistency. Use
+                neutrals for text and backgrounds.
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>Accessibility</strong>: HDS colors are tested for accessibility. When creating custom colors,
+                ensure they meet WCAG AA contrast requirements.
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>Typography Hierarchy</strong>: Use the provided font sizes and weights to create clear visual
+                hierarchy.
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>Consistent Spacing</strong>: Use the spacing scale for margins, padding, and gaps to maintain
+                visual rhythm.
+              </p>
+            </li>
+          </ol>
+          <h2 id="adoption-status" class="anchor-heading">
+            Adoption Status<a href="#adoption-status" aria-label='Direct link to "Adoption Status"'></a>
+          </h2>
+          <p>
+            This page tracks the progress of Terra UI Components in adopting the Horizon Design System. Components are
+            marked based on their current implementation status.
+          </p>
+          <h3 id="status-legend" class="anchor-heading">
+            Status Legend<a href="#status-legend" aria-label='Direct link to "Status Legend"'></a>
+          </h3>
+          <ul>
+            <li>✅ <strong>Fully Supported</strong> - Component fully implements HDS design tokens and guidelines</li>
+            <li>🟡 <strong>In Progress</strong> - Component partially implements HDS, with known gaps</li>
+            <li>❌ <strong>Not Supported</strong> - Component not yet implemented or not planned</li>
+          </ul>
+          <h3 id="elements" class="anchor-heading">
+            Elements<a href="#elements" aria-label='Direct link to "Elements"'></a>
+          </h3>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Component</th>
+                  <th>Status</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="/components/avatar">Avatar</a></td>
+                  <td>✅ Fully Supported</td>
+                  <td>
+                    Implements HDS avatar guidelines with image, initials, and icon support. Full dark mode support.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Badges</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td><a href="/components/button">Button</a></td>
+                  <td>✅ Fully Supported</td>
+                  <td>Core HDS styles implemented. Some variants were modified to fit application UI better.</td>
+                </tr>
+                <tr>
+                  <td><a href="/components/caption">Caption</a></td>
+                  <td>✅ Fully Supported</td>
+                  <td>CSS-only component for displaying captions with support for credits. Full dark mode support.</td>
+                </tr>
+                <tr>
+                  <td><a href="/components/checkbox">Checkbox</a></td>
+                  <td>✅ Fully Supported</td>
+                  <td>
+                    Implements HDS checkbox guidelines with design tokens, form integration, and full dark mode support.
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="/components/chip">Chip</a></td>
+                  <td>✅ Fully Supported</td>
+                  <td>Fully implements HDS chip design with dark mode support.</td>
+                </tr>
+                <tr>
+                  <td><a href="/components/date-picker">Date Picker</a></td>
+                  <td>✅ Fully Supported</td>
+                  <td>
+                    Implements HDS date picker patterns with design tokens, help text support, and full dark mode
+                    support.
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="/components/file-upload">File Upload</a></td>
+                  <td>✅ Fully Supported</td>
+                  <td>Implements HDS file upload patterns with drag-and-drop, previews, and full dark mode support.</td>
+                </tr>
+                <tr>
+                  <td>Links</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td><a href="/components/loader">Loader</a></td>
+                  <td>✅ Fully Supported</td>
+                  <td>Implements HDS loader patterns with design tokens.</td>
+                </tr>
+                <tr>
+                  <td><a href="/components/pagination">Pagination</a></td>
+                  <td>✅ Fully Supported</td>
+                  <td>
+                    Implements HDS pagination patterns with design tokens, circular icon buttons, and full dark mode
+                    support.
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="/components/radio">Radio</a></td>
+                  <td>✅ Fully Supported</td>
+                  <td>
+                    Implements HDS radio button guidelines with design tokens, form integration, and full dark mode
+                    support.
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="/components/scroll-hint">Scroll Hint</a></td>
+                  <td>✅ Fully Supported</td>
+                  <td>Implements HDS scroll hint patterns with animation and dark mode support.</td>
+                </tr>
+                <tr>
+                  <td><a href="/components/select">Select</a></td>
+                  <td>✅ Fully Supported</td>
+                  <td>
+                    Implements HDS select field patterns with design tokens, multiple selection, and full dark mode
+                    support.
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="/components/slider">Slider</a></td>
+                  <td>✅ Fully Supported</td>
+                  <td>
+                    Implements HDS slider patterns with design tokens, tooltip merging, and full dark mode support.
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="/components/status-indicator">Status Indicator</a></td>
+                  <td>✅ Fully Supported</td>
+                  <td>Displays mission/project status with a colored dot and label. Full dark mode support.</td>
+                </tr>
+                <tr>
+                  <td><a href="/components/tag">Tag</a></td>
+                  <td>✅ Fully Supported</td>
+                  <td>
+                    Supports content, topic, and urgent variants with icons, stacking, and full dark mode support.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Text &amp; Select Fields (<a href="/components/input">Input</a>)</td>
+                  <td>✅ Fully Supported</td>
+                  <td>
+                    Implements HDS input field patterns with design tokens, prefix/suffix slots, and full dark mode
+                    support.
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="/components/toggle">Toggle</a></td>
+                  <td>✅ Fully Supported</td>
+                  <td>Implements HDS toggle patterns with design tokens and full dark mode support.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3 id="components" class="anchor-heading">
+            Components<a href="#components" aria-label='Direct link to "Components"'></a>
+          </h3>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Component</th>
+                  <th>Status</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="/components/accordion">Accordion</a></td>
+                  <td>✅ Fully Supported</td>
+                  <td>Implements HDS accordion patterns with design tokens and dark mode support.</td>
+                </tr>
+                <tr>
+                  <td>Article Building Blocks</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Audio Player</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Blockquote</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Breadcrumbs</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Cards</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Carousel Thumbnails</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Countdown</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td><a href="/components/dialog">Dialog</a></td>
+                  <td>✅ Fully Supported</td>
+                  <td>Implements HDS modal patterns with design tokens. Dialogs &amp; Modals.</td>
+                </tr>
+                <tr>
+                  <td><a href="/components/dropdown">Dropdown</a></td>
+                  <td>✅ Fully Supported</td>
+                  <td>Uses HDS design tokens. Dropdown Menus.</td>
+                </tr>
+                <tr>
+                  <td>Filter &amp; Sorts</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Gallery Thumbnails</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Image with Caption</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>List</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Live Event Ticker</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Quick Facts Carousel</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Search Fields</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Sign Up</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Social Media Share</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Stepper</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Table of Contents</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Tabs</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td><a href="/components/popup">Popup</a></td>
+                  <td>✅ Fully Supported</td>
+                  <td>Implements HDS popup patterns. Tooltips and Popovers.</td>
+                </tr>
+                <tr>
+                  <td>Video Player</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Vitals</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3 id="modules" class="anchor-heading">
+            Modules<a href="#modules" aria-label='Direct link to "Modules"'></a>
+          </h3>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Component</th>
+                  <th>Status</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>3D Model Module</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>About the Author</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Article Hero Image</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Ask NASA</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Banners</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Callout</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Card Carousel</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Card Grid</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Centers &amp; Facilities</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Contingency Homepage</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Credits &amp; Resources</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Event List</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Eyes on the Solar System Embed</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Feature 50/50</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Feature/Chapter Divider</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Feature/Feature Nav</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Feature/Fullscreen Carousel</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Feature/Hero Numbers</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Feature/Hero Quote</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Feature/Intro</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Feature/Oversized Text</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Feature/Scrapbook Gallery</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Featured Image</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Featured Link</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Featured Link List</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Featured Mission</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Featured Podcast</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Featured Story</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Featured Video</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Featured/Content Banner</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>File List</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Forms Embed</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Gallery Hero</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Gallery Preview</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Hero Numbers</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Iframe Embeds</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Image Before/After</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Image Carousel and Image Timeline</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Image Detail Modal</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Inline Case Study</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Interactive Exhibit</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Listicle</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Map</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Math Equations</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Meet the…</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Mission Hero</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>NASA Live</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>NASA Mag</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Navigation</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>News Modules</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Page Intro</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Parallax Image</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Planet Hero</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Q&amp;A</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Quiz</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Related Articles</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Slideshow</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Social Media Feed</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Story Block</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Subscription Banner</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Tabbed Section</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Tables</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Team Member Spotlight</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Timeline</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Topic Cards</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Topic Hero</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Topic Spotlight</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3 id="templates" class="anchor-heading">
+            Templates<a href="#templates" aria-label='Direct link to "Templates"'></a>
+          </h3>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Component</th>
+                  <th>Status</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>404 Page</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>About</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>About NASA</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Articles</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Bio Page</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Blog Overview</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Blog Page</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Blog Post</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Careers</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Center/Org/Institution</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Centers &amp; Facilities</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Contact NASA</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Encyclopedic Reference</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Event Calendar</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Galleries Home</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Homepage</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Impacts and Benefits</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Mission Hubs</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>NASA TV Page</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>News and Events</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Press Kit</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Q&amp;A Interactive Archive</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Q&amp;A Page</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Quiz Template</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Raw Image Gallery</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Sitemap</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Special Features</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Subtopic Hub</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Topic Galleries</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+                <tr>
+                  <td>Topic Hubs</td>
+                  <td>❌ Not Supported</td>
+                  <td>Not yet implemented.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div role="alert" class="callout callout--tip">
+            <p>
+              If you need a component that’s not listed here or marked as “Not Supported”, please
+              <a
+                href="https://github.com/nasa/terra-ui-components/issues/new"
+                class="external-link"
+                rel="noopener noreferrer"
+                target="_blank"
+                >create a GitHub issue</a
+              >
+              to request it.
+            </p>
+          </div>
+          <h2 id="contributing" class="anchor-heading">
+            Contributing<a href="#contributing" aria-label='Direct link to "Contributing"'></a>
+          </h2>
+          <p>If you’re working on implementing HDS support for a component, please:</p>
+          <ol>
+            <li>Use design tokens from <code>horizon.css</code> instead of hardcoded values</li>
+            <li>Ensure dark mode support using the provided dark mode tokens</li>
+            <li>Follow HDS accessibility guidelines</li>
+            <li>Update this page when status changes</li>
+          </ol>
+          <h2 id="next-steps" class="anchor-heading">
+            Next Steps<a href="#next-steps" aria-label='Direct link to "Next Steps"'></a>
+          </h2>
+          <ul>
+            <li>Explore <a href="/tokens/typography">Design Tokens</a> to see all available CSS variables</li>
+            <li>Learn about <a href="/components/avatar">HDS Components</a> in the component documentation</li>
+            <li>
+              Visit the
+              <a href="https://website.nasa.gov/hds/" class="external-link" rel="noopener noreferrer" target="_blank"
+                >official HDS website</a
+              >
+              for more information
+            </li>
+          </ul>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

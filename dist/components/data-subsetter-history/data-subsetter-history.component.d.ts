@@ -5,7 +5,7 @@ import TerraDialog from '../dialog/dialog.component.js';
 import { AuthController } from '../../auth/auth.controller.js';
 /**
  * @summary Shows a floating panel with a user's recent data subset requests and their status, with quick access to results and re-submission.
- * @documentation https://disc.gsfc.nasa.gov/components/data-subsetter-history
+ * @documentation https://terra-ui.netlify.app/components/data-subsetter-history
  * @status stable
  * @since 1.0
  *

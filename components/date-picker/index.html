@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en" data-layout="component" data-terra-ui-components-version="0.0.64">
+<html lang="en" data-layout="component" data-terra-ui-components-version="0.0.111">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="A versatile date picker component that supports both single date selection and date range selection, built on top of lit-flatpickr."
+      content="A versatile date picker component that supports both single date selection and date range selection."
     />
     <title>Date Picker</title>
 
@@ -19,15 +19,15 @@
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:creator" content="nasa_terra-ui" />
-    <meta name="twitter:image" content="https://disc.gsfc.nasa.gov/components/assets/images/og-image.png" />
+    <meta name="twitter:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
 
-    <meta property="og:url" content="https://disc.gsfc.nasa.gov/components/date-picker/" />
+    <meta property="og:url" content="https://terra-ui.netlify.app/components/date-picker/" />
     <meta property="og:title" content="Date Picker" />
     <meta
       property="og:description"
-      content="A versatile date picker component that supports both single date selection and date range selection, built on top of lit-flatpickr."
+      content="A versatile date picker component that supports both single date selection and date range selection."
     />
-    <meta property="og:image" content="https://disc.gsfc.nasa.gov/components/assets/images/og-image.png" />
+    <meta property="og:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
 
     <link rel="stylesheet" href="/dist/themes/horizon.css" />
     <script type="module" src="/dist/terra-ui-components-autoloader.js"></script>
@@ -67,6 +67,173 @@
       Skip to main content
     </a>
 
+    <header id="top-nav" class="top-nav">
+      <div class="top-nav__left">
+        <a href="/" class="top-nav__logo">
+          <terra-icon name="nasa-logo" font-size="4rem"></terra-icon>
+          <span class="top-nav__title">Terra UI</span>
+        </a>
+      </div>
+
+      <div class="top-nav__right">
+        <terra-dropdown id="about-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="About"> About </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="project-overview">
+              <a href="/components/">Project Overview</a>
+            </terra-menu-item>
+            <terra-menu-item value="contributing">
+              <a href="/components/about/contributing">Contributing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="getting-started-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Getting Started">
+            Getting Started
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="installation">
+              <a href="/components/getting-started/installation">Installation</a>
+            </terra-menu-item>
+            <terra-menu-item value="usage">
+              <a href="/components/getting-started/usage">Usage</a>
+            </terra-menu-item>
+            <terra-menu-item value="themes">
+              <a href="/components/getting-started/themes">Themes</a>
+            </terra-menu-item>
+            <terra-menu-item value="customizing">
+              <a href="/components/getting-started/customizing">Customizing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <terra-dropdown id="frameworks-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Frameworks">
+            Frameworks
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="react">
+              <a href="/components/frameworks/react">React</a>
+            </terra-menu-item>
+            <terra-menu-item value="vue">
+              <a href="/components/frameworks/vue">Vue</a>
+            </terra-menu-item>
+            <terra-menu-item value="angular">
+              <a href="/components/frameworks/angular">Angular</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <button
+          class="top-nav__search"
+          type="button"
+          title="Press / to search"
+          aria-label="Search"
+          data-plugin="search"
+        >
+          <sl-icon name="search"></sl-icon>
+        </button>
+        <a
+          href="https://github.com/nasa/terra-ui-components"
+          title="View Terra UI Components on GitHub"
+          class="top-nav__icon-link external-link"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <sl-icon name="github"></sl-icon>
+        </a>
+        <terra-dropdown id="environment-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Environment"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <span id="environment-display">UAT</span>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="uat"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >UAT</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="prod"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >PROD</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="theme-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Press \ to toggle"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
+            <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="light"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Light</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="dark"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Dark</terra-menu-item
+            >
+            <hr
+              role="separator"
+              aria-orientation="horizontal"
+              style="
+                margin: var(--terra-spacing-x-small) 0;
+                border: none;
+                border-top: 1px solid var(--terra-panel-border-color);
+              "
+            />
+            <terra-menu-item
+              type="checkbox"
+              value="auto"
+              tabindex="0"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >System</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+      </div>
+    </header>
+
     <button id="menu-toggle" type="button" aria-label="Menu">
       <svg width="148" height="148" viewBox="0 0 148 148" xmlns="http://www.w3.org/2000/svg">
         <g stroke="currentColor" stroke-width="18" fill="none" fill-rule="evenodd" stroke-linecap="round">
@@ -75,108 +242,7 @@
       </svg>
     </button>
 
-    <div id="icon-toolbar">
-      <a
-        href="https://github.com/nasa/terra-ui-components"
-        title="View Terra UI Components on GitHub"
-        class="external-link"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <sl-icon name="github"></sl-icon>
-      </a>
-      <sl-dropdown id="environment-selector" placement="bottom-end" distance="3">
-        <terra-button
-          slot="trigger"
-          size="large"
-          variant="text"
-          caret=""
-          title="Environment"
-          data-optional=""
-          data-valid=""
-          data-user-valid=""
-        >
-          <span id="environment-display">UAT</span>
-        </terra-button>
-        <sl-menu role="menu">
-          <sl-menu-item
-            type="checkbox"
-            value="uat"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="true"
-            aria-disabled="false"
-            checked=""
-            >UAT</sl-menu-item
-          >
-          <sl-menu-item
-            type="checkbox"
-            value="prod"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >PROD</sl-menu-item
-          >
-        </sl-menu>
-      </sl-dropdown>
-      <sl-dropdown id="theme-selector" placement="bottom-end" distance="3">
-        <terra-button
-          slot="trigger"
-          size="large"
-          variant="text"
-          caret=""
-          title="Press \ to toggle"
-          data-optional=""
-          data-valid=""
-          data-user-valid=""
-        >
-          <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
-          <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
-        </terra-button>
-        <sl-menu role="menu">
-          <sl-menu-item
-            type="checkbox"
-            value="light"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >Light</sl-menu-item
-          >
-          <sl-menu-item
-            type="checkbox"
-            value="dark"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >Dark</sl-menu-item
-          >
-          <sl-divider role="separator" aria-orientation="horizontal"></sl-divider>
-          <sl-menu-item
-            type="checkbox"
-            value="auto"
-            tabindex="0"
-            role="menuitemcheckbox"
-            aria-checked="true"
-            aria-disabled="false"
-            checked=""
-            >System</sl-menu-item
-          >
-        </sl-menu>
-      </sl-dropdown>
-    </div>
-
     <aside id="sidebar" data-preserve-scroll="">
-      <header>
-        <a href="/" class="sidebar-logo">
-          <img src="/components/assets/images/logo.svg" alt="Terra UI Components" />
-          Terra UI Components
-        </a>
-        <div class="sidebar-version">0.0.64</div>
-      </header>
-
       <div class="sidebar-buttons">
         <terra-button
           size="small"
@@ -196,47 +262,146 @@
         </terra-button>
       </div>
 
-      <button class="search-box" type="button" title="Press / to search" aria-label="Search" data-plugin="search">
-        <sl-icon name="search"></sl-icon>
-        <span>Search</span>
-      </button>
-
       <nav>
         <ul>
           <li>
-            <h2>Getting Started</h2>
+            <h2>Design System</h2>
             <ul>
               <li>
-                <a href="/components/">Home</a>
+                <a href="/components/horizon-design-system">Overview</a>
               </li>
               <li>
-                <a href="/components/getting-started/installation">Installation</a>
+                <a href="/components/tokens/typography">Typography</a>
               </li>
               <li>
-                <a href="/components/getting-started/usage">Usage</a>
+                <a href="/components/tokens/color">Color</a>
               </li>
               <li>
-                <a href="/components/getting-started/themes">Themes</a>
+                <a href="/components/tokens/spacing">Spacing</a>
               </li>
               <li>
-                <a href="/components/getting-started/customizing">Customizing</a>
+                <a href="/components/tokens/elevation">Elevation</a>
+              </li>
+              <li>
+                <a href="/components/tokens/border-radius">Border Radius</a>
+              </li>
+              <li>
+                <a href="/components/tokens/transition">Transition</a>
+              </li>
+              <li>
+                <a href="/components/tokens/z-index">Z-index</a>
+              </li>
+              <li>
+                <a href="/components/tokens/more">More Tokens</a>
+              </li>
+              <li>
+                <a href="/components/horizon-design-system/#adoption-status">HDS Adoption Status</a>
               </li>
             </ul>
           </li>
+
           <li>
-            <h2>Frameworks</h2>
+            <h2>Forms</h2>
             <ul>
               <li>
-                <a href="/components/frameworks/react">React</a>
-              </li>
-              <li>
-                <a href="/components/frameworks/vue">Vue</a>
-              </li>
-              <li>
-                <a href="/components/frameworks/angular">Angular</a>
+                <a href="/components/forms">Overview</a>
               </li>
             </ul>
           </li>
+
+          <li>
+            <h2>Elements</h2>
+            <ul>
+              <li>
+                <a href="/components/alert"> Alert </a>
+              </li>
+
+              <li>
+                <a href="/components/avatar"> Avatar </a>
+              </li>
+
+              <li>
+                <a href="/components/button"> Button </a>
+              </li>
+
+              <li>
+                <a href="/components/caption"> Caption </a>
+              </li>
+
+              <li>
+                <a href="/components/checkbox"> Checkbox </a>
+              </li>
+
+              <li>
+                <a href="/components/chip"> Chip </a>
+              </li>
+
+              <li>
+                <a href="/components/date-picker" class="active-link"> Date Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/file-upload"> File Upload </a>
+              </li>
+
+              <li>
+                <a href="/components/icon"> Icon </a>
+              </li>
+
+              <li>
+                <a href="/components/input"> Input </a>
+              </li>
+
+              <li>
+                <a href="/components/loader"> Loader </a>
+              </li>
+
+              <li>
+                <a href="/components/option"> Option </a>
+              </li>
+
+              <li>
+                <a href="/components/pagination"> Pagination </a>
+              </li>
+
+              <li>
+                <a href="/components/radio"> Radio </a>
+              </li>
+
+              <li>
+                <a href="/components/radio-group"> Radio Group </a>
+              </li>
+
+              <li>
+                <a href="/components/scroll-hint"> Scroll Hint </a>
+              </li>
+
+              <li>
+                <a href="/components/select"> Select </a>
+              </li>
+
+              <li>
+                <a href="/components/slider"> Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/status-indicator"> Status Indicator </a>
+              </li>
+
+              <li>
+                <a href="/components/tag"> Tag </a>
+              </li>
+
+              <li>
+                <a href="/components/textarea"> Textarea </a>
+              </li>
+
+              <li>
+                <a href="/components/toggle"> Toggle </a>
+              </li>
+            </ul>
+          </li>
+
           <li>
             <h2>Components</h2>
             <ul>
@@ -245,23 +410,15 @@
               </li>
 
               <li>
-                <a href="/components/alert"> Alert </a>
-              </li>
-
-              <li>
                 <a href="/components/browse-variables"> Browse Variables </a>
               </li>
 
               <li>
-                <a href="/components/button"> Button </a>
-              </li>
-
-              <li>
-                <a href="/components/chip"> Chip </a>
-              </li>
-
-              <li>
                 <a href="/components/combobox"> Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/data-access"> Data Access </a>
               </li>
 
               <li>
@@ -277,10 +434,6 @@
               </li>
 
               <li>
-                <a href="/components/date-picker" class="active-link"> Date Picker </a>
-              </li>
-
-              <li>
                 <a href="/components/date-range-slider"> Date Range Slider </a>
               </li>
 
@@ -289,11 +442,7 @@
               </li>
 
               <li>
-                <a href="/components/icon"> Icon </a>
-              </li>
-
-              <li>
-                <a href="/components/loader"> Loader </a>
+                <a href="/components/dropdown"> Dropdown </a>
               </li>
 
               <li>
@@ -305,11 +454,23 @@
               </li>
 
               <li>
+                <a href="/components/menu"> Menu </a>
+              </li>
+
+              <li>
+                <a href="/components/menu-item"> Menu Item </a>
+              </li>
+
+              <li>
                 <a href="/components/plot"> Plot </a>
               </li>
 
               <li>
                 <a href="/components/plot-toolbar"> Plot Toolbar </a>
+              </li>
+
+              <li>
+                <a href="/components/popup"> Popup </a>
               </li>
 
               <li>
@@ -354,15 +515,23 @@
             <li data-level="2"><a href="#events">Events</a></li>
             <li data-level="2"><a href="#examples">Examples</a></li>
             <li data-level="3"><a href="#basic-usage">Basic Usage</a></li>
-            <li data-level="3"><a href="#date-range-with-time-selection">Date Range with Time Selection</a></li>
-            <li data-level="3"><a href="#custom-format-and-theme">Custom Format and Theme</a></li>
-            <li data-level="3"><a href="#with-week-numbers">With Week Numbers</a></li>
-            <li data-level="3"><a href="#range-with-two-months">Range with Two Months</a></li>
+            <li data-level="3"><a href="#date-range">Date Range</a></li>
+            <li data-level="3"><a href="#with-time-selection">With Time Selection</a></li>
+            <li data-level="3"><a href="#custom-display-format">Custom Display Format</a></li>
+            <li data-level="3"><a href="#labels-and-help-text">Labels and Help Text</a></li>
+            <li data-level="3"><a href="#preset-ranges-sidebar">Preset Ranges Sidebar</a></li>
+            <li data-level="3"><a href="#minmax-constraints">Min/Max Constraints</a></li>
+            <li data-level="3"><a href="#presets-with-minmax">Presets With Min/Max</a></li>
+            <li data-level="3"><a href="#split-inputs">Split Inputs</a></li>
+            <li data-level="3"><a href="#inline-mode">Inline Mode</a></li>
             <li data-level="2"><a href="#best-practices">Best Practices</a></li>
             <li data-level="2"><a href="#accessibility">Accessibility</a></li>
             <li data-level="2"><a href="#importing">Importing</a></li>
             <li data-level="2"><a href="#slots">Slots</a></li>
+            <li data-level="2"><a href="#events-1">Events</a></li>
+            <li data-level="2"><a href="#custom-properties">Custom Properties</a></li>
             <li data-level="2"><a href="#parts">Parts</a></li>
+            <li data-level="2"><a href="#dependencies">Dependencies</a></li>
           </ul>
         </div>
 
@@ -375,13 +544,14 @@
             </div>
 
             <div class="component-header__info">
-              <sl-badge variant="neutral" pill=""> Since 1.0 </sl-badge>
+              <sl-badge variant="neutral" pill=""> Since 2.0 </sl-badge>
               <sl-badge variant="warning" pill="" style="text-transform: capitalize"> experimental </sl-badge>
             </div>
           </header>
 
           <p class="component-summary">
-            A date picker component that supports single date selection or date range selection.
+            A date picker component that implements the Horizon Design System (HDS) Date Picker patterns. Supports
+            single date selection or date range selection with calendar popup.
           </p>
 
           <div class="code-preview">
@@ -393,17 +563,17 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-43">
+            <div class="code-preview__source-group" id="code-preview-source-group-99">
               <div class="code-preview__source code-preview__source--html" data-flavor="html">
-                <pre><code class="language-html" id="code-block-206"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-date-picker</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-206"></sl-copy-button></pre>
+                <pre><code class="language-html" id="code-block-322"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-date-picker</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-322"></sl-copy-button></pre>
               </div>
 
               <div class="code-preview__source code-preview__source--react" data-flavor="react">
-                <pre><code class="language-jsx" id="code-block-207"><span class="token keyword">import</span> TerraDatePicker <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/date-picker'</span><span class="token punctuation">;</span>
+                <pre><code class="language-jsx" id="code-block-323"><span class="token keyword">import</span> TerraDatePicker <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/date-picker'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TerraDatePicker</span></span> <span class="token punctuation">/&gt;</span></span><span class="token punctuation">;</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-207"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-323"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -412,7 +582,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-43"
+                aria-controls="code-preview-source-group-99"
               >
                 Source
                 <svg
@@ -455,20 +625,40 @@
           </div>
 
           <h2 id="usage" class="anchor-heading">Usage<a href="#usage" aria-label='Direct link to "Usage"'></a></h2>
+          <p>
+            The Date Picker component implements the
+            <a href="https://website.nasa.gov/hds/" class="external-link" rel="noopener noreferrer" target="_blank"
+              >Horizon Design System (HDS) Date Picker</a
+            >
+            patterns. It is a form field that includes a calendar popup, which is used to select a single date. The
+            component uses the <code>terra-input</code> component for the input field.
+          </p>
+          <p>
+            The date picker is useful for forms involving scheduling (for example, requesting a speaker for an event on
+            a specific day). It allows users to type a date like a normal text field, or open the calendar popup, which
+            helps format the date correctly.
+          </p>
+          <p>
+            Use help text to display the desired date formatting, in case visitors choose to type their date into the
+            field.
+          </p>
 
           <div class="code-preview">
             <div class="code-preview__preview">
               <!-- Single date picker -->
               <terra-date-picker
                 id="my-date-picker"
+                label="Event Date"
                 start-date="2024-03-20"
                 min-date="2024-01-01"
                 max-date="2024-12-31"
+                help-text="Format: YYYY-MM-DD"
               ></terra-date-picker>
 
               <!-- Date range picker -->
               <terra-date-picker
                 id="my-range-picker"
+                label="Date Range"
                 range=""
                 start-date="2024-03-20"
                 end-date="2024-03-25"
@@ -481,26 +671,29 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-44">
+            <div class="code-preview__source-group" id="code-preview-source-group-100">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-208"><span class="token comment">&lt;!-- Single date picker --&gt;</span>
+                <pre><code class="language-html" id="code-block-324"><span class="token comment">&lt;!-- Single date picker --&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span>
   <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>my-date-picker<span class="token punctuation">"</span></span>
+  <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Event Date<span class="token punctuation">"</span></span>
   <span class="token attr-name">start-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-03-20<span class="token punctuation">"</span></span>
   <span class="token attr-name">min-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-01-01<span class="token punctuation">"</span></span>
   <span class="token attr-name">max-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-12-31<span class="token punctuation">"</span></span>
+  <span class="token attr-name">help-text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Format: YYYY-MM-DD<span class="token punctuation">"</span></span>
 <span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-date-picker</span><span class="token punctuation">&gt;</span></span>
 
 <span class="token comment">&lt;!-- Date range picker --&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span>
   <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>my-range-picker<span class="token punctuation">"</span></span>
+  <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Date Range<span class="token punctuation">"</span></span>
   <span class="token attr-name">range</span>
   <span class="token attr-name">start-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-03-20<span class="token punctuation">"</span></span>
   <span class="token attr-name">end-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-03-25<span class="token punctuation">"</span></span>
   <span class="token attr-name">min-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-01-01<span class="token punctuation">"</span></span>
   <span class="token attr-name">max-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-12-31<span class="token punctuation">"</span></span>
 <span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-date-picker</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-208"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-324"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -509,7 +702,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-44"
+                aria-controls="code-preview-source-group-100"
               >
                 Source
                 <svg
@@ -551,6 +744,7 @@
               <thead>
                 <tr>
                   <th>Property</th>
+                  <th>Attribute</th>
                   <th>Type</th>
                   <th>Default</th>
                   <th>Description</th>
@@ -559,123 +753,154 @@
               <tbody>
                 <tr>
                   <td><code>id</code></td>
+                  <td><code>id</code></td>
                   <td><code>string</code></td>
                   <td>-</td>
                   <td>The unique identifier for the date picker</td>
                 </tr>
                 <tr>
                   <td><code>range</code></td>
+                  <td><code>range</code></td>
                   <td><code>boolean</code></td>
                   <td><code>false</code></td>
-                  <td>Whether to show a date range picker (two inputs) or a single date picker</td>
+                  <td>Enables date range picking (two calendars)</td>
                 </tr>
                 <tr>
                   <td><code>minDate</code></td>
+                  <td><code>min-date</code></td>
                   <td><code>string</code></td>
                   <td>-</td>
-                  <td>The minimum allowed date (format: YYYY-MM-DD)</td>
+                  <td>Minimum selectable date (YYYY-MM-DD)</td>
                 </tr>
                 <tr>
                   <td><code>maxDate</code></td>
+                  <td><code>max-date</code></td>
                   <td><code>string</code></td>
                   <td>-</td>
-                  <td>The maximum allowed date (format: YYYY-MM-DD)</td>
+                  <td>Maximum selectable date (YYYY-MM-DD)</td>
                 </tr>
                 <tr>
                   <td><code>startDate</code></td>
+                  <td><code>start-date</code></td>
                   <td><code>string</code></td>
                   <td>-</td>
-                  <td>The selected start date (in range mode) or single date (format: YYYY-MM-DD)</td>
+                  <td>Initial start/single date (ISO or YYYY-MM-DD)</td>
                 </tr>
                 <tr>
                   <td><code>endDate</code></td>
+                  <td><code>end-date</code></td>
                   <td><code>string</code></td>
                   <td>-</td>
-                  <td>The selected end date (in range mode) (format: YYYY-MM-DD)</td>
+                  <td>Initial end date (range mode; ISO or YYYY-MM-DD)</td>
                 </tr>
                 <tr>
-                  <td><code>allowInput</code></td>
-                  <td><code>boolean</code></td>
-                  <td><code>false</code></td>
-                  <td>Allows the user to enter a date directly into the input field</td>
-                </tr>
-                <tr>
-                  <td><code>altFormat</code></td>
+                  <td><code>label</code></td>
+                  <td><code>label</code></td>
                   <td><code>string</code></td>
-                  <td><code>'F j, Y'</code></td>
-                  <td>The format for the alternative input display (e.g., “March 20, 2024”)</td>
+                  <td><code>"Select Date"</code></td>
+                  <td>Input label text</td>
                 </tr>
                 <tr>
-                  <td><code>altInput</code></td>
-                  <td><code>boolean</code></td>
-                  <td><code>false</code></td>
+                  <td><code>helpText</code></td>
+                  <td><code>help-text</code></td>
+                  <td><code>string</code></td>
+                  <td><code>''</code></td>
+                  <td>Help text displayed below the input (e.g., “Format: YYYY-MM-DD”)</td>
+                </tr>
+                <tr>
+                  <td><code>startLabel</code></td>
+                  <td><code>start-label</code></td>
+                  <td><code>string</code></td>
+                  <td>-</td>
                   <td>
-                    Shows a more readable date format in the input while maintaining the original format for the value
+                    Custom label for the start date input (only used when <code>split-inputs</code> and
+                    <code>range</code> are true)
                   </td>
                 </tr>
                 <tr>
-                  <td><code>altInputClass</code></td>
+                  <td><code>endLabel</code></td>
+                  <td><code>end-label</code></td>
                   <td><code>string</code></td>
-                  <td><code>''</code></td>
-                  <td>Custom CSS class for the alternative input</td>
+                  <td>-</td>
+                  <td>
+                    Custom label for the end date input (only used when <code>split-inputs</code> and
+                    <code>range</code> are true)
+                  </td>
                 </tr>
                 <tr>
-                  <td><code>dateFormat</code></td>
-                  <td><code>string</code></td>
-                  <td><code>'Y-m-d'</code></td>
-                  <td>The format for the date display (e.g., “2024–03–20”)</td>
+                  <td><code>hideLabel</code></td>
+                  <td><code>hide-label</code></td>
+                  <td><code>boolean</code></td>
+                  <td><code>false</code></td>
+                  <td>Visually hide the label while keeping it accessible</td>
                 </tr>
                 <tr>
                   <td><code>enableTime</code></td>
+                  <td><code>enable-time</code></td>
                   <td><code>boolean</code></td>
                   <td><code>false</code></td>
-                  <td>Enables time selection in the picker</td>
+                  <td>Enables time selection UI (12-hour with AM/PM)</td>
                 </tr>
                 <tr>
-                  <td><code>time24hr</code></td>
+                  <td><code>displayFormat</code></td>
+                  <td><code>display-format</code></td>
+                  <td><code>string</code></td>
+                  <td><code>YYYY-MM-DD</code> or <code>YYYY-MM-DD HH:mm:ss</code></td>
+                  <td>Display format for the input value</td>
+                </tr>
+                <tr>
+                  <td><code>showPresets</code></td>
+                  <td><code>show-presets</code></td>
                   <td><code>boolean</code></td>
                   <td><code>false</code></td>
-                  <td>Uses 24-hour time format when time selection is enabled</td>
-                </tr>
-                <tr>
-                  <td><code>weekNumbers</code></td>
-                  <td><code>boolean</code></td>
-                  <td><code>false</code></td>
-                  <td>Shows week numbers in the calendar</td>
-                </tr>
-                <tr>
-                  <td><code>static</code></td>
-                  <td><code>boolean</code></td>
-                  <td><code>false</code></td>
-                  <td>Controls whether the calendar is positioned statically</td>
-                </tr>
-                <tr>
-                  <td><code>position</code></td>
-                  <td><code>'auto' | 'above' | 'below'</code></td>
-                  <td><code>'auto'</code></td>
-                  <td>Controls the calendar’s position relative to the input</td>
-                </tr>
-                <tr>
-                  <td><code>theme</code></td>
                   <td>
-                    <code
-                      >'light' | 'dark' | 'material_blue' | 'material_red' | 'material_green' | 'material_orange' |
-                      'airbnb' | 'confetti' | 'none'</code
-                    >
+                    Shows a sidebar with preset ranges; shown if preset overlaps <code>min/max</code>. Hidden if none
+                    remain
                   </td>
-                  <td><code>'light'</code></td>
-                  <td>The visual theme of the date picker</td>
+                </tr>
+                <tr>
+                  <td><code>presets</code></td>
+                  <td><code>presets</code></td>
+                  <td><code>PresetRange[]</code></td>
+                  <td><code>[]</code> (auto-fill)</td>
+                  <td>Custom preset ranges; when empty, a default set is provided</td>
+                </tr>
+                <tr>
+                  <td><code>inline</code></td>
+                  <td><code>inline</code></td>
+                  <td><code>boolean</code></td>
+                  <td><code>false</code></td>
+                  <td>Displays the calendar inline (always visible) instead of as a popover dropdown</td>
+                </tr>
+                <tr>
+                  <td><code>splitInputs</code></td>
+                  <td><code>split-inputs</code></td>
+                  <td><code>boolean</code></td>
+                  <td><code>false</code></td>
+                  <td>
+                    When <code>range</code> is true, displays two separate inputs side by side (one for start, one for
+                    end)
+                  </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <h2 id="events" class="anchor-heading">Events<a href="#events" aria-label='Direct link to "Events"'></a></h2>
-          <p>The component emits the following events:</p>
+          <p>The component emits:</p>
           <ul>
             <li>
-              <code>change</code>: Fired when a date is selected
+              <code>terra-date-range-change</code>: Fired when a selection is made or changed
               <ul>
-                <li>Event detail contains <code>selectedDates</code> array with the selected date(s)</li>
+                <li>
+                  Event <code>detail</code>: <code>{ startDate: string, endDate: string }</code>
+                  <ul>
+                    <li>If <code>enable-time</code> is off, values are <code>YYYY-MM-DD</code></li>
+                    <li>
+                      If <code>enable-time</code> is on, values are ISO strings (e.g.,
+                      <code>2024-03-20T10:00:00.000Z</code>)
+                    </li>
+                  </ul>
+                </li>
               </ul>
             </li>
           </ul>
@@ -695,13 +920,13 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-45">
+            <div class="code-preview__source-group" id="code-preview-source-group-101">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-209"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span>
+                <pre><code class="language-html" id="code-block-325"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span>
   <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>basic-picker<span class="token punctuation">"</span></span>
   <span class="token attr-name">start-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-03-20<span class="token punctuation">"</span></span>
 <span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-date-picker</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-209"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-325"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -710,7 +935,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-45"
+                aria-controls="code-preview-source-group-101"
               >
                 Source
                 <svg
@@ -744,11 +969,77 @@
             </div>
           </div>
 
-          <h3 id="date-range-with-time-selection" class="anchor-heading">
-            Date Range with Time Selection<a
-              href="#date-range-with-time-selection"
-              aria-label='Direct link to "Date Range with Time Selection"'
-            ></a>
+          <h3 id="date-range" class="anchor-heading">
+            Date Range<a href="#date-range" aria-label='Direct link to "Date Range"'></a>
+          </h3>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-date-picker
+                id="range-picker"
+                range=""
+                start-date="2024-03-20"
+                end-date="2024-03-25"
+              ></terra-date-picker>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-102">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-326"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span>
+  <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>range-picker<span class="token punctuation">"</span></span>
+  <span class="token attr-name">range</span>
+  <span class="token attr-name">start-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-03-20<span class="token punctuation">"</span></span>
+  <span class="token attr-name">end-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-03-25<span class="token punctuation">"</span></span>
+<span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-date-picker</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-326"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-102"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="with-time-selection" class="anchor-heading">
+            With Time Selection<a href="#with-time-selection" aria-label='Direct link to "With Time Selection"'></a>
           </h3>
 
           <div class="code-preview">
@@ -757,9 +1048,8 @@
                 id="range-time-picker"
                 range=""
                 enable-time=""
-                time-24hr=""
-                start-date="2024-03-20T10:00"
-                end-date="2024-03-25T15:30"
+                start-date="2024-03-20T10:00:00Z"
+                end-date="2024-03-25T15:30:00Z"
               ></terra-date-picker>
 
               <div class="code-preview__resizer">
@@ -767,17 +1057,16 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-46">
+            <div class="code-preview__source-group" id="code-preview-source-group-103">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-210"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span>
+                <pre><code class="language-html" id="code-block-327"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span>
   <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>range-time-picker<span class="token punctuation">"</span></span>
   <span class="token attr-name">range</span>
   <span class="token attr-name">enable-time</span>
-  <span class="token attr-name">time-24hr</span>
-  <span class="token attr-name">start-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-03-20T10:00<span class="token punctuation">"</span></span>
-  <span class="token attr-name">end-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-03-25T15:30<span class="token punctuation">"</span></span>
+  <span class="token attr-name">start-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-03-20T10:00:00Z<span class="token punctuation">"</span></span>
+  <span class="token attr-name">end-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-03-25T15:30:00Z<span class="token punctuation">"</span></span>
 <span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-date-picker</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-210"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-327"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -786,7 +1075,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-46"
+                aria-controls="code-preview-source-group-103"
               >
                 Source
                 <svg
@@ -820,21 +1109,19 @@
             </div>
           </div>
 
-          <h3 id="custom-format-and-theme" class="anchor-heading">
-            Custom Format and Theme<a
-              href="#custom-format-and-theme"
-              aria-label='Direct link to "Custom Format and Theme"'
+          <h3 id="custom-display-format" class="anchor-heading">
+            Custom Display Format<a
+              href="#custom-display-format"
+              aria-label='Direct link to "Custom Display Format"'
             ></a>
           </h3>
 
           <div class="code-preview">
             <div class="code-preview__preview">
               <terra-date-picker
-                id="custom-picker"
-                date-format="Y-m-d"
-                alt-format="F j, Y"
-                alt-input=""
-                theme="material_blue"
+                id="custom-format-picker"
+                start-date="2024-03-20"
+                display-format="YYYY/MM/DD"
               ></terra-date-picker>
 
               <div class="code-preview__resizer">
@@ -842,16 +1129,14 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-47">
+            <div class="code-preview__source-group" id="code-preview-source-group-104">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-211"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span>
-  <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>custom-picker<span class="token punctuation">"</span></span>
-  <span class="token attr-name">date-format</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Y-m-d<span class="token punctuation">"</span></span>
-  <span class="token attr-name">alt-format</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>F j, Y<span class="token punctuation">"</span></span>
-  <span class="token attr-name">alt-input</span>
-  <span class="token attr-name">theme</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>material_blue<span class="token punctuation">"</span></span>
+                <pre><code class="language-html" id="code-block-328"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span>
+  <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>custom-format-picker<span class="token punctuation">"</span></span>
+  <span class="token attr-name">start-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-03-20<span class="token punctuation">"</span></span>
+  <span class="token attr-name">display-format</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>YYYY/MM/DD<span class="token punctuation">"</span></span>
 <span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-date-picker</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-211"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-328"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -860,7 +1145,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-47"
+                aria-controls="code-preview-source-group-104"
               >
                 Source
                 <svg
@@ -894,27 +1179,51 @@
             </div>
           </div>
 
-          <h3 id="with-week-numbers" class="anchor-heading">
-            With Week Numbers<a href="#with-week-numbers" aria-label='Direct link to "With Week Numbers"'></a>
+          <h3 id="labels-and-help-text" class="anchor-heading">
+            Labels and Help Text<a href="#labels-and-help-text" aria-label='Direct link to "Labels and Help Text"'></a>
           </h3>
 
           <div class="code-preview">
             <div class="code-preview__preview">
-              <terra-date-picker id="week-picker" week-numbers="" position="below"></terra-date-picker>
+              <terra-date-picker
+                id="labeled-picker"
+                label="Acquisition Date"
+                help-text="Format: YYYY-MM-DD"
+                start-date="2024-06-01"
+              ></terra-date-picker>
+
+              <!-- Visually hide the label but keep it accessible -->
+              <terra-date-picker
+                id="hidden-label-picker"
+                label="Acquisition Date"
+                hide-label=""
+                help-text="Format: YYYY-MM-DD"
+                start-date="2024-06-01"
+              ></terra-date-picker>
 
               <div class="code-preview__resizer">
                 <sl-icon name="grip-vertical"></sl-icon>
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-48">
+            <div class="code-preview__source-group" id="code-preview-source-group-105">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-212"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span>
-  <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>week-picker<span class="token punctuation">"</span></span>
-  <span class="token attr-name">week-numbers</span>
-  <span class="token attr-name">position</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>below<span class="token punctuation">"</span></span>
+                <pre><code class="language-html" id="code-block-329"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span>
+  <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>labeled-picker<span class="token punctuation">"</span></span>
+  <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Acquisition Date<span class="token punctuation">"</span></span>
+  <span class="token attr-name">help-text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Format: YYYY-MM-DD<span class="token punctuation">"</span></span>
+  <span class="token attr-name">start-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-06-01<span class="token punctuation">"</span></span>
 <span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-date-picker</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-212"></sl-copy-button></pre>
+
+<span class="token comment">&lt;!-- Visually hide the label but keep it accessible --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span>
+  <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hidden-label-picker<span class="token punctuation">"</span></span>
+  <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Acquisition Date<span class="token punctuation">"</span></span>
+  <span class="token attr-name">hide-label</span>
+  <span class="token attr-name">help-text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Format: YYYY-MM-DD<span class="token punctuation">"</span></span>
+  <span class="token attr-name">start-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-06-01<span class="token punctuation">"</span></span>
+<span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-date-picker</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-329"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -923,7 +1232,7 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-48"
+                aria-controls="code-preview-source-group-105"
               >
                 Source
                 <svg
@@ -957,21 +1266,90 @@
             </div>
           </div>
 
-          <h3 id="range-with-two-months" class="anchor-heading">
-            Range with Two Months<a
-              href="#range-with-two-months"
-              aria-label='Direct link to "Range with Two Months"'
+          <h3 id="preset-ranges-sidebar" class="anchor-heading">
+            Preset Ranges Sidebar<a
+              href="#preset-ranges-sidebar"
+              aria-label='Direct link to "Preset Ranges Sidebar"'
             ></a>
           </h3>
 
           <div class="code-preview">
             <div class="code-preview__preview">
+              <!-- Default presets provided when show-presets is enabled -->
+              <terra-date-picker id="preset-picker" range="" show-presets=""></terra-date-picker>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-106">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-330"><span class="token comment">&lt;!-- Default presets provided when show-presets is enabled --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span>
+  <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>preset-picker<span class="token punctuation">"</span></span>
+  <span class="token attr-name">range</span>
+  <span class="token attr-name">show-presets</span>
+<span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-date-picker</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-330"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-106"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <p>
+            Note: Presets are shown if any part of the preset range overlaps the <code>min-date</code>/<code
+              >max-date</code
+            >
+            window. When a preset is selected, dates are clamped to the allowed range. If no presets overlap, the
+            sidebar is hidden.
+          </p>
+          <h3 id="minmax-constraints" class="anchor-heading">
+            Min/Max Constraints<a href="#minmax-constraints" aria-label='Direct link to "Min/Max Constraints"'></a>
+          </h3>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
               <terra-date-picker
-                id="two-month-picker"
+                id="bounded-picker"
                 range=""
-                show-months="2"
-                start-date="2024-03-20"
-                end-date="2024-04-15"
                 min-date="2024-01-01"
                 max-date="2024-12-31"
               ></terra-date-picker>
@@ -981,18 +1359,15 @@
               </div>
             </div>
 
-            <div class="code-preview__source-group" id="code-preview-source-group-49">
+            <div class="code-preview__source-group" id="code-preview-source-group-107">
               <div class="code-preview__source code-preview__source--html">
-                <pre><code class="language-html" id="code-block-213"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span>
-  <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>two-month-picker<span class="token punctuation">"</span></span>
+                <pre><code class="language-html" id="code-block-331"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span>
+  <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bounded-picker<span class="token punctuation">"</span></span>
   <span class="token attr-name">range</span>
-  <span class="token attr-name">show-months</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2<span class="token punctuation">"</span></span>
-  <span class="token attr-name">start-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-03-20<span class="token punctuation">"</span></span>
-  <span class="token attr-name">end-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-04-15<span class="token punctuation">"</span></span>
   <span class="token attr-name">min-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-01-01<span class="token punctuation">"</span></span>
   <span class="token attr-name">max-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-12-31<span class="token punctuation">"</span></span>
 <span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-date-picker</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-213"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-331"></sl-copy-button></pre>
               </div>
             </div>
 
@@ -1001,7 +1376,357 @@
                 type="button"
                 class="code-preview__button code-preview__toggle"
                 aria-expanded="false"
-                aria-controls="code-preview-source-group-49"
+                aria-controls="code-preview-source-group-107"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="presets-with-minmax" class="anchor-heading">
+            Presets With Min/Max<a href="#presets-with-minmax" aria-label='Direct link to "Presets With Min/Max"'></a>
+          </h3>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <terra-date-picker
+                id="preset-bounded-picker"
+                range=""
+                show-presets=""
+                min-date="2024-03-15"
+                max-date="2024-03-20"
+              ></terra-date-picker>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-108">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-332"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span>
+  <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>preset-bounded-picker<span class="token punctuation">"</span></span>
+  <span class="token attr-name">range</span>
+  <span class="token attr-name">show-presets</span>
+  <span class="token attr-name">min-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-03-15<span class="token punctuation">"</span></span>
+  <span class="token attr-name">max-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-03-20<span class="token punctuation">"</span></span>
+<span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-date-picker</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-332"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-108"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <p>
+            Only presets whose start and end are within the bounds are shown. If none qualify, the sidebar is hidden.
+          </p>
+          <h3 id="split-inputs" class="anchor-heading">
+            Split Inputs<a href="#split-inputs" aria-label='Direct link to "Split Inputs"'></a>
+          </h3>
+          <p>
+            When using range mode, you can optionally display two separate inputs side by side instead of a single
+            combined input. This is useful when you want clearer visual separation between the start and end dates.
+          </p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <!-- Range picker with split inputs -->
+              <terra-date-picker
+                id="split-inputs-picker"
+                range=""
+                split-inputs=""
+                start-date="2024-03-20"
+                end-date="2024-03-25"
+              ></terra-date-picker>
+
+              <!-- Split inputs with inline calendar -->
+              <terra-date-picker
+                id="split-inline-picker"
+                range=""
+                split-inputs=""
+                inline=""
+                start-date="2024-03-20"
+                end-date="2024-03-25"
+              ></terra-date-picker>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-109">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-333"><span class="token comment">&lt;!-- Range picker with split inputs --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span>
+  <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>split-inputs-picker<span class="token punctuation">"</span></span>
+  <span class="token attr-name">range</span>
+  <span class="token attr-name">split-inputs</span>
+  <span class="token attr-name">start-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-03-20<span class="token punctuation">"</span></span>
+  <span class="token attr-name">end-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-03-25<span class="token punctuation">"</span></span>
+<span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-date-picker</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token comment">&lt;!-- Split inputs with inline calendar --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span>
+  <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>split-inline-picker<span class="token punctuation">"</span></span>
+  <span class="token attr-name">range</span>
+  <span class="token attr-name">split-inputs</span>
+  <span class="token attr-name">inline</span>
+  <span class="token attr-name">start-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-03-20<span class="token punctuation">"</span></span>
+  <span class="token attr-name">end-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-03-25<span class="token punctuation">"</span></span>
+<span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-date-picker</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-333"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-109"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <p>
+            Note: The <code>split-inputs</code> prop only has an effect when <code>range</code> is <code>true</code>.
+            When enabled, the labels will automatically append ”(Start)” and ”(End)” to the provided label, or use
+            “Start Date” and “End Date” if no label is provided. You can customize the labels using the
+            <code>start-label</code> and <code>end-label</code> properties.
+          </p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <!-- Custom labels for split inputs -->
+              <terra-date-picker
+                id="custom-labels-picker"
+                range=""
+                split-inputs=""
+                start-label="From"
+                end-label="To"
+                start-date="2024-03-20"
+                end-date="2024-03-25"
+              ></terra-date-picker>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-110">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-334"><span class="token comment">&lt;!-- Custom labels for split inputs --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span>
+  <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>custom-labels-picker<span class="token punctuation">"</span></span>
+  <span class="token attr-name">range</span>
+  <span class="token attr-name">split-inputs</span>
+  <span class="token attr-name">start-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>From<span class="token punctuation">"</span></span>
+  <span class="token attr-name">end-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>To<span class="token punctuation">"</span></span>
+  <span class="token attr-name">start-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-03-20<span class="token punctuation">"</span></span>
+  <span class="token attr-name">end-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-03-25<span class="token punctuation">"</span></span>
+<span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-date-picker</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-334"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-110"
+              >
+                Source
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <button type="button" class="code-preview__button code-preview__button--codepen" title="Edit on CodePen">
+                <svg
+                  width="138"
+                  height="26"
+                  viewBox="0 0 138 26"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M80 6h-9v14h9 M114 6h-9 v14h9 M111 13h-6 M77 13h-6 M122 20V6l11 14V6 M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24 M88 14h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14 M15 8c-1.3-1.3-3-2-5-2c-4 0-7 3-7 7s3 7 7 7 c2 0 3.7-0.8 5-2 M64 13c0 4-3 7-7 7h-5V6h5C61 6 64 9 64 13z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <h3 id="inline-mode" class="anchor-heading">
+            Inline Mode<a href="#inline-mode" aria-label='Direct link to "Inline Mode"'></a>
+          </h3>
+          <p>
+            When <code>inline</code> is enabled, the calendar is always visible and displayed as part of the page flow
+            rather than as a popover dropdown. The input field remains visible and displays the selected date(s), but
+            clicking it does not toggle the calendar visibility since it’s always shown.
+          </p>
+
+          <div class="code-preview">
+            <div class="code-preview__preview">
+              <!-- Inline single date picker -->
+              <terra-date-picker id="inline-picker" inline="" start-date="2024-03-20"></terra-date-picker>
+
+              <!-- Inline date range picker -->
+              <terra-date-picker
+                id="inline-range-picker"
+                inline=""
+                range=""
+                start-date="2024-03-20"
+                end-date="2024-03-25"
+              ></terra-date-picker>
+
+              <!-- Inline with presets -->
+              <terra-date-picker id="inline-preset-picker" inline="" range="" show-presets=""></terra-date-picker>
+
+              <div class="code-preview__resizer">
+                <sl-icon name="grip-vertical"></sl-icon>
+              </div>
+            </div>
+
+            <div class="code-preview__source-group" id="code-preview-source-group-111">
+              <div class="code-preview__source code-preview__source--html">
+                <pre><code class="language-html" id="code-block-335"><span class="token comment">&lt;!-- Inline single date picker --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span>
+  <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>inline-picker<span class="token punctuation">"</span></span>
+  <span class="token attr-name">inline</span>
+  <span class="token attr-name">start-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-03-20<span class="token punctuation">"</span></span>
+<span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-date-picker</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token comment">&lt;!-- Inline date range picker --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span>
+  <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>inline-range-picker<span class="token punctuation">"</span></span>
+  <span class="token attr-name">inline</span>
+  <span class="token attr-name">range</span>
+  <span class="token attr-name">start-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-03-20<span class="token punctuation">"</span></span>
+  <span class="token attr-name">end-date</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2024-03-25<span class="token punctuation">"</span></span>
+<span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-date-picker</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token comment">&lt;!-- Inline with presets --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>terra-date-picker</span>
+  <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>inline-preset-picker<span class="token punctuation">"</span></span>
+  <span class="token attr-name">inline</span>
+  <span class="token attr-name">range</span>
+  <span class="token attr-name">show-presets</span>
+<span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>terra-date-picker</span><span class="token punctuation">&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-335"></sl-copy-button></pre>
+              </div>
+            </div>
+
+            <div class="code-preview__buttons">
+              <button
+                type="button"
+                class="code-preview__button code-preview__toggle"
+                aria-expanded="false"
+                aria-controls="code-preview-source-group-111"
               >
                 Source
                 <svg
@@ -1039,11 +1764,23 @@
             Best Practices<a href="#best-practices" aria-label='Direct link to "Best Practices"'></a>
           </h2>
           <ol>
+            <li>
+              Always provide a <code>label</code> for accessibility - the component uses <code>terra-input</code> which
+              requires proper labeling
+            </li>
+            <li>
+              Use <code>help-text</code> to display the desired date formatting (e.g., “Format: YYYY-MM-DD”) in case
+              visitors choose to type their date into the field
+            </li>
             <li>Always provide an <code>id</code> for accessibility and to ensure unique identification</li>
             <li>Use <code>minDate</code> and <code>maxDate</code> to prevent selection of invalid dates</li>
-            <li>Consider using <code>altInput</code> with <code>altFormat</code> for a more user-friendly display</li>
+            <li>Use <code>displayFormat</code> to match the expected input display in your application</li>
             <li>Use <code>enableTime</code> only when time selection is necessary</li>
-            <li>Choose an appropriate theme that matches your application’s design system</li>
+            <li>Show <code>showPresets</code> to accelerate common range selections when helpful</li>
+            <li>
+              Use <code>inline</code> mode when you want the calendar to be permanently visible as part of the page
+              layout
+            </li>
           </ol>
           <h2 id="accessibility" class="anchor-heading">
             Accessibility<a href="#accessibility" aria-label='Direct link to "Accessibility"'></a>
@@ -1084,7 +1821,7 @@
                 >
                 using a script tag:
               </p>
-              <pre><code class="language-html" id="code-block-214"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.64/cdn/components/date-picker/date-picker.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code><sl-copy-button class="copy-code-button" from="code-block-214"></sl-copy-button></pre>
+              <pre><code class="language-html" id="code-block-336"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.111/cdn/components/date-picker/date-picker.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code><sl-copy-button class="copy-code-button" from="code-block-336"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="import">
@@ -1099,7 +1836,7 @@
                 >
                 using a JavaScript import:
               </p>
-              <pre><code class="language-js" id="code-block-215"><span class="token keyword">import</span> <span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.64/cdn/components/date-picker/date-picker.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-215"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-337"><span class="token keyword">import</span> <span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.111/cdn/components/date-picker/date-picker.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-337"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="bundler">
@@ -1107,12 +1844,12 @@
                 To import this component using
                 <a href="/components/getting-started/installation#bundling">a bundler</a>:
               </p>
-              <pre><code class="language-js" id="code-block-216"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/date-picker/date-picker.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-216"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-338"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/components/date-picker/date-picker.js'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-338"></sl-copy-button></pre>
             </sl-tab-panel>
 
             <sl-tab-panel name="react">
               <p>To import this component as a <a href="/components/frameworks/react">React component</a>:</p>
-              <pre><code class="language-js" id="code-block-217"><span class="token keyword">import</span> TerraDatePicker <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/date-picker'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-217"></sl-copy-button></pre>
+              <pre><code class="language-js" id="code-block-339"><span class="token keyword">import</span> TerraDatePicker <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/react/date-picker'</span><span class="token punctuation">;</span></code><sl-copy-button class="copy-code-button" from="code-block-339"></sl-copy-button></pre>
             </sl-tab-panel>
           </sl-tab-group>
 
@@ -1139,6 +1876,71 @@
             <em>Learn more about <a href="/components/getting-started/usage#slots">using slots</a>.</em>
           </p>
 
+          <h2 id="events-1" class="anchor-heading">
+            Events<a href="#events-1" aria-label='Direct link to "Events"'></a>
+          </h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name" data-flavor="html">Name</th>
+                  <th class="table-name" data-flavor="react">React Event</th>
+                  <th class="table-description">Description</th>
+                  <th class="table-event-detail">Event Detail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-flavor="html">
+                    <code class="nowrap">terra-date-range-change</code>
+                  </td>
+                  <td data-flavor="react">
+                    <code class="nowrap">onTerraDateRangeChange</code>
+                  </td>
+                  <td>Emitted when a date selection is made or changed.</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em>Learn more about <a href="/components/getting-started/usage#events">events</a>.</em>
+          </p>
+
+          <h2 id="custom-properties" class="anchor-heading">
+            Custom Properties<a href="#custom-properties" aria-label='Direct link to "Custom Properties"'></a>
+          </h2>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table-name">Name</th>
+                  <th class="table-description">Description</th>
+                  <th class="table-default">Default</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="nowrap">
+                    <code>--terra-date-picker-*</code>
+                  </td>
+                  <td>All date picker design tokens from horizon.css are supported.</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <em
+              >Learn more about
+              <a href="/components/getting-started/usage#custom-properties">customizing CSS custom properties</a>.</em
+            >
+          </p>
+
           <h2 id="parts" class="anchor-heading">Parts<a href="#parts" aria-label='Direct link to "Parts"'></a></h2>
 
           <div class="table-scroll">
@@ -1161,7 +1963,21 @@
                   <td class="nowrap">
                     <code>input</code>
                   </td>
-                  <td>The date input element.</td>
+                  <td>The date input element (terra-input).</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>calendar</code>
+                  </td>
+                  <td>The calendar dropdown.</td>
+                </tr>
+
+                <tr>
+                  <td class="nowrap">
+                    <code>sidebar</code>
+                  </td>
+                  <td>The preset ranges sidebar.</td>
                 </tr>
               </tbody>
             </table>
@@ -1173,6 +1989,22 @@
               <a href="/components/getting-started/customizing/#css-parts">customizing CSS parts</a>.</em
             >
           </p>
+
+          <h2 id="dependencies" class="anchor-heading">
+            Dependencies<a href="#dependencies" aria-label='Direct link to "Dependencies"'></a>
+          </h2>
+
+          <p>This component automatically imports the following dependencies.</p>
+
+          <ul>
+            <li>
+              <code>&lt;terra-button&gt;</code>
+            </li>
+
+            <li>
+              <code>&lt;terra-input&gt;</code>
+            </li>
+          </ul>
         </div>
       </article>
     </main>

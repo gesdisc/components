@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en" data-layout="default" data-terra-ui-components-version="0.0.64">
+<html lang="en" data-layout="default" data-terra-ui-components-version="0.0.111">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="This page explains how to integrate Shoelace with a Rails app." />
+    <meta name="description" content="This page explains how to integrate Terra with a Rails app." />
     <title>Integrating with Rails</title>
 
     <meta name="turbo-cache-control" />
@@ -16,12 +16,12 @@
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:creator" content="nasa_terra-ui" />
-    <meta name="twitter:image" content="https://disc.gsfc.nasa.gov/components/assets/images/og-image.png" />
+    <meta name="twitter:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
 
-    <meta property="og:url" content="https://disc.gsfc.nasa.gov/tutorials/integrating-with-rails/" />
+    <meta property="og:url" content="https://terra-ui.netlify.app/tutorials/integrating-with-rails/" />
     <meta property="og:title" content="Integrating with Rails" />
-    <meta property="og:description" content="This page explains how to integrate Shoelace with a Rails app." />
-    <meta property="og:image" content="https://disc.gsfc.nasa.gov/components/assets/images/og-image.png" />
+    <meta property="og:description" content="This page explains how to integrate Terra with a Rails app." />
+    <meta property="og:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
 
     <link rel="stylesheet" href="/dist/themes/horizon.css" />
     <script type="module" src="/dist/terra-ui-components-autoloader.js"></script>
@@ -61,6 +61,173 @@
       Skip to main content
     </a>
 
+    <header id="top-nav" class="top-nav">
+      <div class="top-nav__left">
+        <a href="/" class="top-nav__logo">
+          <terra-icon name="nasa-logo" font-size="4rem"></terra-icon>
+          <span class="top-nav__title">Terra UI</span>
+        </a>
+      </div>
+
+      <div class="top-nav__right">
+        <terra-dropdown id="about-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="About"> About </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="project-overview">
+              <a href="/components/">Project Overview</a>
+            </terra-menu-item>
+            <terra-menu-item value="contributing">
+              <a href="/components/about/contributing">Contributing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="getting-started-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Getting Started">
+            Getting Started
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="installation">
+              <a href="/components/getting-started/installation">Installation</a>
+            </terra-menu-item>
+            <terra-menu-item value="usage">
+              <a href="/components/getting-started/usage">Usage</a>
+            </terra-menu-item>
+            <terra-menu-item value="themes">
+              <a href="/components/getting-started/themes">Themes</a>
+            </terra-menu-item>
+            <terra-menu-item value="customizing">
+              <a href="/components/getting-started/customizing">Customizing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <terra-dropdown id="frameworks-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Frameworks">
+            Frameworks
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="react">
+              <a href="/components/frameworks/react">React</a>
+            </terra-menu-item>
+            <terra-menu-item value="vue">
+              <a href="/components/frameworks/vue">Vue</a>
+            </terra-menu-item>
+            <terra-menu-item value="angular">
+              <a href="/components/frameworks/angular">Angular</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <button
+          class="top-nav__search"
+          type="button"
+          title="Press / to search"
+          aria-label="Search"
+          data-plugin="search"
+        >
+          <sl-icon name="search"></sl-icon>
+        </button>
+        <a
+          href="https://github.com/nasa/terra-ui-components"
+          title="View Terra UI Components on GitHub"
+          class="top-nav__icon-link external-link"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <sl-icon name="github"></sl-icon>
+        </a>
+        <terra-dropdown id="environment-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Environment"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <span id="environment-display">UAT</span>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="uat"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >UAT</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="prod"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >PROD</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="theme-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Press \ to toggle"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
+            <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="light"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Light</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="dark"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Dark</terra-menu-item
+            >
+            <hr
+              role="separator"
+              aria-orientation="horizontal"
+              style="
+                margin: var(--terra-spacing-x-small) 0;
+                border: none;
+                border-top: 1px solid var(--terra-panel-border-color);
+              "
+            />
+            <terra-menu-item
+              type="checkbox"
+              value="auto"
+              tabindex="0"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >System</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+      </div>
+    </header>
+
     <button id="menu-toggle" type="button" aria-label="Menu">
       <svg width="148" height="148" viewBox="0 0 148 148" xmlns="http://www.w3.org/2000/svg">
         <g stroke="currentColor" stroke-width="18" fill="none" fill-rule="evenodd" stroke-linecap="round">
@@ -69,108 +236,7 @@
       </svg>
     </button>
 
-    <div id="icon-toolbar">
-      <a
-        href="https://github.com/nasa/terra-ui-components"
-        title="View Terra UI Components on GitHub"
-        class="external-link"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <sl-icon name="github"></sl-icon>
-      </a>
-      <sl-dropdown id="environment-selector" placement="bottom-end" distance="3">
-        <terra-button
-          slot="trigger"
-          size="large"
-          variant="text"
-          caret=""
-          title="Environment"
-          data-optional=""
-          data-valid=""
-          data-user-valid=""
-        >
-          <span id="environment-display">UAT</span>
-        </terra-button>
-        <sl-menu role="menu">
-          <sl-menu-item
-            type="checkbox"
-            value="uat"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="true"
-            aria-disabled="false"
-            checked=""
-            >UAT</sl-menu-item
-          >
-          <sl-menu-item
-            type="checkbox"
-            value="prod"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >PROD</sl-menu-item
-          >
-        </sl-menu>
-      </sl-dropdown>
-      <sl-dropdown id="theme-selector" placement="bottom-end" distance="3">
-        <terra-button
-          slot="trigger"
-          size="large"
-          variant="text"
-          caret=""
-          title="Press \ to toggle"
-          data-optional=""
-          data-valid=""
-          data-user-valid=""
-        >
-          <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
-          <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
-        </terra-button>
-        <sl-menu role="menu">
-          <sl-menu-item
-            type="checkbox"
-            value="light"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >Light</sl-menu-item
-          >
-          <sl-menu-item
-            type="checkbox"
-            value="dark"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >Dark</sl-menu-item
-          >
-          <sl-divider role="separator" aria-orientation="horizontal"></sl-divider>
-          <sl-menu-item
-            type="checkbox"
-            value="auto"
-            tabindex="0"
-            role="menuitemcheckbox"
-            aria-checked="true"
-            aria-disabled="false"
-            checked=""
-            >System</sl-menu-item
-          >
-        </sl-menu>
-      </sl-dropdown>
-    </div>
-
     <aside id="sidebar" data-preserve-scroll="">
-      <header>
-        <a href="/" class="sidebar-logo">
-          <img src="/components/assets/images/logo.svg" alt="Terra UI Components" />
-          Terra UI Components
-        </a>
-        <div class="sidebar-version">0.0.64</div>
-      </header>
-
       <div class="sidebar-buttons">
         <terra-button
           size="small"
@@ -190,47 +256,146 @@
         </terra-button>
       </div>
 
-      <button class="search-box" type="button" title="Press / to search" aria-label="Search" data-plugin="search">
-        <sl-icon name="search"></sl-icon>
-        <span>Search</span>
-      </button>
-
       <nav>
         <ul>
           <li>
-            <h2>Getting Started</h2>
+            <h2>Design System</h2>
             <ul>
               <li>
-                <a href="/components/">Home</a>
+                <a href="/components/horizon-design-system">Overview</a>
               </li>
               <li>
-                <a href="/components/getting-started/installation">Installation</a>
+                <a href="/components/tokens/typography">Typography</a>
               </li>
               <li>
-                <a href="/components/getting-started/usage">Usage</a>
+                <a href="/components/tokens/color">Color</a>
               </li>
               <li>
-                <a href="/components/getting-started/themes">Themes</a>
+                <a href="/components/tokens/spacing">Spacing</a>
               </li>
               <li>
-                <a href="/components/getting-started/customizing">Customizing</a>
+                <a href="/components/tokens/elevation">Elevation</a>
+              </li>
+              <li>
+                <a href="/components/tokens/border-radius">Border Radius</a>
+              </li>
+              <li>
+                <a href="/components/tokens/transition">Transition</a>
+              </li>
+              <li>
+                <a href="/components/tokens/z-index">Z-index</a>
+              </li>
+              <li>
+                <a href="/components/tokens/more">More Tokens</a>
+              </li>
+              <li>
+                <a href="/components/horizon-design-system/#adoption-status">HDS Adoption Status</a>
               </li>
             </ul>
           </li>
+
           <li>
-            <h2>Frameworks</h2>
+            <h2>Forms</h2>
             <ul>
               <li>
-                <a href="/components/frameworks/react">React</a>
-              </li>
-              <li>
-                <a href="/components/frameworks/vue">Vue</a>
-              </li>
-              <li>
-                <a href="/components/frameworks/angular">Angular</a>
+                <a href="/components/forms">Overview</a>
               </li>
             </ul>
           </li>
+
+          <li>
+            <h2>Elements</h2>
+            <ul>
+              <li>
+                <a href="/components/alert"> Alert </a>
+              </li>
+
+              <li>
+                <a href="/components/avatar"> Avatar </a>
+              </li>
+
+              <li>
+                <a href="/components/button"> Button </a>
+              </li>
+
+              <li>
+                <a href="/components/caption"> Caption </a>
+              </li>
+
+              <li>
+                <a href="/components/checkbox"> Checkbox </a>
+              </li>
+
+              <li>
+                <a href="/components/chip"> Chip </a>
+              </li>
+
+              <li>
+                <a href="/components/date-picker"> Date Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/file-upload"> File Upload </a>
+              </li>
+
+              <li>
+                <a href="/components/icon"> Icon </a>
+              </li>
+
+              <li>
+                <a href="/components/input"> Input </a>
+              </li>
+
+              <li>
+                <a href="/components/loader"> Loader </a>
+              </li>
+
+              <li>
+                <a href="/components/option"> Option </a>
+              </li>
+
+              <li>
+                <a href="/components/pagination"> Pagination </a>
+              </li>
+
+              <li>
+                <a href="/components/radio"> Radio </a>
+              </li>
+
+              <li>
+                <a href="/components/radio-group"> Radio Group </a>
+              </li>
+
+              <li>
+                <a href="/components/scroll-hint"> Scroll Hint </a>
+              </li>
+
+              <li>
+                <a href="/components/select"> Select </a>
+              </li>
+
+              <li>
+                <a href="/components/slider"> Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/status-indicator"> Status Indicator </a>
+              </li>
+
+              <li>
+                <a href="/components/tag"> Tag </a>
+              </li>
+
+              <li>
+                <a href="/components/textarea"> Textarea </a>
+              </li>
+
+              <li>
+                <a href="/components/toggle"> Toggle </a>
+              </li>
+            </ul>
+          </li>
+
           <li>
             <h2>Components</h2>
             <ul>
@@ -239,23 +404,15 @@
               </li>
 
               <li>
-                <a href="/components/alert"> Alert </a>
-              </li>
-
-              <li>
                 <a href="/components/browse-variables"> Browse Variables </a>
               </li>
 
               <li>
-                <a href="/components/button"> Button </a>
-              </li>
-
-              <li>
-                <a href="/components/chip"> Chip </a>
-              </li>
-
-              <li>
                 <a href="/components/combobox"> Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/data-access"> Data Access </a>
               </li>
 
               <li>
@@ -271,10 +428,6 @@
               </li>
 
               <li>
-                <a href="/components/date-picker"> Date Picker </a>
-              </li>
-
-              <li>
                 <a href="/components/date-range-slider"> Date Range Slider </a>
               </li>
 
@@ -283,11 +436,7 @@
               </li>
 
               <li>
-                <a href="/components/icon"> Icon </a>
-              </li>
-
-              <li>
-                <a href="/components/loader"> Loader </a>
+                <a href="/components/dropdown"> Dropdown </a>
               </li>
 
               <li>
@@ -299,11 +448,23 @@
               </li>
 
               <li>
+                <a href="/components/menu"> Menu </a>
+              </li>
+
+              <li>
+                <a href="/components/menu-item"> Menu Item </a>
+              </li>
+
+              <li>
                 <a href="/components/plot"> Plot </a>
               </li>
 
               <li>
                 <a href="/components/plot-toolbar"> Plot Toolbar </a>
+              </li>
+
+              <li>
+                <a href="/components/popup"> Popup </a>
               </li>
 
               <li>
@@ -349,13 +510,12 @@
             <li data-level="3"><a href="#importing-required-scripts">Importing Required Scripts</a></li>
             <li data-level="3"><a href="#webpack-config">webpack Config</a></li>
             <li data-level="3"><a href="#adding-pack-tags">Adding Pack Tags</a></li>
-            <li data-level="2"><a href="#additional-resources">Additional Resources</a></li>
           </ul>
         </div>
 
         <div class="content__body">
           <h1>Integrating with Rails</h1>
-          <p>This page explains how to integrate Shoelace with a Rails app.</p>
+          <p>This page explains how to integrate Terra with a Rails app.</p>
           <div role="alert" class="callout callout--tip">
             <p>
               This is a community-maintained document. Please <a href="/resources/community">ask the community</a> if
@@ -382,9 +542,9 @@
           <h2 id="instructions" class="anchor-heading">
             Instructions<a href="#instructions" aria-label='Direct link to "Instructions"'></a>
           </h2>
-          <p>To get started using Shoelace with Rails, the following packages must be installed.</p>
-          <pre><code class="language-bash" id="code-block-113"><span class="token function">yarn</span> <span class="token function">add</span> @nasa-terra/components copy-webpack-plugin
-</code><sl-copy-button class="copy-code-button" from="code-block-113"></sl-copy-button></pre>
+          <p>To get started using Terra with Rails, the following packages must be installed.</p>
+          <pre><code class="language-bash" id="code-block-166"><span class="token function">yarn</span> <span class="token function">add</span> @nasa-terra/components copy-webpack-plugin
+</code><sl-copy-button class="copy-code-button" from="code-block-166"></sl-copy-button></pre>
           <h3 id="importing-the-default-theme" class="anchor-heading">
             Importing the Default Theme<a
               href="#importing-the-default-theme"
@@ -392,12 +552,12 @@
             ></a>
           </h3>
           <p>
-            The next step is to import Shoelace’s default theme (stylesheet) in
+            The next step is to import Terra’s default theme (stylesheet) in
             <code>app/javascript/stylesheets/application.scss</code>.
           </p>
-          <pre><code class="language-css" id="code-block-114"><span class="token atrule"><span class="token rule">@import</span> <span class="token string">'@nasa-terra/components/dist/themes/light'</span><span class="token punctuation">;</span></span>
+          <pre><code class="language-css" id="code-block-167"><span class="token atrule"><span class="token rule">@import</span> <span class="token string">'@nasa-terra/components/dist/themes/light'</span><span class="token punctuation">;</span></span>
 <span class="token atrule"><span class="token rule">@import</span> <span class="token string">'@nasa-terra/components/dist/themes/dark'</span><span class="token punctuation">;</span></span> // Optional dark theme
-</code><sl-copy-button class="copy-code-button" from="code-block-114"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-167"></sl-copy-button></pre>
           <p>
             Fore more details about themes, please refer to
             <a href="/getting-started/themes#theme-basics">Theme Basics</a>.
@@ -409,10 +569,10 @@
             ></a>
           </h3>
           <p>
-            After importing the theme, you’ll need to import the JavaScript files for Shoelace. Add the following code
-            to <code>app/javascript/packs/application.js</code>.
+            After importing the theme, you’ll need to import the JavaScript files for Terra. Add the following code to
+            <code>app/javascript/packs/application.js</code>.
           </p>
-          <pre><code class="language-js" id="code-block-115"><span class="token keyword">import</span> <span class="token string">'../stylesheets/application.scss'</span>
+          <pre><code class="language-js" id="code-block-168"><span class="token keyword">import</span> <span class="token string">'../stylesheets/application.scss'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> setBasePath<span class="token punctuation">,</span> SlAlert<span class="token punctuation">,</span> SlAnimation<span class="token punctuation">,</span> TerraButton<span class="token punctuation">,</span> <span class="token operator">...</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components'</span>
 
 <span class="token comment">// ...</span>
@@ -422,21 +582,21 @@
 <span class="token comment">// Path to the assets folder (should be independent from the current script source path</span>
 <span class="token comment">// to work correctly in different environments)</span>
 <span class="token function">setBasePath</span><span class="token punctuation">(</span>rootUrl <span class="token operator">+</span> <span class="token string">'/packs/js/'</span><span class="token punctuation">)</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-115"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-168"></sl-copy-button></pre>
           <h3 id="webpack-config" class="anchor-heading">
             webpack Config<a href="#webpack-config" aria-label='Direct link to "webpack Config"'></a>
           </h3>
           <p>
-            Next we need to add Shoelace’s assets to the final build output. To do this, modify
+            Next we need to add Terra’s assets to the final build output. To do this, modify
             <code>config/webpack/environment.js</code> to look like this.
           </p>
-          <pre><code class="language-js" id="code-block-116"><span class="token keyword">const</span> <span class="token punctuation">{</span> environment <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@rails/webpacker'</span><span class="token punctuation">)</span>
+          <pre><code class="language-js" id="code-block-169"><span class="token keyword">const</span> <span class="token punctuation">{</span> environment <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@rails/webpacker'</span><span class="token punctuation">)</span>
 
-<span class="token comment">// Shoelace config</span>
+<span class="token comment">// Terra config</span>
 <span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
 <span class="token keyword">const</span> CopyPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'copy-webpack-plugin'</span><span class="token punctuation">)</span>
 
-<span class="token comment">// Add shoelace assets to webpack's build process</span>
+<span class="token comment">// Add terra assets to webpack's build process</span>
 environment<span class="token punctuation">.</span>plugins<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>
     <span class="token string">'CopyPlugin'</span><span class="token punctuation">,</span>
     <span class="token keyword">new</span> <span class="token class-name">CopyPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
@@ -453,7 +613,7 @@ environment<span class="token punctuation">.</span>plugins<span class="token pun
 <span class="token punctuation">)</span>
 
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> environment
-</code><sl-copy-button class="copy-code-button" from="code-block-116"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-169"></sl-copy-button></pre>
           <h3 id="adding-pack-tags" class="anchor-heading">
             Adding Pack Tags<a href="#adding-pack-tags" aria-label='Direct link to "Adding Pack Tags"'></a>
           </h3>
@@ -462,7 +622,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
             <code>tags</code> in the <code>&lt;head&gt;</code> section of
             <code>app/views/layouts/application.html.erb</code>.
           </p>
-          <pre><code class="language-html" id="code-block-117"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+          <pre><code class="language-html" id="code-block-170"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
         <span class="token comment">&lt;!-- ... --&gt;</span>
@@ -475,37 +635,8 @@ module<span class="token punctuation">.</span>exports <span class="token operato
         &lt;%= yield %&gt;
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-117"></sl-copy-button></pre>
-          <p>Now you can start using Shoelace components with Rails!</p>
-          <h2 id="additional-resources" class="anchor-heading">
-            Additional Resources<a href="#additional-resources" aria-label='Direct link to "Additional Resources"'></a>
-          </h2>
-          <ul>
-            <li>
-              There is a third-party
-              <a
-                href="https://github.com/ParamagicDev/rails-shoelace-example"
-                class="external-link"
-                rel="noopener noreferrer"
-                target="_blank"
-                >example repo</a
-              >, courtesy of
-              <a href="https://github.com/ParamagicDev" class="external-link" rel="noopener noreferrer" target="_blank"
-                >ParamagicDev</a
-              >
-              available to help you get started.
-            </li>
-            <li>
-              If you would like to avoid repeating this process, check out the associated
-              <a
-                href="https://railsbytes.com/templates/X8BsEb"
-                class="external-link"
-                rel="noopener noreferrer"
-                target="_blank"
-                >Railsbyte for Shoelace</a
-              >.
-            </li>
-          </ul>
+</code><sl-copy-button class="copy-code-button" from="code-block-170"></sl-copy-button></pre>
+          <p>Now you can start using Terra components with Rails!</p>
         </div>
       </article>
     </main>

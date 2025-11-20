@@ -1,12 +1,13 @@
 import TerraElement from '../../internal/terra-element.js';
 import type { CSSResultGroup } from 'lit';
+import { DataSubsetterController } from './data-subsetter.controller.js';
 import { type BoundingBox, type CollectionWithAvailableServices, type Variable } from '../../data-services/types.js';
 import TerraSpatialPicker from '../spatial-picker/spatial-picker.component.js';
 import type { CmrSearchResult } from '../../metadata-catalog/types.js';
-import type { LatLng } from 'leaflet';
+import { LatLng } from 'leaflet';
 /**
  * @summary Easily allow users to select, subset, and download NASA Earth science data collections with spatial, temporal, and variable filters.
- * @documentation https://disc.gsfc.nasa.gov/components/data-subsetter
+ * @documentation https://terra-ui.netlify.app/components/data-subsetter
  * @status stable
  * @since 1.0
  *
@@ -22,12 +23,16 @@ export default class TerraDataSubsetter extends TerraElement {
     static styles: CSSResultGroup;
     static dependencies: Record<string, typeof TerraElement>;
     collectionEntryId?: string;
+    shortName?: string;
+    version?: string;
     showCollectionSearch?: boolean;
+    showHistoryPanel?: boolean;
     jobId?: string;
     bearerToken?: string;
     collectionWithServices?: CollectionWithAvailableServices;
     selectedVariables: Variable[];
     expandedVariableGroups: Set<string>;
+    variableFilterText: string;
     touchedFields: Set<string>;
     spatialSelection: BoundingBox | LatLng | null;
     selectedDateRange: {
@@ -46,8 +51,11 @@ export default class TerraDataSubsetter extends TerraElement {
     collectionSearchResults?: Array<CmrSearchResult>;
     collectionLoading: boolean;
     collectionAccordionOpen: boolean;
+    dataAccessMode: 'original' | 'subset';
     spatialPicker: TerraSpatialPicker;
+    controller: DataSubsetterController;
     jobIdChanged(): void;
+    shortNameAndVersionChanged(): void;
     firstUpdated(): void;
     disconnectedCallback(): void;
     collectionChanged(): void;

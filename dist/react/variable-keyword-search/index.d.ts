@@ -6,7 +6,7 @@ export type { TerraVariableKeywordSearchChangeEvent } from '../../events/events.
 export type { TerraSearchEvent } from '../../events/events.js';
 /**
  * @summary Fuzzy-search for dataset keywords in combobox with list autocomplete.
- * @documentation https://disc.gsfc.nasa.gov/components/giovanni-serch
+ * @documentation https://terra-ui.netlify.app/components/giovanni-serch
  * @see https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-autocomplete-list/
  * @status MVP
  * @since 1.0

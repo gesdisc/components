@@ -1,9 +1,10 @@
 import TerraElement from '../../internal/terra-element.js';
 import TerraMap from '../map/map.component.js';
+import TerraInput from '../input/input.component.js';
 import type { CSSResultGroup } from 'lit';
 /**
  * @summary A component that allows input of coordinates and rendering of map.
- * @documentation https://disc.gsfc.nasa.gov/components/spatial-picker
+ * @documentation https://terra-ui.netlify.app/components/spatial-picker
  * @status experimental
  * @since 1.0
  *
@@ -12,6 +13,7 @@ export default class TerraSpatialPicker extends TerraElement {
     static styles: CSSResultGroup;
     static dependencies: {
         'terra-map': typeof TerraMap;
+        'terra-input': typeof TerraInput;
     };
     /**
      * Minimum zoom level of the map.
@@ -68,17 +70,32 @@ export default class TerraSpatialPicker extends TerraElement {
     showMapOnFocus: boolean;
     mapValue: any;
     error: string;
-    spatialInput: HTMLInputElement;
+    private _popoverFlipped;
+    private ignoreClickOutside;
+    private boundHandleClickOutside;
+    terraInput: TerraInput;
     map: TerraMap;
+    spatialPicker: HTMLElement;
+    setValue(value: string): void;
+    private _input;
     private _blur;
+    private handleClickOutside;
     private _focus;
     private _click;
+    /**
+     * The spatial picker will either be positioned above or below the input depending on the space available
+     * @returns
+     */
+    private _checkPopoverPosition;
     private _emitMapChange;
     open(): void;
     close(): void;
+    setOpen(open: boolean): void;
     private _updateURLParam;
     private _handleMapChange;
     firstUpdated(): void;
+    private _handleResize;
+    disconnectedCallback(): void;
     renderMap(): import("lit-html").TemplateResult<1>;
     render(): import("lit-html").TemplateResult<1>;
     invalidateSize(): void;

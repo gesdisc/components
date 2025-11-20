@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en" data-layout="default" data-terra-ui-components-version="0.0.64">
+<html lang="en" data-layout="default" data-terra-ui-components-version="0.0.111">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Tips for using Shoelace in your Vue 3 app." />
+    <meta name="description" content="Tips for using terra in your Vue 3 app." />
     <title>Vue</title>
 
     <meta name="turbo-cache-control" />
@@ -16,12 +16,12 @@
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:creator" content="nasa_terra-ui" />
-    <meta name="twitter:image" content="https://disc.gsfc.nasa.gov/components/assets/images/og-image.png" />
+    <meta name="twitter:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
 
-    <meta property="og:url" content="https://disc.gsfc.nasa.gov/frameworks/vue/" />
+    <meta property="og:url" content="https://terra-ui.netlify.app/frameworks/vue/" />
     <meta property="og:title" content="Vue" />
-    <meta property="og:description" content="Tips for using Shoelace in your Vue 3 app." />
-    <meta property="og:image" content="https://disc.gsfc.nasa.gov/components/assets/images/og-image.png" />
+    <meta property="og:description" content="Tips for using terra in your Vue 3 app." />
+    <meta property="og:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
 
     <link rel="stylesheet" href="/dist/themes/horizon.css" />
     <script type="module" src="/dist/terra-ui-components-autoloader.js"></script>
@@ -61,6 +61,173 @@
       Skip to main content
     </a>
 
+    <header id="top-nav" class="top-nav">
+      <div class="top-nav__left">
+        <a href="/" class="top-nav__logo">
+          <terra-icon name="nasa-logo" font-size="4rem"></terra-icon>
+          <span class="top-nav__title">Terra UI</span>
+        </a>
+      </div>
+
+      <div class="top-nav__right">
+        <terra-dropdown id="about-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="About"> About </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="project-overview">
+              <a href="/components/">Project Overview</a>
+            </terra-menu-item>
+            <terra-menu-item value="contributing">
+              <a href="/components/about/contributing">Contributing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="getting-started-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Getting Started">
+            Getting Started
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="installation">
+              <a href="/components/getting-started/installation">Installation</a>
+            </terra-menu-item>
+            <terra-menu-item value="usage">
+              <a href="/components/getting-started/usage">Usage</a>
+            </terra-menu-item>
+            <terra-menu-item value="themes">
+              <a href="/components/getting-started/themes">Themes</a>
+            </terra-menu-item>
+            <terra-menu-item value="customizing">
+              <a href="/components/getting-started/customizing">Customizing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <terra-dropdown id="frameworks-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Frameworks">
+            Frameworks
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="react">
+              <a href="/components/frameworks/react">React</a>
+            </terra-menu-item>
+            <terra-menu-item value="vue">
+              <a href="/components/frameworks/vue">Vue</a>
+            </terra-menu-item>
+            <terra-menu-item value="angular">
+              <a href="/components/frameworks/angular">Angular</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <button
+          class="top-nav__search"
+          type="button"
+          title="Press / to search"
+          aria-label="Search"
+          data-plugin="search"
+        >
+          <sl-icon name="search"></sl-icon>
+        </button>
+        <a
+          href="https://github.com/nasa/terra-ui-components"
+          title="View Terra UI Components on GitHub"
+          class="top-nav__icon-link external-link"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <sl-icon name="github"></sl-icon>
+        </a>
+        <terra-dropdown id="environment-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Environment"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <span id="environment-display">UAT</span>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="uat"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >UAT</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="prod"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >PROD</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="theme-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Press \ to toggle"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
+            <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="light"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Light</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="dark"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Dark</terra-menu-item
+            >
+            <hr
+              role="separator"
+              aria-orientation="horizontal"
+              style="
+                margin: var(--terra-spacing-x-small) 0;
+                border: none;
+                border-top: 1px solid var(--terra-panel-border-color);
+              "
+            />
+            <terra-menu-item
+              type="checkbox"
+              value="auto"
+              tabindex="0"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >System</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+      </div>
+    </header>
+
     <button id="menu-toggle" type="button" aria-label="Menu">
       <svg width="148" height="148" viewBox="0 0 148 148" xmlns="http://www.w3.org/2000/svg">
         <g stroke="currentColor" stroke-width="18" fill="none" fill-rule="evenodd" stroke-linecap="round">
@@ -69,108 +236,7 @@
       </svg>
     </button>
 
-    <div id="icon-toolbar">
-      <a
-        href="https://github.com/nasa/terra-ui-components"
-        title="View Terra UI Components on GitHub"
-        class="external-link"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <sl-icon name="github"></sl-icon>
-      </a>
-      <sl-dropdown id="environment-selector" placement="bottom-end" distance="3">
-        <terra-button
-          slot="trigger"
-          size="large"
-          variant="text"
-          caret=""
-          title="Environment"
-          data-optional=""
-          data-valid=""
-          data-user-valid=""
-        >
-          <span id="environment-display">UAT</span>
-        </terra-button>
-        <sl-menu role="menu">
-          <sl-menu-item
-            type="checkbox"
-            value="uat"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="true"
-            aria-disabled="false"
-            checked=""
-            >UAT</sl-menu-item
-          >
-          <sl-menu-item
-            type="checkbox"
-            value="prod"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >PROD</sl-menu-item
-          >
-        </sl-menu>
-      </sl-dropdown>
-      <sl-dropdown id="theme-selector" placement="bottom-end" distance="3">
-        <terra-button
-          slot="trigger"
-          size="large"
-          variant="text"
-          caret=""
-          title="Press \ to toggle"
-          data-optional=""
-          data-valid=""
-          data-user-valid=""
-        >
-          <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
-          <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
-        </terra-button>
-        <sl-menu role="menu">
-          <sl-menu-item
-            type="checkbox"
-            value="light"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >Light</sl-menu-item
-          >
-          <sl-menu-item
-            type="checkbox"
-            value="dark"
-            tabindex="-1"
-            role="menuitemcheckbox"
-            aria-checked="false"
-            aria-disabled="false"
-            >Dark</sl-menu-item
-          >
-          <sl-divider role="separator" aria-orientation="horizontal"></sl-divider>
-          <sl-menu-item
-            type="checkbox"
-            value="auto"
-            tabindex="0"
-            role="menuitemcheckbox"
-            aria-checked="true"
-            aria-disabled="false"
-            checked=""
-            >System</sl-menu-item
-          >
-        </sl-menu>
-      </sl-dropdown>
-    </div>
-
     <aside id="sidebar" data-preserve-scroll="">
-      <header>
-        <a href="/" class="sidebar-logo">
-          <img src="/components/assets/images/logo.svg" alt="Terra UI Components" />
-          Terra UI Components
-        </a>
-        <div class="sidebar-version">0.0.64</div>
-      </header>
-
       <div class="sidebar-buttons">
         <terra-button
           size="small"
@@ -190,47 +256,146 @@
         </terra-button>
       </div>
 
-      <button class="search-box" type="button" title="Press / to search" aria-label="Search" data-plugin="search">
-        <sl-icon name="search"></sl-icon>
-        <span>Search</span>
-      </button>
-
       <nav>
         <ul>
           <li>
-            <h2>Getting Started</h2>
+            <h2>Design System</h2>
             <ul>
               <li>
-                <a href="/components/">Home</a>
+                <a href="/components/horizon-design-system">Overview</a>
               </li>
               <li>
-                <a href="/components/getting-started/installation">Installation</a>
+                <a href="/components/tokens/typography">Typography</a>
               </li>
               <li>
-                <a href="/components/getting-started/usage">Usage</a>
+                <a href="/components/tokens/color">Color</a>
               </li>
               <li>
-                <a href="/components/getting-started/themes">Themes</a>
+                <a href="/components/tokens/spacing">Spacing</a>
               </li>
               <li>
-                <a href="/components/getting-started/customizing">Customizing</a>
+                <a href="/components/tokens/elevation">Elevation</a>
+              </li>
+              <li>
+                <a href="/components/tokens/border-radius">Border Radius</a>
+              </li>
+              <li>
+                <a href="/components/tokens/transition">Transition</a>
+              </li>
+              <li>
+                <a href="/components/tokens/z-index">Z-index</a>
+              </li>
+              <li>
+                <a href="/components/tokens/more">More Tokens</a>
+              </li>
+              <li>
+                <a href="/components/horizon-design-system/#adoption-status">HDS Adoption Status</a>
               </li>
             </ul>
           </li>
+
           <li>
-            <h2>Frameworks</h2>
+            <h2>Forms</h2>
             <ul>
               <li>
-                <a href="/components/frameworks/react">React</a>
-              </li>
-              <li>
-                <a href="/components/frameworks/vue">Vue</a>
-              </li>
-              <li>
-                <a href="/components/frameworks/angular">Angular</a>
+                <a href="/components/forms">Overview</a>
               </li>
             </ul>
           </li>
+
+          <li>
+            <h2>Elements</h2>
+            <ul>
+              <li>
+                <a href="/components/alert"> Alert </a>
+              </li>
+
+              <li>
+                <a href="/components/avatar"> Avatar </a>
+              </li>
+
+              <li>
+                <a href="/components/button"> Button </a>
+              </li>
+
+              <li>
+                <a href="/components/caption"> Caption </a>
+              </li>
+
+              <li>
+                <a href="/components/checkbox"> Checkbox </a>
+              </li>
+
+              <li>
+                <a href="/components/chip"> Chip </a>
+              </li>
+
+              <li>
+                <a href="/components/date-picker"> Date Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/file-upload"> File Upload </a>
+              </li>
+
+              <li>
+                <a href="/components/icon"> Icon </a>
+              </li>
+
+              <li>
+                <a href="/components/input"> Input </a>
+              </li>
+
+              <li>
+                <a href="/components/loader"> Loader </a>
+              </li>
+
+              <li>
+                <a href="/components/option"> Option </a>
+              </li>
+
+              <li>
+                <a href="/components/pagination"> Pagination </a>
+              </li>
+
+              <li>
+                <a href="/components/radio"> Radio </a>
+              </li>
+
+              <li>
+                <a href="/components/radio-group"> Radio Group </a>
+              </li>
+
+              <li>
+                <a href="/components/scroll-hint"> Scroll Hint </a>
+              </li>
+
+              <li>
+                <a href="/components/select"> Select </a>
+              </li>
+
+              <li>
+                <a href="/components/slider"> Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/status-indicator"> Status Indicator </a>
+              </li>
+
+              <li>
+                <a href="/components/tag"> Tag </a>
+              </li>
+
+              <li>
+                <a href="/components/textarea"> Textarea </a>
+              </li>
+
+              <li>
+                <a href="/components/toggle"> Toggle </a>
+              </li>
+            </ul>
+          </li>
+
           <li>
             <h2>Components</h2>
             <ul>
@@ -239,23 +404,15 @@
               </li>
 
               <li>
-                <a href="/components/alert"> Alert </a>
-              </li>
-
-              <li>
                 <a href="/components/browse-variables"> Browse Variables </a>
               </li>
 
               <li>
-                <a href="/components/button"> Button </a>
-              </li>
-
-              <li>
-                <a href="/components/chip"> Chip </a>
-              </li>
-
-              <li>
                 <a href="/components/combobox"> Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/data-access"> Data Access </a>
               </li>
 
               <li>
@@ -271,10 +428,6 @@
               </li>
 
               <li>
-                <a href="/components/date-picker"> Date Picker </a>
-              </li>
-
-              <li>
                 <a href="/components/date-range-slider"> Date Range Slider </a>
               </li>
 
@@ -283,11 +436,7 @@
               </li>
 
               <li>
-                <a href="/components/icon"> Icon </a>
-              </li>
-
-              <li>
-                <a href="/components/loader"> Loader </a>
+                <a href="/components/dropdown"> Dropdown </a>
               </li>
 
               <li>
@@ -299,11 +448,23 @@
               </li>
 
               <li>
+                <a href="/components/menu"> Menu </a>
+              </li>
+
+              <li>
+                <a href="/components/menu-item"> Menu Item </a>
+              </li>
+
+              <li>
                 <a href="/components/plot"> Plot </a>
               </li>
 
               <li>
                 <a href="/components/plot-toolbar"> Plot Toolbar </a>
+              </li>
+
+              <li>
+                <a href="/components/popup"> Popup </a>
               </li>
 
               <li>
@@ -365,7 +526,7 @@
               target="_blank"
               >plays nice</a
             >
-            with custom elements, so you can use Shoelace in your Vue apps with ease.
+            with custom elements, so you can use Terra in your Vue apps with ease.
           </p>
           <div role="alert" class="callout callout--tip">
             <p>
@@ -376,19 +537,19 @@
           <h2 id="installation" class="anchor-heading">
             Installation<a href="#installation" aria-label='Direct link to "Installation"'></a>
           </h2>
-          <p>To add Shoelace to your Vue app, install the package from npm.</p>
-          <pre><code class="language-bash" id="code-block-20"><span class="token function">npm</span> <span class="token function">install</span> @nasa-terra/components
-</code><sl-copy-button class="copy-code-button" from="code-block-20"></sl-copy-button></pre>
+          <p>To add Terra to your Vue app, install the package from npm.</p>
+          <pre><code class="language-bash" id="code-block-71"><span class="token function">npm</span> <span class="token function">install</span> @nasa-terra/components
+</code><sl-copy-button class="copy-code-button" from="code-block-71"></sl-copy-button></pre>
           <p>
             Next, <a href="/getting-started/themes">include a theme</a> and set the
             <a href="/getting-started/installation#setting-the-base-path">base path</a> for icons and other assets. In
             this example, we’ll import the light theme and use the CDN as a base path.
           </p>
-          <pre><code class="language-jsx" id="code-block-21"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/themes/light.css'</span>
+          <pre><code class="language-jsx" id="code-block-72"><span class="token keyword">import</span> <span class="token string">'@nasa-terra/components/dist/themes/light.css'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> setBasePath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nasa-terra/components/dist/utilities/base-path'</span>
 
-<span class="token function">setBasePath</span><span class="token punctuation">(</span><span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.64/cdn/'</span><span class="token punctuation">)</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-21"></sl-copy-button></pre>
+<span class="token function">setBasePath</span><span class="token punctuation">(</span><span class="token string">'https://cdn.jsdelivr.net/npm/@nasa-terra/components@0.0.111/cdn/'</span><span class="token punctuation">)</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-72"></sl-copy-button></pre>
           <div role="alert" class="callout callout--tip">
             <p>
               If you’d rather not use the CDN for assets, you can create a build task that copies
@@ -411,21 +572,21 @@
             based on your project type to ensure your project will not throw an error when it encounters a custom
             element.
           </p>
-          <p>Now you can start using Shoelace components in your app!</p>
+          <p>Now you can start using Terra components in your app!</p>
           <h2 id="types" class="anchor-heading">Types<a href="#types" aria-label='Direct link to "Types"'></a></h2>
           <p>
-            Once you have configured your application for custom elements, you should be able to use Shoelace in your
+            Once you have configured your application for custom elements, you should be able to use Terra in your
             application without it causing any errors. Unfortunately, this doesn’t register the custom elements to
             behave like components built using Vue. To provide autocomplete information and type safety for your
-            components, you can import the Shoelace Vue types into your <code>tsconfig.json</code> to get better
+            components, you can import the Terra Vue types into your <code>tsconfig.json</code> to get better
             integration in your standard Vue and JSX templates.
           </p>
-          <pre><code class="language-json" id="code-block-22"><span class="token punctuation">{</span>
+          <pre><code class="language-json" id="code-block-73"><span class="token punctuation">{</span>
     <span class="token property">"compilerOptions"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token property">"types"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"@nasa-terra/components/dist/types/vue"</span><span class="token punctuation">]</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code><sl-copy-button class="copy-code-button" from="code-block-22"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-73"></sl-copy-button></pre>
           <h2 id="usage" class="anchor-heading">Usage<a href="#usage" aria-label='Direct link to "Usage"'></a></h2>
           <h3 id="qr-code-generator-example" class="anchor-heading">
             QR code generator example<a
@@ -433,7 +594,7 @@
               aria-label='Direct link to "QR code generator example"'
             ></a>
           </h3>
-          <pre><code class="language-html" id="code-block-23"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+          <pre><code class="language-html" id="code-block-74"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>QR code generator<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
 
@@ -461,7 +622,7 @@
         <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--terra-spacing-large<span class="token punctuation">)</span> 0<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-23"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-74"></sl-copy-button></pre>
           <h3 id="binding-complex-data" class="anchor-heading">
             Binding Complex Data<a href="#binding-complex-data" aria-label='Direct link to "Binding Complex Data"'></a>
           </h3>
@@ -469,8 +630,8 @@
             When binding complex data such as objects and arrays, use the <code>.prop</code> modifier to make Vue bind
             them as a property instead of an attribute.
           </p>
-          <pre><code class="language-html" id="code-block-24"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sl-color-picker</span> <span class="token attr-name">:swatches.prop</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mySwatches<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-24"></sl-copy-button></pre>
+          <pre><code class="language-html" id="code-block-75"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sl-color-picker</span> <span class="token attr-name">:swatches.prop</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mySwatches<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-75"></sl-copy-button></pre>
           <h3 id="two-way-binding" class="anchor-heading">
             Two-way Binding<a href="#two-way-binding" aria-label='Direct link to "Two-way Binding"'></a>
           </h3>
@@ -484,41 +645,18 @@
               >no support for v-model on custom elements</a
             >, but you can still achieve two-way binding manually.
           </p>
-          <pre><code class="language-html" id="code-block-25"><span class="token comment">&lt;!-- This doesn't work --&gt;</span>
+          <pre><code class="language-html" id="code-block-76"><span class="token comment">&lt;!-- This doesn't work --&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sl-input</span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sl-input</span><span class="token punctuation">&gt;</span></span>
 <span class="token comment">&lt;!-- This works, but it's a bit longer --&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sl-input</span> <span class="token attr-name">:value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span> <span class="token attr-name">@input</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name = $event.target.value<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sl-input</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-25"></sl-copy-button></pre>
-          <p>
-            If that’s too verbose for your liking, you can use a custom directive instead.
-            <a
-              href="https://www.npmjs.com/package/@shoelace-style/vue-terra-model"
-              class="external-link"
-              rel="noopener noreferrer"
-              target="_blank"
-              >This utility</a
-            >
-            adds a custom directive that will work just like <code>v-model</code> but for Shoelace components.
-          </p>
-          <div role="alert" class="callout callout--tip">
-            <p>
-              Are you using Shoelace with Vue?
-              <a
-                href="https://github.com/nasa/terra-ui-components/blob/next/docs/frameworks/vue.md"
-                class="external-link"
-                rel="noopener noreferrer"
-                target="_blank"
-                >Help us improve this page!</a
-              >
-            </p>
-          </div>
+</code><sl-copy-button class="copy-code-button" from="code-block-76"></sl-copy-button></pre>
           <h3 id="slots" class="anchor-heading">Slots<a href="#slots" aria-label='Direct link to "Slots"'></a></h3>
           <p>
-            Slots in Shoelace/web components are functionally the same as basic slots in Vue. Slots can be assigned to
+            Slots in Terra/web components are functionally the same as basic slots in Vue. Slots can be assigned to
             elements using the <code>slot</code> attribute followed by the name of the slot it is being assigned to.
           </p>
           <p>Here is an example:</p>
-          <pre><code class="language-html" id="code-block-26"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sl-drawer</span>
+          <pre><code class="language-html" id="code-block-77"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sl-drawer</span>
     <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Drawer<span class="token punctuation">"</span></span>
     <span class="token attr-name">placement</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>start<span class="token punctuation">"</span></span>
     <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>drawer-placement-start<span class="token punctuation">"</span></span>
@@ -531,7 +669,7 @@
         <span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sl-drawer</span><span class="token punctuation">&gt;</span></span>
-</code><sl-copy-button class="copy-code-button" from="code-block-26"></sl-copy-button></pre>
+</code><sl-copy-button class="copy-code-button" from="code-block-77"></sl-copy-button></pre>
         </div>
       </article>
     </main>

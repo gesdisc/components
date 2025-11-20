@@ -9,7 +9,7 @@ import type { CSSResultGroup } from 'lit';
 import type { SelectedFacets, Variable } from './browse-variables.types.js';
 /**
  * @summary Browse through the NASA CMR or Giovanni catalogs.
- * @documentation https://disc.gsfc.nasa.gov/components/browse-variables
+ * @documentation https://terra-ui.netlify.app/components/browse-variables
  * @status MVP
  * @since 1.0
  *

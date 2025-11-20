@@ -6,7 +6,7 @@ export type { TerraDateRangeChangeEvent } from '../../events/events.js';
 export type { TerraTimeSeriesDataChangeEvent } from '../../events/events.js';
 /**
  * @summary A component for visualizing time series data using the GES DISC Giovanni API.
- * @documentation https://disc.gsfc.nasa.gov/components/time-series
+ * @documentation https://terra-ui.netlify.app/components/time-series
  * @status mvp
  * @since 1.0
  *

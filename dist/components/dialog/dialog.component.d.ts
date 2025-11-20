@@ -2,7 +2,7 @@ import TerraElement from '../../internal/terra-element.js';
 import type { CSSResultGroup } from 'lit';
 /**
  * @summary Used to create both modal and non-modal dialog boxes.
- * @documentation https://disc.gsfc.nasa.gov/components/dialog
+ * @documentation https://terra-ui.netlify.app/components/dialog
  * @status stable
  * @since 1.0
  *
@@ -19,12 +19,14 @@ export default class TerraDialog extends TerraElement {
     id: string;
     /** the width of the dialog */
     width: string;
+    /** used to set the dialog's open state */
+    open: boolean;
     /** allow closing the dialog when clicking outside of it */
     clickOutsideToClose: boolean;
     /** Show a backdrop behind the dialog */
     showBackdrop: boolean;
     toggle(): void;
     show(): void;
-    hide(reason?: string): void;
+    hide(): void;
     render(): import("lit-html").TemplateResult<1>;
 }

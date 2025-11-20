@@ -7,7 +7,7 @@ import type { Variable } from '../browse-variables/browse-variables.types.js';
 import TerraTimeSeries from '../time-series/time-series.component.js';
 /**
  * @summary A component for visualizing Hydrology Data Rods time series using the GES DISC Giovanni API
- * @documentation https://disc.gsfc.nasa.gov/components/data-rods
+ * @documentation https://terra-ui.netlify.app/components/data-rods
  * @status mvp
  * @since 1.0
  *
@@ -55,5 +55,6 @@ export default class TerraDataRods extends TerraElement {
      */
     bearerToken: string;
     catalogVariable: Variable;
+    _fetchVariableTask: import("@lit/task").Task<(string | undefined)[], void>;
     render(): import("lit-html").TemplateResult<1>;
 }

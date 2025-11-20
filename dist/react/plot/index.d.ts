@@ -1,7 +1,7 @@
 import Component from '../../components/plot/plot.component.js';
 /**
  * @summary A web component for interactive graphs using Plotly.js.
- * @documentation https://disc.gsfc.nasa.gov/components/plot
+ * @documentation https://terra-ui.netlify.app/components/plot
  * @status experimental
  * @since 1.0
  *

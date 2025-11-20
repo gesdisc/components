@@ -73,6 +73,102 @@ export default css`
     --terra-icon-large: 2.2rem;
     --terra-icon-x-large: 3rem;
 
+    --terra-avatar-size-small: 2rem;
+    --terra-avatar-size-medium: 2.5rem;
+    --terra-avatar-size-large: 3.5rem;
+
+    --terra-avatar-background-color: var(--terra-color-carbon-40);
+    --terra-avatar-color: var(--terra-color-spacesuit-white);
+
+    --terra-avatar-font-family: var(--terra-font-family--inter);
+    --terra-avatar-font-weight: var(--terra-font-weight-normal);
+
+    --terra-chip-height-small: 1.375rem;
+    --terra-chip-height-medium: 1.875rem;
+    --terra-chip-height-large: 2.5rem;
+
+    --terra-chip-padding-small: var(--terra-spacing-x-small);
+    --terra-chip-padding-medium: var(--terra-spacing-small);
+    --terra-chip-padding-large: var(--terra-spacing-medium);
+    --terra-chip-margin: var(--terra-spacing-2x-small);
+
+    --terra-chip-border-width: 1.5px;
+
+    --terra-chip-font-family: var(--terra-font-family--inter);
+    --terra-chip-font-weight: var(--terra-font-weight-bold);
+
+    --terra-chip-background-color: var(--terra-color-spacesuit-white);
+    --terra-chip-border-color: var(--terra-color-nasa-blue);
+    --terra-chip-color: var(--terra-color-carbon-70);
+    --terra-chip-color-hover: var(--terra-color-carbon-90);
+    --terra-chip-icon-color: var(--terra-color-carbon-70);
+    --terra-chip-icon-color-hover: var(--terra-color-carbon-90);
+
+    --terra-chip-transition: fill var(--terra-transition-fast);
+
+    --terra-accordion-background-color: var(--terra-color-spacesuit-white);
+    --terra-accordion-border-color: var(--terra-color-carbon-20);
+    --terra-accordion-border-width: 1px;
+    --terra-accordion-border-radius: var(--terra-border-radius-large);
+    --terra-accordion-summary-background-color: var(--terra-color-carbon-5);
+    --terra-accordion-summary-background-color-hover: var(
+      --terra-color-carbon-10
+    );
+    --terra-accordion-summary-border-color: var(--terra-color-carbon-20);
+    --terra-accordion-summary-padding: var(--terra-spacing-small)
+      var(--terra-spacing-medium);
+    --terra-accordion-summary-font-size: var(--terra-font-size-small);
+    --terra-accordion-summary-font-weight: var(--terra-font-weight-semibold);
+    --terra-accordion-summary-color: var(--terra-color-carbon-80);
+    --terra-accordion-content-padding: var(--terra-spacing-medium);
+    --terra-accordion-transition: background-color var(--terra-transition-fast);
+
+    --terra-skeleton-background-color: var(--terra-color-carbon-50);
+    --terra-skeleton-sheen-color: var(--terra-color-carbon-60);
+    --terra-skeleton-border-radius: var(--terra-border-radius-medium);
+    --terra-skeleton-margin-bottom: var(--terra-spacing-small);
+    --terra-skeleton-min-height: var(--terra-spacing-medium);
+
+    --terra-loader-size-small: 30px;
+    --terra-loader-size-medium: 52px;
+    --terra-loader-size-large: 100px;
+    --terra-loader-stroke-width-small: 3.5px;
+    --terra-loader-stroke-width-medium: 3.5px;
+    --terra-loader-stroke-width-large: 2.5px;
+
+    --terra-loader-track-color: var(--terra-color-carbon-20);
+    --terra-loader-progress-color: var(--terra-color-nasa-blue);
+    --terra-loader-planet-color: var(--terra-color-carbon-20);
+    --terra-loader-moon-color: var(--terra-color-nasa-blue);
+
+    --terra-loader-text-letter-spacing: var(--terra-letter-spacing-loose);
+    --terra-loader-text-padding: var(--terra-spacing-2x-small);
+
+    --terra-menu-item-font-family: var(--terra-font-family--inter);
+    --terra-menu-item-background-color-hover: var(--terra-color-carbon-10);
+    --terra-menu-item-background-color-focus: var(--terra-color-nasa-blue);
+    --terra-menu-item-color: var(--terra-color-carbon-70);
+    --terra-menu-item-color-hover: var(--terra-color-carbon-90);
+    --terra-menu-item-color-focus: var(--terra-color-spacesuit-white);
+
+    --terra-popup-arrow-size: 6px;
+    --terra-popup-arrow-color: var(--terra-color-carbon-black);
+
+    --terra-alert-line-height: var(--terra-line-height-normal);
+    --terra-alert-filled-background-color-primary: var(
+      --terra-color-nasa-blue-shade
+    );
+    --terra-alert-filled-background-color-success: var(
+      --terra-color-success-green
+    );
+    --terra-alert-filled-background-color-neutral: var(--terra-color-carbon-60);
+    --terra-alert-filled-background-color-warning: var(
+      --terra-color-international-orange
+    );
+    --terra-alert-filled-background-color-danger: var(--terra-color-nasa-red);
+    --terra-alert-filled-color: var(--terra-color-spacesuit-white);
+    --terra-alert-filled-icon-color: var(--terra-color-spacesuit-white);
+
     --terra-border-radius-circle: 50%;
 
     --terra-shadow-x-small: 0 1px 2px hsl(240 3.8% 46.1% / 6%);
@@ -133,7 +229,7 @@ export default css`
     --terra-line-height-loose: 2.2;
     --terra-line-height-looser: 2.6;
 
-    --terra-focus-ring-color: var(--terra-color-primary-600);
+    --terra-focus-ring-color: var(--terra-color-nasa-blue);
     --terra-focus-ring-style: solid;
     --terra-focus-ring-width: 3px;
     --terra-focus-ring: var(--terra-focus-ring-style)
@@ -148,10 +244,10 @@ export default css`
     --terra-input-font-size: var(--terra-font-size-small);
     --terra-input-color: hsla(240, 4%, 19%, 1);
     --terra-input-font-weight: var(--terra-font-weight-normal);
-    --terra-input-line-height: var(--terra-line-height-loose);
+    --terra-input-line-height: var(--terra-line-height-denser);
     --terra-input-border-color: var(--terra-color-carbon-20);
     --terra-input-background-color: var(--terra-color-spacesuit-white);
-    --terra-input-border-width: 2px;
+    --terra-input-border-width: 1px;
     --terra-input-border-radius: var(--terra-border-radius-medium);
 
     --terra-input-background-color-hover: var(--terra-input-background-color);
@@ -163,7 +259,7 @@ export default css`
 
     --terra-input-required-content: "*";
     --terra-input-required-content-offset: -2px;
-    --terra-input-required-content-color: var(--terra-input-label-color);
+    --terra-input-required-content-color: var(--terra-color-nasa-red);
 
     --terra-input-border-radius-small: var(--terra-border-radius-medium);
     --terra-input-border-radius-medium: var(--terra-border-radius-medium);
@@ -215,15 +311,128 @@ export default css`
     --terra-input-help-text-font-size-large: var(--terra-font-size-medium);
     --terra-input-help-text-color: var(--terra-color-carbon-50);
 
+    --terra-checkbox-size-small: 0.875rem;
+    --terra-checkbox-size-medium: 1.125rem;
+    --terra-checkbox-size-large: 1.375rem;
+
+    --terra-checkbox-background-color: var(--terra-color-spacesuit-white);
+    --terra-checkbox-background-color-hover: var(--terra-color-spacesuit-white);
+    --terra-checkbox-background-color-checked: var(--terra-color-nasa-blue);
+    --terra-checkbox-background-color-checked-hover: var(
+      --terra-color-nasa-blue-shade
+    );
+    --terra-checkbox-background-color-disabled: var(--terra-color-carbon-10);
+    --terra-checkbox-border-color: var(--terra-color-carbon-20);
+    --terra-checkbox-border-color-hover: var(--terra-color-carbon-40);
+    --terra-checkbox-border-color-checked: var(--terra-color-nasa-blue);
+    --terra-checkbox-border-color-checked-hover: var(
+      --terra-color-nasa-blue-shade
+    );
+    --terra-checkbox-border-color-disabled: var(--terra-color-carbon-30);
+    --terra-checkbox-border-width: 1px;
+    --terra-checkbox-border-radius: 2px;
+    --terra-checkbox-icon-color: var(--terra-color-spacesuit-white);
+    --terra-checkbox-label-color: var(--terra-color-carbon-80);
+    --terra-checkbox-label-font-family: var(--terra-font-family--inter);
+    --terra-checkbox-label-font-size: var(--terra-font-size-small);
+    --terra-checkbox-label-font-weight: var(--terra-font-weight-normal);
+
+    --terra-checkbox-focus-ring-color: var(--terra-color-nasa-blue);
+    --terra-checkbox-focus-ring-width: var(--terra-focus-ring-width);
+    --terra-checkbox-focus-ring-offset: var(--terra-focus-ring-offset);
+
+    --terra-radio-size-small: 0.875rem;
+    --terra-radio-size-medium: 1.125rem;
+    --terra-radio-size-large: 1.375rem;
+
+    --terra-radio-background-color: var(--terra-color-spacesuit-white);
+    --terra-radio-background-color-hover: var(--terra-color-spacesuit-white);
+    --terra-radio-background-color-checked: var(--terra-color-nasa-blue);
+    --terra-radio-background-color-checked-hover: var(
+      --terra-color-nasa-blue-shade
+    );
+    --terra-radio-background-color-disabled: var(--terra-color-carbon-10);
+    --terra-radio-border-color: var(--terra-color-carbon-20);
+    --terra-radio-border-color-hover: var(--terra-color-carbon-40);
+    --terra-radio-border-color-checked: var(--terra-color-nasa-blue);
+    --terra-radio-border-color-checked-hover: var(
+      --terra-color-nasa-blue-shade
+    );
+    --terra-radio-border-color-disabled: var(--terra-color-carbon-30);
+    --terra-radio-border-width: 1px;
+    --terra-radio-icon-color: var(--terra-color-spacesuit-white);
+    --terra-radio-label-color: var(--terra-color-carbon-80);
+    --terra-radio-label-font-family: var(--terra-font-family--inter);
+    --terra-radio-label-font-size: var(--terra-font-size-small);
+    --terra-radio-label-font-weight: var(--terra-font-weight-normal);
+
+    --terra-radio-focus-ring-color: var(--terra-color-nasa-blue);
+    --terra-radio-focus-ring-width: var(--terra-focus-ring-width);
+    --terra-radio-focus-ring-offset: var(--terra-focus-ring-offset);
+
     --terra-toggle-size-small: 0.875rem;
     --terra-toggle-size-medium: 1.125rem;
     --terra-toggle-size-large: 1.375rem;
+
+    --terra-toggle-background-color-off: var(--terra-color-carbon-30);
+    --terra-toggle-background-color-on: var(--terra-color-nasa-blue);
+    --terra-toggle-border-color-off: var(--terra-color-carbon-30);
+    --terra-toggle-border-color-on: var(--terra-color-nasa-blue);
+    --terra-toggle-thumb-background-color: var(--terra-color-spacesuit-white);
+    --terra-toggle-thumb-border-color-off: var(--terra-color-carbon-30);
+    --terra-toggle-thumb-border-color-on: var(--terra-color-nasa-blue);
+    --terra-toggle-label-color: var(--terra-color-carbon-90);
+
+    --terra-toggle-focus-ring-color: var(--terra-color-nasa-blue);
+
+    --terra-link-color: var(--terra-color-carbon-90);
+    --terra-link-color-hover: var(--terra-color-carbon-90);
+    --terra-link-text-decoration: underline;
+    --terra-link-text-decoration-style: dotted;
+    --terra-link-underline-offset: 2px;
+
+    --terra-pagination-button-color: var(--terra-color-carbon-90);
+    --terra-pagination-button-color-hover: var(--terra-color-carbon-90);
+    --terra-pagination-button-color-current: var(--terra-color-carbon-black);
+
+    --terra-pagination-icon-button-background-color: var(
+      --terra-color-spacesuit-white
+    );
+    --terra-pagination-icon-button-border-color: var(--terra-color-carbon-30);
+    --terra-pagination-icon-button-background-color-hover: var(
+      --terra-color-carbon-5
+    );
+    --terra-pagination-icon-button-border-color-hover: var(
+      --terra-color-carbon-40
+    );
+    --terra-pagination-icon-button-background-color-disabled: var(
+      --terra-color-carbon-5
+    );
+    --terra-pagination-icon-button-border-color-disabled: var(
+      --terra-color-carbon-20
+    );
+    --terra-pagination-icon-button-icon-color-disabled: var(
+      --terra-color-carbon-40
+    );
+
+    --terra-slider-track-background-color: #fafafa;
+    --terra-slider-track-border-color: var(--terra-input-border-color);
+    --terra-slider-connect-color: var(--terra-color-nasa-blue);
+
+    --terra-slider-handle-background-color: var(--terra-color-spacesuit-white);
+    --terra-slider-handle-border-color: var(--terra-color-nasa-blue);
+
+    --terra-slider-label-color: var(--terra-color-carbon-90);
+    --terra-slider-range-color: var(--terra-color-carbon-90);
 
     --terra-overlay-background-color: hsl(240 3.8% 46.1% / 33%);
 
     --terra-panel-background-color: var(--terra-color-spacesuit-white);
     --terra-panel-border-color: var(--terra-color-carbon-20);
     --terra-panel-border-width: 1px;
+
+    --terra-alert-white-background-color: var(--terra-panel-background-color);
+    --terra-alert-white-color: var(--terra-color-carbon-70);
 
     --terra-tooltip-border-radius: var(--terra-border-radius-medium);
     --terra-tooltip-background-color: var(--terra-color-carbon-80);
@@ -237,9 +446,296 @@ export default css`
     --terra-tooltip-arrow-size: 6px;
 
     --terra-z-index-drawer: 700;
-    --terra-z-index-dialog: 800;
+    --terra-z-index-dialog: 1000;
     --terra-z-index-dropdown: 900;
     --terra-z-index-toast: 950;
     --terra-z-index-tooltip: 1000;
+
+    --terra-caption-font-family: var(--terra-font-family--public-sans);
+    --terra-caption-font-size: var(--terra-font-size-small);
+    --terra-caption-font-weight: var(--terra-font-weight-normal);
+    --terra-caption-line-height: var(--terra-line-height-normal);
+    --terra-caption-color: var(--terra-color-carbon-50);
+    --terra-caption-credit-color: var(--terra-color-carbon-70);
+
+    --terra-status-indicator-font-family: var(--terra-font-family--inter);
+    --terra-status-indicator-font-size: var(--terra-font-size-small);
+    --terra-status-indicator-font-weight: var(--terra-font-weight-normal);
+    --terra-status-indicator-label-color: var(--terra-color-carbon-90);
+    --terra-status-indicator-dot-color-active: var(--terra-color-active-green);
+    --terra-status-indicator-dot-color-completed: var(--terra-color-carbon-40);
+    --terra-status-indicator-dot-color-testing: var(
+      --terra-color-international-orange
+    );
+    --terra-status-indicator-dot-color-future: var(--terra-color-nasa-blue);
+
+    --terra-tag-font-family: var(--terra-font-family--inter);
+    --terra-tag-font-size-small: var(--terra-font-size-x-small);
+    --terra-tag-font-size-medium: var(--terra-font-size-small);
+    --terra-tag-font-size-large: var(--terra-font-size-medium);
+    --terra-tag-font-weight: var(--terra-font-weight-normal);
+    --terra-tag-font-weight-urgent: var(--terra-font-weight-bold, 700);
+
+    --terra-tag-icon-size-small: 1.25rem;
+    --terra-tag-icon-size-medium: 1.5rem;
+    --terra-tag-icon-size-large: 1.75rem;
+    --terra-tag-icon-inner-size-small: 0.75rem;
+    --terra-tag-icon-inner-size-medium: 0.875rem;
+    --terra-tag-icon-inner-size-large: 1rem;
+    --terra-tag-icon-border-color: var(--terra-color-carbon-40);
+
+    --terra-tag-color: var(--terra-color-carbon-90);
+    --terra-tag-background-color: transparent;
+    --terra-tag-border-color: var(--terra-color-carbon-30);
+    --terra-tag-border-color-hover: var(--terra-color-carbon-40);
+    --terra-tag-background-color-hover: var(--terra-color-carbon-5);
+
+    --terra-tag-urgent-color: var(--terra-color-spacesuit-white);
+    --terra-tag-urgent-background-color: var(--terra-color-nasa-red);
+
+    --terra-tag-padding-small: 0.25rem 0.5rem;
+    --terra-tag-padding-medium: var(--terra-spacing-x-small, 0.5rem)
+      var(--terra-spacing-small, 0.75rem);
+    --terra-tag-padding-large: 0.625rem 1rem;
+
+    --terra-scroll-hint-icon-background-color: var(--terra-color-carbon-black);
+    --terra-scroll-hint-icon-color: var(--terra-color-spacesuit-white);
+    --terra-scroll-hint-text-color: var(--terra-color-carbon-black);
+    --terra-scroll-hint-ring-color: var(--terra-color-nasa-red);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root,
+    :host {
+      color-scheme: dark;
+
+      --terra-color-nasa-red: hsl(2, 68%, 52%);
+
+      --terra-color-nasa-red-shade: hsla(0, 91%, 37%, 1);
+
+      --terra-color-default-gray: hsla(240, 2%, 59%, 1);
+      --terra-color-default-gray-tint: hsla(240, 10%, 70%, 1);
+      --terra-color-default-gray-shade: hsl(240, 9%, 40%, 1);
+
+      --terra-color-carbon-90: hsl(0, 0%, 96%);
+      --terra-color-carbon-80: hsla(0, 0%, 89%, 1);
+      --terra-color-carbon-70: hsla(0, 0%, 82%, 1);
+      --terra-color-carbon-60: hsla(240, 1%, 73%, 1);
+      --terra-color-carbon-50: hsla(240, 2%, 59%, 1);
+      --terra-color-carbon-40: hsla(240, 1%, 47%, 1);
+      --terra-color-carbon-30: hsla(240, 2%, 35%, 1);
+      --terra-color-carbon-20: hsl(240, 2%, 27%);
+      --terra-color-carbon-10: hsl(240, 3%, 19%);
+      --terra-color-carbon-5: hsla(240, 8%, 10%, 1);
+
+      --terra-button-outline-text-color: var(--terra-color-spacesuit-white);
+      --terra-button-text-text-color: hsl(217, 78%, 58%);
+      --terra-button-text-text-color-hover: var(--terra-color-nasa-blue);
+      --terra-button-page-link-text-color: var(--terra-color-spacesuit-white);
+
+      --terra-input-border-color: var(--terra-color-carbon-60);
+
+      --terra-map-background-color: var(--terra-color-carbon-10);
+      --terra-map-border-color: var(--terra-color-carbon-20);
+
+      --terra-chip-background-color: var(--terra-color-carbon-black);
+      --terra-chip-color: var(--terra-color-carbon-60);
+      --terra-chip-color-hover: var(--terra-color-carbon-80);
+      --terra-chip-icon-color: var(--terra-color-carbon-60);
+      --terra-chip-icon-color-hover: var(--terra-color-carbon-80);
+
+      --terra-caption-color: var(--terra-color-carbon-60);
+      --terra-caption-credit-color: var(--terra-color-carbon-70);
+
+      --terra-status-indicator-label-color: var(--terra-color-carbon-60);
+
+      --terra-tag-color: var(--terra-color-carbon-60);
+      --terra-tag-icon-border-color: var(--terra-color-carbon-30);
+      --terra-tag-border-color: var(--terra-color-carbon-20);
+      --terra-tag-border-color-hover: var(--terra-color-carbon-30);
+      --terra-tag-background-color-hover: var(--terra-color-carbon-10);
+
+      --terra-scroll-hint-icon-background-color: var(
+        --terra-color-spacesuit-white
+      );
+      --terra-scroll-hint-icon-color: var(--terra-color-carbon-black);
+      --terra-scroll-hint-text-color: var(--terra-color-spacesuit-white);
+
+      --terra-toggle-label-color: var(--terra-color-carbon-60);
+
+      --terra-link-color: var(--terra-color-carbon-60);
+      --terra-link-color-hover: var(--terra-color-carbon-60);
+
+      --terra-pagination-button-color: var(--terra-color-carbon-60);
+      --terra-pagination-button-color-hover: var(--terra-color-carbon-80);
+      --terra-pagination-button-color-current: var(--terra-color-carbon-90);
+      --terra-pagination-icon-button-background-color: var(
+        --terra-color-carbon-10
+      );
+      --terra-pagination-icon-button-border-color: var(--terra-color-carbon-30);
+      --terra-pagination-icon-button-background-color-hover: var(
+        --terra-color-carbon-5
+      );
+      --terra-pagination-icon-button-border-color-hover: var(
+        --terra-color-carbon-40
+      );
+      --terra-pagination-icon-button-background-color-disabled: var(
+        --terra-color-carbon-5
+      );
+      --terra-pagination-icon-button-border-color-disabled: var(
+        --terra-color-carbon-20
+      );
+      --terra-pagination-icon-button-icon-color-disabled: var(
+        --terra-color-carbon-40
+      );
+
+      --terra-slider-track-background-color: var(--terra-color-carbon-10);
+      --terra-slider-track-border-color: var(--terra-color-carbon-20);
+      --terra-slider-connect-color: var(--terra-color-nasa-blue-tint);
+      --terra-slider-handle-background-color: var(--terra-color-carbon-black);
+      --terra-slider-handle-border-color: var(--terra-color-nasa-blue-tint);
+      --terra-slider-label-color: var(--terra-color-carbon-60);
+      --terra-slider-range-color: var(--terra-color-carbon-60);
+    }
+  }
+
+  :host,
+  .terra-theme-dark {
+    color-scheme: dark;
+
+    --terra-color-nasa-red: hsl(2, 68%, 52%);
+
+    --terra-color-nasa-red-shade: hsla(0, 91%, 37%, 1);
+
+    --terra-color-default-gray: hsla(240, 2%, 59%, 1);
+    --terra-color-default-gray-tint: hsla(240, 10%, 70%, 1);
+    --terra-color-default-gray-shade: hsl(240, 9%, 40%, 1);
+
+    --terra-color-carbon-90: hsl(0, 0%, 96%);
+    --terra-color-carbon-80: hsla(0, 0%, 89%, 1);
+    --terra-color-carbon-70: hsla(0, 0%, 82%, 1);
+    --terra-color-carbon-60: hsla(240, 1%, 73%, 1);
+    --terra-color-carbon-50: hsla(240, 2%, 59%, 1);
+    --terra-color-carbon-40: hsla(240, 1%, 47%, 1);
+    --terra-color-carbon-30: hsla(240, 2%, 35%, 1);
+    --terra-color-carbon-20: hsl(240, 2%, 27%);
+    --terra-color-carbon-10: hsl(240, 3%, 19%);
+    --terra-color-carbon-5: hsla(240, 8%, 10%, 1);
+
+    --terra-button-outline-text-color: var(--terra-color-spacesuit-white);
+    --terra-button-text-text-color: hsl(217, 78%, 58%);
+    --terra-button-text-text-color-hover: var(--terra-color-nasa-blue);
+    --terra-button-page-link-text-color: var(--terra-color-spacesuit-white);
+
+    --terra-input-border-color: var(--terra-color-carbon-60);
+
+    --terra-panel-background-color: var(--terra-color-carbon-10);
+    --terra-panel-border-color: var(--terra-color-carbon-20);
+
+    --terra-map-background-color: var(--terra-color-carbon-10);
+    --terra-map-border-color: var(--terra-color-carbon-20);
+
+    --terra-chip-background-color: var(--terra-color-carbon-black);
+    --terra-chip-color: var(--terra-color-carbon-60);
+    --terra-chip-color-hover: var(--terra-color-carbon-80);
+    --terra-chip-icon-color: var(--terra-color-carbon-60);
+    --terra-chip-icon-color-hover: var(--terra-color-carbon-80);
+
+    --terra-alert-white-background-color: var(--terra-color-carbon-10);
+    --terra-alert-white-color: var(--terra-color-carbon-60);
+
+    --terra-accordion-background-color: var(--terra-color-carbon-10);
+    --terra-accordion-border-color: var(--terra-color-carbon-20);
+    --terra-accordion-summary-background-color: var(--terra-color-carbon-5);
+    --terra-accordion-summary-background-color-hover: var(
+      --terra-color-carbon-10
+    );
+    --terra-accordion-summary-border-color: var(--terra-color-carbon-20);
+    --terra-accordion-summary-color: var(--terra-color-carbon-60);
+
+    --terra-caption-color: var(--terra-color-carbon-60);
+    --terra-caption-credit-color: var(--terra-color-carbon-70);
+
+    --terra-status-indicator-label-color: var(--terra-color-carbon-60);
+
+    --terra-tag-color: var(--terra-color-carbon-60);
+    --terra-tag-icon-border-color: var(--terra-color-carbon-30);
+    --terra-tag-border-color: var(--terra-color-carbon-20);
+    --terra-tag-border-color-hover: var(--terra-color-carbon-30);
+    --terra-tag-background-color-hover: var(--terra-color-carbon-10);
+
+    --terra-scroll-hint-icon-background-color: var(
+      --terra-color-spacesuit-white
+    );
+    --terra-scroll-hint-icon-color: var(--terra-color-carbon-black);
+    --terra-scroll-hint-text-color: var(--terra-color-spacesuit-white);
+
+    --terra-checkbox-background-color: var(--terra-color-carbon-10);
+    --terra-checkbox-background-color-hover: var(--terra-color-carbon-10);
+    --terra-checkbox-background-color-checked: var(--terra-color-nasa-blue);
+    --terra-checkbox-background-color-checked-hover: var(
+      --terra-color-nasa-blue-shade
+    );
+    --terra-checkbox-background-color-disabled: var(--terra-color-carbon-10);
+    --terra-checkbox-border-color: var(--terra-color-carbon-20);
+    --terra-checkbox-border-color-hover: var(--terra-color-carbon-40);
+    --terra-checkbox-border-color-checked: var(--terra-color-nasa-blue);
+    --terra-checkbox-border-color-checked-hover: var(
+      --terra-color-nasa-blue-shade
+    );
+    --terra-checkbox-border-color-disabled: var(--terra-color-carbon-30);
+    --terra-checkbox-label-color: var(--terra-color-carbon-60);
+
+    --terra-radio-background-color: var(--terra-color-carbon-10);
+    --terra-radio-background-color-hover: var(--terra-color-carbon-10);
+    --terra-radio-background-color-checked: var(--terra-color-nasa-blue);
+    --terra-radio-background-color-checked-hover: var(
+      --terra-color-nasa-blue-shade
+    );
+    --terra-radio-background-color-disabled: var(--terra-color-carbon-10);
+    --terra-radio-border-color: var(--terra-color-carbon-20);
+    --terra-radio-border-color-hover: var(--terra-color-carbon-40);
+    --terra-radio-border-color-checked: var(--terra-color-nasa-blue);
+    --terra-radio-border-color-checked-hover: var(
+      --terra-color-nasa-blue-shade
+    );
+    --terra-radio-border-color-disabled: var(--terra-color-carbon-30);
+    --terra-radio-label-color: var(--terra-color-carbon-60);
+
+    --terra-toggle-label-color: var(--terra-color-carbon-60);
+
+    --terra-link-color: var(--terra-color-carbon-60);
+    --terra-link-color-hover: var(--terra-color-carbon-60);
+
+    --terra-pagination-button-color: var(--terra-color-carbon-60);
+    --terra-pagination-button-color-hover: var(--terra-color-carbon-80);
+    --terra-pagination-button-color-current: var(--terra-color-carbon-90);
+    --terra-pagination-icon-button-background-color: var(
+      --terra-color-carbon-10
+    );
+    --terra-pagination-icon-button-border-color: var(--terra-color-carbon-30);
+    --terra-pagination-icon-button-background-color-hover: var(
+      --terra-color-carbon-5
+    );
+    --terra-pagination-icon-button-border-color-hover: var(
+      --terra-color-carbon-40
+    );
+    --terra-pagination-icon-button-background-color-disabled: var(
+      --terra-color-carbon-5
+    );
+    --terra-pagination-icon-button-border-color-disabled: var(
+      --terra-color-carbon-20
+    );
+    --terra-pagination-icon-button-icon-color-disabled: var(
+      --terra-color-carbon-40
+    );
+
+    --terra-slider-track-background-color: var(--terra-color-carbon-10);
+    --terra-slider-track-border-color: var(--terra-color-carbon-20);
+    --terra-slider-connect-color: var(--terra-color-nasa-blue-tint);
+    --terra-slider-handle-background-color: var(--terra-color-carbon-black);
+    --terra-slider-handle-border-color: var(--terra-color-nasa-blue-tint);
+    --terra-slider-label-color: var(--terra-color-carbon-60);
+    --terra-slider-range-color: var(--terra-color-carbon-60);
   }
 `;

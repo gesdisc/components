@@ -6,7 +6,7 @@ export type { TerraDialogShowEvent } from '../../events/events.js';
 export type { TerraDialogHideEvent } from '../../events/events.js';
 /**
  * @summary Used to create both modal and non-modal dialog boxes.
- * @documentation https://disc.gsfc.nasa.gov/components/dialog
+ * @documentation https://terra-ui.netlify.app/components/dialog
  * @status stable
  * @since 1.0
  *

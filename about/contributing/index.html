@@ -1,0 +1,999 @@
+<!doctype html>
+<html lang="en" data-layout="default" data-terra-ui-components-version="0.0.111">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Learn how to contribute to Terra UI Components" />
+    <title>Contributing</title>
+
+    <meta name="turbo-cache-control" />
+
+    <link rel="stylesheet" href="/components/assets/styles/docs.css" />
+    <link rel="stylesheet" href="/components/assets/styles/code-previews.css" />
+    <link rel="stylesheet" href="/components/assets/styles/search.css" />
+
+    <link rel="icon" href="/components/assets/images/logo.white.png" type="image/x-icon" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="nasa_terra-ui" />
+    <meta name="twitter:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
+
+    <meta property="og:url" content="https://terra-ui.netlify.app/about/contributing/" />
+    <meta property="og:title" content="Contributing" />
+    <meta property="og:description" content="Learn how to contribute to Terra UI Components" />
+    <meta property="og:image" content="https://terra-ui.netlify.app/components/assets/images/og-image.png" />
+
+    <link rel="stylesheet" href="/dist/themes/horizon.css" />
+    <script type="module" src="/dist/terra-ui-components-autoloader.js"></script>
+
+    <script>
+      (() => {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = localStorage.getItem('theme') || 'auto';
+        document.documentElement.classList.toggle(
+          'terra-theme-dark',
+          theme === 'dark' || (theme === 'auto' && prefersDark)
+        );
+      })();
+    </script>
+
+    <script src="/components/assets/scripts/turbo.js" type="module"></script>
+    <script src="/components/assets/scripts/docs.js" defer=""></script>
+    <script src="/components/assets/scripts/code-previews.js" defer=""></script>
+    <script src="/components/assets/scripts/lunr.js" defer=""></script>
+    <script src="/components/assets/scripts/search.js" defer=""></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono&amp;family=Inter&amp;family=Public+Sans&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"
+    ></script>
+  </head>
+  <body>
+    <a id="skip-to-main" class="visually-hidden" href="#main-content" data-smooth-link="false">
+      Skip to main content
+    </a>
+
+    <header id="top-nav" class="top-nav">
+      <div class="top-nav__left">
+        <a href="/" class="top-nav__logo">
+          <terra-icon name="nasa-logo" font-size="4rem"></terra-icon>
+          <span class="top-nav__title">Terra UI</span>
+        </a>
+      </div>
+
+      <div class="top-nav__right">
+        <terra-dropdown id="about-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="About"> About </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="project-overview">
+              <a href="/components/">Project Overview</a>
+            </terra-menu-item>
+            <terra-menu-item value="contributing">
+              <a href="/components/about/contributing">Contributing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="getting-started-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Getting Started">
+            Getting Started
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="installation">
+              <a href="/components/getting-started/installation">Installation</a>
+            </terra-menu-item>
+            <terra-menu-item value="usage">
+              <a href="/components/getting-started/usage">Usage</a>
+            </terra-menu-item>
+            <terra-menu-item value="themes">
+              <a href="/components/getting-started/themes">Themes</a>
+            </terra-menu-item>
+            <terra-menu-item value="customizing">
+              <a href="/components/getting-started/customizing">Customizing</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <terra-dropdown id="frameworks-dropdown" placement="bottom-start" distance="3" hover="">
+          <terra-button slot="trigger" size="medium" variant="text" caret="" title="Frameworks">
+            Frameworks
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item value="react">
+              <a href="/components/frameworks/react">React</a>
+            </terra-menu-item>
+            <terra-menu-item value="vue">
+              <a href="/components/frameworks/vue">Vue</a>
+            </terra-menu-item>
+            <terra-menu-item value="angular">
+              <a href="/components/frameworks/angular">Angular</a>
+            </terra-menu-item>
+          </terra-menu>
+        </terra-dropdown>
+
+        <button
+          class="top-nav__search"
+          type="button"
+          title="Press / to search"
+          aria-label="Search"
+          data-plugin="search"
+        >
+          <sl-icon name="search"></sl-icon>
+        </button>
+        <a
+          href="https://github.com/nasa/terra-ui-components"
+          title="View Terra UI Components on GitHub"
+          class="top-nav__icon-link external-link"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <sl-icon name="github"></sl-icon>
+        </a>
+        <terra-dropdown id="environment-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Environment"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <span id="environment-display">UAT</span>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="uat"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >UAT</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="prod"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >PROD</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+        <terra-dropdown id="theme-selector" placement="bottom-end" distance="3" hover="">
+          <terra-button
+            slot="trigger"
+            size="medium"
+            variant="text"
+            caret=""
+            title="Press \ to toggle"
+            data-optional=""
+            data-valid=""
+            data-user-valid=""
+          >
+            <sl-icon class="only-light" name="sun-fill" aria-hidden="true" library="default"></sl-icon>
+            <sl-icon class="only-dark" name="moon-fill" aria-hidden="true" library="default"></sl-icon>
+          </terra-button>
+          <terra-menu role="menu">
+            <terra-menu-item
+              type="checkbox"
+              value="light"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Light</terra-menu-item
+            >
+            <terra-menu-item
+              type="checkbox"
+              value="dark"
+              tabindex="-1"
+              role="menuitemcheckbox"
+              aria-checked="false"
+              aria-disabled="false"
+              >Dark</terra-menu-item
+            >
+            <hr
+              role="separator"
+              aria-orientation="horizontal"
+              style="
+                margin: var(--terra-spacing-x-small) 0;
+                border: none;
+                border-top: 1px solid var(--terra-panel-border-color);
+              "
+            />
+            <terra-menu-item
+              type="checkbox"
+              value="auto"
+              tabindex="0"
+              role="menuitemcheckbox"
+              aria-checked="true"
+              aria-disabled="false"
+              checked=""
+              >System</terra-menu-item
+            >
+          </terra-menu>
+        </terra-dropdown>
+      </div>
+    </header>
+
+    <button id="menu-toggle" type="button" aria-label="Menu">
+      <svg width="148" height="148" viewBox="0 0 148 148" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="currentColor" stroke-width="18" fill="none" fill-rule="evenodd" stroke-linecap="round">
+          <path d="M9.5 125.5h129M9.5 74.5h129M9.5 23.5h129"></path>
+        </g>
+      </svg>
+    </button>
+
+    <aside id="sidebar" data-preserve-scroll="">
+      <div class="sidebar-buttons">
+        <terra-button
+          size="small"
+          class="repo-button repo-button--github"
+          href="https://github.com/nasa/terra-ui-components"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="github"></sl-icon> Code
+        </terra-button>
+        <terra-button
+          size="small"
+          class="repo-button repo-button--star"
+          href="https://github.com/nasa/terra-ui-components/stargazers"
+          target="_blank"
+        >
+          <sl-icon slot="prefix" name="star-fill"></sl-icon> Star
+        </terra-button>
+      </div>
+
+      <nav>
+        <ul>
+          <li>
+            <h2>Design System</h2>
+            <ul>
+              <li>
+                <a href="/components/horizon-design-system">Overview</a>
+              </li>
+              <li>
+                <a href="/components/tokens/typography">Typography</a>
+              </li>
+              <li>
+                <a href="/components/tokens/color">Color</a>
+              </li>
+              <li>
+                <a href="/components/tokens/spacing">Spacing</a>
+              </li>
+              <li>
+                <a href="/components/tokens/elevation">Elevation</a>
+              </li>
+              <li>
+                <a href="/components/tokens/border-radius">Border Radius</a>
+              </li>
+              <li>
+                <a href="/components/tokens/transition">Transition</a>
+              </li>
+              <li>
+                <a href="/components/tokens/z-index">Z-index</a>
+              </li>
+              <li>
+                <a href="/components/tokens/more">More Tokens</a>
+              </li>
+              <li>
+                <a href="/components/horizon-design-system/#adoption-status">HDS Adoption Status</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2>Forms</h2>
+            <ul>
+              <li>
+                <a href="/components/forms">Overview</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2>Elements</h2>
+            <ul>
+              <li>
+                <a href="/components/alert"> Alert </a>
+              </li>
+
+              <li>
+                <a href="/components/avatar"> Avatar </a>
+              </li>
+
+              <li>
+                <a href="/components/button"> Button </a>
+              </li>
+
+              <li>
+                <a href="/components/caption"> Caption </a>
+              </li>
+
+              <li>
+                <a href="/components/checkbox"> Checkbox </a>
+              </li>
+
+              <li>
+                <a href="/components/chip"> Chip </a>
+              </li>
+
+              <li>
+                <a href="/components/date-picker"> Date Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/file-upload"> File Upload </a>
+              </li>
+
+              <li>
+                <a href="/components/icon"> Icon </a>
+              </li>
+
+              <li>
+                <a href="/components/input"> Input </a>
+              </li>
+
+              <li>
+                <a href="/components/loader"> Loader </a>
+              </li>
+
+              <li>
+                <a href="/components/option"> Option </a>
+              </li>
+
+              <li>
+                <a href="/components/pagination"> Pagination </a>
+              </li>
+
+              <li>
+                <a href="/components/radio"> Radio </a>
+              </li>
+
+              <li>
+                <a href="/components/radio-group"> Radio Group </a>
+              </li>
+
+              <li>
+                <a href="/components/scroll-hint"> Scroll Hint </a>
+              </li>
+
+              <li>
+                <a href="/components/select"> Select </a>
+              </li>
+
+              <li>
+                <a href="/components/slider"> Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/status-indicator"> Status Indicator </a>
+              </li>
+
+              <li>
+                <a href="/components/tag"> Tag </a>
+              </li>
+
+              <li>
+                <a href="/components/textarea"> Textarea </a>
+              </li>
+
+              <li>
+                <a href="/components/toggle"> Toggle </a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h2>Components</h2>
+            <ul>
+              <li>
+                <a href="/components/accordion"> Accordion </a>
+              </li>
+
+              <li>
+                <a href="/components/browse-variables"> Browse Variables </a>
+              </li>
+
+              <li>
+                <a href="/components/combobox"> Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/data-access"> Data Access </a>
+              </li>
+
+              <li>
+                <a href="/components/data-rods"> Data Rods </a>
+              </li>
+
+              <li>
+                <a href="/components/data-subsetter"> Data Subsetter </a>
+              </li>
+
+              <li>
+                <a href="/components/data-subsetter-history"> Data Subsetter History </a>
+              </li>
+
+              <li>
+                <a href="/components/date-range-slider"> Date Range Slider </a>
+              </li>
+
+              <li>
+                <a href="/components/dialog"> Dialog </a>
+              </li>
+
+              <li>
+                <a href="/components/dropdown"> Dropdown </a>
+              </li>
+
+              <li>
+                <a href="/components/login"> Login </a>
+              </li>
+
+              <li>
+                <a href="/components/map"> Map </a>
+              </li>
+
+              <li>
+                <a href="/components/menu"> Menu </a>
+              </li>
+
+              <li>
+                <a href="/components/menu-item"> Menu Item </a>
+              </li>
+
+              <li>
+                <a href="/components/plot"> Plot </a>
+              </li>
+
+              <li>
+                <a href="/components/plot-toolbar"> Plot Toolbar </a>
+              </li>
+
+              <li>
+                <a href="/components/popup"> Popup </a>
+              </li>
+
+              <li>
+                <a href="/components/skeleton"> Skeleton </a>
+              </li>
+
+              <li>
+                <a href="/components/spatial-picker"> Spatial Picker </a>
+              </li>
+
+              <li>
+                <a href="/components/time-average-map"> Time Average Map </a>
+              </li>
+
+              <li>
+                <a href="/components/time-series"> Time Series </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-combobox"> Variable Combobox </a>
+              </li>
+
+              <li>
+                <a href="/components/variable-keyword-search"> Variable Keyword Search </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+      <a id="main-content"></a>
+      <article id="content" class="content content--with-toc">
+        <div class="content__toc">
+          <ul>
+            <li class="top">
+              <a href="#">Contributing</a>
+            </li>
+            <li data-level="2"><a href="#getting-started">Getting Started</a></li>
+            <li data-level="2"><a href="#governance">Governance</a></li>
+            <li data-level="2"><a href="#github-issues">GitHub Issues</a></li>
+            <li data-level="3"><a href="#issue-types">Issue Types</a></li>
+            <li data-level="2"><a href="#pull-requests">Pull Requests</a></li>
+            <li data-level="3"><a href="#pull-request-guidelines">Pull Request Guidelines</a></li>
+            <li data-level="2"><a href="#creating-a-new-component">Creating a New Component</a></li>
+            <li data-level="3"><a href="#component-requirements">Component Requirements</a></li>
+            <li data-level="2"><a href="#python-widgets">Python Widgets</a></li>
+            <li data-level="3"><a href="#creating-a-widget">Creating a Widget</a></li>
+            <li data-level="3"><a href="#updating-a-widget">Updating a Widget</a></li>
+            <li data-level="2"><a href="#testing">Testing</a></li>
+            <li data-level="3"><a href="#writing-tests">Writing Tests</a></li>
+            <li data-level="2"><a href="#documentation">Documentation</a></li>
+            <li data-level="3"><a href="#documentation-structure">Documentation Structure</a></li>
+            <li data-level="2"><a href="#best-practices">Best Practices</a></li>
+            <li data-level="3"><a href="#accessibility">Accessibility</a></li>
+            <li data-level="3"><a href="#code-formatting">Code Formatting</a></li>
+            <li data-level="3"><a href="#class-names-and-shadow-dom">Class Names and Shadow DOM</a></li>
+            <li data-level="3"><a href="#custom-events">Custom Events</a></li>
+            <li data-level="3"><a href="#css-custom-properties">CSS Custom Properties</a></li>
+            <li data-level="3"><a href="#icons">Icons</a></li>
+            <li data-level="3"><a href="#writing-tests-1">Writing Tests</a></li>
+            <li data-level="2"><a href="#questions">Questions?</a></li>
+          </ul>
+        </div>
+
+        <div class="content__body">
+          <h1>Contributing</h1>
+          <p>
+            Thank you for your interest in contributing to Terra UI Components! We welcome contributions from the
+            community and are grateful for your help in making Terra UI better.
+          </p>
+          <h2 id="getting-started" class="anchor-heading">
+            Getting Started<a href="#getting-started" aria-label='Direct link to "Getting Started"'></a>
+          </h2>
+          <p>Before you begin, please familiarize yourself with:</p>
+          <ul>
+            <li><a href="/getting-started/installation">Installation Guide</a> - How to set up Terra UI locally</li>
+            <li>
+              <a href="https://website.nasa.gov/hds/" class="external-link" rel="noopener noreferrer" target="_blank"
+                >Horizon Design System</a
+              >
+              - NASA’s design system guidelines
+            </li>
+            <li><a href="/components/avatar">Component Documentation</a> - Examples of existing components</li>
+          </ul>
+          <h2 id="governance" class="anchor-heading">
+            Governance<a href="#governance" aria-label='Direct link to "Governance"'></a>
+          </h2>
+          <p>The NASA GES DISC team maintains Terra UI Components and has final decision-making authority on:</p>
+          <ul>
+            <li>New design tokens and their values</li>
+            <li>New components and their APIs</li>
+            <li>Breaking changes and major version updates</li>
+            <li>Overall project direction and priorities</li>
+          </ul>
+          <p>
+            We review all pull requests and provide feedback to help ensure contributions align with project goals and
+            quality standards. Don’t let this daunt you from submitting a PR — we’re a friendly group and are happy to
+            discuss any changes. When in doubt, feel free to open an issue to discuss your ideas before implementing
+            them.
+          </p>
+          <h2 id="github-issues" class="anchor-heading">
+            GitHub Issues<a href="#github-issues" aria-label='Direct link to "GitHub Issues"'></a>
+          </h2>
+          <p>We use GitHub Issues to track bugs, feature requests, and discussions. Before opening an issue, please:</p>
+          <ol>
+            <li><strong>Search existing issues</strong> to see if your issue has already been reported or discussed</li>
+            <li><strong>Use clear, descriptive titles</strong> that summarize the issue</li>
+            <li>
+              <strong>Provide context</strong> including:
+              <ul>
+                <li>What you’re trying to accomplish</li>
+                <li>What you expected to happen</li>
+                <li>What actually happened</li>
+                <li>Steps to reproduce (for bugs)</li>
+                <li>Browser and OS information (for bugs)</li>
+                <li>Screenshots or code examples when helpful</li>
+              </ul>
+            </li>
+          </ol>
+          <h3 id="issue-types" class="anchor-heading">
+            Issue Types<a href="#issue-types" aria-label='Direct link to "Issue Types"'></a>
+          </h3>
+          <ul>
+            <li><strong>Bug Report</strong>: Something isn’t working as expected</li>
+            <li><strong>Feature Request</strong>: Suggest a new component, feature, or enhancement</li>
+            <li><strong>Question</strong>: Ask for help or clarification</li>
+            <li><strong>Documentation</strong>: Report documentation issues or suggest improvements</li>
+          </ul>
+          <h2 id="pull-requests" class="anchor-heading">
+            Pull Requests<a href="#pull-requests" aria-label='Direct link to "Pull Requests"'></a>
+          </h2>
+          <p>We welcome pull requests! Here’s how to get started:</p>
+          <ol>
+            <li><strong>Fork the repository</strong> and clone it locally</li>
+            <li>
+              <strong>Create a feature branch</strong> from <code>main</code>:
+              <pre><code class="language-bash" id="code-block-1"><span class="token function">git</span> checkout <span class="token parameter variable">-b</span> feature/my-new-feature
+</code><sl-copy-button class="copy-code-button" from="code-block-1"></sl-copy-button></pre>
+            </li>
+            <li><strong>Make your changes</strong> following our <a href="#best-practices">Best Practices</a></li>
+            <li><strong>Test your changes</strong> thoroughly</li>
+            <li><strong>Update documentation</strong> if needed</li>
+            <li><strong>Submit a pull request</strong> with a clear description of your changes</li>
+          </ol>
+          <h3 id="pull-request-guidelines" class="anchor-heading">
+            Pull Request Guidelines<a
+              href="#pull-request-guidelines"
+              aria-label='Direct link to "Pull Request Guidelines"'
+            ></a>
+          </h3>
+          <ul>
+            <li>Keep PRs focused on a single feature or fix</li>
+            <li>Include tests for new features</li>
+            <li>Update documentation for API changes</li>
+            <li>Ensure all tests pass (<code>npm run test</code>)</li>
+            <li>Follow our code formatting standards (<code>npm run prettier</code>)</li>
+          </ul>
+          <h2 id="creating-a-new-component" class="anchor-heading">
+            Creating a New Component<a
+              href="#creating-a-new-component"
+              aria-label='Direct link to "Creating a New Component"'
+            ></a>
+          </h2>
+          <p>
+            Terra UI Components provides a generator to help you create new components quickly. To create a new
+            component:
+          </p>
+          <pre><code class="language-bash" id="code-block-2"><span class="token function">npm</span> run create
+</code><sl-copy-button class="copy-code-button" from="code-block-2"></sl-copy-button></pre>
+          <p>
+            You’ll be prompted to enter the component tag name (e.g., <code>terra-my-component</code>). The generator
+            will create:
+          </p>
+          <ul>
+            <li>Component TypeScript file (<code>*.component.ts</code>)</li>
+            <li>Component styles file (<code>*.styles.ts</code>)</li>
+            <li>Component test file (<code>*.test.ts</code>)</li>
+            <li>Component definition file (<code>*.ts</code>)</li>
+            <li>Documentation page template</li>
+          </ul>
+          <p>After running the generator, you’ll need to:</p>
+          <ol>
+            <li>Implement your component logic in the <code>.component.ts</code> file</li>
+            <li>Add styles using design tokens in the <code>.styles.ts</code> file</li>
+            <li>Write tests in the <code>.test.ts</code> file</li>
+            <li>Update the documentation page in <code>docs/pages/components/</code></li>
+            <li>Add design tokens to <code>src/themes/horizon.css</code> if needed</li>
+          </ol>
+          <h3 id="component-requirements" class="anchor-heading">
+            Component Requirements<a
+              href="#component-requirements"
+              aria-label='Direct link to "Component Requirements"'
+            ></a>
+          </h3>
+          <p>All new components must:</p>
+          <ul>
+            <li>
+              <strong>Be accessible</strong>: Follow WCAG guidelines, support keyboard navigation, and work with screen
+              readers
+            </li>
+            <li><strong>Follow Horizon Design System</strong>: Match HDS design patterns and guidelines</li>
+            <li>
+              <strong>Use CSS custom properties</strong>: Use design tokens from <code>horizon.css</code> instead of
+              hardcoded values
+            </li>
+            <li><strong>Support dark mode</strong>: Ensure components work in both light and dark themes</li>
+            <li><strong>Include proper documentation</strong>: JSDoc comments for all public APIs</li>
+            <li><strong>Have tests</strong>: Include unit tests covering the component’s functionality</li>
+          </ul>
+          <h2 id="python-widgets" class="anchor-heading">
+            Python Widgets<a href="#python-widgets" aria-label='Direct link to "Python Widgets"'></a>
+          </h2>
+          <p>
+            Python widgets enable Terra UI components to work in Jupyter Notebooks. Widgets only need to be created when
+            a component needs to be supported in Jupyter Notebooks.
+          </p>
+          <h3 id="creating-a-widget" class="anchor-heading">
+            Creating a Widget<a href="#creating-a-widget" aria-label='Direct link to "Creating a Widget"'></a>
+          </h3>
+          <p>To create a Python widget for a component:</p>
+          <pre><code class="language-bash" id="code-block-3"><span class="token function">npm</span> run create-widget
+</code><sl-copy-button class="copy-code-button" from="code-block-3"></sl-copy-button></pre>
+          <p>
+            You’ll be prompted to select the component. The generator will create a Python widget file that maps the
+            component’s properties and events to Python traits.
+          </p>
+          <h3 id="updating-a-widget" class="anchor-heading">
+            Updating a Widget<a href="#updating-a-widget" aria-label='Direct link to "Updating a Widget"'></a>
+          </h3>
+          <p>
+            If a widget already exists and you’ve added new properties or events to the component, update the widget:
+          </p>
+          <pre><code class="language-bash" id="code-block-4"><span class="token function">npm</span> run update-widget
+</code><sl-copy-button class="copy-code-button" from="code-block-4"></sl-copy-button></pre>
+          <p>
+            This will scan the component’s TypeScript file and update the Python widget with any new properties or
+            events.
+          </p>
+          <h2 id="testing" class="anchor-heading">
+            Testing<a href="#testing" aria-label='Direct link to "Testing"'></a>
+          </h2>
+          <p>
+            Terra UI Components uses
+            <a
+              href="https://modern-web.dev/docs/test-runner/overview/"
+              class="external-link"
+              rel="noopener noreferrer"
+              target="_blank"
+              >Web Test Runner</a
+            >
+            for testing. To launch the test runner during development, open a terminal and launch the dev server:
+          </p>
+          <pre><code class="language-bash" id="code-block-5"><span class="token function">npm</span> start
+</code><sl-copy-button class="copy-code-button" from="code-block-5"></sl-copy-button></pre>
+          <p>In a second terminal window, launch the test runner:</p>
+          <pre><code class="language-bash" id="code-block-6"><span class="token function">npm</span> run test:watch
+</code><sl-copy-button class="copy-code-button" from="code-block-6"></sl-copy-button></pre>
+          <p>
+            Follow the on-screen instructions to work with the test runner. Tests will automatically re-run as you make
+            changes.
+          </p>
+          <p>To run all tests only once:</p>
+          <pre><code class="language-bash" id="code-block-7"><span class="token function">npm</span> run <span class="token builtin class-name">test</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-7"></sl-copy-button></pre>
+          <p>To test a single component, use the component’s basename as shown in the following example:</p>
+          <pre><code class="language-bash" id="code-block-8"><span class="token function">npm</span> run test:component input
+</code><sl-copy-button class="copy-code-button" from="code-block-8"></sl-copy-button></pre>
+          <p>This will run tests for the <code>input</code> component (the test file <code>input.test.ts</code>).</p>
+          <h3 id="writing-tests" class="anchor-heading">
+            Writing Tests<a href="#writing-tests" aria-label='Direct link to "Writing Tests"'></a>
+          </h3>
+          <p>
+            Tests should be placed in <code>*.test.ts</code> files alongside the component. Use the
+            <code>@open-wc/testing</code> library which provides helpful testing utilities:
+          </p>
+          <pre><code class="language-typescript" id="code-block-9"><span class="token keyword">import</span> <span class="token string">'../../../dist/terra-ui-components.js'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> expect<span class="token punctuation">,</span> fixture<span class="token punctuation">,</span> html <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@open-wc/testing'</span>
+
+<span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">'&lt;terra-my-component&gt;'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'should render a component'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> el <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fixture</span><span class="token punctuation">(</span>html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"> &lt;terra-my-component&gt;&lt;/terra-my-component&gt; </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+        <span class="token function">expect</span><span class="token punctuation">(</span>el<span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span>exist
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-9"></sl-copy-button></pre>
+          <h2 id="documentation" class="anchor-heading">
+            Documentation<a href="#documentation" aria-label='Direct link to "Documentation"'></a>
+          </h2>
+          <p>
+            Maintaining good documentation can be a painstaking task, but poor documentation leads to frustration and
+            makes the project less appealing to users. Fortunately, writing documentation for Terra UI is fast and easy!
+          </p>
+          <p>
+            Most of Terra UI’s technical documentation is generated with JSDoc comments and TypeScript metadata from the
+            source code. Every property, method, event, etc. is documented this way. In-code comments encourage
+            contributors to keep the documentation up to date as changes occur so the docs are less likely to become
+            stale. Refer to an existing component to see how JSDoc comments are used in Terra UI.
+          </p>
+          <p>
+            Instructions, code examples, and interactive demos are hand-curated to give users the best possible
+            experience. Typically, the most relevant information is shown first and less common examples are shown
+            towards the bottom. Edge cases and gotchas should be called out in context with tips or warnings.
+          </p>
+          <p>
+            The docs are powered by Eleventy. Check out <code>docs/pages/components/*.md</code> to get an idea of how
+            pages are structured and formatted. If you’re creating a new component, it may help to use an existing
+            component’s markdown file as a template.
+          </p>
+          <h3 id="documentation-structure" class="anchor-heading">
+            Documentation Structure<a
+              href="#documentation-structure"
+              aria-label='Direct link to "Documentation Structure"'
+            ></a>
+          </h3>
+          <p>Component documentation pages should include:</p>
+          <ol>
+            <li><strong>Front matter</strong> with metadata (title, description, sidebarSection)</li>
+            <li><strong>Preview example</strong> showing the component in action</li>
+            <li><strong>Examples section</strong> with various use cases</li>
+            <li><strong>Properties table</strong> (auto-generated from JSDoc)</li>
+            <li><strong>Events table</strong> (auto-generated from JSDoc)</li>
+            <li><strong>Slots table</strong> (auto-generated from JSDoc)</li>
+            <li><strong>Methods table</strong> (auto-generated from JSDoc)</li>
+            <li><strong>Usage section</strong> with best practices</li>
+            <li><strong>Accessibility section</strong> with relevant a11y information</li>
+          </ol>
+          <h2 id="best-practices" class="anchor-heading">
+            Best Practices<a href="#best-practices" aria-label='Direct link to "Best Practices"'></a>
+          </h2>
+          <h3 id="accessibility" class="anchor-heading">
+            Accessibility<a href="#accessibility" aria-label='Direct link to "Accessibility"'></a>
+          </h3>
+          <p>All components must be accessible:</p>
+          <ul>
+            <li>Use semantic HTML elements where possible</li>
+            <li>Support keyboard navigation</li>
+            <li>
+              Include proper ARIA attributes (<code>aria-label</code>, <code>aria-describedby</code>, <code>role</code>,
+              etc.)
+            </li>
+            <li>Ensure sufficient color contrast (WCAG AA minimum)</li>
+            <li>Test with screen readers</li>
+            <li>Support focus management for interactive components</li>
+          </ul>
+          <p>
+            Refer to the
+            <a href="https://www.w3.org/WAI/ARIA/apg/" class="external-link" rel="noopener noreferrer" target="_blank"
+              >WAI-ARIA Authoring Practices Guide</a
+            >
+            for guidance.
+          </p>
+          <h3 id="code-formatting" class="anchor-heading">
+            Code Formatting<a href="#code-formatting" aria-label='Direct link to "Code Formatting"'></a>
+          </h3>
+          <p>
+            We use
+            <a href="https://prettier.io/" class="external-link" rel="noopener noreferrer" target="_blank">Prettier</a>
+            for code formatting. The project includes a Prettier configuration, so formatting is consistent across the
+            codebase.
+          </p>
+          <p><strong>Installing Prettier in VS Code:</strong></p>
+          <ol>
+            <li>
+              Install the
+              <a
+                href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode"
+                class="external-link"
+                rel="noopener noreferrer"
+                target="_blank"
+                >Prettier extension</a
+              >
+            </li>
+            <li>
+              Enable “Format on Save” in VS Code settings:
+              <pre><code class="language-json" id="code-block-10"><span class="token punctuation">{</span>
+    <span class="token property">"editor.formatOnSave"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"editor.defaultFormatter"</span><span class="token operator">:</span> <span class="token string">"esbenp.prettier-vscode"</span>
+<span class="token punctuation">}</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-10"></sl-copy-button></pre>
+            </li>
+          </ol>
+          <p>To format all files:</p>
+          <pre><code class="language-bash" id="code-block-11"><span class="token function">npm</span> run prettier
+</code><sl-copy-button class="copy-code-button" from="code-block-11"></sl-copy-button></pre>
+          <p>To check formatting without making changes:</p>
+          <pre><code class="language-bash" id="code-block-12"><span class="token function">npm</span> run prettier:check
+</code><sl-copy-button class="copy-code-button" from="code-block-12"></sl-copy-button></pre>
+          <h3 id="class-names-and-shadow-dom" class="anchor-heading">
+            Class Names and Shadow DOM<a
+              href="#class-names-and-shadow-dom"
+              aria-label='Direct link to "Class Names and Shadow DOM"'
+            ></a>
+          </h3>
+          <p>Components use Shadow DOM for style encapsulation. Follow these conventions:</p>
+          <ul>
+            <li>Use BEM-like naming: <code>component-name__element-name--modifier</code></li>
+            <li>Prefix classes with the component name to avoid collisions</li>
+            <li>Use CSS custom properties for values that should be customizable</li>
+            <li>Target internal elements using CSS parts (<code>::part()</code>) when exposing customization points</li>
+          </ul>
+          <p>Example:</p>
+          <pre><code class="language-typescript" id="code-block-13"><span class="token comment">// Component class</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">TerraMyComponent</span> <span class="token keyword">extends</span> <span class="token class-name">TerraElement</span> <span class="token punctuation">{</span>
+    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+            &lt;div part="base" class="my-component"&gt;
+                &lt;span part="label" class="my-component__label"&gt;
+                    &lt;slot&gt;&lt;/slot&gt;
+                &lt;/span&gt;
+            &lt;/div&gt;
+        </span><span class="token template-punctuation string">`</span></span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-13"></sl-copy-button></pre>
+          <h3 id="custom-events" class="anchor-heading">
+            Custom Events<a href="#custom-events" aria-label='Direct link to "Custom Events"'></a>
+          </h3>
+          <p>
+            Components should emit custom events prefixed with <code>terra-</code> to avoid collisions with standard DOM
+            events:
+          </p>
+          <pre><code class="language-typescript" id="code-block-14"><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'terra-change'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    detail<span class="token operator">:</span> <span class="token punctuation">{</span> value<span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-14"></sl-copy-button></pre>
+          <p>Document all custom events in the component’s JSDoc:</p>
+          <pre><code class="language-typescript" id="code-block-15"><span class="token comment">/**
+ * @event terra-change - Emitted when the value changes.
+ */</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-15"></sl-copy-button></pre>
+          <h3 id="css-custom-properties" class="anchor-heading">
+            CSS Custom Properties<a
+              href="#css-custom-properties"
+              aria-label='Direct link to "CSS Custom Properties"'
+            ></a>
+          </h3>
+          <p>Always use design tokens from <code>horizon.css</code> instead of hardcoded values:</p>
+          <pre><code class="language-typescript" id="code-block-16"><span class="token comment">// ✅ Good - uses design tokens</span>
+<span class="token punctuation">.</span>my<span class="token operator">-</span>component <span class="token punctuation">{</span>
+    color<span class="token operator">:</span> <span class="token keyword">var</span><span class="token punctuation">(</span><span class="token operator">--</span>terra<span class="token operator">-</span>color<span class="token operator">-</span>carbon<span class="token operator">-</span><span class="token number">80</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    padding<span class="token operator">:</span> <span class="token keyword">var</span><span class="token punctuation">(</span><span class="token operator">--</span>terra<span class="token operator">-</span>spacing<span class="token operator">-</span>medium<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    border<span class="token operator">-</span>radius<span class="token operator">:</span> <span class="token keyword">var</span><span class="token punctuation">(</span><span class="token operator">--</span>terra<span class="token operator">-</span>border<span class="token operator">-</span>radius<span class="token operator">-</span>medium<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// ❌ Bad - hardcoded values</span>
+<span class="token punctuation">.</span>my<span class="token operator">-</span>component <span class="token punctuation">{</span>
+    color<span class="token operator">:</span> #<span class="token number">333</span><span class="token punctuation">;</span>
+    padding<span class="token operator">:</span> 1rem<span class="token punctuation">;</span>
+    border<span class="token operator">-</span>radius<span class="token operator">:</span> 4px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-16"></sl-copy-button></pre>
+          <p>
+            If you need component-specific tokens, add them to <code>horizon.css</code> in a section for your component.
+            Always include dark mode overrides when adding new tokens.
+          </p>
+          <h3 id="icons" class="anchor-heading">Icons<a href="#icons" aria-label='Direct link to "Icons"'></a></h3>
+          <p>
+            Use the <code>terra-icon</code> component for icons. Icons are loaded from icon libraries (default,
+            heroicons, etc.):
+          </p>
+          <pre><code class="language-typescript" id="code-block-17"><span class="token keyword">import</span> TerraIcon <span class="token keyword">from</span> <span class="token string">'../icon/icon.component.js'</span>
+
+<span class="token comment">// In render:</span>
+html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;terra-icon name="check" library="heroicons"&gt;&lt;/terra-icon&gt;</span><span class="token template-punctuation string">`</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-17"></sl-copy-button></pre>
+          <p>For simple graphics, inline SVG is acceptable:</p>
+          <pre><code class="language-typescript" id="code-block-18">html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;svg viewBox="0 0 16 16"&gt;
+    &lt;circle r="6" cx="8" cy="8" fill="currentColor"&gt;&lt;/circle&gt;
+&lt;/svg&gt;</span><span class="token template-punctuation string">`</span></span>
+</code><sl-copy-button class="copy-code-button" from="code-block-18"></sl-copy-button></pre>
+          <h3 id="writing-tests-1" class="anchor-heading">
+            Writing Tests<a href="#writing-tests-1" aria-label='Direct link to "Writing Tests"'></a>
+          </h3>
+          <p>Write tests that cover:</p>
+          <ul>
+            <li>Component rendering</li>
+            <li>Property changes</li>
+            <li>Event emission</li>
+            <li>User interactions (clicks, keyboard navigation)</li>
+            <li>Edge cases and error states</li>
+            <li>Accessibility features</li>
+          </ul>
+          <p>Use <code>@open-wc/testing</code> utilities:</p>
+          <pre><code class="language-typescript" id="code-block-19"><span class="token keyword">import</span> <span class="token punctuation">{</span> expect<span class="token punctuation">,</span> fixture<span class="token punctuation">,</span> html<span class="token punctuation">,</span> waitUntil <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@open-wc/testing'</span>
+
+<span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'should emit terra-change when value changes'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> el <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fixture</span><span class="token punctuation">(</span>html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;terra-input&gt;&lt;/terra-input&gt;</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> changeEvent <span class="token operator">=</span> <span class="token keyword">null</span>
+
+    el<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'terra-change'</span><span class="token punctuation">,</span> e <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        changeEvent <span class="token operator">=</span> e
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    el<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token string">'new value'</span>
+    el<span class="token punctuation">.</span>input<span class="token punctuation">.</span><span class="token function">dispatchEvent</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Event</span><span class="token punctuation">(</span><span class="token string">'input'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> bubbles<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">await</span> <span class="token function">waitUntil</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> changeEvent <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span>changeEvent<span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span>exist
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code><sl-copy-button class="copy-code-button" from="code-block-19"></sl-copy-button></pre>
+          <h2 id="questions" class="anchor-heading">
+            Questions?<a href="#questions" aria-label='Direct link to "Questions?"'></a>
+          </h2>
+          <p>If you have questions about contributing, please:</p>
+          <ul>
+            <li>
+              Open a
+              <a
+                href="https://github.com/nasa/terra-ui-components/issues"
+                class="external-link"
+                rel="noopener noreferrer"
+                target="_blank"
+                >GitHub issue</a
+              >
+              for discussion
+            </li>
+            <li>Review existing component implementations for examples</li>
+            <li>
+              Check the
+              <a href="https://website.nasa.gov/hds/" class="external-link" rel="noopener noreferrer" target="_blank"
+                >Horizon Design System documentation</a
+              >
+            </li>
+          </ul>
+          <p>We’re here to help and appreciate your contributions!</p>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

@@ -1,6 +1,7 @@
+import * as L from 'leaflet';
 import 'leaflet-draw';
 import type { LatLngBoundsExpression } from 'leaflet';
-export declare function parseBoundingBox(inputString: string): number[][] | {
+export declare function parseBoundingBox(input: string | L.LatLng | L.LatLngBounds): number[][] | {
     lat: number;
     lng: number;
 };
@@ -13,6 +14,7 @@ export interface MapViewOptions {
     maxZoom: number;
     hasCoordTracker?: boolean;
     hasNavigation?: boolean;
+    staticMode?: boolean;
     hideBoundingBoxDrawTool?: boolean;
     hidePointSelectionDrawTool?: boolean;
     initialValue?: LatLngBoundsExpression;

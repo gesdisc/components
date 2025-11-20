@@ -5,7 +5,7 @@ import { MapController } from './map.controller.js';
 import type { ShapeFilesResponse } from '../../geojson/types.js';
 /**
  * @summary A map component for visualizing and selecting coordinates.
- * @documentation https://disc.gsfc.nasa.gov/components/map
+ * @documentation https://terra-ui.netlify.app/components/map
  * @status mvp
  * @since 1.0
  *
@@ -39,6 +39,7 @@ export default class TerraMap extends TerraElement {
     hasShapeSelector: boolean;
     hideBoundingBoxSelection?: boolean;
     hidePointSelection?: boolean;
+    staticMode?: boolean;
     value: any;
     mapElement: HTMLDivElement;
     valueChanged(_oldValue: any, newValue: any): void;

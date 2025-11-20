@@ -10,7 +10,7 @@ import TerraPlotToolbar from '../plot-toolbar/plot-toolbar.component.js';
 import { AuthController } from '../../auth/auth.controller.js';
 /**
  * @summary A component for visualizing time series data using the GES DISC Giovanni API.
- * @documentation https://disc.gsfc.nasa.gov/components/time-series
+ * @documentation https://terra-ui.netlify.app/components/time-series
  * @status mvp
  * @since 1.0
  *
@@ -57,6 +57,11 @@ export default class TerraTimeSeries extends TerraElement {
      * Or the bounding box in "west,south,east,north" format.
      */
     location?: string;
+    showCitation: boolean;
+    /**
+     * if you include an application citation, it will be displayed in the citation panel alongside the dataset citation
+     */
+    applicationCitation?: string;
     /**
      * The token to be used for authentication with remote servers.
      * The component provides the header "Authorization: Bearer" (the request header and authentication scheme).
@@ -79,8 +84,8 @@ export default class TerraTimeSeries extends TerraElement {
      */
     estimatedDataPoints: number;
     _authController: AuthController<this>;
+    _fetchVariableTask: import("@lit/task").Task<(string | undefined)[], void>;
     connectedCallback(): void;
     disconnectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
-    getVariableEntryId(): string | undefined;
 }

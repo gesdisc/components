@@ -6,7 +6,7 @@ export type { TerraLoadEvent } from '../../events/events.js';
 export type { TerraErrorEvent } from '../../events/events.js';
 /**
  * @summary Icons are symbols that can be used to represent various options within an application.
- * @documentation https://disc.gsfc.nasa.gov/components/icon
+ * @documentation https://terra-ui.netlify.app/components/icon
  * @status experimental
  * @since 1.0
  *
