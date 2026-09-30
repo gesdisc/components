@@ -872,34 +872,24 @@ export default class TerraDatePicker extends TerraElement {
             // the time components will be preserved in the Date object
         }
 
-        if (!isValid(date)) {
-            return null
-        }
-
-        // Format based on whether time is enabled
+        // Format the parsed date and return
         if (this.enableTime) {
-            // When time is enabled, check if input was date-only or included time
             if (dateOnlyPattern.test(trimmed)) {
                 // User entered date-only (YYYY-MM-DD) - return as-is without adding time
-                // The blur handlers will add time from the time picker
                 return trimmed
-            } else {
-                // User entered datetime - format as UTC
-                const utcYear = date.getUTCFullYear()
-                const utcMonth = date.getUTCMonth() + 1
-                const utcDay = date.getUTCDate()
-                const utcHours = date.getUTCHours()
-                const utcMinutes = date.getUTCMinutes()
-                const utcSeconds = date.getUTCSeconds()
-                return `${utcYear}-${String(utcMonth).padStart(2, '0')}-${String(utcDay).padStart(2, '0')} ${String(utcHours).padStart(2, '0')}:${String(utcMinutes).padStart(2, '0')}:${String(utcSeconds).padStart(2, '0')}`
             }
-        } else {
-            // Format to YYYY-MM-DD using the date's local components to avoid timezone issues
-            const year = date.getFullYear()
-            const month = date.getMonth() + 1
-            const day = date.getDate()
-            return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`
+            const utcYear = date.getUTCFullYear()
+            const utcMonth = date.getUTCMonth() + 1
+            const utcDay = date.getUTCDate()
+            const utcHours = date.getUTCHours()
+            const utcMinutes = date.getUTCMinutes()
+            const utcSeconds = date.getUTCSeconds()
+            return `${utcYear}-${String(utcMonth).padStart(2, '0')}-${String(utcDay).padStart(2, '0')} ${String(utcHours).padStart(2, '0')}:${String(utcMinutes).padStart(2, '0')}:${String(utcSeconds).padStart(2, '0')}`
         }
+        const year = date.getFullYear()
+        const month = date.getMonth() + 1
+        const day = date.getDate()
+        return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`
     }
 
     private clearInputValidation() {

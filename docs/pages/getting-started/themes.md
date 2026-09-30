@@ -47,6 +47,7 @@ The Horizon theme includes both light and dark modes in a single file. Dark mode
 
 To enable automatic dark mode based on system preference, add the `terra-prefers-color-scheme` class to the `<body>` element:
 
+**Automatic dark mode (default):**
 ```html
 <body class="terra-prefers-color-scheme">
     <!-- Dark mode activates automatically based on system preference -->

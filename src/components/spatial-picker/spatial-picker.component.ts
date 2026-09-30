@@ -125,6 +125,8 @@ export default class TerraSpatialPicker extends TerraElement {
 
     @state() error: string = ''
 
+    private boundHandleClickOutside: ((event: MouseEvent) => void) | null = null
+
     dropdownRef = createRef<TerraDropdown>()
 
     @query('terra-input') terraInput: TerraInput
@@ -275,6 +277,10 @@ export default class TerraSpatialPicker extends TerraElement {
 
     private handleDropdownHide() {
         this.isExpanded = false
+        if (this.boundHandleClickOutside) {
+            document.removeEventListener('click', this.boundHandleClickOutside)
+            this.boundHandleClickOutside = null
+        }
     }
 
     // ─── Internal helpers ──────────────────────────────────────────────────────

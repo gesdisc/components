@@ -40,6 +40,13 @@ export default css`
     .spatial-picker__clear-btn svg {
         height: 1.4rem;
         width: 1.4rem;
+        cursor: pointer;
+        color: var(--terra-color-neutral-500, #6b7280);
+        flex-shrink: 0;
+    }
+
+    :host .spatial-picker__input_icon:hover {
+        color: var(--terra-color-neutral-700, #374151);
     }
 
     .spatial-picker__map-container {

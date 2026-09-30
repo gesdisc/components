@@ -3,6 +3,7 @@ meta:
     title: Alert
     description: Alerts are used to display important messages inline or as toast notifications.
 layout: component
+sidebarSection: Elements
 ---
 
 ```html:preview

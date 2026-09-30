@@ -3,6 +3,7 @@ meta:
     title: Chip
     description: A chip is used to represent small blocks of information, and are commonly used for contacts and tags. Chips can optionally have a close button to remove them.
 layout: component
+sidebarSection: Elements
 ---
 
 ```html:preview

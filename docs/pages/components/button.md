@@ -3,6 +3,7 @@ meta:
     title: Button
     description: Buttons represent actions that are available to the user.
 layout: component
+sidebarSection: Elements
 ---
 
 ```html:preview
